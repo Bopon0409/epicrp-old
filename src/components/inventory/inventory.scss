@@ -1,3 +1,40 @@
-.inventory {
-  
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
+
+.inventory-page {
+  position: absolute;
+  z-index: 3 !important;
+  color: white;
+  zoom: 1;
+  font-family: Nunito;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90px;
+
+  .top-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+
+    .button-exit {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      
+      .btn {
+        padding: 10px 18px;
+        background-color: rgba(255, 255, 255, 0.05);
+        margin-right: 22px;
+      }
+    }
+  }
+
+  .main-block {
+
+    .equipment {}
+  }
 }
