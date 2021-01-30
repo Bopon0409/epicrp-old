@@ -14,17 +14,13 @@ import EquipmentSlot9 from './images/equipment-slot-9.png'
 import EquipmentSlot10 from './images/equipment-slot-10.png'
 import EquipmentSlot11 from './images/equipment-slot-11.png'
 import EquipmentSlot12 from './images/equipment-slot-12.png'
+import Bag from './images/bag.png'
 
 export default class inventory extends Component {
-  createSlotList = (quantity, isBag) => {
+  createSlotList = (quantity, type) => {
     const list = []
     for (let i = 0; i < quantity; i++) {
-      list.push(
-        <div
-          key={isBag ? `slote-bag-${i}` : `slote-${i}`}
-          className='slot'
-        ></div>
-      )
+      list.push(<div key={`slote-${type}-${i}`} className='slot'></div>)
     }
     return list
   }
@@ -92,9 +88,16 @@ export default class inventory extends Component {
             </div>
           </div>
           <div className='inventory'>
-            <div className='bag-block'>{this.createSlotList(10, true)}</div>
+            <div className='bag-block'>{this.createSlotList(10, 'bag')}</div>
             <div className='inventory-block'>
-              {this.createSlotList(25, false)}
+              {this.createSlotList(25, 'inventory')}
+            </div>
+            <div className='bag-hint'>
+              <img src={Bag} alt='' />
+            </div>
+            <div className='fast-inventory'>
+              {this.createSlotList(4, 'fast-inventory')}
+              <div className='title'>Быстрый доступ</div>
             </div>
           </div>
         </div>
