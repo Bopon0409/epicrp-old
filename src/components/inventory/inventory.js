@@ -1,45 +1,11 @@
 /* eslint-disable default-case */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react'
+import Slot from './slot'
+import Equipment from './equipment'
 import './inventory.scss'
 
-import EquipmentSlot1 from './images/equipment-slot-1.png'
-import EquipmentSlot2 from './images/equipment-slot-2.png'
-import EquipmentSlot3 from './images/equipment-slot-3.png'
-import EquipmentSlot4 from './images/equipment-slot-4.png'
-import EquipmentSlot5 from './images/equipment-slot-5.png'
-import EquipmentSlot6 from './images/equipment-slot-6.png'
-import EquipmentSlot7 from './images/equipment-slot-7.png'
-import EquipmentSlot8 from './images/equipment-slot-8.png'
-import EquipmentSlot9 from './images/equipment-slot-9.png'
-import EquipmentSlot10 from './images/equipment-slot-10.png'
-import EquipmentSlot11 from './images/equipment-slot-11.png'
-import EquipmentSlot12 from './images/equipment-slot-12.png'
 import Bag from './images/bag.png'
-
-function Item ({ item }) {
-  return <>Item</>
-}
-
-function Slot ({ draggable, onDragStart, onDragOver, onDrop, item, id }) {
-  return (
-    <div
-      className='slot'
-      onDragStart={onDragStart({ id })}
-      onDragOver={onDragOver({ id })}
-      onDrop={onDrop({ id })}
-    >
-      <div
-        draggable={draggable}
-        onDragStart={onDragStart({ id })}
-        onDragOver={onDragOver({ id })}
-        onDrop={onDrop({ id })}
-      >
-        {item ? <Item item={item} /> : null}
-      </div>
-    </div>
-  )
-}
 
 export default class inventory extends Component {
   state = {
@@ -49,6 +15,8 @@ export default class inventory extends Component {
         idItem: 0,
         idSlot: 0,
         quantity: 1,
+        weight: 0.2,
+        isFastSlot: true,
         description: `Описание яблочка - самый важный элемент в инвентаре 
         Без его описания можно было бы считать работу несостоявшейся`
       }
@@ -95,7 +63,9 @@ export default class inventory extends Component {
   swapSlotItem = (fromSlot, toSlot) => {
     this.setState(({ inventory }) => {
       inventory.forEach(item => {
-        if (item.idSlot === fromSlot.id) item.idSlot = toSlot.id
+        const isCoincidence = item.idSlot === fromSlot.id
+        const fastSlotCheck = toSlot.id < 100 || item.isFastSlot
+        if (isCoincidence && fastSlotCheck) item.idSlot = toSlot.id
       })
       return { inventory }
     })
@@ -143,58 +113,13 @@ export default class inventory extends Component {
             <div className='title inventory-title'>Инвентарь</div>
           </div>
           <div className='equipment'>
-            <div className='equipment-slot-container row1'>
-              <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot1} />
-              </div>
-              <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot7} />
-              </div>
-            </div>
-            <div className='equipment-slot-container row2'>
-              <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot2} />
-              </div>
-              <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot8} />
-              </div>
-            </div>
-            <div className='equipment-slot-container row3'>
-              <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot3} />
-              </div>
-              <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot9} />
-              </div>
-            </div>
-            <div className='equipment-slot-container row3'>
-              <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot4} />
-              </div>
-              <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot10} />
-              </div>
-            </div>
-            <div className='equipment-slot-container row2'>
-              <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot5} />
-              </div>
-              <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot11} />
-              </div>
-            </div>
-            <div className='equipment-slot-container row1'>
-              <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot6} />
-              </div>
-              <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot12} />
-              </div>
-            </div>
+            <Equipment />
           </div>
           <div className='inventory'>
             <div className='bag-block'>{this.getSlotsInventary('bag')}</div>
-            <div className='inventory-block'>{this.getSlotsInventary('inventory')}</div>
+            <div className='inventory-block'>
+              {this.getSlotsInventary('inventory')}
+            </div>
             <div className='bag-hint'>
               <img src={Bag} alt='' />
             </div>
