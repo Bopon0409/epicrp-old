@@ -1,7 +1,7 @@
 import Item from './item'
 
 export default function Slot ({
-  draggable,
+  setModal,
   onDragStart,
   onDragOver,
   onDrop,
@@ -11,10 +11,10 @@ export default function Slot ({
   return (
     <div className='slot'>
       <div
-        // onMouseEnter=''
-        // onMouseLeave=''
+        onMouseEnter={event => setModal(true, event.clientX, event.clientY)}
+        onMouseLeave={() => setModal(false, 0, 0)}
         className='item-wrapper'
-        draggable={draggable}
+        draggable='true'
         onDragStart={onDragStart({ id })}
         onDragOver={onDragOver({ id })}
         onDrop={onDrop({ id })}

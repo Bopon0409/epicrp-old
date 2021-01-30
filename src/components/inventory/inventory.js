@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable default-case */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react'
@@ -7,9 +8,29 @@ import './inventory.scss'
 
 import Bag from './images/bag.png'
 
+function ItemModal ({ modal }) {
+  const { xCord, yCord } = modal
+  const isRightDirection = screen.width - xCord > 380
+  const cordStyle = isRightDirection
+    ? { left: xCord, top: yCord }
+    : { right: xCord, top: yCord }
+  return (
+    <>
+      <div className='modal' style={cordStyle}>
+        123
+      </div>
+    </>
+  )
+}
+
 export default class inventory extends Component {
   state = {
     bagType: 2,
+    modal: {
+      isActive: false,
+      xCord: 0,
+      yCord: 0
+    },
     inventory: [
       {
         idItem: 0,
@@ -17,10 +38,15 @@ export default class inventory extends Component {
         quantity: 1,
         weight: 0.2,
         isFastSlot: true,
+        name: 'Яблочко',
         description: `Описание яблочка - самый важный элемент в инвентаре 
         Без его описания можно было бы считать работу несостоявшейся`
       }
     ]
+  }
+
+  setModal = (isActive, xCord, yCord) => {
+    this.setState({ modal: { isActive, xCord, yCord } })
   }
 
   checkSlotOnItem = num => {
@@ -50,7 +76,7 @@ export default class inventory extends Component {
           key={i}
           id={i}
           item={item}
-          draggable='true'
+          setModal={this.setModal}
           onDragStart={this.handleDragStart}
           onDragOver={this.handleDragOver}
           onDrop={this.handleDrop}
@@ -101,20 +127,26 @@ export default class inventory extends Component {
   }
 
   render () {
+    const { modal } = this.state
     return (
       <div className='inventory-page'>
         <div className='button-exit'>
           <div className='btn'>ESC</div>
           Закрыть
         </div>
+
+        {modal.isActive ? <ItemModal modal={modal} /> : null}
+
         <div className='main-block'>
           <div className='top-panel'>
             <div className='title equipment-title'>Экипировка</div>
             <div className='title inventory-title'>Инвентарь</div>
           </div>
+
           <div className='equipment'>
             <Equipment />
           </div>
+
           <div className='inventory'>
             <div className='bag-block'>{this.getSlotsInventary('bag')}</div>
             <div className='inventory-block'>
