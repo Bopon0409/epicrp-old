@@ -17,7 +17,11 @@ import EquipmentSlot11 from './images/equipment-slot-11.png'
 import EquipmentSlot12 from './images/equipment-slot-12.png'
 import Bag from './images/bag.png'
 
-function Slot ({ draggable, onDragStart, onDragOver, onDrop, isItem, id }) {
+function Item ({ item }) {
+  return <>Item</>
+}
+
+function Slot ({ draggable, onDragStart, onDragOver, onDrop, item, id }) {
   return (
     <div
       className='slot'
@@ -31,7 +35,7 @@ function Slot ({ draggable, onDragStart, onDragOver, onDrop, isItem, id }) {
         onDragOver={onDragOver({ id })}
         onDrop={onDrop({ id })}
       >
-        {isItem ? 'item' : null}
+        {item ? <Item item={item} /> : null}
       </div>
     </div>
   )
@@ -39,7 +43,7 @@ function Slot ({ draggable, onDragStart, onDragOver, onDrop, isItem, id }) {
 
 export default class inventory extends Component {
   state = {
-    equipment: [],
+    bagType: 2,
     inventory: [
       {
         idItem: 0,
@@ -48,35 +52,40 @@ export default class inventory extends Component {
         description: `Описание яблочка - самый важный элемент в инвентаре 
         Без его описания можно было бы считать работу несостоявшейся`
       }
-    ],
-    fastInventory: []
+    ]
   }
 
   checkSlotOnItem = num => {
     return this.state.inventory.find(item => item.idSlot === num)
   }
 
-  renderInventory = (quantity) => {
-    const {
-      checkSlotOnItem,
-      handleDragStart,
-      handleDragOver,
-      handleDrop
-    } = this
+  getSlotsInventary = type => {
+    switch (type) {
+      case 'inventory':
+        return this.renderSlots(0, 25)
+      case 'fastInventory':
+        return this.renderSlots(100, 104)
+      case 'bag':
+        const { bagType } = this.state
+        if (bagType === 0) return null
+        else if (bagType === 1) return this.renderSlots(25, 30)
+        else if (bagType === 2) return this.renderSlots(25, 35)
+    }
+  }
+
+  renderSlots = (startId, endId) => {
     const list = []
-    for (let i = 0; i < quantity; i++) {
-      const key = `slote-inventory-${i}`
-      const item = checkSlotOnItem(i)
+    for (let i = startId; i < endId; i++) {
+      const item = this.checkSlotOnItem(i)
       list.push(
         <Slot
-          isItem={Boolean(item)}
-          key={key}
+          key={i}
           id={i}
           item={item}
           draggable='true'
-          onDragStart={handleDragStart}
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
+          onDragStart={this.handleDragStart}
+          onDragOver={this.handleDragOver}
+          onDrop={this.handleDrop}
         />
       )
     }
@@ -88,7 +97,6 @@ export default class inventory extends Component {
       inventory.forEach(item => {
         if (item.idSlot === fromSlot.id) item.idSlot = toSlot.id
       })
-
       return { inventory }
     })
   }
@@ -185,13 +193,13 @@ export default class inventory extends Component {
             </div>
           </div>
           <div className='inventory'>
-            <div className='bag-block'>{this.renderSlotList(10, 'bag')}</div>
-            <div className='inventory-block'>{this.renderInventory(25)}</div>
+            <div className='bag-block'>{this.getSlotsInventary('bag')}</div>
+            <div className='inventory-block'>{this.getSlotsInventary('inventory')}</div>
             <div className='bag-hint'>
               <img src={Bag} alt='' />
             </div>
             <div className='fast-inventory'>
-              {this.renderSlotList(4, 'fast-inventory')}
+              {this.getSlotsInventary('fastInventory')}
               <div className='title'>Быстрый доступ</div>
             </div>
           </div>
