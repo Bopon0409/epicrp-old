@@ -16,6 +16,19 @@ import EquipmentSlot11 from './images/equipment-slot-11.png'
 import EquipmentSlot12 from './images/equipment-slot-12.png'
 
 export default class inventory extends Component {
+  createSlotList = (quantity, isBag) => {
+    const list = []
+    for (let i = 0; i < quantity; i++) {
+      list.push(
+        <div
+          key={isBag ? `slote-bag-${i}` : `slote-${i}`}
+          className='slot'
+        ></div>
+      )
+    }
+    return list
+  }
+
   render () {
     return (
       <div className='inventory-page'>
@@ -34,55 +47,55 @@ export default class inventory extends Component {
                 <img className='equipment-plug' src={EquipmentSlot1} />
               </div>
               <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot7} alt='' />
+                <img className='equipment-plug' src={EquipmentSlot7} />
               </div>
             </div>
             <div className='equipment-slot-container row2'>
               <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot2} alt='' />
+                <img className='equipment-plug' src={EquipmentSlot2} />
               </div>
               <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot8} alt='' />
-              </div>
-            </div>
-            <div className='equipment-slot-container row3'>
-              <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot3} alt='' />
-              </div>
-              <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot9} alt='' />
+                <img className='equipment-plug' src={EquipmentSlot8} />
               </div>
             </div>
             <div className='equipment-slot-container row3'>
               <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot4} alt='' />
+                <img className='equipment-plug' src={EquipmentSlot3} />
               </div>
               <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot10} alt='' />
+                <img className='equipment-plug' src={EquipmentSlot9} />
+              </div>
+            </div>
+            <div className='equipment-slot-container row3'>
+              <div className='equipment-slot'>
+                <img className='equipment-plug' src={EquipmentSlot4} />
+              </div>
+              <div className='equipment-slot'>
+                <img className='equipment-plug' src={EquipmentSlot10} />
               </div>
             </div>
             <div className='equipment-slot-container row2'>
               <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot5} alt='' />
+                <img className='equipment-plug' src={EquipmentSlot5} />
               </div>
               <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot11} alt='' />
+                <img className='equipment-plug' src={EquipmentSlot11} />
               </div>
             </div>
             <div className='equipment-slot-container row1'>
               <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot6} alt='' />
+                <img className='equipment-plug' src={EquipmentSlot6} />
               </div>
               <div className='equipment-slot'>
-                <img className='equipment-plug' src={EquipmentSlot12} alt='' />
+                <img className='equipment-plug' src={EquipmentSlot12} />
               </div>
             </div>
           </div>
           <div className='inventory'>
-            <div className="bag-block">
-              
+            <div className='bag-block'>{this.createSlotList(10, true)}</div>
+            <div className='inventory-block'>
+              {this.createSlotList(25, false)}
             </div>
-            <div className="inventory-block"></div>
           </div>
         </div>
         <div className='bot-panel'></div>
