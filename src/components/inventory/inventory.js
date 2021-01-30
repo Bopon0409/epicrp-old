@@ -56,7 +56,7 @@ export default class inventory extends Component {
     return this.state.inventory.find(item => item.idSlot === num)
   }
 
-  renderInventory = () => {
+  renderInventory = (quantity) => {
     const {
       checkSlotOnItem,
       handleDragStart,
@@ -64,7 +64,7 @@ export default class inventory extends Component {
       handleDrop
     } = this
     const list = []
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < quantity; i++) {
       const key = `slote-inventory-${i}`
       const item = checkSlotOnItem(i)
       list.push(
@@ -186,7 +186,7 @@ export default class inventory extends Component {
           </div>
           <div className='inventory'>
             <div className='bag-block'>{this.renderSlotList(10, 'bag')}</div>
-            <div className='inventory-block'>{this.renderInventory()}</div>
+            <div className='inventory-block'>{this.renderInventory(25)}</div>
             <div className='bag-hint'>
               <img src={Bag} alt='' />
             </div>
