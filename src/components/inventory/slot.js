@@ -11,7 +11,7 @@ export default function Slot ({
   return (
     <div className='slot'>
       <div
-        onMouseEnter={event => setModal(true, event.clientX, event.clientY)}
+        onClick={event => setModal(true, event.clientX, event.clientY)}
         onMouseLeave={() => setModal(false, 0, 0)}
         className='item-wrapper'
         draggable='true'

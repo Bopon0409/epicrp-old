@@ -10,10 +10,11 @@ import Bag from './images/bag.png'
 
 function ItemModal ({ modal }) {
   const { xCord, yCord } = modal
+  console.log(screen.width - xCord)
   const isRightDirection = screen.width - xCord > 380
   const cordStyle = isRightDirection
     ? { left: xCord, top: yCord }
-    : { right: xCord, top: yCord }
+    : { left: xCord - 380, top: yCord }
   return (
     <>
       <div className='modal' style={cordStyle}>
