@@ -6,35 +6,111 @@
   color: white;
   zoom: 1;
   font-family: Nunito;
-  top: 5%;
-  left: 5%;
-  width: 90%;
-  height: 90px;
+  width: 100%;
+  height: 100%;
 
-  .top-panel {
+  .button-exit {
+    position: absolute;
+    right: 50px;
+    top: 50px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    color: rgba(255, 255, 255, 0.5);
-    font-weight: 700;
-    font-size: 18px;
-    text-transform: uppercase;
+    cursor: pointer;
 
-    .button-exit {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      
-      .btn {
-        padding: 10px 18px;
-        background-color: rgba(255, 255, 255, 0.05);
-        margin-right: 22px;
-      }
+    .btn {
+      padding: 10px 18px;
+      background-color: rgba(255, 255, 255, 0.05);
+      margin-right: 22px;
     }
   }
 
   .main-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -510px;
+    margin-top: -350px;
+    width: 1020px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    border: 1px solid black;
 
-    .equipment {}
+    .top-panel {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      height: 30px;
+      margin-bottom: 50px;
+
+      .equipment-title {
+        width: 320px;
+      }
+
+      .inventory-title {
+        width: 650px;
+      }
+
+      .title {
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 700;
+        font-size: 18px;
+        text-transform: uppercase;
+        text-align: center;
+      }
+    }
+
+    .equipment {
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 480px;
+
+      background-image: url(./images/man.png);
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-size: 50% 100%;
+
+      .equipment-slot-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 50px;
+
+        .equipment-slot {
+          width: 50px;
+          height: 50px;
+          background-color: rgba(255, 255, 255, 0.07);
+          border-radius: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .equipment-plug {
+            zoom: 1.2;
+          }
+        }
+      }
+
+      .row1 {
+        box-sizing: border-box;
+        padding-left: 60px;
+        padding-right: 60px;
+      }
+
+      .row2 {
+        box-sizing: border-box;
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+    }
+
+    .inventory {
+      width: 660px;
+      height: 580px;
+      border: 1px solid black;
+    }
   }
 }
