@@ -2,12 +2,25 @@
 
 .inventory-page {
   position: absolute;
-  z-index: 3 !important;
+  z-index: 3;
   color: white;
-  zoom: 1;
   font-family: Nunito;
   width: 100%;
   height: 100%;
+
+  .title {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .slot {
+    width: 80px;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.07);
+  }
 
   .button-exit {
     position: absolute;
@@ -19,8 +32,8 @@
 
     .btn {
       padding: 10px 18px;
-      background-color: rgba(255, 255, 255, 0.05);
       margin-right: 22px;
+      background-color: rgba(255, 255, 255, 0.05);
     }
   }
 
@@ -50,14 +63,6 @@
       .inventory-title {
         width: 650px;
       }
-
-      .title {
-        color: rgba(255, 255, 255, 0.5);
-        font-weight: 700;
-        font-size: 18px;
-        text-transform: uppercase;
-        text-align: center;
-      }
     }
 
     .equipment {
@@ -75,6 +80,7 @@
       .equipment-slot-container {
         display: flex;
         justify-content: space-between;
+        box-sizing: border-box;
         width: 100%;
         height: 50px;
 
@@ -94,13 +100,11 @@
       }
 
       .row1 {
-        box-sizing: border-box;
         padding-left: 60px;
         padding-right: 60px;
       }
 
       .row2 {
-        box-sizing: border-box;
         padding-left: 30px;
         padding-right: 30px;
       }
@@ -119,26 +123,14 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-  
-        .slot {
-          width: 80px;
-          height: 80px;
-          background-color: rgba(255, 255, 255, 0.07);
-        }
       }
-  
+
       .inventory-block {
         width: 450px;
         height: 450px;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-  
-        .slot {
-          width: 80px;
-          height: 80px;
-          background-color: rgba(255, 255, 255, 0.07);
-        }
       }
 
       .bag-hint {
@@ -154,19 +146,7 @@
         flex-wrap: wrap;
         justify-content: center;
 
-        .title {
-          color: rgba(255, 255, 255, 0.5);
-          font-weight: 700;
-          font-size: 18px;
-          text-transform: uppercase;
-          text-align: center;
-          width: 100%;
-        }
-
         .slot {
-          width: 80px;
-          height: 80px;
-          background-color: rgba(255, 255, 255, 0.07);
           margin-right: 10px;
         }
       }
