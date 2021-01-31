@@ -9,10 +9,11 @@ export default function Slot ({
   id
 }) {
   return (
-    <div className='slot'>
+    <div
+      className='slot'
+      onClick={event => setModal(true, event.clientX, event.clientY)}
+    >
       <div
-        onClick={event => setModal(true, event.clientX, event.clientY)}
-        onMouseLeave={() => setModal(false, 0, 0)}
         className='item-wrapper'
         draggable='true'
         onDragStart={onDragStart({ id })}

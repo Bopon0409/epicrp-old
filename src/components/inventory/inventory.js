@@ -2,26 +2,44 @@
 /* eslint-disable default-case */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react'
+
 import Slot from './slot'
 import Equipment from './equipment'
 import './inventory.scss'
 
 import Bag from './images/bag.png'
 
-function ItemModal ({ modal }) {
-  const { xCord, yCord } = modal
-  console.log(screen.width - xCord)
-  const isRightDirection = screen.width - xCord > 380
-  const cordStyle = isRightDirection
-    ? { left: xCord, top: yCord }
-    : { left: xCord - 380, top: yCord }
-  return (
-    <>
-      <div className='modal' style={cordStyle}>
-        123
-      </div>
-    </>
-  )
+class ItemModal extends Component {
+  componentDidMount () {
+    setTimeout(() => {
+      document.addEventListener('click', this.handleClickOutside, false)
+    }, 500)
+  }
+
+  componentWillUnmount () {
+    document.removeEventListener('click', this.handleClickOutside, false)
+  }
+
+  handleClickOutside = e => {
+    const modalBlock = document.getElementsByClassName('modal')[0]
+    if (!e.path.includes(modalBlock)) this.props.setModal(false, 0, 0)
+  }
+
+  render () {
+    const { xCord, yCord } = this.props.modal
+    const isRightDirection = screen.width - xCord > 380
+    const cordStyle = isRightDirection
+      ? { left: xCord, top: yCord }
+      : { left: xCord - 380, top: yCord }
+
+    return (
+      <>
+        <div className='modal' style={cordStyle}>
+          123
+        </div>
+      </>
+    )
+  }
 }
 
 export default class inventory extends Component {
@@ -136,7 +154,9 @@ export default class inventory extends Component {
           Закрыть
         </div>
 
-        {modal.isActive ? <ItemModal modal={modal} /> : null}
+        {modal.isActive ? (
+          <ItemModal modal={modal} setModal={this.setModal} />
+        ) : null}
 
         <div className='main-block'>
           <div className='top-panel'>
