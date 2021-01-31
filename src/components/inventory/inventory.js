@@ -2,10 +2,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react'
 
-import Slot from './slot'
-import Equipment from './equipment'
-import ItemModal from './item-modal'
-import './inventory.scss'
+import Slot from './modules/slot'
+import Equipment from './modules/equipment'
+import ItemModal from './modules/item-modal'
+import './scss/inventory.scss'
 
 import Bag from './images/bag.png'
 

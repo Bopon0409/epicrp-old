@@ -1,16 +1,16 @@
 /* eslint-disable jsx-a11y/alt-text */
-import EquipmentSlot1 from './images/equipment-slot-1.png'
-import EquipmentSlot2 from './images/equipment-slot-2.png'
-import EquipmentSlot3 from './images/equipment-slot-3.png'
-import EquipmentSlot4 from './images/equipment-slot-4.png'
-import EquipmentSlot5 from './images/equipment-slot-5.png'
-import EquipmentSlot6 from './images/equipment-slot-6.png'
-import EquipmentSlot7 from './images/equipment-slot-7.png'
-import EquipmentSlot8 from './images/equipment-slot-8.png'
-import EquipmentSlot9 from './images/equipment-slot-9.png'
-import EquipmentSlot10 from './images/equipment-slot-10.png'
-import EquipmentSlot11 from './images/equipment-slot-11.png'
-import EquipmentSlot12 from './images/equipment-slot-12.png'
+import EquipmentSlot1 from '../images/equipment-slot-1.png'
+import EquipmentSlot2 from '../images/equipment-slot-2.png'
+import EquipmentSlot3 from '../images/equipment-slot-3.png'
+import EquipmentSlot4 from '../images/equipment-slot-4.png'
+import EquipmentSlot5 from '../images/equipment-slot-5.png'
+import EquipmentSlot6 from '../images/equipment-slot-6.png'
+import EquipmentSlot7 from '../images/equipment-slot-7.png'
+import EquipmentSlot8 from '../images/equipment-slot-8.png'
+import EquipmentSlot9 from '../images/equipment-slot-9.png'
+import EquipmentSlot10 from '../images/equipment-slot-10.png'
+import EquipmentSlot11 from '../images/equipment-slot-11.png'
+import EquipmentSlot12 from '../images/equipment-slot-12.png'
 
 export default function Equipment () {
   return (

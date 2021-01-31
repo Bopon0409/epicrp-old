@@ -1,4 +1,4 @@
-import ItemImage from './images/items/id0.png'
+import ItemImage from '../images/items/id0.png'
 
 export default function Item ({ item }) {
   const { quantity, weight } = item

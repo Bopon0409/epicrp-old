@@ -83,6 +83,11 @@
       display: flex;
       justify-content: space-between;
 
+      .active-btn {
+        background-color: #DEB344!important;
+        color: white;
+      }
+
       .btn {
         text-align: center;
         width: 29%;
