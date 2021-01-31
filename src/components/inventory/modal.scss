@@ -46,19 +46,53 @@
       }
     }
 
+    .slider-block {
+      margin-top: 10px;
+      background-color: #413D3D;
+      width: 380px;
+      height: 70px;
+      padding: 20px 22px;
+
+      .input-range__slider {
+        background: white;
+        border: none;
+      }
+
+      .input-range__track {
+        background: #ddd;
+      }
+
+      .input-range__track--active {
+        background: #DDAC3D;
+      }
+
+      .slider {
+        .label {
+          display: block;
+          text-align: left;
+          color: white;
+          font-size: 14px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+
     .btn-block {
-      margin-top: 20px;
+      margin-top: 10px;
       width: 100%;
       display: flex;
       justify-content: space-between;
 
       .btn {
-        font-weight: bold;
+        text-align: center;
+        width: 29%;
         cursor: pointer;
-        padding: 6px 10px;
+        padding: 5px;
         background-color: #413D3D;
-        
+        color: rgba(255, 255, 255, 0.5);
+
         &:hover {
+          color: white;
           background-color: rgba(255, 255, 255, 0.5);
         }
       }

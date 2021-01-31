@@ -11,7 +11,7 @@ import Bag from './images/bag.png'
 
 export default class inventory extends Component {
   state = {
-    bagType: 1,
+    bagType: 2,
     modal: {
       isActive: false,
       item: {},
@@ -22,7 +22,7 @@ export default class inventory extends Component {
       {
         idItem: 0,
         idSlot: 0,
-        quantity: 1,
+        quantity: 3,
         weight: 0.2,
         isFastSlot: true,
         name: 'Яблочко',
