@@ -1,52 +1,20 @@
-/* eslint-disable no-restricted-globals */
 /* eslint-disable default-case */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react'
 
 import Slot from './slot'
 import Equipment from './equipment'
+import ItemModal from './item-modal'
 import './inventory.scss'
 
 import Bag from './images/bag.png'
 
-class ItemModal extends Component {
-  componentDidMount () {
-    setTimeout(() => {
-      document.addEventListener('click', this.handleClickOutside, false)
-    }, 500)
-  }
-
-  componentWillUnmount () {
-    document.removeEventListener('click', this.handleClickOutside, false)
-  }
-
-  handleClickOutside = e => {
-    const modalBlock = document.getElementsByClassName('modal')[0]
-    if (!e.path.includes(modalBlock)) this.props.setModal(false, 0, 0)
-  }
-
-  render () {
-    const { xCord, yCord } = this.props.modal
-    const isRightDirection = screen.width - xCord > 380
-    const cordStyle = isRightDirection
-      ? { left: xCord, top: yCord }
-      : { left: xCord - 380, top: yCord }
-
-    return (
-      <>
-        <div className='modal' style={cordStyle}>
-          123
-        </div>
-      </>
-    )
-  }
-}
-
 export default class inventory extends Component {
   state = {
-    bagType: 2,
+    bagType: 1,
     modal: {
       isActive: false,
+      item: {},
       xCord: 0,
       yCord: 0
     },
@@ -64,8 +32,8 @@ export default class inventory extends Component {
     ]
   }
 
-  setModal = (isActive, xCord, yCord) => {
-    this.setState({ modal: { isActive, xCord, yCord } })
+  setModal = (isActive, item, xCord, yCord) => {
+    this.setState({ modal: { isActive, item, xCord, yCord } })
   }
 
   checkSlotOnItem = num => {
@@ -126,8 +94,12 @@ export default class inventory extends Component {
   }
 
   handleDragStart = data => event => {
-    let fromSlot = JSON.stringify({ id: data.id })
-    event.dataTransfer.setData('dragContent', fromSlot)
+    const item = this.checkSlotOnItem(data.id)
+    // Проверка на наличие предмета при перемезении
+    if (item) {
+      let fromSlot = JSON.stringify({ id: data.id })
+      event.dataTransfer.setData('dragContent', fromSlot)
+    } else event.preventDefault()
   }
 
   handleDragOver = () => event => {
@@ -146,7 +118,8 @@ export default class inventory extends Component {
   }
 
   render () {
-    const { modal } = this.state
+    const { modal, bagType } = this.state
+    const bagStyle = bagType === 1 ? 'bag-block small-bag-block' : 'bag-block'
     return (
       <div className='inventory-page'>
         <div className='button-exit'>
@@ -169,7 +142,7 @@ export default class inventory extends Component {
           </div>
 
           <div className='inventory'>
-            <div className='bag-block'>{this.getSlotsInventary('bag')}</div>
+            <div className={bagStyle}>{this.getSlotsInventary('bag')}</div>
             <div className='inventory-block'>
               {this.getSlotsInventary('inventory')}
             </div>

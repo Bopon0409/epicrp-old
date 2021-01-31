@@ -11,7 +11,7 @@ export default function Slot ({
   return (
     <div
       className='slot'
-      onClick={event => setModal(true, event.clientX, event.clientY)}
+      onClick={event => setModal(true, item, event.clientX, event.clientY)}
     >
       <div
         className='item-wrapper'
