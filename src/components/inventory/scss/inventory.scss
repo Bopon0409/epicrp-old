@@ -192,6 +192,32 @@
       }
     }
   }
+
+  .bottom-panel {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    margin-left: -250px;
+    width: 500px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+
+    .progress-bar-container {
+      display: flex;
+      align-items: center;
+
+      .label {
+        font-size: 16px;
+        font-weight: bold;
+        margin-right: 12px;
+      }
+
+      .progress-bar {
+        width: 60px;
+      }
+    }
+  }
 }
 
 @media (min-width: 2560px) {

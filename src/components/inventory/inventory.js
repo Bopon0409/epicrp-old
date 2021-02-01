@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 import Slot from './modules/slot'
 import Equipment from './modules/equipment'
 import ItemModal from './modules/item-modal'
+import BottomPanel from './modules/bottom-panel'
 
 import './scss/inventory.scss'
 
@@ -18,6 +19,12 @@ export default class inventory extends Component {
       item: {},
       xCord: 0,
       yCord: 0
+    },
+    userIndicators: {
+      food: 50,
+      water: 60,
+      health: 70,
+      armor: 80
     },
     inventory: [
       {
@@ -132,7 +139,7 @@ export default class inventory extends Component {
   }
 
   render () {
-    const { modal, bagType } = this.state
+    const { modal, bagType, userIndicators } = this.state
     const bagStyle = bagType === 1 ? 'bag-block small-bag-block' : 'bag-block'
     return (
       <div className='inventory-page'>
@@ -175,6 +182,8 @@ export default class inventory extends Component {
             </div>
           </div>
         </div>
+
+        <BottomPanel userIndicators={userIndicators} />
       </div>
     )
   }
