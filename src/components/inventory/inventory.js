@@ -26,6 +26,7 @@ export default class inventory extends Component {
         quantity: 3,
         weight: 0.2,
         isFastSlot: true,
+        isEquipmentSlot: true,
         name: 'Яблочко',
         description: `Описание яблочка - самый важный элемент в инвентаре 
         Без его описания можно было бы считать работу несостоявшейся`
@@ -79,7 +80,9 @@ export default class inventory extends Component {
       inventory.forEach(item => {
         const isCoincidence = item.idSlot === fromSlot
         const fastSlotCheck = toSlot < 100 || item.isFastSlot
-        if (isCoincidence && fastSlotCheck) item.idSlot = toSlot
+        const equipmentSlotCheck = toSlot < 200 || item.isEquipmentSlot
+        if (isCoincidence && fastSlotCheck && equipmentSlotCheck)
+          item.idSlot = toSlot
       })
       return { inventory }
     })
@@ -132,6 +135,7 @@ export default class inventory extends Component {
               onDragStart={this.handleDragStart}
               onDragOver={this.handleDragOver}
               onDrop={this.handleDrop}
+              setModal={this.setModal}
             />
           </div>
 

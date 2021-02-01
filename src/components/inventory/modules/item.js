@@ -6,6 +6,7 @@ export default function Item ({ item }) {
   return (
     <>
       <img className={className} src={ItemImage} alt='' />
+
       {idSlot < 200 ? (
         <div className='label-block'>
           <div className='label'>{quantity}</div>

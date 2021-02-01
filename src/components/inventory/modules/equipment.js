@@ -34,21 +34,33 @@ export default class Equipment extends Component {
   }
 
   equipmentSlotList = () => {
-    const { onDragStart, onDragOver, onDrop, checkSlotOnItem } = this.props
+    const {
+      onDragStart,
+      onDragOver,
+      onDrop,
+      checkSlotOnItem,
+      setModal
+    } = this.props
+
     let list = []
     for (let i = 1; i < 7; i++) {
       const id1 = 200 + i
       const id2 = 206 + i
-
       const item1 = checkSlotOnItem(id1)
       const item2 = checkSlotOnItem(id2)
 
+      const containerClass2 = `equipment-slot-container row${
+        this.rowNumbers[i - 1]
+      }`
+
       list.push(
-        <div
-          key={i}
-          className={`equipment-slot-container row${this.rowNumbers[i - 1]}`}
-        >
-          <div className='equipment-slot'>
+        <div key={i} className={containerClass2}>
+          <div
+            className='equipment-slot'
+            onClick={event =>
+              setModal(true, item1, event.clientX, event.clientY)
+            }
+          >
             <div
               draggable='true'
               onDragStart={onDragStart({ id: id1 })}
@@ -65,21 +77,28 @@ export default class Equipment extends Component {
               )}
             </div>
           </div>
+
           <div
             className='equipment-slot'
-            draggable='true'
-            onDragStart={onDragStart({ id: id2 })}
-            onDragOver={onDragOver({ id: id2 })}
-            onDrop={onDrop({ id: id2 })}
+            onClick={event =>
+              setModal(true, item2, event.clientX, event.clientY)
+            }
           >
-            {item2 ? (
-              <Item item={item2} />
-            ) : (
-              <img
-                className='equipment-plug'
-                src={this.images[`EquipmentSlot${i + 6}`]}
-              />
-            )}
+            <div
+              draggable='true'
+              onDragStart={onDragStart({ id: id2 })}
+              onDragOver={onDragOver({ id: id2 })}
+              onDrop={onDrop({ id: id2 })}
+            >
+              {item2 ? (
+                <Item item={item2} />
+              ) : (
+                <img
+                  className='equipment-plug'
+                  src={this.images[`EquipmentSlot${i + 6}`]}
+                />
+              )}
+            </div>
           </div>
         </div>
       )
