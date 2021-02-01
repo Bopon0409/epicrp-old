@@ -25,10 +25,32 @@ export default class inventory extends Component {
         idSlot: 0,
         quantity: 3,
         weight: 0.2,
-        isFastSlot: true,
+        isFastSlot: false,
         isEquipmentSlot: true,
         name: 'Яблочко',
         description: `Описание яблочка - самый важный элемент в инвентаре 
+        Без его описания можно было бы считать работу несостоявшейся`
+      },
+      {
+        idItem: 1,
+        idSlot: 100,
+        quantity: 1,
+        weight: 1,
+        isFastSlot: true,
+        isEquipmentSlot: true,
+        name: 'Пистолет',
+        description: `Описание пистолета - самый важный элемент в инвентаре 
+        Без его описания можно было бы считать работу несостоявшейся`
+      },
+      {
+        idItem: 2,
+        idSlot: 1,
+        quantity: 1,
+        weight: 4,
+        isFastSlot: true,
+        isEquipmentSlot: true,
+        name: 'Пулемет',
+        description: `Описание пулемета - самый важный элемент в инвентаре 
         Без его описания можно было бы считать работу несостоявшейся`
       }
     ]
