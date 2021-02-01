@@ -122,7 +122,13 @@
           align-items: center;
 
           .equipment-plug {
+            padding-top: 5px;
             zoom: 1.2;
+          }
+
+          .equipment-item {
+            padding-top: 5px;
+            zoom: 0.8;
           }
         }
       }

@@ -48,21 +48,22 @@ export default class Equipment extends Component {
           key={i}
           className={`equipment-slot-container row${this.rowNumbers[i - 1]}`}
         >
-          <div
-            className='equipment-slot'
-            draggable='true'
-            onDragStart={onDragStart({ id: id1 })}
-            onDragOver={onDragOver({ id: id1 })}
-            onDrop={onDrop({ id: id1 })}
-          >
-            {item1 ? (
-              <Item item={item1}/>
-            ) : (
-              <img
-                className='equipment-plug'
-                src={this.images[`EquipmentSlot${i}`]}
-              />
-            )}
+          <div className='equipment-slot'>
+            <div
+              draggable='true'
+              onDragStart={onDragStart({ id: id1 })}
+              onDragOver={onDragOver({ id: id1 })}
+              onDrop={onDrop({ id: id1 })}
+            >
+              {item1 ? (
+                <Item item={item1} />
+              ) : (
+                <img
+                  className='equipment-plug'
+                  src={this.images[`EquipmentSlot${i}`]}
+                />
+              )}
+            </div>
           </div>
           <div
             className='equipment-slot'
@@ -72,7 +73,7 @@ export default class Equipment extends Component {
             onDrop={onDrop({ id: id2 })}
           >
             {item2 ? (
-              <Item item={item2}/>
+              <Item item={item2} />
             ) : (
               <img
                 className='equipment-plug'
