@@ -13,19 +13,16 @@ export default class ItemModal extends Component {
     activeBtn: ''
   }
 
-  // Добавление ивента на закрытие окна
   componentDidMount () {
     setTimeout(() => {
       document.addEventListener('click', this.handleClickOutside, false)
     }, 500)
   }
 
-  // Удаление ивента на закрытие окна
   componentWillUnmount () {
     document.removeEventListener('click', this.handleClickOutside, false)
   }
 
-  // При нажатии вне модалки, она закрывается
   handleClickOutside = e => {
     const modalBlock = document.getElementsByClassName('modal')[0]
     if (!e.path.includes(modalBlock)) this.props.setModal(false, {}, 0, 0)
@@ -68,7 +65,6 @@ export default class ItemModal extends Component {
       activeBtn
     } = this.state
 
-    // Проверка на направление окна, чтобы умещалось на экране
     const isRightDirection = screen.width - xCord > 380
     const cordStyle = isRightDirection
       ? { left: xCord, top: yCord }

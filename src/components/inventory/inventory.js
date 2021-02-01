@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 import Slot from './modules/slot'
 import Equipment from './modules/equipment'
 import ItemModal from './modules/item-modal'
+
 import './scss/inventory.scss'
 
 import Bag from './images/bag.png'
@@ -76,26 +77,16 @@ export default class inventory extends Component {
   swapSlotItem = (fromSlot, toSlot) => {
     this.setState(({ inventory }) => {
       inventory.forEach(item => {
-        const isCoincidence = item.idSlot === fromSlot.id
-        const fastSlotCheck = toSlot.id < 100 || item.isFastSlot
-        if (isCoincidence && fastSlotCheck) item.idSlot = toSlot.id
+        const isCoincidence = item.idSlot === fromSlot
+        const fastSlotCheck = toSlot < 100 || item.isFastSlot
+        if (isCoincidence && fastSlotCheck) item.idSlot = toSlot
       })
       return { inventory }
     })
   }
 
-  renderSlotList = (quantity, type) => {
-    const list = []
-    for (let i = 0; i < quantity; i++) {
-      const key = `slote-${type}-${i}`
-      list.push(<div key={key} className='slot'></div>)
-    }
-    return list
-  }
-
   handleDragStart = data => event => {
     const item = this.checkSlotOnItem(data.id)
-    // Проверка на наличие предмета при перемезении
     if (item) {
       let fromSlot = JSON.stringify({ id: data.id })
       event.dataTransfer.setData('dragContent', fromSlot)
@@ -108,12 +99,10 @@ export default class inventory extends Component {
   }
 
   handleDrop = data => event => {
+    console.log(data.id)
     event.preventDefault()
-
     const fromSlot = JSON.parse(event.dataTransfer.getData('dragContent'))
-    const toSlot = { id: data.id }
-
-    this.swapSlotItem(fromSlot, toSlot)
+    this.swapSlotItem(fromSlot.id, data.id)
     return false
   }
 
@@ -138,7 +127,12 @@ export default class inventory extends Component {
           </div>
 
           <div className='equipment'>
-            <Equipment />
+            <Equipment
+              checkSlotOnItem={this.checkSlotOnItem}
+              onDragStart={this.handleDragStart}
+              onDragOver={this.handleDragOver}
+              onDrop={this.handleDrop}
+            />
           </div>
 
           <div className='inventory'>
@@ -155,7 +149,6 @@ export default class inventory extends Component {
             </div>
           </div>
         </div>
-        <div className='bot-panel'></div>
       </div>
     )
   }

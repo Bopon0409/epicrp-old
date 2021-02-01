@@ -1,4 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
+import React, { Component } from 'react'
+import Item from './item'
+
 import EquipmentSlot1 from '../images/equipment-slot-1.png'
 import EquipmentSlot2 from '../images/equipment-slot-2.png'
 import EquipmentSlot3 from '../images/equipment-slot-3.png'
@@ -12,57 +15,78 @@ import EquipmentSlot10 from '../images/equipment-slot-10.png'
 import EquipmentSlot11 from '../images/equipment-slot-11.png'
 import EquipmentSlot12 from '../images/equipment-slot-12.png'
 
-export default function Equipment () {
-  return (
-    <>
-      <div className='equipment-slot-container row1'>
-        <div className='equipment-slot'>
-          <img className='equipment-plug' src={EquipmentSlot1} />
+export default class Equipment extends Component {
+  rowNumbers = [1, 2, 3, 3, 2, 1]
+
+  images = {
+    EquipmentSlot1,
+    EquipmentSlot2,
+    EquipmentSlot3,
+    EquipmentSlot4,
+    EquipmentSlot5,
+    EquipmentSlot6,
+    EquipmentSlot7,
+    EquipmentSlot8,
+    EquipmentSlot9,
+    EquipmentSlot10,
+    EquipmentSlot11,
+    EquipmentSlot12
+  }
+
+  equipmentSlotList = () => {
+    const { onDragStart, onDragOver, onDrop, checkSlotOnItem } = this.props
+    let list = []
+    for (let i = 1; i < 7; i++) {
+      const id1 = 200 + i
+      const id2 = 206 + i
+
+      const item1 = checkSlotOnItem(id1)
+      const item2 = checkSlotOnItem(id2)
+
+      list.push(
+        <div
+          key={i}
+          className={`equipment-slot-container row${this.rowNumbers[i - 1]}`}
+        >
+          <div
+            className='equipment-slot'
+            draggable='true'
+            onDragStart={onDragStart({ id: id1 })}
+            onDragOver={onDragOver({ id: id1 })}
+            onDrop={onDrop({ id: id1 })}
+          >
+            {item1 ? (
+              <Item item={item1}/>
+            ) : (
+              <img
+                className='equipment-plug'
+                src={this.images[`EquipmentSlot${i}`]}
+              />
+            )}
+          </div>
+          <div
+            className='equipment-slot'
+            draggable='true'
+            onDragStart={onDragStart({ id: id2 })}
+            onDragOver={onDragOver({ id: id2 })}
+            onDrop={onDrop({ id: id2 })}
+          >
+            {item2 ? (
+              <Item item={item2}/>
+            ) : (
+              <img
+                className='equipment-plug'
+                src={this.images[`EquipmentSlot${i + 6}`]}
+              />
+            )}
+          </div>
         </div>
-        <div className='equipment-slot'>
-          <img className='equipment-plug' src={EquipmentSlot7} />
-        </div>
-      </div>
-      <div className='equipment-slot-container row2'>
-        <div className='equipment-slot'>
-          <img className='equipment-plug' src={EquipmentSlot2} />
-        </div>
-        <div className='equipment-slot'>
-          <img className='equipment-plug' src={EquipmentSlot8} />
-        </div>
-      </div>
-      <div className='equipment-slot-container row3'>
-        <div className='equipment-slot'>
-          <img className='equipment-plug' src={EquipmentSlot3} />
-        </div>
-        <div className='equipment-slot'>
-          <img className='equipment-plug' src={EquipmentSlot9} />
-        </div>
-      </div>
-      <div className='equipment-slot-container row3'>
-        <div className='equipment-slot'>
-          <img className='equipment-plug' src={EquipmentSlot4} />
-        </div>
-        <div className='equipment-slot'>
-          <img className='equipment-plug' src={EquipmentSlot10} />
-        </div>
-      </div>
-      <div className='equipment-slot-container row2'>
-        <div className='equipment-slot'>
-          <img className='equipment-plug' src={EquipmentSlot5} />
-        </div>
-        <div className='equipment-slot'>
-          <img className='equipment-plug' src={EquipmentSlot11} />
-        </div>
-      </div>
-      <div className='equipment-slot-container row1'>
-        <div className='equipment-slot'>
-          <img className='equipment-plug' src={EquipmentSlot6} />
-        </div>
-        <div className='equipment-slot'>
-          <img className='equipment-plug' src={EquipmentSlot12} />
-        </div>
-      </div>
-    </>
-  )
+      )
+    }
+    return list
+  }
+
+  render () {
+    return <>{this.equipmentSlotList()}</>
+  }
 }
