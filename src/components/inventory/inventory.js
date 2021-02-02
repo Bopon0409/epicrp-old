@@ -13,7 +13,6 @@ import './scss/inventory.scss'
 import Bag from './images/bag.png'
 
 export default class inventory extends Component {
-
   componentDidMount = () => this.checkArmorAndBag()
 
   state = {
@@ -335,53 +334,57 @@ export default class inventory extends Component {
 
   render () {
     const { modal, bagType, userIndicators } = this.state
+    const { closeInventory } = this.props
     const bagStyle = bagType === 1 ? 'bag-block small-bag-block' : 'bag-block'
     return (
-      <div className='inventory-page'>
-        <div className='button-exit'>
-          <div className='btn'>ESC</div>
-          Закрыть
+      <>
+        <div className='blackout'></div>
+        <div className='inventory-page'>
+          <div className='button-exit' onClick={() => closeInventory()}>
+            <div className='btn'>ESC</div>
+            Закрыть
+          </div>
+
+          {modal.isActive ? (
+            <ItemModal modal={modal} setModal={this.setModal} />
+          ) : null}
+
+          <div className='main-block'>
+            <div className='top-panel'>
+              <div className='title equipment-title'>Экипировка</div>
+              <div className='title inventory-title'>Инвентарь</div>
+            </div>
+
+            <div className='equipment'>
+              <Equipment
+                checkSlotOnItem={this.checkSlotOnItem}
+                onDragStart={this.handleDragStart}
+                onDragOver={this.handleDragOver}
+                onDrop={this.handleDrop}
+                setModal={this.setModal}
+              />
+            </div>
+
+            <div className='inventory'>
+              <div className={bagStyle}>{this.getSlotsInventary('bag')}</div>
+              <div className='inventory-block'>
+                {this.getSlotsInventary('inventory')}
+              </div>
+              <div className='bag-hint'>
+                <img src={Bag} alt='' />
+              </div>
+              <div className='fast-inventory'>
+                {this.getSlotsInventary('fastInventory')}
+                <div className='title'>Быстрый доступ</div>
+              </div>
+            </div>
+          </div>
+
+          <BottomPanel userIndicators={userIndicators} />
+
+          <WeightPanel weight={this.getTotalWeight()} />
         </div>
-
-        {modal.isActive ? (
-          <ItemModal modal={modal} setModal={this.setModal} />
-        ) : null}
-
-        <div className='main-block'>
-          <div className='top-panel'>
-            <div className='title equipment-title'>Экипировка</div>
-            <div className='title inventory-title'>Инвентарь</div>
-          </div>
-
-          <div className='equipment'>
-            <Equipment
-              checkSlotOnItem={this.checkSlotOnItem}
-              onDragStart={this.handleDragStart}
-              onDragOver={this.handleDragOver}
-              onDrop={this.handleDrop}
-              setModal={this.setModal}
-            />
-          </div>
-
-          <div className='inventory'>
-            <div className={bagStyle}>{this.getSlotsInventary('bag')}</div>
-            <div className='inventory-block'>
-              {this.getSlotsInventary('inventory')}
-            </div>
-            <div className='bag-hint'>
-              <img src={Bag} alt='' />
-            </div>
-            <div className='fast-inventory'>
-              {this.getSlotsInventary('fastInventory')}
-              <div className='title'>Быстрый доступ</div>
-            </div>
-          </div>
-        </div>
-
-        <BottomPanel userIndicators={userIndicators} />
-
-        <WeightPanel weight={this.getTotalWeight()} />
-      </div>
+      </>
     )
   }
 }
