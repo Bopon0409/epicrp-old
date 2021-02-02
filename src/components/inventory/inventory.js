@@ -145,7 +145,7 @@ export default class inventory extends Component {
       inventory.forEach(item => {
         if (item2) {
           if (item.idSlot === item1.idSlot) item.idSlot = toSlot
-          if (item.idSlot === item2.idSlot) item.idSlot = fromSlot
+          if (item.idSlot === item2.idSlot) item2.idSlot = fromSlot
         } else {
           if (item.idSlot === item1.idSlot) item.idSlot = toSlot
         }
