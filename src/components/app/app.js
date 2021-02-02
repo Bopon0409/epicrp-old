@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Inventory from '../inventory'
 import Background from '../bg'
 import './app.scss'
+
 export default class app extends Component {
   constructor (props) {
     super(props)
@@ -36,9 +37,10 @@ export default class app extends Component {
     const { isInventoryActive } = this.state
     return (
       <div>
-        {isInventoryActive ? (
-          <Inventory closeInventory={this.closeInventory} />
-        ) : null}
+        <Inventory
+          closeInventory={this.closeInventory}
+          isInventoryActive={isInventoryActive}
+        />
         <Background />
       </div>
     )

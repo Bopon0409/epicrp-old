@@ -13,8 +13,6 @@ import './scss/inventory.scss'
 import Bag from './images/bag.png'
 
 export default class inventory extends Component {
-  componentDidMount = () => this.checkArmorAndBag()
-
   state = {
     bagType: 0,
     modal: {
@@ -24,179 +22,37 @@ export default class inventory extends Component {
       yCord: 0
     },
     userIndicators: {
-      food: 50,
-      water: 60,
-      health: 70
+      food: 0,
+      water: 0,
+      health: 0,
+      armor: 0
     },
-    inventory: [
-      {
-        idItem: 0,
-        idSlot: 0,
-        quantity: 3,
-        weight: 0.2,
-        isFastSlot: false,
-        equipmentSlot: false,
-        name: 'Яблочко',
-        description: `Описание яблочка - самый важный элемент в инвентаре 
-        Без его описания можно было бы считать работу несостоявшейся`
-      },
-      {
-        idItem: 1,
-        idSlot: 100,
-        quantity: 1,
-        weight: 1,
-        isFastSlot: true,
-        equipmentSlot: false,
-        name: 'Пистолет',
-        description: `Описание пистолета - самый важный элемент в инвентаре 
-        Без его описания можно было бы считать работу несостоявшейся`
-      },
-      {
-        idItem: 2,
-        idSlot: 1,
-        quantity: 1,
-        weight: 4,
-        isFastSlot: true,
-        equipmentSlot: false,
-        name: 'Пулемет',
-        description: `Описание пулемета - самый важный элемент в инвентаре 
-        Без его описания можно было бы считать работу несостоявшейся`
-      },
-      {
-        idItem: 12,
-        idSlot: 2,
-        quantity: 1,
-        weight: 0.2,
-        isFastSlot: false,
-        equipmentSlot: 201,
-        name: 'Шляпа',
-        description: `Описание шляпы - самый важный элемент в инвентаре 
-        Без его описания можно было бы считать работу несостоявшейся`
-      },
-      {
-        idItem: 11,
-        idSlot: 3,
-        quantity: 1,
-        weight: 0.2,
-        isFastSlot: false,
-        equipmentSlot: 202,
-        name: 'Куртка',
-        description: `Описание куртки - самый важный элемент в инвентаре 
-        Без его описания можно было бы считать работу несостоявшейся`
-      },
-      {
-        idItem: 9,
-        idSlot: 4,
-        quantity: 1,
-        weight: 0.2,
-        isFastSlot: false,
-        equipmentSlot: 203,
-        name: 'Футболка',
-        description: `Описание футболки - самый важный элемент в инвентаре 
-        Без его описания можно было бы считать работу несостоявшейся`
-      },
-      {
-        idItem: 5,
-        idSlot: 5,
-        quantity: 1,
-        weight: 0.2,
-        isFastSlot: false,
-        equipmentSlot: 204,
-        name: 'Штаны',
-        description: `Описание штанов - самый важный элемент в инвентаре 
-        Без его описания можно было бы считать работу несостоявшейся`
-      },
-      {
-        idItem: 7,
-        idSlot: 6,
-        quantity: 1,
-        weight: 0.2,
-        isFastSlot: false,
-        equipmentSlot: 205,
-        name: 'Ботинки',
-        description: `Описание ботинок - самый важный элемент в инвентаре 
-        Без его описания можно было бы считать работу несостоявшейся`
-      },
-      {
-        idItem: 10,
-        idSlot: 7,
-        quantity: 1,
-        weight: 0.2,
-        isFastSlot: false,
-        equipmentSlot: 206,
-        armor: 100,
-        name: 'Броня',
-        description: `Описание брони - самый важный элемент в инвентаре 
-        Без его описания можно было бы считать работу несостоявшейся`
-      },
-      {
-        idItem: 3,
-        idSlot: 8,
-        quantity: 1,
-        weight: 0.2,
-        isFastSlot: false,
-        equipmentSlot: 207,
-        name: 'Маска',
-        description: `Описание маски - самый важный элемент в инвентаре 
-        Без его описания можно было бы считать работу несостоявшейся`
-      },
-      {
-        idItem: 13,
-        idSlot: 9,
-        quantity: 1,
-        weight: 0.2,
-        isFastSlot: false,
-        equipmentSlot: 208,
-        name: 'Очки',
-        description: `Описание очков - самый важный элемент в инвентаре 
-        Без его описания можно было бы считать работу несостоявшейся`
-      },
-      {
-        idItem: 8,
-        idSlot: 10,
-        quantity: 1,
-        weight: 0.2,
-        isFastSlot: false,
-        equipmentSlot: 209,
-        name: 'Бижутерия',
-        description: `Описание бижутерии - самый важный элемент в инвентаре 
-        Без его описания можно было бы считать работу несостоявшейся`
-      },
-      {
-        idItem: 14,
-        idSlot: 11,
-        quantity: 1,
-        weight: 0.2,
-        isFastSlot: false,
-        equipmentSlot: 210,
-        name: 'Часы',
-        description: `Описание часов - самый важный элемент в инвентаре 
-        Без его описания можно было бы считать работу несостоявшейся`
-      },
-      {
-        idItem: 4,
-        idSlot: 12,
-        quantity: 1,
-        weight: 0.2,
-        isFastSlot: false,
-        equipmentSlot: 211,
-        name: 'Перчатки',
-        description: `Описание перчаток - самый важный элемент в инвентаре 
-        Без его описания можно было бы считать работу несостоявшейся`
-      },
-      {
-        idItem: 6,
-        idSlot: 13,
-        quantity: 1,
-        weight: 0.2,
-        isFastSlot: false,
-        equipmentSlot: 212,
-        bag: 2,
-        name: 'Сумка',
-        description: `Описание сумки - самый важный элемент в инвентаре 
-        Без его описания можно было бы считать работу несостоявшейся`
-      }
-    ]
+    inventory: []
+  }
+
+  componentDidMount = () => {
+    this.checkArmorAndBag()
+
+    window.EventManager.addHandler(
+      'setInventaryData',
+      this.setInventaryData.bind(this)
+    )
+  }
+
+  setInventaryData = ({ inventory, userIndicators }) => {
+    this.setState({ inventory, userIndicators })
+  }
+
+  checkArmorAndBag = () => {
+    this.setState(({ inventory, userIndicators }) => {
+      let bagType = 0
+      userIndicators.armor = 0
+      inventory.forEach(item => {
+        if (item.bag && item.idSlot === 212) bagType = item.bag
+        if (item.armor && item.idSlot === 206) userIndicators.armor = item.armor
+      })
+      return { bagType, userIndicators }
+    })
   }
 
   getTotalWeight = () => {
@@ -300,18 +156,6 @@ export default class inventory extends Component {
     this.checkArmorAndBag()
   }
 
-  checkArmorAndBag = () => {
-    this.setState(({ inventory, userIndicators }) => {
-      let bagType = 0
-      userIndicators.armor = 0
-      inventory.forEach(item => {
-        if (item.bag && item.idSlot === 212) bagType = item.bag
-        if (item.armor && item.idSlot === 206) userIndicators.armor = item.armor
-      })
-      return { bagType, userIndicators }
-    })
-  }
-
   handleDragStart = data => event => {
     const item = this.checkSlotOnItem(data.id)
     if (item) {
@@ -334,10 +178,12 @@ export default class inventory extends Component {
 
   render () {
     const { modal, bagType, userIndicators } = this.state
-    const { closeInventory } = this.props
+    const { closeInventory, isInventoryActive } = this.props
     const bagStyle = bagType === 1 ? 'bag-block small-bag-block' : 'bag-block'
     return (
-      <>
+      <div
+        style={isInventoryActive ? { display: 'block' } : { display: 'none' }}
+      >
         <div className='blackout'></div>
         <div className='inventory-page'>
           <div className='button-exit' onClick={() => closeInventory()}>
@@ -384,7 +230,7 @@ export default class inventory extends Component {
 
           <WeightPanel weight={this.getTotalWeight()} />
         </div>
-      </>
+      </div>
     )
   }
 }
