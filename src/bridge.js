@@ -27,4 +27,4 @@ window.trigger = function (eventName, args) {
 setTimeout(() => {
   const dataJson = JSON.stringify(data)
   window.trigger('setInventaryData', dataJson)
-}, 3000)
+}, 500)
