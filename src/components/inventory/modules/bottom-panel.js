@@ -97,7 +97,7 @@ export default function bottomPanel ({ userIndicators }) {
             <img
               style={{
                 width: '20px',
-                marginLeft : '-1px',
+                marginLeft: '-1px',
                 marginTop: '2px'
               }}
               src={progressBarImg3}
@@ -107,36 +107,38 @@ export default function bottomPanel ({ userIndicators }) {
         </CircularProgressbarWithChildren>
       </div>
 
-      <div className='progress-bar-container'>
-        <div className='label'>{armor}%</div>
+      {armor ? (
+        <div className='progress-bar-container'>
+          <div className='label'>{armor}%</div>
 
-        <CircularProgressbarWithChildren
-          className='progress-bar'
-          value={armor}
-          strokeWidth={10}
-          styles={buildStyles({
-            pathColor: '#A0A0A0',
-            trailColor: 'transparent'
-          })}
-        >
-          <div
-            style={{
-              width: '40px',
-              height: '40px',
-              backgroundColor: 'rgba(160, 160, 160, 0.7)',
-              borderRadius: '50%',
-              display: 'flex',
-              justifyContent: 'center'
-            }}
+          <CircularProgressbarWithChildren
+            className='progress-bar'
+            value={armor}
+            strokeWidth={10}
+            styles={buildStyles({
+              pathColor: '#A0A0A0',
+              trailColor: 'transparent'
+            })}
           >
-            <img
-              style={{ width: '20px', marginLeft: '-0.5px' }}
-              src={progressBarImg4}
-              alt=''
-            />
-          </div>
-        </CircularProgressbarWithChildren>
-      </div>
+            <div
+              style={{
+                width: '40px',
+                height: '40px',
+                backgroundColor: 'rgba(160, 160, 160, 0.7)',
+                borderRadius: '50%',
+                display: 'flex',
+                justifyContent: 'center'
+              }}
+            >
+              <img
+                style={{ width: '20px', marginLeft: '-0.5px' }}
+                src={progressBarImg4}
+                alt=''
+              />
+            </div>
+          </CircularProgressbarWithChildren>
+        </div>
+      ) : null}
     </div>
   )
 }

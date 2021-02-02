@@ -6,14 +6,18 @@ import Slot from './modules/slot'
 import Equipment from './modules/equipment'
 import ItemModal from './modules/item-modal'
 import BottomPanel from './modules/bottom-panel'
+import WeightPanel from './modules/weight-panel'
 
 import './scss/inventory.scss'
 
 import Bag from './images/bag.png'
 
 export default class inventory extends Component {
+
+  componentDidMount = () => this.checkArmorAndBag()
+
   state = {
-    bagType: 2,
+    bagType: 0,
     modal: {
       isActive: false,
       item: {},
@@ -23,8 +27,7 @@ export default class inventory extends Component {
     userIndicators: {
       food: 50,
       water: 60,
-      health: 70,
-      armor: 80
+      health: 70
     },
     inventory: [
       {
@@ -33,7 +36,7 @@ export default class inventory extends Component {
         quantity: 3,
         weight: 0.2,
         isFastSlot: false,
-        isEquipmentSlot: true,
+        equipmentSlot: false,
         name: 'Яблочко',
         description: `Описание яблочка - самый важный элемент в инвентаре 
         Без его описания можно было бы считать работу несостоявшейся`
@@ -44,7 +47,7 @@ export default class inventory extends Component {
         quantity: 1,
         weight: 1,
         isFastSlot: true,
-        isEquipmentSlot: true,
+        equipmentSlot: false,
         name: 'Пистолет',
         description: `Описание пистолета - самый важный элемент в инвентаре 
         Без его описания можно было бы считать работу несостоявшейся`
@@ -55,12 +58,166 @@ export default class inventory extends Component {
         quantity: 1,
         weight: 4,
         isFastSlot: true,
-        isEquipmentSlot: true,
+        equipmentSlot: false,
         name: 'Пулемет',
         description: `Описание пулемета - самый важный элемент в инвентаре 
         Без его описания можно было бы считать работу несостоявшейся`
+      },
+      {
+        idItem: 12,
+        idSlot: 2,
+        quantity: 1,
+        weight: 0.2,
+        isFastSlot: false,
+        equipmentSlot: 201,
+        name: 'Шляпа',
+        description: `Описание шляпы - самый важный элемент в инвентаре 
+        Без его описания можно было бы считать работу несостоявшейся`
+      },
+      {
+        idItem: 11,
+        idSlot: 3,
+        quantity: 1,
+        weight: 0.2,
+        isFastSlot: false,
+        equipmentSlot: 202,
+        name: 'Куртка',
+        description: `Описание куртки - самый важный элемент в инвентаре 
+        Без его описания можно было бы считать работу несостоявшейся`
+      },
+      {
+        idItem: 9,
+        idSlot: 4,
+        quantity: 1,
+        weight: 0.2,
+        isFastSlot: false,
+        equipmentSlot: 203,
+        name: 'Футболка',
+        description: `Описание футболки - самый важный элемент в инвентаре 
+        Без его описания можно было бы считать работу несостоявшейся`
+      },
+      {
+        idItem: 5,
+        idSlot: 5,
+        quantity: 1,
+        weight: 0.2,
+        isFastSlot: false,
+        equipmentSlot: 204,
+        name: 'Штаны',
+        description: `Описание штанов - самый важный элемент в инвентаре 
+        Без его описания можно было бы считать работу несостоявшейся`
+      },
+      {
+        idItem: 7,
+        idSlot: 6,
+        quantity: 1,
+        weight: 0.2,
+        isFastSlot: false,
+        equipmentSlot: 205,
+        name: 'Ботинки',
+        description: `Описание ботинок - самый важный элемент в инвентаре 
+        Без его описания можно было бы считать работу несостоявшейся`
+      },
+      {
+        idItem: 10,
+        idSlot: 7,
+        quantity: 1,
+        weight: 0.2,
+        isFastSlot: false,
+        equipmentSlot: 206,
+        armor: 100,
+        name: 'Броня',
+        description: `Описание брони - самый важный элемент в инвентаре 
+        Без его описания можно было бы считать работу несостоявшейся`
+      },
+      {
+        idItem: 3,
+        idSlot: 8,
+        quantity: 1,
+        weight: 0.2,
+        isFastSlot: false,
+        equipmentSlot: 207,
+        name: 'Маска',
+        description: `Описание маски - самый важный элемент в инвентаре 
+        Без его описания можно было бы считать работу несостоявшейся`
+      },
+      {
+        idItem: 13,
+        idSlot: 9,
+        quantity: 1,
+        weight: 0.2,
+        isFastSlot: false,
+        equipmentSlot: 208,
+        name: 'Очки',
+        description: `Описание очков - самый важный элемент в инвентаре 
+        Без его описания можно было бы считать работу несостоявшейся`
+      },
+      {
+        idItem: 8,
+        idSlot: 10,
+        quantity: 1,
+        weight: 0.2,
+        isFastSlot: false,
+        equipmentSlot: 209,
+        name: 'Бижутерия',
+        description: `Описание бижутерии - самый важный элемент в инвентаре 
+        Без его описания можно было бы считать работу несостоявшейся`
+      },
+      {
+        idItem: 14,
+        idSlot: 11,
+        quantity: 1,
+        weight: 0.2,
+        isFastSlot: false,
+        equipmentSlot: 210,
+        name: 'Часы',
+        description: `Описание часов - самый важный элемент в инвентаре 
+        Без его описания можно было бы считать работу несостоявшейся`
+      },
+      {
+        idItem: 4,
+        idSlot: 12,
+        quantity: 1,
+        weight: 0.2,
+        isFastSlot: false,
+        equipmentSlot: 211,
+        name: 'Перчатки',
+        description: `Описание перчаток - самый важный элемент в инвентаре 
+        Без его описания можно было бы считать работу несостоявшейся`
+      },
+      {
+        idItem: 6,
+        idSlot: 13,
+        quantity: 1,
+        weight: 0.2,
+        isFastSlot: false,
+        equipmentSlot: 212,
+        bag: 2,
+        name: 'Сумка',
+        description: `Описание сумки - самый важный элемент в инвентаре 
+        Без его описания можно было бы считать работу несостоявшейся`
       }
     ]
+  }
+
+  getTotalWeight = () => {
+    const { inventory, bagType } = this.state
+    let totalWeight = 0
+    inventory.forEach(item => {
+      totalWeight += item.weight
+    })
+    totalWeight = totalWeight.toFixed(1)
+
+    switch (bagType) {
+      case 0:
+        return { totalWeight, maxWeight: 10 }
+      case 1:
+        return { totalWeight, maxWeight: 15 }
+      case 2:
+        return { totalWeight, maxWeight: 20 }
+      case 3:
+        return { totalWeight, maxWeight: 25 }
+    }
   }
 
   setModal = (isActive, item, xCord, yCord) => {
@@ -106,17 +263,31 @@ export default class inventory extends Component {
 
   fastItemCheck = (item, slot) => !item.isFastSlot && slot >= 100 && slot <= 103
 
+  equipmentSlotCheck = (item, slot) => {
+    if (slot >= 201 && slot <= 212) {
+      return !(item.equipmentSlot === slot)
+    } else return false
+  }
+
   swapSlotItem = (fromSlot, toSlot) => {
     const item1 = this.checkSlotOnItem(fromSlot)
     const item2 = this.checkSlotOnItem(toSlot)
 
-    if (this.fastItemCheck(item1, toSlot)) return
+    if (
+      this.fastItemCheck(item1, toSlot) ||
+      this.equipmentSlotCheck(item1, toSlot)
+    )
+      return
     if (item2) {
-      if (this.fastItemCheck(item2, fromSlot)) return
+      if (
+        this.fastItemCheck(item2, fromSlot) ||
+        this.equipmentSlotCheck(item2, fromSlot)
+      )
+        return
     }
 
     this.setState(({ inventory }) => {
-      inventory.forEach((item, i, arr) => {
+      inventory.forEach(item => {
         if (item2) {
           if (item.idSlot === item1.idSlot) item.idSlot = toSlot
           if (item.idSlot === item2.idSlot) item.idSlot = fromSlot
@@ -125,6 +296,20 @@ export default class inventory extends Component {
         }
       })
       return { inventory }
+    })
+
+    this.checkArmorAndBag()
+  }
+
+  checkArmorAndBag = () => {
+    this.setState(({ inventory, userIndicators }) => {
+      let bagType = 0
+      userIndicators.armor = 0
+      inventory.forEach(item => {
+        if (item.bag && item.idSlot === 212) bagType = item.bag
+        if (item.armor && item.idSlot === 206) userIndicators.armor = item.armor
+      })
+      return { bagType, userIndicators }
     })
   }
 
@@ -194,6 +379,8 @@ export default class inventory extends Component {
         </div>
 
         <BottomPanel userIndicators={userIndicators} />
+
+        <WeightPanel weight={this.getTotalWeight()} />
       </div>
     )
   }

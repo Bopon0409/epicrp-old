@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
 
 .inventory-page {
+  -webkit-user-select: none;
   position: absolute;
   z-index: 3;
   color: white;
   font-family: Nunito;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 
   .title {
     color: rgba(255, 255, 255, 0.5);
@@ -215,6 +217,38 @@
 
       .progress-bar {
         width: 60px;
+      }
+    }
+  }
+
+  .weight-panel {
+    position: absolute;
+    top: 50%;
+    right: -150px;
+    margin-top: -150px;
+    width: 300px;
+    height: 300px;
+
+    .panel-inner {
+      width: 50%;
+      height: 50%;
+      padding-left: 35px;
+      background-image: url(../images/weight.svg);
+      background-size: 100% 100%;
+      margin-left: -50px;
+      text-transform: uppercase;
+
+      .text {
+        margin-top: 42px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .subtext {
+        margin-top: 35px;
+        font-size: 14px;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.5);
       }
     }
   }
