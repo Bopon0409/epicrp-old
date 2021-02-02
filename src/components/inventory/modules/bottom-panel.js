@@ -30,14 +30,14 @@ export default function bottomPanel ({ userIndicators }) {
             style={{
               width: '40px',
               height: '40px',
-              'background-color': 'rgba(210, 80, 24, 0.7)',
-              'border-radius': '50%',
+              backgroundColor: 'rgba(210, 80, 24, 0.7)',
+              borderRadius: '50%',
               display: 'flex',
               justifyContent: 'center'
             }}
           >
             <img
-              style={{ width: '20px', 'margin-left': '-4px' }}
+              style={{ width: '20px', marginLeft: '-4px' }}
               src={progressBarImg1}
               alt=''
             />
@@ -61,8 +61,8 @@ export default function bottomPanel ({ userIndicators }) {
             style={{
               width: '40px',
               height: '40px',
-              'background-color': 'rgba(24, 132, 210, 0.7)',
-              'border-radius': '50%',
+              backgroundColor: 'rgba(24, 132, 210, 0.7)',
+              borderRadius: '50%',
               display: 'flex',
               justifyContent: 'center'
             }}
@@ -88,8 +88,8 @@ export default function bottomPanel ({ userIndicators }) {
             style={{
               width: '40px',
               height: '40px',
-              'background-color': 'rgba(210, 80, 24, 0.7)',
-              'border-radius': '50%',
+              backgroundColor: 'rgba(210, 80, 24, 0.7)',
+              borderRadius: '50%',
               display: 'flex',
               justifyContent: 'center'
             }}
@@ -97,8 +97,8 @@ export default function bottomPanel ({ userIndicators }) {
             <img
               style={{
                 width: '20px',
-                'margin-left': '-1px',
-                'margin-top': '2px'
+                marginLeft : '-1px',
+                marginTop: '2px'
               }}
               src={progressBarImg3}
               alt=''
@@ -123,14 +123,14 @@ export default function bottomPanel ({ userIndicators }) {
             style={{
               width: '40px',
               height: '40px',
-              'background-color': 'rgba(160, 160, 160, 0.7)',
-              'border-radius': '50%',
+              backgroundColor: 'rgba(160, 160, 160, 0.7)',
+              borderRadius: '50%',
               display: 'flex',
               justifyContent: 'center'
             }}
           >
             <img
-              style={{ width: '20px', 'margin-left': '-0.5px' }}
+              style={{ width: '20px', marginLeft: '-0.5px' }}
               src={progressBarImg4}
               alt=''
             />

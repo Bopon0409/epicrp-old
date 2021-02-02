@@ -67,8 +67,8 @@ export default class inventory extends Component {
     this.setState({ modal: { isActive, item, xCord, yCord } })
   }
 
-  checkSlotOnItem = num => {
-    return this.state.inventory.find(item => item.idSlot === num)
+  checkSlotOnItem = idSlot => {
+    return this.state.inventory.find(item => item.idSlot === idSlot)
   }
 
   getSlotsInventary = type => {
@@ -104,14 +104,25 @@ export default class inventory extends Component {
     return list
   }
 
+  fastItemCheck = (item, slot) => !item.isFastSlot && slot >= 100 && slot <= 103
+
   swapSlotItem = (fromSlot, toSlot) => {
+    const item1 = this.checkSlotOnItem(fromSlot)
+    const item2 = this.checkSlotOnItem(toSlot)
+
+    if (this.fastItemCheck(item1, toSlot)) return
+    if (item2) {
+      if (this.fastItemCheck(item2, fromSlot)) return
+    }
+
     this.setState(({ inventory }) => {
-      inventory.forEach(item => {
-        const isCoincidence = item.idSlot === fromSlot
-        const fastSlotCheck = toSlot < 100 || item.isFastSlot
-        const equipmentSlotCheck = toSlot < 200 || item.isEquipmentSlot
-        if (isCoincidence && fastSlotCheck && equipmentSlotCheck)
-          item.idSlot = toSlot
+      inventory.forEach((item, i, arr) => {
+        if (item2) {
+          if (item.idSlot === item1.idSlot) item.idSlot = toSlot
+          if (item.idSlot === item2.idSlot) item.idSlot = fromSlot
+        } else {
+          if (item.idSlot === item1.idSlot) item.idSlot = toSlot
+        }
       })
       return { inventory }
     })
@@ -131,7 +142,6 @@ export default class inventory extends Component {
   }
 
   handleDrop = data => event => {
-    console.log(data.id)
     event.preventDefault()
     const fromSlot = JSON.parse(event.dataTransfer.getData('dragContent'))
     this.swapSlotItem(fromSlot.id, data.id)
