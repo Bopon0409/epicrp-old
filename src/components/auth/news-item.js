@@ -1,15 +1,17 @@
 import React from 'react'
+import img from './images/news-img.png'
 
 export default function newsItem () {
   return (
     <div className='news-item'>
-      <img src='' alt='' />
+      <div className='img-wrap'>
+        <img className='img' src={img} alt='' />
+      </div>
       <div className='text-block'>
         <div className='title'>Новость</div>
         <div className='text'>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur
-          ducimus exercitationem nesciunt expedita! Ipsa temporibus ullam quos
-          iusto laborum saepe.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+          quidem dolores quaerat animi iusto distinctio!
         </div>
       </div>
     </div>
