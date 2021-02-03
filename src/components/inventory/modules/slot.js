@@ -6,11 +6,12 @@ export default function Slot ({
   onDragOver,
   onDrop,
   item,
-  id
+  id,
+  modalActive
 }) {
   return (
     <div
-      className='slot'
+      className={modalActive ? 'slot slot-no-hover' : 'slot'}
       onClick={event => setModal(true, item, event.clientX, event.clientY)}
     >
       <div

@@ -84,13 +84,13 @@
       justify-content: space-between;
 
       .active-btn {
-        background-color: #DEB344!important;
-        color: white;
+        background-color: #DEB344 !important;
+        color: white !important;
       }
 
       .btn {
         text-align: center;
-        width: 29%;
+        flex: 1;
         cursor: pointer;
         padding: 5px;
         background-color: #413D3D;
@@ -98,7 +98,7 @@
 
         &:hover {
           color: white;
-          background-color: rgba(255, 255, 255, 0.5);
+          background-color: #5F5C5C;
         }
       }
     }

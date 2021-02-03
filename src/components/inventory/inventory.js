@@ -43,6 +43,13 @@ export default class inventory extends Component {
     this.setState({ inventory, userIndicators })
   }
 
+  pushInventoryDataToClient = inventory => {
+    if (window.mp) {
+      window.mp.trigger('pushInventoryDataToClient', inventory)
+    }
+    console.log('pushInventoryDataToClient')
+  }
+
   checkBagWeight = () => {
     this.setState(({ inventory }) => {
       let weight = 0
@@ -50,7 +57,6 @@ export default class inventory extends Component {
         if (item.idSlot >= 25 && item.idSlot <= 34) weight += item.weight
       })
       inventory.forEach(item => {
-        console.log(weight, typeof(weight))
         if (item.bag) item.weight = Number((0.2 + weight).toFixed(1))
       })
     })
@@ -138,6 +144,7 @@ export default class inventory extends Component {
           key={i}
           id={i}
           item={item}
+          modalActive={this.state.modal.isActive}
           setModal={this.setModal}
           onDragStart={this.handleDragStart}
           onDragOver={this.handleDragOver}
@@ -200,6 +207,8 @@ export default class inventory extends Component {
           if (item.idSlot === item1.idSlot) item.idSlot = toSlot
         }
       })
+
+      this.pushInventoryDataToClient(inventory)
       return { inventory }
     })
 
