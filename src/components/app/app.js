@@ -1,7 +1,10 @@
 /* eslint-disable default-case */
 import React, { Component } from 'react'
+
 import Inventory from '../inventory'
 import Background from '../bg'
+import Auth from '../auth'
+
 import './app.scss'
 
 export default class app extends Component {
@@ -41,6 +44,8 @@ export default class app extends Component {
           closeInventory={this.closeInventory}
           isInventoryActive={isInventoryActive}
         />
+
+        <Auth />
         <Background />
       </div>
     )
