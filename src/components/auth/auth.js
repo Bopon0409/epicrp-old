@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
-import logo from './images/logo.svg'
+import NewsItem from './news-item'
+import logoImg from './images/logo.svg'
+import refreshImg from './images/refresh.svg'
 import './auth.scss'
 
 export default class Auth extends Component {
@@ -14,12 +16,24 @@ export default class Auth extends Component {
   checkBoxToggle = () =>
     this.setState(({ checkBox }) => ({ checkBox: !checkBox }))
 
+  getNewsList = () => {
+    const list = []
+    for (let i = 0; i < 3; i++) {
+      list.push(
+        <div key={i}>
+          <NewsItem key={i} />
+        </div>
+      )
+    }
+    return list
+  }
+
   render () {
     const { isLogin, checkBox } = this.state
     return (
       <div className='auth'>
         <div className='title-block'>
-          <img src={logo} alt='' className='logo' />
+          <img src={logoImg} alt='' className='logo' />
           <div className='title'>{isLogin ? 'Авторизация' : 'Регистрация'}</div>
         </div>
 
@@ -66,13 +80,13 @@ export default class Auth extends Component {
           </div>
         )}
 
-        {/* <div className='news-block'>
+        <div className='news-block'>
           <div className='top-block'>
-            <img src='' alt='' className='refresh' />
+            <img src={refreshImg} alt='' className='refresh' />
             <div className='title'>Последние обновления</div>
           </div>
-          <div className='main-block'></div>
-        </div> */}
+          <div className='news-list'>{this.getNewsList()}</div>
+        </div>
       </div>
     )
   }

@@ -39,7 +39,7 @@ export default class app extends Component {
   render () {
     const { isInventoryActive } = this.state
     return (
-      <div>
+      <>
         <Inventory
           closeInventory={this.closeInventory}
           isInventoryActive={isInventoryActive}
@@ -47,7 +47,7 @@ export default class app extends Component {
 
         <Auth />
         <Background />
-      </div>
+      </>
     )
   }
 }

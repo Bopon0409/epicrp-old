@@ -9,6 +9,33 @@
   background: url(./images/bg.png) no-repeat;
   background-size: 100% 100%;
 
+  .news-block {
+    position: absolute;
+    width: 450px;
+    border: 1px solid black;
+    right: 0;
+    top: 50%;
+    margin-top: -225px;
+
+    .top-block {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      .refresh {
+        cursor: pointer;
+      }
+
+      .title {
+        font-family: Nunito;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 33px;
+        color: #FFFFFF;
+      }
+    }
+  }
+
   .title-block {
     position: absolute;
     top: 10%;
