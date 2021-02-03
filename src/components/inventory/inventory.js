@@ -34,7 +34,7 @@ export default class inventory extends Component {
     this.checkArmorAndBag()
 
     window.EventManager.addHandler(
-      'setInventaryData',
+      'pushInventaryDataToFront',
       this.setInventaryData.bind(this)
     )
   }
@@ -42,6 +42,21 @@ export default class inventory extends Component {
   setInventaryData = ({ inventory, userIndicators }) => {
     this.setState({ inventory, userIndicators })
   }
+
+  checkBagWeight = () => {
+    this.setState(({ inventory }) => {
+      let weight = 0
+      inventory.forEach(item => {
+        if (item.idSlot >= 25 && item.idSlot <= 34) weight += item.weight
+      })
+      inventory.forEach(item => {
+        console.log(weight, typeof(weight))
+        if (item.bag) item.weight = Number((0.2 + weight).toFixed(1))
+      })
+    })
+  }
+
+  // Проверка инвентаря на броню и сумку
 
   checkArmorAndBag = () => {
     this.setState(({ inventory, userIndicators }) => {
@@ -55,10 +70,19 @@ export default class inventory extends Component {
     })
   }
 
+  // Проверка общего веса инвентаря и максимального веса
+
   getTotalWeight = () => {
-    const { inventory, bagType } = this.state
+    const { inventory } = this.state
     let totalWeight = 0
+    let bagType = 0
     inventory.forEach(item => {
+      if (item.bag) bagType = item.bag
+      const { equipmentSlot, idSlot } = item
+      if (equipmentSlot) {
+        if (equipmentSlot === idSlot && equipmentSlot !== 212) return
+      }
+      if (idSlot >= 25 && idSlot <= 34) return
       totalWeight += item.weight
     })
     totalWeight = totalWeight.toFixed(1)
@@ -75,13 +99,19 @@ export default class inventory extends Component {
     }
   }
 
+  // Установка значений модального окна (открытие/закрытие)
+
   setModal = (isActive, item, xCord, yCord) => {
     this.setState({ modal: { isActive, item, xCord, yCord } })
   }
 
+  // Проверка слота на наличие предмета в нём
+
   checkSlotOnItem = idSlot => {
     return this.state.inventory.find(item => item.idSlot === idSlot)
   }
+
+  // Создание набора слотов для инвентаря
 
   getSlotsInventary = type => {
     switch (type) {
@@ -96,6 +126,8 @@ export default class inventory extends Component {
         else if (bagType === 2) return this.renderSlots(25, 35)
     }
   }
+
+  // Отрисовка сетки предметов
 
   renderSlots = (startId, endId) => {
     const list = []
@@ -116,7 +148,11 @@ export default class inventory extends Component {
     return list
   }
 
+  // Проеверка предмета на возможность быстрого доступа
+
   fastItemCheck = (item, slot) => !item.isFastSlot && slot >= 100 && slot <= 103
+
+  // Проверка предмета на возможность надевания
 
   equipmentSlotCheck = (item, slot) => {
     if (slot >= 201 && slot <= 212) {
@@ -124,10 +160,13 @@ export default class inventory extends Component {
     } else return false
   }
 
+  // Перемещение предметов
+
   swapSlotItem = (fromSlot, toSlot) => {
     const item1 = this.checkSlotOnItem(fromSlot)
     const item2 = this.checkSlotOnItem(toSlot)
 
+    // Проверки на возможность перемещения предметов в быстрый слот/экиперовку
     if (
       this.fastItemCheck(item1, toSlot) ||
       this.equipmentSlotCheck(item1, toSlot)
@@ -141,6 +180,17 @@ export default class inventory extends Component {
         return
     }
 
+    // Проверка на перемещение сумки в сумку
+    if (item1.bag) {
+      if (toSlot >= 25 && toSlot <= 34) return
+    }
+    if (item2) {
+      if (item2.bag) {
+        if (fromSlot >= 25 && fromSlot <= 34) return
+      }
+    }
+
+    // Перемещение предметов
     this.setState(({ inventory }) => {
       inventory.forEach(item => {
         if (item2) {
@@ -154,7 +204,10 @@ export default class inventory extends Component {
     })
 
     this.checkArmorAndBag()
+    this.checkBagWeight()
   }
+
+  // Drag'n'Drop Логика
 
   handleDragStart = data => event => {
     const item = this.checkSlotOnItem(data.id)

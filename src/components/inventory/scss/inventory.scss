@@ -35,6 +35,10 @@
     height: 80px;
     background-color: rgba(255, 255, 255, 0.05);
 
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
     .item-wrapper {
       position: relative;
       width: 100%;
@@ -58,10 +62,6 @@
         }
       }
     }
-  }
-
-  .slot:hover {
-    background-color: rgba(255, 255, 255, 0.2);
   }
 
   .button-exit {
@@ -134,6 +134,10 @@
           display: flex;
           justify-content: center;
           align-items: center;
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+          }
 
           .equipment-plug {
             padding-top: 5px;
@@ -244,20 +248,22 @@
     .panel-inner {
       width: 50%;
       height: 50%;
-      padding-left: 35px;
+      text-align: right;
       background-image: url(../images/weight.svg);
       background-size: 100% 100%;
       margin-left: -50px;
       text-transform: uppercase;
 
       .text {
-        margin-top: 42px;
-        font-size: 20px;
+        margin-top: 38px;
+        font-size: 26px;
         font-weight: bold;
+        width: 65%;
       }
 
       .subtext {
-        margin-top: 35px;
+        width: 65%;
+        margin-top: 30px;
         font-size: 14px;
         font-weight: bold;
         color: rgba(255, 255, 255, 0.5);

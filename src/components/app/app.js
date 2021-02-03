@@ -14,7 +14,7 @@ export default class app extends Component {
   }
 
   state = {
-    isInventoryActive: false
+    isInventoryActive: true
   }
 
   onPressKey = event => {
@@ -45,8 +45,8 @@ export default class app extends Component {
           isInventoryActive={isInventoryActive}
         />
 
-        <Auth />
-        <Background />
+        {/* <Auth /> */}
+        {/* <Background /> */}
       </>
     )
   }
