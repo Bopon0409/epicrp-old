@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 /* eslint-disable no-restricted-globals */
 import React, { Component } from 'react'
 import Slider from './slider'
@@ -30,7 +31,7 @@ export default class ItemModal extends Component {
 
   onChangeSlider = sliderValue => this.setState({ sliderValue })
 
-  setActiveBtn = btn =>
+  setActiveBtn = btn => {
     this.setState(({ activeBtn }) => {
       if (activeBtn === '') {
         return {
@@ -52,6 +53,21 @@ export default class ItemModal extends Component {
         }
       }
     })
+  }
+
+  action = () => {
+    switch (this.state.activeBtn) {
+      case 'use':
+        this.props.userUseInventaryItem(this.props.modal.item.idSlot)
+        break
+      case 'remove':
+        this.props.userDeleteInventaryItem(this.props.modal.item.idSlot)
+        break
+      case 'separate':
+        break
+    }
+    this.props.setModal(false, {}, 0, 0)
+  }
 
   render () {
     if (!this.props.modal.item) return null
@@ -116,7 +132,9 @@ export default class ItemModal extends Component {
 
         {isConfirmBtnActive ? (
           <div className='btn-block'>
-            <div className='btn'>Подтвердить</div>
+            <div className='btn' onClick={this.action}>
+              Подтвердить
+            </div>
           </div>
         ) : null}
       </div>

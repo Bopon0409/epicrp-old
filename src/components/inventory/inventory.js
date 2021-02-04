@@ -44,10 +44,47 @@ export default class inventory extends Component {
   }
 
   pushInventoryDataToClient = inventory => {
-    if (window.mp) {
-      window.mp.trigger('pushInventoryDataToClient', inventory)
-    }
+    if (window.mp) window.mp.trigger('pushInventoryDataToClient', inventory)
     console.log('pushInventoryDataToClient')
+  }
+
+  userDeleteInventaryItem = idSlot => {
+    this.setState(({ inventory }) => {
+      const newInventary = inventory.filter(item => item.idSlot !== idSlot)
+      return { inventory: newInventary }
+    })
+    this.pushInventoryDataToClient(inventory)
+  }
+
+  userUseInventaryItem = idSlot => {
+    const { equipmentSlot, idItem, isFastSlot } = this.checkSlotOnItem(idSlot)
+    if (equipmentSlot && idSlot !== equipmentSlot) {
+      this.swapSlotItem(idSlot, equipmentSlot)
+      if (window.mp) window.mp.trigger('userEquippedItem', idItem)
+      console.log('userEquippedItem')
+    } else if (isFastSlot) {
+      if (idSlot >= 100 && idSlot <= 103) return
+      for (let i = 100; i < 104; i++) {
+        if (!this.checkSlotOnItem(i)) {
+          this.swapSlotItem(idSlot, i)
+          if (window.mp) window.mp.trigger('userEquippedItem', idItem)
+          console.log('userEquippedItem')
+          break
+        }
+      }
+    } else {
+      this.setState(({ inventory }) => {
+        inventory.forEach(item => {
+          if (item.idSlot === idSlot) {
+            if (item.quantity > 1) item.quantity -= 1
+            else this.userDeleteInventaryItem(idSlot)
+          }
+        })
+        return { inventory }
+      })
+      if (window.mp) window.mp.trigger('userUseInventaryItem', idItem)
+      console.log('userUseInventaryItem')
+    }
   }
 
   checkBagWeight = () => {
@@ -254,7 +291,12 @@ export default class inventory extends Component {
           </div>
 
           {modal.isActive ? (
-            <ItemModal modal={modal} setModal={this.setModal} />
+            <ItemModal
+              modal={modal}
+              userUseInventaryItem={this.userUseInventaryItem}
+              setModal={this.setModal}
+              userDeleteInventaryItem={this.userDeleteInventaryItem}
+            />
           ) : null}
 
           <div className='main-block'>
