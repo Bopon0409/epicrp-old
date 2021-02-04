@@ -8,7 +8,6 @@ import '../scss/modal.scss'
 export default class ItemModal extends Component {
   state = {
     sliderValue: 0,
-    sliderLabel: 0,
     isSliderActive: false,
     isConfirmBtnActive: false,
     activeBtn: ''
@@ -56,14 +55,18 @@ export default class ItemModal extends Component {
   }
 
   action = () => {
+    const { idSlot } = this.props.modal.item
+    const { sliderValue } = this.state
     switch (this.state.activeBtn) {
       case 'use':
-        this.props.userUseInventaryItem(this.props.modal.item.idSlot)
+        this.props.userUseInventaryItem(idSlot)
         break
       case 'remove':
-        this.props.userDeleteInventaryItem(this.props.modal.item.idSlot)
+        this.props.userDeleteInventaryItem(idSlot)
         break
       case 'separate':
+        if (sliderValue)
+          this.props.userSeparateInventaryItem(idSlot, sliderValue)
         break
     }
     this.props.setModal(false, {}, 0, 0)
@@ -94,7 +97,7 @@ export default class ItemModal extends Component {
             {name} ({quantity})
           </div>
           <div className='description'>{description}</div>
-          <div className='weight'>{weight} КГ</div>
+          <div className='weight'>{(weight * quantity).toFixed(1)} КГ</div>
         </div>
 
         <div className='btn-block'>

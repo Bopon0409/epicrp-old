@@ -48,6 +48,29 @@ export default class inventory extends Component {
     console.log('pushInventoryDataToClient')
   }
 
+  userSeparateInventaryItem = (idSlot, quantity) => {
+    this.setState(({ inventory }) => {
+      let newItem = {}
+      inventory.forEach(item => {
+        if (item.idSlot === idSlot) {
+          item.quantity -= quantity
+          Object.assign(newItem, item)
+        }
+      })
+
+      newItem.quantity = quantity
+      for (let i = 0; i < 25; i++) {
+        if (!this.checkSlotOnItem(i)) {
+          newItem.idSlot = i
+          break
+        }
+      }
+
+      inventory.push(newItem)
+      return { inventory }
+    })
+  }
+
   userDeleteInventaryItem = idSlot => {
     this.setState(({ inventory }) => {
       const newInventary = inventory.filter(item => item.idSlot !== idSlot)
@@ -77,7 +100,12 @@ export default class inventory extends Component {
         inventory.forEach(item => {
           if (item.idSlot === idSlot) {
             if (item.quantity > 1) item.quantity -= 1
-            else this.userDeleteInventaryItem(idSlot)
+            else {
+              const newInventary = inventory.filter(
+                item => item.idSlot !== idSlot
+              )
+              return { inventory: newInventary }
+            }
           }
         })
         return { inventory }
@@ -94,7 +122,7 @@ export default class inventory extends Component {
         if (item.idSlot >= 25 && item.idSlot <= 34) weight += item.weight
       })
       inventory.forEach(item => {
-        if (item.bag) item.weight = Number((0.2 + weight).toFixed(1))
+        if (item.bag) return item.weight = Number((0.2 + weight).toFixed(1))
       })
     })
   }
@@ -126,7 +154,7 @@ export default class inventory extends Component {
         if (equipmentSlot === idSlot && equipmentSlot !== 212) return
       }
       if (idSlot >= 25 && idSlot <= 34) return
-      totalWeight += item.weight
+      totalWeight += (item.weight * item.quantity)
     })
     totalWeight = totalWeight.toFixed(1)
 
@@ -234,6 +262,24 @@ export default class inventory extends Component {
       }
     }
 
+    // Проверка на стак предметов
+    if (item2) {
+      if (item1.idItem === item2.idItem) {
+        this.setState(({ inventory }) => {
+          let newItem = {}
+          const newInventary = inventory.filter(
+            item => item.idItem !== item1.idItem
+          )
+          newItem = Object.assign(newItem, item2)
+          newItem.quantity = item1.quantity + item2.quantity
+          newInventary.push(newItem)
+          return { inventory: newInventary }
+        })
+        this.pushInventoryDataToClient(inventory)
+        return
+      }
+    }
+
     // Перемещение предметов
     this.setState(({ inventory }) => {
       inventory.forEach(item => {
@@ -248,7 +294,7 @@ export default class inventory extends Component {
       this.pushInventoryDataToClient(inventory)
       return { inventory }
     })
-
+    
     this.checkArmorAndBag()
     this.checkBagWeight()
   }
@@ -296,6 +342,7 @@ export default class inventory extends Component {
               userUseInventaryItem={this.userUseInventaryItem}
               setModal={this.setModal}
               userDeleteInventaryItem={this.userDeleteInventaryItem}
+              userSeparateInventaryItem={this.userSeparateInventaryItem}
             />
           ) : null}
 

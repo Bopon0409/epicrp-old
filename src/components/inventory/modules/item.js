@@ -10,7 +10,7 @@ export default function Item ({ item }) {
       {idSlot < 200 ? (
         <div className='label-block'>
           <div className='label'>{quantity}</div>
-          <div className='label'>{weight} КГ</div>
+          <div className='label'>{(weight * quantity).toFixed(1)} КГ</div>
         </div>
       ) : null}
     </>

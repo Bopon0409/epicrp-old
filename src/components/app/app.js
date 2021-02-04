@@ -15,7 +15,8 @@ export default class app extends Component {
 
   state = {
     isInventoryActive: true,
-    isAuthActive: false
+    isAuthActive: false,
+    isBackgroundActive: false
   }
 
   onPressKey = event => {
@@ -38,7 +39,7 @@ export default class app extends Component {
   }
 
   render () {
-    const { isInventoryActive, isAuthActive } = this.state
+    const { isInventoryActive, isAuthActive, isBackgroundActive } = this.state
     return (
       <>
         <Inventory
@@ -47,7 +48,7 @@ export default class app extends Component {
         />
 
         {isAuthActive ? <Auth /> : null}
-        {/* <Background /> */}
+        {isBackgroundActive ? <Background /> : null}
       </>
     )
   }
