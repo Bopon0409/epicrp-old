@@ -95,17 +95,12 @@ export default class inventory extends Component {
           break
         }
       }
-    } else {
+    } else if (!equipmentSlot && !isFastSlot) {
       this.setState(({ inventory }) => {
-        inventory.forEach(item => {
+        inventory.forEach((item, i, arr) => {
           if (item.idSlot === idSlot) {
             if (item.quantity > 1) item.quantity -= 1
-            else {
-              const newInventary = inventory.filter(
-                item => item.idSlot !== idSlot
-              )
-              return { inventory: newInventary }
-            }
+            else arr.splice(i, 1)
           }
         })
         return { inventory }
@@ -122,7 +117,7 @@ export default class inventory extends Component {
         if (item.idSlot >= 25 && item.idSlot <= 34) weight += item.weight
       })
       inventory.forEach(item => {
-        if (item.bag) return item.weight = Number((0.2 + weight).toFixed(1))
+        if (item.bag) return (item.weight = Number((0.2 + weight).toFixed(1)))
       })
     })
   }
@@ -154,7 +149,7 @@ export default class inventory extends Component {
         if (equipmentSlot === idSlot && equipmentSlot !== 212) return
       }
       if (idSlot >= 25 && idSlot <= 34) return
-      totalWeight += (item.weight * item.quantity)
+      totalWeight += item.weight * item.quantity
     })
     totalWeight = totalWeight.toFixed(1)
 
@@ -294,7 +289,7 @@ export default class inventory extends Component {
       this.pushInventoryDataToClient(inventory)
       return { inventory }
     })
-    
+
     this.checkArmorAndBag()
     this.checkBagWeight()
   }
