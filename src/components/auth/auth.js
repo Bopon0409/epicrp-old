@@ -21,10 +21,8 @@ export default class Auth extends Component {
     this.setState({ [fieldName]: event.target.value })
   }
 
-  clearInputs = () => {
-    console.log('check')
+  clearInputs = () =>
     this.setState({ login: '', email: '', pass: '', pass2: '' })
-  }
 
   setErrorMsg = errorMsg => this.setState({ errorMsg })
 
