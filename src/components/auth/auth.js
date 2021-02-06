@@ -6,6 +6,15 @@ import refreshImg from './images/refresh.svg'
 import './auth.scss'
 
 export default class Auth extends Component {
+  errorMessages = [
+    'В логине должны быть только латинские буквы и цифры',
+    'В логине должен быть от 4 до 20 символов',
+    'Логине должен начинаться с буквы',
+    'Пароль должен быть не менее 6 символов, и состоять только из латинских символов и цифр',
+    'Пароли не совпадают',
+    'Некорректный email'
+  ]
+
   state = {
     checkBox: false,
     isLogin: true,
@@ -33,11 +42,12 @@ export default class Auth extends Component {
     ]
   }
 
-  componentDidMount = () =>
+  componentDidMount = () => {
     window.EventManager.addHandler(
       'pushInventaryDataToFront',
       this.serverAnswerHandler.bind(this)
     )
+  }
 
   serverAnswerHandler = ({ isSuccess, errorMsg }) => {
     if (isSuccess) {
@@ -55,61 +65,48 @@ export default class Auth extends Component {
 
   setErrorMsg = errorMsg => this.setState({ errorMsg })
 
+  loginToggle = () => this.setState(({ isLogin }) => ({ isLogin: !isLogin }))
+
+  checkBoxToggle = () =>
+    this.setState(({ checkBox }) => ({ checkBox: !checkBox }))
+
   authValidate = () => {
     const { login, pass } = this.state
+
     if (/^[a-zA-Z1-9]+$/.test(login) === false)
-      return this.setErrorMsg(
-        'В логине должны быть только латинские буквы и цифры'
-      )
+      return this.setErrorMsg(this.errorMessages[0])
     if (login.length < 4 || login.length > 20)
-      return this.setErrorMsg('В логине должен быть от 4 до 20 символов')
+      return this.setErrorMsg(this.errorMessages[1])
     if (parseInt(login.substr(0, 1)))
-      return this.setErrorMsg('Логине должен начинаться с буквы')
-
+      return this.setErrorMsg(this.errorMessages[2])
     if (/^[a-zA-Z1-9]{6,}$/i.test(pass) === false)
-      return this.setErrorMsg(
-        'Пароль должен быть не менее 6 символов, и состоять только из латинских символов и цифр'
-      )
+      return this.setErrorMsg(this.errorMessages[3])
 
-    const data = JSON.stringify({ login, pass })
     this.clearInputs()
+    const data = JSON.stringify({ login, pass })
     if (window.mp) window.mp.trigger('userAuth', data)
   }
 
   registerValidate = () => {
     const { login, pass, email, pass2 } = this.state
     if (/^[a-zA-Z1-9]+$/.test(login) === false)
-      return this.setErrorMsg(
-        'В логине должны быть только латинские буквы и цифры'
-      )
+      return this.setErrorMsg(this.errorMessages[0])
     if (login.length < 4 || login.length > 20)
-      return this.setErrorMsg('В логине должен быть от 4 до 20 символов')
+      return this.setErrorMsg(this.errorMessages[1])
     if (parseInt(login.substr(0, 1)))
-      return this.setErrorMsg('Логине должен начинаться с буквы')
-
+      return this.setErrorMsg(this.errorMessages[2])
     if (/^[a-zA-Z1-9]{6,}$/i.test(pass) === false)
-      return this.setErrorMsg(
-        'Пароль должен быть не менее 6 символов, и состоять только из латинских символов и цифр'
-      )
+      return this.setErrorMsg(this.errorMessages[3])
+    if (pass !== pass2) return this.setErrorMsg(this.errorMessages[4])
 
-    if (pass !== pass2) return this.setErrorMsg('Пароли не совпадают')
+    const emailRegExp = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
+    if (emailRegExp.test(email) === false)
+      return this.setErrorMsg(this.errorMessages[5])
 
-    if (
-      /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/.test(
-        email
-      ) === false
-    )
-      return this.setErrorMsg('Некорректный email')
-
-    const data = JSON.stringify({ email, login, pass })
     this.clearInputs()
+    const data = JSON.stringify({ email, login, pass })
     if (window.mp) window.mp.trigger('userRegister', data)
   }
-
-  loginToggle = () => this.setState(({ isLogin }) => ({ isLogin: !isLogin }))
-
-  checkBoxToggle = () =>
-    this.setState(({ checkBox }) => ({ checkBox: !checkBox }))
 
   getNewsList = () => {
     const list = []
@@ -130,6 +127,88 @@ export default class Auth extends Component {
       pass2,
       email
     } = this.state
+
+    const authForm = (
+      <div className='main-block'>
+        <input
+          className='input'
+          type='text'
+          placeholder='Логин'
+          value={login}
+          onChange={e => this.onFieldChange(e, 'login')}
+        />
+        <input
+          className='input'
+          type='password'
+          placeholder='Пароль'
+          value={pass}
+          onChange={e => this.onFieldChange(e, 'pass')}
+        />
+
+        <div className='checkbox-block' onClick={this.checkBoxToggle}>
+          <div className={checkBox ? 'checkbox active' : 'checkbox'}></div>
+          <div className='label'>Запомнить меня</div>
+        </div>
+
+        <div className='bottom-panel'>
+          <div className='switcher'>
+            <div className='switcher-hint'>Ещё нет аккаунта?</div> <br />
+            <div className='switcher-link' onClick={this.loginToggle}>
+              Регистрация
+            </div>
+          </div>
+          <div className='enter-btn' onClick={this.authValidate}>
+            Войти
+          </div>
+        </div>
+      </div>
+    )
+
+    const registerForm = (
+      <div id='register-block' className='main-block'>
+        <input
+          className='input'
+          type='email'
+          placeholder='Email'
+          value={email}
+          onChange={e => this.onFieldChange(e, 'email')}
+        />
+        <input
+          className='input'
+          type='text'
+          placeholder='Логин'
+          value={login}
+          onChange={e => this.onFieldChange(e, 'login')}
+        />
+        <input
+          className='input'
+          type='password'
+          placeholder='Пароль'
+          value={pass}
+          onChange={e => this.onFieldChange(e, 'pass')}
+        />
+        <input
+          className='input'
+          type='password'
+          placeholder='Повторите пароль'
+          value={pass2}
+          onChange={e => this.onFieldChange(e, 'pass2')}
+        />
+
+        <div className='bottom-panel'>
+          <div className='switcher'>
+            <div className='switcher-hint'>Уже есть аккаунт?</div> <br />
+            <div className='switcher-link' onClick={this.loginToggle}>
+              Авторизация
+            </div>
+          </div>
+          <div className='enter-btn' onClick={this.registerValidate}>
+            Регистрация
+          </div>
+        </div>
+      </div>
+    )
+
     return (
       <div className='auth'>
         <div className='title-block'>
@@ -138,84 +217,7 @@ export default class Auth extends Component {
           <div className='error-msg'>{errorMsg}</div>
         </div>
 
-        {isLogin ? (
-          <div className='main-block'>
-            <input
-              className='input'
-              type='text'
-              placeholder='Логин'
-              value={login}
-              onChange={e => this.onFieldChange(e, 'login')}
-            />
-            <input
-              className='input'
-              type='password'
-              placeholder='Пароль'
-              value={pass}
-              onChange={e => this.onFieldChange(e, 'pass')}
-            />
-
-            <div className='checkbox-block' onClick={this.checkBoxToggle}>
-              <div className={checkBox ? 'checkbox active' : 'checkbox'}></div>
-              <div className='label'>Запомнить меня</div>
-            </div>
-
-            <div className='bottom-panel'>
-              <div className='switcher'>
-                <div className='switcher-hint'>Ещё нет аккаунта?</div> <br />
-                <div className='switcher-link' onClick={this.loginToggle}>
-                  Регистрация
-                </div>
-              </div>
-              <div className='enter-btn' onClick={this.authValidate}>
-                Войти
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div id='register-block' className='main-block'>
-            <input
-              className='input'
-              type='email'
-              placeholder='Email'
-              value={email}
-              onChange={e => this.onFieldChange(e, 'email')}
-            />
-            <input
-              className='input'
-              type='text'
-              placeholder='Логин'
-              value={login}
-              onChange={e => this.onFieldChange(e, 'login')}
-            />
-            <input
-              className='input'
-              type='password'
-              placeholder='Пароль'
-              value={pass}
-              onChange={e => this.onFieldChange(e, 'pass')}
-            />
-            <input
-              className='input'
-              type='password'
-              placeholder='Повторите пароль'
-              value={pass2}
-              onChange={e => this.onFieldChange(e, 'pass2')}
-            />
-
-            <div className='bottom-panel'>
-              <div className='switcher'>
-                <div className='switcher-hint'>Уже есть аккаунт?</div> <br />
-                <div className='switcher-link' onClick={this.loginToggle}>
-                  Авторизация
-                </div>
-              </div>
-              <div className='enter-btn' onClick={this.registerValidate}>
-                Регистрация
-              </div>
-            </div>
-          </div>
-        )}
+        {isLogin ? authForm : registerForm}
 
         <div className='news-block'>
           <div className='top-block'>

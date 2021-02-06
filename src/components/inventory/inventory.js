@@ -68,6 +68,7 @@ export default class inventory extends Component {
       }
 
       inventory.push(newItem)
+      this.pushInventoryDataToClient(inventory)
       return { inventory }
     })
   }
@@ -273,6 +274,19 @@ export default class inventory extends Component {
         })
         this.pushInventoryDataToClient(inventory)
         return
+      }
+    }
+
+    // Проверка на надевание (для отправки на сервер)
+
+    if (toSlot >= 100) {
+      if (window.mp) window.mp.trigger('userEquippedItem', item1.idItem)
+      console.log('userEquippedItem')
+    }
+    if (item2) {
+      if (fromSlot >= 100) {
+        if (window.mp) window.mp.trigger('userEquippedItem', item1.idItem)
+        console.log('userEquippedItem')
       }
     }
 
