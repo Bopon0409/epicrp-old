@@ -1,5 +1,6 @@
 import React from 'react'
 import img from './images/news-img.png'
+import line from './images/line.svg'
 
 export default function newsItem () {
   return (
@@ -14,6 +15,7 @@ export default function newsItem () {
           quidem dolores quaerat animi iusto distinctio!
         </div>
       </div>
+      <img src={line} alt='' className='line' />
     </div>
   )
 }

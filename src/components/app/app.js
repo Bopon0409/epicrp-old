@@ -14,8 +14,8 @@ export default class app extends Component {
   }
 
   state = {
-    isInventoryActive: true,
-    isAuthActive: false,
+    isInventoryActive: false,
+    isAuthActive: true,
     isBackgroundActive: false
   }
 

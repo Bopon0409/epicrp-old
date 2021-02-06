@@ -3,11 +3,12 @@
 .auth {
   position: absolute;
   font-family: 'Nunito', sans-serif;
-  height: 100%;
-  width: 100%;
+  min-height: 100%;
+  min-width: 100%;
   z-index: 2;
   background: url(./images/bg.png) no-repeat;
   background-size: 100% 100%;
+  overflow: hidden;
 
   .news-block {
     position: absolute;
@@ -24,6 +25,14 @@
 
       .refresh {
         cursor: pointer;
+        transition-property: transform;
+        transition-duration: 0.8s;
+        overflow: hidden;
+
+        &:hover {
+          transform: rotate(360deg);
+        }
+
       }
 
       .title {
@@ -45,9 +54,19 @@
         padding-bottom: 18px;
         margin-bottom: 20px;
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-around;
         align-items: center;
         background: linear-gradient(120deg, rgba(0, 0, 0, 0) 0.01%, rgba(0, 0, 0, 0.5) 100%);
+
+        .line {
+          margin-top: 20px;
+        }
+
+        &:hover {
+          transition-duration: 0.2s;
+          opacity: 0.6;
+        }
 
         .img-wrap {
           width: 85px;
@@ -62,6 +81,7 @@
 
           .title {
             color: white;
+            margin-bottom: 10px;
           }
         }
       }
@@ -121,6 +141,12 @@
       font-size: 18px;
       margin-bottom: 10px;
       color: white;
+
+      &:focus {
+        transition-duration: 1s;
+        transform: scale(1.05);
+        border: 1px solid #999;
+      }
     }
 
     .checkbox-block {
@@ -139,7 +165,7 @@
       }
 
       .active {
-        background-color: #CF770F;
+        background: linear-gradient(90deg, #FFA41B 0%, rgba(255, 122, 0, 0.51) 100%), rgba(72, 72, 72, 0.1);
       }
 
       .label {
@@ -194,7 +220,7 @@
         cursor: pointer;
 
         &:hover {
-          background-color: #CF770F;
+          background: linear-gradient(90deg, #FFA41B 0%, rgba(255, 122, 0, 0.51) 100%, rgba(255, 122, 0, 0.51) 100%);
         }
       }
     }
@@ -213,19 +239,24 @@
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1400px) {
   .auth {
     zoom: 0.9;
+
+    .news-block {
+      width: 400px;
+      margin-top: -400px;
+    }
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .auth {
-    zoom: 0.8;
+    zoom: 0.7;
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .auth {
     zoom: 0.6;
   }
