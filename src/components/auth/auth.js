@@ -33,6 +33,18 @@ export default class Auth extends Component {
     ]
   }
 
+  componentDidMount = () =>
+    window.EventManager.addHandler(
+      'pushInventaryDataToFront',
+      this.serverAnswerHandler.bind(this)
+    )
+
+  serverAnswerHandler = ({ isSuccess, errorMsg }) => {
+    if (isSuccess) {
+      this.props.closeAuth()
+    } else this.setState({ errorMsg })
+  }
+
   onFieldChange = (event, fieldName) => {
     this.setErrorMsg('')
     this.setState({ [fieldName]: event.target.value })

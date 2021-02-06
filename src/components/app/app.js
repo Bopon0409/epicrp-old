@@ -34,6 +34,8 @@ export default class app extends Component {
 
   closeInventory = () => this.setState({ isInventoryActive: false })
 
+  closeAuth = () => this.setState({ isAuthActive: false })
+
   componentDidMount = () => {
     document.addEventListener('keydown', this.onPressKey)
   }
@@ -47,7 +49,7 @@ export default class app extends Component {
           isInventoryActive={isInventoryActive}
         />
 
-        {isAuthActive ? <Auth /> : null}
+        {isAuthActive ? <Auth closeAuth={this.closeAuth}/> : null}
         {isBackgroundActive ? <Background /> : null}
       </>
     )
