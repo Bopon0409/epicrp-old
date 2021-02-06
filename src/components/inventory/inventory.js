@@ -44,7 +44,8 @@ export default class inventory extends Component {
   }
 
   pushInventoryDataToClient = inventory => {
-    if (window.mp) window.mp.trigger('pushInventoryDataToClient', inventory)
+    const jsonData = JSON.stringify(inventory)
+    if (window.mp) window.mp.trigger('pushInventoryDataToClient', jsonData)
     console.log('pushInventoryDataToClient')
   }
 
