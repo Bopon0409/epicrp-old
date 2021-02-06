@@ -13,7 +13,24 @@ export default class Auth extends Component {
     login: '',
     email: '',
     pass: '',
-    pass2: ''
+    pass2: '',
+    news: [
+      {
+        title: 'Новость',
+        text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+      quidem dolores quaerat animi iusto distinctio!`
+      },
+      {
+        title: 'Новость',
+        text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+      quidem dolores quaerat animi iusto distinctio!`
+      },
+      {
+        title: 'Новость',
+        text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+      quidem dolores quaerat animi iusto distinctio!`
+      }
+    ]
   }
 
   onFieldChange = (event, fieldName) => {
@@ -85,11 +102,8 @@ export default class Auth extends Component {
   getNewsList = () => {
     const list = []
     for (let i = 0; i < 3; i++) {
-      list.push(
-        <div key={i}>
-          <NewsItem key={i} />
-        </div>
-      )
+      const { title, text } = this.state.news[i]
+      list.push(<NewsItem key={i} title={title} text={text} />)
     }
     return list
   }
