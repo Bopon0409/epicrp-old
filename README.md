@@ -11,7 +11,7 @@
 
 - `window.trigger('userAuthAnswer', data)` - Ответ сервера на авторизацию: `data: {isSuccess: boolean, errorMsg: string}'`
 
-- `window.trigger('userAuthAnswer', data)` - Ответ сервера на регистрацию: `data: {isSuccess: boolean, errorMsg: string}'`
+- `window.trigger('userRegisterAnswer', data)` - Ответ сервера на регистрацию: `data: {isSuccess: boolean, errorMsg: string}'`
 
 ### Тригеры **Фронт -> Клиент**
 

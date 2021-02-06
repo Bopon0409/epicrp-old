@@ -44,14 +44,25 @@ export default class Auth extends Component {
 
   componentDidMount = () => {
     window.EventManager.addHandler(
-      'pushInventaryDataToFront',
-      this.serverAnswerHandler.bind(this)
+      'userAuthAnswer',
+      this.authServerAnswerHandler.bind(this)
+    )
+
+    window.EventManager.addHandler(
+      'userRegisterAnswer',
+      this.registerServerAnswerHandler.bind(this)
     )
   }
 
-  serverAnswerHandler = ({ isSuccess, errorMsg }) => {
+  authServerAnswerHandler = ({ isSuccess, errorMsg }) => {
     if (isSuccess) {
       this.props.closeAuth()
+    } else this.setState({ errorMsg })
+  }
+
+  registerServerAnswerHandler = ({ isSuccess, errorMsg }) => {
+    if (isSuccess) {
+      this.setState({ isLogin: true })
     } else this.setState({ errorMsg })
   }
 
