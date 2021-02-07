@@ -328,7 +328,7 @@ export default class Inventory extends Component {
   render () {
     const { modal, bagType, userIndicators } = this.state
     const { closeInventory, isInventoryActive } = this.props
-    
+
     const bagStyle = bagType === 1 ? 'bag-block small-bag-block' : 'bag-block'
     const inventoryStyle = isInventoryActive
       ? { display: 'block' }
@@ -337,8 +337,8 @@ export default class Inventory extends Component {
     const modalView = (
       <ItemModal
         modal={modal}
-        userUseInventaryItem={this.userUseInventaryItem}
         setModal={this.setModal}
+        userUseInventaryItem={this.userUseInventaryItem}
         userDeleteInventaryItem={this.userDeleteInventaryItem}
         userSeparateInventaryItem={this.userSeparateInventaryItem}
       />

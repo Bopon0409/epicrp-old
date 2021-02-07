@@ -1,11 +1,14 @@
 /* eslint-disable default-case */
 /* eslint-disable no-restricted-globals */
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
 import Slider from './slider'
+
 import ModalHint from '../images/modal-hint.png'
 import '../scss/modal.scss'
 
-export default class ItemModal extends Component {
+class ItemModal extends Component {
   state = {
     sliderValue: 0,
     isSliderActive: false,
@@ -84,6 +87,24 @@ export default class ItemModal extends Component {
       activeBtn
     } = this.state
 
+    const sliderBlock = (
+      <div className='slider-block'>
+        <Slider
+          quantity={quantity}
+          value={sliderValue}
+          onChange={this.onChangeSlider}
+        />
+      </div>
+    )
+
+    const btnBlock = (
+      <div className='btn-block'>
+        <div className='btn' onClick={this.action}>
+          Подтвердить
+        </div>
+      </div>
+    )
+
     const isRightDirection = screen.width - xCord > 380
     const cordStyle = isRightDirection
       ? { left: xCord, top: yCord }
@@ -123,24 +144,25 @@ export default class ItemModal extends Component {
           ) : null}
         </div>
 
-        {isSliderActive ? (
-          <div className='slider-block'>
-            <Slider
-              quantity={quantity}
-              value={sliderValue}
-              onChange={this.onChangeSlider}
-            />
-          </div>
-        ) : null}
+        {isSliderActive ? sliderBlock : null}
 
-        {isConfirmBtnActive ? (
-          <div className='btn-block'>
-            <div className='btn' onClick={this.action}>
-              Подтвердить
-            </div>
-          </div>
-        ) : null}
+        {isConfirmBtnActive ? btnBlock : null}
       </div>
     )
   }
 }
+
+ItemModal.propTypes = {
+  modal: PropTypes.shape({
+    isActive: PropTypes.bool,
+    item: PropTypes.object,
+    xCord: PropTypes.number,
+    yCord: PropTypes.number
+  }),
+  setModal: PropTypes.func.isRequired,
+  userUseInventaryItem: PropTypes.func.isRequired,
+  userDeleteInventaryItem: PropTypes.func.isRequired,
+  userSeparateInventaryItem: PropTypes.func.isRequired
+}
+
+export default ItemModal

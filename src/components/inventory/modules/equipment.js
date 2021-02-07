@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import Item from './item'
 
-export default function Equipment (props) {
+function Equipment (props) {
   const { onDragStart, onDragOver, onDrop, checkSlotOnItem, setModal } = props
   const rowNumbers = [1, 2, 3, 3, 2, 1]
 
@@ -29,10 +31,10 @@ export default function Equipment (props) {
         />
       )
 
-      const containerClass2 = `equipment-slot-container row${rowNumbers[i - 1]}`
+      const containerClass = `equipment-slot-container row${rowNumbers[i - 1]}`
 
       list.push(
-        <div key={i} className={containerClass2}>
+        <div key={i} className={containerClass}>
           <div
             className='equipment-slot'
             onClick={e => setModal(true, item1, e.clientX, e.clientY)}
@@ -68,3 +70,13 @@ export default function Equipment (props) {
 
   return <>{equipmentSlotList()}</>
 }
+
+Equipment.propTypes = {
+  onDragStart: PropTypes.func.isRequired,
+  onDragOver: PropTypes.func.isRequired,
+  onDrop: PropTypes.func.isRequired,
+  checkSlotOnItem: PropTypes.func.isRequired,
+  setModal: PropTypes.func.isRequired
+}
+
+export default Equipment
