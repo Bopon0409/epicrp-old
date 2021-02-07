@@ -328,11 +328,24 @@ export default class Inventory extends Component {
   render () {
     const { modal, bagType, userIndicators } = this.state
     const { closeInventory, isInventoryActive } = this.props
+    
     const bagStyle = bagType === 1 ? 'bag-block small-bag-block' : 'bag-block'
+    const inventoryStyle = isInventoryActive
+      ? { display: 'block' }
+      : { display: 'none' }
+
+    const modalView = (
+      <ItemModal
+        modal={modal}
+        userUseInventaryItem={this.userUseInventaryItem}
+        setModal={this.setModal}
+        userDeleteInventaryItem={this.userDeleteInventaryItem}
+        userSeparateInventaryItem={this.userSeparateInventaryItem}
+      />
+    )
+
     return (
-      <div
-        style={isInventoryActive ? { display: 'block' } : { display: 'none' }}
-      >
+      <div style={inventoryStyle}>
         <div className='blackout'></div>
         <div className='inventory-page'>
           <div className='button-exit' onClick={() => closeInventory()}>
@@ -340,15 +353,7 @@ export default class Inventory extends Component {
             Закрыть
           </div>
 
-          {modal.isActive ? (
-            <ItemModal
-              modal={modal}
-              userUseInventaryItem={this.userUseInventaryItem}
-              setModal={this.setModal}
-              userDeleteInventaryItem={this.userDeleteInventaryItem}
-              userSeparateInventaryItem={this.userSeparateInventaryItem}
-            />
-          ) : null}
+          {modal.isActive ? modalView : null}
 
           <div className='main-block'>
             <div className='top-panel'>
