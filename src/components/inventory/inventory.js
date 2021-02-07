@@ -12,7 +12,7 @@ import './scss/inventory.scss'
 
 import Bag from './images/bag.png'
 
-export default class inventory extends Component {
+export default class Inventory extends Component {
   state = {
     bagType: 0,
     modal: {
@@ -76,34 +76,28 @@ export default class inventory extends Component {
   userDeleteInventaryItem = idSlot => {
     this.setState(({ inventory }) => {
       const newInventary = inventory.filter(item => item.idSlot !== idSlot)
+      this.pushInventoryDataToClient(newInventary)
       return { inventory: newInventary }
     })
-    this.pushInventoryDataToClient(inventory)
   }
 
   userUseInventaryItem = idSlot => {
     const { equipmentSlot, idItem, isFastSlot } = this.checkSlotOnItem(idSlot)
     if (equipmentSlot && idSlot !== equipmentSlot) {
-      this.swapSlotItem(idSlot, equipmentSlot)
-      if (window.mp) window.mp.trigger('userEquippedItem', idItem)
-      console.log('userEquippedItem')
+      this.swapItems(idSlot, equipmentSlot)
     } else if (isFastSlot) {
       if (idSlot >= 100 && idSlot <= 103) return
       for (let i = 100; i < 104; i++) {
         if (!this.checkSlotOnItem(i)) {
-          this.swapSlotItem(idSlot, i)
-          if (window.mp) window.mp.trigger('userEquippedItem', idItem)
-          console.log('userEquippedItem')
+          this.swapItems(idSlot, i)
           break
         }
       }
     } else if (!equipmentSlot && !isFastSlot) {
       this.setState(({ inventory }) => {
         inventory.forEach((item, i, arr) => {
-          if (item.idSlot === idSlot) {
-            if (item.quantity > 1) item.quantity -= 1
-            else arr.splice(i, 1)
-          }
+          if (item.idSlot === idSlot)
+            item.quantity > 1 ? (item.quantity -= 1) : arr.splice(i, 1)
         })
         return { inventory }
       })
@@ -119,7 +113,7 @@ export default class inventory extends Component {
         if (item.idSlot >= 25 && item.idSlot <= 34) weight += item.weight
       })
       inventory.forEach(item => {
-        if (item.bag) return (item.weight = Number((0.2 + weight).toFixed(1)))
+        if (item.bag) item.weight = Number((0.2 + weight).toFixed(1))
       })
     })
   }
@@ -231,7 +225,7 @@ export default class inventory extends Component {
 
   // Перемещение предметов
 
-  swapSlotItem = (fromSlot, toSlot) => {
+  swapItems = (fromSlot, toSlot) => {
     const item1 = this.checkSlotOnItem(fromSlot)
     const item2 = this.checkSlotOnItem(toSlot)
 
@@ -270,9 +264,9 @@ export default class inventory extends Component {
           newItem = Object.assign(newItem, item2)
           newItem.quantity = item1.quantity + item2.quantity
           newInventary.push(newItem)
+          this.pushInventoryDataToClient(newInventary)
           return { inventory: newInventary }
         })
-        this.pushInventoryDataToClient(inventory)
         return
       }
     }
@@ -327,7 +321,7 @@ export default class inventory extends Component {
   handleDrop = data => event => {
     event.preventDefault()
     const fromSlot = JSON.parse(event.dataTransfer.getData('dragContent'))
-    this.swapSlotItem(fromSlot.id, data.id)
+    this.swapItems(fromSlot.id, data.id)
     return false
   }
 
