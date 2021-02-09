@@ -1,4 +1,4 @@
-import data from './components/inventory/data.json'
+// import data from './components/inventory/data.json'
 
 window.EventManager = {
   events: {},

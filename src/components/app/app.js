@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import Inventory from '../inventory'
 import Background from '../bg'
 import Auth from '../auth'
+import Hud from '../hud'
 
 import './app.scss'
 
@@ -14,9 +15,10 @@ export default class app extends Component {
   }
 
   state = {
-    isInventoryActive: true,
+    isInventoryActive: false,
     isAuthActive: false,
-    isBackgroundActive: false
+    isBackgroundActive: true,
+    isHudActive: true
   }
 
   onPressKey = event => {
@@ -41,7 +43,12 @@ export default class app extends Component {
   }
 
   render () {
-    const { isInventoryActive, isAuthActive, isBackgroundActive } = this.state
+    const {
+      isInventoryActive,
+      isAuthActive,
+      isBackgroundActive,
+      isHudActive
+    } = this.state
     return (
       <>
         <Inventory
@@ -49,8 +56,9 @@ export default class app extends Component {
           isInventoryActive={isInventoryActive}
         />
 
-        {isAuthActive ? <Auth closeAuth={this.closeAuth}/> : null}
+        {isAuthActive ? <Auth closeAuth={this.closeAuth} /> : null}
         {isBackgroundActive ? <Background /> : null}
+        {isHudActive ? <Hud /> : null}
       </>
     )
   }
