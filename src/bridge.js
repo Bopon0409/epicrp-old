@@ -24,7 +24,7 @@ window.trigger = function (eventName, args) {
   handlers.forEach(handler => handler(JSON.parse(args)))
 }
 
-setTimeout(() => {
-  const dataJson = JSON.stringify(data)
-  window.trigger('pushInventaryDataToFront', dataJson)
-}, 500)
+// setTimeout(() => {
+//   const dataJson = JSON.stringify(data)
+//   window.trigger('pushInventaryDataToFront', dataJson)
+// }, 500)

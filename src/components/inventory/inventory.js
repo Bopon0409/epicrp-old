@@ -40,10 +40,16 @@ export default class Inventory extends Component {
   }
 
   setInventaryData = ({ inventory, userIndicators }) => {
+    inventory.forEach(item => {
+      if (item.equipmentSlot === 200) item.equipmentSlot = false
+    })
     this.setState({ inventory, userIndicators })
   }
 
   pushInventoryDataToClient = inventory => {
+    inventory.forEach(item => {
+      if (!item.equipmentSlot) item.equipmentSlot = 200
+    })
     const jsonData = JSON.stringify(inventory)
     if (window.mp) window.mp.trigger('pushInventoryDataToClient', jsonData)
     console.log('pushInventoryDataToClient')
