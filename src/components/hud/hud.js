@@ -50,7 +50,7 @@ export default class hud extends Component {
           id: 0,
           type: 'warning',
           text: 'wwwwwwwwwwwwwwwwwwwwwwwwwwwwww',
-          isDel: false
+          ref: React.createRef()
         }),
       6000
     )
@@ -61,7 +61,7 @@ export default class hud extends Component {
           id: 1,
           type: 'error',
           text: 'wwwwwwwwww',
-          isDel: false
+          ref: React.createRef()
         }),
       4000
     )
@@ -72,7 +72,7 @@ export default class hud extends Component {
           id: 2,
           type: 'confirm',
           text: 'wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww',
-          isDel: false
+          ref: React.createRef()
         }),
       2000
     )
@@ -81,26 +81,19 @@ export default class hud extends Component {
   addAlert = alert => {
     this.setState(({ alerts }) => {
       const newAlerts = alerts.slice()
-      newAlerts.push(alert)
+      newAlerts.unshift(alert)
       return { alerts: newAlerts }
     })
     setTimeout(() => {
-      this.setState(({ alerts }) => {
-        const newAlerts2 = alerts.slice()
-        newAlerts2.forEach(item2 => {
-          if (item2.id === alert.id) {
-            item2.isDel = true
-            return
-          }
-        })
-        return { alerts: newAlerts2 }
+      this.state.alerts.forEach(item => {
+        if (item.id === alert.id)
+          return item.ref.current.classList.add('alert-del')
       })
     }, 14000)
     setTimeout(() => {
-      this.setState(({ alerts }) => {
-        const newAlerts2 = alerts.filter(item2 => item2.id !== alert.id)
-        return { alerts: newAlerts2 }
-      })
+      this.setState(({ alerts }) => ({
+        alerts: alerts.filter(item => item.id !== alert.id)
+      }))
     }, 15000)
   }
 

@@ -38,7 +38,10 @@ export default function Alerts ({ alerts }) {
 
       return (
         <div key={item.id}>
-          <div className={item.isDel ? 'alert-item alert-del' : 'alert-item'}>
+          <div
+            ref={item.ref}
+            className={item.isDel ? 'alert-item' : 'alert-item'}
+          >
             <div className='img-wrap'>
               <img src={img} alt='' />
             </div>
