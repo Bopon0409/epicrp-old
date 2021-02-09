@@ -1,15 +1,9 @@
 import React, { Component } from 'react'
-import logoImg from './images/logo.svg'
-import idImg from './images/idIcon.svg'
-import onlineImg from './images/onlineIcon.svg'
+
 import { ErrorSvg1, ErrorSvg2, ErrorSvg3 } from './modules/error-svg'
-import {
-  Fuel,
-  Engine,
-  Lock,
-  Lights,
-  Electricity
-} from './modules/speedometer-svg'
+import Speedometer from './modules/speedometer'
+import TopRightPanel from './modules/top-right-panel'
+import Alerts from './modules/alerts'
 
 import './hud.scss'
 
@@ -17,6 +11,13 @@ export default class hud extends Component {
   state = {
     online: 1500,
     id: 88,
+    time: '19:30',
+    date: '10.02.2021',
+    money: 150000,
+    geo: {
+      quarter: 'Альта-Стрит',
+      street: 'Хавик-Авеню'
+    },
     mission: {
       active: true,
       title: 'Миссия невыполнима',
@@ -28,6 +29,7 @@ export default class hud extends Component {
       3: true
     },
     speedometer: {
+      active: true,
       speed: 96,
       fuel: 80,
       badges: {
@@ -37,48 +39,79 @@ export default class hud extends Component {
         lights: true,
         electricity: true
       }
-    }
+    },
+    alerts: []
   }
 
-  calcSpeedNulls = () => {
-    const { speedometer } = this.state
-    switch (String(speedometer.speed).length) {
-      case 1:
-        return '00'
-      case 2:
-        return '0'
-      default:
-        return ''
-    }
+  componentDidMount = () => {
+    setTimeout(
+      () =>
+        this.addAlert({
+          id: 0,
+          type: 'warning',
+          text: 'wwwwwwwwwwwwwwwwwwwwwwwwwwwwww',
+          isDel: false
+        }),
+      6000
+    )
+
+    setTimeout(
+      () =>
+        this.addAlert({
+          id: 1,
+          type: 'error',
+          text: 'wwwwwwwwww',
+          isDel: false
+        }),
+      4000
+    )
+
+    setTimeout(
+      () =>
+        this.addAlert({
+          id: 2,
+          type: 'confirm',
+          text: 'wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww',
+          isDel: false
+        }),
+      2000
+    )
+  }
+
+  addAlert = alert => {
+    this.setState(({ alerts }) => {
+      const newAlerts = alerts.slice()
+      newAlerts.push(alert)
+      return { alerts: newAlerts }
+    })
+    setTimeout(() => {
+      this.setState(({ alerts }) => {
+        const newAlerts2 = alerts.slice()
+        newAlerts2.forEach(item2 => {
+          if (item2.id === alert.id) {
+            item2.isDel = true
+            return
+          }
+        })
+        return { alerts: newAlerts2 }
+      })
+    }, 14000)
+    setTimeout(() => {
+      this.setState(({ alerts }) => {
+        const newAlerts2 = alerts.filter(item2 => item2.id !== alert.id)
+        return { alerts: newAlerts2 }
+      })
+    }, 15000)
   }
 
   render () {
-    const { online, id, mission, errors, speedometer } = this.state
-
-    const missionView = mission.active ? (
-      <div className='mission'>
-        <div className='title'>{mission.title}</div>
-        <div className='text'>{mission.text}</div>
-      </div>
-    ) : null
+    const { online, id, mission, errors, speedometer, alerts } = this.state
 
     return (
       <div className='hud'>
         <div className='bg'></div>
-        <div className='top-right-panel'>
-          <img src={logoImg} alt='' className='logo' />
-          <div className='num-block'>
-            <div className='num-block-item'>
-              <img src={onlineImg} alt='' className='icon' />
-              <div className='num'>{online}</div>
-            </div>
-            <div className='num-block-item'>
-              <img src={idImg} alt='' className='icon' />
-              <div className='num'>{id}</div>
-            </div>
-          </div>
-          {missionView}
-        </div>
+
+        <TopRightPanel online={online} id={id} mission={mission} />
 
         <div className='right-panel'>
           <ErrorSvg1 active={errors[1]} />
@@ -86,32 +119,11 @@ export default class hud extends Component {
           <ErrorSvg3 active={errors[3]} />
         </div>
 
-        <div className='speedometer'>
-          <div className='main'>
-            <div className='fuel-view'>
-              <Fuel active={true} />
-              <div className='progress progress-moved'>
-                <div
-                  className='progress-bar'
-                  style={{ width: `${speedometer.fuel}%` }}
-                ></div>
-              </div>
-            </div>
-            <div className='speed-view'>
-              <div className='speed-flex'>
-                <div className='speed-null'>{this.calcSpeedNulls()}</div>
-                <div className='speed'>{speedometer.speed}</div>
-              </div>
-              <div className='hint'>км/ч</div>
-            </div>
-          </div>
-          <div className='badges'>
-            <Engine active={speedometer.badges.engine} />
-            <Lock active={speedometer.badges.lock} />
-            <Lights active={speedometer.badges.lights} />
-            <Electricity active={speedometer.badges.electricity} />
-          </div>
-        </div>
+        <div className='bottom-left-panel'></div>
+
+        <Speedometer speedometer={speedometer} />
+
+        <Alerts alerts={alerts} />
       </div>
     )
   }
