@@ -10,19 +10,16 @@ import './app.scss'
 
 export default class app extends Component {
   state = {
-    isAuthActive: false,
     isBackgroundActive: false,
     isHudActive: false
   }
 
-  closeAuth = () => this.setState({ isAuthActive: false })
-
   render () {
-    const { isAuthActive, isBackgroundActive, isHudActive } = this.state
+    const { isBackgroundActive, isHudActive } = this.state
     return (
       <>
         <Inventory />
-        {isAuthActive ? <Auth closeAuth={this.closeAuth} /> : null}
+        <Auth />
         {isBackgroundActive ? <Background /> : null}
         {isHudActive ? <Hud /> : null}
       </>

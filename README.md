@@ -13,6 +13,8 @@
 
 - `window.trigger('closeInventary')` - Закрыть инвентарь
 
+- `window.trigger('openAuth')` - Окрыть окно авторизации/регистрации
+
 - `window.trigger('userAuthAnswer', data)` - Ответ сервера на авторизацию: `data: {isSuccess: boolean, errorMsg: string}'`
 
 - `window.trigger('userRegisterAnswer', data)` - Ответ сервера на регистрацию: `data: {isSuccess: boolean, errorMsg: string}'`

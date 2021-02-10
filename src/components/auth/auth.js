@@ -16,6 +16,7 @@ export default class Auth extends Component {
   ]
 
   state = {
+    active: false,
     checkBox: false,
     isLogin: true,
     errorMsg: '',
@@ -52,11 +53,17 @@ export default class Auth extends Component {
       'userRegisterAnswer',
       this.registerServerAnswerHandler.bind(this)
     )
+
+    window.EventManager.addHandler('openAuth', this.openAuth.bind(this))
   }
+
+  openAuth = () => this.setState({ active: true })
+
+  closeAuth = () => this.setState({ active: false })
 
   authServerAnswerHandler = ({ isSuccess, errorMsg }) => {
     if (isSuccess) {
-      this.props.closeAuth()
+      this.closeAuth()
     } else this.setState({ errorMsg })
   }
 
@@ -130,6 +137,7 @@ export default class Auth extends Component {
 
   render () {
     const {
+      active,
       isLogin,
       checkBox,
       errorMsg,
@@ -220,8 +228,10 @@ export default class Auth extends Component {
       </div>
     )
 
+    const authStyle = active ? { display: 'block' } : { display: 'none' }
+
     return (
-      <div className='auth'>
+      <div className='auth' style={authStyle}>
         <div className='title-block'>
           <img src={logoImg} alt='' className='logo' />
           <div className='title'>{isLogin ? 'Авторизация' : 'Регистрация'}</div>

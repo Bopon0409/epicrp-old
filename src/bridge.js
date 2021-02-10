@@ -30,3 +30,12 @@ window.trigger = function (eventName, args) {
 //   window.trigger('pushInventaryDataToFront', dataJson)
 //   window.trigger('openInventary')
 // }, 2000)
+
+// setTimeout(() => {
+//   window.trigger('openAuth')
+// }, 2000)
+
+// setTimeout(() => {
+//   const dataJson = JSON.stringify({ isSuccess: true, errorMsg: '' })
+//   window.trigger('userAuthAnswer', dataJson)
+// }, 5000)
