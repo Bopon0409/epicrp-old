@@ -9,6 +9,10 @@
 
 - `window.trigger('pushInventaryDataToFront', data)` - Загрузка данных инвентаря на фронт: `data: {"userIndicators": {}, "inventory": []}`
 
+- `window.trigger('openInventary')` - Открыть инвентарь
+
+- `window.trigger('closeInventary')` - Закрыть инвентарь
+
 - `window.trigger('userAuthAnswer', data)` - Ответ сервера на авторизацию: `data: {isSuccess: boolean, errorMsg: string}'`
 
 - `window.trigger('userRegisterAnswer', data)` - Ответ сервера на регистрацию: `data: {isSuccess: boolean, errorMsg: string}'`

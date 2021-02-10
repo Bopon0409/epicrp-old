@@ -21,10 +21,12 @@ window.EventManager = {
 
 window.trigger = function (eventName, args) {
   const handlers = window.EventManager.events[eventName]
-  handlers.forEach(handler => handler(JSON.parse(args)))
+  handlers.forEach(handler => (args ? handler(JSON.parse(args)) : handler()))
 }
 
 // setTimeout(() => {
+//   console.log(data)
 //   const dataJson = JSON.stringify(data)
 //   window.trigger('pushInventaryDataToFront', dataJson)
-// }, 500)
+//   window.trigger('openInventary')
+// }, 2000)

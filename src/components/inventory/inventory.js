@@ -14,6 +14,7 @@ import Bag from './images/bag.png'
 
 export default class Inventory extends Component {
   state = {
+    active: false,
     bagType: 0,
     modal: {
       isActive: false,
@@ -22,9 +23,9 @@ export default class Inventory extends Component {
       yCord: 0
     },
     userIndicators: {
-      food: 0,
-      water: 0,
-      health: 0,
+      food: 100,
+      water: 100,
+      health: 100,
       armor: 0
     },
     inventory: []
@@ -32,24 +33,37 @@ export default class Inventory extends Component {
 
   componentDidMount = () => {
     this.checkArmorAndBag()
-
+    
     window.EventManager.addHandler(
       'pushInventaryDataToFront',
       this.setInventaryData.bind(this)
     )
+    window.EventManager.addHandler(
+      'openInventary',
+      this.openInventary.bind(this)
+    )
+    window.EventManager.addHandler(
+      'closeInventary',
+      this.closeInventary.bind(this)
+    )
   }
 
-  setInventaryData = ({ inventory, userIndicators }) => {
+  openInventary = () => this.setState({ active: true })
+
+  closeInventary = () => this.setState({ active: false })
+
+  setInventaryData = inventory => {
     inventory.forEach(item => {
       if (item.equipmentSlot === 200) item.equipmentSlot = false
     })
-    this.setState({ inventory, userIndicators })
+    this.setState({ inventory })
   }
 
   pushInventoryDataToClient = inventory => {
     inventory.forEach(item => {
       if (!item.equipmentSlot) item.equipmentSlot = 200
     })
+    console.log(inventory)
     const jsonData = JSON.stringify(inventory)
     if (window.mp) window.mp.trigger('pushInventoryDataToClient', jsonData)
     console.log('pushInventoryDataToClient')
@@ -332,13 +346,10 @@ export default class Inventory extends Component {
   }
 
   render () {
-    const { modal, bagType, userIndicators } = this.state
-    const { closeInventory, isInventoryActive } = this.props
+    const { modal, bagType, userIndicators, active } = this.state
 
     const bagStyle = bagType === 1 ? 'bag-block small-bag-block' : 'bag-block'
-    const inventoryStyle = isInventoryActive
-      ? { display: 'block' }
-      : { display: 'none' }
+    const inventoryStyle = active ? { display: 'block' } : { display: 'none' }
 
     const modalView = (
       <ItemModal
@@ -354,7 +365,7 @@ export default class Inventory extends Component {
       <div style={inventoryStyle}>
         <div className='blackout'></div>
         <div className='inventory-page'>
-          <div className='button-exit' onClick={() => closeInventory()}>
+          <div className='button-exit'>
             <div className='btn'>ESC</div>
             Закрыть
           </div>

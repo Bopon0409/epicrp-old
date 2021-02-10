@@ -1,161 +1,154 @@
-{
-  "userIndicators": {
-    "food": 50,
-    "water": 60,
-    "health": 70
+[
+  {
+    "idItem": 0,
+    "idSlot": 0,
+    "quantity": 3,
+    "weight": 0.2,
+    "isFastSlot": false,
+    "equipmentSlot": 200,
+    "name": "Яблочко",
+    "description": "Описание яблочка - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
   },
-  "inventory": [
-    {
-      "idItem": 0,
-      "idSlot": 0,
-      "quantity": 3,
-      "weight": 0.2,
-      "isFastSlot": false,
-      "equipmentSlot": 200,
-      "name": "Яблочко",
-      "description": "Описание яблочка - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
-    },
-    {
-      "idItem": 1,
-      "idSlot": 100,
-      "quantity": 1,
-      "weight": 1,
-      "isFastSlot": true,
-      "equipmentSlot": 200,
-      "name": "Пистолет",
-      "description": "Описание пистолета - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
-    },
-    {
-      "idItem": 2,
-      "idSlot": 1,
-      "quantity": 1,
-      "weight": 4,
-      "isFastSlot": true,
-      "equipmentSlot": 200,
-      "name": "Пулемет",
-      "description": "Описание пулемета - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
-    },
-    {
-      "idItem": 12,
-      "idSlot": 2,
-      "quantity": 1,
-      "weight": 0.2,
-      "isFastSlot": false,
-      "equipmentSlot": 201,
-      "name": "Шляпа",
-      "description": "Описание шляпы - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
-    },
-    {
-      "idItem": 11,
-      "idSlot": 3,
-      "quantity": 1,
-      "weight": 0.2,
-      "isFastSlot": false,
-      "equipmentSlot": 202,
-      "name": "Куртка",
-      "description": "Описание куртки - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
-    },
-    {
-      "idItem": 9,
-      "idSlot": 4,
-      "quantity": 1,
-      "weight": 0.2,
-      "isFastSlot": false,
-      "equipmentSlot": 203,
-      "name": "Футболка",
-      "description": "Описание футболки - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
-    },
-    {
-      "idItem": 5,
-      "idSlot": 5,
-      "quantity": 1,
-      "weight": 0.2,
-      "isFastSlot": false,
-      "equipmentSlot": 204,
-      "name": "Штаны",
-      "description": "Описание штанов - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
-    },
-    {
-      "idItem": 7,
-      "idSlot": 6,
-      "quantity": 1,
-      "weight": 0.2,
-      "isFastSlot": false,
-      "equipmentSlot": 205,
-      "name": "Ботинки",
-      "description": "Описание ботинок - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
-    },
-    {
-      "idItem": 10,
-      "idSlot": 7,
-      "quantity": 1,
-      "weight": 0.2,
-      "isFastSlot": false,
-      "equipmentSlot": 206,
-      "armor": 100,
-      "name": "Броня",
-      "description": "Описание брони - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
-    },
-    {
-      "idItem": 3,
-      "idSlot": 8,
-      "quantity": 1,
-      "weight": 0.2,
-      "isFastSlot": false,
-      "equipmentSlot": 207,
-      "name": "Маска",
-      "description": "Описание маски - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
-    },
-    {
-      "idItem": 13,
-      "idSlot": 9,
-      "quantity": 1,
-      "weight": 0.2,
-      "isFastSlot": false,
-      "equipmentSlot": 208,
-      "name": "Очки",
-      "description": "Описание очков - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
-    },
-    {
-      "idItem": 8,
-      "idSlot": 10,
-      "quantity": 1,
-      "weight": 0.2,
-      "isFastSlot": false,
-      "equipmentSlot": 209,
-      "name": "Бижутерия",
-      "description": "Описание бижутерии - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
-    },
-    {
-      "idItem": 14,
-      "idSlot": 11,
-      "quantity": 1,
-      "weight": 0.2,
-      "isFastSlot": false,
-      "equipmentSlot": 210,
-      "name": "Часы",
-      "description": "Описание часов - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
-    },
-    {
-      "idItem": 4,
-      "idSlot": 12,
-      "quantity": 1,
-      "weight": 0.2,
-      "isFastSlot": false,
-      "equipmentSlot": 211,
-      "name": "Перчатки",
-      "description": "Описание перчаток - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
-    },
-    {
-      "idItem": 6,
-      "idSlot": 13,
-      "quantity": 1,
-      "weight": 0.2,
-      "isFastSlot": false,
-      "equipmentSlot": 212,
-      "bag": 2,
-      "name": "Сумка",
-      "description": "Описание сумки - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
-    }
-  ]
-}
+  {
+    "idItem": 1,
+    "idSlot": 100,
+    "quantity": 1,
+    "weight": 1,
+    "isFastSlot": true,
+    "equipmentSlot": 200,
+    "name": "Пистолет",
+    "description": "Описание пистолета - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
+  },
+  {
+    "idItem": 2,
+    "idSlot": 1,
+    "quantity": 1,
+    "weight": 4,
+    "isFastSlot": true,
+    "equipmentSlot": 200,
+    "name": "Пулемет",
+    "description": "Описание пулемета - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
+  },
+  {
+    "idItem": 12,
+    "idSlot": 2,
+    "quantity": 1,
+    "weight": 0.2,
+    "isFastSlot": false,
+    "equipmentSlot": 201,
+    "name": "Шляпа",
+    "description": "Описание шляпы - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
+  },
+  {
+    "idItem": 11,
+    "idSlot": 3,
+    "quantity": 1,
+    "weight": 0.2,
+    "isFastSlot": false,
+    "equipmentSlot": 202,
+    "name": "Куртка",
+    "description": "Описание куртки - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
+  },
+  {
+    "idItem": 9,
+    "idSlot": 4,
+    "quantity": 1,
+    "weight": 0.2,
+    "isFastSlot": false,
+    "equipmentSlot": 203,
+    "name": "Футболка",
+    "description": "Описание футболки - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
+  },
+  {
+    "idItem": 5,
+    "idSlot": 5,
+    "quantity": 1,
+    "weight": 0.2,
+    "isFastSlot": false,
+    "equipmentSlot": 204,
+    "name": "Штаны",
+    "description": "Описание штанов - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
+  },
+  {
+    "idItem": 7,
+    "idSlot": 6,
+    "quantity": 1,
+    "weight": 0.2,
+    "isFastSlot": false,
+    "equipmentSlot": 205,
+    "name": "Ботинки",
+    "description": "Описание ботинок - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
+  },
+  {
+    "idItem": 10,
+    "idSlot": 7,
+    "quantity": 1,
+    "weight": 0.2,
+    "isFastSlot": false,
+    "equipmentSlot": 206,
+    "armor": 100,
+    "name": "Броня",
+    "description": "Описание брони - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
+  },
+  {
+    "idItem": 3,
+    "idSlot": 8,
+    "quantity": 1,
+    "weight": 0.2,
+    "isFastSlot": false,
+    "equipmentSlot": 207,
+    "name": "Маска",
+    "description": "Описание маски - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
+  },
+  {
+    "idItem": 13,
+    "idSlot": 9,
+    "quantity": 1,
+    "weight": 0.2,
+    "isFastSlot": false,
+    "equipmentSlot": 208,
+    "name": "Очки",
+    "description": "Описание очков - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
+  },
+  {
+    "idItem": 8,
+    "idSlot": 10,
+    "quantity": 1,
+    "weight": 0.2,
+    "isFastSlot": false,
+    "equipmentSlot": 209,
+    "name": "Бижутерия",
+    "description": "Описание бижутерии - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
+  },
+  {
+    "idItem": 14,
+    "idSlot": 11,
+    "quantity": 1,
+    "weight": 0.2,
+    "isFastSlot": false,
+    "equipmentSlot": 210,
+    "name": "Часы",
+    "description": "Описание часов - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
+  },
+  {
+    "idItem": 4,
+    "idSlot": 12,
+    "quantity": 1,
+    "weight": 0.2,
+    "isFastSlot": false,
+    "equipmentSlot": 211,
+    "name": "Перчатки",
+    "description": "Описание перчаток - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
+  },
+  {
+    "idItem": 6,
+    "idSlot": 13,
+    "quantity": 1,
+    "weight": 0.2,
+    "isFastSlot": false,
+    "equipmentSlot": 212,
+    "bag": 2,
+    "name": "Сумка",
+    "description": "Описание сумки - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
+  }
+]
