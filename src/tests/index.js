@@ -22,11 +22,11 @@ function testInventory (delay = 2000) {
   }, delay)
 }
 
-function testAuthAnswer (delay = 5000, type = true) {
+function testAuthAnswer (type = true) {
   setTimeout(() => {
     const answer = { isSuccess: type, errorMsg: type ? '' : 'serverError' }
     window.trigger('userAuthAnswer', JSON.stringify(answer))
-  }, delay)
+  }, 2000)
 }
 
 const testAlerts = () => {
