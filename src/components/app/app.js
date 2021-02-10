@@ -10,8 +10,8 @@ import './app.scss'
 
 export default class app extends Component {
   state = {
-    isBackgroundActive: false,
-    isHudActive: false
+    isBackgroundActive: true,
+    isHudActive: true
   }
 
   render () {

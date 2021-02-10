@@ -1,5 +1,3 @@
-// import data from './components/inventory/data.json'
-
 window.EventManager = {
   events: {},
 
@@ -23,19 +21,3 @@ window.trigger = function (eventName, args) {
   const handlers = window.EventManager.events[eventName]
   handlers.forEach(handler => (args ? handler(JSON.parse(args)) : handler()))
 }
-
-// setTimeout(() => {
-//   console.log(data)
-//   const dataJson = JSON.stringify(data)
-//   window.trigger('pushInventaryDataToFront', dataJson)
-//   window.trigger('openInventary')
-// }, 2000)
-
-// setTimeout(() => {
-//   window.trigger('openAuth')
-// }, 2000)
-
-// setTimeout(() => {
-//   const dataJson = JSON.stringify({ isSuccess: true, errorMsg: '' })
-//   window.trigger('userAuthAnswer', dataJson)
-// }, 5000)

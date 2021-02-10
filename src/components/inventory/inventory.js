@@ -33,7 +33,7 @@ export default class Inventory extends Component {
 
   componentDidMount = () => {
     this.checkArmorAndBag()
-    
+
     window.EventManager.addHandler(
       'pushInventaryDataToFront',
       this.setInventaryData.bind(this)

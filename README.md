@@ -15,9 +15,15 @@
 
 - `window.trigger('openAuth')` - Окрыть окно авторизации/регистрации
 
+- `window.trigger('openHUD')` - Открыть Худ
+
+- `window.trigger('closeHUD')` - Закрыть Худ
+
 - `window.trigger('userAuthAnswer', data)` - Ответ сервера на авторизацию: `data: {isSuccess: boolean, errorMsg: string}'`
 
 - `window.trigger('userRegisterAnswer', data)` - Ответ сервера на регистрацию: `data: {isSuccess: boolean, errorMsg: string}'`
+
+- `window.trigger('addAlert', alert)` - Прислать уведомление в HUD: `alert: {id: number, type: string, text: string} types: ['confirm', 'error', 'warning']`
 
 ### Тригеры **Фронт -> Клиент**
 

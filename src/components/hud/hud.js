@@ -9,6 +9,7 @@ import './hud.scss'
 
 export default class hud extends Component {
   state = {
+    active: false,
     online: 1500,
     id: 88,
     time: '19:30',
@@ -40,56 +41,62 @@ export default class hud extends Component {
         electricity: true
       }
     },
-    alerts: []
+    alerts: [],
+    turnAlerts: []
   }
 
+  openHUD = () => this.setState({ active: true })
+
+  closeHUD = () => this.setState({ active: false })
+
   componentDidMount = () => {
-    setTimeout(
-      () =>
-        this.addAlert({
-          id: 0,
-          type: 'warning',
-          text: 'wwwwwwwwwwwwwwwwwwwwwwwwwwwwww',
-          ref: React.createRef()
-        }),
-      6000
-    )
+    window.EventManager.addHandler('addAlert', this.addAlert.bind(this))
+    window.EventManager.addHandler('openHUD', this.openHUD.bind(this))
+    window.EventManager.addHandler('closeHUD', this.closeHUD.bind(this))
 
-    setTimeout(
-      () =>
-        this.addAlert({
-          id: 1,
-          type: 'error',
-          text: 'wwwwwwwwww',
-          ref: React.createRef()
-        }),
-      4000
-    )
-
-    setTimeout(
-      () =>
-        this.addAlert({
-          id: 2,
-          type: 'confirm',
-          text: 'wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww',
-          ref: React.createRef()
-        }),
-      2000
-    )
+    // Интервал на добавление уведомлений из очереди
+    setInterval(async () => {
+      const { turnAlerts, alerts } = this.state
+      let alert
+      if (turnAlerts.length && alerts.length < 3) {
+        await this.setState(({ alerts, turnAlerts }) => {
+          const newTurnAlerts = turnAlerts.slice()
+          alert = newTurnAlerts.shift()
+          return { turnAlerts: newTurnAlerts }
+        })
+        this.addAlert(alert)
+      }
+    }, 1000)
   }
 
   addAlert = alert => {
-    this.setState(({ alerts }) => {
+    let isTurned
+    alert.ref = React.createRef()
+    this.setState(({ alerts, turnAlerts }) => {
       const newAlerts = alerts.slice()
-      newAlerts.unshift(alert)
-      return { alerts: newAlerts }
+      const newTurnAlerts = turnAlerts.slice()
+      // Проверка на максимальное количество alerts
+      if (newAlerts.length < 3) {
+        newAlerts.unshift(alert)
+        return { alerts: newAlerts }
+      } else {
+        isTurned = true
+        newTurnAlerts.push(alert)
+        return { turnAlerts: newTurnAlerts }
+      }
     })
+
+    if (isTurned) return
+
+    // Запуск анимации удаления
     setTimeout(() => {
       this.state.alerts.forEach(item => {
         if (item.id === alert.id)
           return item.ref.current.classList.add('alert-del')
       })
     }, 14000)
+
+    // Удаление alert
     setTimeout(() => {
       this.setState(({ alerts }) => ({
         alerts: alerts.filter(item => item.id !== alert.id)
