@@ -18,7 +18,6 @@ const closeBg = () => window.trigger('closeBg')
 function testInventory (delay = 2000) {
   setTimeout(() => {
     window.trigger('pushInventaryDataToFront', JSON.stringify(inventaryData))
-    window.trigger('openInventary')
   }, delay)
 }
 
@@ -50,3 +49,7 @@ window.test = {
   openBg,
   closeBg
 }
+
+testInventory()
+
+setTimeout(() => openInventory(), 500)

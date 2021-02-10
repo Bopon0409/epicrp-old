@@ -5,7 +5,7 @@
     "quantity": 3,
     "weight": 0.2,
     "isFastSlot": false,
-    "equipmentSlot": 200,
+    "equipmentSlot": false,
     "name": "Яблочко",
     "description": "Описание яблочка - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
   },
@@ -15,7 +15,7 @@
     "quantity": 1,
     "weight": 1,
     "isFastSlot": true,
-    "equipmentSlot": 200,
+    "equipmentSlot": false,
     "name": "Пистолет",
     "description": "Описание пистолета - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
   },
@@ -25,7 +25,7 @@
     "quantity": 1,
     "weight": 4,
     "isFastSlot": true,
-    "equipmentSlot": 200,
+    "equipmentSlot": false,
     "name": "Пулемет",
     "description": "Описание пулемета - самый важный элемент в инвентаре \n        Без его описания можно было бы считать работу несостоявшейся"
   },

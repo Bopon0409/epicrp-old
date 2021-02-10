@@ -53,17 +53,10 @@ export default class Inventory extends Component {
   closeInventory = () => this.setState({ active: false })
 
   setInventaryData = inventory => {
-    inventory.forEach(item => {
-      if (item.equipmentSlot === 200) item.equipmentSlot = false
-    })
     this.setState({ inventory })
   }
 
   pushInventoryDataToClient = inventory => {
-    inventory.forEach(item => {
-      if (!item.equipmentSlot) item.equipmentSlot = 200
-    })
-    console.log(inventory)
     const jsonData = JSON.stringify(inventory)
     if (window.mp) window.mp.trigger('pushInventoryDataToClient', jsonData)
     console.log('pushInventoryDataToClient')
@@ -102,7 +95,13 @@ export default class Inventory extends Component {
   }
 
   userUseInventaryItem = idSlot => {
-    const { equipmentSlot, idItem, isFastSlot } = this.checkSlotOnItem(idSlot)
+    const {
+      equipmentSlot,
+      idItem,
+      isFastSlot,
+      quantity
+    } = this.checkSlotOnItem(idSlot)
+    const item = this.checkSlotOnItem(idSlot)
     if (equipmentSlot && idSlot !== equipmentSlot) {
       this.swapItems(idSlot, equipmentSlot)
     } else if (isFastSlot) {
@@ -115,11 +114,12 @@ export default class Inventory extends Component {
       }
     } else if (!equipmentSlot && !isFastSlot) {
       this.setState(({ inventory }) => {
-        inventory.forEach((item, i, arr) => {
-          if (item.idSlot === idSlot)
-            item.quantity > 1 ? (item.quantity -= 1) : arr.splice(i, 1)
-        })
-        return { inventory }
+        const newInventory = inventory.filter(item => item.idSlot !== idSlot)
+        if (quantity > 1) {
+          item.quantity = quantity - 1
+          newInventory.push(item)
+        }
+        return { inventory: newInventory }
       })
       if (window.mp) window.mp.trigger('userUseInventaryItem', idItem)
       console.log('userUseInventaryItem')
