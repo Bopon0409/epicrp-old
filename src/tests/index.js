@@ -3,13 +3,17 @@ import alertsHudData from './alertsHudData.json'
 
 const openInventory = () => window.trigger('openInventory')
 
-const closeInventory = () => window.trigger('closeInventary')
+const closeInventory = () => window.trigger('closeInventory')
 
 const openAuth = () => window.trigger('openAuth')
 
 const openHUD = () => window.trigger('openHUD')
 
 const closeHUD = () => window.trigger('closeHUD')
+
+const openBg = () => window.trigger('openBg')
+
+const closeBg = () => window.trigger('closeBg')
 
 function testInventory (delay = 2000) {
   setTimeout(() => {
@@ -42,5 +46,7 @@ window.test = {
   openInventory,
   openHUD,
   closeInventory,
-  closeHUD
+  closeHUD,
+  openBg,
+  closeBg
 }

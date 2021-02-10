@@ -9,19 +9,13 @@ import Hud from '../hud'
 import './app.scss'
 
 export default class app extends Component {
-  state = {
-    isBackgroundActive: true,
-    isHudActive: true
-  }
-
   render () {
-    const { isBackgroundActive, isHudActive } = this.state
     return (
       <>
         <Inventory />
         <Auth />
-        {isBackgroundActive ? <Background /> : null}
-        {isHudActive ? <Hud /> : null}
+        <Hud />
+        <Background />
       </>
     )
   }

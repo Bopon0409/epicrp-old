@@ -45,10 +45,6 @@ export default class hud extends Component {
     turnAlerts: []
   }
 
-  openHUD = () => this.setState({ active: true })
-
-  closeHUD = () => this.setState({ active: false })
-
   componentDidMount = () => {
     window.EventManager.addHandler('addAlert', this.addAlert.bind(this))
     window.EventManager.addHandler('openHUD', this.openHUD.bind(this))
@@ -68,6 +64,10 @@ export default class hud extends Component {
       }
     }, 1000)
   }
+
+  openHUD = () => this.setState({ active: true })
+
+  closeHUD = () => this.setState({ active: false })
 
   addAlert = alert => {
     let isTurned
@@ -107,8 +107,12 @@ export default class hud extends Component {
   render () {
     const { online, id, mission, errors, speedometer, alerts } = this.state
 
+    const hudStyle = this.state.active
+      ? { display: 'block' }
+      : { display: 'none' }
+
     return (
-      <div className='hud'>
+      <div className='hud' style={hudStyle}>
         <div className='bg'></div>
 
         <TopRightPanel online={online} id={id} mission={mission} />

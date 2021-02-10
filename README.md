@@ -9,15 +9,19 @@
 
 - `window.trigger('pushInventaryDataToFront', data)` - Загрузка данных инвентаря на фронт: `data: {"userIndicators": {}, "inventory": []}`
 
-- `window.trigger('openInventary')` - Открыть инвентарь
+- `window.trigger('openInventory')` - Открыть инвентарь
 
-- `window.trigger('closeInventary')` - Закрыть инвентарь
+- `window.trigger('closeInventory')` - Закрыть инвентарь
 
 - `window.trigger('openAuth')` - Окрыть окно авторизации/регистрации
 
 - `window.trigger('openHUD')` - Открыть Худ
 
 - `window.trigger('closeHUD')` - Закрыть Худ
+
+- `window.trigger('openBg')` - Открыть Фон (скрин gta)
+
+- `window.trigger('closeBg')` - Закрыть Фон (скрин gta)
 
 - `window.trigger('userAuthAnswer', data)` - Ответ сервера на авторизацию: `data: {isSuccess: boolean, errorMsg: string}'`
 
