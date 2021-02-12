@@ -61,13 +61,13 @@ export default class Auth extends Component {
 
   closeAuth = () => this.setState({ active: false })
 
-  authServerAnswerHandler = ({ isSuccess, errorMsg }) => {
+  authServerAnswerHandler = (isSuccess, errorMsg) => {
     if (isSuccess) {
       this.closeAuth()
     } else this.setState({ errorMsg })
   }
 
-  registerServerAnswerHandler = ({ isSuccess, errorMsg }) => {
+  registerServerAnswerHandler = (isSuccess, errorMsg) => {
     if (isSuccess) {
       this.setState({ isLogin: true })
     } else this.setState({ errorMsg })
@@ -101,8 +101,7 @@ export default class Auth extends Component {
       return this.setErrorMsg(this.errorMessages[3])
 
     this.clearInputs()
-    const data = JSON.stringify({ login, pass })
-    if (window.mp) window.mp.trigger('userAuth', data)
+    if (window.mp) window.mp.trigger('userAuth', login, pass)
   }
 
   registerValidate = () => {
@@ -122,8 +121,7 @@ export default class Auth extends Component {
       return this.setErrorMsg(this.errorMessages[5])
 
     this.clearInputs()
-    const data = JSON.stringify({ email, login, pass })
-    if (window.mp) window.mp.trigger('userRegister', data)
+    if (window.mp) window.mp.trigger('userRegister', login, email, pass)
   }
 
   getNewsList = () => {

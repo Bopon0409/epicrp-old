@@ -23,11 +23,11 @@
 
 - `window.trigger('closeBg')` - Закрыть Фон (скрин gta)
 
-- `window.trigger('userAuthAnswer', data)` - Ответ сервера на авторизацию: `data: {isSuccess: boolean, errorMsg: string}'`
+- `window.trigger('userAuthAnswer', isSuccess, errorMsg)` - Ответ сервера на авторизацию: `isSuccess: boolean, errorMsg: string`
 
-- `window.trigger('userRegisterAnswer', data)` - Ответ сервера на регистрацию: `data: {isSuccess: boolean, errorMsg: string}'`
+- `window.trigger('userRegisterAnswer', isSuccess, errorMsg)` - Ответ сервера на регистрацию: `isSuccess: boolean, errorMsg: string'`
 
-- `window.trigger('addAlert', alert)` - Прислать уведомление в HUD: `alert: {id: number, type: string, text: string} types: ['confirm', 'error', 'warning']`
+- `window.trigger('addAlert', type, text)` - Прислать уведомление в HUD: `type: string, text: string | types: ['confirm', 'error', 'warning']`
 
 ### Тригеры **Фронт -> Клиент**
 
@@ -37,9 +37,9 @@
 
 - `mp.trigger('userEquippedItem', idItem)` - Игрок надел предмет: `idItem: int`
 
-- `mp.trigger('userAuth', data)` - Пользователь пытается залогиниться: `data: {login: string, pass: string}`
+- `mp.trigger('userAuth', login, pass)` - Пользователь пытается залогиниться: `login: string, pass: string`
 
-- `mp.trigger('userRegister', data)` - Пользователь пытается зарегистрироваться: `data: {login: string, pass: string}`
+- `mp.trigger('userRegister', login, email, pass)` - Пользователь пытается зарегистрироваться: `login: string, email: string, pass: string`
 
 ### Тестирование фронта
 

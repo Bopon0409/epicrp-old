@@ -23,8 +23,15 @@ function testInventory (delay = 2000) {
 
 function testAuthAnswer (type = true) {
   setTimeout(() => {
-    const answer = { isSuccess: type, errorMsg: type ? '' : 'serverError' }
-    window.trigger('userAuthAnswer', JSON.stringify(answer))
+    const errorMsg = type ? '' : 'serverError'
+    window.trigger('userAuthAnswer', type, errorMsg)
+  }, 2000)
+}
+
+function testRegisterAnswer (type = true) {
+  setTimeout(() => {
+    const errorMsg = type ? '' : 'serverError'
+    window.trigger('userRegisterAnswer', type, errorMsg)
   }, 2000)
 }
 
@@ -41,6 +48,7 @@ window.test = {
   testAlerts,
   testInventory,
   testAuthAnswer,
+  testRegisterAnswer,
   openAuth,
   openInventory,
   openHUD,
@@ -49,7 +57,3 @@ window.test = {
   openBg,
   closeBg
 }
-
-testInventory()
-
-setTimeout(() => openInventory(), 500)

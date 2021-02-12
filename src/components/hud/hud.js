@@ -15,20 +15,14 @@ export default class hud extends Component {
     time: '19:30',
     date: '10.02.2021',
     money: 150000,
-    geo: {
-      quarter: 'Альта-Стрит',
-      street: 'Хавик-Авеню'
-    },
+    geo: { quarter: 'Альта-Стрит', street: 'Хавик-Авеню' },
+    microphoneButton: 'N',
     mission: {
       active: true,
       title: 'Миссия невыполнима',
       text: 'Найдите одежду секретного агента около депаратемнта юстиции'
     },
-    errors: {
-      1: false,
-      2: true,
-      3: true
-    },
+    errors: { 1: false, 2: true, 3: true },
     speedometer: {
       active: true,
       speed: 96,
@@ -42,6 +36,7 @@ export default class hud extends Component {
       }
     },
     alerts: [],
+    alertsCount: 0,
     turnAlerts: []
   }
 
@@ -72,17 +67,18 @@ export default class hud extends Component {
   addAlert = alert => {
     let isTurned
     alert.ref = React.createRef()
-    this.setState(({ alerts, turnAlerts }) => {
+    alert.id = this.state.alertsCount
+    this.setState(({ alerts, turnAlerts, alertsCount }) => {
       const newAlerts = alerts.slice()
       const newTurnAlerts = turnAlerts.slice()
       // Проверка на максимальное количество alerts
       if (newAlerts.length < 3) {
         newAlerts.unshift(alert)
-        return { alerts: newAlerts }
+        return { alerts: newAlerts, alertsCount: alertsCount + 1 }
       } else {
         isTurned = true
         newTurnAlerts.push(alert)
-        return { turnAlerts: newTurnAlerts }
+        return { turnAlerts: newTurnAlerts, alertsCount: alertsCount + 1 }
       }
     })
 

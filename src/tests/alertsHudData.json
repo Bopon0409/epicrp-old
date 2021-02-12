@@ -1,26 +1,21 @@
 [
   {
-    "id": 0,
     "type": "error",
     "text": "Alert1"
   },
   {
-    "id": 1,
     "type": "confirm",
     "text": "Alert2"
   },
   {
-    "id": 2,
     "type": "warning",
     "text": "Alert3"
   },
   {
-    "id": 3,
     "type": "error",
     "text": "Alert4"
   },
   {
-    "id": 4,
     "type": "confirm",
     "text": "Alert5"
   }
