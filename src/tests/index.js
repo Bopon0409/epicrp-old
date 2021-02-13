@@ -1,19 +1,21 @@
 import inventaryData from './inventaryData.json'
 import alertsHudData from './alertsHudData.json'
 
-const openInventory = () => window.trigger('openInventory')
+const setInventoryActive = active => {
+  setTimeout(() => window.trigger('setInventoryActive', active), 500)
+}
 
-const closeInventory = () => window.trigger('closeInventory')
+const setAuthActive = active => {
+  setTimeout(() => window.trigger('setAuthActive', active), 500)
+}
 
-const openAuth = () => window.trigger('openAuth')
+const setHudActive = active => {
+  setTimeout(() => window.trigger('setHudActive', active), 500)
+}
 
-const openHUD = () => window.trigger('openHUD')
-
-const closeHUD = () => window.trigger('closeHUD')
-
-const openBg = () => window.trigger('openBg')
-
-const closeBg = () => window.trigger('closeBg')
+const setBgActive = active => {
+  setTimeout(() => window.trigger('setBgActive', active), 500)
+}
 
 function testInventory (delay = 2000) {
   setTimeout(() => {
@@ -21,16 +23,14 @@ function testInventory (delay = 2000) {
   }, delay)
 }
 
-function testAuthAnswer (type = true) {
+function testAuthAnswer (type = true, errorMsg = '') {
   setTimeout(() => {
-    const errorMsg = type ? '' : 'serverError'
     window.trigger('userAuthAnswer', type, errorMsg)
   }, 2000)
 }
 
-function testRegisterAnswer (type = true) {
+function testRegisterAnswer (type = true, errorMsg = '') {
   setTimeout(() => {
-    const errorMsg = type ? '' : 'serverError'
     window.trigger('userRegisterAnswer', type, errorMsg)
   }, 2000)
 }
@@ -49,11 +49,8 @@ window.test = {
   testInventory,
   testAuthAnswer,
   testRegisterAnswer,
-  openAuth,
-  openInventory,
-  openHUD,
-  closeInventory,
-  closeHUD,
-  openBg,
-  closeBg
+  setInventoryActive,
+  setHudActive,
+  setAuthActive,
+  setBgActive
 }

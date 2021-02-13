@@ -42,8 +42,7 @@ export default class hud extends Component {
 
   componentDidMount = () => {
     window.EventManager.addHandler('addAlert', this.addAlert.bind(this))
-    window.EventManager.addHandler('openHUD', this.openHUD.bind(this))
-    window.EventManager.addHandler('closeHUD', this.closeHUD.bind(this))
+    window.EventManager.addHandler('setHudActive', this.setHudActive.bind(this))
 
     // Интервал на добавление уведомлений из очереди
     setInterval(async () => {
@@ -60,12 +59,11 @@ export default class hud extends Component {
     }, 1000)
   }
 
-  openHUD = () => this.setState({ active: true })
-
-  closeHUD = () => this.setState({ active: false })
+  setHudActive = active => this.setState({ active })
 
   addAlert = alert => {
     let isTurned
+    alert = typeof alert === 'string' ? JSON.parse(alert) : alert
     alert.ref = React.createRef()
     alert.id = this.state.alertsCount
     this.setState(({ alerts, turnAlerts, alertsCount }) => {

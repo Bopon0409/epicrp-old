@@ -9,19 +9,13 @@
 
 - `window.trigger('pushInventaryDataToFront', data)` - Загрузка данных инвентаря на фронт: `data: {"userIndicators": {}, "inventory": []}`
 
-- `window.trigger('openInventory')` - Открыть инвентарь
+- `window.trigger('setInventoryActive', active: bollean)` - Открыть/Закрыть инвентарь
 
-- `window.trigger('closeInventory')` - Закрыть инвентарь
+- `window.trigger('setAuthActive', active: bollean)` - Открыть/Закрыть окно регистрации/авторизации
 
-- `window.trigger('openAuth')` - Окрыть окно авторизации/регистрации
+- `window.trigger('setHudActive', active: bollean)` - Открыть/Закрыть HUD
 
-- `window.trigger('openHUD')` - Открыть Худ
-
-- `window.trigger('closeHUD')` - Закрыть Худ
-
-- `window.trigger('openBg')` - Открыть Фон (скрин gta)
-
-- `window.trigger('closeBg')` - Закрыть Фон (скрин gta)
+- `window.trigger('setBgActive', active: bollean)` - Открыть/Закрыть фон
 
 - `window.trigger('userAuthAnswer', isSuccess, errorMsg)` - Ответ сервера на авторизацию: `isSuccess: boolean, errorMsg: string`
 
@@ -51,18 +45,14 @@
 
 - `testInventory()` : Имитация загрузки данных инвентаря с сервера
 
-- `testAuthAnswer()` : Имитация ответа сервера на запрос регистрации/авторизации. Первым параметром - булево значение
+- `testAuthAnswer()` : Имитация ответа сервера на запрос авторизации
 
-- `openAuth()` : Открытие авторизации
+- `testRegisterAnswer()` : Имитация ответа сервера на запрос регистрации
 
-- `openInventory()` : Открытие инвентаря
+- `setInventoryActive()` : Открытие/закрытие инвентаря
 
-- `openHUD()` : Открытие hud
+- `setAuthActive()` : Открытие/закрытие авторизации/регистрации
 
-- `closeInventory()` : Закрытие инвентаря
+- `setHudActive()` : Открытие/закрытие HUD
 
-- `closeHUD()` : Закрытие hud
-
-- `openBg()`: Открытие фона (скриншота игры)
-
-- `closeBg()` : Закрытие фона (скриншота игры)
+- `setBgActive()` : Открытие/закрытие фона

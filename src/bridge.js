@@ -17,7 +17,7 @@ window.EventManager = {
   }
 }
 
-window.trigger = function (eventName, args) {
+window.trigger = function (eventName, ...args) {
   const handlers = window.EventManager.events[eventName]
-  handlers.forEach(handler => (args ? handler(JSON.parse(args)) : handler()))
+  handlers.forEach(handler => (args.length ? handler(...args) : handler()))
 }

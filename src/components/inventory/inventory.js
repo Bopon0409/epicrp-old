@@ -39,21 +39,15 @@ export default class Inventory extends Component {
       this.setInventaryData.bind(this)
     )
     window.EventManager.addHandler(
-      'openInventory',
-      this.openInventory.bind(this)
-    )
-    window.EventManager.addHandler(
-      'closeInventory',
-      this.closeInventory.bind(this)
+      'setInventoryActive',
+      this.setInventoryActive.bind(this)
     )
   }
 
-  openInventory = () => this.setState({ active: true })
+  setInventoryActive = active => this.setState({ active })
 
-  closeInventory = () => this.setState({ active: false })
-
-  setInventaryData = inventory => {
-    this.setState({ inventory })
+  setInventaryData = inventoryData => {
+    this.setState({ inventory: JSON.parse(inventoryData) })
   }
 
   pushInventoryDataToClient = inventory => {

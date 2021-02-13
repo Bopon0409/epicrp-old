@@ -5,13 +5,10 @@ export default class Bg extends Component {
   state = { active: false }
 
   componentDidMount = () => {
-    window.EventManager.addHandler('openBg', this.openBg.bind(this))
-    window.EventManager.addHandler('closeBg', this.closeBg.bind(this))
+    window.EventManager.addHandler('setBgActive', this.setBgActive.bind(this))
   }
 
-  openBg = () => this.setState({ active: true })
-
-  closeBg = () => this.setState({ active: false })
+  setBgActive = active => this.setState({ active })
 
   render () {
     const { active } = this.state

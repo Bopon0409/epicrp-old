@@ -54,23 +54,22 @@ export default class Auth extends Component {
       this.registerServerAnswerHandler.bind(this)
     )
 
-    window.EventManager.addHandler('openAuth', this.openAuth.bind(this))
+    window.EventManager.addHandler(
+      'setAuthActive',
+      this.setAuthActive.bind(this)
+    )
   }
 
-  openAuth = () => this.setState({ active: true })
-
-  closeAuth = () => this.setState({ active: false })
+  setAuthActive = active => this.setState({ active })
 
   authServerAnswerHandler = (isSuccess, errorMsg) => {
-    if (isSuccess) {
-      this.closeAuth()
-    } else this.setState({ errorMsg })
+    if (isSuccess) this.setAuthActive(false)
+    else this.setState({ errorMsg })
   }
 
   registerServerAnswerHandler = (isSuccess, errorMsg) => {
-    if (isSuccess) {
-      this.setState({ isLogin: true })
-    } else this.setState({ errorMsg })
+    if (isSuccess) this.setState({ isLogin: true })
+    else this.setState({ errorMsg })
   }
 
   onFieldChange = (event, fieldName) => {
@@ -79,7 +78,7 @@ export default class Auth extends Component {
   }
 
   clearInputs = () =>
-    this.setState({ login: '', email: '', pass: '', pass2: '' })
+    this.setState({ login: '', email: '', pass: '', pass2: '', errorMsg: '' })
 
   setErrorMsg = errorMsg => this.setState({ errorMsg })
 
