@@ -27,9 +27,11 @@
 
 - `mp.trigger('pushInventoryDataToClient', data)` - Инвентарь пользователя обновился: `data: {"userIndicators": {}, "inventory": []}`
 
-- `mp.trigger('userUseInventaryItem', idItem)` - Игрок использовал предмет: `idItem: int`
+- `mp.trigger('userdUseItem', idItem)` - Игрок использовал предмет: `idItem: int`
 
 - `mp.trigger('userEquippedItem', idItem)` - Игрок надел предмет: `idItem: int`
+
+- `mp.trigger('userdPullOfItem', idItem)` - Игрок использовал предмет: `idItem: int`
 
 - `mp.trigger('userAuth', login, pass)` - Пользователь пытается залогиниться: `login: string, pass: string`
 
