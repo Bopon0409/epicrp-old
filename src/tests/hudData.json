@@ -8,7 +8,10 @@
     "quarter": "Альта-Стрит",
     "street": "Хавик-Авеню"
   },
-  "microphoneButton": "N",
+  "microphone": {
+    "active": false,
+    "btn": "N"
+  },
   "mission": {
     "active": true,
     "title": "Миссия невыполнима",

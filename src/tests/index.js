@@ -44,6 +44,9 @@ const testAlerts = () => {
   }, 2000)
 }
 
+setHudActive(true)
+setBgActive(true)
+
 window.test = {
   testAlerts,
   testInventory,

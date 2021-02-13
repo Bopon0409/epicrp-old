@@ -4,6 +4,8 @@ import { ErrorSvg1, ErrorSvg2, ErrorSvg3 } from './modules/error-svg'
 import Speedometer from './modules/speedometer'
 import TopRightPanel from './modules/top-right-panel'
 import Alerts from './modules/alerts'
+import BottomLeftPanel from './modules/bottom-left-panel'
+import timeIcon from './images/time-icon.svg'
 
 import './hud.scss'
 
@@ -16,7 +18,10 @@ export default class hud extends Component {
     date: '10.02.2021',
     money: 150000,
     geo: { quarter: 'Альта-Стрит', street: 'Хавик-Авеню' },
-    microphoneButton: 'N',
+    microphone: {
+      active: false,
+      btn: 'N'
+    },
     mission: {
       active: true,
       title: 'Миссия невыполнима',
@@ -100,6 +105,7 @@ export default class hud extends Component {
 
   render () {
     const { online, id, mission, errors, speedometer, alerts } = this.state
+    const { microphone, geo, money, time, date } = this.state
 
     const hudStyle = this.state.active
       ? { display: 'block' }
@@ -117,9 +123,15 @@ export default class hud extends Component {
           <ErrorSvg3 active={errors[3]} />
         </div>
 
-        <div className='bottom-left-panel'></div>
+        <BottomLeftPanel microphone={microphone} geo={geo} money={money} />
 
         <Speedometer speedometer={speedometer} />
+
+        <div className='time-block'>
+          <img src={timeIcon} alt='' className='icon' />
+          <div className='time'>{time}</div>
+          <div className='date'>{date}</div>
+        </div>
 
         <Alerts alerts={alerts} />
       </div>
