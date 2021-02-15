@@ -1,22 +1,21 @@
-/* eslint-disable default-case */
-import React, { Component } from 'react'
+import React from 'react'
 
 import Inventory from '../inventory'
 import Background from '../bg'
 import Auth from '../auth'
 import Hud from '../hud'
+import Chat from '../chat'
 
 import './app.scss'
 
-export default class app extends Component {
-  render () {
-    return (
-      <>
-        <Inventory />
-        <Auth />
-        <Hud />
-        <Background />
-      </>
-    )
-  }
+export default function App () {
+  return (
+    <>
+      <Inventory />
+      <Auth />
+      <Hud />
+      <Background />
+      <Chat />
+    </>
+  )
 }

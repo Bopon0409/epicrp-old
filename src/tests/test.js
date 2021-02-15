@@ -17,6 +17,10 @@ const setBgActive = active => {
   setTimeout(() => window.trigger('setBgActive', active), 500)
 }
 
+const setChatActive = active => {
+  setTimeout(() => window.trigger('setChatActive', active), 500)
+}
+
 function testInventory (delay = 2000) {
   setTimeout(() => {
     window.trigger('pushInventaryDataToFront', JSON.stringify(inventaryData))
@@ -52,5 +56,10 @@ window.test = {
   setInventoryActive,
   setHudActive,
   setAuthActive,
-  setBgActive
+  setBgActive,
+  setChatActive
 }
+
+setBgActive(true)
+setHudActive(true)
+setChatActive(true)
