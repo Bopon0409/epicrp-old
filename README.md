@@ -27,15 +27,17 @@
 
 - `mp.trigger('pushInventoryDataToClient', data)` - Инвентарь пользователя обновился: `data: {"userIndicators": {}, "inventory": []}`
 
-- `mp.trigger('userdUseItem', idItem)` - Игрок использовал предмет: `idItem: int`
+- `mp.trigger('userdUseItem', idItem: int)` - Игрок использовал предмет: `idItem: int`
 
-- `mp.trigger('userEquippedItem', idItem)` - Игрок надел предмет: `idItem: int`
+- `mp.trigger('userEquippedItem', idItem: int)` - Игрок надел предмет: `idItem: int`
 
-- `mp.trigger('userdPullOfItem', idItem)` - Игрок использовал предмет: `idItem: int`
+- `mp.trigger('userdPullOfItem', idItem: int)` - Игрок использовал предмет: `idItem: int`
 
-- `mp.trigger('userAuth', login, pass)` - Пользователь пытается залогиниться: `login: string, pass: string`
+- `mp.trigger('userAuth', login: string, pass: string)` - Пользователь пытается залогиниться
 
-- `mp.trigger('userRegister', login, email, pass)` - Пользователь пытается зарегистрироваться: `login: string, email: string, pass: string`
+- `mp.trigger('userAuth', login: string, pass: string)` - Пользователь пытается залогиниться
+
+- `mp.trigger('pushMessageToClient', type: string, text: string)` - Пользователь отправил сообщение
 
 ### Тестирование фронта
 
@@ -47,14 +49,22 @@
 
 - `testInventory()` : Имитация загрузки данных инвентаря с сервера
 
+- `testChatPushMsg()` : Имитация загрузки сообщений с сервера
+
 - `testAuthAnswer()` : Имитация ответа сервера на запрос авторизации
 
 - `testRegisterAnswer()` : Имитация ответа сервера на запрос регистрации
 
-- `setInventoryActive()` : Открытие/закрытие инвентаря
+- `setInventoryActive(active)` : Открытие/закрытие инвентаря
 
-- `setAuthActive()` : Открытие/закрытие авторизации/регистрации
+- `setAuthActive(active)` : Открытие/закрытие авторизации/регистрации
 
-- `setHudActive()` : Открытие/закрытие HUD
+- `setHudActive(active)` : Открытие/закрытие HUD
 
-- `setBgActive()` : Открытие/закрытие фона
+- `setBgActive(active)` : Открытие/закрытие фона
+
+- `setChatActive(active)` : Открытие/закрытие чата
+
+- `setChatInput(active)` : Открытие/закрытие возможности ввода
+
+- `clearChat()` : Очистка чата

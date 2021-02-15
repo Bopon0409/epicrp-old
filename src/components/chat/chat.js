@@ -6,40 +6,11 @@ import chatInputIcon from './images/chat-input-icon.svg'
 
 export default class Chat extends Component {
   state = {
-    active: false,
+    active: true,
     isInput: true,
     activeBtn: 'ic',
     inputValue: '',
-    messages: [
-      {
-        type: 'ic',
-        text: 'Admin Adminov[16]: Lorem ipsum dolor sit amet, consectetur',
-      },
-      {
-        type: 'ooc',
-        text: `Test Testov[11]: (( Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus
-          commodo viverra maecenas accumsan lacus vel facilisis. ))`
-      },
-      {
-        type: 'me',
-        text: 'Main Player[0] сказал что-то по рации'
-      },
-      {
-        type: 'f',
-        text: '[R] Main Player[0]: Lincoln-1 | Имеются активные юниты на сцене?'
-      },
-      {
-        type: 'a',
-        text: `Администратор Admin Adminov выдал мут игроку Main Player[0] на 120
-        минут. Причина: Offtop /f`
-      },
-      {
-        type: 'd',
-        text: '[D] Business Woman: LSPD to GOV | На связь'
-      }
-    ]
+    messages: []
   }
 
   componentDidMount = () => {
@@ -47,8 +18,30 @@ export default class Chat extends Component {
       'setChatActive',
       this.setChatActive.bind(this)
     )
+    window.EventManager.addHandler(
+      'pushChatMsgFromClient',
+      this.pushChatMsgFromClient.bind(this)
+    )
+    window.EventManager.addHandler('setChatInput', this.setChatInput.bind(this))
+    window.EventManager.addHandler('clearChat', this.clearChat.bind(this))
+
     document.addEventListener('keydown', this.enterHandler, false)
   }
+
+  pushChatMsgFromClient = msg => {
+    if (msg.type) {
+      this.setState(({ messages }) => {
+        const newMessages = messages.slice()
+        newMessages.push(msg)
+        return { messages: newMessages }
+      })
+    }
+  }
+
+  setChatInput = isInput => this.setState({ isInput })
+  setChatActive = active => this.setState({ active })
+
+  clearChat = () => this.setState({ messages: [] })
 
   componentWillUnmount = () => {
     document.removeEventListener('keydown', this.enterHandler, false)
@@ -61,8 +54,7 @@ export default class Chat extends Component {
   pushMessage = () => {
     const { activeBtn: type, inputValue: text } = this.state
     if (text) {
-      const data = { type, text }
-      console.log(data)
+      if (window.mp) window.mp.trigger('pushMessageToClient', type, text)
       this.setState({ activeBtn: 'ic', inputValue: '' })
     }
   }
@@ -73,11 +65,13 @@ export default class Chat extends Component {
     }))
   }
 
-  setChatActive = active => this.setState({ active })
   onInputChange = event => this.setState({ inputValue: event.target.value })
 
   render () {
     const { activeBtn, inputValue, messages, isInput: isShow } = this.state
+    const { isInput, active } = this.state
+
+    const chatStyle = active ? { display: 'block' } : { display: 'none' }
 
     const inputContainer = isShow ? (
       <>
@@ -143,8 +137,8 @@ export default class Chat extends Component {
     ) : null
 
     return (
-      <div className='chat'>
-        <MsgList messages={messages} />
+      <div className='chat' style={chatStyle}>
+        <MsgList messages={messages} isInput={isInput} />
         {inputContainer}
       </div>
     )

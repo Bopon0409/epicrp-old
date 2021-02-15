@@ -5,9 +5,4 @@ import App from './components/app'
 import './bridge'
 import './tests/test'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-)
+ReactDOM.render(<App />, document.getElementById('root'))
