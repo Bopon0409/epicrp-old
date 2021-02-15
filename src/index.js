@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import App from './components/app'
 
 import './bridge'
-import './tests'
+import './tests/test'
 
 ReactDOM.render(
   <React.StrictMode>

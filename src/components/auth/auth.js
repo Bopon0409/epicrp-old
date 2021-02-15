@@ -62,12 +62,14 @@ export default class Auth extends Component {
 
   setAuthActive = active => this.setState({ active })
 
-  authServerAnswerHandler = (isSuccess, errorMsg) => {
+  authServerAnswerHandler = data => {
+    const { isSuccess, errorMsg } = JSON.parse(data)
     if (isSuccess) this.setAuthActive(false)
     else this.setState({ errorMsg })
   }
 
-  registerServerAnswerHandler = (isSuccess, errorMsg) => {
+  registerServerAnswerHandler = data => {
+    const { isSuccess, errorMsg } = JSON.parse(data)
     if (isSuccess) this.setState({ isLogin: true })
     else this.setState({ errorMsg })
   }

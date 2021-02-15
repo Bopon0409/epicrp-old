@@ -25,13 +25,13 @@ function testInventory (delay = 2000) {
 
 function testAuthAnswer (type = true, errorMsg = '') {
   setTimeout(() => {
-    window.trigger('userAuthAnswer', type, errorMsg)
+    window.trigger('userAuthAnswer', JSON.stringify({ type, errorMsg }))
   }, 2000)
 }
 
 function testRegisterAnswer (type = true, errorMsg = '') {
   setTimeout(() => {
-    window.trigger('userRegisterAnswer', type, errorMsg)
+    window.trigger('userRegisterAnswer', JSON.stringify({ type, errorMsg }))
   }, 2000)
 }
 
@@ -43,9 +43,6 @@ const testAlerts = () => {
     if (counter === 5) clearInterval(interval)
   }, 2000)
 }
-
-setHudActive(true)
-setBgActive(true)
 
 window.test = {
   testAlerts,
