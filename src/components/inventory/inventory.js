@@ -94,8 +94,6 @@ export default class Inventory extends Component {
     for (let i = 0; i < 25; i++) {
       if (!this.checkSlotOnItem(i)) {
         this.swapItems(item.idSlot, i)
-        if (window.mp) window.mp.trigger('userdTakeOfItem', item.idItem)
-        console.log('userdTakeOfItem')
         break
       }
     }
@@ -284,7 +282,8 @@ export default class Inventory extends Component {
 
     // Проверка на стак предметов
     if (item2) {
-      if (item1.idItem === item2.idItem && item1.idSlot !== item2.idSlot) {
+      if (item1.idSlot === item2.idSlot) return
+      if (item1.idItem === item2.idItem) {
         this.setState(({ inventory }) => {
           let newItem = {}
           const newInventary = inventory.filter(
@@ -308,8 +307,21 @@ export default class Inventory extends Component {
     }
     if (item2) {
       if (fromSlot >= 100) {
-        if (window.mp) window.mp.trigger('userEquippedItem', item1.idItem)
+        if (window.mp) window.mp.trigger('userEquippedItem', item2.idItem)
         console.log('userEquippedItem')
+      }
+    }
+
+    // Проверка на снятие (для отправки на сервер)
+
+    if (fromSlot >= 100) {
+      if (window.mp) window.mp.trigger('userTakeOfItem', item1.idItem)
+      console.log('userTakeOfItem')
+    }
+    if (item2) {
+      if (toSlot >= 100) {
+        if (window.mp) window.mp.trigger('userTakeOfItem', item2.idItem)
+        console.log('userTakeOfItem')
       }
     }
 

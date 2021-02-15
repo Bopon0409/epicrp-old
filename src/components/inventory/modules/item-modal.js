@@ -80,12 +80,18 @@ class ItemModal extends Component {
 
     const { xCord, yCord } = this.props.modal
     const { name, quantity, description, weight } = this.props.modal.item
+    const { item } = this.props.modal
     const {
       sliderValue,
       isSliderActive,
       isConfirmBtnActive,
       activeBtn
     } = this.state
+
+    let useBtnName = 'Использовать'
+    if (item.isFastSlot || item.equipmentSlot)
+      useBtnName = 'Надеть'
+    if (item.idSlot >= 100) useBtnName = 'Снять'
 
     const sliderBlock = (
       <div className='slider-block'>
@@ -126,7 +132,7 @@ class ItemModal extends Component {
             className={activeBtn === 'use' ? 'btn active-btn' : 'btn'}
             onClick={() => this.setActiveBtn('use')}
           >
-            Использовать
+            {useBtnName}
           </div>
           <div
             className={activeBtn === 'remove' ? 'btn active-btn' : 'btn'}

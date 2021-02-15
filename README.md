@@ -31,7 +31,7 @@
 
 - `mp.trigger('userEquippedItem', idItem: int)` - Игрок надел предмет: `idItem: int`
 
-- `mp.trigger('userdTakeOfItem', idItem: int)` - Игрок использовал предмет: `idItem: int`
+- `mp.trigger('userTakeOfItem', idItem: int)` - Игрок использовал предмет: `idItem: int`
 
 - `mp.trigger('userAuth', login: string, pass: string)` - Пользователь пытается залогиниться
 
