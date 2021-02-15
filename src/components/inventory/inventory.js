@@ -58,14 +58,8 @@ export default class Inventory extends Component {
 
   userSeparateInventaryItem = (idSlot, quantity) => {
     this.setState(({ inventory }) => {
-      let newItem = {}
-      inventory.forEach(item => {
-        if (item.idSlot === idSlot) {
-          item.quantity -= quantity
-          Object.assign(newItem, item)
-        }
-      })
-
+      const newInventary = inventory.slice()
+      const newItem = JSON.parse(JSON.stringify(this.checkSlotOnItem(idSlot)))
       newItem.quantity = quantity
       for (let i = 0; i < 25; i++) {
         if (!this.checkSlotOnItem(i)) {
@@ -73,10 +67,12 @@ export default class Inventory extends Component {
           break
         }
       }
-
-      inventory.push(newItem)
-      this.pushInventoryDataToClient(inventory)
-      return { inventory }
+      newInventary.forEach(item => {
+        if (item.idSlot === idSlot) item.quantity -= quantity
+      })
+      newInventary.push(newItem)
+      this.pushInventoryDataToClient(newInventary)
+      return { inventory: newInventary }
     })
   }
 
@@ -89,35 +85,54 @@ export default class Inventory extends Component {
   }
 
   userUseInventaryItem = idSlot => {
-    const {
-      equipmentSlot,
-      idItem,
-      isFastSlot,
-      quantity
-    } = this.checkSlotOnItem(idSlot)
     const item = this.checkSlotOnItem(idSlot)
-    if (equipmentSlot && idSlot !== equipmentSlot) {
+    if (item.equipmentSlot || item.isFastSlot) this.useEqupment(item)
+    else this.useNoEqupment(item)
+  }
+
+  takeOfItem = item => {
+    for (let i = 0; i < 25; i++) {
+      if (!this.checkSlotOnItem(i)) {
+        this.swapItems(item.idSlot, i)
+        if (window.mp) window.mp.trigger('userdTakeOfItem', item.idItem)
+        console.log('userdTakeOfItem')
+        break
+      }
+    }
+  }
+
+  useEqupment = item => {
+    const { equipmentSlot, idSlot, isFastSlot } = item
+    const isEquipped =
+      equipmentSlot === idSlot || (idSlot >= 100 && idSlot <= 103)
+
+    if (isEquipped) return this.takeOfItem(item)
+    if (equipmentSlot) {
       this.swapItems(idSlot, equipmentSlot)
-    } else if (isFastSlot) {
-      if (idSlot >= 100 && idSlot <= 103) return
+    }
+    if (isFastSlot) {
       for (let i = 100; i < 104; i++) {
         if (!this.checkSlotOnItem(i)) {
           this.swapItems(idSlot, i)
           break
         }
       }
-    } else if (!equipmentSlot && !isFastSlot) {
-      this.setState(({ inventory }) => {
-        const newInventory = inventory.filter(item => item.idSlot !== idSlot)
-        if (quantity > 1) {
-          item.quantity = quantity - 1
-          newInventory.push(item)
-        }
-        return { inventory: newInventory }
-      })
-      if (window.mp) window.mp.trigger('userUseInventaryItem', idItem)
-      console.log('userUseInventaryItem')
     }
+  }
+
+  useNoEqupment = item => {
+    const { quantity, idSlot, idItem } = item
+    this.setState(({ inventory }) => {
+      const newInventory = inventory.filter(item => item.idSlot !== idSlot)
+      if (quantity > 1) {
+        item.quantity = quantity - 1
+        newInventory.push(item)
+      }
+      this.pushInventoryDataToClient(newInventory)
+      return { inventory: newInventory }
+    })
+    if (window.mp) window.mp.trigger('userUseInventaryItem', idItem)
+    console.log('userUseInventaryItem')
   }
 
   checkBagWeight = () => {
@@ -269,7 +284,7 @@ export default class Inventory extends Component {
 
     // Проверка на стак предметов
     if (item2) {
-      if (item1.idItem === item2.idItem) {
+      if (item1.idItem === item2.idItem && item1.idSlot !== item2.idSlot) {
         this.setState(({ inventory }) => {
           let newItem = {}
           const newInventary = inventory.filter(

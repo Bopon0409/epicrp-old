@@ -30,7 +30,7 @@ const clearChat = () => {
   setTimeout(() => window.chatApi.clearChat(), 500)
 }
 
-function testInventory (delay = 2000) {
+function testInventory (delay = 500) {
   setTimeout(() => {
     window.trigger('pushInventaryDataToFront', JSON.stringify(inventaryData))
   }, delay)
@@ -39,13 +39,13 @@ function testInventory (delay = 2000) {
 function testAuthAnswer (type = true, errorMsg = '') {
   setTimeout(() => {
     window.trigger('userAuthAnswer', JSON.stringify({ type, errorMsg }))
-  }, 2000)
+  }, 500)
 }
 
 function testRegisterAnswer (type = true, errorMsg = '') {
   setTimeout(() => {
     window.trigger('userRegisterAnswer', JSON.stringify({ type, errorMsg }))
-  }, 2000)
+  }, 500)
 }
 
 const testAlerts = () => {
@@ -82,6 +82,5 @@ window.test = {
   clearChat
 }
 
-setBgActive(true)
-setHudActive(true)
-setChatActive(true)
+setInventoryActive(true)
+testInventory()

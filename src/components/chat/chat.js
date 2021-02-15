@@ -6,7 +6,7 @@ import chatInputIcon from './images/chat-input-icon.svg'
 
 export default class Chat extends Component {
   state = {
-    active: true,
+    active: false,
     isInput: true,
     activeBtn: 'ic',
     inputValue: '',
