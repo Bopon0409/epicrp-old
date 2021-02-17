@@ -17,21 +17,13 @@ window.EventManager = {
   }
 }
 
-window.trigger = function (eventName, ...args) {
+window.trigger = function (eventName, arg) {
   const handlers = window.EventManager.events[eventName]
-  handlers.forEach(handler => (args.length ? handler(...args) : handler()))
+  handlers.forEach(handler => (arg ? handler(JSON.parse(arg)) : handler()))
 }
 
 window.chatApi = {
-  push: (type, text, text1, text2, result) => {
-    window.trigger('pushChatMsgFromClient', {
-      type,
-      text,
-      text1,
-      text2,
-      result
-    })
-  },
+  push: msg => window.trigger('pushChatMsgFromClient', JSON.stringify(msg)),
   clear: () => window.trigger('clearChat'),
   activate: active => window.trigger('setChatInput', active),
   show: active => window.trigger('setChatActive', active)

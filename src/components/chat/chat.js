@@ -53,8 +53,8 @@ export default class Chat extends Component {
 
   pushMessage = () => {
     const { activeBtn: type, inputValue: text } = this.state
-    if (text) {
-      if (window.mp) window.mp.trigger('pushMessageToClient', type, text)
+    if (text && window.mp) {
+      window.mp.trigger('pushMessageToClient', type, text)
       this.setState({ activeBtn: 'ic', inputValue: '' })
     }
   }

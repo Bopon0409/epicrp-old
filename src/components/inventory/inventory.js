@@ -46,9 +46,7 @@ export default class Inventory extends Component {
 
   setInventoryActive = active => this.setState({ active })
 
-  setInventaryData = inventoryData => {
-    this.setState({ inventory: JSON.parse(inventoryData) })
-  }
+  setInventaryData = inventory => this.setState({ inventory })
 
   pushInventoryDataToClient = inventory => {
     const jsonData = JSON.stringify(inventory)

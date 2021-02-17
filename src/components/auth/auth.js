@@ -62,16 +62,14 @@ export default class Auth extends Component {
 
   setAuthActive = active => this.setState({ active })
 
-  authServerAnswerHandler = data => {
-    const { isSuccess, errorMsg } = JSON.parse(data)
+  authServerAnswerHandler = isSuccess => {
     if (isSuccess) this.setAuthActive(false)
-    else this.setState({ errorMsg })
+    else this.setState({ errorMsg: 'Неверный логин или пароль' })
   }
 
-  registerServerAnswerHandler = data => {
-    const { isSuccess, errorMsg } = JSON.parse(data)
+  registerServerAnswerHandler = isSuccess => {
     if (isSuccess) this.setState({ isLogin: true })
-    else this.setState({ errorMsg })
+    else this.setState({ errorMsg: 'Такой пользователь уже существует' })
   }
 
   onFieldChange = (event, fieldName) => {

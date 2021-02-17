@@ -36,16 +36,12 @@ function testInventory (delay = 500) {
   }, delay)
 }
 
-function testAuthAnswer (type = true, errorMsg = '') {
-  setTimeout(() => {
-    window.trigger('userAuthAnswer', JSON.stringify({ type, errorMsg }))
-  }, 500)
+function testAuthAnswer (data) {
+  setTimeout(() => window.trigger('userAuthAnswer', data), 500)
 }
 
-function testRegisterAnswer (type = true, errorMsg = '') {
-  setTimeout(() => {
-    window.trigger('userRegisterAnswer', JSON.stringify({ type, errorMsg }))
-  }, 500)
+function testRegisterAnswer (data) {
+  setTimeout(() => window.trigger('userRegisterAnswer', data), 500)
 }
 
 const testAlerts = () => {
@@ -60,9 +56,7 @@ const testAlerts = () => {
 const testChatPushMsg = () => {
   let counter = 0
   const interval = setInterval(() => {
-    const { type, text, text1, text2, result } = chatMsgData[counter]
-    window.chatApi.push(type, text, text1, text2, result)
-    counter++
+    window.chatApi.push(chatMsgData[counter++])
     if (counter === chatMsgData.length) clearInterval(interval)
   }, 500)
 }
@@ -81,6 +75,3 @@ window.test = {
   testChatPushMsg,
   clearChat
 }
-
-setInventoryActive(true)
-testInventory()
