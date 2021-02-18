@@ -1,18 +1,18 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import './bg.scss'
 
-export default class Bg extends Component {
-  state = { active: false }
+export default function Bg () {
+  const [active, setActive] = useState(false)
 
-  componentDidMount = () => {
-    window.EventManager.addHandler('setBgActive', this.setBgActive.bind(this))
-  }
+  const setBgActive = active => setActive(active)
 
-  setBgActive = active => this.setState({ active })
+  useEffect(() => {
+    window.EventManager.addHandler('setBgActive', setBgActive.bind(this))
+    return function cleanup () {
+      window.EventManager.removeHandler('setBgActive', setBgActive)
+    }
+  })
 
-  render () {
-    const { active } = this.state
-    const bgStyle = active ? { display: 'block' } : { display: 'none' }
-    return <div className='background' style={bgStyle}></div>
-  }
+  const bgStyle = { display: active ? 'block' : 'none' }
+  return <div className='background' style={bgStyle}></div>
 }

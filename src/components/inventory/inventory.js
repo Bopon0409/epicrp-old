@@ -33,7 +33,6 @@ export default class Inventory extends Component {
 
   componentDidMount = () => {
     this.checkArmorAndBag()
-
     window.EventManager.addHandler(
       'pushInventaryDataToFront',
       this.setInventaryData.bind(this)
@@ -41,6 +40,17 @@ export default class Inventory extends Component {
     window.EventManager.addHandler(
       'setInventoryActive',
       this.setInventoryActive.bind(this)
+    )
+  }
+
+  componentWillUnmount = () => {
+    window.EventManager.removeHandler(
+      'pushInventaryDataToFront',
+      this.setInventaryData
+    )
+    window.EventManager.removeHandler(
+      'setInventoryActive',
+      this.setInventoryActive
     )
   }
 

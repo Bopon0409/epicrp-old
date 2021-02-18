@@ -60,6 +60,18 @@ export default class Auth extends Component {
     )
   }
 
+  componentWillUnmount = () => {
+    window.EventManager.removeHandler(
+      'userAuthAnswer',
+      this.authServerAnswerHandler
+    )
+    window.EventManager.removeHandler(
+      'userRegisterAnswer',
+      this.registerServerAnswerHandler
+    )
+    window.EventManager.removeHandler('setAuthActive', this.setAuthActive)
+  }
+
   setAuthActive = active => this.setState({ active })
 
   authServerAnswerHandler = isSuccess => {

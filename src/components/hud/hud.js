@@ -12,32 +12,32 @@ import './hud.scss'
 export default class hud extends Component {
   state = {
     active: false,
-    online: 1500,
-    id: 88,
-    time: '19:30',
-    date: '10.02.2021',
-    money: 150000,
-    geo: { quarter: 'Альта-Стрит', street: 'Хавик-Авеню' },
+    online: 0,
+    id: 0,
+    time: '',
+    date: '',
+    money: 0,
+    geo: { quarter: '', street: '' },
     microphone: {
       active: false,
       btn: 'N'
     },
     mission: {
-      active: true,
-      title: 'Миссия невыполнима',
-      text: 'Найдите одежду секретного агента около депаратемнта юстиции'
+      active: false,
+      title: '',
+      text: ''
     },
-    errors: { 1: false, 2: true, 3: true },
+    errors: {},
     speedometer: {
-      active: true,
-      speed: 96,
-      fuel: 80,
+      active: false,
+      speed: 0,
+      fuel: 0,
       badges: {
-        fuel: true,
-        engine: true,
-        lock: true,
-        lights: true,
-        electricity: true
+        fuel: false,
+        engine: false,
+        lock: false,
+        lights: false,
+        electricity: false
       }
     },
     alerts: [],
@@ -48,21 +48,72 @@ export default class hud extends Component {
   componentDidMount = () => {
     window.EventManager.addHandler('addAlert', this.addAlert.bind(this))
     window.EventManager.addHandler('setHudActive', this.setHudActive.bind(this))
+    window.EventManager.addHandler('setHudData', this.setHudData.bind(this))
+    window.EventManager.addHandler(
+      'setGeoHudData',
+      this.setGeoHudData.bind(this)
+    )
+    window.EventManager.addHandler(
+      'setMicroHudData',
+      this.setMicroHudData.bind(this)
+    )
+    window.EventManager.addHandler(
+      'setMissionHudData',
+      this.setMissionHudData.bind(this)
+    )
+    window.EventManager.addHandler(
+      'setSpeedometerHudData',
+      this.setSpeedometerHudData.bind(this)
+    )
+    window.EventManager.addHandler(
+      'setAllHudData',
+      this.setAllHudData.bind(this)
+    )
 
     // Интервал на добавление уведомлений из очереди
-    setInterval(async () => {
+    this.turnInteval = setInterval(() => {
       const { turnAlerts, alerts } = this.state
       let alert
       if (turnAlerts.length && alerts.length < 3) {
-        await this.setState(({ alerts, turnAlerts }) => {
-          const newTurnAlerts = turnAlerts.slice()
-          alert = newTurnAlerts.shift()
-          return { turnAlerts: newTurnAlerts }
-        })
-        this.addAlert(alert)
+        this.setState(
+          ({ turnAlerts }) => {
+            const newTurnAlerts = turnAlerts.slice()
+            alert = newTurnAlerts.shift()
+            return { turnAlerts: newTurnAlerts }
+          },
+          () => this.addAlert(alert)
+        )
       }
     }, 1000)
   }
+
+  componentWillUnmount = () => {
+    window.EventManager.removeHandler('addAlert', this.addAlert)
+    window.EventManager.removeHandler('setHudActive', this.setHudActive)
+    window.EventManager.removeHandler('setHudData', this.setHudData)
+    window.EventManager.removeHandler('setGeoHudData', this.setGeoHudData)
+    window.EventManager.removeHandler('setMicroHudData', this.setMicroHudData)
+    window.EventManager.removeHandler(
+      'setMissionHudData',
+      this.setMissionHudData
+    )
+    window.EventManager.removeHandler(
+      'setSpeedometerHudData',
+      this.setSpeedometerHudData
+    )
+    window.EventManager.removeHandler('setAllHudData', this.setAllHudData)
+
+    clearInterval(this.turnInteval)
+  }
+
+  setAllHudData = ({ ...args }) => this.setState({ ...args })
+  setHudData = ({ online, id, time, date, money, errors }) =>
+    this.setState({ online, id, time, date, money, errors })
+
+  setGeoHudData = geo => this.setState({ geo })
+  setMicroHudData = microphone => this.setState({ microphone })
+  setMissionHudData = mission => this.setState({ mission })
+  setSpeedometerHudData = speedometer => this.setState({ speedometer })
 
   setHudActive = active => this.setState({ active })
 

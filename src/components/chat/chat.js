@@ -24,8 +24,18 @@ export default class Chat extends Component {
     )
     window.EventManager.addHandler('setChatInput', this.setChatInput.bind(this))
     window.EventManager.addHandler('clearChat', this.clearChat.bind(this))
-
     document.addEventListener('keydown', this.enterHandler, false)
+  }
+
+  componentWillUnmount = () => {
+    window.EventManager.removeHandler(
+      'pushChatMsgFromClient',
+      this.pushChatMsgFromClient
+    )
+    window.EventManager.removeHandler('setChatActive', this.setChatActive)
+    window.EventManager.removeHandler('setChatInput', this.setChatInput)
+    window.EventManager.removeHandler('clearChat', this.clearChat)
+    document.removeEventListener('keydown', this.enterHandler, false)
   }
 
   pushChatMsgFromClient = msg => {
@@ -40,12 +50,7 @@ export default class Chat extends Component {
 
   setChatInput = isInput => this.setState({ isInput })
   setChatActive = active => this.setState({ active })
-
   clearChat = () => this.setState({ messages: [] })
-
-  componentWillUnmount = () => {
-    document.removeEventListener('keydown', this.enterHandler, false)
-  }
 
   enterHandler = event => {
     if (event.keyCode === 13 && this.state.isInput) this.pushMessage()
@@ -70,7 +75,6 @@ export default class Chat extends Component {
   render () {
     const { activeBtn, inputValue, messages, isInput: isShow } = this.state
     const { isInput, active } = this.state
-
     const chatStyle = active ? { display: 'block' } : { display: 'none' }
 
     const inputContainer = isShow ? (

@@ -13,8 +13,9 @@ export default function Speedometer ({ speedometer }) {
     }
   }
 
+  const speedometerStyle = { display: speedometer.active ? 'block' : 'none' }
   return (
-    <div className='speedometer'>
+    <div className='speedometer' style={speedometerStyle}>
       <div className='main'>
         <div className='fuel-view'>
           <Fuel active={true} />

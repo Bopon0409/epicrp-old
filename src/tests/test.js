@@ -2,46 +2,51 @@ import inventaryData from './inventaryData.json'
 import alertsHudData from './alertsHudData.json'
 import chatMsgData from './chatMsgData.json'
 
+import hudData from './hudData.json'
+import geoHudData from './geoHudData.json'
+import microHudData from './microHudData.json'
+import missionHudData from './missionHudData.json'
+import speedometerHudData from './speedometerHudData.json'
+import allHudData from './allHudData.json'
+
 const setInventoryActive = active => {
-  setTimeout(() => window.trigger('setInventoryActive', active), 500)
+  window.trigger('setInventoryActive', active)
 }
 
 const setAuthActive = active => {
-  setTimeout(() => window.trigger('setAuthActive', active), 500)
+  window.trigger('setAuthActive', active)
 }
 
 const setHudActive = active => {
-  setTimeout(() => window.trigger('setHudActive', active), 500)
+  window.trigger('setHudActive', active)
 }
 
 const setBgActive = active => {
-  setTimeout(() => window.trigger('setBgActive', active), 500)
+  window.trigger('setBgActive', active)
 }
 
 const setChatActive = active => {
-  setTimeout(() => window.chatApi.show(active), 500)
+  window.chatApi.show(active)
 }
 
 const setChatInput = active => {
-  setTimeout(() => window.chatApi.activate(active), 500)
+  window.chatApi.activate(active)
 }
 
 const clearChat = () => {
-  setTimeout(() => window.chatApi.clearChat(), 500)
+  window.chatApi.clearChat()
 }
 
 function testInventory (delay = 500) {
-  setTimeout(() => {
-    window.trigger('pushInventaryDataToFront', JSON.stringify(inventaryData))
-  }, delay)
+  window.trigger('pushInventaryDataToFront', JSON.stringify(inventaryData))
 }
 
 function testAuthAnswer (data) {
-  setTimeout(() => window.trigger('userAuthAnswer', data), 500)
+  window.trigger('userAuthAnswer', data)
 }
 
 function testRegisterAnswer (data) {
-  setTimeout(() => window.trigger('userRegisterAnswer', data), 500)
+  window.trigger('userRegisterAnswer', data)
 }
 
 const testAlerts = () => {
@@ -61,6 +66,30 @@ const testChatPushMsg = () => {
   }, 500)
 }
 
+const setHudData = () => {
+  window.trigger('setHudData', JSON.stringify(hudData))
+}
+
+const setGeoHudData = () => {
+  window.trigger('setGeoHudData', JSON.stringify(geoHudData))
+}
+
+const setMicroHudData = () => {
+  window.trigger('setMicroHudData', JSON.stringify(microHudData))
+}
+
+const setMissionHudData = () => {
+  window.trigger('setMissionHudData', JSON.stringify(missionHudData))
+}
+
+const setSpeedometerHudData = () => {
+  window.trigger('setSpeedometerHudData', JSON.stringify(speedometerHudData))
+}
+
+const setAllHudData = () => {
+  window.trigger('setAllHudData', JSON.stringify(allHudData))
+}
+
 window.test = {
   testAlerts,
   testInventory,
@@ -73,5 +102,15 @@ window.test = {
   setChatActive,
   setChatInput,
   testChatPushMsg,
-  clearChat
+  clearChat,
+  setHudData,
+  setGeoHudData,
+  setMicroHudData,
+  setMissionHudData,
+  setSpeedometerHudData,
+  setAllHudData
 }
+
+const currentTests = () => {}
+
+setTimeout(currentTests, 500)
