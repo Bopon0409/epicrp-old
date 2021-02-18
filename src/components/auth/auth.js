@@ -80,7 +80,7 @@ export default class Auth extends Component {
   }
 
   registerServerAnswerHandler = isSuccess => {
-    if (isSuccess) this.setState({ isLogin: true })
+    if (isSuccess) this.setState({ isLogin: true }, () => this.clearInputs())
     else this.setState({ errorMsg: 'Такой пользователь уже существует' })
   }
 
@@ -94,7 +94,11 @@ export default class Auth extends Component {
 
   setErrorMsg = errorMsg => this.setState({ errorMsg })
 
-  loginToggle = () => this.setState(({ isLogin }) => ({ isLogin: !isLogin }))
+  loginToggle = () =>
+    this.setState(
+      ({ isLogin }) => ({ isLogin: !isLogin }),
+      () => this.clearInputs()
+    )
 
   checkBoxToggle = () =>
     this.setState(({ checkBox }) => ({ checkBox: !checkBox }))

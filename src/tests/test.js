@@ -37,7 +37,7 @@ const clearChat = () => {
   window.chatApi.clearChat()
 }
 
-function testInventory (delay = 500) {
+function testInventory () {
   window.trigger('pushInventaryDataToFront', JSON.stringify(inventaryData))
 }
 
@@ -52,7 +52,8 @@ function testRegisterAnswer (data) {
 const testAlerts = () => {
   let counter = 0
   const interval = setInterval(() => {
-    window.trigger('addAlert', JSON.stringify(alertsHudData[counter]))
+    const strData = JSON.stringify(alertsHudData[counter])
+    window.trigger('addAlert', strData)
     counter++
     if (counter === 5) clearInterval(interval)
   }, 2000)
@@ -111,6 +112,8 @@ window.test = {
   setAllHudData
 }
 
-const currentTests = () => {}
+const currentTests = () => {
+  setInventoryActive(true)
+}
 
 setTimeout(currentTests, 500)

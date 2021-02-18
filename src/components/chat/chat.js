@@ -39,6 +39,7 @@ export default class Chat extends Component {
   }
 
   pushChatMsgFromClient = msg => {
+    console.log(msg)
     if (msg.type) {
       this.setState(({ messages }) => {
         const newMessages = messages.slice()
