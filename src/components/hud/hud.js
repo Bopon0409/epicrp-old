@@ -7,8 +7,6 @@ import Alerts from './modules/alerts'
 import BottomLeftPanel from './modules/bottom-left-panel'
 import timeIcon from './images/time-icon.svg'
 
-import './hud.scss'
-
 export default class hud extends Component {
   state = {
     active: false,

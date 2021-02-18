@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import './bg.scss'
 
 export default function Bg () {
   const [active, setActive] = useState(false)

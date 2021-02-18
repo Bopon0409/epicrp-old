@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import MsgList from './modules/msg-list'
-
-import './chat.scss'
 import chatInputIcon from './images/chat-input-icon.svg'
 
 export default class Chat extends Component {

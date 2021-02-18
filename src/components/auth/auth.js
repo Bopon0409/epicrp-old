@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import NewsItem from './news-item'
 import logoImg from './images/logo.svg'
 import refreshImg from './images/refresh.svg'
-import './auth.scss'
 
 export default class Auth extends Component {
   errorMessages = [

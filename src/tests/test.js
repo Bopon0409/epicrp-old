@@ -1,52 +1,29 @@
-import inventaryData from './inventaryData.json'
-import alertsHudData from './alertsHudData.json'
-import chatMsgData from './chatMsgData.json'
+import inventaryData from './json/inventaryData.json'
+import alertsHudData from './json/alertsHudData.json'
+import chatMsgData from './json/chatMsgData.json'
+import hudData from './json/hudData.json'
+import geoHudData from './json/geoHudData.json'
+import microHudData from './json/microHudData.json'
+import missionHudData from './json/missionHudData.json'
+import speedometerHudData from './json/speedometerHudData.json'
+import allHudData from './json/allHudData.json'
 
-import hudData from './hudData.json'
-import geoHudData from './geoHudData.json'
-import microHudData from './microHudData.json'
-import missionHudData from './missionHudData.json'
-import speedometerHudData from './speedometerHudData.json'
-import allHudData from './allHudData.json'
-
-const setInventoryActive = active => {
+const setInventoryActive = active =>
   window.trigger('setInventoryActive', active)
-}
+const setChoicePersActive = active =>
+  window.trigger('setChoicePersActive', active)
+const setAuthActive = active => window.trigger('setAuthActive', active)
+const setHudActive = active => window.trigger('setHudActive', active)
+const setBgActive = active => window.trigger('setBgActive', active)
+const setChatActive = active => window.chatApi.show(active)
+const setChatInput = active => window.chatApi.activate(active)
+const clearChat = () => window.chatApi.clearChat()
 
-const setAuthActive = active => {
-  window.trigger('setAuthActive', active)
-}
+const testAuthAnswer = data => window.trigger('userAuthAnswer', data)
+const testRegisterAnswer = data => window.trigger('userRegisterAnswer', data)
 
-const setHudActive = active => {
-  window.trigger('setHudActive', active)
-}
-
-const setBgActive = active => {
-  window.trigger('setBgActive', active)
-}
-
-const setChatActive = active => {
-  window.chatApi.show(active)
-}
-
-const setChatInput = active => {
-  window.chatApi.activate(active)
-}
-
-const clearChat = () => {
-  window.chatApi.clearChat()
-}
-
-function testInventory () {
+const testInventory = () => {
   window.trigger('pushInventaryDataToFront', JSON.stringify(inventaryData))
-}
-
-function testAuthAnswer (data) {
-  window.trigger('userAuthAnswer', data)
-}
-
-function testRegisterAnswer (data) {
-  window.trigger('userRegisterAnswer', data)
 }
 
 const testAlerts = () => {
@@ -67,29 +44,22 @@ const testChatPushMsg = () => {
   }, 500)
 }
 
-const setHudData = () => {
-  window.trigger('setHudData', JSON.stringify(hudData))
-}
+const setHudData = () => window.trigger('setHudData', JSON.stringify(hudData))
 
-const setGeoHudData = () => {
+const setGeoHudData = () =>
   window.trigger('setGeoHudData', JSON.stringify(geoHudData))
-}
 
-const setMicroHudData = () => {
+const setMicroHudData = () =>
   window.trigger('setMicroHudData', JSON.stringify(microHudData))
-}
 
-const setMissionHudData = () => {
+const setMissionHudData = () =>
   window.trigger('setMissionHudData', JSON.stringify(missionHudData))
-}
 
-const setSpeedometerHudData = () => {
+const setSpeedometerHudData = () =>
   window.trigger('setSpeedometerHudData', JSON.stringify(speedometerHudData))
-}
 
-const setAllHudData = () => {
+const setAllHudData = () =>
   window.trigger('setAllHudData', JSON.stringify(allHudData))
-}
 
 window.test = {
   testAlerts,
@@ -100,6 +70,7 @@ window.test = {
   setHudActive,
   setAuthActive,
   setBgActive,
+  setChoicePersActive,
   setChatActive,
   setChatInput,
   testChatPushMsg,
@@ -113,7 +84,8 @@ window.test = {
 }
 
 const currentTests = () => {
-  setInventoryActive(true)
+  setBgActive(true)
+  setChoicePersActive(true)
 }
 
 setTimeout(currentTests, 500)

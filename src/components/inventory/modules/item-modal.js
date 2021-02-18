@@ -4,9 +4,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import Slider from './slider'
-
 import ModalHint from '../images/modal-hint.png'
-import '../scss/modal.scss'
 
 class ItemModal extends Component {
   state = {

@@ -8,8 +8,6 @@ import ItemModal from './modules/item-modal'
 import BottomPanel from './modules/bottom-panel'
 import WeightPanel from './modules/weight-panel'
 
-import './scss/inventory.scss'
-
 import Bag from './images/bag.png'
 
 export default class Inventory extends Component {
