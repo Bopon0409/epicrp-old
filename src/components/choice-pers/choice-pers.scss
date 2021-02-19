@@ -216,3 +216,27 @@
     }
   }
 }
+
+@media (min-width: 2560px) {
+  .choice-pers {
+    zoom: 1.5;
+  }
+}
+
+@media (max-width: 1400px) {
+  .choice-pers {
+    zoom: 0.9;
+  }
+}
+
+@media (max-width: 1100px) {
+  .choice-pers {
+    zoom: 0.7;
+  }
+}
+
+@media (max-width: 900px) {
+  .choice-pers {
+    zoom: 0.6;
+  }
+}
