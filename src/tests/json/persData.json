@@ -1,0 +1,21 @@
+[
+  {
+    "name": "name",
+    "surname": "surname",
+    "lvl": 5,
+    "fraction": "Без фракции",
+    "money": 150000,
+    "regDate": "01.01.2021",
+    "playTime": "12 ч. 46 м."
+  },
+  {
+    "name": "name",
+    "surname": "surname",
+    "lvl": 5,
+    "fraction": "Без фракции",
+    "money": 150000,
+    "regDate": "01.01.2021",
+    "playTime": "12 ч. 46 м."
+  },
+  { "empty": true, "bought": false }
+]

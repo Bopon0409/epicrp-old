@@ -7,6 +7,7 @@ import microHudData from './json/microHudData.json'
 import missionHudData from './json/missionHudData.json'
 import speedometerHudData from './json/speedometerHudData.json'
 import allHudData from './json/allHudData.json'
+import persData from './json/persData.json'
 
 const setInventoryActive = active =>
   window.trigger('setInventoryActive', active)
@@ -44,6 +45,9 @@ const testChatPushMsg = () => {
   }, 500)
 }
 
+const setPersData = () =>
+  window.trigger('pushPersData', JSON.stringify(persData))
+
 const setHudData = () => window.trigger('setHudData', JSON.stringify(hudData))
 
 const setGeoHudData = () =>
@@ -80,12 +84,14 @@ window.test = {
   setMicroHudData,
   setMissionHudData,
   setSpeedometerHudData,
-  setAllHudData
+  setAllHudData,
+  setPersData
 }
 
 const currentTests = () => {
   setBgActive(true)
   setChoicePersActive(true)
+  setPersData()
 }
 
 setTimeout(currentTests, 500)

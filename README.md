@@ -7,6 +7,7 @@
 #### Выполняются через `browser.execute('window.trigger('triggerName', data)')`
 
 - `window.trigger('pushInventaryDataToFront', data: json string)` - Загрузка данных инвентаря на фронт
+- `window.trigger('pushPersData', data: json string)` - Загрузка данных о персонажах игрока
 - `window.trigger('userAuthAnswer', isSuccess: boolean)` - Ответ сервера на авторизацию
 - `window.trigger('userRegisterAnswer', isSuccess: boolean` - Ответ сервера на регистрацию
 - `window.trigger('addAlert', data: json string)` - Прислать уведомление в HUD
