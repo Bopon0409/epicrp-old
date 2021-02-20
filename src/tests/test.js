@@ -30,9 +30,7 @@ const testInventory = () => {
 const testAlerts = () => {
   let counter = 0
   const interval = setInterval(() => {
-    const strData = JSON.stringify(alertsHudData[counter])
-    window.trigger('addAlert', strData)
-    counter++
+    window.trigger('addAlert', JSON.stringify(alertsHudData[counter++]))
     if (counter === 5) clearInterval(interval)
   }, 2000)
 }
@@ -40,7 +38,7 @@ const testAlerts = () => {
 const testChatPushMsg = () => {
   let counter = 0
   const interval = setInterval(() => {
-    window.chatApi.push(chatMsgData[counter++])
+    window.chatApi.push(JSON.stringify(chatMsgData[counter++]))
     if (counter === chatMsgData.length) clearInterval(interval)
   }, 500)
 }

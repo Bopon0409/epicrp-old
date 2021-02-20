@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import SlotPers from './slot-pers'
+import SlotPers from './modules/slot-pers'
 import playBtnIcon from './images/play-btn-icon.svg'
 
 export default function ChoicePers () {
   const [componentActive, setComponentActive] = useState(false)
   const [currentPers, setCurrentPers] = useState(0)
-
   const [persData, setPersData] = useState([])
 
   const setChoicePersActive = active => setComponentActive(active)
@@ -17,6 +16,7 @@ export default function ChoicePers () {
       setChoicePersActive.bind(this)
     )
     window.EventManager.addHandler('pushPersData', pushPersData.bind(this))
+
     return function cleanup () {
       window.EventManager.removeHandler(
         'setChoicePersActive',
@@ -26,17 +26,15 @@ export default function ChoicePers () {
     }
   })
 
-  const slotList = persData.map((pers, i) => {
-    return (
-      <SlotPers
-        key={i}
-        index={i}
-        pers={pers}
-        active={i === currentPers}
-        setCurrentPers={setCurrentPers}
-      />
-    )
-  })
+  const slotList = persData.map((pers, i) => (
+    <SlotPers
+      key={i}
+      index={i}
+      pers={pers}
+      active={i === currentPers}
+      setCurrentPers={setCurrentPers}
+    />
+  ))
 
   const componentStyle = { display: componentActive ? 'block' : 'none' }
   return (
