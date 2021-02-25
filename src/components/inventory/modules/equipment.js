@@ -1,12 +1,30 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useDroppable } from '@dnd-kit/core'
+import { useDraggable } from '@dnd-kit/core'
+import { CSS } from '@dnd-kit/utilities'
 
 import Item from './item'
 
 function Equipment (props) {
-  const { onDragStart, onDragOver, onDrop, checkSlotOnItem, setModal } = props
+  const {
+    onDragStart,
+    onDragOver,
+    onDrop,
+    checkSlotOnItem,
+    setModal,
+    isDrag
+  } = props
   const rowNumbers = [1, 2, 3, 3, 2, 1]
+
+  const { setNodeRef: setNodeRefDroppable } = useDroppable({ id })
+  const {
+    attributes,
+    listeners,
+    setNodeRef: setNodeRefDraggable,
+    transform
+  } = useDraggable({ id })
 
   const equipmentSlotList = () => {
     let list = []
@@ -37,7 +55,10 @@ function Equipment (props) {
         <div key={i} className={containerClass}>
           <div
             className='equipment-slot'
-            onClick={e => setModal(true, item1, e.clientX, e.clientY)}
+            onClick={e => {
+              if (isDrag()) setModal(true, item, e.clientX, e.clientY)
+            }}
+            ref={setNodeRefDroppable}
           >
             <div
               draggable='true'
@@ -51,7 +72,9 @@ function Equipment (props) {
 
           <div
             className='equipment-slot'
-            onClick={e => setModal(true, item2, e.clientX, e.clientY)}
+            onClick={e => {
+              if (isDrag()) setModal(true, item, e.clientX, e.clientY)
+            }}
           >
             <div
               draggable='true'

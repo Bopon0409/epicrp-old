@@ -1,25 +1,30 @@
 import Item from './item'
+import { useDroppable } from '@dnd-kit/core'
+import { useDraggable } from '@dnd-kit/core'
+import { CSS } from '@dnd-kit/utilities'
 
-export default function Slot ({
-  setModal,
-  onDragStart,
-  onDragOver,
-  onDrop,
-  item,
-  id,
-  modalActive
-}) {
+export default function Slot ({ setModal, item, id, modalActive, isDrag }) {
+  const { setNodeRef: setNodeRefDroppable } = useDroppable({ id })
+  const {
+    attributes,
+    listeners,
+    setNodeRef: setNodeRefDraggable,
+    transform
+  } = useDraggable({ id })
   return (
     <div
-      className={modalActive ? 'slot slot-no-hover' : 'slot'}
-      onClick={event => setModal(true, item, event.clientX, event.clientY)}
+      className='slot'
+      onClick={e => {
+        if (isDrag()) setModal(true, item, e.clientX, e.clientY)
+      }}
+      ref={setNodeRefDroppable}
     >
       <div
         className='item-wrapper'
-        draggable='true'
-        onDragStart={onDragStart({ id })}
-        onDragOver={onDragOver({ id })}
-        onDrop={onDrop({ id })}
+        ref={setNodeRefDraggable}
+        style={{ transform: CSS.Translate.toString(transform) }}
+        {...listeners}
+        {...attributes}
       >
         {item ? <Item item={item} /> : null}
       </div>

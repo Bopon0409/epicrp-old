@@ -1,6 +1,7 @@
 /* eslint-disable default-case */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react'
+import { DndContext } from '@dnd-kit/core'
 
 import Slot from './modules/slot'
 import Equipment from './modules/equipment'
@@ -14,6 +15,7 @@ export default class Inventory extends Component {
   state = {
     active: false,
     bagType: 0,
+    isDrag: false,
     modal: {
       isActive: false,
       item: {},
@@ -233,6 +235,7 @@ export default class Inventory extends Component {
           key={i}
           id={i}
           item={item}
+          isDrag={() => this.state.isDrag}
           modalActive={this.state.modal.isActive}
           setModal={this.setModal}
           onDragStart={this.handleDragStart}
@@ -372,6 +375,12 @@ export default class Inventory extends Component {
     return false
   }
 
+  handleDragEnd = ({ active, over }) => {
+    if (active.id == over.id) return
+    this.swapItems(Number(active.id), Number(over.id))
+    this.setState({ isDrag: false })
+  }
+
   render () {
     const { modal, bagType, userIndicators, active } = this.state
 
@@ -405,29 +414,40 @@ export default class Inventory extends Component {
               <div className='title inventory-title'>Инвентарь</div>
             </div>
 
-            <div className='equipment'>
-              <Equipment
-                checkSlotOnItem={this.checkSlotOnItem}
-                onDragStart={this.handleDragStart}
-                onDragOver={this.handleDragOver}
-                onDrop={this.handleDrop}
-                setModal={this.setModal}
-              />
-            </div>
+            <DndContext
+              onDragStart={() => this.setState({ isDrag: true })}
+              onDragEnd={this.handleDragEnd}
+            >
+              <div className='equipment'>
+                <Equipment
+                  isDrag={() => this.state.isDrag}
+                  checkSlotOnItem={this.checkSlotOnItem}
+                  onDragStart={this.handleDragStart}
+                  onDragOver={this.handleDragOver}
+                  onDrop={this.handleDrop}
+                  setModal={this.setModal}
+                />
+              </div>
+            </DndContext>
 
-            <div className='inventory'>
-              <div className={bagStyle}>{this.getSlotsInventary('bag')}</div>
-              <div className='inventory-block'>
-                {this.getSlotsInventary('inventory')}
+            <DndContext
+              onDragStart={() => this.setState({ isDrag: true })}
+              onDragEnd={this.handleDragEnd}
+            >
+              <div className='inventory'>
+                <div className={bagStyle}>{this.getSlotsInventary('bag')}</div>
+                <div className='inventory-block'>
+                  {this.getSlotsInventary('inventory')}
+                </div>
+                <div className='bag-hint'>
+                  <img src={Bag} alt='' />
+                </div>
+                <div className='fast-inventory'>
+                  {this.getSlotsInventary('fastInventory')}
+                  <div className='title'>Быстрый доступ</div>
+                </div>
               </div>
-              <div className='bag-hint'>
-                <img src={Bag} alt='' />
-              </div>
-              <div className='fast-inventory'>
-                {this.getSlotsInventary('fastInventory')}
-                <div className='title'>Быстрый доступ</div>
-              </div>
-            </div>
+            </DndContext>
           </div>
 
           <BottomPanel userIndicators={userIndicators} />

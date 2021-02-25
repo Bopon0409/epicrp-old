@@ -87,9 +87,8 @@ window.test = {
 }
 
 const currentTests = () => {
-  setBgActive(true)
-  setChoicePersActive(true)
-  setPersData()
+  setInventoryActive(true)
+  testInventory()
 }
 
 setTimeout(currentTests, 500)
