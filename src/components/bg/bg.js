@@ -6,9 +6,10 @@ export default function Bg () {
   const setBgActive = active => setActive(active)
 
   useEffect(() => {
-    window.EventManager.addHandler('setBgActive', setBgActive.bind(this))
+    const { EventManager } = window
+    EventManager.addHandler('setBgActive', setBgActive.bind(this))
     return function cleanup () {
-      window.EventManager.removeHandler('setBgActive', setBgActive)
+      EventManager.removeHandler('setBgActive')
     }
   })
 

@@ -44,28 +44,20 @@ export default class hud extends Component {
   }
 
   componentDidMount = () => {
-    window.EventManager.addHandler('addAlert', this.addAlert.bind(this))
-    window.EventManager.addHandler('setHudActive', this.setHudActive.bind(this))
-    window.EventManager.addHandler('setHudData', this.setHudData.bind(this))
-    window.EventManager.addHandler(
-      'setGeoHudData',
-      this.setGeoHudData.bind(this)
-    )
-    window.EventManager.addHandler(
-      'setMicroHudData',
-      this.setMicroHudData.bind(this)
-    )
-    window.EventManager.addHandler(
+    const { EventManager } = window
+    EventManager.addHandler('addAlert', this.addAlert.bind(this))
+    EventManager.addHandler('setAllHudData', this.setAllHudData.bind(this))
+    EventManager.addHandler('setHudActive', this.setHudActive.bind(this))
+    EventManager.addHandler('setHudData', this.setHudData.bind(this))
+    EventManager.addHandler('setGeoHudData', this.setGeoHudData.bind(this))
+    EventManager.addHandler('setMicroHudData', this.setMicroHudData.bind(this))
+    EventManager.addHandler(
       'setMissionHudData',
       this.setMissionHudData.bind(this)
     )
-    window.EventManager.addHandler(
+    EventManager.addHandler(
       'setSpeedometerHudData',
       this.setSpeedometerHudData.bind(this)
-    )
-    window.EventManager.addHandler(
-      'setAllHudData',
-      this.setAllHudData.bind(this)
     )
 
     // Интервал на добавление уведомлений из очереди
@@ -86,20 +78,15 @@ export default class hud extends Component {
   }
 
   componentWillUnmount = () => {
-    window.EventManager.removeHandler('addAlert', this.addAlert)
-    window.EventManager.removeHandler('setHudActive', this.setHudActive)
-    window.EventManager.removeHandler('setHudData', this.setHudData)
-    window.EventManager.removeHandler('setGeoHudData', this.setGeoHudData)
-    window.EventManager.removeHandler('setMicroHudData', this.setMicroHudData)
-    window.EventManager.removeHandler(
-      'setMissionHudData',
-      this.setMissionHudData
-    )
-    window.EventManager.removeHandler(
-      'setSpeedometerHudData',
-      this.setSpeedometerHudData
-    )
-    window.EventManager.removeHandler('setAllHudData', this.setAllHudData)
+    const { EventManager } = window
+    EventManager.removeHandler('addAlert')
+    EventManager.removeHandler('setHudActive')
+    EventManager.removeHandler('setHudData')
+    EventManager.removeHandler('setGeoHudData')
+    EventManager.removeHandler('setMicroHudData')
+    EventManager.removeHandler('setMissionHudData')
+    EventManager.removeHandler('setSpeedometerHudData')
+    EventManager.removeHandler('setAllHudData')
 
     clearInterval(this.turnInteval)
   }

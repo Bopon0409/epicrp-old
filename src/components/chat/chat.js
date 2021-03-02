@@ -12,27 +12,23 @@ export default class Chat extends Component {
   }
 
   componentDidMount = () => {
-    window.EventManager.addHandler(
-      'setChatActive',
-      this.setChatActive.bind(this)
-    )
-    window.EventManager.addHandler(
+    const { EventManager } = window
+    EventManager.addHandler('setChatActive', this.setChatActive.bind(this))
+    EventManager.addHandler('setChatShow', this.setChatShow.bind(this))
+    EventManager.addHandler('clearChat', this.clearChat.bind(this))
+    EventManager.addHandler(
       'pushChatMsgFromClient',
       this.pushChatMsgFromClient.bind(this)
     )
-    window.EventManager.addHandler('setChatShow', this.setChatShow.bind(this))
-    window.EventManager.addHandler('clearChat', this.clearChat.bind(this))
     document.addEventListener('keydown', this.enterHandler, false)
   }
 
   componentWillUnmount = () => {
-    window.EventManager.removeHandler(
-      'pushChatMsgFromClient',
-      this.pushChatMsgFromClient
-    )
-    window.EventManager.removeHandler('setChatActive', this.setChatActive)
-    window.EventManager.removeHandler('setChatShow', this.setChatShow)
-    window.EventManager.removeHandler('clearChat', this.clearChat)
+    const { EventManager } = window
+    EventManager.removeHandler('pushChatMsgFromClient')
+    EventManager.removeHandler('setChatActive')
+    EventManager.removeHandler('setChatShow')
+    EventManager.removeHandler('clearChat')
     document.removeEventListener('keydown', this.enterHandler, false)
   }
 
@@ -47,7 +43,12 @@ export default class Chat extends Component {
   }
 
   setChatShow = isShow => this.setState({ isShow })
-  setChatActive = active => this.setState({ active })
+  setChatActive = active =>
+    this.setState(({ isShow }) => ({
+      active,
+      isShow: !active ? false : isShow
+    }))
+
   clearChat = () => this.setState({ messages: [] })
 
   enterHandler = event => {

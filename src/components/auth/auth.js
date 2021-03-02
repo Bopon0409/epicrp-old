@@ -43,32 +43,23 @@ export default class Auth extends Component {
   }
 
   componentDidMount = () => {
-    window.EventManager.addHandler(
+    const { EventManager } = window
+    EventManager.addHandler(
       'userAuthAnswer',
       this.authServerAnswerHandler.bind(this)
     )
-
-    window.EventManager.addHandler(
+    EventManager.addHandler(
       'userRegisterAnswer',
       this.registerServerAnswerHandler.bind(this)
     )
-
-    window.EventManager.addHandler(
-      'setAuthActive',
-      this.setAuthActive.bind(this)
-    )
+    EventManager.addHandler('setAuthActive', this.setAuthActive.bind(this))
   }
 
   componentWillUnmount = () => {
-    window.EventManager.removeHandler(
-      'userAuthAnswer',
-      this.authServerAnswerHandler
-    )
-    window.EventManager.removeHandler(
-      'userRegisterAnswer',
-      this.registerServerAnswerHandler
-    )
-    window.EventManager.removeHandler('setAuthActive', this.setAuthActive)
+    const { EventManager } = window
+    EventManager.removeHandler('userAuthAnswer')
+    EventManager.removeHandler('userRegisterAnswer')
+    EventManager.removeHandler('setAuthActive')
   }
 
   setAuthActive = active => this.setState({ active })
@@ -79,7 +70,7 @@ export default class Auth extends Component {
   }
 
   registerServerAnswerHandler = isSuccess => {
-    if (isSuccess) this.setState({ isLogin: true }, () => this.clearInputs())
+    if (isSuccess) this.setState({ isLogin: true }, this.clearInputs)
     else this.setState({ errorMsg: 'Такой пользователь уже существует' })
   }
 

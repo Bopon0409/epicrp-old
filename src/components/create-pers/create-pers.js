@@ -3,20 +3,18 @@ import topPanelIcon from './images/top-panel-icon.svg'
 import backgroundPng from './images/bg.png'
 
 export default function CreatePers () {
-  const [step, setStep] = useState(2)
+  const [step] = useState(2)
   const [componentActive, setComponentActive] = useState(false)
   const setCreatePersActive = active => setComponentActive(active)
 
   useEffect(() => {
-    window.EventManager.addHandler(
+    const { EventManager } = window
+    EventManager.addHandler(
       'setCreatePersActive',
       setCreatePersActive.bind(this)
     )
     return function cleanup () {
-      window.EventManager.removeHandler(
-        'setCreatePersActive',
-        setCreatePersActive
-      )
+      EventManager.removeHandler('setCreatePersActive')
     }
   })
 

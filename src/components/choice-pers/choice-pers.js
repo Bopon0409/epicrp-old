@@ -11,18 +11,16 @@ export default function ChoicePers () {
   const pushPersData = data => setPersData(data)
 
   useEffect(() => {
-    window.EventManager.addHandler(
+    const { EventManager } = window
+    EventManager.addHandler(
       'setChoicePersActive',
       setChoicePersActive.bind(this)
     )
-    window.EventManager.addHandler('pushPersData', pushPersData.bind(this))
+    EventManager.addHandler('pushPersData', pushPersData.bind(this))
 
     return function cleanup () {
-      window.EventManager.removeHandler(
-        'setChoicePersActive',
-        setChoicePersActive
-      )
-      window.EventManager.removeHandler('pushPersData', pushPersData)
+      EventManager.removeHandler('setChoicePersActive')
+      EventManager.removeHandler('pushPersData')
     }
   })
 
