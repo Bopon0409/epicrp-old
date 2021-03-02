@@ -21,6 +21,9 @@
 - `window.trigger('setAuthActive', active: bollean)` - Открыть/Закрыть окно авторизации
 - `window.trigger('setHudActive', active: bollean)` - Открыть/Закрыть HUD
 - `window.trigger('setBgActive', active: bollean)` - Открыть/Закрыть фон
+- `window.trigger('setChatActive', active: bollean)` - Активация чата
+- `window.trigger('setChatShow', active: bollean)` - Показать/Скрыть чат
+- `window.trigger('clearChat')` - Очистить чат
 
 ### Тригеры **Фронт -> Клиент**
 
@@ -34,12 +37,12 @@
 
 ### chatApi
 
-#### Управление через глобальный объект window.chatApi
+#### Управление через глобальный объект chatApi
 
 - `push(msg: json string)`
 - `clear()`
 - `activate(active: boolean)`
-- `show(active: boolean)`
+- `show(show: boolean)`
 
 ### Тестирование фронта
 
@@ -56,8 +59,8 @@
 - `setAuthActive(active)` : Открытие/закрытие авторизации/регистрации
 - `setHudActive(active)` : Открытие/закрытие HUD
 - `setBgActive(active)` : Открытие/закрытие фона
-- `setChatActive(active)` : Открытие/закрытие чата
-- `setChatInput(active)` : Открытие/закрытие возможности ввода
+- `setChatActive(active)` : Активация чата
+- `setChatShow(active)` : Показать/Скрыть чат
 - `clearChat()` : Очистка чата
 - `setHudData()` : Имитация загрузки данных (малый набор) в hud
 - `setAllHudData()` : Имитация загрузки данных (весь набор) в hud

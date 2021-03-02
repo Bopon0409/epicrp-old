@@ -91,9 +91,7 @@ window.test = {
 
 const currentTests = () => {
   setBgActive(true)
-  setChatActive(true)
-  setChatShow(true)
-  testChatPushMsg()
+  setCreatePersActive(true)
 }
 
 setTimeout(currentTests, 500)
