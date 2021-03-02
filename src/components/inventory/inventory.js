@@ -213,14 +213,14 @@ export default class Inventory extends Component {
   getSlotsInventary = type => {
     switch (type) {
       case 'inventory':
-        return this.renderSlots(0, 25)
+        return this.renderSlots(1, 26)
       case 'fastInventory':
         return this.renderSlots(100, 104)
       case 'bag':
         const { bagType } = this.state
         if (bagType === 0) return null
-        else if (bagType === 1) return this.renderSlots(25, 30)
-        else if (bagType === 2) return this.renderSlots(25, 35)
+        else if (bagType === 1) return this.renderSlots(26, 31)
+        else if (bagType === 2) return this.renderSlots(26, 36)
     }
   }
 

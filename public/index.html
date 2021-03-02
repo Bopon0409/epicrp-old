@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script>
       document.addEventListener('DOMContentLoaded', () => (window.mp = mp))
+      chatApi = {
+        push: msg => window.trigger('pushChatMsgFromClient', msg),
+        clear: () => window.trigger('clearChat'),
+        activate: active => window.trigger('setChatActive', active),
+        show: show => window.trigger('setChatShow', show)
+      }
     </script>
     <title>Epic RP</title>
   </head>

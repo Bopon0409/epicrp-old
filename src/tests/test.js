@@ -11,14 +11,16 @@ import persData from './json/persData.json'
 
 const setInventoryActive = active =>
   window.trigger('setInventoryActive', active)
+const setCreatePersActive = active =>
+  window.trigger('setCreatePersActive', active)
 const setChoicePersActive = active =>
   window.trigger('setChoicePersActive', active)
 const setAuthActive = active => window.trigger('setAuthActive', active)
 const setHudActive = active => window.trigger('setHudActive', active)
 const setBgActive = active => window.trigger('setBgActive', active)
-const setChatActive = active => window.chatApi.show(active)
-const setChatInput = active => window.chatApi.activate(active)
-const clearChat = () => window.chatApi.clearChat()
+const setChatActive = active => window.chatApi.activate(active)
+const setChatShow = show => window.chatApi.show(show)
+const clearChat = () => window.chatApi.clear()
 
 const testAuthAnswer = data => window.trigger('userAuthAnswer', data)
 const testRegisterAnswer = data => window.trigger('userRegisterAnswer', data)
@@ -74,7 +76,7 @@ window.test = {
   setBgActive,
   setChoicePersActive,
   setChatActive,
-  setChatInput,
+  setChatShow,
   testChatPushMsg,
   clearChat,
   setHudData,
@@ -83,12 +85,15 @@ window.test = {
   setMissionHudData,
   setSpeedometerHudData,
   setAllHudData,
-  setPersData
+  setPersData,
+  setCreatePersActive
 }
 
 const currentTests = () => {
-  setInventoryActive(true)
-  testInventory()
+  setBgActive(true)
+  setChatActive(true)
+  setChatShow(true)
+  testChatPushMsg()
 }
 
 setTimeout(currentTests, 500)

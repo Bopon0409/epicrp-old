@@ -5,7 +5,7 @@ import chatInputIcon from './images/chat-input-icon.svg'
 export default class Chat extends Component {
   state = {
     active: false,
-    isInput: true,
+    isShow: false,
     activeBtn: 'ic',
     inputValue: '',
     messages: []
@@ -20,7 +20,7 @@ export default class Chat extends Component {
       'pushChatMsgFromClient',
       this.pushChatMsgFromClient.bind(this)
     )
-    window.EventManager.addHandler('setChatInput', this.setChatInput.bind(this))
+    window.EventManager.addHandler('setChatShow', this.setChatShow.bind(this))
     window.EventManager.addHandler('clearChat', this.clearChat.bind(this))
     document.addEventListener('keydown', this.enterHandler, false)
   }
@@ -31,13 +31,12 @@ export default class Chat extends Component {
       this.pushChatMsgFromClient
     )
     window.EventManager.removeHandler('setChatActive', this.setChatActive)
-    window.EventManager.removeHandler('setChatInput', this.setChatInput)
+    window.EventManager.removeHandler('setChatShow', this.setChatShow)
     window.EventManager.removeHandler('clearChat', this.clearChat)
     document.removeEventListener('keydown', this.enterHandler, false)
   }
 
   pushChatMsgFromClient = msg => {
-    console.log(msg)
     if (msg.type) {
       this.setState(({ messages }) => {
         const newMessages = messages.slice()
@@ -47,7 +46,7 @@ export default class Chat extends Component {
     }
   }
 
-  setChatInput = isInput => this.setState({ isInput })
+  setChatShow = isShow => this.setState({ isShow })
   setChatActive = active => this.setState({ active })
   clearChat = () => this.setState({ messages: [] })
 
@@ -72,9 +71,7 @@ export default class Chat extends Component {
   onInputChange = event => this.setState({ inputValue: event.target.value })
 
   render () {
-    const { activeBtn, inputValue, messages, isInput: isShow } = this.state
-    const { isInput, active } = this.state
-    const chatStyle = active ? { display: 'block' } : { display: 'none' }
+    const { activeBtn, inputValue, messages, active, isShow } = this.state
 
     const inputContainer = isShow ? (
       <>
@@ -139,11 +136,17 @@ export default class Chat extends Component {
       </>
     ) : null
 
+    const chatStyle = { opacity: isShow ? '1' : '0' }
+
     return (
-      <div className='chat' style={chatStyle}>
-        <MsgList messages={messages} isInput={isInput} />
-        {inputContainer}
-      </div>
+      <>
+        {active ? (
+          <div className='chat' style={chatStyle}>
+            <MsgList messages={messages} />
+            {inputContainer}
+          </div>
+        ) : null}
+      </>
     )
   }
 }

@@ -6,8 +6,7 @@ import Auth from '../auth'
 import Hud from '../hud'
 import Chat from '../chat'
 import ChoicePers from '../choice-pers'
-
-import './app.scss'
+import CreatePers from '../create-pers'
 
 export default function App () {
   return (
@@ -18,6 +17,7 @@ export default function App () {
       <Background />
       <Chat />
       <ChoicePers />
+      <CreatePers />
     </>
   )
 }

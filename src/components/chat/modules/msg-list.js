@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function MsgList ({ messages, isInput }) {
+export default function MsgList ({ messages }) {
   const getBasicMsg = (msg, i) => {
     return (
       <div key={i} className={`msg-${msg.type}`}>
@@ -26,7 +26,7 @@ export default function MsgList ({ messages, isInput }) {
   const getTodoMsg = (msg, i) => {
     return (
       <div key={i} className={`msg-me`}>
-        <span className="todo">{msg.text1}, </span>
+        <span className='todo'>{msg.text1}, </span>
         {msg.text2}
       </div>
     )
@@ -38,9 +38,5 @@ export default function MsgList ({ messages, isInput }) {
     else return getBasicMsg(msg, i)
   })
 
-  return (
-    <div className={isInput ? 'container' : 'container container-hide'}>
-      {list}
-    </div>
-  )
+  return <div className='container'>{list}</div>
 }
