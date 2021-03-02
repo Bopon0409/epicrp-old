@@ -238,9 +238,6 @@ export default class Inventory extends Component {
           isDrag={() => this.state.isDrag}
           modalActive={this.state.modal.isActive}
           setModal={this.setModal}
-          onDragStart={this.handleDragStart}
-          onDragOver={this.handleDragOver}
-          onDrop={this.handleDrop}
         />
       )
     }
@@ -310,7 +307,7 @@ export default class Inventory extends Component {
 
     // Проверка на надевание (для отправки на сервер)
 
-    if (toSlot >= 100) {
+    if (toSlot >= 100 && fromSlot < 100) {
       if (window.mp) window.mp.trigger('userEquippedItem', item1.idItem)
       console.log('userEquippedItem')
     }
@@ -323,7 +320,7 @@ export default class Inventory extends Component {
 
     // Проверка на снятие (для отправки на сервер)
 
-    if (fromSlot >= 100) {
+    if (fromSlot >= 100 && toSlot < 100) {
       if (window.mp) window.mp.trigger('userTakeOfItem', item1.idItem)
       console.log('userTakeOfItem')
     }
@@ -355,28 +352,8 @@ export default class Inventory extends Component {
 
   // Drag'n'Drop Логика
 
-  handleDragStart = data => event => {
-    const item = this.checkSlotOnItem(data.id)
-    if (item) {
-      let fromSlot = JSON.stringify({ id: data.id })
-      event.dataTransfer.setData('dragContent', fromSlot)
-    } else event.preventDefault()
-  }
-
-  handleDragOver = () => event => {
-    event.preventDefault()
-    return false
-  }
-
-  handleDrop = data => event => {
-    event.preventDefault()
-    const fromSlot = JSON.parse(event.dataTransfer.getData('dragContent'))
-    this.swapItems(fromSlot.id, data.id)
-    return false
-  }
-
   handleDragEnd = ({ active, over }) => {
-    if (active.id == over.id) return
+    if (active.id === over.id) return
     this.swapItems(Number(active.id), Number(over.id))
     this.setState({ isDrag: false })
   }
@@ -422,18 +399,10 @@ export default class Inventory extends Component {
                 <Equipment
                   isDrag={() => this.state.isDrag}
                   checkSlotOnItem={this.checkSlotOnItem}
-                  onDragStart={this.handleDragStart}
-                  onDragOver={this.handleDragOver}
-                  onDrop={this.handleDrop}
                   setModal={this.setModal}
                 />
               </div>
-            </DndContext>
 
-            <DndContext
-              onDragStart={() => this.setState({ isDrag: true })}
-              onDragEnd={this.handleDragEnd}
-            >
               <div className='inventory'>
                 <div className={bagStyle}>{this.getSlotsInventary('bag')}</div>
                 <div className='inventory-block'>

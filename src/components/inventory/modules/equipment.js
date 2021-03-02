@@ -1,23 +1,12 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
-import PropTypes from 'prop-types'
 import { useDroppable } from '@dnd-kit/core'
 import { useDraggable } from '@dnd-kit/core'
 import { CSS } from '@dnd-kit/utilities'
 
 import Item from './item'
 
-function Equipment (props) {
-  const {
-    onDragStart,
-    onDragOver,
-    onDrop,
-    checkSlotOnItem,
-    setModal,
-    isDrag
-  } = props
-  const rowNumbers = [1, 2, 3, 3, 2, 1]
-
+const EquipmentSlotView = ({ id, item, img, isDrag, setModal }) => {
   const { setNodeRef: setNodeRefDroppable } = useDroppable({ id })
   const {
     attributes,
@@ -26,12 +15,34 @@ function Equipment (props) {
     transform
   } = useDraggable({ id })
 
+  return (
+    <div
+      className='equipment-slot'
+      onClick={e => {
+        if (isDrag()) setModal(true, item, e.clientX, e.clientY)
+      }}
+      ref={setNodeRefDroppable}
+    >
+      <div
+        ref={setNodeRefDraggable}
+        style={{ transform: CSS.Translate.toString(transform) }}
+        {...listeners}
+        {...attributes}
+      >
+        {item ? <Item item={item} /> : img}
+      </div>
+    </div>
+  )
+}
+
+export default function Equipment ({ checkSlotOnItem, setModal, isDrag }) {
+  const rowNumbers = [1, 2, 3, 3, 2, 1]
+
   const equipmentSlotList = () => {
     let list = []
     for (let i = 1; i < 7; i++) {
       const id1 = 200 + i
       const id2 = 206 + i
-
       const item1 = checkSlotOnItem(id1)
       const item2 = checkSlotOnItem(id2)
 
@@ -53,38 +64,20 @@ function Equipment (props) {
 
       list.push(
         <div key={i} className={containerClass}>
-          <div
-            className='equipment-slot'
-            onClick={e => {
-              if (isDrag()) setModal(true, item, e.clientX, e.clientY)
-            }}
-            ref={setNodeRefDroppable}
-          >
-            <div
-              draggable='true'
-              onDragStart={onDragStart({ id: id1 })}
-              onDragOver={onDragOver({ id: id1 })}
-              onDrop={onDrop({ id: id1 })}
-            >
-              {item1 ? <Item item={item1} /> : img1}
-            </div>
-          </div>
-
-          <div
-            className='equipment-slot'
-            onClick={e => {
-              if (isDrag()) setModal(true, item, e.clientX, e.clientY)
-            }}
-          >
-            <div
-              draggable='true'
-              onDragStart={onDragStart({ id: id2 })}
-              onDragOver={onDragOver({ id: id2 })}
-              onDrop={onDrop({ id: id2 })}
-            >
-              {item2 ? <Item item={item2} /> : img2}
-            </div>
-          </div>
+          <EquipmentSlotView
+            id={id1}
+            img={img1}
+            item={item1}
+            isDrag={isDrag}
+            setModal={setModal}
+          />
+          <EquipmentSlotView
+            id={id2}
+            img={img2}
+            item={item2}
+            isDrag={isDrag}
+            setModal={setModal}
+          />
         </div>
       )
     }
@@ -93,13 +86,3 @@ function Equipment (props) {
 
   return <>{equipmentSlotList()}</>
 }
-
-Equipment.propTypes = {
-  onDragStart: PropTypes.func.isRequired,
-  onDragOver: PropTypes.func.isRequired,
-  onDrop: PropTypes.func.isRequired,
-  checkSlotOnItem: PropTypes.func.isRequired,
-  setModal: PropTypes.func.isRequired
-}
-
-export default Equipment
