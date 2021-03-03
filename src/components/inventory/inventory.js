@@ -175,7 +175,7 @@ export default class Inventory extends Component {
       if (equipmentSlot) {
         if (equipmentSlot === idSlot && equipmentSlot !== 212) return
       }
-      if (idSlot >= 25 && idSlot <= 34) return
+      if (idSlot >= 26 && idSlot <= 35) return
       totalWeight += item.weight * item.quantity
     })
     totalWeight = totalWeight.toFixed(1)
@@ -274,13 +274,14 @@ export default class Inventory extends Component {
 
     // Проверка на перемещение сумки в сумку
     if (item1.bag) {
-      if (toSlot >= 25 && toSlot <= 34) return
+      if (toSlot >= 26 && toSlot <= 35) return
     }
     if (item2) {
       if (item2.bag) {
-        if (fromSlot >= 25 && fromSlot <= 34) return
+        if (fromSlot >= 26 && fromSlot <= 35) return
       }
     }
+
 
     // Проверка на стак предметов
     if (item2) {

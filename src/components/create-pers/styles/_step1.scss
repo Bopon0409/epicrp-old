@@ -1,87 +1,25 @@
 .create-pers {
-  position: absolute;
-  z-index: 2;
-  top: 0px;
-  left: 0px;
-  font-family: 'Nunito', sans-serif;
-  background-size: 100% 100%;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-
-  .top-panel {
-    font-weight: 18px;
-    width: 90%;
-    position: absolute;
-    left: 5%;
-    top: 5%;
-    color: white;
-    text-transform: uppercase;
-    text-align: right;
-    letter-spacing: 6px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding-bottom: 25px;
-    display: flex;
-    align-items: center;
-
-    .icon {
-      position: relative;
-    }
-
-    .icon-center {
-      position: relative;
-      left: 50%;
-      margin-left: -10px;
-    }
-
-    .text {
-      .first {
-        font-weight: bold;
-        margin-right: 10px;
-      }
-    }
-  }
-
   .step1 {
-    color: white;
-
-    .title-block {
+    .step1__form {
       position: absolute;
-      top: 20%;
       left: 50%;
-      width: 300px;
-      margin-left: -150px;
-      text-align: center;
-
-      .title {
-        font-size: 24px;
-        font-weight: bold;
-        text-transform: uppercase;
-      }
-
-      .subtitle {
-        font-size: 18px;
-        color: rgba(255, 255, 255, 0.5);
-      }
+      top: 50%;
+      margin-left: -210px;
+      margin-top: -55px;
     }
 
     .form {
-      position: absolute;
-      width: 400px;
+      width: 420px;
       height: 110px;
-      left: 50%;
-      top: 50%;
-      margin-left: -200px;
-      margin-top: -55px;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       text-transform: uppercase;
 
-      .input-block {
+      .form__input-row {
         width: 46%;
 
-        input {
+        .form__input {
           box-sizing: border-box;
           width: 100%;
           outline: none;
@@ -93,9 +31,21 @@
           font-size: 20px;
         }
 
-        label {
+        .form__input_error {
+          border-bottom: 1px solid red;
+        }
+
+        .form__label {
           font-size: 13px;
           color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form__error-hint {
+          height: 20px;
+          margin-top: 3px;
+          color: red;
+          text-transform: uppercase;
+          font-size: 11px;
         }
       }
 
@@ -104,15 +54,16 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        margin-top: 20px;
 
-        .hint {
+        .sex__label {
           font-size: 13px;
           color: rgba(255, 255, 255, 0.5);
           margin-right: 30px;
           width: 45%;
         }
 
-        .btn {
+        .sex__btn {
           cursor: pointer;
           padding: 10px 14px;
           background: rgba(255, 255, 255, 0.05);
@@ -123,7 +74,7 @@
           color: rgba(255, 255, 255, 0.2);
         }
 
-        .btn-active {
+        .sex__btn_active {
           background: linear-gradient(
             80.65deg,
             rgba(230, 150, 30, 0.2) 6.97%,
@@ -134,7 +85,7 @@
       }
     }
 
-    .btn-hint {
+    .enter {
       position: absolute;
       top: 50%;
       margin-top: -65px;
@@ -145,16 +96,16 @@
       display: flex;
       flex-direction: column;
 
-      img {
+      .enter__img {
         cursor: pointer;
       }
 
-      .text {
+      .enter__text {
         font-size: 18px;
         color: rgba(255, 255, 255, 0.3);
       }
 
-      .text-active {
+      .enter__text_active {
         color: white;
       }
     }

@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import Step1 from './modules/step1'
-import TopPanel from './modules/top-panel'
+import Step2 from './modules/step2'
+import TopPanel from './modules/header'
 
 import backgroundPng from './images/bg.png'
 
 export default function CreatePers () {
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(2)
   const [componentActive, setComponentActive] = useState(false)
-  const setCreatePersActive = active => setComponentActive(active)
 
   // Параметры персонажа
   const [name, setName] = useState('')
   const [surnname, setSurname] = useState('')
   const [sex, setSex] = useState('male')
 
+  const setCreatePersActive = active => setComponentActive(active)
   useEffect(() => {
     const { EventManager } = window
     EventManager.addHandler(
@@ -44,6 +45,7 @@ export default function CreatePers () {
           setStep={setStep}
         />
       ) : null}
+      {step === 2 ? <Step2 /> : null}
     </div>
   )
 }
