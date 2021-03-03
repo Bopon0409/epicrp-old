@@ -1,10 +1,23 @@
 # Epic front
 
+### Фронтенд для проекта Epic RP. Стек технологий:
+
+- React (react hooks, prop-types)
+- Scss
+- БЭМ
+
+## Скрипты
+
+- `npm i` Установить зависимости
+- `npm run dev` Запуск development сервера
+- `npm run build` Компиляция билда
+- `npm run analyze` Запуск анализа билда
+
 ## Документация
 
 ### Тригеры **Клиент -> Фронт**
 
-#### Выполняются через `browser.execute('window.trigger('triggerName', data)')`
+#### Выполняются через `browser.execute('trigger('triggerName', argument)')`
 
 - `window.trigger('pushInventaryDataToFront', data: json string)` - Загрузка данных инвентаря на фронт
 - `window.trigger('pushPersData', data: json string)` - Загрузка данных о персонажах игрока
@@ -35,9 +48,9 @@
 - `mp.trigger('userRegister', login: string, email: string, pass: string)` - Пользователь пытается зарегестрироваться
 - `mp.trigger('pushMessageToClient', type: string, text: string)` - Пользователь отправил сообщение
 
-### chatApi
+### chatAPI
 
-#### Управление через глобальный объект chatApi
+#### Управление через глобальный объект chatAPI
 
 - `push(msg: json string)`
 - `clear()`
@@ -48,7 +61,7 @@
 
 #### Управление через глобальный объект window.test (в консоли)
 
-Пример: `window.test.openHUD()`
+Пример: `test.setHudActive(true)`
 
 - `testAlerts()` : Имитация загрузки уведомлений в hud с сервера
 - `testInventory()` : Имитация загрузки данных инвентаря с сервера
