@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { setBgActive } from './modules/bg.test'
 import { setCreatePersActive } from './modules/create-pers.test'
 import { setInventoryActive, testInventory } from './modules/inventory.test'
@@ -52,6 +51,5 @@ window.test = {
 // current tests
 setTimeout(() => {
   setBgActive(true)
-  setInventoryActive(true)
-  testInventory()
+  setCreatePersActive(true)
 }, 500)

@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import topPanelIcon from './images/top-panel-icon.svg'
+import Step1 from './modules/step1'
+import TopPanel from './modules/top-panel'
+
 import backgroundPng from './images/bg.png'
 
 export default function CreatePers () {
-  const [step] = useState(2)
+  const [step, setStep] = useState(1)
   const [componentActive, setComponentActive] = useState(false)
   const setCreatePersActive = active => setComponentActive(active)
+
+  // Параметры персонажа
+  const [name, setName] = useState('')
+  const [surnname, setSurname] = useState('')
+  const [sex, setSex] = useState('male')
 
   useEffect(() => {
     const { EventManager } = window
@@ -23,18 +30,20 @@ export default function CreatePers () {
     background: step === 1 ? 'rgba(0, 0, 0, 0.9)' : '',
     backgroundImage: step !== 1 ? `url(${backgroundPng})` : ''
   }
-  const topPanelStyle = {
-    justifyContent: step !== 1 ? 'space-between' : 'flex-end'
-  }
   return (
     <div className='create-pers' style={componentStyle}>
-      <div className='top-panel' style={topPanelStyle}>
-        {step !== 1 ? <img src={topPanelIcon} className='icon' alt='' /> : null}
-        <div className='text'>
-          <span className='first'>Создание</span>
-          <span className='second'>Персонажа</span>
-        </div>
-      </div>
+      <TopPanel step={step} />
+      {step === 1 ? (
+        <Step1
+          sex={sex}
+          name={name}
+          surname={surnname}
+          setSex={setSex}
+          setName={setName}
+          setSurname={setSurname}
+          setStep={setStep}
+        />
+      ) : null}
     </div>
   )
 }

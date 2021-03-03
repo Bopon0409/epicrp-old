@@ -26,6 +26,10 @@
 
     .icon {
       position: relative;
+    }
+
+    .icon-center {
+      position: relative;
       left: 50%;
       margin-left: -10px;
     }
@@ -34,6 +38,124 @@
       .first {
         font-weight: bold;
         margin-right: 10px;
+      }
+    }
+  }
+
+  .step1 {
+    color: white;
+
+    .title-block {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      width: 300px;
+      margin-left: -150px;
+      text-align: center;
+
+      .title {
+        font-size: 24px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .subtitle {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+
+    .form {
+      position: absolute;
+      width: 400px;
+      height: 110px;
+      left: 50%;
+      top: 50%;
+      margin-left: -200px;
+      margin-top: -55px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      text-transform: uppercase;
+
+      .input-block {
+        width: 46%;
+
+        input {
+          box-sizing: border-box;
+          width: 100%;
+          outline: none;
+          background: transparent;
+          border: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+          color: white;
+          text-transform: uppercase;
+          font-size: 20px;
+        }
+
+        label {
+          font-size: 13px;
+          color: rgba(255, 255, 255, 0.5);
+        }
+      }
+
+      .sex {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .hint {
+          font-size: 13px;
+          color: rgba(255, 255, 255, 0.5);
+          margin-right: 30px;
+          width: 45%;
+        }
+
+        .btn {
+          cursor: pointer;
+          padding: 10px 14px;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 5px;
+          margin-left: 6px;
+          font-weight: 300;
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-active {
+          background: linear-gradient(
+            80.65deg,
+            rgba(230, 150, 30, 0.2) 6.97%,
+            rgba(242, 201, 76, 0.2) 92.8%
+          );
+          color: #e6961e;
+        }
+      }
+    }
+
+    .btn-hint {
+      position: absolute;
+      top: 50%;
+      margin-top: -65px;
+      right: 10%;
+      width: 105px;
+      height: 130px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+
+      img {
+        cursor: pointer;
+      }
+
+      .text {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      .text-active {
+        color: white;
       }
     }
   }
