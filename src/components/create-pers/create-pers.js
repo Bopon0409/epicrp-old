@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Step1 from './modules/step1'
 import Step2 from './modules/step2'
+import Step3 from './modules/step3'
 import Header from './modules/header'
 import Transition from './modules/transition'
 
@@ -8,7 +9,7 @@ import backgroundPng from './images/bg.png'
 
 export default function CreatePers () {
   // component state
-  const [step, setStep] = useState(2)
+  const [step, setStep] = useState(3)
   const [componentActive, setComponentActive] = useState(false)
 
   // step1 data
@@ -67,11 +68,11 @@ export default function CreatePers () {
         />
       )}
 
+      {step === 3 && <Step3 />}
+
       {(step === 2 || step === 3) && (
         <Transition step={step} setStep={setStep} finishCreate={finishCreate} />
       )}
-
-      
     </div>
   )
 }
