@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import InputRange from 'react-input-range'
+
 import motherImg from '../images/mother.png'
 import fatherImg from '../images/father.png'
 
-export default function Step2 () {
-  const [activeMother, setActiveMother] = useState(0)
-  const [activeFather, setActiveFather] = useState(0)
+export default function Step2 (props) {
+  const { activeMother, activeFather, sliderValue } = props
+  const { setActiveMother, setActiveFather, setSliderValue } = props
 
   const catalog = (active, isMother) => {
     const list = []
@@ -38,6 +40,23 @@ export default function Step2 () {
         <div className='catalog__text text'>
           <div className='text__hint'>Отец</div>
           <div className='text__name'>Купитман</div>
+        </div>
+      </div>
+
+      <div className='slider'>
+        <div className='slider__label'>Схожесть</div>
+        <InputRange
+          minValue={-5}
+          maxValue={105}
+          step={1}
+          value={sliderValue}
+          onChange={range => {
+            range >= 0 && range <= 100 && setSliderValue(range)
+          }}
+        />
+        <div className='slider__hint-container'>
+          <span className='slider__hint-item'>м</span>
+          <span className='slider__hint-item'>о</span>
         </div>
       </div>
     </div>
