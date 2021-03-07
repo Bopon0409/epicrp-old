@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import InputRange from 'react-input-range'
 
 import motherImg from '../images/mother.png'

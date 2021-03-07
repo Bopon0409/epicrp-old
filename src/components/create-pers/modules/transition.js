@@ -33,7 +33,7 @@ export default function Transition ({ step, setStep, finishCreate }) {
         onMouseEnter={() => setNextActive(true)}
         onMouseLeave={() => setNextActive(false)}
       >
-        <div>Далее</div>
+        <div>{step === 2 ? 'Далее' : 'Готово'}</div>
       </div>
     </div>
   )

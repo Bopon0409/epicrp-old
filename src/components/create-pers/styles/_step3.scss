@@ -1,7 +1,120 @@
 @import './menu';
-@import './face';
 
 .create-pers {
   .step3 {
+    .slider {
+      margin-bottom: 5px;
+      .slider__label {
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin-bottom: 3px;
+      }
+
+      .input-range__slider {
+        background-color: white;
+        border: none;
+      }
+
+      .input-range__label--max {
+        display: none;
+      }
+
+      .input-range__label--min {
+        margin-left: 4px;
+        font-family: Nunito;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .input-range__label-container {
+        display: none;
+      }
+
+      .input-range__track {
+        height: 5px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 5px;
+      }
+
+      .input-range__track--active {
+        background: transparent;
+      }
+
+      .slider__hint-item {
+        font-size: 14px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+
+    .face::-webkit-scrollbar {
+      width: 10px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 5px;
+    }
+
+    .face::-webkit-scrollbar-thumb {
+      width: 10px;
+      border-radius: 5px;
+      background: white;
+    }
+
+    .current-block {
+      position: absolute;
+      width: 380px;
+      height: 400px;
+      top: 50%;
+      right: 50px;
+      margin-top: -200px;
+      box-sizing: border-box;
+      padding-right: 20px;
+      padding-left: 10px;
+      margin-bottom: 13px;
+    }
+
+    .face {
+      overflow-y: auto;
+    }
+
+    .leather {
+      width: 320px;
+    }
+
+    .toggle-bar {
+      color: white;
+
+      .toggle-bar__title {
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin-bottom: 5px;
+      }
+
+      .toggle-bar__container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+
+        .toggle-bar__item {
+          font-weight: bold;
+          width: 38px;
+          height: 38px;
+          box-sizing: border-box;
+          background: rgba(255, 255, 255, 0.3);
+          font-size: 14px;
+          text-transform: uppercase;
+          color: #ffffff;
+          padding-top: 10px;
+          text-align: center;
+          cursor: pointer;
+        }
+
+        .toggle-bar__item_active {
+          background: white;
+          color: black;
+        }
+      }
+    }
   }
 }
