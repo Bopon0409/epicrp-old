@@ -84,11 +84,9 @@
 
 ### chatAPI
 
-#### Управление через глобальный объект chatAPI
+##### Управление через глобальный объект chatAPI
 
 - `push(msg: json string)`
 - `clear()`
 - `activate(active: boolean)`
 - `show(show: boolean)`
-
-### Тригеры СОЗДАНИЕ ПЕРСОНАЖА **Клиент -> Фронт**
