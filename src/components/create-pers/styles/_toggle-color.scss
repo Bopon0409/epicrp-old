@@ -1,0 +1,31 @@
+.create-pers {
+  .step3 {
+    .toggle-color {
+      .toggle-color__title {
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin-bottom: 5px;
+      }
+
+      .toggle-color__container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .toggle-color__item {
+          box-sizing: border-box;
+          cursor: pointer;
+          width: 27px;
+          height: 27px;
+          margin-bottom: 2px;
+        }
+
+        .toggle-color__item_active {
+          border: 1px solid white;
+        }
+      }
+    }
+  }
+}

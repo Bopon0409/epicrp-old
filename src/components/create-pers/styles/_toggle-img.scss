@@ -1,0 +1,36 @@
+.create-pers {
+  .step3 {
+    .toggle-img {
+      .toggle-img__title {
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin-bottom: 5px;
+      }
+
+      .toggle-img__container {
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-height: 90px;
+        padding-right: 5px;
+        overflow-y: auto;
+
+        .toggle-img__item {
+          box-sizing: border-box;
+          cursor: pointer;
+          width: 42px;
+          height: 42px;
+          margin-bottom: 5px;
+          background-image: url('../images/img-example.png');
+        }
+
+        .toggle-img__item_active {
+          border: 1px solid white;
+        }
+      }
+    }
+  }
+}

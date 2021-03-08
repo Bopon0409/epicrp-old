@@ -78,5 +78,5 @@ export default function Face () {
     )
   }
 
-  return <div className='face current-block'>{sliderList}</div>
+  return <div className='face skroll current-block'>{sliderList}</div>
 }

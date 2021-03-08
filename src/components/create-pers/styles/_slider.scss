@@ -1,0 +1,55 @@
+.create-pers {
+  .step3 {
+    .slider {
+      margin-bottom: 5px;
+
+      .slider__label {
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin-bottom: 3px;
+      }
+
+      .input-range__slider {
+        background-color: white;
+        border: none;
+      }
+
+      .input-range__label--max {
+        display: none;
+      }
+
+      .input-range__label--min {
+        margin-left: 4px;
+        font-family: Nunito;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .input-range__label-container {
+        display: none;
+      }
+
+      .input-range__track {
+        height: 5px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 5px;
+      }
+
+      .input-range__track--active {
+        background: transparent;
+      }
+
+      .slider__hint-container_color {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .slider__hint-item {
+        font-size: 14px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+}
