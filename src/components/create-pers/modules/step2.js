@@ -1,61 +1,101 @@
-import React from 'react'
+import React, { useState } from 'react'
 import InputRange from 'react-input-range'
+import { mothers, fathers, motherNames, fatherNames } from '../data'
 
-import motherImg from '../images/mother.png'
-import fatherImg from '../images/father.png'
+export default function Step2 () {
+  const [activeMother, setActiveMother] = useState(0)
+  const [activeFather, setActiveFather] = useState(0)
+  const [sliderValue, setSliderValue] = useState(0.5)
+  const [motherName, setMotherName] = useState('Hannah')
+  const [fatherName, setFatherName] = useState('Benjamin')
 
-export default function Step2 (props) {
-  const { activeMother, activeFather, sliderValue } = props
-  const { setActiveMother, setActiveFather, setSliderValue } = props
-
-  const catalog = (active, isMother) => {
-    const list = []
-    for (let i = 1; i <= 16; i++) {
-      const classes =
-        i === active ? 'catalog__item catalog__item_active' : 'catalog__item'
-      const clickHandler = () =>
-        isMother ? setActiveMother(i) : setActiveFather(i)
-
-      list.push(
-        <div key={i} className={classes} onClick={clickHandler}>
-          <img src={isMother ? motherImg : fatherImg} alt='' />
-        </div>
+  const motherChangeHandler = (motherId, i) => {
+    setActiveMother(i)
+    setMotherName(motherNames[i])
+    if (window.mp) {
+      window.mp.trigger(
+        'createCharChangeValue',
+        JSON.stringify({ type: 'mother', value: motherId })
       )
     }
-    return list
   }
+
+  const fatherChangeHandler = (fatherId, i) => {
+    setActiveFather(i)
+    setFatherName(fatherNames[i])
+    if (window.mp) {
+      window.mp.trigger(
+        'createCharChangeValue',
+        JSON.stringify({ type: 'father', value: fatherId })
+      )
+    }
+  }
+
+  const sliderChangeHandler = range => {
+    range = (range ^ 0) === range ? range : Number(range.toFixed(2))
+    setSliderValue(range)
+    if (window.mp) {
+      window.mp.trigger(
+        'createCharChangeValue',
+        JSON.stringify({ type: 'parents_similarity', value: range })
+      )
+    }
+  }
+
+  const motherCatalog = mothers.map((motherId, i) => (
+    <div
+      key={motherId}
+      onClick={() => motherChangeHandler(motherId, i)}
+      className={
+        i === activeMother
+          ? 'catalog__item catalog__item_active'
+          : 'catalog__item'
+      }
+    >
+      <img src={`images/parents/parent_${motherId}.png`} alt='' />
+    </div>
+  ))
+
+  const fatherCatalog = fathers.map((fatherId, i) => (
+    <div
+      key={fatherId}
+      onClick={() => fatherChangeHandler(fatherId, i)}
+      className={
+        i === activeFather
+          ? 'catalog__item catalog__item_active'
+          : 'catalog__item'
+      }
+    >
+      <img src={`images/parents/parent_${fatherId}.png`} alt='' />
+    </div>
+  ))
 
   return (
     <div className='step2'>
       <div className='catalog' style={{ left: '5%' }}>
-        <div className='catalog__list'>{catalog(activeMother, true)}</div>
+        <div className='catalog__list skroll'>{motherCatalog}</div>
         <div className='catalog__text text'>
           <div className='text__hint'>Мать</div>
-          <div className='text__name'>Верка-сердючка</div>
+          <div className='text__name'>{motherName}</div>
         </div>
       </div>
 
       <div className='catalog' style={{ right: '5%' }}>
-        <div className='catalog__list'>{catalog(activeFather, false)}</div>
+        <div className='catalog__list skroll'>{fatherCatalog}</div>
         <div className='catalog__text text'>
           <div className='text__hint'>Отец</div>
-          <div className='text__name'>Купитман</div>
+          <div className='text__name'>{fatherName}</div>
         </div>
       </div>
 
       <div className='slider'>
         <div className='slider__label'>Схожесть</div>
         <InputRange
-          minValue={-0.07}
-          maxValue={1.07}
+          minValue={0}
+          maxValue={1}
           step={0.01}
           value={sliderValue}
-          onChange={range => {
-            if (range >= 0 && range <= 1) {
-              range = (range ^ 0) === range ? range : Number(range.toFixed(2))
-              setSliderValue(range)
-            }
-          }}
+          onChange={sliderChangeHandler}
         />
         <div className='slider__hint-container'>
           <span className='slider__hint-item'>м</span>

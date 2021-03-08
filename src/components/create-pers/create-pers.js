@@ -12,16 +12,6 @@ export default function CreatePers () {
   const [step, setStep] = useState(2)
   const [componentActive, setComponentActive] = useState(false)
 
-  // step1 data
-  const [name, setName] = useState('')
-  const [surnname, setSurname] = useState('')
-  const [sex, setSex] = useState('male')
-
-  // step2 data
-  const [activeMother, setActiveMother] = useState(1)
-  const [activeFather, setActiveFather] = useState(1)
-  const [sliderValue, setSliderValue] = useState(50)
-
   // triggers
   const setCreatePersActive = active => setComponentActive(active)
   useEffect(() => {
@@ -46,28 +36,8 @@ export default function CreatePers () {
   return (
     <div className='create-pers' style={componentStyle}>
       <Header step={step} />
-      {step === 1 && (
-        <Step1
-          sex={sex}
-          name={name}
-          surname={surnname}
-          setSex={setSex}
-          setName={setName}
-          setSurname={setSurname}
-          setStep={setStep}
-        />
-      )}
-      {step === 2 && (
-        <Step2
-          activeMother={activeMother}
-          activeFather={activeFather}
-          sliderValue={sliderValue}
-          setActiveMother={setActiveMother}
-          setActiveFather={setActiveFather}
-          setSliderValue={setSliderValue}
-        />
-      )}
-
+      {step === 1 && <Step1 setStep={setStep} />}
+      {step === 2 && <Step2 />}
       {step === 3 && <Step3 />}
 
       {(step === 2 || step === 3) && (

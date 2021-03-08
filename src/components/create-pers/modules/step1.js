@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import enterIcon from '../images/enter.svg'
 import enterIconActive from '../images/enter-active.svg'
 
-export default function Step1 (props) {
-  const { name, surname, setName, setSurname, sex, setSex, setStep } = props
+export default function Step1 ({ setStep }) {
   const [hover, setHover] = useState(false)
+  const [name, setName] = useState('')
+  const [surname, setSurname] = useState('')
   const [nameErr, setNameErr] = useState('')
   const [surnameErr, setSurnameErr] = useState('')
+  const [sex, setSex] = useState('male')
 
   const validation = () => {
     setSurnameErr('')
@@ -16,6 +18,21 @@ export default function Step1 (props) {
       return setNameErr('Недопустимая Длина')
     if (surname.length < 3 || surname.length > 14)
       return setSurnameErr('Недопустимая Длина')
+
+    if (window.mp) {
+      window.mp.trigger(
+        'createCharChangeValue',
+        JSON.stringify({ type: 'name', value: name })
+      )
+      window.mp.trigger(
+        'createCharChangeValue',
+        JSON.stringify({ type: 'name', value: surname })
+      )
+      window.mp.trigger(
+        'createCharChangeValue',
+        JSON.stringify({ type: 'sex', value: sex })
+      )
+    }
 
     setStep(2)
   }
