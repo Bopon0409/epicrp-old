@@ -8,11 +8,12 @@ export default function Leather () {
     age: { value: 1, valueName: 'age', title: 'Возраст' },
     sunDamage: { value: 1, valueName: 'sunDamage', title: 'Урон от солнца' },
     freckles: { value: 1, valueName: 'freckles', title: 'Веснушки' },
-    color: { value: 50, valueName: 'color', title: 'Цвет кожи' }
+    color: { value: 0.5, valueName: 'color', title: 'Цвет кожи' }
   })
 
   const onValueChange = (value, valueName) => {
     const newState = JSON.parse(JSON.stringify(state))
+    value = (value ^ 0) === value ? value : Number(value.toFixed(2))
     newState[valueName].value = value
     setState(newState)
   }

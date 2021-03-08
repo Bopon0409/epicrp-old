@@ -12,8 +12,8 @@ export default function slider ({
       <div className='slider__label'>{title}</div>
       <InputRange
         minValue={0}
-        maxValue={100}
-        step={1}
+        maxValue={1}
+        step={0.01}
         value={value}
         onChange={value => onValueChange(value, valueName)}
       />

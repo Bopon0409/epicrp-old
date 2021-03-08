@@ -46,12 +46,15 @@ export default function Step2 (props) {
       <div className='slider'>
         <div className='slider__label'>Схожесть</div>
         <InputRange
-          minValue={-5}
-          maxValue={105}
-          step={1}
+          minValue={-0.07}
+          maxValue={1.07}
+          step={0.01}
           value={sliderValue}
           onChange={range => {
-            range >= 0 && range <= 100 && setSliderValue(range)
+            if (range >= 0 && range <= 1) {
+              range = (range ^ 0) === range ? range : Number(range.toFixed(2))
+              setSliderValue(range)
+            }
           }}
         />
         <div className='slider__hint-container'>

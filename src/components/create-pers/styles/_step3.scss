@@ -14,18 +14,19 @@
       right: 50px;
       margin-top: -200px;
       box-sizing: border-box;
-      padding-right: 20px;
-      padding-left: 10px;
       margin-bottom: 13px;
-
       display: flex;
       flex-direction: column;
       justify-content: center;
+
+      .current-wrap {
+        padding-left: 10px;
+        padding-right: 20px;
+        overflow-y: auto;
+      }
     }
 
-    .face {
-      overflow-y: auto;
-    }
+    
 
     .skroll::-webkit-scrollbar {
       width: 10px;
