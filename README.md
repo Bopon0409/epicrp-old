@@ -8,6 +8,7 @@
 # Тесты
 
 ##### Управление через глобальный объект window.test (в консоли)
+
 Пример: `test.setHudActive(true)`
 
 - `testAlerts()` : Имитация загрузки уведомлений в hud с сервера
@@ -32,6 +33,7 @@
 # Документация
 
 ## Тригеры **Клиент -> Фронт**
+
 ##### Выполняются через `browser.execute('trigger('triggerName', argument)')`
 
 - `window.trigger('pushInventaryDataToFront', data: json string)` - Загрузка данных инвентаря на фронт
@@ -45,13 +47,15 @@
 - `window.trigger('setMicroHudData', data: json string)` - Загрузка данных микрофона в hud
 - `window.trigger('setMissionHudData', data: json string)` - Загрузка данных миссии в hud
 - `window.trigger('setSpeedometerHudData', data: json string)` - Загрузка данных спидометра в hud
-- `window.trigger('setInventoryActive', active: bollean)` - Открыть/Закрыть инвентарь
-- `window.trigger('setAuthActive', active: bollean)` - Открыть/Закрыть окно авторизации
-- `window.trigger('setHudActive', active: bollean)` - Открыть/Закрыть HUD
-- `window.trigger('setBgActive', active: bollean)` - Открыть/Закрыть фон
-- `window.trigger('setChatActive', active: bollean)` - Активация чата
-- `window.trigger('setChatShow', active: bollean)` - Показать/Скрыть чат
+- `window.trigger('setInventoryActive', active: boolean)` - Открыть/Закрыть инвентарь
+- `window.trigger('setAuthActive', active: boolean)` - Открыть/Закрыть окно авторизации
+- `window.trigger('setHudActive', active: boolean)` - Открыть/Закрыть HUD
+- `window.trigger('setBgActive', active: boolean)` - Открыть/Закрыть фон
+- `window.trigger('setChatActive', active: boolean)` - Активация чата
+- `window.trigger('setChatShow', active: boolean)` - Показать/Скрыть чат
 - `window.trigger('clearChat')` - Очистить чат
+- `window.trigger('setCreatePersActive', active:boolean)` - Открыть/Закрыть окно создания персонажа
+- `window.trigger('setChoicePersActive', active:boolean)` - Открыть/Закрыть окно выбора персонажа
 
 ## Тригеры **Фронт -> Клиент**
 
@@ -65,6 +69,7 @@
 - `mp.trigger('createCharChangeValue', type: String, value: String or Number)` - Пользователь что-то изменил при создании персонажа
 
 ##### Список параметров `createCharChangeValue`
+
 1. name - String, Имя
 2. surname - String, Фамилия
 3. sex - String ('male', 'female'), Пол
@@ -73,7 +78,9 @@
 6. parents_similarity - Float (0-1), Схожесть с родителями
 
 ## chatAPI
+
 ##### Управление через глобальный объект chatAPI
+
 - `push(msg: json string)`
 - `clear()`
 - `activate(active: boolean)`
