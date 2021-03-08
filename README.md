@@ -1,22 +1,13 @@
-# Epic front
-
-### Фронтенд для проекта Epic RP. Стек технологий:
-
-- React (react hooks, prop-types)
-- Scss
-- БЭМ
-
-## Скрипты
+# Скрипты
 
 - `npm i` Установить зависимости
 - `npm run dev` Запуск development сервера
 - `npm run build` Компиляция билда
 - `npm run analyze` Запуск анализа билда
 
-### Тестирование фронта
+# Тесты
 
-#### Управление через глобальный объект window.test (в консоли)
-
+##### Управление через глобальный объект window.test (в консоли)
 Пример: `test.setHudActive(true)`
 
 - `testAlerts()` : Имитация загрузки уведомлений в hud с сервера
@@ -38,11 +29,10 @@
 - `setMissionHudData()` : Имитация загрузки данных миссии в hud
 - `setSpeedometerHudData()` : Имитация загрузки данных спидометра в hud
 
-## Документация
+# Документация
 
-### Тригеры **Клиент -> Фронт**
-
-#### Выполняются через `browser.execute('trigger('triggerName', argument)')`
+## Тригеры **Клиент -> Фронт**
+##### Выполняются через `browser.execute('trigger('triggerName', argument)')`
 
 - `window.trigger('pushInventaryDataToFront', data: json string)` - Загрузка данных инвентаря на фронт
 - `window.trigger('pushPersData', data: json string)` - Загрузка данных о персонажах игрока
@@ -63,7 +53,7 @@
 - `window.trigger('setChatShow', active: bollean)` - Показать/Скрыть чат
 - `window.trigger('clearChat')` - Очистить чат
 
-### Тригеры **Фронт -> Клиент**
+## Тригеры **Фронт -> Клиент**
 
 - `mp.trigger('pushInventoryDataToClient', data: json string)` - Инвентарь пользователя обновился
 - `mp.trigger('userdUseItem', idItem: int)` - Игрок использовал предмет
@@ -82,10 +72,8 @@
 5. father - Int (id), Отец
 6. parents_similarity - Float (0-1), Схожесть с родителями
 
-### chatAPI
-
+## chatAPI
 ##### Управление через глобальный объект chatAPI
-
 - `push(msg: json string)`
 - `clear()`
 - `activate(active: boolean)`

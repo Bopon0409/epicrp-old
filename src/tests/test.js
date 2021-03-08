@@ -50,6 +50,6 @@ window.test = {
 
 // current tests
 setTimeout(() => {
-  setBgActive(true)
-  setCreatePersActive(true)
+  // setBgActive(true)
+  // setCreatePersActive(true)
 }, 500)
