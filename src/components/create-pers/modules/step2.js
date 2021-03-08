@@ -12,34 +12,22 @@ export default function Step2 () {
   const motherChangeHandler = (motherId, i) => {
     setActiveMother(i)
     setMotherName(motherNames[i])
-    if (window.mp) {
-      window.mp.trigger(
-        'createCharChangeValue',
-        JSON.stringify({ type: 'mother', value: motherId })
-      )
-    }
+    if (window.mp)
+      window.mp.trigger('createCharChangeValue', 'mother', motherId)
   }
 
   const fatherChangeHandler = (fatherId, i) => {
     setActiveFather(i)
     setFatherName(fatherNames[i])
-    if (window.mp) {
-      window.mp.trigger(
-        'createCharChangeValue',
-        JSON.stringify({ type: 'father', value: fatherId })
-      )
-    }
+    if (window.mp)
+      window.mp.trigger('createCharChangeValue', 'father', fatherId)
   }
 
   const sliderChangeHandler = range => {
     range = (range ^ 0) === range ? range : Number(range.toFixed(2))
     setSliderValue(range)
-    if (window.mp) {
-      window.mp.trigger(
-        'createCharChangeValue',
-        JSON.stringify({ type: 'parents_similarity', value: range })
-      )
-    }
+    if (window.mp)
+      window.mp.trigger('createCharChangeValue', 'parents_similarity', range)
   }
 
   const motherCatalog = mothers.map((motherId, i) => (

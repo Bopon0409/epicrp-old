@@ -20,18 +20,9 @@ export default function Step1 ({ setStep }) {
       return setSurnameErr('Недопустимая Длина')
 
     if (window.mp) {
-      window.mp.trigger(
-        'createCharChangeValue',
-        JSON.stringify({ type: 'name', value: name })
-      )
-      window.mp.trigger(
-        'createCharChangeValue',
-        JSON.stringify({ type: 'name', value: surname })
-      )
-      window.mp.trigger(
-        'createCharChangeValue',
-        JSON.stringify({ type: 'sex', value: sex })
-      )
+      window.mp.trigger('createCharChangeValue', 'name', name)
+      window.mp.trigger('createCharChangeValue', 'surname', surname)
+      window.mp.trigger('createCharChangeValue', 'sex', sex)
     }
 
     setStep(2)

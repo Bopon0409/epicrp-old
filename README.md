@@ -13,6 +13,31 @@
 - `npm run build` Компиляция билда
 - `npm run analyze` Запуск анализа билда
 
+### Тестирование фронта
+
+#### Управление через глобальный объект window.test (в консоли)
+
+Пример: `test.setHudActive(true)`
+
+- `testAlerts()` : Имитация загрузки уведомлений в hud с сервера
+- `testInventory()` : Имитация загрузки данных инвентаря с сервера
+- `testChatPushMsg()` : Имитация загрузки сообщений с сервера
+- `testAuthAnswer()` : Имитация ответа сервера на запрос авторизации
+- `testRegisterAnswer()` : Имитация ответа сервера на запрос регистрации
+- `setInventoryActive(active)` : Открытие/закрытие инвентаря
+- `setAuthActive(active)` : Открытие/закрытие авторизации/регистрации
+- `setHudActive(active)` : Открытие/закрытие HUD
+- `setBgActive(active)` : Открытие/закрытие фона
+- `setChatActive(active)` : Активация чата
+- `setChatShow(active)` : Показать/Скрыть чат
+- `clearChat()` : Очистка чата
+- `setHudData()` : Имитация загрузки данных (малый набор) в hud
+- `setAllHudData()` : Имитация загрузки данных (весь набор) в hud
+- `setGeoHudData()` : Имитация загрузки данных гео локации в hud
+- `setMicroHudData()` : Имитация загрузки данных микрофона в hud
+- `setMissionHudData()` : Имитация загрузки данных миссии в hud
+- `setSpeedometerHudData()` : Имитация загрузки данных спидометра в hud
+
 ## Документация
 
 ### Тригеры **Клиент -> Фронт**
@@ -47,6 +72,15 @@
 - `mp.trigger('userAuth', login: string, pass: string)` - Пользователь пытается залогиниться
 - `mp.trigger('userRegister', login: string, email: string, pass: string)` - Пользователь пытается зарегестрироваться
 - `mp.trigger('pushMessageToClient', type: string, text: string)` - Пользователь отправил сообщение
+- `mp.trigger('createCharChangeValue', type: String, value: String or Number)` - Пользователь что-то изменил при создании персонажа
+
+##### Список параметров `createCharChangeValue`
+1. name - String, Имя
+2. surname - String, Фамилия
+3. sex - String ('male', 'female'), Пол
+4. mother - Int (id), Мать
+5. father - Int (id), Отец
+6. parents_similarity - Float (0-1), Схожесть с родителями
 
 ### chatAPI
 
@@ -57,27 +91,4 @@
 - `activate(active: boolean)`
 - `show(show: boolean)`
 
-### Тестирование фронта
-
-#### Управление через глобальный объект window.test (в консоли)
-
-Пример: `test.setHudActive(true)`
-
-- `testAlerts()` : Имитация загрузки уведомлений в hud с сервера
-- `testInventory()` : Имитация загрузки данных инвентаря с сервера
-- `testChatPushMsg()` : Имитация загрузки сообщений с сервера
-- `testAuthAnswer()` : Имитация ответа сервера на запрос авторизации
-- `testRegisterAnswer()` : Имитация ответа сервера на запрос регистрации
-- `setInventoryActive(active)` : Открытие/закрытие инвентаря
-- `setAuthActive(active)` : Открытие/закрытие авторизации/регистрации
-- `setHudActive(active)` : Открытие/закрытие HUD
-- `setBgActive(active)` : Открытие/закрытие фона
-- `setChatActive(active)` : Активация чата
-- `setChatShow(active)` : Показать/Скрыть чат
-- `clearChat()` : Очистка чата
-- `setHudData()` : Имитация загрузки данных (малый набор) в hud
-- `setAllHudData()` : Имитация загрузки данных (весь набор) в hud
-- `setGeoHudData()` : Имитация загрузки данных гео локации в hud
-- `setMicroHudData()` : Имитация загрузки данных микрофона в hud
-- `setMissionHudData()` : Имитация загрузки данных миссии в hud
-- `setSpeedometerHudData()` : Имитация загрузки данных спидометра в hud
+### Тригеры СОЗДАНИЕ ПЕРСОНАЖА **Клиент -> Фронт**
