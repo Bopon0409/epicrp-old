@@ -1,6 +1,6 @@
 import React from 'react'
-import img from './images/news-img.png'
-import line from './images/line.svg'
+import img from '../images/news-img.png'
+import line from '../images/line.svg'
 
 export default function newsItem ({ title, text }) {
   return (

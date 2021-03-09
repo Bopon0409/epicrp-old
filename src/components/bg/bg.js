@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { observer } from 'mobx-react-lite'
+import bgStore from '../../store/bg/bg-store.js'
 
-export default function Bg () {
-  const [active, setActive] = useState(false)
+export default observer(() => {
+  const { active } = bgStore
 
-  const setBgActive = active => setActive(active)
+  const setBgActive = active => bgStore.setActive(active)
 
   useEffect(() => {
     const { EventManager } = window
@@ -15,4 +17,4 @@ export default function Bg () {
 
   const bgStyle = { display: active ? 'block' : 'none' }
   return <div className='background' style={bgStyle}></div>
-}
+})
