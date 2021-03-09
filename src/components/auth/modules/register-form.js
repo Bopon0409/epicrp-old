@@ -1,7 +1,8 @@
 import React from 'react'
+import { observer } from 'mobx-react-lite'
 import authStore from '../../../store/auth/auth-store'
 
-export default function RegisterForm ({ registerValidate }) {
+export default observer(({ registerValidate }) => {
   const { email, login, pass, pass2 } = authStore.store
   const { setField, loginToggle } = authStore
   return (
@@ -48,4 +49,4 @@ export default function RegisterForm ({ registerValidate }) {
       </div>
     </div>
   )
-}
+})

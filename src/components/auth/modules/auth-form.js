@@ -1,10 +1,10 @@
 import React from 'react'
+import { observer } from 'mobx-react-lite'
 import authStore from '../../../store/auth/auth-store'
 
-export default function AuthForm ({ authValidate }) {
+export default observer(({ authValidate }) => {
   const { login, pass, checkBox } = authStore.store
-  const { setField, loginToggle } = authStore
-  console.log(login)
+  const { setField, loginToggle, checkBoxToggle } = authStore
   return (
     <div className='main-block'>
       <input
@@ -22,7 +22,7 @@ export default function AuthForm ({ authValidate }) {
         onChange={e => setField('pass', e.target.value)}
       />
 
-      <div className='checkbox-block' onClick={authStore.checkBoxToggle}>
+      <div className='checkbox-block' onClick={checkBoxToggle}>
         <div className={checkBox ? 'checkbox active' : 'checkbox'}></div>
         <div className='label'>Запомнить меня</div>
       </div>
@@ -40,4 +40,4 @@ export default function AuthForm ({ authValidate }) {
       </div>
     </div>
   )
-}
+})

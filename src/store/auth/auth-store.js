@@ -4,7 +4,7 @@ class AuthStore {
   constructor () {
     makeAutoObservable(this, {}, { deep: true })
   }
-  
+
   ERROR_MESSAGES = [
     'В логине должны быть только латинские буквы и цифры',
     'В логине должен быть от 4 до 20 символов',
@@ -54,7 +54,10 @@ class AuthStore {
   setErrorMsg = msg => (this.store.errorMsg = msg)
   setField = (fieldName, value) => (this.store[fieldName] = value)
   loginToggle = () => (this.store.isLogin = !this.store.isLogin)
-  checkBoxToggle = () => (this.store.checkBox = !this.store.checkBox)
+  checkBoxToggle = () => {
+    console.log(123)
+    this.store.checkBox = !this.store.checkBox
+  }
 
   authServerAnswer = isSuccess => {
     if (isSuccess) this.store.active = false

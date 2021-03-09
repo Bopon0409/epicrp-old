@@ -27,6 +27,9 @@ export default observer(() => {
   })
 
   const registerValidate = () => {
+    const emailRegExp = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
+    if (emailRegExp.test(email) === false)
+      return authStore.setErrorMsg(authStore.ERROR_MESSAGES[5])
     if (/^[a-zA-Z1-9]+$/.test(login) === false)
       return authStore.setErrorMsg(authStore.ERROR_MESSAGES[0])
     if (login.length < 4 || login.length > 20)
@@ -37,10 +40,6 @@ export default observer(() => {
       return authStore.setErrorMsg(authStore.ERROR_MESSAGES[3])
     if (pass !== pass2)
       return authStore.setErrorMsg(authStore.ERROR_MESSAGES[4])
-
-    const emailRegExp = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
-    if (emailRegExp.test(email) === false)
-      return authStore.setErrorMsg(authStore.ERROR_MESSAGES[5])
 
     authStore.clearInputs()
     if (window.mp) window.mp.trigger('userRegister', login, email, pass)
