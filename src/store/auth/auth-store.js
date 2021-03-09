@@ -25,16 +25,19 @@ class AuthStore {
     pass2: '',
     news: [
       {
+        id: 0,
         title: 'Новость',
         text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
       quidem dolores quaerat animi iusto distinctio!`
       },
       {
+        id: 1,
         title: 'Новость',
         text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
       quidem dolores quaerat animi iusto distinctio!`
       },
       {
+        id: 2,
         title: 'Новость',
         text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
       quidem dolores quaerat animi iusto distinctio!`

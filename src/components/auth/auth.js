@@ -1,5 +1,6 @@
-import { observer } from 'mobx-react-lite'
 import React, { useEffect } from 'react'
+import { observer } from 'mobx-react-lite'
+
 import authStore from '../../store/auth/auth-store'
 import RegisterForm from './modules/register-form'
 import AuthForm from './modules/auth-form'
@@ -59,8 +60,8 @@ export default observer(() => {
     if (window.mp) window.mp.trigger('userAuth', login, pass)
   }
 
-  const newsList = [0, 1, 2].map(i => (
-    <NewsItem key={i} title={news[i].title} text={news[i].text} />
+  const newsList = news.map(({ title, text, id }) => (
+    <NewsItem key={id} title={title} text={text} />
   ))
 
   return (

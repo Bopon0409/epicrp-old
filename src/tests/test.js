@@ -51,5 +51,7 @@ window.test = {
 // current tests
 setTimeout(() => {
   setBgActive(true)
-  setAuthActive(true)
+  setChatActive(true)
+  setChatShow(true)
+  testChatPushMsg()
 }, 500)
