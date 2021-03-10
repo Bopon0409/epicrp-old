@@ -6,8 +6,9 @@ import MsgList from './modules/msg-list'
 import chatInputIcon from './images/chat-input-icon.svg'
 
 export default observer(() => {
-  const { activeBtn, inputValue, active, isShow } = chatStore.store
-  const { setActiveBtn, pushMessage, onInputChange } = chatStore
+  const { active, isShow } = chatStore.store
+  const { setActiveBtn, pushMessage, onInputChange, getInput } = chatStore
+  const { inputValue, activeBtn } = getInput()
 
   const skrollRef = useRef()
   const inputRef = useRef()

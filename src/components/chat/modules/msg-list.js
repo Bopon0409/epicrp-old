@@ -23,9 +23,9 @@ export default observer(({ skrollRef }) => {
     >
       {msg.text}
       {msg.result ? (
-        <span className='success'>| УДАЧНО</span>
+        <span className='success'>{` | УДАЧНО`}</span>
       ) : (
-        <span className='fail'>| НЕУДАЧНО</span>
+        <span className='fail'>{` | НЕУДАЧНО`}</span>
       )}
     </div>
   )
