@@ -16,6 +16,7 @@ class LeatherStore {
   onValueChange = (value, valueName) => {
     value = (value ^ 0) === value ? value : Number(value.toFixed(2))
     this.state[valueName].value = value
+    window.mp.trigger('createCharChangeValue', valueName, value)
   }
 }
 

@@ -10,7 +10,10 @@ class EyesStore {
     color: { value: '#324835', valueName: 'color', title: 'Цвет глаз' }
   }
 
-  onValueChange = (value, valueName) => (this.state[valueName].value = value)
+  onValueChange = (value, valueName) => {
+    this.state[valueName].value = value
+    window.mp.trigger('createCharChangeValue', valueName, value)
+  }
 }
 
 export default new EyesStore()

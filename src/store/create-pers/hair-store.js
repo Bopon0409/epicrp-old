@@ -20,7 +20,10 @@ class HairStore {
     }
   }
 
-  onValueChange = (value, valueName) => (this.state[valueName].value = value)
+  onValueChange = (value, valueName) => {
+    this.state[valueName].value = value
+    window.mp.trigger('createCharChangeValue', valueName, value)
+  }
 }
 
 export default new HairStore()
