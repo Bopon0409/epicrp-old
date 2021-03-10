@@ -11,8 +11,8 @@ export default observer(() => {
 
   const skrollRef = useRef()
   const inputRef = useRef()
-  const skrollHandler = () => skrollRef.current.scrollIntoView()
-  const skrollEnterHandler = event =>
+  const skrollingOnPushMsg = () => skrollRef.current.scrollIntoView()
+  const skrollingOnPressEnter = event =>
     event.keyCode === 13 && skrollRef.current.scrollIntoView()
 
   useEffect(() => {
@@ -21,20 +21,20 @@ export default observer(() => {
     const { EventManager } = window
 
     EventManager.addHandler('pushChatMsgFromClient', pushChatMsgFromClient)
-    EventManager.addHandler('pushChatMsgFromClient', skrollHandler)
+    EventManager.addHandler('pushChatMsgFromClient', skrollingOnPushMsg)
     EventManager.addHandler('setChatActive', setChatActive)
     EventManager.addHandler('setChatShow', setChatShow)
     EventManager.addHandler('clearChat', clearChat)
-    document.addEventListener('keyup', skrollEnterHandler)
+    document.addEventListener('keyup', skrollingOnPressEnter)
     document.addEventListener('keyup', keyPressHandler)
 
     return () => {
       EventManager.removeHandler('pushChatMsgFromClient', pushChatMsgFromClient)
-      EventManager.removeHandler('pushChatMsgFromClient', skrollHandler)
+      EventManager.removeHandler('pushChatMsgFromClient', skrollingOnPushMsg)
       EventManager.removeHandler('setChatActive', setChatActive)
       EventManager.removeHandler('setChatShow', setChatShow)
       EventManager.removeHandler('clearChat', clearChat)
-      document.removeEventListener('keyup', skrollEnterHandler)
+      document.removeEventListener('keyup', skrollingOnPressEnter)
       document.removeEventListener('keyup', keyPressHandler)
     }
   }, [])
@@ -121,7 +121,7 @@ export default observer(() => {
           className='chat-input-icon'
           onClick={() => {
             pushMessage()
-            skrollHandler()
+            skrollingOnPushMsg()
           }}
         />
       </div>
