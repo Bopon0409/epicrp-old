@@ -1,4 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { observer } from 'mobx-react-lite'
+import store from '../../../store/create-pers/create-pers-store'
+
 import Menu from './menu'
 import Face from './face'
 import Leather from './leather'
@@ -8,11 +11,9 @@ import Clothes from './clothes'
 
 import rotateHintImg from '../images/rotate-hint.svg'
 
-export default function Step3 () {
-  const [menuActive, setMenuActive] = useState(1)
-
+export default observer(() => {
   const currentBlock = () => {
-    switch (menuActive) {
+    switch (store.state.menuActive) {
       case 1:
         return <Face />
       case 2:
@@ -30,13 +31,11 @@ export default function Step3 () {
 
   return (
     <div className='step3'>
-      <Menu menuActive={menuActive} setMenuActive={setMenuActive} />
-
+      <Menu />
       {currentBlock()}
-
       <div className='rotate-hint'>
         <img src={rotateHintImg} alt='' />
       </div>
     </div>
   )
-}
+})

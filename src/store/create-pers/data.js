@@ -141,4 +141,35 @@ const hairColors = [
   '#6d190d'
 ]
 
-export { mothers, motherNames, fathers, fatherNames, eyesColors, hairColors }
+const mokColors = [
+  '#565656',
+  '#565656',
+  '#565656',
+  '#565656',
+  '#565656',
+  '#565656',
+  '#565656',
+  '#565656',
+  '#565656',
+  '#565656',
+  '#565656',
+  '#565656',
+  '#565656',
+  '#565656',
+  '#565656',
+  '#565656',
+  '#565656',
+  '#565656',
+  '#565656',
+  '#565656'
+]
+
+export {
+  mothers,
+  motherNames,
+  fathers,
+  fatherNames,
+  eyesColors,
+  hairColors,
+  mokColors
+}

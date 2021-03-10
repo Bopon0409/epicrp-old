@@ -55,6 +55,5 @@ window.test = {
 // current tests
 setTimeout(() => {
   setBgActive(true)
-  setHudActive(true)
-  setTimeHudData()
+  setCreatePersActive(true)
 }, 500)

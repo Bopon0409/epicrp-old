@@ -1,22 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { observer } from 'mobx-react-lite'
+import store from '../../../store/create-pers/leather-store'
+
 import ToggleBar from './toggle-bar'
 import Slider from './slider'
 
-export default function Leather () {
-  const [state, setState] = useState({
-    stains: { value: 1, valueName: 'stains', title: 'Пятна' },
-    age: { value: 1, valueName: 'age', title: 'Возраст' },
-    sunDamage: { value: 1, valueName: 'sunDamage', title: 'Урон от солнца' },
-    freckles: { value: 1, valueName: 'freckles', title: 'Веснушки' },
-    color: { value: 0.5, valueName: 'color', title: 'Цвет кожи' }
-  })
-
-  const onValueChange = (value, valueName) => {
-    const newState = JSON.parse(JSON.stringify(state))
-    value = (value ^ 0) === value ? value : Number(value.toFixed(2))
-    newState[valueName].value = value
-    setState(newState)
-  }
+export default observer(() => {
+  const { state, onValueChange } = store
 
   return (
     <div className='leather current-block'>
@@ -28,4 +18,4 @@ export default function Leather () {
       <Slider item={state.color} onValueChange={onValueChange} isColor={true} />
     </div>
   )
-}
+})

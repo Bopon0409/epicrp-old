@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { observer } from 'mobx-react-lite'
+import store from '../../store/create-pers/create-pers-store'
+
 import Step1 from './modules/step1'
 import Step2 from './modules/step2'
 import Step3 from './modules/step3'
@@ -7,28 +10,22 @@ import Transition from './modules/transition'
 
 import backgroundPng from './images/bg.png'
 
-export default function CreatePers () {
-  // component state
-  const [step, setStep] = useState(3)
-  const [componentActive, setComponentActive] = useState(false)
+export default observer(() => {
+  const { active, step } = store.state
+  const { setStep, setActive } = store
 
-  // triggers
-  const setCreatePersActive = active => setComponentActive(active)
   useEffect(() => {
     const { EventManager } = window
-    EventManager.addHandler(
-      'setCreatePersActive',
-      setCreatePersActive.bind(this)
-    )
+    EventManager.addHandler('setCreatePersActive', setActive)
     return function cleanup () {
-      EventManager.removeHandler('setCreatePersActive')
+      EventManager.removeHandler('setCreatePersActive', setActive)
     }
   })
 
   const finishCreate = () => {}
 
   const componentStyle = {
-    display: componentActive ? 'block' : 'none',
+    display: active ? 'block' : 'none',
     background: step === 1 ? 'rgba(0, 0, 0, 0.9)' : '',
     backgroundImage: step !== 1 ? `url(${backgroundPng})` : ''
   }
@@ -36,7 +33,7 @@ export default function CreatePers () {
   return (
     <div className='create-pers' style={componentStyle}>
       <Header step={step} />
-      {step === 1 && <Step1 setStep={setStep} />}
+      {step === 1 && <Step1 />}
       {step === 2 && <Step2 />}
       {step === 3 && <Step3 />}
 
@@ -45,4 +42,4 @@ export default function CreatePers () {
       )}
     </div>
   )
-}
+})

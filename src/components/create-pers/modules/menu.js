@@ -1,8 +1,12 @@
+import { observer } from 'mobx-react-lite'
 import React from 'react'
+import store from '../../../store/create-pers/create-pers-store'
 import menuIcon from '../images/menu-icon.svg'
 
-export default function Menu ({ menuActive, setMenuActive }) {
+export default observer(() => {
   const titles = ['Форма лица', 'Особенности кожи', 'Глаза', 'Волосы', 'Одежда']
+  const { menuActive } = store.state
+  const { setMenuActive } = store
 
   const list = titles.map((title, i) => (
     <div
@@ -18,4 +22,4 @@ export default function Menu ({ menuActive, setMenuActive }) {
   ))
 
   return <div className='menu'>{list}</div>
-}
+})

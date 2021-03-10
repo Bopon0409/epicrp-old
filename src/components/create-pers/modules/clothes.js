@@ -1,22 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { observer } from 'mobx-react-lite'
+import store from '../../../store/create-pers/clothes-store'
+
 import ToggleImg from './toggle-img'
 import ToggleColor from './toggle-color'
 
-export default function Сlothes () {
-  const [state, setState] = useState({
-    shirt: { value: 1, valueName: 'shirt', title: 'Майка' },
-    colorShirt: { value: 1, valueName: 'colorShirt', title: 'Цвет майки' },
-    pants: { value: 1, valueName: 'pants', title: 'Штаны' },
-    colorPaints: { value: 1, valueName: 'colorPaints', title: 'Цвет штанов' },
-    shoes: { value: 1, valueName: 'shoes', title: 'Обувь' },
-    colorShoes: { value: 1, valueName: 'colorShoes', title: 'Цвет обуви' }
-  })
-
-  const onValueChange = (value, valueName) => {
-    const newState = JSON.parse(JSON.stringify(state))
-    newState[valueName].value = value
-    setState(newState)
-  }
+export default observer(() => {
+  const { state, onValueChange } = store
 
   return (
     <div className='current-block skroll'>
@@ -28,4 +18,4 @@ export default function Сlothes () {
       <ToggleColor item={state.colorShoes} onValueChange={onValueChange} />
     </div>
   )
-}
+})

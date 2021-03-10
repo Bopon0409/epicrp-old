@@ -1,39 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { observer } from 'mobx-react-lite'
+import store from '../../../store/create-pers/create-pers-store'
+
 import enterIcon from '../images/enter.svg'
 import enterIconActive from '../images/enter-active.svg'
 
-export default function Step1 ({ setStep }) {
-  const [hover, setHover] = useState(false)
-  const [name, setName] = useState('')
-  const [surname, setSurname] = useState('')
-  const [nameErr, setNameErr] = useState('')
-  const [surnameErr, setSurnameErr] = useState('')
-  const [sex, setSex] = useState('male')
-
-  const validation = () => {
-    setSurnameErr('')
-    setNameErr('')
-
-    if (name.length < 3 || name.length > 14)
-      return setNameErr('Недопустимая Длина')
-    if (surname.length < 3 || surname.length > 14)
-      return setSurnameErr('Недопустимая Длина')
-
-    if (window.mp) {
-      window.mp.trigger('createCharChangeValue', 'name', name)
-      window.mp.trigger('createCharChangeValue', 'surname', surname)
-      window.mp.trigger('createCharChangeValue', 'sex', sex)
-    }
-
-    setStep(2)
-  }
-
-  const inputChangeHandler = (event, type) => {
-    type === 'name' ? setNameErr('') : setSurnameErr('')
-    let str = event.target.value.slice(0, 14).toLowerCase()
-    str = str.charAt(0).toUpperCase() + str.slice(1)
-    type === 'name' ? setName(str) : setSurname(str)
-  }
+export default observer(() => {
+  const { name, surname, nameErr, surnameErr, sex, hover } = store.state.step1
+  const { inputChangeHandler, validation, setSex, setHover } = store
 
   const inputClasses = err =>
     err ? 'form__input form__input_error' : 'form__input'
@@ -109,4 +83,4 @@ export default function Step1 ({ setStep }) {
       </div>
     </div>
   )
-}
+})

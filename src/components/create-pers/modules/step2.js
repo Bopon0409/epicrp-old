@@ -1,34 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { observer } from 'mobx-react-lite'
+import store from '../../../store/create-pers/create-pers-store'
+
 import InputRange from 'react-input-range'
-import { mothers, fathers, motherNames, fatherNames } from '../data'
+import { mothers, fathers } from '../data'
 
-export default function Step2 () {
-  const [activeMother, setActiveMother] = useState(0)
-  const [activeFather, setActiveFather] = useState(0)
-  const [sliderValue, setSliderValue] = useState(0.5)
-  const [motherName, setMotherName] = useState('Hannah')
-  const [fatherName, setFatherName] = useState('Benjamin')
+export default observer(() => {
+  const { activeMother, activeFather, sliderValue } = store.state.step2
+  const { motherName, fatherName } = store.state.step2
 
-  const motherChangeHandler = (motherId, i) => {
-    setActiveMother(i)
-    setMotherName(motherNames[i])
-    if (window.mp)
-      window.mp.trigger('createCharChangeValue', 'mother', motherId)
-  }
-
-  const fatherChangeHandler = (fatherId, i) => {
-    setActiveFather(i)
-    setFatherName(fatherNames[i])
-    if (window.mp)
-      window.mp.trigger('createCharChangeValue', 'father', fatherId)
-  }
-
-  const sliderChangeHandler = range => {
-    range = (range ^ 0) === range ? range : Number(range.toFixed(2))
-    setSliderValue(range)
-    if (window.mp)
-      window.mp.trigger('createCharChangeValue', 'parents_similarity', range)
-  }
+  const {
+    motherChangeHandler,
+    fatherChangeHandler,
+    sliderChangeHandler
+  } = store
 
   const motherCatalog = mothers.map((motherId, i) => (
     <div
@@ -92,4 +77,4 @@ export default function Step2 () {
       </div>
     </div>
   )
-}
+})
