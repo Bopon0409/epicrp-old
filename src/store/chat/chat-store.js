@@ -1,6 +1,9 @@
 import { makeAutoObservable } from 'mobx'
 
 class ChatStore {
+  OPACITY_DELAY = 20000000
+  MAX_STORY_MESSAGE = 60
+
   constructor () {
     makeAutoObservable(this, {}, { deep: true })
   }
@@ -12,6 +15,8 @@ class ChatStore {
     inputValue: '',
     storyMsg: [],
     storyPosition: -1,
+    isOpacity: false,
+    opacityInterval: setInterval(() => {}, 0),
     messages: []
   }
 
@@ -28,7 +33,7 @@ class ChatStore {
       }
 
       this.store.storyMsg.unshift({ inputValue, activeBtn })
-      this.store.storyMsg = this.store.storyMsg.slice(0, 60)
+      this.store.storyMsg = this.store.storyMsg.slice(0, this.MAX_STORY_MESSAGE)
     }
   }
 
@@ -45,9 +50,38 @@ class ChatStore {
     this.store.storyPosition = -1
   }
 
-  pushChatMsgFromClient = msg => msg.type && this.store.messages.push(msg)
+  setOpacity = isOpacity => (this.store.isOpacity = isOpacity)
 
-  onInputChange = event => (this.store.inputValue = event.target.value)
+  dropOpacity = isNewTimeout => {
+    this.setOpacity(false)
+    clearInterval(this.store.opacityInterval)
+    if (isNewTimeout) {
+      this.store.opacityInterval = setTimeout(() => {
+        this.setOpacity(true)
+      }, this.OPACITY_DELAY)
+    }
+  }
+
+  pushChatMsgFromClient = msg => {
+    if (msg.type) {
+      this.store.messages.push(msg)
+      this.dropOpacity(true)
+    }
+  }
+
+  onInputChange = event => {
+    const value = event.target.value
+    this.store.inputValue = value
+    if (value[0] === '/') {
+      if (value.substr(1, 2) === 'b ') this.store.activeBtn = 'b'
+      else if (value.substr(1, 3) === 'me ') this.store.activeBtn = 'me'
+      else if (value.substr(1, 3) === 'do ') this.store.activeBtn = 'do'
+      else if (value.substr(1, 4) === 'try ') this.store.activeBtn = 'try'
+      else if (value.substr(1, 2) === 'f ') this.store.activeBtn = 'f'
+      else if (value.substr(1, 2) === 'd ') this.store.activeBtn = 'd'
+      else this.store.activeBtn = 'ic'
+    }
+  }
 
   keyPressHandler = event => {
     const { storyPosition, active, storyMsg } = this.store
@@ -67,6 +101,7 @@ class ChatStore {
         if (!active) return
         if (storyMsg.length > storyPosition + 1) this.store.storyPosition++
         break
+
       case 40:
         if (!active) return
         if (storyPosition > 0 && storyMsg[this.store.storyPosition - 1])
@@ -89,6 +124,9 @@ class ChatStore {
       if (window.mp) window.mp.trigger('cef_cl_showCursor', active)
       this.store.active = active
       this.chatDischarge()
+
+      if (active) this.dropOpacity(false)
+      else this.dropOpacity(true)
     }
   }
 

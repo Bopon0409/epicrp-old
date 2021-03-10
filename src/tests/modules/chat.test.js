@@ -8,10 +8,7 @@ const testChatPushMsg = () => {
   const interval = setInterval(() => {
     window.chatAPI.push(JSON.stringify(chatMsgData[counter++]))
     if (counter === chatMsgData.length) clearInterval(interval)
-  }, 10)
-  setTimeout(() => {
-    window.chatAPI.push(JSON.stringify(chatMsgData[0]))
-  }, 5000)
+  }, 500)
 }
 
 export { setChatActive, setChatShow, clearChat, testChatPushMsg }

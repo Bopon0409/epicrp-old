@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import chatStore from '../../../store/chat/chat-store'
 
 export default observer(({ skrollRef }) => {
-  const { messages, active } = chatStore.store
+  const { messages, active, isOpacity } = chatStore.store
 
   const getBasicMsg = (msg, i, arr) => (
     <div
@@ -41,8 +41,12 @@ export default observer(({ skrollRef }) => {
     </div>
   )
 
+  let chatClasses = 'container'
+  chatClasses = active ? chatClasses + ' skroll' : chatClasses
+  chatClasses = isOpacity ? chatClasses + ' translucent' : chatClasses
+
   return (
-    <div className={active ? 'container skroll' : 'container'}>
+    <div className={chatClasses}>
       {messages.map((msg, i, arr) => {
         switch (msg.type) {
           case 'try':
