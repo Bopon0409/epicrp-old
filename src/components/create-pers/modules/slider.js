@@ -6,7 +6,6 @@ export default function slider ({
   isColor,
   onValueChange
 }) {
-  console.log(value)
   return (
     <div className='slider'>
       <div className='slider__label'>{title}</div>

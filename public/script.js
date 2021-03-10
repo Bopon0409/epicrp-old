@@ -3,10 +3,12 @@ document.addEventListener('DOMContentLoaded', () => (window.mp = mp))
 var EventManager = {
   events: {},
   addHandler (eventName, handler) {
-    this.events[eventName] = handler
+    if (eventName in this.events) this.events[eventName].push(handler)
+    else this.events[eventName] = [handler]
   },
-  removeHandler (eventName) {
-    if (eventName in this.events) this.events[eventName] = null
+  removeHandler (eventName, handler) {
+    if (eventName in this.events)
+      this.events[eventName].splice(this.events[eventName].indexOf(handler), 1)
   }
 }
 
@@ -18,8 +20,8 @@ var chatAPI = {
 }
 
 function trigger (eventName, arg) {
-  const handler = window.EventManager.events[eventName]
-  arg ? handler(JSON.parse(arg)) : handler()
+  const handlers = EventManager.events[eventName]
+  handlers.forEach(handler => (arg ? handler(JSON.parse(arg)) : handler()))
 }
 
 window.EventManager = EventManager

@@ -1,12 +1,18 @@
 import React from 'react'
+import { observer } from 'mobx-react-lite'
 
+import choisePersStore from '../../../store/choise-pers/choise-pers-store'
 import BuyView from './buy-view'
 import EmptyView from './empty-view'
 import DeleteSvg from './delete-svg'
 import regIcon from '../images/reg-icon.svg'
 import timeIcon from '../images/time-icon.svg'
 
-export default function SlotPers ({ pers, active, index, setCurrentPers }) {
+export default observer(({ index }) => {
+  const pers = choisePersStore.store.persData[index]
+  const active = choisePersStore.store.currentPers === index
+  const { setCurrentPers } = choisePersStore
+
   if (pers.empty && pers.bought === false) return <BuyView />
   if (pers.empty) return <EmptyView />
 
@@ -49,4 +55,4 @@ export default function SlotPers ({ pers, active, index, setCurrentPers }) {
       </div>
     </div>
   )
-}
+})

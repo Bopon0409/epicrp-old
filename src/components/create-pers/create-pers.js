@@ -9,7 +9,7 @@ import backgroundPng from './images/bg.png'
 
 export default function CreatePers () {
   // component state
-  const [step, setStep] = useState(2)
+  const [step, setStep] = useState(3)
   const [componentActive, setComponentActive] = useState(false)
 
   // triggers

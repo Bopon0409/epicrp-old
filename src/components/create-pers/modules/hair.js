@@ -6,13 +6,13 @@ export default function Hair () {
   const [state, setState] = useState({
     beard: { value: 1, valueName: 'beard', title: 'Борода/Усы' },
     colorBeard: {
-      value: 1,
+      value: '',
       valueName: 'colorBeard',
       title: 'Цвет Бороды/Усов'
     },
     hairstyle: { value: 1, valueName: 'hairstyle', title: 'Прическа' },
     colorHairstyle: {
-      value: 1,
+      value: '',
       valueName: 'colorHairstyle',
       title: 'Цвет прически'
     }
@@ -27,13 +27,21 @@ export default function Hair () {
   return (
     <div className='current-block'>
       <ToggleImg item={state.beard} onValueChange={onValueChange} size={30} />
-      <ToggleColor item={state.colorBeard} onValueChange={onValueChange} />
+      <ToggleColor
+        item={state.colorBeard}
+        onValueChange={onValueChange}
+        type='hair'
+      />
       <ToggleImg
         item={state.hairstyle}
         onValueChange={onValueChange}
         size={30}
       />
-      <ToggleColor item={state.colorHairstyle} onValueChange={onValueChange} />
+      <ToggleColor
+        item={state.colorHairstyle}
+        onValueChange={onValueChange}
+        type='hair'
+      />
     </div>
   )
 }

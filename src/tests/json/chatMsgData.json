@@ -37,5 +37,44 @@
     "type": "todo",
     "text1": "NICKNAME[ID]: люблю гречу",
     "text2": "сказал поднимая руки вверх"
+  },
+  {
+    "type": "ic",
+    "text": "Admin Adminov[16]: Lorem ipsum dolor sit amet, consectetur"
+  },
+  {
+    "type": "ooc",
+    "text": "Test Testov[11]: (( Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ))"
+  },
+  {
+    "type": "me",
+    "text": "Main Player[0] сказал что-то по рации"
+  },
+  {
+    "type": "f",
+    "text": "[R] Main Player[0]: Lincoln-1 | Имеются активные юниты на сцене?"
+  },
+  {
+    "type": "a",
+    "text": "Администратор Admin Adminov выдал мут игроку Main Player[0] на 120 минут. Причина: Offtop /f"
+  },
+  {
+    "type": "d",
+    "text": "[D] Business Woman: LSPD to GOV | На связь"
+  },
+  {
+    "type": "try",
+    "text": "Main Player[0] сказал что-то по рации",
+    "result": true
+  },
+  {
+    "type": "try",
+    "text": "Main Player[0] сказал что-то по рации",
+    "result": false
+  },
+  {
+    "type": "todo",
+    "text1": "NICKNAME[ID]: люблю гречу",
+    "text2": "сказал поднимая руки вверх"
   }
 ]

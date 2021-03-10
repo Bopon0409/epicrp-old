@@ -7,18 +7,18 @@
   height: 350px;
   z-index: 10;
 
-  .container::-webkit-scrollbar {
+  .skroll {
+    overflow-y: scroll !important;
+  }
+
+  .skroll::-webkit-scrollbar {
     width: 8px;
   }
 
-  .container::-webkit-scrollbar-thumb {
+  .skroll::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background: rgba(0, 0, 0, 0.5);
-  }
-
-  .container-hide::-webkit-scrollbar {
-    width: 0 !important;
   }
 
   .container {
@@ -27,29 +27,30 @@
     width: 100%;
     font-size: 14px;
     padding-right: 10px;
+    padding-left: 2px;
     box-sizing: border-box;
-    overflow-y: auto;
     margin-bottom: 20px;
+    overflow-y: hidden;
 
     .msg-ic {
       color: white;
     }
 
     .msg-ooc {
-      color: #8F8F8F;
+      color: #8f8f8f;
     }
 
     .msg-me {
-      color: #956CB5;
+      color: #956cb5;
 
       .success {
         font-weight: bold;
-        color: #5B9965;
+        color: #5b9965;
       }
 
       .fail {
         font-weight: bold;
-        color: #AB3F3F;
+        color: #ab3f3f;
       }
 
       .todo {
@@ -58,15 +59,15 @@
     }
 
     .msg-f {
-      color: #5663D1;
+      color: #5663d1;
     }
 
     .msg-a {
-      color: #AB3F3F;
+      color: #ab3f3f;
     }
 
     .msg-d {
-      color: #A48447;
+      color: #a48447;
     }
   }
 
@@ -108,7 +109,7 @@
         width: 26%;
         left: 37%;
         height: 1px;
-        background: linear-gradient(0deg, #E6961E 0%, #F2C94C 100%);
+        background: linear-gradient(0deg, #e6961e 0%, #f2c94c 100%);
         box-shadow: 0px 0px 13px 2px rgba(242, 201, 76, 0.37);
       }
     }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { observer } from 'mobx-react-lite'
 
 import chatStore from '../../store/chat/chat-store'
@@ -9,75 +9,108 @@ export default observer(() => {
   const { activeBtn, inputValue, active, isShow } = chatStore.store
   const { setActiveBtn, pushMessage, onInputChange } = chatStore
 
+  const skrollRef = useRef()
+  const inputRef = useRef()
+  const skrollHandler = () => skrollRef.current.scrollIntoView()
+  const skrollEnterHandler = event =>
+    event.keyCode === 13 && skrollRef.current.scrollIntoView()
+
   useEffect(() => {
-    const { enterHandler, setChatActive, clearChat } = chatStore
+    const { keyPressHandler, setChatActive, clearChat } = chatStore
     const { setChatShow, pushChatMsgFromClient } = chatStore
     const { EventManager } = window
 
+    EventManager.addHandler('pushChatMsgFromClient', pushChatMsgFromClient)
+    EventManager.addHandler('pushChatMsgFromClient', skrollHandler)
     EventManager.addHandler('setChatActive', setChatActive)
     EventManager.addHandler('setChatShow', setChatShow)
     EventManager.addHandler('clearChat', clearChat)
-    EventManager.addHandler('pushChatMsgFromClient', pushChatMsgFromClient)
-    document.addEventListener('keydown', enterHandler, false)
+    document.addEventListener('keyup', skrollEnterHandler)
+    document.addEventListener('keyup', keyPressHandler)
 
     return () => {
-      EventManager.removeHandler('pushChatMsgFromClient')
-      EventManager.removeHandler('setChatActive')
-      EventManager.removeHandler('setChatShow')
-      EventManager.removeHandler('clearChat')
-      document.removeEventListener('keydown', enterHandler, false)
+      EventManager.removeHandler('pushChatMsgFromClient', pushChatMsgFromClient)
+      EventManager.removeHandler('pushChatMsgFromClient', skrollHandler)
+      EventManager.removeHandler('setChatActive', setChatActive)
+      EventManager.removeHandler('setChatShow', setChatShow)
+      EventManager.removeHandler('clearChat', clearChat)
+      document.removeEventListener('keyup', skrollEnterHandler)
+      document.removeEventListener('keyup', keyPressHandler)
     }
-  })
+  }, [])
 
-  const inputContainer = isShow ? (
+  const inputContainer = active ? (
     <>
       <input
         type='text'
         className='chat-input'
         onChange={onInputChange}
         value={inputValue}
+        ref={inputRef}
+        autoFocus
       />
 
       <div className='btn-container'>
         <div
           className={activeBtn === 'ic' ? 'btn btn-active' : 'btn'}
-          onClick={() => setActiveBtn('ic')}
+          onClick={() => {
+            setActiveBtn('ic')
+            inputRef.current.focus()
+          }}
         >
           IC <div className='line'></div>
         </div>
         <div
           className={activeBtn === 'b' ? 'btn btn-active' : 'btn'}
-          onClick={() => setActiveBtn('b')}
+          onClick={() => {
+            setActiveBtn('b')
+            inputRef.current.focus()
+          }}
         >
           ООС <div className='line'></div>
         </div>
         <div
           className={activeBtn === 'me' ? 'btn btn-active' : 'btn'}
-          onClick={() => setActiveBtn('me')}
+          onClick={() => {
+            setActiveBtn('me')
+            inputRef.current.focus()
+          }}
         >
           me <div className='line'></div>
         </div>
         <div
           className={activeBtn === 'do' ? 'btn btn-active' : 'btn'}
-          onClick={() => setActiveBtn('do')}
+          onClick={() => {
+            setActiveBtn('do')
+            inputRef.current.focus()
+          }}
         >
           do <div className='line'></div>
         </div>
         <div
           className={activeBtn === 'try' ? 'btn btn-active' : 'btn'}
-          onClick={() => setActiveBtn('try')}
+          onClick={() => {
+            setActiveBtn('try')
+            inputRef.current.focus()
+          }}
         >
           try <div className='line'></div>
         </div>
         <div
           className={activeBtn === 'f' ? 'btn btn-active' : 'btn'}
-          onClick={() => setActiveBtn('f')}
+          onClick={() => {
+            setActiveBtn('f')
+            inputRef.current.focus()
+          }}
         >
           Рация <div className='line'></div>
         </div>
         <div
           className={activeBtn === 'd' ? 'btn btn-active' : 'btn'}
-          onClick={() => setActiveBtn('d')}
+          onClick={() => {
+            setActiveBtn('d')
+            inputRef.current.focus()
+          }}
         >
           Департамент <div className='line'></div>
         </div>
@@ -86,7 +119,10 @@ export default observer(() => {
           src={chatInputIcon}
           alt=''
           className='chat-input-icon'
-          onClick={pushMessage}
+          onClick={() => {
+            pushMessage()
+            skrollHandler()
+          }}
         />
       </div>
     </>
@@ -94,12 +130,10 @@ export default observer(() => {
 
   return (
     <>
-      {active ? (
-        <div className='chat' style={{ opacity: isShow ? '1' : '0' }}>
-          <MsgList />
-          {inputContainer}
-        </div>
-      ) : null}
+      <div className='chat' style={{ display: isShow ? 'block' : 'none' }}>
+        <MsgList skrollRef={skrollRef} />
+        {inputContainer}
+      </div>
     </>
   )
 })

@@ -15,25 +15,48 @@ class ChatStore {
 
   pushMessage = () => {
     const { activeBtn: type, inputValue: text } = this.store
+    const msg = JSON.stringify({ type, text })
     if (text) {
-      this.store.activeBtn = 'ic'
-      this.store.inputValue = ''
-      if (window.mp) window.mp.trigger('pushMessageToClient', type, text)
+      if (window.mp) {
+        text[0] === '/'
+          ? window.mp.invoke('command', text.substr(1))
+          : window.mp.invoke('chatMessage', msg)
+      }
     }
+    this.setChatActive(false)
   }
 
-  pushChatMsgFromClient = msg => {
-    msg.type && this.store.messages.push(msg)
+  chatDischarge = () => {
+    this.store.activeBtn = 'ic'
+    this.store.inputValue = ''
   }
+
+  pushChatMsgFromClient = msg => msg.type && this.store.messages.push(msg)
+
   onInputChange = event => (this.store.inputValue = event.target.value)
-  enterHandler = event => event.keyCode === 13 && this.pushMessage()
+  
+  keyPressHandler = event => {
+    switch (event.keyCode) {
+      case 13:
+        this.pushMessage()
+        break
+      case 27:
+        this.setChatActive(false)
+        break
+      case 84:
+        if (!this.store.active) this.setChatActive(true)
+        break
+      default:
+    }
+  }
 
   setChatShow = isShow => (this.store.isShow = isShow)
   clearChat = () => (this.store.messages = [])
 
   setChatActive = active => {
+    if (window.mp) window.mp.trigger('cef_cl_showCursor', active)
     this.store.active = active
-    this.store.isShow = !active ? false : this.store.isShow
+    this.chatDischarge()
   }
 
   setActiveBtn = btn => {
