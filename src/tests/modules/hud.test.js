@@ -5,6 +5,9 @@ import microHudData from '../json/microHudData.json'
 import missionHudData from '../json/missionHudData.json'
 import speedometerHudData from '../json/speedometerHudData.json'
 import allHudData from '../json/allHudData.json'
+import timeHudData from '../json/timeHudData.json'
+
+const HUD_ONLINE = 1500
 
 const testAlerts = () => {
   let counter = 0
@@ -15,6 +18,9 @@ const testAlerts = () => {
 }
 
 const setHudActive = active => window.trigger('setHudActive', active)
+const setOnlineHudData = () => window.trigger('setOnlineHudData', HUD_ONLINE)
+const setTimeHudData = () =>
+  window.trigger('setTimeHudData', JSON.stringify(timeHudData))
 const setHudData = () => window.trigger('setHudData', JSON.stringify(hudData))
 const setGeoHudData = () =>
   window.trigger('setGeoHudData', JSON.stringify(geoHudData))
@@ -35,5 +41,7 @@ export {
   setMicroHudData,
   setMissionHudData,
   setSpeedometerHudData,
-  setAllHudData
+  setAllHudData,
+  setOnlineHudData,
+  setTimeHudData
 }

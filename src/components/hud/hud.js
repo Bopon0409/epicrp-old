@@ -47,6 +47,8 @@ export default class hud extends Component {
     const { EventManager } = window
     EventManager.addHandler('addAlert', this.addAlert.bind(this))
     EventManager.addHandler('setAllHudData', this.setAllHudData.bind(this))
+    EventManager.addHandler('setOnlineHudData', this.setHudOnline.bind(this))
+    EventManager.addHandler('setTimeHudData', this.setTimeHudData.bind(this))
     EventManager.addHandler('setHudActive', this.setHudActive.bind(this))
     EventManager.addHandler('setHudData', this.setHudData.bind(this))
     EventManager.addHandler('setGeoHudData', this.setGeoHudData.bind(this))
@@ -87,13 +89,17 @@ export default class hud extends Component {
     EventManager.removeHandler('setMissionHudData')
     EventManager.removeHandler('setSpeedometerHudData')
     EventManager.removeHandler('setAllHudData')
+    EventManager.removeHandler('setOnlineHudData', this.setHudOnline)
+    EventManager.removeHandler('setTimeHudData', this.setTimeHudData)
 
     clearInterval(this.turnInteval)
   }
 
   setAllHudData = ({ ...args }) => this.setState({ ...args })
-  setHudData = ({ online, id, time, date, money, errors }) =>
-    this.setState({ online, id, time, date, money, errors })
+  setHudOnline = online => this.setState({ online })
+  setTimeHudData = ({ time, date }) => this.setState({ time, date })
+  setHudData = ({ id, time, date, money, errors }) =>
+    this.setState({ id, time, date, money, errors })
 
   setGeoHudData = geo => this.setState({ geo })
   setMicroHudData = microphone => this.setState({ microphone })
@@ -110,6 +116,7 @@ export default class hud extends Component {
     this.setState(({ alerts, turnAlerts, alertsCount }) => {
       const newAlerts = alerts.slice()
       const newTurnAlerts = turnAlerts.slice()
+      
       // Проверка на максимальное количество alerts
       if (newAlerts.length < 3) {
         newAlerts.unshift(alert)

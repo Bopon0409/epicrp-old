@@ -5,9 +5,9 @@
   "date": "10.02.2021",
   "money": 150000,
   "errors": {
-    "1": false,
+    "1": true,
     "2": true,
-    "3": true
+    "3": false
   },
   "geo": { "quarter": "Альта-Стрит", "street": "Хавик-Авеню" },
   "microphone": {
@@ -18,7 +18,7 @@
     "active": true,
     "title": "Миссия невыполнима",
     "text": "Найдите одежду секретного агента около депаратемнта юстиции"
-  },
+  },  
   "speedometer": {
     "active": true,
     "speed": 96,

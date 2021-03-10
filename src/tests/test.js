@@ -21,7 +21,9 @@ import {
   setMissionHudData,
   setSpeedometerHudData,
   setAllHudData,
-  setHudActive
+  setHudActive,
+  setOnlineHudData,
+  setTimeHudData
 } from './modules/hud.test'
 
 window.test = {
@@ -44,6 +46,8 @@ window.test = {
   setMissionHudData,
   setSpeedometerHudData,
   setAllHudData,
+  setOnlineHudData,
+  setTimeHudData,
   setPersData,
   setCreatePersActive
 }
@@ -51,6 +55,6 @@ window.test = {
 // current tests
 setTimeout(() => {
   setBgActive(true)
-  setChatShow(true)
-  testChatPushMsg()
+  setHudActive(true)
+  setTimeHudData()
 }, 500)
