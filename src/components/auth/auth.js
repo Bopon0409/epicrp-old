@@ -12,7 +12,7 @@ import refreshImg from './images/refresh.svg'
 export default observer(() => {
   const { active, isLogin, errorMsg, news } = store.state
 
-  const registerValidate = (login, pass, pass2, email) => {
+  const registerValidate = (email, login, pass, pass2) => {
     const emailRegExp = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
     if (emailRegExp.test(email) === false)
       return store.setErrorMsg(store.ERROR_MESSAGES[5])
@@ -54,7 +54,7 @@ export default observer(() => {
       if (event.keyCode === 13) {
         isLogin
           ? authValidate(login, pass)
-          : registerValidate(login, pass, pass2, email)
+          : registerValidate(email, login, pass, pass2)
       }
     }
 
