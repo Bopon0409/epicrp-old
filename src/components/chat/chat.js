@@ -1,25 +1,28 @@
 import React, { useEffect, useRef } from 'react'
 import { observer } from 'mobx-react-lite'
 
-import chatStore from '../../store/chat/chat-store'
+import store from '../../store/chat/chat-store'
 import MsgList from './modules/msg-list'
 import chatInputIcon from './images/chat-input-icon.svg'
 
 export default observer(() => {
-  const { active, isShow } = chatStore.store
-  const { setActiveBtn, pushMessage, onInputChange, getInput } = chatStore
+  const { active, isShow } = store.state
+  const { setActiveBtn, pushMessage, onInputChange, getInput } = store
   const { inputValue, activeBtn } = getInput()
 
   const skrollRef = useRef()
   const inputRef = useRef()
   const skrollingOnPushMsg = () => skrollRef.current.scrollIntoView()
-  const skrollingOnPressEnter = event =>
-    event.keyCode === 13 && skrollRef.current.scrollIntoView()
 
   useEffect(() => {
-    const { keyPressHandler, setChatActive, clearChat } = chatStore
-    const { setChatShow, pushChatMsgFromClient } = chatStore
+    const { keyPressHandler, setChatActive, clearChat } = store
+    const { setChatShow, pushChatMsgFromClient } = store
+    const { active } = store.state
     const { EventManager } = window
+
+    const skrollingOnPressEnter = event => {
+      if (event.keyCode === 13 && active) skrollRef.current.scrollIntoView()
+    }
 
     EventManager.addHandler('pushChatMsgFromClient', pushChatMsgFromClient)
     EventManager.addHandler('pushChatMsgFromClient', skrollingOnPushMsg)

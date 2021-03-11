@@ -1,10 +1,11 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import authStore from '../../../store/auth/auth-store'
+import store from '../../../store/auth/auth-store'
 
 export default observer(({ authValidate }) => {
-  const { login, pass, checkBox } = authStore.store
-  const { setField, loginToggle, checkBoxToggle } = authStore
+  const { login, pass, checkBox } = store.state
+  const { setField, loginToggle, checkBoxToggle } = store
+
   return (
     <div className='main-block'>
       <input
@@ -34,7 +35,7 @@ export default observer(({ authValidate }) => {
             Регистрация
           </div>
         </div>
-        <div className='enter-btn' onClick={authValidate}>
+        <div className='enter-btn' onClick={() => authValidate(login, pass)}>
           Войти
         </div>
       </div>

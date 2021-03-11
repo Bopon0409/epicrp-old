@@ -14,7 +14,7 @@ class AuthStore {
     'Некорректный email'
   ]
 
-  store = {
+  state = {
     active: false,
     checkBox: false,
     isLogin: true,
@@ -46,29 +46,32 @@ class AuthStore {
   }
 
   clearInputs = () => {
-    this.store.login = ''
-    this.store.email = ''
-    this.store.pass = ''
-    this.store.pass2 = ''
-    this.store.errorMsg = ''
+    this.state.login = ''
+    this.state.email = ''
+    this.state.pass = ''
+    this.state.pass2 = ''
+    this.state.errorMsg = ''
   }
 
-  setAuthActive = active => (this.store.active = active)
-  setErrorMsg = msg => (this.store.errorMsg = msg)
-  setField = (fieldName, value) => (this.store[fieldName] = value)
-  loginToggle = () => (this.store.isLogin = !this.store.isLogin)
-  checkBoxToggle = () => (this.store.checkBox = !this.store.checkBox)
+  setAuthActive = active => (this.state.active = active)
+  setErrorMsg = msg => (this.state.errorMsg = msg)
+  setField = (fieldName, value) => (this.state[fieldName] = value)
+  checkBoxToggle = () => (this.state.checkBox = !this.state.checkBox)
+  loginToggle = () => {
+    this.state.isLogin = !this.state.isLogin
+    this.clearInputs()
+  }
 
   authServerAnswer = isSuccess => {
-    if (isSuccess) this.store.active = false
-    else this.store.errorMsg = 'Неверный логин или пароль'
+    if (isSuccess) this.state.active = false
+    else this.state.errorMsg = 'Неверный логин или пароль'
   }
 
   regServerAnswer = isSuccess => {
     if (isSuccess) {
-      this.store.isLogin = true
+      this.state.isLogin = true
       this.clearInputs()
-    } else this.store.errorMsg = 'Такой пользователь уже существует'
+    } else this.state.errorMsg = 'Такой пользователь уже существует'
   }
 }
 

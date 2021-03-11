@@ -8,7 +8,7 @@ class ChatStore {
     makeAutoObservable(this, {}, { deep: true })
   }
 
-  store = {
+  state = {
     active: false,
     isShow: false,
     activeBtn: 'ic',
@@ -21,7 +21,7 @@ class ChatStore {
   }
 
   pushMessage = () => {
-    const { activeBtn, inputValue } = this.store
+    const { activeBtn, inputValue } = this.state
     if (inputValue.length > 0 && inputValue.length < 100) {
       if (window.mp) {
         const msg = `${activeBtn} ${inputValue}`
@@ -32,31 +32,31 @@ class ChatStore {
         else window.mp.invoke('chatMessage', inputValue)
       }
 
-      this.store.storyMsg.unshift({ inputValue, activeBtn })
-      this.store.storyMsg = this.store.storyMsg.slice(0, this.MAX_STORY_MESSAGE)
+      this.state.storyMsg.unshift({ inputValue, activeBtn })
+      this.state.storyMsg = this.state.storyMsg.slice(0, this.MAX_STORY_MESSAGE)
     }
   }
 
   getInput = () => {
-    const { inputValue, activeBtn, storyPosition, storyMsg } = this.store
+    const { inputValue, activeBtn, storyPosition, storyMsg } = this.state
     return storyPosition !== -1
       ? storyMsg[storyPosition]
       : { inputValue, activeBtn }
   }
 
   chatDischarge = () => {
-    this.store.activeBtn = 'ic'
-    this.store.inputValue = ''
-    this.store.storyPosition = -1
+    this.state.activeBtn = 'ic'
+    this.state.inputValue = ''
+    this.state.storyPosition = -1
   }
 
-  setOpacity = isOpacity => (this.store.isOpacity = isOpacity)
+  setOpacity = isOpacity => (this.state.isOpacity = isOpacity)
 
   dropOpacity = isNewTimeout => {
     this.setOpacity(false)
-    clearInterval(this.store.opacityInterval)
+    clearInterval(this.state.opacityInterval)
     if (isNewTimeout) {
-      this.store.opacityInterval = setTimeout(() => {
+      this.state.opacityInterval = setTimeout(() => {
         this.setOpacity(true)
       }, this.OPACITY_DELAY)
     }
@@ -64,27 +64,27 @@ class ChatStore {
 
   pushChatMsgFromClient = msg => {
     if (msg.type) {
-      this.store.messages.push(msg)
+      this.state.messages.push(msg)
       this.dropOpacity(true)
     }
   }
 
   onInputChange = event => {
     const value = event.target.value
-    this.store.inputValue = value
+    this.state.inputValue = value
     if (value[0] === '/') {
-      if (value.substr(1, 2) === 'b ') this.store.activeBtn = 'b'
-      else if (value.substr(1, 3) === 'me ') this.store.activeBtn = 'me'
-      else if (value.substr(1, 3) === 'do ') this.store.activeBtn = 'do'
-      else if (value.substr(1, 4) === 'try ') this.store.activeBtn = 'try'
-      else if (value.substr(1, 2) === 'f ') this.store.activeBtn = 'f'
-      else if (value.substr(1, 2) === 'd ') this.store.activeBtn = 'd'
-      else this.store.activeBtn = 'ic'
+      if (value.substr(1, 2) === 'b ') this.state.activeBtn = 'b'
+      else if (value.substr(1, 3) === 'me ') this.state.activeBtn = 'me'
+      else if (value.substr(1, 3) === 'do ') this.state.activeBtn = 'do'
+      else if (value.substr(1, 4) === 'try ') this.state.activeBtn = 'try'
+      else if (value.substr(1, 2) === 'f ') this.state.activeBtn = 'f'
+      else if (value.substr(1, 2) === 'd ') this.state.activeBtn = 'd'
+      else this.state.activeBtn = 'ic'
     }
   }
 
   keyPressHandler = event => {
-    const { storyPosition, active, storyMsg } = this.store
+    const { storyPosition, active, storyMsg } = this.state
     switch (event.keyCode) {
       case 13:
         this.pushMessage()
@@ -99,30 +99,30 @@ class ChatStore {
 
       case 38:
         if (!active) return
-        if (storyMsg.length > storyPosition + 1) this.store.storyPosition++
+        if (storyMsg.length > storyPosition + 1) this.state.storyPosition++
         break
 
       case 40:
         if (!active) return
-        if (storyPosition > 0 && storyMsg[this.store.storyPosition - 1])
-          this.store.storyPosition--
+        if (storyPosition > 0 && storyMsg[this.state.storyPosition - 1])
+          this.state.storyPosition--
         else if (storyPosition === 0) {
-          this.store.storyPosition--
-          this.store.inputValue = ''
-          this.store.activeBtn = 'ic'
+          this.state.storyPosition--
+          this.state.inputValue = ''
+          this.state.activeBtn = 'ic'
         }
         break
       default:
     }
   }
 
-  setChatShow = isShow => (this.store.isShow = isShow)
-  clearChat = () => (this.store.messages = [])
+  setChatShow = isShow => (this.state.isShow = isShow)
+  clearChat = () => (this.state.messages = [])
 
   setChatActive = active => {
-    if (this.store.isShow) {
+    if (this.state.isShow) {
       if (window.mp) window.mp.trigger('cef_cl_showCursor', active)
-      this.store.active = active
+      this.state.active = active
       this.chatDischarge()
 
       if (active) this.dropOpacity(false)
@@ -131,7 +131,7 @@ class ChatStore {
   }
 
   setActiveBtn = btn => {
-    this.store.activeBtn = this.store.activeBtn !== btn ? btn : 'ic'
+    this.state.activeBtn = this.state.activeBtn !== btn ? btn : 'ic'
   }
 }
 

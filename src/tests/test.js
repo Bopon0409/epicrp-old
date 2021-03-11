@@ -55,5 +55,5 @@ window.test = {
 // current tests
 setTimeout(() => {
   setBgActive(true)
-  setCreatePersActive(true)
+  setAuthActive(true)
 }, 500)

@@ -1,9 +1,9 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import chatStore from '../../../store/chat/chat-store'
+import store from '../../../store/chat/chat-store'
 
 export default observer(({ skrollRef }) => {
-  const { messages, active, isOpacity } = chatStore.store
+  const { messages, active, isOpacity } = store.state
 
   const getBasicMsg = (msg, i, arr) => (
     <div
