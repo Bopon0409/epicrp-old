@@ -8,12 +8,12 @@ export default observer(() => {
   const setBgActive = active => bgStore.setActive(active)
 
   useEffect(() => {
-    const { EventManager } = window
-    EventManager.addHandler('setBgActive', setBgActive.bind(this))
-    return function cleanup () {
-      EventManager.removeHandler('setBgActive')
+    const { EventManager: em } = window
+    em.addHandler('setBgActive', setBgActive)
+    return () => {
+      em.removeHandler('setBgActive', setBgActive)
     }
-  })
+  }, [])
 
   const bgStyle = { display: active ? 'block' : 'none' }
   return <div className='background' style={bgStyle}></div>

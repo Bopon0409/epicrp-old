@@ -44,20 +44,17 @@ export default class hud extends Component {
   }
 
   componentDidMount = () => {
-    const { EventManager } = window
-    EventManager.addHandler('addAlert', this.addAlert.bind(this))
-    EventManager.addHandler('setAllHudData', this.setAllHudData.bind(this))
-    EventManager.addHandler('setOnlineHudData', this.setHudOnline.bind(this))
-    EventManager.addHandler('setTimeHudData', this.setTimeHudData.bind(this))
-    EventManager.addHandler('setHudActive', this.setHudActive.bind(this))
-    EventManager.addHandler('setHudData', this.setHudData.bind(this))
-    EventManager.addHandler('setGeoHudData', this.setGeoHudData.bind(this))
-    EventManager.addHandler('setMicroHudData', this.setMicroHudData.bind(this))
-    EventManager.addHandler(
-      'setMissionHudData',
-      this.setMissionHudData.bind(this)
-    )
-    EventManager.addHandler(
+    const { EventManager: em } = window
+    em.addHandler('addAlert', this.addAlert.bind(this))
+    em.addHandler('setAllHudData', this.setAllHudData.bind(this))
+    em.addHandler('setOnlineHudData', this.setHudOnline.bind(this))
+    em.addHandler('setTimeHudData', this.setTimeHudData.bind(this))
+    em.addHandler('setHudActive', this.setHudActive.bind(this))
+    em.addHandler('setHudData', this.setHudData.bind(this))
+    em.addHandler('setGeoHudData', this.setGeoHudData.bind(this))
+    em.addHandler('setMicroHudData', this.setMicroHudData.bind(this))
+    em.addHandler('setMissionHudData', this.setMissionHudData.bind(this))
+    em.addHandler(
       'setSpeedometerHudData',
       this.setSpeedometerHudData.bind(this)
     )
@@ -80,17 +77,17 @@ export default class hud extends Component {
   }
 
   componentWillUnmount = () => {
-    const { EventManager } = window
-    EventManager.removeHandler('addAlert')
-    EventManager.removeHandler('setHudActive')
-    EventManager.removeHandler('setHudData')
-    EventManager.removeHandler('setGeoHudData')
-    EventManager.removeHandler('setMicroHudData')
-    EventManager.removeHandler('setMissionHudData')
-    EventManager.removeHandler('setSpeedometerHudData')
-    EventManager.removeHandler('setAllHudData')
-    EventManager.removeHandler('setOnlineHudData', this.setHudOnline)
-    EventManager.removeHandler('setTimeHudData', this.setTimeHudData)
+    const { EventManager: em } = window
+    em.removeHandler('addAlert')
+    em.removeHandler('setHudActive')
+    em.removeHandler('setHudData')
+    em.removeHandler('setGeoHudData')
+    em.removeHandler('setMicroHudData')
+    em.removeHandler('setMissionHudData')
+    em.removeHandler('setSpeedometerHudData')
+    em.removeHandler('setAllHudData')
+    em.removeHandler('setOnlineHudData', this.setHudOnline)
+    em.removeHandler('setTimeHudData', this.setTimeHudData)
 
     clearInterval(this.turnInteval)
   }
@@ -116,7 +113,7 @@ export default class hud extends Component {
     this.setState(({ alerts, turnAlerts, alertsCount }) => {
       const newAlerts = alerts.slice()
       const newTurnAlerts = turnAlerts.slice()
-      
+
       // Проверка на максимальное количество alerts
       if (newAlerts.length < 3) {
         newAlerts.unshift(alert)

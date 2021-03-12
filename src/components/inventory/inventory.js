@@ -32,22 +32,16 @@ export default class Inventory extends Component {
   }
 
   componentDidMount = () => {
-    const { EventManager } = window
-    EventManager.addHandler(
-      'pushInventaryDataToFront',
-      this.setInventaryData.bind(this)
-    )
-    EventManager.addHandler(
-      'setInventoryActive',
-      this.setInventoryActive.bind(this)
-    )
+    const { EventManager: em } = window
+    em.addHandler('pushInventaryDataToFront', this.setInventaryData.bind(this))
+    em.addHandler('setInventoryActive', this.setInventoryActive.bind(this))
     this.checkArmorAndBag()
   }
 
   componentWillUnmount = () => {
-    const { EventManager } = window
-    EventManager.removeHandler('pushInventaryDataToFront')
-    EventManager.removeHandler('setInventoryActive')
+    const { EventManager: em } = window
+    em.removeHandler('pushInventaryDataToFront', this.setInventaryData)
+    em.removeHandler('setInventoryActive', this.setInventoryActive)
   }
 
   setInventoryActive = active => this.setState({ active })
@@ -281,7 +275,6 @@ export default class Inventory extends Component {
         if (fromSlot >= 26 && fromSlot <= 35) return
       }
     }
-
 
     // Проверка на стак предметов
     if (item2) {

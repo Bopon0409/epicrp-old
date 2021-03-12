@@ -83,12 +83,13 @@ class ChatStore {
     }
   }
 
-  keyPressHandler = event => {
+  keyPressHandler = (event, skrollRef) => {
     const { storyPosition, active, storyMsg } = this.state
     switch (event.keyCode) {
       case 13:
         this.pushMessage()
         this.setChatActive(false)
+        if (active) skrollRef.current.scrollIntoView()
         break
       case 27:
         this.setChatActive(false)

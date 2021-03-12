@@ -73,6 +73,51 @@ class AuthStore {
       this.clearInputs()
     } else this.state.errorMsg = 'Такой пользователь уже существует'
   }
+
+  enterHandler = event => {
+    const { login, pass, pass2, email, isLogin, active } = this.state
+    if (event.keyCode === 13 && active) {
+      isLogin
+        ? this.authValidate(login, pass)
+        : this.registerValidate(email, login, pass, pass2)
+    }
+  }
+
+  authValidate = () => {
+    const { login, pass } = this.state
+
+    if (/^[a-zA-Z1-9]+$/.test(login) === false)
+      return this.setErrorMsg(this.ERROR_MESSAGES[0])
+    if (login.length < 4 || login.length > 20)
+      return this.setErrorMsg(this.ERROR_MESSAGES[1])
+    if (parseInt(login.substr(0, 1)))
+      return this.setErrorMsg(this.ERROR_MESSAGES[2])
+    if (/^[a-zA-Z1-9]{6,}$/i.test(pass) === false)
+      return this.setErrorMsg(this.ERROR_MESSAGES[3])
+
+    this.clearInputs()
+    if (window.mp) window.mp.trigger('userAuth', login, pass)
+  }
+
+  registerValidate = () => {
+    const { email, login, pass, pass2 } = this.state
+
+    const emailRegExp = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
+    if (emailRegExp.test(email) === false)
+      return this.setErrorMsg(this.ERROR_MESSAGES[5])
+    if (/^[a-zA-Z1-9]+$/.test(login) === false)
+      return this.setErrorMsg(this.ERROR_MESSAGES[0])
+    if (login.length < 4 || login.length > 20)
+      return this.setErrorMsg(this.ERROR_MESSAGES[1])
+    if (parseInt(login.substr(0, 1)))
+      return this.setErrorMsg(this.ERROR_MESSAGES[2])
+    if (/^[a-zA-Z1-9]{6,}$/i.test(pass) === false)
+      return this.setErrorMsg(this.ERROR_MESSAGES[3])
+    if (pass !== pass2) return this.setErrorMsg(this.ERROR_MESSAGES[4])
+
+    this.clearInputs()
+    if (window.mp) window.mp.trigger('userRegister', login, email, pass)
+  }
 }
 
 export default new AuthStore()

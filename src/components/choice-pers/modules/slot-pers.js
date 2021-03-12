@@ -9,8 +9,8 @@ import regIcon from '../images/reg-icon.svg'
 import timeIcon from '../images/time-icon.svg'
 
 export default observer(({ index }) => {
-  const pers = choisePersStore.store.persData[index]
-  const active = choisePersStore.store.currentPers === index
+  const pers = choisePersStore.state.persData[index]
+  const active = choisePersStore.state.currentPers === index
   const { setCurrentPers } = choisePersStore
 
   if (pers.empty && pers.bought === false) return <BuyView />

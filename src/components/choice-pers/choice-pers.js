@@ -2,24 +2,24 @@ import React, { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
 
 import SlotPers from './modules/slot-pers'
-import choisePersStore from '../../store/choise-pers/choise-pers-store'
+import store from '../../store/choise-pers/choise-pers-store'
 
 import playBtnIcon from './images/play-btn-icon.svg'
 
 export default observer(() => {
-  const { componentActive, persData } = choisePersStore.store
+  const { componentActive, persData } = store.state
 
   useEffect(() => {
-    const { setChoicePersActive, pushPersData } = choisePersStore
-    const { EventManager } = window
-    EventManager.addHandler('setChoicePersActive', setChoicePersActive)
-    EventManager.addHandler('pushPersData', pushPersData)
+    const { setChoicePersActive, pushPersData } = store
+    const { EventManager: em } = window
+    em.addHandler('setChoicePersActive', setChoicePersActive)
+    em.addHandler('pushPersData', pushPersData)
 
     return () => {
-      EventManager.removeHandler('setChoicePersActive')
-      EventManager.removeHandler('pushPersData')
+      em.removeHandler('setChoicePersActive', setChoicePersActive)
+      em.removeHandler('pushPersData', pushPersData)
     }
-  })
+  }, [])
 
   const slotList = persData.map((_el, i) => <SlotPers key={i} index={i} />)
 

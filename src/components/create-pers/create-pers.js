@@ -15,10 +15,10 @@ export default observer(() => {
   const { setStep, setActive } = store
 
   useEffect(() => {
-    const { EventManager } = window
-    EventManager.addHandler('setCreatePersActive', setActive)
-    return function cleanup () {
-      EventManager.removeHandler('setCreatePersActive', setActive)
+    const { EventManager: em } = window
+    em.addHandler('setCreatePersActive', setActive)
+    return () => {
+      em.removeHandler('setCreatePersActive', setActive)
     }
   })
 

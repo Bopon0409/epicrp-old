@@ -5,7 +5,7 @@ var EventManager = {
   addHandler (eventName, handler) {
     if (eventName in this.events) this.events[eventName].push(handler)
     else this.events[eventName] = [handler]
-  },
+  },  
   removeHandler (eventName, handler) {
     if (eventName in this.events)
       this.events[eventName].splice(this.events[eventName].indexOf(handler), 1)

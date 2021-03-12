@@ -5,15 +5,15 @@ class ChoisePersStore {
     makeAutoObservable(this, {}, { deep: true })
   }
 
-  store = {
+  state = {
     componentActive: false,
     persData: [],
     currentPers: 0
   }
 
-  setCurrentPers = current => (this.store.currentPers = current)
-  setChoicePersActive = active => (this.store.componentActive = active)
-  pushPersData = data => (this.store.persData = data)
+  setCurrentPers = current => (this.state.currentPers = current)
+  setChoicePersActive = active => (this.state.componentActive = active)
+  pushPersData = data => (this.state.persData = data)
 }
 
 export default new ChoisePersStore()
