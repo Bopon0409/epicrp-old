@@ -53,7 +53,4 @@ window.test = {
 }
 
 // current tests
-setTimeout(() => {
-  setBgActive(true)
-  setAuthActive(true)
-}, 500)
+setTimeout(() => {}, 500)

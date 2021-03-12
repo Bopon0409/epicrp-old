@@ -50,8 +50,8 @@ export default observer(() => {
     const { authServerAnswer, regServerAnswer, setAuthActive } = store
 
     const enterHandler = event => {
-      const { login, pass, pass2, email, isLogin } = store.state
-      if (event.keyCode === 13) {
+      const { login, pass, pass2, email, isLogin, active } = store.state
+      if (event.keyCode === 13 && active) {
         isLogin
           ? authValidate(login, pass)
           : registerValidate(email, login, pass, pass2)

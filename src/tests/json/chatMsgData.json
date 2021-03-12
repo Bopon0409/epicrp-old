@@ -1,19 +1,19 @@
 [
   {
     "type": "ic",
-    "text": "Admin Adminov[16]: Lorem ipsum dolor sit amet, consectetur"
+    "text": "Admin Adminov[16]: !!!"
   },
   {
-    "type": "ooc",
+    "type": "b",
     "text": "Test Testov[11]: (( Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ))"
   },
   {
     "type": "me",
-    "text": "Main Player[0] сказал что-то по рации"
+    "text": "Main Player[0] сказал что-то по рации@"
   },
   {
     "type": "f",
-    "text": "[R] Main Player[0]: Lincoln-1 | Имеются активные юниты на сцене?"
+    "text": "[R] Main Player[0]: Lincoln-1 | Имеются активные юниты на сцене?#"
   },
   {
     "type": "a",
@@ -43,7 +43,7 @@
     "text": "Admin Adminov[16]: Lorem ipsum dolor sit amet, consectetur"
   },
   {
-    "type": "ooc",
+    "type": "b",
     "text": "Test Testov[11]: (( Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ))"
   },
   {
