@@ -1,0 +1,31 @@
+{
+  "colorEyes": [
+    { "color": "#ffffff" },
+    { "color": "#ffffff" },
+    { "color": "#ffffff" },
+    { "color": "#ffffff" }
+  ],
+  "colorHair": [],
+  "shirts": [
+    {
+      "id": "1",
+      "colors": [
+        { "color": "#ffffff" },
+        { "color": "#ffffff" },
+        { "color": "#ffffff" },
+        { "color": "#ffffff" }
+      ]
+    },
+    {
+      "id": "2",
+      "colors": [
+        { "color": "#ffffff" },
+        { "color": "#ffffff" },
+        { "color": "#ffffff" },
+        { "color": "#ffffff" }
+      ]
+    }
+  ],
+  "paints": [],
+  "shoes": []
+}

@@ -12,7 +12,7 @@ import backgroundPng from './images/bg.png'
 
 export default observer(() => {
   const { active, step } = store.state
-  const { setStep, setActive } = store
+  const { setActive } = store
 
   useEffect(() => {
     const { EventManager: em } = window
@@ -21,8 +21,6 @@ export default observer(() => {
       em.removeHandler('setCreatePersActive', setActive)
     }
   })
-
-  const finishCreate = () => {}
 
   const componentStyle = {
     display: active ? 'block' : 'none',
@@ -37,9 +35,7 @@ export default observer(() => {
       {step === 2 && <Step2 />}
       {step === 3 && <Step3 />}
 
-      {(step === 2 || step === 3) && (
-        <Transition step={step} setStep={setStep} finishCreate={finishCreate} />
-      )}
+      {(step === 2 || step === 3) && <Transition />}
     </div>
   )
 })

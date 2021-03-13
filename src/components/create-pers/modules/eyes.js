@@ -10,9 +10,9 @@ export default observer(() => {
 
   return (
     <div className='eyes current-block'>
-      <ToggleBar item={state.type} onValueChange={onValueChange} />
+      <ToggleBar item={state.typeEyes} onValueChange={onValueChange} />
       <ToggleColor
-        item={state.color}
+        item={state.colorEyes}
         onValueChange={onValueChange}
         type='eyes'
       />

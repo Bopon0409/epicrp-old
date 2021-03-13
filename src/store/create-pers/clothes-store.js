@@ -28,7 +28,7 @@ class ClothesStore {
 
   onValueChange = (value, valueName) => {
     this.state[valueName].value = value
-    window.mp.trigger('createCharChangeValue', valueName, value)
+    if (window.mp) window.mp.trigger('createCharChangeValue', valueName, value)
   }
 }
 

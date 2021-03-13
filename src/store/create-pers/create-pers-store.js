@@ -10,7 +10,7 @@ class CreatePersStore {
 
   state = {
     active: false,
-    step: 1,
+    step: 3,
     step1: {
       name: '',
       surname: '',
@@ -32,6 +32,9 @@ class CreatePersStore {
   // =================================   MAIN   ================================
   setStep = step => (this.state.step = step)
   setActive = active => (this.state.active = active)
+  finishCreate = () => {
+    if (window.mp) window.mp.trigger('createCharFinish')
+  }
 
   // ================================   STEP2   ================================
   setName = value => (this.state.step1.name = value)

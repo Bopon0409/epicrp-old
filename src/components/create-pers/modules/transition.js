@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import prevImg from '../images/prev.svg'
 import prevImgActive from '../images/prev-active.svg'
+import { observer } from 'mobx-react-lite'
+import store from '../../../store/create-pers/create-pers-store'
 
-export default function Transition ({ step, setStep, finishCreate }) {
+export default observer(() => {
+  const { step } = store.state
+  const { setStep, finishCreate } = store
   const [prevActive, setPrevActive] = useState(false)
   const [nextActive, setNextActive] = useState(false)
 
@@ -37,4 +41,4 @@ export default function Transition ({ step, setStep, finishCreate }) {
       </div>
     </div>
   )
-}
+})

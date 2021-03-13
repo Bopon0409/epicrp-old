@@ -78,16 +78,16 @@ export default class hud extends Component {
 
   componentWillUnmount = () => {
     const { EventManager: em } = window
-    em.removeHandler('addAlert')
-    em.removeHandler('setHudActive')
-    em.removeHandler('setHudData')
-    em.removeHandler('setGeoHudData')
-    em.removeHandler('setMicroHudData')
-    em.removeHandler('setMissionHudData')
-    em.removeHandler('setSpeedometerHudData')
-    em.removeHandler('setAllHudData')
+    em.removeHandler('addAlert', this.addAlert)
+    em.removeHandler('setAllHudData', this.setAllHudData)
     em.removeHandler('setOnlineHudData', this.setHudOnline)
     em.removeHandler('setTimeHudData', this.setTimeHudData)
+    em.removeHandler('setHudActive', this.setHudActive)
+    em.removeHandler('setHudData', this.setHudData)
+    em.removeHandler('setGeoHudData', this.setGeoHudData)
+    em.removeHandler('setMicroHudData', this.setMicroHudData)
+    em.removeHandler('setMissionHudData', this.setMissionHudData)
+    em.removeHandler('setSpeedometerHudData', this.setSpeedometerHudData)
 
     clearInterval(this.turnInteval)
   }
@@ -107,7 +107,6 @@ export default class hud extends Component {
 
   addAlert = alert => {
     let isTurned
-    alert = typeof alert === 'string' ? JSON.parse(alert) : alert
     alert.ref = React.createRef()
     alert.id = this.state.alertsCount
     this.setState(({ alerts, turnAlerts, alertsCount }) => {

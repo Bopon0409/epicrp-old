@@ -6,13 +6,13 @@ class EyesStore {
   }
 
   state = {
-    type: { value: 1, valueName: 'type', title: 'Вариант глаз' },
-    color: { value: '#324835', valueName: 'color', title: 'Цвет глаз' }
+    typeEyes: { value: 1, valueName: 'typeEyes', title: 'Вариант глаз' },
+    colorEyes: { value: '#324835', valueName: 'colorEyes', title: 'Цвет глаз' }
   }
 
   onValueChange = (value, valueName) => {
     this.state[valueName].value = value
-    window.mp.trigger('createCharChangeValue', valueName, value)
+    if (window.mp) window.mp.trigger('createCharChangeValue', valueName, value)
   }
 }
 
