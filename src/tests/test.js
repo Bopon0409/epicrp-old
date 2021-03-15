@@ -27,8 +27,8 @@ window.test = {
 
 // current tests
 const currentTests = () => {
-  createPersTests.setCreatePersActive(true)
-  createPersTests.pushCreatePersData()
+  // createPersTests.setCreatePersActive(true)
+  // createPersTests.pushCreatePersData()
 }
 
 setTimeout(() => process.env.NODE_ENV === 'development' && currentTests(), 0)

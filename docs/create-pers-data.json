@@ -5,7 +5,7 @@
   { "value": "#242323", "valueName": "colorPaints" },
   { "value": 1, "valueName": "shoes" },
   { "value": "#242323", "valueName": "colorShoes" },
-  { "value": 0.5, "valueName": "color" },
+  { "value": 0.5, "valueName": "skinColor" },
   { "value": 0.5, "valueName": "noseWidth" },
   { "value": 0.5, "valueName": "noseHeight" },
   { "value": 0.5, "valueName": "noseTipLength" },

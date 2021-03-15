@@ -16,13 +16,17 @@ export default observer(() => {
     (el, i) => {
       if (el === 'title')
         return (
-          <div className='title' key={i}>
+          <div className='test-modal__title' key={i}>
             {testsModules[currentModule][el]}
           </div>
         )
       else {
         return (
-          <div className='btn' onClick={() => testsModules[currentModule][el]}>
+          <div
+            className='test-modal__btn'
+            key={i}
+            onClick={() => testsModules[currentModule][el]()}
+          >
             {el}
           </div>
         )
@@ -33,13 +37,13 @@ export default observer(() => {
   const handleChange = option => setCurrentModule(option.value)
 
   return (
-    <div>
+    <div className='test-modal'>
       <Select
         options={selectOptions}
         onChange={handleChange}
         value={{ value: currentModule, label: currentModule }}
       />
-      {btns}
+      <div className='test-modal__container'>{btns}</div>
     </div>
   )
 })
