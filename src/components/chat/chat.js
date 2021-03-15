@@ -37,7 +37,7 @@ export default observer(() => {
     }
   })
 
-  const inputContainer = active ? (
+  const inputContainer = active && (
     <>
       <input
         type='text'
@@ -124,7 +124,7 @@ export default observer(() => {
         />
       </div>
     </>
-  ) : null
+  )
 
   return (
     <>
@@ -132,6 +132,7 @@ export default observer(() => {
         <MsgList skrollRef={skrollRef} />
         {inputContainer}
       </div>
+      {isShow && <div className='background-chat'></div>}
     </>
   )
 })

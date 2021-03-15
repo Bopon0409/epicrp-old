@@ -10,7 +10,7 @@ class CreatePersStore {
 
   state = {
     active: false,
-    step: 3,
+    step: 1,
     step1: {
       name: '',
       surname: '',

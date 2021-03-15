@@ -15,22 +15,16 @@ const { ...chatTests } = testChat
 const { ...hudTests } = testHud
 
 window.test = {
-  ...bgTests,
-  ...createPersTests,
-  ...inventoryTests,
-  ...choisePersTests,
-  ...authTests,
-  ...chatTests,
-  ...hudTests
+  bgTests,
+  createPersTests,
+  inventoryTests,
+  choisePersTests,
+  authTests,
+  chatTests,
+  hudTests
 }
 
 // current tests
-const currentTests = () => {
-  testBg.setBgActive(true)
-  testChat.setChatShow(true)
-  testChat.testChatPushMsg()
-  testHud.setHudActive(true)
-  testHud.setAllHudData()
-}
+const currentTests = () => {}
 
 setTimeout(() => process.env.NODE_ENV === 'development' && currentTests(), 0)

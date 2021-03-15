@@ -16,5 +16,5 @@ export default observer(() => {
   }, [])
 
   const bgStyle = { display: active ? 'block' : 'none' }
-  return <div className='background' style={bgStyle}></div>
+  return <div className='background-test' style={bgStyle}></div>
 })

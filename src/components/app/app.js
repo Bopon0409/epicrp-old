@@ -7,6 +7,7 @@ import Hud from '../hud'
 import Chat from '../chat'
 import ChoicePers from '../choice-pers'
 import CreatePers from '../create-pers'
+import TestModal from '../test-modal'
 
 export default function App () {
   return (
@@ -18,6 +19,7 @@ export default function App () {
       <Chat />
       <ChoicePers />
       <CreatePers />
+      <TestModal />
     </>
   )
 }

@@ -40,10 +40,11 @@
       height: 20px;
       margin-top: 25px;
       margin-right: 40px;
-      justify-content: space-between;
+      justify-content: center;
 
       .num-block-item {
         display: flex;
+        margin-right: 10px;
 
         .icon {
           margin-right: 7px;
@@ -329,24 +330,24 @@
 
 @media (max-width: 1400px) {
   .hud {
-    zoom: 0.9;
+    zoom: 1;
   }
 }
 
 @media (max-width: 1140px) {
   .hud {
-    zoom: 0.8;
+    zoom: 0.9;
   }
 }
 
 @media (max-width: 1000px) {
   .hud {
-    zoom: 0.7;
+    zoom: 0.8;
   }
 }
 
 @media (max-width: 900px) {
   .hud {
-    zoom: 0.6;
+    zoom: 0.7;
   }
 }
