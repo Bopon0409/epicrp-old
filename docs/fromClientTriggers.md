@@ -37,12 +37,13 @@
 
 ### Выбор персонажа
 
-- `window.trigger('setChoicePersActive', active:boolean)` - Открыть/Закрыть окно выбора персонажа
+- `window.trigger('setChoicePersActive', active: boolean)` - Открыть/Закрыть окно выбора персонажа
 - `window.trigger('pushPersData', data: json string)` - Загрузка данных о персонажах игрока
 
 ### Создание персонажа
 
-- `window.trigger('setCreatePersActive', active:boolean)` - Открыть/Закрыть окно создания персонажа
+- `window.trigger('setCreatePersActive', active: boolean)` - Открыть/Закрыть окно создания персонажа
+- `window.trigger('pushCreatePersData', data: json string) - Загрузить данные о цветах и одежде для создания персонажа`
 
 # chatAPI
 

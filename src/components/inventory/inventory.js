@@ -225,7 +225,7 @@ export default class Inventory extends Component {
           key={i}
           id={i}
           item={item}
-          isDrag={() => this.state.isDrag}
+          isDrag={this.state.isDrag}
           modalActive={this.state.modal.isActive}
           setModal={this.setModal}
         />

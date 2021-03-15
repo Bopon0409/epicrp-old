@@ -17,7 +17,7 @@ const EquipmentSlotView = ({ id, item, img, isDrag, setModal }) => {
 
   return (
     <div
-      className='equipment-slot'
+      className={isDrag ? 'equipment-slot' : 'equipment-slot slot-hover'}
       onClick={e => {
         if (isDrag()) setModal(true, item, e.clientX, e.clientY)
       }}

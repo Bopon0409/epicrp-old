@@ -3,7 +3,7 @@ import { useDroppable } from '@dnd-kit/core'
 import { useDraggable } from '@dnd-kit/core'
 import { CSS } from '@dnd-kit/utilities'
 
-export default function Slot ({ setModal, item, id, modalActive, isDrag }) {
+export default function Slot ({ setModal, item, id, isDrag }) {
   const { setNodeRef: setNodeRefDroppable } = useDroppable({ id })
   const {
     attributes,
@@ -13,9 +13,9 @@ export default function Slot ({ setModal, item, id, modalActive, isDrag }) {
   } = useDraggable({ id })
   return (
     <div
-      className='slot'
+      className={isDrag ? 'slot' : 'slot slot-hover'}
       onClick={e => {
-        if (isDrag()) setModal(true, item, e.clientX, e.clientY)
+        if (isDrag) setModal(true, item, e.clientX, e.clientY)
       }}
       ref={setNodeRefDroppable}
     >

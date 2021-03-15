@@ -13,6 +13,7 @@
     z-index: 2;
     background-image: url(./images/bg.png);
     background-size: 100% 100%;
+    opacity: 1;
   }
 
   .top-right-panel {
@@ -247,6 +248,7 @@
   }
 
   .bottom-left-panel {
+    z-index: 3;
     color: white;
     position: absolute;
     bottom: 20px;

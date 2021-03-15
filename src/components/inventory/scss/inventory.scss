@@ -27,9 +27,9 @@
     text-align: center;
   }
 
-  .slot-no-hover {
+  .slot-hover {
     &:hover {
-      background-color: rgba(255, 255, 255, 0.05) !important;
+      background-color: rgba(255, 255, 255, 0.2);
     }
   }
 
@@ -37,10 +37,6 @@
     width: 80px;
     height: 80px;
     background-color: rgba(255, 255, 255, 0.05);
-
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
 
     .item-wrapper {
       position: relative;
@@ -138,10 +134,6 @@
           justify-content: center;
           align-items: center;
 
-          &:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-          }
-
           .equipment-plug {
             padding-top: 5px;
             zoom: 1.2;
@@ -183,7 +175,6 @@
       .small-bag-block {
         flex-direction: column;
         align-items: center;
-
       }
 
       .inventory-block {

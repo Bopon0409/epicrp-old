@@ -27,8 +27,10 @@ window.test = {
 // current tests
 const currentTests = () => {
   testBg.setBgActive(true)
-  testChoisePers.setChoicePersActive(true)
-  testChoisePers.setPersData()
+  testChat.setChatShow(true)
+  testChat.testChatPushMsg()
+  testHud.setHudActive(true)
+  testHud.setAllHudData()
 }
 
 setTimeout(() => process.env.NODE_ENV === 'development' && currentTests(), 0)
