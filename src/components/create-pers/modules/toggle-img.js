@@ -21,7 +21,7 @@ export default observer(
     )
 
     const hairs = []
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 20; i++) {
       hairs.push(
         <img
           key={i}
