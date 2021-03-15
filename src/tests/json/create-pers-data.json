@@ -31,6 +31,46 @@
         { "color": "#0000CD" },
         { "color": "#ffffff" }
       ]
+    },
+    {
+      "id": "2",
+      "colors": [
+        { "color": "#ffffe0" },
+        { "color": "#DC143C" },
+        { "color": "#008000" },
+        { "color": "#0000CD" },
+        { "color": "#ffffff" }
+      ]
+    },
+    {
+      "id": "3",
+      "colors": [
+        { "color": "#ffffe0" },
+        { "color": "#DC143C" },
+        { "color": "#008000" },
+        { "color": "#0000CD" },
+        { "color": "#ffffff" }
+      ]
+    },
+    {
+      "id": "4",
+      "colors": [
+        { "color": "#ffffe0" },
+        { "color": "#DC143C" },
+        { "color": "#008000" },
+        { "color": "#0000CD" },
+        { "color": "#ffffff" }
+      ]
+    },
+    {
+      "id": "5",
+      "colors": [
+        { "color": "#ffffe0" },
+        { "color": "#DC143C" },
+        { "color": "#008000" },
+        { "color": "#0000CD" },
+        { "color": "#ffffff" }
+      ]
     }
   ],
   "pants": [
