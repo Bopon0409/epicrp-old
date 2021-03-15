@@ -10,7 +10,7 @@ class LeatherStore {
     age: { value: 1, valueName: 'age', title: 'Возраст' },
     sunDamage: { value: 1, valueName: 'sunDamage', title: 'Урон от солнца' },
     freckles: { value: 1, valueName: 'freckles', title: 'Веснушки' },
-    color: { value: 0.5, valueName: 'skinColor', title: 'Цвет кожи' }
+    skinColor: { value: 0.5, valueName: 'skinColor', title: 'Цвет кожи' }
   }
 
   onValueChange = (value, valueName) => {

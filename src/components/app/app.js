@@ -19,7 +19,7 @@ export default function App () {
       <Chat />
       <ChoicePers />
       <CreatePers />
-      <TestModal />
+      {process.env.NODE_ENV === 'development' && <TestModal />}
     </>
   )
 }

@@ -14,7 +14,9 @@ class TestModalStore {
   }
 
   state = {
+    active: false,
     currentModule: 'testBg',
+    checkbox: false,
     testsModules: {
       testBg: { title: 'testBg', ...testBg },
       testCreatePers: { title: 'testCreatePers', ...testCreatePers },
@@ -26,7 +28,9 @@ class TestModalStore {
     }
   }
 
+  setActive = active => (this.state.active = active)
   setCurrentModule = moduleName => (this.state.currentModule = moduleName)
+  setCheckbox = state => (this.state.checkbox = state)
 }
 
 export default new TestModalStore()

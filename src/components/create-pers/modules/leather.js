@@ -15,7 +15,11 @@ export default observer(() => {
       <ToggleBar item={state.sunDamage} onValueChange={onValueChange} />
       <ToggleBar item={state.freckles} onValueChange={onValueChange} />
 
-      <Slider item={state.color} onValueChange={onValueChange} isColor={true} />
+      <Slider
+        item={state.skinColor}
+        onValueChange={onValueChange}
+        isColor={true}
+      />
     </div>
   )
 })

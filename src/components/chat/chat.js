@@ -12,7 +12,7 @@ export default observer(() => {
 
   const skrollRef = useRef()
   const inputRef = useRef()
-  const skrollingOnPushMsg = () => skrollRef.current.scrollIntoView()
+  const skrollingOnPushMsg = () => skrollRef.current?.scrollIntoView()
 
   useEffect(() => {
     const { setChatActive, clearChat, keyPressHandler } = store

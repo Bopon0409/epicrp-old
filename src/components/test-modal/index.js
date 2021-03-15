@@ -1,2 +1,2 @@
-import './tests.scss'
-export { default } from './tests'
+import './tests-modal.scss'
+export { default } from './tests-modal'

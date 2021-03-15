@@ -6,6 +6,8 @@
 - `npm run dev` Запуск development сервера
 - `npm run build` Компиляция билда
 - `npm run analyze` Запуск анализа билда
+- `npm run zip` Компиляция и архивация билда
+(*только в linux среде, необходим debian пакет zip, sudo apt install zip для установки*)
 
 # Документация
 

@@ -5,7 +5,6 @@ import * as testChoisePers from './modules/choice-pers.test'
 import * as testAuth from './modules/auth.test'
 import * as testChat from './modules/chat.test'
 import * as testHud from './modules/hud.test'
-import createPers from '../components/create-pers'
 
 const { ...bgTests } = testBg
 const { ...createPersTests } = testCreatePers

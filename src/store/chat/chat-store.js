@@ -89,7 +89,7 @@ class ChatStore {
       case 13:
         this.pushMessage()
         this.setChatActive(false)
-        if (active) skrollRef.current.scrollIntoView()
+        if (active) skrollRef.current?.scrollIntoView()
         break
       case 27:
         this.setChatActive(false)
