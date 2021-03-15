@@ -12,15 +12,17 @@ import backgroundPng from './images/bg.png'
 
 export default observer(() => {
   const { active, step } = store.state
-  const { setActive } = store
 
   useEffect(() => {
     const { EventManager: em } = window
+    const { setActive, pushCreatePersData } = store
     em.addHandler('setCreatePersActive', setActive)
+    em.addHandler('pushCreatePersData', pushCreatePersData)
     return () => {
       em.removeHandler('setCreatePersActive', setActive)
+      em.removeHandler('pushCreatePersData', pushCreatePersData)
     }
-  })
+  }, [])
 
   const componentStyle = {
     display: active ? 'block' : 'none',

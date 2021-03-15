@@ -25,7 +25,7 @@ export default observer(() => {
           : 'catalog__item'
       }
     >
-      <img src={`images/parents/parent_${motherId}.png`} alt='' />
+      <img src={`images/create-pers/parents/parent_${motherId}.png`} alt='' />
     </div>
   ))
 
@@ -39,7 +39,7 @@ export default observer(() => {
           : 'catalog__item'
       }
     >
-      <img src={`images/parents/parent_${fatherId}.png`} alt='' />
+      <img src={`images/create-pers/parents/parent_${fatherId}.png`} alt='' />
     </div>
   ))
 

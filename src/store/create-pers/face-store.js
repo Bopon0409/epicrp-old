@@ -39,7 +39,6 @@ class FaceStore {
       title: 'Ширина скул'
     },
     cheekDepth: { value: 0.5, valueName: 'cheekDepth', title: 'Глубина щеки' },
-    eyeSize: { value: 0.5, valueName: 'eyeSize', title: 'Размер глаз' },
     lipThickness: {
       value: 0.5,
       valueName: 'lipThickness',

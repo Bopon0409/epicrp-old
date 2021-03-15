@@ -1,30 +1,49 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import { eyesColors, hairColors } from '../data'
+import store from '../../../store/create-pers/create-pers-store'
+import clothesStore from '../../../store/create-pers/clothes-store'
 
 export default observer(
   ({ item: { title, value, valueName }, onValueChange, type }) => {
-    const mapHandler = (color, i) => (
-      <div
-        key={i}
-        className={
-          color === value
-            ? 'toggle-color__item toggle-color__item_active'
-            : 'toggle-color__item'
-        }
-        onClick={() => onValueChange(color, valueName)}
-        style={{ background: color }}
-      ></div>
-    )
+    const { serverData } = store.state
+    const {
+      shirt: { value: shirtValue },
+      pants: { value: pantsValue },
+      shoes: { value: shoesValue }
+    } = clothesStore.state
+
+    const mapHandler = ({ color }, i) => {
+      return (
+        <div
+          key={i}
+          className={
+            color === value
+              ? 'toggle-color__item toggle-color__item_active'
+              : 'toggle-color__item'
+          }
+          onClick={() => onValueChange(color, valueName)}
+          style={{ background: color }}
+        ></div>
+      )
+    }
 
     const getList = () => {
       switch (type) {
         case 'eyes':
-          return eyesColors.map(mapHandler)
+          return serverData?.colorEyes.map(mapHandler)
         case 'hair':
-          return hairColors.map(mapHandler)
+          return serverData?.colorHair.map(mapHandler)
+        case 'shirts':
+          const shirt = serverData?.shirts.find(({ id }) => +id === shirtValue)
+          return shirt.colors.map(mapHandler)
+        case 'pants':
+          const pant = serverData?.pants.find(({ id }) => +id === pantsValue)
+          return pant.colors.map(mapHandler)
+        case 'shoes':
+          const shoes = serverData?.shoes.find(({ id }) => +id === shoesValue)
+          return shoes.colors.map(mapHandler)
         default:
-          return hairColors.map(mapHandler)
+          break
       }
     }
 

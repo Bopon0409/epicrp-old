@@ -1,5 +1,8 @@
 import { setBgActive } from './modules/bg.test'
-import { setCreatePersActive } from './modules/create-pers.test'
+import {
+  setCreatePersActive,
+  pushCreatePersData
+} from './modules/create-pers.test'
 import { setInventoryActive, testInventory } from './modules/inventory.test'
 import { setPersData, setChoicePersActive } from './modules/choice-pers.test'
 import {
@@ -49,11 +52,13 @@ window.test = {
   setOnlineHudData,
   setTimeHudData,
   setPersData,
-  setCreatePersActive
+  setCreatePersActive,
+  pushCreatePersData
 }
 
 // current tests
 setTimeout(() => {
   setBgActive(true)
   setCreatePersActive(true)
-}, 500)
+  pushCreatePersData()
+}, 0)

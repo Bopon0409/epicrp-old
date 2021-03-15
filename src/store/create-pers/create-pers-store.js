@@ -26,7 +26,8 @@ class CreatePersStore {
       motherName: 'Hannah',
       fatherName: 'Benjamin'
     },
-    menuActive: 1
+    menuActive: 1,
+    serverData: {}
   }
 
   // =================================   MAIN   ================================
@@ -35,6 +36,7 @@ class CreatePersStore {
   finishCreate = () => {
     if (window.mp) window.mp.trigger('createCharFinish')
   }
+  pushCreatePersData = data => (this.state.serverData = data)
 
   // ================================   STEP2   ================================
   setName = value => (this.state.step1.name = value)

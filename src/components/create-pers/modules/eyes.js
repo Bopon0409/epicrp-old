@@ -2,15 +2,15 @@ import React from 'react'
 import { observer } from 'mobx-react-lite'
 import store from '../../../store/create-pers/eyes-store'
 
-import ToggleBar from './toggle-bar'
 import ToggleColor from './toggle-color'
+import Slider from './slider'
 
 export default observer(() => {
   const { state, onValueChange } = store
 
   return (
     <div className='eyes current-block'>
-      <ToggleBar item={state.typeEyes} onValueChange={onValueChange} />
+      <Slider item={state.eyeSize} onValueChange={onValueChange} />
       <ToggleColor
         item={state.colorEyes}
         onValueChange={onValueChange}

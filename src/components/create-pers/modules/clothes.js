@@ -10,12 +10,24 @@ export default observer(() => {
 
   return (
     <div className='current-block skroll'>
-      <ToggleImg item={state.shirt} onValueChange={onValueChange} size={6} />
-      <ToggleColor item={state.colorShirt} onValueChange={onValueChange} />
-      <ToggleImg item={state.pants} onValueChange={onValueChange} size={6} />
-      <ToggleColor item={state.colorPaints} onValueChange={onValueChange} />
-      <ToggleImg item={state.shoes} onValueChange={onValueChange} size={6} />
-      <ToggleColor item={state.colorShoes} onValueChange={onValueChange} />
+      <ToggleImg
+        item={state.shirt}
+        onValueChange={onValueChange}
+        type='shirts'
+      />
+      <ToggleColor item={state.colorShirt} onValueChange={onValueChange} type='shirts' />
+      <ToggleImg
+        item={state.pants}
+        onValueChange={onValueChange}
+        type='pants'
+      />
+      <ToggleColor item={state.colorPaints} onValueChange={onValueChange} type='pants'/>
+      <ToggleImg
+        item={state.shoes}
+        onValueChange={onValueChange}
+        type='shoes'
+      />
+      <ToggleColor item={state.colorShoes} onValueChange={onValueChange} type='shoes'/>
     </div>
   )
 })

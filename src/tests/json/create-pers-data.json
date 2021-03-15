@@ -1,0 +1,80 @@
+{
+  "colorEyes": [
+    { "color": "#ffffe0" },
+    { "color": "#DC143C" },
+    { "color": "#008000" },
+    { "color": "#0000CD" }
+  ],
+  "colorHair": [
+    { "color": "#ffffe0" },
+    { "color": "#DC143C" },
+    { "color": "#008000" },
+    { "color": "#0000CD" }
+  ],
+  "shirts": [
+    {
+      "id": "0",
+      "colors": [
+        { "color": "#ffffe0" },
+        { "color": "#DC143C" },
+        { "color": "#008000" },
+        { "color": "#0000CD" },
+        { "color": "#ffffff" }
+      ]
+    },
+    {
+      "id": "1",
+      "colors": [
+        { "color": "#ffffe0" },
+        { "color": "#DC143C" },
+        { "color": "#008000" },
+        { "color": "#0000CD" },
+        { "color": "#ffffff" }
+      ]
+    }
+  ],
+  "pants": [
+    {
+      "id": "0",
+      "colors": [
+        { "color": "#ffffe0" },
+        { "color": "#DC143C" },
+        { "color": "#008000" },
+        { "color": "#0000CD" },
+        { "color": "#ffffff" }
+      ]
+    },
+    {
+      "id": "1",
+      "colors": [
+        { "color": "#ffffe0" },
+        { "color": "#DC143C" },
+        { "color": "#008000" },
+        { "color": "#0000CD" },
+        { "color": "#ffffff" }
+      ]
+    }
+  ],
+  "shoes": [
+    {
+      "id": "0",
+      "colors": [
+        { "color": "#ffffe0" },
+        { "color": "#DC143C" },
+        { "color": "#008000" },
+        { "color": "#0000CD" },
+        { "color": "#ffffff" }
+      ]
+    },
+    {
+      "id": "1",
+      "colors": [
+        { "color": "#ffffe0" },
+        { "color": "#DC143C" },
+        { "color": "#008000" },
+        { "color": "#0000CD" },
+        { "color": "#ffffff" }
+      ]
+    }
+  ]
+}

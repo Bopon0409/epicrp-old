@@ -6,19 +6,19 @@ class ClothesStore {
   }
 
   state = {
-    shirt: { value: 1, valueName: 'shirt', title: 'Майка' },
+    shirt: { value: 0, valueName: 'shirt', title: 'Майка' },
     colorShirt: {
       value: '#242323',
       valueName: 'colorShirt',
       title: 'Цвет майки'
     },
-    pants: { value: 1, valueName: 'pants', title: 'Штаны' },
+    pants: { value: 0, valueName: 'pants', title: 'Штаны' },
     colorPaints: {
       value: '#242323',
       valueName: 'colorPaints',
       title: 'Цвет штанов'
     },
-    shoes: { value: 1, valueName: 'shoes', title: 'Обувь' },
+    shoes: { value: 0, valueName: 'shoes', title: 'Обувь' },
     colorShoes: {
       value: '#242323',
       valueName: 'colorShoes',

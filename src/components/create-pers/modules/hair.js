@@ -9,7 +9,11 @@ export default observer(() => {
 
   return (
     <div className='current-block'>
-      <ToggleImg item={state.beard} onValueChange={onValueChange} size={30} />
+      <ToggleImg
+        item={state.beard}
+        onValueChange={onValueChange}
+        type='beard'
+      />
       <ToggleColor
         item={state.colorBeard}
         onValueChange={onValueChange}
@@ -18,7 +22,7 @@ export default observer(() => {
       <ToggleImg
         item={state.hairstyle}
         onValueChange={onValueChange}
-        size={30}
+        type='hairStyle'
       />
       <ToggleColor
         item={state.colorHairstyle}

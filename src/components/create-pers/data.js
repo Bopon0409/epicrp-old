@@ -102,43 +102,4 @@ const motherNames = [
   'Misty'
 ]
 
-const eyesColors = [
-  '#324835',
-  '#225804',
-  '#636d88',
-  '#3e5a73',
-  '#6b411f',
-  '#4d3622',
-  '#583708',
-  '#585858',
-  '#7a7a7a',
-  '#92127d',
-  '#afad01',
-  '#3d1196'
-]
-
-const hairColors = [
-  '#242323',
-  '#272623',
-  '#342a24',
-  '#3d2b1f',
-  '#482a0c',
-  '#5b2f0a',
-  '#6d370d',
-  '#6c411f',
-  '#6c492c',
-  '#6e533e',
-  '#786247',
-  '#93824e',
-  '#b09d65',
-  '#a28736',
-  '#be9b42',
-  '#c4a55d',
-  '#6a573f',
-  '#512b24',
-  '#5a251a',
-  '#5b1e13',
-  '#6d190d'
-]
-
-export { mothers, motherNames, fathers, fatherNames, eyesColors, hairColors }
+export { mothers, motherNames, fathers, fatherNames }
