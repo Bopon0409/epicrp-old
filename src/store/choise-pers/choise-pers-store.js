@@ -14,6 +14,10 @@ class ChoisePersStore {
   setCurrentPers = current => (this.state.currentPers = current)
   setChoicePersActive = active => (this.state.componentActive = active)
   pushPersData = data => (this.state.persData = data)
+  clickPlay = () => {
+    const { name, surname } = this.state.persData[this.state.currentPers]
+    if (window.mp) window.mp.trigger('userSelectedCharacter', name, surname)
+  }
 }
 
 export default new ChoisePersStore()

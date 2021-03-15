@@ -8,6 +8,7 @@ import playBtnIcon from './images/play-btn-icon.svg'
 
 export default observer(() => {
   const { componentActive, persData } = store.state
+  const { clickPlay } = store
 
   useEffect(() => {
     const { setChoicePersActive, pushPersData } = store
@@ -30,7 +31,7 @@ export default observer(() => {
         <span className='first'>Выбор</span>
         <span className='second'>Персонажа</span>
       </div>
-      <div className='play-btn'>
+      <div className='play-btn' onClick={clickPlay}>
         <img src={playBtnIcon} alt='' className='play-icon' />
         <div className='text'>Играть</div>
       </div>

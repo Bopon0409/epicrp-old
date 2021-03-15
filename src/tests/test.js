@@ -59,6 +59,6 @@ window.test = {
 // current tests
 setTimeout(() => {
   setBgActive(true)
-  setCreatePersActive(true)
-  pushCreatePersData()
+  setChoicePersActive(true)
+  setPersData()
 }, 0)

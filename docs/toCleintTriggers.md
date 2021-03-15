@@ -18,6 +18,10 @@
 
 - `mp.trigger('pushMessageToClient', type: string, text: string)` - Пользователь отправил сообщение в чат
 
+## Выбор персонажа
+
+- `mp.trigger('userSelectedCharacter', name: string, surname: string)` - Пользователь выбрал персонажа (при клике на кнопку играть)
+
 ## Создание персонажа
 
 - `mp.trigger('createCharChangeValue', type: String, value: String or Number)` - Пользователь что-то изменил при создании персонажа
