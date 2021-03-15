@@ -1,64 +1,34 @@
-import { setBgActive } from './modules/bg.test'
-import {
-  setCreatePersActive,
-  pushCreatePersData
-} from './modules/create-pers.test'
-import { setInventoryActive, testInventory } from './modules/inventory.test'
-import { setPersData, setChoicePersActive } from './modules/choice-pers.test'
-import {
-  setAuthActive,
-  testAuthAnswer,
-  testRegisterAnswer
-} from './modules/auth.test'
-import {
-  setChatActive,
-  setChatShow,
-  clearChat,
-  testChatPushMsg
-} from './modules/chat.test'
-import {
-  testAlerts,
-  setHudData,
-  setGeoHudData,
-  setMicroHudData,
-  setMissionHudData,
-  setSpeedometerHudData,
-  setAllHudData,
-  setHudActive,
-  setOnlineHudData,
-  setTimeHudData
-} from './modules/hud.test'
+import * as testBg from './modules/bg.test'
+import * as testCreatePers from './modules/create-pers.test'
+import * as testInventory from './modules/inventory.test'
+import * as testChoisePers from './modules/choice-pers.test'
+import * as testAuth from './modules/auth.test'
+import * as testChat from './modules/chat.test'
+import * as testHud from './modules/hud.test'
+
+const { ...bgTests } = testBg
+const { ...createPersTests } = testCreatePers
+const { ...inventoryTests } = testInventory
+const { ...choisePersTests } = testChoisePers
+const { ...authTests } = testAuth
+const { ...chatTests } = testChat
+const { ...hudTests } = testHud
 
 window.test = {
-  testInventory,
-  testAlerts,
-  testAuthAnswer,
-  testRegisterAnswer,
-  setInventoryActive,
-  setHudActive,
-  setAuthActive,
-  setBgActive,
-  setChoicePersActive,
-  setChatActive,
-  setChatShow,
-  testChatPushMsg,
-  clearChat,
-  setHudData,
-  setGeoHudData,
-  setMicroHudData,
-  setMissionHudData,
-  setSpeedometerHudData,
-  setAllHudData,
-  setOnlineHudData,
-  setTimeHudData,
-  setPersData,
-  setCreatePersActive,
-  pushCreatePersData
+  ...bgTests,
+  ...createPersTests,
+  ...inventoryTests,
+  ...choisePersTests,
+  ...authTests,
+  ...chatTests,
+  ...hudTests
 }
 
 // current tests
-setTimeout(() => {
-  setBgActive(true)
-  setChoicePersActive(true)
-  setPersData()
-}, 0)
+const currentTests = () => {
+  testBg.setBgActive(true)
+  testChoisePers.setChoicePersActive(true)
+  testChoisePers.setPersData()
+}
+
+setTimeout(() => process.env.NODE_ENV === 'development' && currentTests(), 0)
