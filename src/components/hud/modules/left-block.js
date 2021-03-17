@@ -1,16 +1,20 @@
 import React from 'react'
+import { observer } from 'mobx-react-lite'
+import store from '../../../store/hud/hud-store'
+
 import geoIcon from '../images/geo-icon.svg'
 import moneyIcon from '../images/money-icon.svg'
 import MicroSvg from './micro-svg'
 
-export default function BottomLeftPanel ({ money, geo, microphone }) {
-  const { active } = microphone
+export default observer(() => {
+  const { money, geo, microphone } = store.state
+  const { active, btn } = microphone
   return (
     <div className='bottom-left-panel'>
       <div className='micro-block block'>
         <MicroSvg active={active} />
         <div className={active ? 'micro-btn-hint active' : 'micro-btn-hint'}>
-          {microphone.btn}
+          {btn}
         </div>
       </div>
       <div className='money-block block'>
@@ -26,4 +30,4 @@ export default function BottomLeftPanel ({ money, geo, microphone }) {
       </div>
     </div>
   )
-}
+})

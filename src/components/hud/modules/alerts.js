@@ -1,11 +1,14 @@
-/* eslint-disable default-case */
 import React from 'react'
+import { observer } from 'mobx-react-lite'
+import store from '../../../store/hud/hud-store'
 
 import alertConfirmImg from '../images/alertConfirmImg.svg'
 import alertWarningImg from '../images/alertWarningImg.svg'
 import alertErrorImg from '../images/alertErrorImg.svg'
 
-export default function Alerts ({ alerts }) {
+export default observer(() => {
+  const { alerts } = store.state
+
   const getList = () => {
     return alerts.map(item => {
       let img, style
@@ -34,14 +37,13 @@ export default function Alerts ({ alerts }) {
             boxShadow: '0px 0px 5px 1px rgba(87, 161, 108, 0.5)'
           }
           break
+        default:
+          break
       }
 
       return (
         <div key={item.id}>
-          <div
-            ref={item.ref}
-            className={item.isDel ? 'alert-item' : 'alert-item'}
-          >
+          <div className='alert-item'>
             <div className='img-wrap'>
               <img src={img} alt='' />
             </div>
@@ -57,4 +59,4 @@ export default function Alerts ({ alerts }) {
   }
 
   return <div className='alerts'>{getList()}</div>
-}
+})

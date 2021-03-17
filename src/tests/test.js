@@ -26,8 +26,10 @@ window.test = {
 
 // current tests
 const currentTests = () => {
-  // createPersTests.setCreatePersActive(true)
-  // createPersTests.pushCreatePersData()
+  bgTests.setBgActive(true)
+  hudTests.setHudActive(true)
+  hudTests.setAllHudData()
+  hudTests.testAlerts()
 }
 
 setTimeout(() => process.env.NODE_ENV === 'development' && currentTests(), 0)

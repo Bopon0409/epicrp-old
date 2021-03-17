@@ -1,10 +1,14 @@
 import React from 'react'
+import { observer } from 'mobx-react-lite'
+import store from '../../../store/hud/hud-store'
 
 import logoImg from '../images/logo.svg'
 import idImg from '../images/idIcon.svg'
 import onlineImg from '../images/onlineIcon.svg'
 
-export default function TopRightPanel ({ id, online, mission }) {
+export default observer(() => {
+  const { id, online, mission } = store.state
+
   const missionView = mission.active ? (
     <div className='mission'>
       <div className='title'>{mission.title}</div>
@@ -28,4 +32,4 @@ export default function TopRightPanel ({ id, online, mission }) {
       {missionView}
     </div>
   )
-}
+})

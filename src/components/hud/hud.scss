@@ -181,9 +181,20 @@
     color: white;
     text-align: center;
 
-    .alert-del {
-      left: 300px !important;
-      opacity: 0.01 !important;
+    .alert-out {
+      animation: alert-out-animation 1s;
+    }
+
+    @keyframes alert-out-animation {
+      0% {
+        opacity: 1;
+        left: 0px;
+      }
+
+      100% {
+        opacity: 0;
+        left: 300px;
+      }
     }
 
     .alert-item {

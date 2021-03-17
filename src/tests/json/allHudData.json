@@ -4,7 +4,7 @@
   "time": "19:30",
   "date": "10.02.2021",
   "money": 150000,
-  "errors": {
+  "indicators": {
     "1": true,
     "2": true,
     "3": false
@@ -18,7 +18,7 @@
     "active": true,
     "title": "Миссия невыполнима",
     "text": "Найдите одежду секретного агента около депаратемнта юстиции"
-  },  
+  },
   "speedometer": {
     "active": true,
     "speed": 96,

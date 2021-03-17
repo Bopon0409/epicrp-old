@@ -1,7 +1,11 @@
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { Fuel, Engine, Lock, Lights, Electricity } from './speedometer-svg'
+import store from '../../../store/hud/hud-store'
 
-export default function Speedometer ({ speedometer }) {
+export default observer(() => {
+  const { speedometer } = store.state
+
   const calcSpeedNulls = () => {
     switch (String(speedometer.speed).length) {
       case 1:
@@ -42,4 +46,4 @@ export default function Speedometer ({ speedometer }) {
       </div>
     </div>
   )
-}
+})
