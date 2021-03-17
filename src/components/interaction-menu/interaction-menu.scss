@@ -1,0 +1,203 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.component {
+  position: relative;
+  margin-bottom: 3em;
+  height: 15em;
+  background: rgba(0, 0, 0, 0.05);
+  font-family: 'Lato', Arial, sans-serif;
+
+  ul {
+    position: relative;
+  }
+}
+
+.component > h2 {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 12em;
+  opacity: 0.1;
+  cursor: default;
+}
+
+.cn-button {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 11;
+  margin-top: -6.5em;
+  margin-left: -6.5em;
+  padding-top: 0;
+  width: 13em;
+  height: 13em;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  background: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  font-family: Nunito;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.csstransforms .cn-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 10;
+  margin-top: -13em;
+  margin-left: -13.5em;
+  width: 27em;
+  height: 27em;
+  border-radius: 50%;
+  background: transparent;
+  opacity: 0;
+  transition: all 0.3s ease 0.3s;
+  transform: scale(0.1);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/*cover to prevent extra space of anchors from being clickable*/
+.csstransforms .cn-wrapper:after {
+  content: '.';
+  display: block;
+  font-size: 2em;
+  width: 6.2em;
+  height: 6.2em;
+  position: absolute;
+  left: 50%;
+  margin-left: -3.1em;
+  top: 50%;
+  margin-top: -3.1em;
+  border-radius: 50%;
+  z-index: 10;
+  color: transparent;
+}
+
+.csstransforms .opened-nav {
+  border-radius: 50%;
+  opacity: 1;
+  transition: all 0.3s ease;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.csstransforms .cn-wrapper li {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  margin-top: -1.3em;
+  margin-left: -10em;
+  width: 10em;
+  height: 10em;
+  font-size: 1.5em;
+  transition: all 0.3s ease;
+  transform: rotate(75deg) skew(62deg);
+  transform-origin: 100% 100%;
+  pointer-events: none;
+}
+
+.csstransforms .cn-wrapper li a {
+  position: absolute;
+  right: -7.25em;
+  bottom: -7.25em;
+  display: block;
+  width: 14.5em;
+  height: 14.5em;
+  border-radius: 50%;
+  background: radial-gradient(transparent 35%, rgba(0, 0, 0, 0.7) 35%);
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.2em;
+  line-height: 2;
+  transform: skew(-62deg) rotate(-75deg) scale(1);
+  backface-visibility: hidden;
+  pointer-events: auto;
+}
+
+.csstransforms .cn-wrapper li a span {
+  position: relative;
+  top: 1em;
+  display: block;
+  font-size: 0.5em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.csstransforms .cn-wrapper li a:hover {
+  background: radial-gradient(transparent 35%, #e5961e 35%);
+}
+
+.csstransforms .opened-nav li {
+  transition: all 0.3s ease 0.3s;
+}
+
+.csstransforms .opened-nav li:first-child {
+  transform: skew(62deg);
+}
+
+.csstransforms .opened-nav li:nth-child(2) {
+  transform: rotate(30deg) skew(62deg);
+}
+
+.csstransforms .opened-nav li:nth-child(3) {
+  transform: rotate(60deg) skew(62deg);
+}
+
+.csstransforms .opened-nav li:nth-child(4) {
+  transform: rotate(90deg) skew(62deg);
+}
+
+.csstransforms .opened-nav li:nth-child(5) {
+  transform: rotate(120deg) skew(62deg);
+}
+
+.csstransforms .opened-nav li:nth-child(6) {
+  transform: rotate(150deg) skew(62deg);
+}
+
+.csstransforms .opened-nav li:nth-child(7) {
+  transform: rotate(180deg) skew(62deg);
+}
+
+.csstransforms .opened-nav li:nth-child(8) {
+  transform: rotate(210deg) skew(62deg);
+}
+.csstransforms .opened-nav li:nth-child(9) {
+  transform: rotate(240deg) skew(62deg);
+}
+.csstransforms .opened-nav li:nth-child(10) {
+  transform: rotate(270deg) skew(62deg);
+}
+.csstransforms .opened-nav li:nth-child(11) {
+  transform: rotate(300deg) skew(62deg);
+}
+.csstransforms .opened-nav li:nth-child(12) {
+  transform: rotate(330deg) skew(62deg);
+}
+
+@media only screen and (max-width: 480px) {
+  .csstransforms .cn-wrapper {
+    font-size: 0.68em;
+  }
+
+  .cn-button {
+    font-size: 1em;
+  }
+}

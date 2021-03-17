@@ -8,6 +8,7 @@ import Chat from '../chat'
 import ChoicePers from '../choice-pers'
 import CreatePers from '../create-pers'
 import TestModal from '../test-modal'
+import InteractionMenu from '../interaction-menu'
 
 export default function App () {
   return (
@@ -20,6 +21,7 @@ export default function App () {
       <ChoicePers />
       <CreatePers />
       {process.env.NODE_ENV === 'development' && <TestModal />}
+      <InteractionMenu />
     </>
   )
 }
