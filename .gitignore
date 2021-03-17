@@ -3,7 +3,7 @@
 
 # production
 /build
-build.rar
+build.*
 
 # cache
 .eslintcache
