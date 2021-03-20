@@ -45,6 +45,10 @@
 - `window.trigger('setCreatePersActive', active: boolean)` - Открыть/Закрыть окно создания персонажа
 - `window.trigger('pushCreatePersData', data: json string) - Загрузить данные о цветах и одежде для создания персонажа`
 
+### Меню взаимодействия
+
+- `window.trigger('setInteractionMenu', active: boolean, data: json string)` - Открыть меню взаимодействия (с загрузкой данных)
+
 # chatAPI
 
 ##### Управление через глобальный объект chatAPI

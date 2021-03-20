@@ -7,6 +7,7 @@ import * as testChoisePers from '../../tests/modules/choice-pers.test'
 import * as testAuth from '../../tests/modules/auth.test'
 import * as testChat from '../../tests/modules/chat.test'
 import * as testHud from '../../tests/modules/hud.test'
+import * as testInteractionMenu from '../../tests/modules/interaction-menu.test'
 
 class TestModalStore {
   constructor () {
@@ -24,7 +25,11 @@ class TestModalStore {
       testChoisePers: { title: 'testChoisePers', ...testChoisePers },
       testAuth: { title: 'testAuth', ...testAuth },
       testChat: { title: 'testChat', ...testChat },
-      testHud: { title: 'testHud', ...testHud }
+      testHud: { title: 'testHud', ...testHud },
+      testInteractionMenu: {
+        title: 'testInteractionMenu',
+        ...testInteractionMenu
+      }
     }
   }
 

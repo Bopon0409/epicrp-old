@@ -30,7 +30,6 @@ window.test = {
 // current tests
 const currentTests = () => {
   bgTests.setBgActive(true)
-  interactionMenuTests.setInteractionMenuActive(true)
 }
 
 setTimeout(() => process.env.NODE_ENV === 'development' && currentTests(), 0)

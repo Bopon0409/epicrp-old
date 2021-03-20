@@ -14,13 +14,10 @@
 }
 
 .circular-sub-menu.opened-nav li a:hover {
-  background-image: radial-gradient(
-    transparent 50%,
-    #e6961e 50%
-  ) !important;
+  background-image: radial-gradient(transparent 50%, #e6961e 50%) !important;
 }
 
-.bg-inner {
+.bg-wrap {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
   width: 100%;
@@ -33,13 +30,15 @@
 
 .inner {
   font-family: Nunito;
-  width: 170px;
-  height: 50px;
+  box-sizing: border-box;
+  width: 252px;
+  height: 252px;
+  border-radius: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -25px;
-  margin-left: -85px;
+  margin-top: -126px;
+  margin-left: -126px;
   z-index: 9999;
   color: white;
   display: flex;
@@ -47,6 +46,9 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
 }
 
 .docs {

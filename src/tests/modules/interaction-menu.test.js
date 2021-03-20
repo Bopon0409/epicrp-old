@@ -1,4 +1,10 @@
-const setInteractionMenuActive = active =>
-  window.trigger('setInteractionMenuActive', active)
+import interactionMenuData from '../json/interactionMenuData.json'
 
-export { setInteractionMenuActive }
+const setInteractionMenu = active =>
+  window.trigger(
+    'setInteractionMenu',
+    active,
+    JSON.stringify(interactionMenuData)
+  )
+
+export { setInteractionMenu }

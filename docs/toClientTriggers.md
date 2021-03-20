@@ -36,3 +36,7 @@
 6. parents_similarity - Float (0-1), Схожесть с родителями
 
 **Остальные параметры в `create-pers-data.json`**
+
+## Меню взаимодействия
+
+- `mp.trigger('clickInteractionMenuItem', icon: String)` - Пользователь нажал на кнопку

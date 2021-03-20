@@ -5,7 +5,7 @@ var EventManager = {
   addHandler (eventName, handler) {
     if (eventName in this.events) this.events[eventName].push(handler)
     else this.events[eventName] = [handler]
-  },  
+  },
   removeHandler (eventName, handler) {
     if (eventName in this.events)
       this.events[eventName].splice(this.events[eventName].indexOf(handler), 1)
@@ -19,9 +19,10 @@ var chatAPI = {
   show: show => trigger('setChatShow', show)
 }
 
-function trigger (eventName, arg) {
+function trigger (eventName, ...args) {
   const handlers = EventManager.events[eventName]
-  handlers.forEach(handler => (arg ? handler(JSON.parse(arg)) : handler()))
+  const jsonArgs = args.map(arg => JSON.parse(arg))
+  handlers.forEach(handler => args ? handler(...jsonArgs) : handler())
 }
 
 window.EventManager = EventManager
