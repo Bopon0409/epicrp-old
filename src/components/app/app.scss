@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap');
 
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   box-sizing: border-box;
   user-select: none;
   background: transparent;
+  height: 100%;
 }
 
 #root {

@@ -22,16 +22,15 @@ export default observer(() => {
 
   const btns = Object.getOwnPropertyNames(testsModules[currentModule]).map(
     (el, i) => {
-      if (el !== 'title')
-        return (
-          <div
-            className='test-modal__btn'
-            key={i}
-            onClick={() => testsModules[currentModule][el](checkbox)}
-          >
-            {el}
-          </div>
-        )
+      return el !== 'title' ? (
+        <div
+          className='test-modal__btn'
+          key={i}
+          onClick={() => testsModules[currentModule][el](checkbox)}
+        >
+          {el}
+        </div>
+      ) : null
     }
   )
 

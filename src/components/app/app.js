@@ -13,6 +13,7 @@ import InteractionMenu from '../interaction-menu'
 export default function App () {
   return (
     <>
+      {process.env.NODE_ENV === 'development' && <TestModal />}
       <Inventory />
       <Auth />
       <Hud />
@@ -20,7 +21,6 @@ export default function App () {
       <Chat />
       <ChoicePers />
       <CreatePers />
-      {process.env.NODE_ENV === 'development' && <TestModal />}
       <InteractionMenu />
     </>
   )
