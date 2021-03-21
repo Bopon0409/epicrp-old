@@ -1,9 +1,6 @@
-import persData from '../json/persData.json'
+import data from '../json/persData.json'
 
-const setPersData = () =>
-  window.trigger('pushPersData', JSON.stringify(persData))
+const setChoicePers = active =>
+  window.trigger('setChoicePers', active, JSON.stringify(data))
 
-const setChoicePersActive = active =>
-  window.trigger('setChoicePersActive', active)
-
-export { setPersData, setChoicePersActive }
+export { setChoicePers }

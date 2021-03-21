@@ -1,7 +1,7 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
 
-import choisePersStore from '../../../store/choise-pers/choise-pers-store'
+import store from '../../../store/choise-pers/choise-pers-store'
 import BuyView from './buy-view'
 import EmptyView from './empty-view'
 import DeleteSvg from './delete-svg'
@@ -9,9 +9,9 @@ import regIcon from '../images/reg-icon.svg'
 import timeIcon from '../images/time-icon.svg'
 
 export default observer(({ index }) => {
-  const pers = choisePersStore.state.persData[index]
-  const active = choisePersStore.state.currentPers === index
-  const { setCurrentPers } = choisePersStore
+  const pers = store.state.data[index]
+  const active = store.state.currentPers === index
+  const { setCurrentPers } = store
 
   if (pers.empty && pers.bought === false) return <BuyView />
   if (pers.empty) return <EmptyView />

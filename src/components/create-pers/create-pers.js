@@ -15,12 +15,10 @@ export default observer(() => {
 
   useEffect(() => {
     const { EventManager: em } = window
-    const { setActive, pushCreatePersData } = store
-    em.addHandler('setCreatePersActive', setActive)
-    em.addHandler('pushCreatePersData', pushCreatePersData)
+    const { setCreatePers } = store
+    em.addHandler('setCreatePers', setCreatePers)
     return () => {
-      em.removeHandler('setCreatePersActive', setActive)
-      em.removeHandler('pushCreatePersData', pushCreatePersData)
+      em.removeHandler('setCreatePers', setCreatePers)
     }
   }, [])
 

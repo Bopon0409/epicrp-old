@@ -7,22 +7,18 @@ import store from '../../store/choise-pers/choise-pers-store'
 import playBtnIcon from './images/play-btn-icon.svg'
 
 export default observer(() => {
-  const { componentActive, persData } = store.state
-  const { clickPlay } = store
+  const { componentActive, data } = store.state
 
   useEffect(() => {
-    const { setChoicePersActive, pushPersData } = store
     const { EventManager: em } = window
-    em.addHandler('setChoicePersActive', setChoicePersActive)
-    em.addHandler('pushPersData', pushPersData)
+    em.addHandler('setChoicePers', store.setChoicePers)
 
     return () => {
-      em.removeHandler('setChoicePersActive', setChoicePersActive)
-      em.removeHandler('pushPersData', pushPersData)
+      em.removeHandler('setChoicePers', store.setChoicePers)
     }
   }, [])
 
-  const slotList = persData.map((_el, i) => <SlotPers key={i} index={i} />)
+  const slotList = data.map((_el, i) => <SlotPers key={i} index={i} />)
 
   const componentStyle = { display: componentActive ? 'block' : 'none' }
   return (
@@ -31,7 +27,7 @@ export default observer(() => {
         <span className='first'>Выбор</span>
         <span className='second'>Персонажа</span>
       </div>
-      <div className='play-btn' onClick={clickPlay}>
+      <div className='play-btn' onClick={store.clickPlay}>
         <img src={playBtnIcon} alt='' className='play-icon' />
         <div className='text'>Играть</div>
       </div>

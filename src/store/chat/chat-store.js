@@ -16,7 +16,6 @@ class ChatStore {
     storyMsg: [],
     storyPosition: -1,
     isOpacity: false,
-    opacityInterval: setInterval(() => {}, 0),
     messages: []
   }
 

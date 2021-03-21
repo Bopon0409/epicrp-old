@@ -37,13 +37,11 @@
 
 ### Выбор персонажа
 
-- `window.trigger('setChoicePersActive', active: boolean)` - Открыть/Закрыть окно выбора персонажа
-- `window.trigger('pushPersData', data: json string)` - Загрузка данных о персонажах игрока
+- `window.trigger('setChoicePers', active: boolean, data: json string)` - Открыть/Закрыть окно выбора персонажа (c загрузкой данных)
 
 ### Создание персонажа
 
-- `window.trigger('setCreatePersActive', active: boolean)` - Открыть/Закрыть окно создания персонажа
-- `window.trigger('pushCreatePersData', data: json string) - Загрузить данные о цветах и одежде для создания персонажа`
+- `window.trigger('setCreatePers', active: boolean, data: json string)` - Открыть/Закрыть окно создания персонажа (c загрузкой данных)
 
 ### Меню взаимодействия
 

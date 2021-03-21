@@ -1,9 +1,6 @@
 import data from '../json/create-pers-data.json'
 
-const setCreatePersActive = active =>
-  window.trigger('setCreatePersActive', active)
+const setCreatePers = active =>
+  window.trigger('setCreatePers', active, JSON.stringify(data))
 
-const pushCreatePersData = () =>
-  window.trigger('pushCreatePersData', JSON.stringify(data))
-
-export { setCreatePersActive, pushCreatePersData }
+export { setCreatePers }
