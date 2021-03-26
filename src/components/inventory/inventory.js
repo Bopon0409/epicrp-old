@@ -342,10 +342,14 @@ export default class Inventory extends Component {
 
   // Drag'n'Drop Логика
 
+  handleDragStart = () => this.setState({ isDrag: true })
+
   handleDragEnd = ({ active, over }) => {
-    if (active.id === over.id) return
-    this.swapItems(Number(active.id), Number(over.id))
     this.setState({ isDrag: false })
+    if (active && over) {
+      if (active.id === over.id) return
+      this.swapItems(Number(active.id), Number(over.id))
+    }
   }
 
   render () {
@@ -382,7 +386,7 @@ export default class Inventory extends Component {
             </div>
 
             <DndContext
-              onDragStart={() => this.setState({ isDrag: true })}
+              onDragStart={this.handleDragStart}
               onDragEnd={this.handleDragEnd}
             >
               <div className='equipment'>

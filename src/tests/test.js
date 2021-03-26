@@ -28,6 +28,10 @@ window.test = {
 }
 
 // current tests
-const currentTests = () => {}
+const currentTests = () => {
+  bgTests.setBgActive(true)
+  inventoryTests.setInventoryActive(true)
+  inventoryTests.testInventory()
+}
 
 setTimeout(() => process.env.NODE_ENV === 'development' && currentTests(), 0)
