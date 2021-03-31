@@ -7,31 +7,29 @@ import speedometerHudData from '../json/speedometerHudData.json'
 import allHudData from '../json/allHudData.json'
 import timeHudData from '../json/timeHudData.json'
 
-const HUD_ONLINE = 1500
-
 const testAlerts = () => {
   let counter = 0
   const interval = setInterval(() => {
-    window.trigger('addAlert', JSON.stringify(alertsHudData[counter++]))
+    window.trigger('hud.notify', JSON.stringify(alertsHudData[counter++]))
     if (counter === 5) clearInterval(interval)
   }, 2000)
 }
 
-const setHudActive = active => window.trigger('setHudActive', active)
-const setOnlineHudData = () => window.trigger('setOnlineHudData', HUD_ONLINE)
+const setHudActive = () => window.trigger('hud.toggle')
+const setHudData = () => window.trigger('hud.setData', JSON.stringify(hudData))
+const setOnlineHudData = () => window.trigger('hud.online', 1500)
 const setTimeHudData = () =>
-  window.trigger('setTimeHudData', JSON.stringify(timeHudData))
-const setHudData = () => window.trigger('setHudData', JSON.stringify(hudData))
+  window.trigger('hud.time', JSON.stringify(timeHudData))
 const setGeoHudData = () =>
-  window.trigger('setGeoHudData', JSON.stringify(geoHudData))
+  window.trigger('hud.geo', JSON.stringify(geoHudData))
 const setMicroHudData = () =>
-  window.trigger('setMicroHudData', JSON.stringify(microHudData))
+  window.trigger('hud.micro', JSON.stringify(microHudData))
 const setMissionHudData = () =>
-  window.trigger('setMissionHudData', JSON.stringify(missionHudData))
+  window.trigger('hud.mission', JSON.stringify(missionHudData))
 const setSpeedometerHudData = () =>
-  window.trigger('setSpeedometerHudData', JSON.stringify(speedometerHudData))
+  window.trigger('hud.speed', JSON.stringify(speedometerHudData))
 const setAllHudData = () =>
-  window.trigger('setAllHudData', JSON.stringify(allHudData))
+  window.trigger('hud.setAllData', JSON.stringify(allHudData))
 
 export {
   setHudActive,

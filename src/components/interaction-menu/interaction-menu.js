@@ -10,9 +10,9 @@ export default observer(() => {
   useEffect(() => {
     const { EventManager: em } = window
     const { setInteractionMenu } = store
-    em.addHandler('setInteractionMenu', setInteractionMenu)
+    em.addHandler('interaction-menu.toggle', setInteractionMenu)
     return () => {
-      em.removeHandler('setInteractionMenuActive', setInteractionMenu)
+      em.removeHandler('interaction-menu.toggle', setInteractionMenu)
     }
   }, [])
 

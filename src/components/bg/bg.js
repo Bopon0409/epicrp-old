@@ -9,9 +9,9 @@ export default observer(() => {
 
   useEffect(() => {
     const { EventManager: em } = window
-    em.addHandler('setBgActive', setBgActive)
+    em.addHandler('hud.toggleBg', setBgActive)
     return () => {
-      em.removeHandler('setBgActive', setBgActive)
+      em.removeHandler('hud.toggleBg', setBgActive)
     }
   }, [])
 

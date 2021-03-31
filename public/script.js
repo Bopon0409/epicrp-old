@@ -13,16 +13,16 @@ var EventManager = {
 }
 
 var chatAPI = {
-  push: msg => trigger('pushChatMsgFromClient', msg),
-  clear: () => trigger('clearChat'),
-  activate: active => trigger('setChatActive', active),
-  show: show => trigger('setChatShow', show)
+  push: msg => trigger('chat.push', msg),
+  clear: () => trigger('chat.clear'),
+  activate: active => trigger('chat.active', active),
+  show: show => trigger('chat.show', show)
 }
 
 function trigger (eventName, ...args) {
   const handlers = EventManager.events[eventName]
-  const jsonArgs = args.map(arg => JSON.parse(arg))
-  handlers.forEach(handler => args ? handler(...jsonArgs) : handler())
+  if (!args) handlers.forEach(handler => handler())
+  else handlers.forEach(handler => handler(...args.map(arg => JSON.parse(arg))))
 }
 
 window.EventManager = EventManager

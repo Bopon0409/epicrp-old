@@ -21,15 +21,15 @@ export default observer(() => {
       enterHandler
     } = store
 
-    em.addHandler('userAuthAnswer', authServerAnswer)
-    em.addHandler('userRegisterAnswer', regServerAnswer)
-    em.addHandler('setAuthActive', setAuthActive)
+    em.addHandler('auth.authAnswer', authServerAnswer)
+    em.addHandler('auth.registerAnswer', regServerAnswer)
+    em.addHandler('auth.toggle', setAuthActive)
     document.addEventListener('keyup', enterHandler)
 
     return () => {
-      em.removeHandler('userAuthAnswer', authServerAnswer)
-      em.removeHandler('userRegisterAnswer', regServerAnswer)
-      em.removeHandler('setAuthActive', setAuthActive)
+      em.removeHandler('auth.authAnswer', authServerAnswer)
+      em.removeHandler('auth.registerAnswer', regServerAnswer)
+      em.removeHandler('auth.toggle', setAuthActive)
       document.removeEventListener('keyup', enterHandler)
     }
   }, [])

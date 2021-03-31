@@ -53,7 +53,7 @@ class AuthStore {
     this.state.errorMsg = ''
   }
 
-  setAuthActive = active => (this.state.active = active)
+  setAuthActive = () => (this.state.active = !this.state.active)
   setErrorMsg = msg => (this.state.errorMsg = msg)
   setField = (fieldName, value) => (this.state[fieldName] = value)
   checkBoxToggle = () => (this.state.checkBox = !this.state.checkBox)

@@ -1,9 +1,7 @@
-import inventaryData from '../json/inventaryData.json'
+import data from '../json/inventaryData.json'
+const jsonData = JSON.stringify(data)
 
-const setInventoryActive = active =>
-  window.trigger('setInventoryActive', active)
-const testInventory = () => {
-  window.trigger('pushInventaryDataToFront', JSON.stringify(inventaryData))
-}
+const setInventoryActive = () => window.trigger('inventory.toggle')
+const testInventory = () => window.trigger('inventory.update', jsonData)
 
 export { setInventoryActive, testInventory }

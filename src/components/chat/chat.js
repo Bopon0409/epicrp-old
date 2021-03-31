@@ -15,24 +15,30 @@ export default observer(() => {
   const skrollingOnPushMsg = () => skrollRef.current?.scrollIntoView()
 
   useEffect(() => {
-    const { setChatActive, clearChat, keyPressHandler } = store
-    const { setChatShow, pushChatMsgFromClient } = store
+    const {
+      setChatActive,
+      clearChat,
+      keyPressHandler,
+      setChatShow,
+      pushChatMsgFromClient
+    } = store
+
     const { EventManager: em } = window
     const keyPressHandlerWithSkroll = e => keyPressHandler(e, skrollRef)
 
-    em.addHandler('pushChatMsgFromClient', pushChatMsgFromClient)
-    em.addHandler('pushChatMsgFromClient', skrollingOnPushMsg)
-    em.addHandler('setChatActive', setChatActive)
-    em.addHandler('setChatShow', setChatShow)
-    em.addHandler('clearChat', clearChat)
+    em.addHandler('chat.push', pushChatMsgFromClient)
+    em.addHandler('chat.push', skrollingOnPushMsg)
+    em.addHandler('chat.active', setChatActive)
+    em.addHandler('chat.show', setChatShow)
+    em.addHandler('chat.clear', clearChat)
     document.addEventListener('keyup', keyPressHandlerWithSkroll)
 
     return () => {
-      em.removeHandler('pushChatMsgFromClient', pushChatMsgFromClient)
-      em.removeHandler('pushChatMsgFromClient', skrollingOnPushMsg)
-      em.removeHandler('setChatActive', setChatActive)
-      em.removeHandler('setChatShow', setChatShow)
-      em.removeHandler('clearChat', clearChat)
+      em.removeHandler('chat.push', pushChatMsgFromClient)
+      em.removeHandler('chat.push', skrollingOnPushMsg)
+      em.removeHandler('chat.active', setChatActive)
+      em.removeHandler('chat.show', setChatShow)
+      em.removeHandler('chat.clear', clearChat)
       document.removeEventListener('keyup', keyPressHandlerWithSkroll)
     }
   })

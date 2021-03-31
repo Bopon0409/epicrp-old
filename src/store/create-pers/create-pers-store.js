@@ -32,9 +32,9 @@ class CreatePersStore {
 
   // =================================   MAIN   ================================
   setStep = step => (this.state.step = step)
-  setCreatePers = (active, data) => {
+  setCreatePers = data => {
     this.state.serverData = data ? data : {}
-    this.state.active = active
+    this.state.active = !this.state.active
   }
   finishCreate = () => {
     if (window.mp) window.mp.trigger('createCharFinish')

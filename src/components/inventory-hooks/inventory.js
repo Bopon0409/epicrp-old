@@ -13,11 +13,11 @@ export default observer(() => {
   useEffect(() => {
     const { EventManager: em } = window
     const { setInventoryActive, setInventoryData } = store
-    em.addHandler('pushInventaryDataToFront', setInventoryData)
-    em.addHandler('setInventoryActive', setInventoryActive)
+    em.addHandler('inventory.update', setInventoryData)
+    em.addHandler('inventory.toggle', setInventoryActive)
     return () => {
-      em.removeHandler('pushInventaryDataToFront', setInventoryData)
-      em.removeHandler('setInventoryActive', setInventoryActive)
+      em.removeHandler('inventory.update', setInventoryData)
+      em.removeHandler('inventory.toggle', setInventoryActive)
     }
   }, [])
 

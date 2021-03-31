@@ -11,10 +11,10 @@ export default observer(() => {
 
   useEffect(() => {
     const { EventManager: em } = window
-    em.addHandler('setChoicePers', store.setChoicePers)
+    em.addHandler('character.toggleMenu', store.setChoicePers)
 
     return () => {
-      em.removeHandler('setChoicePers', store.setChoicePers)
+      em.removeHandler('character.toggleMenu', store.setChoicePers)
     }
   }, [])
 

@@ -48,13 +48,11 @@ class HudStore {
   }
 
   setHudData = data => {
-    for (const key in data) {
-      this.state[key] = data[key]
-    }
+    for (const key in data) this.state[key] = data[key]
   }
 
   setHudOnline = online => (this.state.online = online)
-  setHudActive = active => (this.state.active = active)
+  setHudActive = () => (this.state.active = !this.state.active)
   setGeoHudData = geo => (this.state.geo = geo)
   setMicroHudData = microphone => (this.state.microphone = microphone)
   setMissionHudData = mission => (this.state.mission = mission)

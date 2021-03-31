@@ -26,7 +26,7 @@ class InventoryStore {
   }
 
   // ================================   MAIN   =================================
-  setInventoryActive = active => (this.state.active = active)
+  setInventoryActive = () => (this.state.active = !this.state.active)
   setInventoryData = data => (this.state.inventory = data)
 
   // Триггеры, отправляемые на сервер

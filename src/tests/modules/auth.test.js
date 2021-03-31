@@ -1,5 +1,6 @@
-const setAuthActive = active => window.trigger('setAuthActive', active)
-const testAuthAnswer = data => window.trigger('userAuthAnswer', data)
-const testRegisterAnswer = data => window.trigger('userRegisterAnswer', data)
+const setAuthActive = active => window.trigger('auth.toggle', active)
+const testAuthAnswer = (data = false) => window.trigger('auth.authAnswer', data)
+const testRegisterAnswer = (data = false) =>
+  window.trigger('auth.registerAnswer', data)
 
 export { setAuthActive, testAuthAnswer, testRegisterAnswer }

@@ -1,3 +1,3 @@
-const setBgActive = active => window.trigger('setBgActive', active)
+const setBgActive = () => window.trigger('hud.toggleBg')
 
 export { setBgActive }
