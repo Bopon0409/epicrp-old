@@ -1,0 +1,61 @@
+{
+  "_from": "circular-menu",
+  "_id": "circular-menu@1.0.6",
+  "_inBundle": false,
+  "_integrity": "sha1-M06z7fnN11iRY1BYusZnB60c0F8=",
+  "_location": "/circular-menu",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "circular-menu",
+    "name": "circular-menu",
+    "escapedName": "circular-menu",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/circular-menu/-/circular-menu-1.0.6.tgz",
+  "_shasum": "334eb3edf9cdd75891635058bac66707ad1cd05f",
+  "_spec": "circular-menu",
+  "_where": "/mnt/c/Dev/epic-front",
+  "author": {
+    "name": "yandong"
+  },
+  "bugs": {
+    "url": "https://github.com/yandongCoder/circular-menu/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "cool,highly interactive circular menu",
+  "devDependencies": {
+    "font-awesome": "^4.6.3",
+    "rollup": "^0.34.1"
+  },
+  "directories": {
+    "example": "examples"
+  },
+  "homepage": "https://github.com/yandongCoder/circular-menu#readme",
+  "keywords": [
+    "circular",
+    "menu",
+    "wheel",
+    "navigation"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "circular-menu",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yandongCoder/circular-menu.git"
+  },
+  "scripts": {
+    "rollup": "rollup -o circular-menu.js --banner //circular-menu -f umd -n CMenu index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.6"
+}

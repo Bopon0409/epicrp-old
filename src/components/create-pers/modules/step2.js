@@ -8,6 +8,7 @@ import { mothers, fathers } from '../data'
 export default observer(() => {
   const { activeMother, activeFather, sliderValue } = store.state.step2
   const { motherName, fatherName } = store.state.step2
+  console.log(sliderValue)
 
   const {
     motherChangeHandler,
