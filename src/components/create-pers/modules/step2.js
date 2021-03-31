@@ -6,9 +6,13 @@ import InputRange from 'react-input-range'
 import { mothers, fathers } from '../data'
 
 export default observer(() => {
-  const { activeMother, activeFather, sliderValue } = store.state.step2
+  const {
+    activeMother,
+    activeFather,
+    sliderValue1,
+    sliderValue2
+  } = store.state.step2
   const { motherName, fatherName } = store.state.step2
-  console.log(sliderValue)
 
   const {
     motherChangeHandler,
@@ -68,12 +72,25 @@ export default observer(() => {
           minValue={0}
           maxValue={1}
           step={0.01}
-          value={sliderValue}
-          onChange={sliderChangeHandler}
+          value={sliderValue1}
+          onChange={range => sliderChangeHandler(range, 1)}
         />
         <div className='slider__hint-container'>
           <span className='slider__hint-item'>м</span>
           <span className='slider__hint-item'>о</span>
+        </div>
+
+        <div className='slider__label'>Цвет кожи</div>
+        <InputRange
+          minValue={0}
+          maxValue={1}
+          step={0.01}
+          value={sliderValue2}
+          onChange={range => sliderChangeHandler(range, 2)}
+        />
+        <div className='slider__hint-container'>
+          <span className='slider__hint-item'>с</span>
+          <span className='slider__hint-item'>т</span>
         </div>
       </div>
     </div>

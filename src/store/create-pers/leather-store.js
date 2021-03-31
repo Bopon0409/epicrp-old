@@ -7,10 +7,9 @@ class LeatherStore {
 
   state = {
     stains: { value: 1, valueName: 'stains', title: 'Пятна' },
-    age: { value: 1, valueName: 'age', title: 'Возраст' },
+    leatherAge: { value: 1, valueName: 'leatherAge', title: 'Возраст кожи' },
     sunDamage: { value: 1, valueName: 'sunDamage', title: 'Урон от солнца' },
-    freckles: { value: 1, valueName: 'freckles', title: 'Веснушки' },
-    skinColor: { value: 0.5, valueName: 'skinColor', title: 'Цвет кожи' }
+    freckles: { value: 1, valueName: 'freckles', title: 'Веснушки' }
   }
 
   onValueChange = (value, valueName) => {

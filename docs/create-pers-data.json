@@ -5,7 +5,6 @@
   { "value": "#242323", "valueName": "colorPaints" },
   { "value": 1, "valueName": "shoes" },
   { "value": "#242323", "valueName": "colorShoes" },
-  { "value": 0.5, "valueName": "skinColor" },
   { "value": 0.5, "valueName": "noseWidth" },
   { "value": 0.5, "valueName": "noseHeight" },
   { "value": 0.5, "valueName": "noseTipLength" },
@@ -28,7 +27,7 @@
   { "value": 1, "valueName": "hairstyle" },
   { "value": "#242323", "valueName": "colorHairstyle" },
   { "value": 1, "valueName": "stains" },
-  { "value": 1, "valueName": "age" },
+  { "value": 1, "valueName": "leatherAge" },
   { "value": 1, "valueName": "sunDamage" },
   { "value": 1, "valueName": "freckles" }
 ]

@@ -10,14 +10,22 @@ import CreatePers from '../create-pers'
 import TestModal from '../test-modal'
 import InteractionMenu from '../interaction-menu'
 
+import 'react-input-range/lib/css/index.css'
+
 export default function App () {
+  const devModules = (
+    <>
+      <TestModal />
+      <Background />
+    </>
+  )
+
   return (
     <>
-      {process.env.NODE_ENV === 'development' && <TestModal />}
+      {process.env.NODE_ENV === 'development' && devModules}
       <Inventory />
       <Auth />
       <Hud />
-      <Background />
       <Chat />
       <ChoicePers />
       <CreatePers />

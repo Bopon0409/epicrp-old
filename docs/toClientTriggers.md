@@ -38,6 +38,7 @@
 3. sex - String ('male', 'female'), Пол
 4. mother - Int (id), Мать
 5. father - Int (id), Отец
-6. parents_similarity - Float (0-1), Схожесть с родителями
+6. parentsSimilarity - Float (0-1), Схожесть с родителями
+7. skinColor - Float (0-1), Цвет кожи
 
 **Остальные параметры в `create-pers-data.json`**

@@ -50,25 +50,26 @@
       }
 
       .sex {
-        width: 100%;
+        width: 46%;
+        height: 62px;
         display: flex;
+        flex-wrap: wrap;
         justify-content: flex-start;
-        align-items: center;
-        margin-top: 20px;
+        align-items: flex-start;
+        
 
         .sex__label {
+          width: 100%;
           font-size: 13px;
           color: rgba(255, 255, 255, 0.5);
-          margin-right: 30px;
-          width: 45%;
         }
 
         .sex__btn {
           cursor: pointer;
-          padding: 10px 14px;
+          padding: 2px 20px;
           background: rgba(255, 255, 255, 0.05);
           border-radius: 5px;
-          margin-left: 6px;
+          margin-right: 10px;
           font-weight: 300;
           font-size: 14px;
           color: rgba(255, 255, 255, 0.2);

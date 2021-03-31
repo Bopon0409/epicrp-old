@@ -6,7 +6,16 @@ import enterIcon from '../images/enter.svg'
 import enterIconActive from '../images/enter-active.svg'
 
 export default observer(() => {
-  const { name, surname, nameErr, surnameErr, sex, hover } = store.state.step1
+  const {
+    name,
+    surname,
+    nameErr,
+    surnameErr,
+    sex,
+    hover,
+    age,
+    ageErr
+  } = store.state.step1
   const { inputChangeHandler, validation, setSex, setHover } = store
 
   const inputClasses = err =>
@@ -61,6 +70,20 @@ export default observer(() => {
           >
             ж
           </div>
+        </div>
+
+        <div className='form__input-row'>
+          <label htmlFor='name' className='form__label'>
+            Возраст
+          </label>
+          <input
+            type='text'
+            id='age'
+            value={age}
+            className={inputClasses(ageErr)}
+            onChange={e => inputChangeHandler(e, 'age')}
+          />
+          <div className='form__error-hint'>{ageErr}</div>
         </div>
       </div>
 
