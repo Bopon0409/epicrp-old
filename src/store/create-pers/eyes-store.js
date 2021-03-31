@@ -14,7 +14,7 @@ class EyesStore {
     if (typeof value === 'number')
       value = (value ^ 0) === value ? value : Number(value.toFixed(2))
     this.state[valueName].value = value
-    if (window.mp) window.mp.trigger('createCharChangeValue', valueName, value)
+    window.clientTrigger('character.update', valueName, value)
   }
 }
 

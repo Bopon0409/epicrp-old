@@ -96,7 +96,7 @@ class AuthStore {
       return this.setErrorMsg(this.ERROR_MESSAGES[3])
 
     this.clearInputs()
-    if (window.mp) window.mp.trigger('userAuth', login, pass)
+    window.clientTrigger('auth.signIn', login, pass)
   }
 
   registerValidate = () => {
@@ -116,7 +116,7 @@ class AuthStore {
     if (pass !== pass2) return this.setErrorMsg(this.ERROR_MESSAGES[4])
 
     this.clearInputs()
-    if (window.mp) window.mp.trigger('userRegister', login, email, pass)
+    window.clientTrigger('auth.signUp', login, email, pass)
   }
 }
 

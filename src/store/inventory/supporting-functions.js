@@ -23,6 +23,8 @@ const getMaxWeight = bagType => {
       return 10
     case 3:
       return 10
+    default:
+      return null
   }
 }
 

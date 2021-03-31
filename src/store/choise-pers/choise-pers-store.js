@@ -12,13 +12,15 @@ class ChoisePersStore {
   }
 
   setCurrentPers = current => (this.state.currentPers = current)
+  
   setChoicePers = data => {
     this.state.data = data ? data : []
     this.state.componentActive = !this.state.componentActive
   }
+
   clickPlay = () => {
-    const { name, surname } = this.state.persData[this.state.currentPers]
-    if (window.mp) window.mp.trigger('userSelectedCharacter', name, surname)
+    const { name, surname } = this.state.data[this.state.currentPers]
+    window.clientTrigger('character.selected', name, surname)
   }
 }
 

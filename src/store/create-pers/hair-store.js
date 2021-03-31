@@ -22,7 +22,7 @@ class HairStore {
 
   onValueChange = (value, valueName) => {
     this.state[valueName].value = value
-    if (window.mp) window.mp.trigger('createCharChangeValue', valueName, value)
+    window.clientTrigger('character.update', valueName, value)
   }
 }
 

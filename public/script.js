@@ -25,6 +25,12 @@ function trigger (eventName, ...args) {
   else handlers.forEach(handler => handler(...args.map(arg => JSON.parse(arg))))
 }
 
+function clientTrigger (triggerName, ...args) {
+  if (window.mp) window.mp.trigger(triggerName, ...args)
+  else console.log(triggerName, ...args)
+}
+
 window.EventManager = EventManager
 window.chatAPI = chatAPI
 window.trigger = trigger
+window.clientTrigger = clientTrigger

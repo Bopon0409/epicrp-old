@@ -4,29 +4,34 @@
 
 ## Инвентарь
 
-- `mp.trigger('pushInventoryDataToClient', data: json string)` - Инвентарь пользователя обновился
-- `mp.trigger('userdUseItem', idItem: int)` - Игрок использовал предмет
-- `mp.trigger('userEquippedItem', idItem: int)` - Игрок надел предмет
-- `mp.trigger('userTakeOfItem', idItem: int)` - Игрок снял предмет
+- `mp.trigger('inventory.use', idItem: int)` - Игрок использовал предмет
+- `mp.trigger('inventory.equip', idItem: int)` - Игрок надел предмет
+- `mp.trigger('inventory.take', idItem: int)` - Игрок снял предмет
+- inventory.split(storeIdFrom: number, slotFromeId: number, slotToId: number, count: number) - Игрок разделил предмет
+- inventory.move(slotFromId: number, storeFromId: number, slotToId: number, storeToId: number) - Игрок снял предмет
+- inventory.merge(slotId1: number, slotId2: number) - Игрок стакнул предметы
+- inventory.drop(storeId: number, slotId: number) - Игрок выкинул предмет
 
 ## Авторизация
 
-- `mp.trigger('userAuth', login: string, pass: string)` - Пользователь пытается залогиниться
-- `mp.trigger('userRegister', login: string, email: string, pass: string)` - Пользователь пытается зарегестрироваться
-
-## Чат
-
-- `mp.trigger('pushMessageToClient', type: string, text: string)` - Пользователь отправил сообщение в чат
+- `mp.trigger('auth.signUp', login: string, pass: string)` - Авторизация
+- `mp.trigger('auth.signIn', login: string, email: string, pass: string)` - Регистрация
 
 ## Выбор персонажа
 
-- `mp.trigger('userSelectedCharacter', name: string, surname: string)` - Пользователь выбрал персонажа (при клике на кнопку играть)
+- `mp.trigger('character.selected', name: string, surname: string)` - Пользователь выбрал персонажа (при клике на кнопку играть)
+- `mp.trigger('character.create-start')` - Пользователь выбрал персонажа (при клике на кнопку играть)
+
+## Меню взаимодействия
+
+- `mp.trigger('interact.click', icon: String)` - Пользователь нажал на кнопку
 
 ## Создание персонажа
 
-- `mp.trigger('createCharChangeValue', type: String, value: String or Number)` - Пользователь что-то изменил при создании персонажа
+- `mp.trigger('character.update', type: String, value: String or Number)` - Пользователь что-то изменил при создании персонажа
+- `mp.trigger('character.create-start')` - Пользователь кликнул на кнопку создания персонажа
 
-#### Список параметров `createCharChangeValue`
+#### Список параметров `character.update`
 
 1. name - String, Имя
 2. surname - String, Фамилия
@@ -36,7 +41,3 @@
 6. parents_similarity - Float (0-1), Схожесть с родителями
 
 **Остальные параметры в `create-pers-data.json`**
-
-## Меню взаимодействия
-
-- `mp.trigger('clickInteractionMenuItem', icon: String)` - Пользователь нажал на кнопку

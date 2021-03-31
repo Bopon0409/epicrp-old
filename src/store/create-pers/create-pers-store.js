@@ -36,9 +36,8 @@ class CreatePersStore {
     this.state.serverData = data ? data : {}
     this.state.active = !this.state.active
   }
-  finishCreate = () => {
-    if (window.mp) window.mp.trigger('createCharFinish')
-  }
+  finishCreate = () => window.clientTrigger('character.created')
+
   // ================================   STEP2   ================================
   setName = value => (this.state.step1.name = value)
   setSurname = value => (this.state.step1.surname = value)
@@ -64,11 +63,9 @@ class CreatePersStore {
     if (surname.length < 3 || surname.length > 14)
       return this.setSurnameErr('Недопустимая Длина')
 
-    if (window.mp) {
-      window.mp.trigger('createCharChangeValue', 'name', name)
-      window.mp.trigger('createCharChangeValue', 'surname', surname)
-      window.mp.trigger('createCharChangeValue', 'sex', sex)
-    }
+    window.clientTrigger('character.update', 'name', name)
+    window.clientTrigger('character.update', 'surname', surname)
+    window.clientTrigger('character.update', 'sex', sex)
 
     this.setStep(2)
   }
@@ -83,22 +80,19 @@ class CreatePersStore {
   motherChangeHandler = (motherId, i) => {
     this.setActiveMother(i)
     this.setMotherName(motherNames[i])
-    if (window.mp)
-      window.mp.trigger('createCharChangeValue', 'mother', motherId)
+    window.clientTrigger('character.update', 'mother', motherId)
   }
 
   fatherChangeHandler = (fatherId, i) => {
     this.setActiveFather(i)
     this.setFatherName(fatherNames[i])
-    if (window.mp)
-      window.mp.trigger('createCharChangeValue', 'father', fatherId)
+    window.clientTrigger('character.update', 'father', fatherId)
   }
 
   sliderChangeHandler = range => {
     range = (range ^ 0) === range ? range : Number(range.toFixed(2))
     this.setSliderValue(range)
-    if (window.mp)
-      window.mp.trigger('createCharChangeValue', 'parents_similarity', range)
+    window.clientTrigger('character.update', 'parents_similarity', range)
   }
 
   // ================================   STEP3   ================================

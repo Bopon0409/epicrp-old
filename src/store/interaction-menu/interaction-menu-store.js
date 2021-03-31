@@ -37,7 +37,7 @@ class InteractionMenuStore {
       const onHoverIn = data => this.setCurrentText(data.text)
       const onHoverOut = () => this.setCurrentText('Закрыть меню')
       const clickHandler = icon => {
-        if (window.mp) window.mp.trigger('clickInteractionMenuItem', icon)
+        window.clientTrigger('interact.click', icon)
       }
 
       const menus = data.map(({ text, icon, menus }) => ({
