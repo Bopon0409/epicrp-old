@@ -1,7 +1,7 @@
 [
   {
     "idItem": 0,
-    "idSlot": 0,
+    "idSlot": 14,
     "quantity": 3,
     "weight": 0.2,
     "isFastSlot": false,
@@ -31,7 +31,7 @@
   },
   {
     "idItem": 12,
-    "idSlot": 2,
+    "idSlot": 201,
     "quantity": 1,
     "weight": 0.2,
     "isFastSlot": false,
@@ -147,7 +147,7 @@
     "weight": 0.2,
     "isFastSlot": false,
     "equipmentSlot": 212,
-    "bag": 2,
+    "bag": 3,
     "name": "Сумка",
     "description": "Описание сумки - самый важный элемент в инвентаре. Без его описания можно было бы считать работу несостоявшейся"
   }

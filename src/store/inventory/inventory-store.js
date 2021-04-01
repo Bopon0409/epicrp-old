@@ -1,5 +1,4 @@
 import { makeAutoObservable } from 'mobx'
-import { getSlotQuantity, trigger, getMaxWeight } from './supporting-functions'
 
 class InventoryStore {
   constructor () {
@@ -8,13 +7,13 @@ class InventoryStore {
 
   state = {
     active: false,
-    bagType: 2,
     isDrag: false,
     modal: {
       isActive: false,
       item: {},
       xCord: 0,
-      yCord: 0
+      yCord: 0,
+      action: ''
     },
     userIndicators: {
       food: 100,
@@ -27,19 +26,67 @@ class InventoryStore {
 
   // ================================   MAIN   =================================
   setInventoryActive = () => (this.state.active = !this.state.active)
-  setInventoryData = data => (this.state.inventory = data)
+
+  setInventoryData = data => {
+    this.state.inventory = data
+  }
+
+  // Вычисляемые значения сумки и веса
+
+  getBagType = () => this.state.inventory.find(el => el.bag)?.bag || 0
+
+  getInventoryWeight = () => {
+    let weight = 0
+    this.state.inventory.forEach(
+      el => (weight += Number(el.weight * el.quantity))
+    )
+    return weight.toFixed(1)
+  }
+
+  getInventoryMaxWeight = () => {
+    switch (this.state.bagType) {
+      case 0:
+        return 10
+      case 1:
+        return 15
+      case 2:
+        return 17
+      case 3:
+        return 20
+      default:
+        return 10
+    }
+  }
 
   // Триггеры, отправляемые на сервер
-  trigger = trigger
+
+  trigger = (triggerName, id) => {
+    if (window.mp) {
+      switch (triggerName) {
+        case 'putOn':
+          window.mp.trigger('userPutOnInventaryItem', id)
+          break
+        case 'putOff':
+          window.mp.trigger('userPutOffInventaryItem', id)
+          break
+        case 'use':
+          window.mp.trigger('userUseInventaryItem', id)
+          break
+        case 'update':
+          window.mp.trigger(
+            'pushInventoryDataToClient',
+            JSON.stringify(this.state.inventory)
+          )
+          break
+        default:
+          break
+      }
+    }
+  }
 
   // ==========================   CULCULATED VALUES   ==========================
 
   getItem = idSlot => this.state.inventory.find(el => el.idSlot === idSlot)
-
-  // Возвращает 25 - 35 в зависимости от типа сумки
-  getSlotQuantity = getSlotQuantity
-
-  getMaxWeight = getMaxWeight
 
   getTotalWeight = () => {
     const { inventory } = this.state
@@ -173,6 +220,21 @@ class InventoryStore {
 
   // Проверки на возможность надевания/снятия
   swapCheckPutOnPutOff = (toSlot, fromSlot, item1, item2) => {
+    if (toSlot >= 101 && toSlot <= 104 && !item1.isFastSlot) return false
+    if (!item1.equipmentSlot && toSlot > 200) return false
+    if (item1.equipmentSlot && toSlot > 200 && item1.equipmentSlot !== toSlot)
+      return false
+
+    if (item2) {
+      if (!item2.equipmentSlot && fromSlot > 200) return false
+      if (
+        item2.equipmentSlot &&
+        fromSlot > 200 &&
+        item2.equipmentSlot !== fromSlot
+      )
+        return false
+      if (fromSlot >= 101 && fromSlot <= 104 && !item2.isFastSlot) return false
+    }
     return true
   }
 
@@ -197,23 +259,28 @@ class InventoryStore {
     // Перемещение предметов
     this.state.inventory.forEach(el => {
       if (el.idSlot === fromSlot) el.idSlot = toSlot
-      if (el.idSlot === toSlot) el.idSlot = fromSlot
+      else if (el.idSlot === toSlot) el.idSlot = fromSlot
     })
   }
 
   // =============================   ITEM MODAL   ==============================
 
   // isActive, item, xCord, yCord
-  setModal = (...props) => (this.state.modal = { ...props })
+  setModal = (...props) => (this.state.modal = { ...props, action: '' })
+
+  toggleModalAction = action => {
+    if (this.state.modal.action === action) this.state.modal.action = ''
+    else this.state.modal.action = action
+  }
 
   // ============================   DRAG'N'DROP   ==============================
 
   onDragStart = () => (this.state.isDrag = true)
 
   onDragEnd = ({ active, over }) => {
-    this.state.isDrag = false
-    if (active.id !== over.id) {
-      this.swap(Number(active.id), Number(over.id))
+    if (over) {
+      this.state.isDrag = false
+      if (active.id !== over.id) this.swap(Number(active.id), Number(over.id))
     }
   }
 }

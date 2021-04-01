@@ -8,8 +8,6 @@ import WeightBar from './modules/weight-bar'
 import CloseBtn from './modules/close-btn'
 
 export default observer(() => {
-  const { active } = store.state
-
   useEffect(() => {
     const { EventManager: em } = window
     const { setInventoryActive, setInventoryData } = store
@@ -21,10 +19,11 @@ export default observer(() => {
     }
   }, [])
 
-  const inventoryStyle = active ? { display: 'block' } : { display: 'none' }
-
   return (
-    <div className='inventory-page' style={inventoryStyle}>
+    <div
+      className='inventory-page'
+      style={{ display: store.state.active ? 'block' : 'none' }}
+    >
       <div className='inventory-page__wrapper' />
       <Container />
       <CloseBtn />
