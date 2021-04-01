@@ -20,7 +20,7 @@
 ## Выбор персонажа
 
 - `mp.trigger('character.selected', name: string, surname: string)` - Пользователь выбрал персонажа (при клике на кнопку играть)
-- `mp.trigger('character.create-start')` - Пользователь выбрал персонажа (при клике на кнопку играть)
+- `mp.trigger('character.create-start')` - Пользователь нажал на кнопку создания персонажа
 
 ## Меню взаимодействия
 
@@ -29,7 +29,7 @@
 ## Создание персонажа
 
 - `mp.trigger('character.update', type: String, value: String or Number)` - Пользователь что-то изменил при создании персонажа
-- `mp.trigger('character.create-start')` - Пользователь кликнул на кнопку создания персонажа
+- `mp.trigger('character.created')` - Пользователь закончил создание персонажа
 
 #### Список параметров `character.update`
 
