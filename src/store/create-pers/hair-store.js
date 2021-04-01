@@ -6,6 +6,12 @@ class HairStore {
   }
 
   state = {
+    eyebrows: { value: 1, valueName: 'eyebrows', title: 'Брови' },
+    colorEyebrows: {
+      value: '#242323',
+      valueName: 'colorEyebrows',
+      title: 'Цвет Бровей'
+    },
     beard: { value: 1, valueName: 'beard', title: 'Борода/Усы' },
     colorBeard: {
       value: '#242323',
