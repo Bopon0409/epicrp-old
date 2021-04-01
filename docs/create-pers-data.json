@@ -22,6 +22,8 @@
   { "value": 0.5, "valueName": "chinHeight" },
   { "value": 0.5, "valueName": "chinDepth" },
   { "value": 0.5, "valueName": "chinIndent" },
+  { "value": 1, "valueName": "eyebrows" },
+  { "value": "#242323", "valueName": "colorEyebrows" },
   { "value": 1, "valueName": "beard" },
   { "value": "#242323", "valueName": "colorBeard" },
   { "value": 1, "valueName": "hairstyle" },
