@@ -1,31 +1,48 @@
 import React from 'react'
 import { useDraggable } from '@dnd-kit/core'
 import { CSS } from '@dnd-kit/utilities'
+import { observer } from 'mobx-react-lite'
+import store from '../../../store/inventory/inventory-store'
 
-export default function Item ({ item, id }) {
+let timer
+
+export default observer(({ id, item }) => {
+  // DnD objects
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({ id })
+  const style = { transform: CSS.Translate.toString(transform) }
+
   const { quantity, weight, idItem } = item
-  const {
-    attributes,
-    listeners,
-    setNodeRef: setNodeRefDraggable,
-    transform
-  } = useDraggable({ id })
+  const { drugId } = store.state
+
+  const weightView = item.bag
+    ? store.getBagWeight().toFixed(1)
+    : (quantity * weight).toFixed(1)
+
+  const onClickHandler = e => {
+    clearTimeout(timer)
+    if (e.detail === 1)
+      timer = setTimeout(() => {
+        drugId === 0 && store.setModal(true, item, e.clientX, e.clientY)
+      }, 200)
+    else if (e.detail === 2) store.useItem(id)
+  }
 
   return (
     <div
-      className='item'
-      ref={setNodeRefDraggable}
-      style={{ transform: CSS.Translate.toString(transform) }}
+      className={drugId === 0 ? 'item item_hover' : 'item'}
+      ref={setNodeRef}
+      style={style}
       {...listeners}
       {...attributes}
+      onClick={onClickHandler}
     >
       <img src={`./images/inventory/items/id${idItem}.png`} alt='' />
-      <div className='item__label-container'>
-        <div className='item__label-element'>{quantity}</div>
-        <div className='item__label-element'>
-          {(quantity * weight).toFixed(1)}кг
+      {drugId !== id && (
+        <div className='item__label-container'>
+          <div className='item__label-element'>{quantity}</div>
+          <div className='item__label-element'>{weightView}кг</div>
         </div>
-      </div>
+      )}
     </div>
   )
-}
+})

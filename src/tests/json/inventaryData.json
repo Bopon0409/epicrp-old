@@ -11,7 +11,7 @@
   },
   {
     "idItem": 1,
-    "idSlot": 100,
+    "idSlot": 101,
     "quantity": 1,
     "weight": 1,
     "isFastSlot": true,
@@ -31,7 +31,7 @@
   },
   {
     "idItem": 12,
-    "idSlot": 201,
+    "idSlot": 2,
     "quantity": 1,
     "weight": 0.2,
     "isFastSlot": false,

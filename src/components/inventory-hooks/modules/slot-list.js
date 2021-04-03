@@ -10,8 +10,9 @@ export default observer(({ fromSlot, toSlot, bagType }) => {
     list.push(<Slot id={i} key={`slote#${i}`} item={item} />)
   }
 
-  let className = 'slot-list'
-  if (bagType) if (bagType === 1) className = 'slot-list small-bag'
-
-  return <div className={className}>{list}</div>
+  return (
+    <div className={bagType === 1 ? 'slot-list small-bag' : 'slot-list'}>
+      {list}
+    </div>
+  )
 })

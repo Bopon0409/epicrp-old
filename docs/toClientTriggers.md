@@ -7,10 +7,7 @@
 - `mp.trigger('inventory.use', idItem: int)` - Игрок использовал предмет
 - `mp.trigger('inventory.equip', idItem: int)` - Игрок надел предмет
 - `mp.trigger('inventory.take', idItem: int)` - Игрок снял предмет
-- inventory.split(storeIdFrom: number, slotFromeId: number, slotToId: number, count: number) - Игрок разделил предмет
-- inventory.move(slotFromId: number, storeFromId: number, slotToId: number, storeToId: number) - Игрок снял предмет
-- inventory.merge(slotId1: number, slotId2: number) - Игрок стакнул предметы
-- inventory.drop(storeId: number, slotId: number) - Игрок выкинул предмет
+
 
 ## Авторизация
 

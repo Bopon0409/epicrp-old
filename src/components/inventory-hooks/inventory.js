@@ -4,8 +4,9 @@ import store from '../../store/inventory/inventory-store'
 
 import Container from './modules/container'
 import Indicators from './modules/indicators'
-import WeightBar from './modules/weight-bar'
+import RightWeightBar from './modules/right-weight-bar'
 import CloseBtn from './modules/close-btn'
+import Modal from './modules/modal'
 
 export default observer(() => {
   useEffect(() => {
@@ -27,8 +28,9 @@ export default observer(() => {
       <div className='inventory-page__wrapper' />
       <Container />
       <CloseBtn />
-      <WeightBar />
+      <RightWeightBar />
       <Indicators />
+      {store.state.modal.isActive && <Modal />}
     </div>
   )
 })

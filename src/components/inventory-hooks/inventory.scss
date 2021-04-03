@@ -3,6 +3,7 @@
 @import './styles/equipment';
 @import './styles/item';
 @import './styles/modal';
+@import './styles/weight-bar';
 
 .inventory-page {
   position: absolute;
@@ -11,7 +12,7 @@
   top: 0;
   left: 0;
   font-family: Nunito;
-  overflow: none;
+  overflow: hidden;
   z-index: 5;
 
   .inventory-page__wrapper {

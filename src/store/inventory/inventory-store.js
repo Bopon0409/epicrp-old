@@ -7,13 +7,14 @@ class InventoryStore {
 
   state = {
     active: false,
-    isDrag: false,
+    drugId: 0,
     modal: {
       isActive: false,
       item: {},
       xCord: 0,
       yCord: 0,
-      action: ''
+      action: '',
+      sliderValue: 0
     },
     userIndicators: {
       food: 100,
@@ -31,20 +32,48 @@ class InventoryStore {
     this.state.inventory = data
   }
 
+  getSlotQuantity = bagType => {
+    switch (bagType) {
+      case 0:
+        return 25
+      case 1:
+        return 30
+      case 2:
+        return 35
+      case 3:
+        return 35
+      default:
+        break
+    }
+  }
+
   // Вычисляемые значения сумки и веса
 
-  getBagType = () => this.state.inventory.find(el => el.bag)?.bag || 0
+  getBagType = () =>
+    this.state.inventory.find(el => el.bag && el.idSlot === 212)?.bag || 0
+
+  getBagWeight = () => {
+    let weight = 0.2
+    this.state.inventory.forEach(el => {
+      if (el.idSlot >= 51 && el.idSlot <= 60) weight += el.weight * el.quantity
+    })
+    return weight
+  }
 
   getInventoryWeight = () => {
-    let weight = 0
-    this.state.inventory.forEach(
-      el => (weight += Number(el.weight * el.quantity))
-    )
-    return weight.toFixed(1)
+    let totalWeight = 0
+    this.state.inventory.forEach(item => {
+      if ((item.idSlot >= 1 && item.idSlot <= 25) || item.idSlot === 212)
+        if (item.bag) {
+          totalWeight += this.getBagWeight()
+        } else totalWeight += item.weight * item.quantity
+    })
+
+    return totalWeight.toFixed(1)
   }
 
   getInventoryMaxWeight = () => {
-    switch (this.state.bagType) {
+    switch (this.getBagType()) {
       case 0:
         return 10
       case 1:
@@ -64,20 +93,11 @@ class InventoryStore {
     if (window.mp) {
       switch (triggerName) {
         case 'putOn':
-          window.mp.trigger('userPutOnInventaryItem', id)
-          break
+          return window.clientTrigger('inventory.equip', id)
         case 'putOff':
-          window.mp.trigger('userPutOffInventaryItem', id)
-          break
+          return window.clientTrigger('inventory.take', id)
         case 'use':
-          window.mp.trigger('userUseInventaryItem', id)
-          break
-        case 'update':
-          window.mp.trigger(
-            'pushInventoryDataToClient',
-            JSON.stringify(this.state.inventory)
-          )
-          break
+          return window.clientTrigger('inventory.use', id)
         default:
           break
       }
@@ -87,17 +107,6 @@ class InventoryStore {
   // ==========================   CULCULATED VALUES   ==========================
 
   getItem = idSlot => this.state.inventory.find(el => el.idSlot === idSlot)
-
-  getTotalWeight = () => {
-    const { inventory } = this.state
-    let totalWeight = 0
-    inventory.forEach(item => {
-      if ((item.idSlot >= 1 && item.idSlot <= 25) || item.idSlot === 212)
-        totalWeight += item.weight * item.quantity
-    })
-
-    return totalWeight.toFixed(1)
-  }
 
   // Возвращает свободный слот, или 1 слот, если все заняты
   getFreeFastSlot = () => {
@@ -109,7 +118,7 @@ class InventoryStore {
 
   // Возвращает свободный слот, или false, если все заняты
   getFreeInventorySlot = () => {
-    for (let i = 1; i < this.getSlotQuantity(this.state.bagType); i++) {
+    for (let i = 1; i < this.getSlotQuantity(this.getBagType()); i++) {
       if (!this.getItem(i)) return i
     }
     return false
@@ -158,8 +167,8 @@ class InventoryStore {
 
   // Использование расходных предметов
   useConsumableItem = idSlot => {
-    this.decreaseItem(idSlot)
-    this.trigger('use', this.getItem(idSlot).idItem)
+    const item = this.getItem(idSlot)
+    item.quantity > 1 ? this.decreaseItem(idSlot) : this.deleteItem(idSlot)
   }
 
   // Надевание экиперовки
@@ -171,17 +180,22 @@ class InventoryStore {
 
   // Снятие экиперовки
   putOffItem = idSlot => {
-    if (this.getFreeInventorySlot()) this.swap(idSlot, this.freeSlotInventory())
+    const freeSlot = this.getFreeInventorySlot()
+    if (freeSlot) this.swap(idSlot, freeSlot)
   }
 
   // Разделение предмета
   separateItem = (idSlot, quantity) => {
-    this.state.inventory.forEach(el => {
-      if (el.idSlot === idSlot) el.quantity -= quantity
-    })
-    const newItem = this.getItem(idSlot)
-    newItem.quantity = quantity
-    this.state.inventory.push(newItem)
+    const freeSlot = this.getFreeInventorySlot()
+    if (freeSlot) {
+      this.state.inventory.forEach(el => {
+        if (el.idSlot === idSlot) el.quantity -= quantity
+      })
+      const newItem = JSON.parse(JSON.stringify(this.getItem(idSlot)))
+      newItem.quantity = quantity
+      newItem.idSlot = freeSlot
+      this.state.inventory.push(newItem)
+    }
   }
 
   // ============================   SWAP CHECKS   ==============================
@@ -211,7 +225,7 @@ class InventoryStore {
 
   // Проверка на перемещение сумки в сумку
   swapCheckBagInBag = (toSlot, fromSlot, item1, item2) => {
-    if (item1.bag && toSlot >= 26 && toSlot <= 35) return false
+    if (item1.bag && toSlot >= 51 && toSlot <= 60) return false
     if (item2) {
       if (item2.bag && fromSlot >= 26 && fromSlot <= 35) return false
     }
@@ -266,20 +280,45 @@ class InventoryStore {
   // =============================   ITEM MODAL   ==============================
 
   // isActive, item, xCord, yCord
-  setModal = (...props) => (this.state.modal = { ...props, action: '' })
+  setModal = (isActive, item, xCord, yCord) => {
+    this.state.modal = {
+      isActive,
+      item,
+      xCord,
+      yCord,
+      sliderValue: 0,
+      action: ''
+    }
+  }
 
   toggleModalAction = action => {
     if (this.state.modal.action === action) this.state.modal.action = ''
     else this.state.modal.action = action
   }
 
+  setModalSliderValue = value => (this.state.modal.sliderValue = value)
+
+  modalAction = id => {
+    const { action, sliderValue } = this.state.modal
+    switch (action) {
+      case 'use':
+        return this.useItem(id)
+      case 'drop':
+        return this.deleteItem(id)
+      case 'separate':
+        return this.separateItem(id, sliderValue)
+      default:
+        break
+    }
+  }
+
   // ============================   DRAG'N'DROP   ==============================
 
-  onDragStart = () => (this.state.isDrag = true)
+  onDragStart = ({ active }) => (this.state.drugId = active.id)
 
   onDragEnd = ({ active, over }) => {
+    this.state.drugId = 0
     if (over) {
-      this.state.isDrag = false
       if (active.id !== over.id) this.swap(Number(active.id), Number(over.id))
     }
   }
