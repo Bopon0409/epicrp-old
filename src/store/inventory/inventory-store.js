@@ -8,6 +8,7 @@ class InventoryStore {
   state = {
     active: false,
     drugId: 0,
+    mode: 0,
     modal: {
       isActive: false,
       item: {},
@@ -19,17 +20,92 @@ class InventoryStore {
     userIndicators: {
       food: 100,
       water: 100,
-      health: 100,
-      armor: 0
+      health: 100
     },
     inventory: []
   }
 
   // ================================   MAIN   =================================
-  setInventoryActive = () => (this.state.active = !this.state.active)
+  setInventoryActive = (inventoryId = 0) => {
+    this.state.active = !this.state.active
+    this.state.mode = this.state.active ? inventoryId : 0
+  }
 
   setInventoryData = data => {
-    this.state.inventory = data
+    let inventoryId = 0
+    data.filter(el => {
+      if (el.inventoryId) inventoryId = el.inventoryId
+      else return el
+    })
+    this.cleanInventory(inventoryId)
+    this.convertData(data).forEach(el => this.state.inventory.push(el))
+  }
+
+  // Конвертация предметов в формат фронта
+  convertData = (data, inventoryId = 0) => {
+    return data.map(el => {
+      switch (inventoryId) {
+        // Инвентарь
+        case 0:
+          return el
+        // Трейд мой
+        case 1:
+          el.idSlot += 300
+          return el
+        // Трейд чужой
+        case 2:
+          el.idSlot += 350
+          return el
+        // Склад
+        case 3:
+          el.idSlot += 400
+          return el
+        // Багажник
+        case 4:
+          el.idSlot += 600
+          return el
+        default:
+          return el
+      }
+    })
+  }
+
+  // Очистка предметов одного из инвентарей
+  cleanInventory = inventoryId => {
+    let min, max
+    switch (inventoryId) {
+      // Инвентарь
+      case 0:
+        min = 1
+        max = 212
+        break
+      // Трейд мой
+      case 1:
+        min = 301
+        max = 349
+        break
+      // Трейд чужой
+      case 2:
+        min = 350
+        max = 400
+        break
+      // Склад
+      case 3:
+        min = 401
+        max = 600
+        break
+      // Багажник
+      case 4:
+        min = 601
+        max = 1000
+        break
+      default:
+        break
+    }
+
+    this.state.inventory = this.state.inventory.filter(
+      ({ idSlot }) => idSlot >= min && idSlot <= max
+    )
   }
 
   getSlotQuantity = bagType => {
@@ -47,7 +123,27 @@ class InventoryStore {
     }
   }
 
-  // Вычисляемые значения сумки и веса
+  // Триггеры, отправляемые на сервер
+
+  trigger = (triggerName, id) => {
+    if (window.mp) {
+      switch (triggerName) {
+        case 'putOn':
+          return window.clientTrigger('inventory.equip', id)
+        case 'putOff':
+          return window.clientTrigger('inventory.take', id)
+        case 'use':
+          return window.clientTrigger('inventory.use', id)
+        default:
+          break
+      }
+    }
+  }
+
+  // ==========================   CULCULATED VALUES   ==========================
+
+  getArmor = () =>
+    this.state.inventory.find(el => el.armor && el.idSlot === 206)?.armor || 0
 
   getBagType = () =>
     this.state.inventory.find(el => el.bag && el.idSlot === 212)?.bag || 0
@@ -86,25 +182,6 @@ class InventoryStore {
         return 10
     }
   }
-
-  // Триггеры, отправляемые на сервер
-
-  trigger = (triggerName, id) => {
-    if (window.mp) {
-      switch (triggerName) {
-        case 'putOn':
-          return window.clientTrigger('inventory.equip', id)
-        case 'putOff':
-          return window.clientTrigger('inventory.take', id)
-        case 'use':
-          return window.clientTrigger('inventory.use', id)
-        default:
-          break
-      }
-    }
-  }
-
-  // ==========================   CULCULATED VALUES   ==========================
 
   getItem = idSlot => this.state.inventory.find(el => el.idSlot === idSlot)
 

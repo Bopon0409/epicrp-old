@@ -4,6 +4,7 @@
 @import './styles/item';
 @import './styles/modal';
 @import './styles/weight-bar';
+@import './styles/indicators';
 
 .inventory-page {
   position: absolute;
@@ -40,5 +41,51 @@
     left: 50%;
     margin-left: -525px;
     margin-top: -350px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .inventory-page {
+    zoom: 1.5;
+  }
+}
+
+@media (max-width: 1400px) {
+  .inventory-page {
+    zoom: 0.9;
+
+    .right-weight-bar {
+      zoom: 0.7;
+    }
+  }
+}
+
+@media (max-width: 1140px) {
+  .inventory-page {
+    zoom: 0.8;
+
+    .right-weight-bar {
+      zoom: 0.6;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .inventory-page {
+    zoom: 0.7;
+
+    .right-weight-bar {
+      zoom: 0.6;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .inventory-page {
+    zoom: 0.6;
+
+    .right-weight-bar {
+      zoom: 0.5;
+    }
   }
 }
