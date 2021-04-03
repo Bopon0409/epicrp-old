@@ -1,6 +1,6 @@
 import * as testBg from './modules/bg.test'
 import * as testCreatePers from './modules/create-pers.test'
-import * as testInventory from './modules/inventory.test'
+import * as testInventory from './inventory/inventory.test'
 import * as testChoisePers from './modules/choice-pers.test'
 import * as testAuth from './modules/auth.test'
 import * as testChat from './modules/chat.test'

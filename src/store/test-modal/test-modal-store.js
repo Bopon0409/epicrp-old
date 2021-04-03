@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx'
 
 import * as testBg from '../../tests/modules/bg.test'
 import * as testCreatePers from '../../tests/modules/create-pers.test'
-import * as testInventory from '../../tests/modules/inventory.test'
+import * as testInventory from '../../tests/inventory/inventory.test'
 import * as testChoisePers from '../../tests/modules/choice-pers.test'
 import * as testAuth from '../../tests/modules/auth.test'
 import * as testChat from '../../tests/modules/chat.test'

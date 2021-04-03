@@ -33,12 +33,14 @@ class InventoryStore {
 
   setInventoryData = data => {
     let inventoryId = 0
-    data.filter(el => {
+    data = data.filter(el => {
       if (el.inventoryId) inventoryId = el.inventoryId
-      else return el
+      return !Boolean(el.inventoryId)
     })
     this.cleanInventory(inventoryId)
-    this.convertData(data).forEach(el => this.state.inventory.push(el))
+    this.convertData(data, inventoryId)?.forEach(el =>
+      this.state.inventory.push(el)
+    )
   }
 
   // Конвертация предметов в формат фронта
@@ -104,7 +106,7 @@ class InventoryStore {
     }
 
     this.state.inventory = this.state.inventory.filter(
-      ({ idSlot }) => idSlot >= min && idSlot <= max
+      ({ idSlot }) => !(idSlot >= min && idSlot <= max)
     )
   }
 

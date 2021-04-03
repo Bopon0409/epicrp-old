@@ -9,13 +9,32 @@ import Equipment from './equipment'
 
 export default observer(() => {
   const { onDragStart, onDragEnd, getBagType } = store
+  const { mode } = store.state
   const bagType = getBagType()
   const bagToSlot = bagType > 1 ? 60 : 55
 
   return (
-    <DndContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
+    <DndContext
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
+      autoScroll={true}
+    >
       <div className='inventory-page__container container'>
-        <Equipment />
+        {mode === 0 && <Equipment />}
+
+        {mode === 3 && (
+          <div className='inventory'>
+            <div className='title'>Склад</div>
+            <SlotList fromSlot={401} toSlot={500} skroll={true} />
+          </div>
+        )}
+
+        {mode === 4 && (
+          <div className='inventory'>
+            <div className='title'>Багажник</div>
+            <SlotList fromSlot={401} toSlot={500} skroll={true} />
+          </div>
+        )}
 
         {bagType && (
           <div className='bag'>

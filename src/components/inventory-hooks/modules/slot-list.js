@@ -3,16 +3,16 @@ import React from 'react'
 import Slot from './slot'
 import store from '../../../store/inventory/inventory-store'
 
-export default observer(({ fromSlot, toSlot, bagType }) => {
+export default observer(({ fromSlot, toSlot, bagType, skroll }) => {
   const list = []
   for (let i = fromSlot; i <= toSlot; i++) {
     const item = store.getItem(i)
     list.push(<Slot id={i} key={`slote#${i}`} item={item} />)
   }
 
-  return (
-    <div className={bagType === 1 ? 'slot-list small-bag' : 'slot-list'}>
-      {list}
-    </div>
-  )
+  let classes = 'slot-list'
+  if (bagType === 1) classes += ' small-bag'
+  if (skroll && store.state.drugId === 0) classes += ' skroll'
+
+  return <div className={classes}>{list}</div>
 })

@@ -1,15 +1,25 @@
 .inventory-page {
   .container {
-    width: 1050px;
+    width: 1120px;
     height: 700px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 
+    .skroll {
+      width: 450px;
+      padding-right: 10px;
+      overflow-y: auto !important;
+      overflow-x: none !important;
+    }
+
     .slot-list {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      max-height: 440px;
+      overflow-y: hidden;
+      box-sizing: border-box;
 
       .slot {
         width: 80px;
@@ -17,6 +27,19 @@
         box-sizing: border-box;
         margin-bottom: 10px;
         background: rgba(255, 255, 255, 0.05);
+      }
+
+      &::-webkit-scrollbar {
+        position: absolute;
+        width: 8px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: linear-gradient(0deg, #e6961e 0%, #f2c94c 100%),
+          rgba(255, 255, 255, 0.05);
       }
     }
 
