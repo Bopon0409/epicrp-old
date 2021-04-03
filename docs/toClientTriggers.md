@@ -33,6 +33,7 @@
 1. name - String, Имя
 2. surname - String, Фамилия
 3. sex - String ('male', 'female'), Пол
+4. age - int
 4. mother - Int (id), Мать
 5. father - Int (id), Отец
 6. parentsSimilarity - Float (0-1), Схожесть с родителями
