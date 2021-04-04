@@ -10,7 +10,7 @@ class CreatePersStore {
 
   state = {
     active: false,
-    step: 2,
+    step: 1,
     step1: {
       name: '',
       surname: '',
@@ -35,9 +35,9 @@ class CreatePersStore {
 
   // =================================   MAIN   ================================
   setStep = step => (this.state.step = step)
-  setCreatePers = data => {
+  setCreatePers = (active, data) => {
     this.state.serverData = data ? data : {}
-    this.state.active = !this.state.active
+    this.state.active = active
   }
   finishCreate = () => window.clientTrigger('character.created')
 

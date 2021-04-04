@@ -12,10 +12,10 @@ class ChoisePersStore {
   }
 
   setCurrentPers = current => (this.state.currentPers = current)
-  
-  setChoicePers = data => {
+
+  setChoicePers = (active, data) => {
     this.state.data = data ? data : []
-    this.state.componentActive = !this.state.componentActive
+    this.state.componentActive = active
   }
 
   clickPlay = () => {

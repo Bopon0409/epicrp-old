@@ -56,7 +56,7 @@ export default observer(() => {
             checkbox ? 'checkbox__box checkbox__box_active' : 'checkbox__box'
           }
         ></div>
-        <div className='checkbox__label'>active</div>
+        <div className='checkbox__label'>Bolean first param</div>
       </div>
       <div className='test-modal__container'>{btns}</div>
     </div>

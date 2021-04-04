@@ -11,8 +11,7 @@ class InteractionMenuStore {
     currentText: 'Закрыть меню'
   }
 
-  setActive = () => {
-    const active = !this.state.active
+  setActive = active => {
     this.state.active = active
     const isContainMenu =
       document.querySelector('.interaction-menu').childNodes.length === 4
@@ -26,12 +25,11 @@ class InteractionMenuStore {
           `<div id='menu1' className='menu1' />`
         )
     }
-    return active
   }
   setCurrentText = text => (this.state.currentText = text)
 
-  setInteractionMenu = data => {
-    const active = this.setActive()
+  setInteractionMenu = (active, data) => {
+    this.setActive(active)
 
     if (active && data.length) {
       const onHoverIn = data => this.setCurrentText(data.text)

@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
-import { DndContext } from '@dnd-kit/core'
+import { DndContext, DragOverlay } from '@dnd-kit/core'
 import store from '../../../store/inventory/inventory-store'
 
 import bagIcon from '../images/bag.png'
@@ -9,16 +9,22 @@ import Equipment from './equipment'
 
 export default observer(() => {
   const { onDragStart, onDragEnd, getBagType } = store
-  const { mode } = store.state
+  const { mode, drugId } = store.state
   const bagType = getBagType()
   const bagToSlot = bagType > 1 ? 60 : 55
 
   return (
-    <DndContext
-      onDragStart={onDragStart}
-      onDragEnd={onDragEnd}
-      autoScroll={true}
-    >
+    <DndContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
+      <DragOverlay>
+        <img
+          style={{ position: 'relative', left: '18px', top: '19px' }}
+          src={`./images/inventory/items/id${
+            store.getItem(drugId)?.idItem
+          }.png`}
+          alt=''
+        />
+      </DragOverlay>
+
       <div className='inventory-page__container container'>
         {mode === 0 && <Equipment />}
 

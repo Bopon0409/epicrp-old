@@ -52,7 +52,7 @@ class HudStore {
   }
 
   setHudOnline = online => (this.state.online = online)
-  setHudActive = () => (this.state.active = !this.state.active)
+  setHudActive = active => (this.state.active = active)
   setGeoHudData = geo => (this.state.geo = geo)
   setMicroHudData = microphone => (this.state.microphone = microphone)
   setMissionHudData = mission => (this.state.mission = mission)

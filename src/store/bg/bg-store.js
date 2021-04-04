@@ -7,7 +7,7 @@ class BgStore {
     makeAutoObservable(this)
   }
 
-  setActive = () => (this.active = !this.active)
+  setActive = active => (this.active = active)
 }
 
 export default new BgStore()

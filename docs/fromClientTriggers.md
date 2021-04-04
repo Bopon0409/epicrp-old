@@ -4,18 +4,18 @@
 
 ### Инвентарь
 
-- `window.trigger('inventory.toggle', id: int)` - Открыть/Закрыть инвентарь
+- `window.trigger('inventory.toggle', active: bolean, id: int)` - Открыть/Закрыть инвентарь *
 - `window.trigger('inventory.update', data: json string)` - Загрузка данных
 
 ### Авторизация
 
-- `window.trigger('auth.toggle')` - Открыть/Закрыть окно авторизации
+- `window.trigger('auth.toggle', active: bolean)` - Открыть/Закрыть окно авторизации
 - `window.trigger('auth.authAnswer', result: boolean)` - Ответ на авторизацию
 - `window.trigger('auth.registerAnswer', result: boolean` - Ответ на регистрацию
 
 ### Фон (скрин игры)
 
-- `window.trigger('hud.toggleBg')` - Открыть/Закрыть фон
+- `window.trigger('hud.toggleBg', active: bolean)` - Открыть/Закрыть фон
 
 ### Чат
 
@@ -26,7 +26,7 @@
 
 ### HUD
 
-- `window.trigger('hud.toggle')` - Открыть/Закрыть HUD
+- `window.trigger('hud.toggle', active: bolean)` - Открыть/Закрыть HUD
 - `window.trigger('hud.notify', data: json string)` - Прислать уведомление в HUD
 - `window.trigger('hud.setData', data: json string)` - Загрузка данных (малый набор) hud
 - `window.trigger('hud.setAllData', data: json string)` - Загрузка данных (весь набор) hud
@@ -39,15 +39,15 @@
 
 ### Выбор персонажа
 
-- `window.trigger('character.toggleMenu', data: json string)` - Открыть/Закрыть окно выбора персонажа (c загрузкой данных)
+- `window.trigger('character.toggleMenu', active: bolean, data: json string)` - Открыть/Закрыть окно выбора персонажа (c загрузкой данных)
 
 ### Создание персонажа
 
-- `window.trigger('character.toggleCreation', data: json string)` - Открыть/Закрыть окно создания персонажа (c загрузкой данных)
+- `window.trigger('character.toggleCreation', active: bolean, data: json string)` - Открыть/Закрыть окно создания персонажа (c загрузкой данных)
 
 ### Меню взаимодействия
 
-- `window.trigger('interaction-menu.toggle', data: json string)` - Открыть меню взаимодействия (с загрузкой данных)
+- `window.trigger('interaction-menu.toggle', active: bolean, data: json string)` - Открыть меню взаимодействия (с загрузкой данных)
 
 # chatAPI
 

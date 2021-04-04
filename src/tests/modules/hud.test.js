@@ -15,7 +15,7 @@ const testAlerts = () => {
   }, 2000)
 }
 
-const setHudActive = () => window.trigger('hud.toggle')
+const setHudActive = (active = true) => window.trigger('hud.toggle', active)
 const setHudData = () => window.trigger('hud.setData', JSON.stringify(hudData))
 const setOnlineHudData = () => window.trigger('hud.online', 1500)
 const setTimeHudData = () =>

@@ -26,16 +26,16 @@ class InventoryStore {
   }
 
   // ================================   MAIN   =================================
-  setInventoryActive = (inventoryId = 0) => {
-    this.state.active = !this.state.active
+  setInventoryActive = (active, inventoryId = 0) => {
+    this.state.active = active
     this.state.mode = this.state.active ? inventoryId : 0
   }
 
   setInventoryData = data => {
     let inventoryId = 0
     data = data.filter(el => {
-      if (el.inventoryId) inventoryId = el.inventoryId
-      return !Boolean(el.inventoryId)
+      if (el.inventoryId !== undefined) inventoryId = el.inventoryId
+      return el.inventoryId === undefined
     })
     this.cleanInventory(inventoryId)
     this.convertData(data, inventoryId)?.forEach(el =>
@@ -224,9 +224,9 @@ class InventoryStore {
   mergeItems = (item1, item2) => {
     const { inventory } = this.state
     const sum = item1.quantity + item2.quantity
-    const newInventory = inventory.filter(el => el.idSlot !== item2.idSlot)
+    const newInventory = inventory.filter(el => el.idSlot !== item1.idSlot)
     newInventory.forEach(el => {
-      if (el.idSlot === item1.idSlot) el.quantity = sum
+      if (el.idSlot === item2.idSlot) el.quantity = sum
     })
     this.state.inventory = newInventory
   }
@@ -314,15 +314,22 @@ class InventoryStore {
   // Проверки на возможность надевания/снятия
   swapCheckPutOnPutOff = (toSlot, fromSlot, item1, item2) => {
     if (toSlot >= 101 && toSlot <= 104 && !item1.isFastSlot) return false
-    if (!item1.equipmentSlot && toSlot > 200) return false
-    if (item1.equipmentSlot && toSlot > 200 && item1.equipmentSlot !== toSlot)
+    if (!item1.equipmentSlot && toSlot >= 201 && toSlot <= 212) return false
+    if (
+      item1.equipmentSlot &&
+      toSlot >= 201 &&
+      toSlot <= 212 &&
+      item1.equipmentSlot !== toSlot
+    )
       return false
 
     if (item2) {
-      if (!item2.equipmentSlot && fromSlot > 200) return false
+      if (!item2.equipmentSlot && fromSlot >= 201 && fromSlot <= 212)
+        return false
       if (
         item2.equipmentSlot &&
-        fromSlot > 200 &&
+        fromSlot >= 201 &&
+        fromSlot <= 212 &&
         item2.equipmentSlot !== fromSlot
       )
         return false
@@ -393,7 +400,27 @@ class InventoryStore {
 
   // ============================   DRAG'N'DROP   ==============================
 
-  onDragStart = ({ active }) => (this.state.drugId = active.id)
+  clickCounter
+  isClicked = false
+  timer
+
+  click = () => {
+    if (this.isClicked) {
+      clearTimeout(this.timer)
+      this.isClicked = false
+      return console.log('dbl click')
+    }
+    this.isClicked = true
+    this.timer = setTimeout(() => {
+      this.isClicked = false
+      if (this.state.drugId === 0) console.log('click')
+    }, 200)
+  }
+
+  onDragStart = ({ active }) => {
+    this.state.drugId = active.id
+    this.click()
+  }
 
   onDragEnd = ({ active, over }) => {
     this.state.drugId = 0
