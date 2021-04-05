@@ -1,44 +1,46 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
-import { DndContext, DragOverlay } from '@dnd-kit/core'
+import { DndContext } from '@dnd-kit/core'
 import store from '../../../store/inventory/inventory-store'
 
 import bagIcon from '../images/bag.png'
 import SlotList from './slot-list'
 import Equipment from './equipment'
+import DragOverlay from './overlay'
 
 export default observer(() => {
   const { onDragStart, onDragEnd, getBagType } = store
-  const { mode, drugId } = store.state
+  const { mode, trunkName, tradeName, trunkSize } = store.state
   const bagType = getBagType()
   const bagToSlot = bagType > 1 ? 60 : 55
 
   return (
     <DndContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
-      <DragOverlay>
-        <img
-          style={{ position: 'relative', left: '18px', top: '19px' }}
-          src={`./images/inventory/items/id${
-            store.getItem(drugId)?.idItem
-          }.png`}
-          alt=''
-        />
-      </DragOverlay>
+      <DragOverlay />
 
       <div className='inventory-page__container container'>
         {mode === 0 && <Equipment />}
 
-        {mode === 3 && (
+        {mode === 1 && (
+          <div className='inventory'>
+            <div className='title'>Обмен</div>
+            <div className='sub-title'>{tradeName}</div>
+            <SlotList fromSlot={401} toSlot={500} skroll={true} />
+          </div>
+        )}
+
+        {mode === 2 && (
           <div className='inventory'>
             <div className='title'>Склад</div>
             <SlotList fromSlot={401} toSlot={500} skroll={true} />
           </div>
         )}
 
-        {mode === 4 && (
+        {mode === 3 && (
           <div className='inventory'>
             <div className='title'>Багажник</div>
-            <SlotList fromSlot={401} toSlot={500} skroll={true} />
+            <div className='sub-title'>{trunkName}</div>
+            <SlotList fromSlot={601} toSlot={600 + trunkSize} skroll={true} />
           </div>
         )}
 

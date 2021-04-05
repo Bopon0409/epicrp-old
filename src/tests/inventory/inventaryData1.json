@@ -1,5 +1,5 @@
 [
-  { "inventoryId": 1 },
+  { "inventoryId": 1, "tradeName": "ИГРОК Name_surname" },
   {
     "idItem": 1,
     "idSlot": 14,
@@ -90,56 +90,5 @@
     "equipmentSlot": 207,
     "name": "Маска",
     "description": "Описание маски - самый важный элемент в инвентаре. Без его описания можно было бы считать работу несостоявшейся"
-  },
-  {
-    "idItem": 13,
-    "idSlot": 9,
-    "quantity": 1,
-    "weight": 0.2,
-    "isFastSlot": false,
-    "equipmentSlot": 208,
-    "name": "Очки",
-    "description": "Описание очков - самый важный элемент в инвентаре. Без его описания можно было бы считать работу несостоявшейся"
-  },
-  {
-    "idItem": 8,
-    "idSlot": 10,
-    "quantity": 1,
-    "weight": 0.2,
-    "isFastSlot": false,
-    "equipmentSlot": 209,
-    "name": "Бижутерия",
-    "description": "Описание бижутерии - самый важный элемент в инвентаре. Без его описания можно было бы считать работу несостоявшейся"
-  },
-  {
-    "idItem": 14,
-    "idSlot": 11,
-    "quantity": 1,
-    "weight": 0.2,
-    "isFastSlot": false,
-    "equipmentSlot": 210,
-    "name": "Часы",
-    "description": "Описание часов - самый важный элемент в инвентаре. Без его описания можно было бы считать работу несостоявшейся"
-  },
-  {
-    "idItem": 4,
-    "idSlot": 12,
-    "quantity": 1,
-    "weight": 0.2,
-    "isFastSlot": false,
-    "equipmentSlot": 211,
-    "name": "Перчатки",
-    "description": "Описание перчаток - самый важный элемент в инвентаре. Без его описания можно было бы считать работу несостоявшейся"
-  },
-  {
-    "idItem": 6,
-    "idSlot": 13,
-    "quantity": 1,
-    "weight": 0.2,
-    "isFastSlot": false,
-    "equipmentSlot": 212,
-    "bag": 3,
-    "name": "Сумка",
-    "description": "Описание сумки - самый важный элемент в инвентаре. Без его описания можно было бы считать работу несостоявшейся"
   }
 ]

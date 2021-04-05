@@ -22,6 +22,20 @@ export default observer(() => {
     return () => document.removeEventListener('click', сlickOutside, false)
   }, [])
 
+  const getUseLabel = () => {
+    if (
+      item.equipmentSlot === item.idSlot ||
+      (item.isFastSlot && item.idSlot >= 101 && item.idSlot <= 104)
+    )
+      return 'Снять'
+    if (
+      (item.equipmentSlot && item.equipmentSlot !== item.idSlot) ||
+      (item.isFastSlot && item.idSlot <= 101 && item.idSlot >= 104)
+    )
+      return 'Надеть'
+    if (!item.equipmentSlot && !item.isFastSlot) return 'Использовать'
+  }
+
   const style = {
     left: window.innerWidth - xCord > 380 ? xCord : xCord - 380,
     top:
@@ -47,14 +61,16 @@ export default observer(() => {
         </div>
 
         <div className='modal__btn-container'>
-          <div
-            className={
-              action === 'use' ? 'modal__btn modal__btn_active' : 'modal__btn'
-            }
-            onClick={() => toggleModalAction('use')}
-          >
-            Использовать
-          </div>
+          {store.state.mode === 0 && (
+            <div
+              className={
+                action === 'use' ? 'modal__btn modal__btn_active' : 'modal__btn'
+              }
+              onClick={() => toggleModalAction('use')}
+            >
+              {getUseLabel()}
+            </div>
+          )}
           {item.quantity > 1 && (
             <div
               className={

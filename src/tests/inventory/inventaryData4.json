@@ -1,5 +1,5 @@
 [
-  { "inventoryId": 4 },
+  { "inventoryId": 4, "trunkName": "PICADOR A666AA", "trunkSize": 20 },
   {
     "idItem": 0,
     "idSlot": 14,

@@ -12,7 +12,7 @@ export default observer(({ fromSlot, toSlot, bagType, skroll }) => {
 
   let classes = 'slot-list'
   if (bagType === 1) classes += ' small-bag'
-  if (skroll && store.state.drugId === 0) classes += ' skroll'
+  if (skroll) classes += ' skroll'
 
   return <div className={classes}>{list}</div>
 })

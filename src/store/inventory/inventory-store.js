@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx'
+import uData from '../../services/udata'
 
 class InventoryStore {
   constructor () {
@@ -9,6 +10,9 @@ class InventoryStore {
     active: false,
     drugId: 0,
     mode: 0,
+    trunkName: '',
+    tradeName: '',
+    trunkSize: 0,
     modal: {
       isActive: false,
       item: {},
@@ -22,6 +26,11 @@ class InventoryStore {
       water: 100,
       health: 100
     },
+    clickParams: {
+      isClicked: false,
+      clickCounter: 0,
+      timer: null
+    },
     inventory: []
   }
 
@@ -32,10 +41,17 @@ class InventoryStore {
   }
 
   setInventoryData = data => {
+    data = uData(data)
     let inventoryId = 0
     data = data.filter(el => {
-      if (el.inventoryId !== undefined) inventoryId = el.inventoryId
-      return el.inventoryId === undefined
+      if (el.inventoryId !== undefined) {
+        inventoryId = el.inventoryId
+        if (el.trunkName) this.state.trunkName = el.trunkName
+        if (el.tradeName) this.state.tradeName = el.tradeName
+        if (el.trunkSize) this.state.trunkSize = el.trunkSize
+        return false
+      }
+      return true
     })
     this.cleanInventory(inventoryId)
     this.convertData(data, inventoryId)?.forEach(el =>
@@ -44,35 +60,35 @@ class InventoryStore {
   }
 
   // Конвертация предметов в формат фронта
-  convertData = (data, inventoryId = 0) => {
-    return data.map(el => {
-      switch (inventoryId) {
-        // Инвентарь
-        case 0:
-          return el
-        // Трейд мой
-        case 1:
-          el.idSlot += 300
-          return el
-        // Трейд чужой
-        case 2:
-          el.idSlot += 350
-          return el
-        // Склад
-        case 3:
-          el.idSlot += 400
-          return el
-        // Багажник
-        case 4:
-          el.idSlot += 600
-          return el
-        default:
-          return el
-      }
-    })
+  convertData = (data, id = 0) => data.map(el => this.convertItem(el, id))
+
+  convertItem = (item, id = 0, isReverse = false) => {
+    switch (id) {
+      // Инвентарь
+      case 0:
+        return item
+      // Трейд мой
+      case 1:
+        item.idSlot = isReverse ? item.idSlot - 300 : item.idSlot + 300
+        return item
+      // Трейд чужой
+      case 2:
+        item.idSlot = isReverse ? item.idSlot - 350 : item.idSlot + 350
+        return item
+      // Склад
+      case 3:
+        item.idSlot = isReverse ? item.idSlot - 400 : item.idSlot + 400
+        return item
+      // Багажник
+      case 4:
+        item.idSlot = isReverse ? item.idSlot - 600 : item.idSlot + 600
+        return item
+      default:
+        return item
+    }
   }
 
-  // Очистка предметов одного из инвентарей
+  // Очистка предметов одного из инвентарей (перед загрузкой с сервера)
   cleanInventory = inventoryId => {
     let min, max
     switch (inventoryId) {
@@ -252,6 +268,7 @@ class InventoryStore {
 
   // Надевание экиперовки
   putOnItem = idSlot => {
+    if (this.state.mode !== 0) return
     const item = this.getItem(idSlot)
     if (item.equipmentSlot) this.swap(idSlot, item.equipmentSlot)
     else if (item.isFastSlot) this.swap(idSlot, this.getFreeFastSlot())
@@ -294,7 +311,10 @@ class InventoryStore {
   // Проверка на стак предметов
   swapCheckMergeItems = (item1, item2) => {
     if (item2) {
-      if (item1.idSlot !== item2.idSlot && item1.idItem === item2.idItem) {
+      const isEqual = item1.idItem === item2.idItem
+      const isDifferenSlots = item1.idSlot !== item2.idSlot
+      const isMerged = !item1.equipmentSlot && !item1.isFastSlot
+      if (isDifferenSlots && isEqual && isMerged) {
         this.mergeItems(item1, item2)
         return false
       }
@@ -400,26 +420,28 @@ class InventoryStore {
 
   // ============================   DRAG'N'DROP   ==============================
 
-  clickCounter
-  isClicked = false
-  timer
+  onceClick = id => {
+    const item = this.getItem(id)
+    this.setModal(true, item, 200, 200)
+  }
+  doubleClick = id => this.useItem(id)
 
-  click = () => {
-    if (this.isClicked) {
-      clearTimeout(this.timer)
-      this.isClicked = false
-      return console.log('dbl click')
+  clickHandler = id => {
+    if (this.state.clickParams.isClicked) {
+      clearTimeout(this.state.clickParams.timer)
+      this.state.clickParams.isClicked = false
+      return this.doubleClick(id)
     }
-    this.isClicked = true
-    this.timer = setTimeout(() => {
-      this.isClicked = false
-      if (this.state.drugId === 0) console.log('click')
+    this.state.clickParams.isClicked = true
+    this.state.clickParams.timer = setTimeout(() => {
+      this.state.clickParams.isClicked = false
+      if (this.state.drugId === 0) this.onceClick(id)
     }, 200)
   }
 
   onDragStart = ({ active }) => {
     this.state.drugId = active.id
-    this.click()
+    this.clickHandler(active.id)
   }
 
   onDragEnd = ({ active, over }) => {
