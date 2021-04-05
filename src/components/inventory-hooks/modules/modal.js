@@ -30,23 +30,15 @@ export default observer(() => {
       return 'Снять'
     if (
       (item.equipmentSlot && item.equipmentSlot !== item.idSlot) ||
-      (item.isFastSlot && item.idSlot <= 101 && item.idSlot >= 104)
+      (item.isFastSlot && (item.idSlot <= 101 || item.idSlot >= 104))
     )
       return 'Надеть'
-    if (!item.equipmentSlot && !item.isFastSlot) return 'Использовать'
-  }
-
-  const style = {
-    left: window.innerWidth - xCord > 380 ? xCord : xCord - 380,
-    top:
-      window.innerHeight - yCord < 360 && item?.quantity > 1
-        ? yCord - 360
-        : yCord
+    return 'Использовать'
   }
 
   return (
     <>
-      <div className='modal' style={style}>
+      <div className='modal' style={{ left: xCord, top: yCord }}>
         <div className='modal__info'>
           <div className='modal__weight'>{weight} КГ</div>
 
@@ -61,16 +53,15 @@ export default observer(() => {
         </div>
 
         <div className='modal__btn-container'>
-          {store.state.mode === 0 && (
-            <div
-              className={
-                action === 'use' ? 'modal__btn modal__btn_active' : 'modal__btn'
-              }
-              onClick={() => toggleModalAction('use')}
-            >
-              {getUseLabel()}
-            </div>
-          )}
+          <div
+            className={
+              action === 'use' ? 'modal__btn modal__btn_active' : 'modal__btn'
+            }
+            onClick={() => toggleModalAction('use')}
+          >
+            {getUseLabel()}
+          </div>
+
           {item.quantity > 1 && (
             <div
               className={

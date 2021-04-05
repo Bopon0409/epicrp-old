@@ -10,7 +10,8 @@ import DragOverlay from './overlay'
 
 export default observer(() => {
   const { onDragStart, onDragEnd, getBagType } = store
-  const { mode, trunkName, tradeName, trunkSize } = store.state
+  const { setTraidInput, setTraidReady, setTradeFinish } = store
+  const { mode, trunkName, tradeName, trunkSize, trade } = store.state
   const bagType = getBagType()
   const bagToSlot = bagType > 1 ? 60 : 55
 
@@ -22,10 +23,61 @@ export default observer(() => {
         {mode === 0 && <Equipment />}
 
         {mode === 1 && (
-          <div className='inventory'>
+          <div className='inventory trade'>
             <div className='title'>Обмен</div>
             <div className='sub-title'>{tradeName}</div>
-            <SlotList fromSlot={401} toSlot={500} skroll={true} />
+
+            <div className='trade-label'>вы отдаете</div>
+            <SlotList fromSlot={301} toSlot={310} skroll={true} />
+
+            <div className='trade-form'>
+              <div className='trade-money'>
+                <div className='text'>деньги: </div>
+                <input
+                  className='input'
+                  type='number'
+                  max='3000'
+                  value={trade.input1}
+                  onChange={e => setTraidInput(e.target.value)}
+                />
+              </div>
+              <div
+                className={
+                  trade.isReady1 ? 'readiness readiness-active' : 'readiness'
+                }
+                onClick={setTraidReady}
+              >
+                {trade.isReady1 ? 'готов' : 'не готов'}
+              </div>
+            </div>
+
+            <div className='trade-label'>вы получаете</div>
+            <SlotList fromSlot={351} toSlot={360} skroll={true} />
+
+            <div className='trade-form'>
+              <div className='trade-money'>
+                <div className='text'>деньги: </div>
+                <div className='input'>{trade.input2}</div>
+              </div>
+              <div
+                className={
+                  trade.isReady2 ? 'readiness readiness-active' : 'readiness'
+                }
+              >
+                {trade.isReady2 ? 'игрок готов' : 'игрок не готов'}
+              </div>
+            </div>
+
+            <div
+              className={
+                trade.isFinish
+                  ? 'trade-finish trade-finish-active'
+                  : 'trade-finish'
+              }
+              onClick={setTradeFinish}
+            >
+              Завершить
+            </div>
           </div>
         )}
 
