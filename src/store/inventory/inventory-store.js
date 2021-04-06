@@ -31,8 +31,24 @@ class InventoryStore {
       clickCounter: 0,
       timer: null
     },
+    trade: {
+      input1: '',
+      input2: 0,
+      isReady1: false,
+      isReady2: false,
+      maxMoney: 0,
+      isFinish: false
+    },
     inventory: []
   }
+
+  // ============================   INVENTORY ID   =============================
+
+  // Инвентарь: 0
+  // Трейд мой: 1
+  // Трейд чужой: 2
+  // Склад: 3
+  // Багажник: 4
 
   // ================================   MAIN   =================================
   setInventoryActive = (active, inventoryId = 0) => {
@@ -41,20 +57,28 @@ class InventoryStore {
   }
 
   setInventoryData = data => {
-    data = uData(data)
     let inventoryId = 0
+
+    // Чтение конфига, и выпиливание его из массива предметов
     data = data.filter(el => {
-      if (el.inventoryId !== undefined) {
+      if (el.type === 'config') {
         inventoryId = el.inventoryId
-        if (el.trunkName) this.state.trunkName = el.trunkName
-        if (el.tradeName) this.state.tradeName = el.tradeName
-        if (el.trunkSize) this.state.trunkSize = el.trunkSize
+        if (el.trunkName !== undefined) this.state.trunkName = el.trunkName
+        if (el.tradeName !== undefined) this.state.tradeName = el.tradeName
+        if (el.trunkSize !== undefined) this.state.trunkSize = el.trunkSize
+        if (el.maxMoney !== undefined) this.state.trade.maxMoney = el.maxMoney
+        if (el.isReady !== undefined) this.state.trade.isReady2 = el.isReady
+        if (el.money !== undefined) this.state.trade.input2 = el.money
         return false
       }
       return true
     })
+
+    // Удаление предыдущей версии инвентаря
     this.cleanInventory(inventoryId)
-    this.convertData(data, inventoryId)?.forEach(el =>
+
+    // Конвертация и загрузка данных в state
+    this.convertData(uData(data), inventoryId)?.forEach(el =>
       this.state.inventory.push(el)
     )
   }
@@ -62,27 +86,18 @@ class InventoryStore {
   // Конвертация предметов в формат фронта
   convertData = (data, id = 0) => data.map(el => this.convertItem(el, id))
 
-  convertItem = (item, id = 0, isReverse = false) => {
+  convertItem = (item, id = 0) => {
     switch (id) {
-      // Инвентарь
       case 0:
         return item
-      // Трейд мой
       case 1:
-        item.idSlot = isReverse ? item.idSlot - 300 : item.idSlot + 300
-        return item
-      // Трейд чужой
+        return { ...item, idSlot: item.idSlot + 300 }
       case 2:
-        item.idSlot = isReverse ? item.idSlot - 350 : item.idSlot + 350
-        return item
-      // Склад
+        return { ...item, idSlot: item.idSlot + 350 }
       case 3:
-        item.idSlot = isReverse ? item.idSlot - 400 : item.idSlot + 400
-        return item
-      // Багажник
+        return { ...item, idSlot: item.idSlot + 400 }
       case 4:
-        item.idSlot = isReverse ? item.idSlot - 600 : item.idSlot + 600
-        return item
+        return { ...item, idSlot: item.idSlot + 600 }
       default:
         return item
     }
@@ -92,27 +107,22 @@ class InventoryStore {
   cleanInventory = inventoryId => {
     let min, max
     switch (inventoryId) {
-      // Инвентарь
       case 0:
         min = 1
         max = 212
         break
-      // Трейд мой
       case 1:
         min = 301
-        max = 349
+        max = 350
         break
-      // Трейд чужой
       case 2:
-        min = 350
+        min = 351
         max = 400
         break
-      // Склад
       case 3:
         min = 401
         max = 600
         break
-      // Багажник
       case 4:
         min = 601
         max = 1000
@@ -143,18 +153,34 @@ class InventoryStore {
 
   // Триггеры, отправляемые на сервер
 
-  trigger = (triggerName, id) => {
-    if (window.mp) {
-      switch (triggerName) {
-        case 'putOn':
-          return window.clientTrigger('inventory.equip', id)
-        case 'putOff':
-          return window.clientTrigger('inventory.take', id)
-        case 'use':
-          return window.clientTrigger('inventory.use', id)
-        default:
-          break
-      }
+  convertItemIdForTrigger = idSlot => {
+    switch (true) {
+      case idSlot >= 1 && idSlot <= 212:
+        return { id: idSlot, inventoryId: 0 }
+      case idSlot >= 301 && idSlot <= 350:
+        return { id: idSlot - 300, inventoryId: 1 }
+      case idSlot >= 351 && idSlot <= 400:
+        return { id: idSlot - 350, inventoryId: 2 }
+      case idSlot >= 401 && idSlot <= 600:
+        return { id: idSlot - 400, inventoryId: 3 }
+      case idSlot >= 601 && idSlot < 1000:
+        return { id: idSlot - 600, inventoryId: 4 }
+      default:
+        break
+    }
+  }
+
+  trigger = (triggerName, item) => {
+    const { id, inventoryId } = this.convertItemIdForTrigger(item.idSlot)
+    switch (triggerName) {
+      case 'putOn':
+        return window.clientTrigger('inventory.equip', { id, inventoryId })
+      case 'putOff':
+        return window.clientTrigger('inventory.take', { id, inventoryId })
+      case 'use':
+        return window.clientTrigger('inventory.use', { id, inventoryId })
+      default:
+        break
     }
   }
 
@@ -183,6 +209,15 @@ class InventoryStore {
         } else totalWeight += item.weight * item.quantity
     })
 
+    return totalWeight.toFixed(1)
+  }
+
+  getStockWeight = () => {
+    let totalWeight = 0
+    for (let i = 401; i <= 500; i++) {
+      const item = this.getItem(i)
+      if (item) totalWeight += item.weight * item.quantity
+    }
     return totalWeight.toFixed(1)
   }
 
@@ -225,6 +260,8 @@ class InventoryStore {
     this.state.inventory = this.state.inventory.filter(
       el => el.idSlot !== idSlot
     )
+
+    window.clientTrigger('inventory.drop', this.convertItemIdForTrigger(idSlot))
   }
 
   // Уменьшение количества предметов в стаке
@@ -245,6 +282,10 @@ class InventoryStore {
       if (el.idSlot === item2.idSlot) el.quantity = sum
     })
     this.state.inventory = newInventory
+    window.clientTrigger('inventory.merge', {
+      item1: this.convertItemIdForTrigger(item1.idSlot),
+      item2: this.convertItemIdForTrigger(item2.idSlot)
+    })
   }
 
   // Использование предмета (Главная функция)
@@ -264,11 +305,11 @@ class InventoryStore {
   useConsumableItem = idSlot => {
     const item = this.getItem(idSlot)
     item.quantity > 1 ? this.decreaseItem(idSlot) : this.deleteItem(idSlot)
+    this.trigger('use', this.getItem(idSlot))
   }
 
   // Надевание экиперовки
   putOnItem = idSlot => {
-    if (this.state.mode !== 0) return
     const item = this.getItem(idSlot)
     if (item.equipmentSlot) this.swap(idSlot, item.equipmentSlot)
     else if (item.isFastSlot) this.swap(idSlot, this.getFreeFastSlot())
@@ -292,20 +333,27 @@ class InventoryStore {
       newItem.idSlot = freeSlot
       this.state.inventory.push(newItem)
     }
+
+    window.clientTrigger('inventory.separate', {
+      item1: this.convertItemIdForTrigger(this.getItem(idSlot).idSlot),
+      item2: this.convertItemIdForTrigger(freeSlot),
+      quantity
+    })
   }
 
   // ============================   SWAP CHECKS   ==============================
 
   // Проверка на надевание (для отправки на сервер)
   swapCheckPutOn = (toSlot, fromSlot, item1, item2) => {
-    if (toSlot >= 101 && fromSlot < 101) this.trigger('putOn', item1.idItem)
-    if (item2) fromSlot >= 101 && this.trigger('putOn', item2.idItem)
+    if (toSlot >= 101 && toSlot <= 212) this.trigger('putOn', item1)
+    if (item2)
+      if (fromSlot >= 101 && fromSlot <= 212) this.trigger('putOff', item2)
   }
 
   // Проверка на снятие (для отправки на сервер)
   swapCheckPutOff = (toSlot, fromSlot, item1, item2) => {
-    if (fromSlot >= 101 && toSlot < 100) this.trigger('putOff', item1.idItem)
-    if (item2) toSlot >= 101 && this.trigger('putOff', item2.idItem)
+    if (fromSlot >= 101 && fromSlot <= 212) this.trigger('putOff', item1)
+    if (item2) if (toSlot >= 101 && toSlot <= 212) this.trigger('putOn', item2)
   }
 
   // Проверка на стак предметов
@@ -325,9 +373,7 @@ class InventoryStore {
   // Проверка на перемещение сумки в сумку
   swapCheckBagInBag = (toSlot, fromSlot, item1, item2) => {
     if (item1.bag && toSlot >= 51 && toSlot <= 60) return false
-    if (item2) {
-      if (item2.bag && fromSlot >= 26 && fromSlot <= 35) return false
-    }
+    if (item2) if (item2.bag && fromSlot >= 26 && fromSlot <= 35) return false
     return true
   }
 
@@ -381,11 +427,44 @@ class InventoryStore {
       if (el.idSlot === fromSlot) el.idSlot = toSlot
       else if (el.idSlot === toSlot) el.idSlot = fromSlot
     })
+
+    window.clientTrigger('inventory.swap', {
+      from: this.convertItemIdForTrigger(fromSlot),
+      to: this.convertItemIdForTrigger(toSlot)
+    })
   }
 
   // =============================   ITEM MODAL   ==============================
 
-  // isActive, item, xCord, yCord
+  onceClick = id => {
+    const item = this.getItem(id)
+    const { right, bottom } = document
+      .querySelector(`#slot${id}`)
+      .getBoundingClientRect()
+
+    const x = window.innerWidth - right > 360 ? right : right - 460
+    const y = window.innerHeight - bottom > 380 ? bottom : bottom - 235
+
+    this.setModal(true, item, x, y)
+  }
+  doubleClick = id => {
+    this.useItem(id)
+    this.setModal(false, {}, 0, 0)
+  }
+
+  clickHandler = id => {
+    if (this.state.clickParams.isClicked) {
+      clearTimeout(this.state.clickParams.timer)
+      this.state.clickParams.isClicked = false
+      return this.doubleClick(id)
+    }
+    this.state.clickParams.isClicked = true
+    this.state.clickParams.timer = setTimeout(() => {
+      this.state.clickParams.isClicked = false
+      if (this.state.drugId === 0) this.onceClick(id)
+    }, 200)
+  }
+
   setModal = (isActive, item, xCord, yCord) => {
     this.state.modal = {
       isActive,
@@ -418,26 +497,22 @@ class InventoryStore {
     }
   }
 
+  // ===============================   TRAID   =================================
+
+  setTraidInput = value => {
+    if (value <= this.state.trade.maxMoney && !this.state.trade.isReady1)
+      this.state.trade.input1 = value
+  }
+  setTraidReady = () => {
+    if (!this.state.trade.isFinish)
+      this.state.trade.isReady1 = !this.state.trade.isReady1
+  }
+  setTradeFinish = () => {
+    const { isReady1, isReady2 } = this.state.trade
+    if (isReady1 && isReady2) this.state.trade.isFinish = true
+  }
+
   // ============================   DRAG'N'DROP   ==============================
-
-  onceClick = id => {
-    const item = this.getItem(id)
-    this.setModal(true, item, 200, 200)
-  }
-  doubleClick = id => this.useItem(id)
-
-  clickHandler = id => {
-    if (this.state.clickParams.isClicked) {
-      clearTimeout(this.state.clickParams.timer)
-      this.state.clickParams.isClicked = false
-      return this.doubleClick(id)
-    }
-    this.state.clickParams.isClicked = true
-    this.state.clickParams.timer = setTimeout(() => {
-      this.state.clickParams.isClicked = false
-      if (this.state.drugId === 0) this.onceClick(id)
-    }, 200)
-  }
 
   onDragStart = ({ active }) => {
     this.state.drugId = active.id
@@ -446,9 +521,7 @@ class InventoryStore {
 
   onDragEnd = ({ active, over }) => {
     this.state.drugId = 0
-    if (over) {
-      if (active.id !== over.id) this.swap(Number(active.id), Number(over.id))
-    }
+    if (over) active.id !== over.id && this.swap(active.id, over.id)
   }
 }
 

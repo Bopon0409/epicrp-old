@@ -22,7 +22,7 @@ export default observer(() => {
       <div className='inventory-page__container container'>
         {mode === 0 && <Equipment />}
 
-        {mode === 1 && (
+        {(mode === 1 || mode === 2) && (
           <div className='inventory trade'>
             <div className='title'>Обмен</div>
             <div className='sub-title'>{tradeName}</div>
@@ -81,14 +81,14 @@ export default observer(() => {
           </div>
         )}
 
-        {mode === 2 && (
+        {mode === 3 && (
           <div className='inventory'>
             <div className='title'>Склад</div>
             <SlotList fromSlot={401} toSlot={500} skroll={true} />
           </div>
         )}
 
-        {mode === 3 && (
+        {mode === 4 && (
           <div className='inventory'>
             <div className='title'>Багажник</div>
             <div className='sub-title'>{trunkName}</div>

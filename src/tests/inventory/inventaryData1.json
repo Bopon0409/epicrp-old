@@ -1,5 +1,10 @@
 [
-  { "inventoryId": 1, "tradeName": "ИГРОК Name_surname" },
+  {
+    "type": "config",
+    "inventoryId": 1,
+    "tradeName": "ИГРОК Name_surname",
+    "maxMoney": 30000
+  },
   {
     "idItem": 1,
     "idSlot": 14,

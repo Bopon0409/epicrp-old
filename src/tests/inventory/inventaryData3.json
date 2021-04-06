@@ -1,5 +1,5 @@
 [
-  { "inventoryId": 3 },
+  { "type": "config", "inventoryId": 3 },
   {
     "idItem": 0,
     "idSlot": 14,

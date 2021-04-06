@@ -1,13 +1,13 @@
 const { v4: uuid } = require('uuid')
 
 const uData = item => {
-  const isObjectCheck = item => typeof item === 'object' && !Array.isArray(item)
-  const isArrayCheck = item => typeof item === 'object' && Array.isArray(item)
+  const isObject = item => typeof item === 'object' && !Array.isArray(item)
+  const isArray = item => typeof item === 'object' && Array.isArray(item)
 
-  if (isObjectCheck(item)) {
+  if (isObject(item)) {
     for (const prop in item) item[prop] = uData(item[prop])
-  } else if (isArrayCheck(item)) {
-    item = item.map(i => (isObjectCheck(i) ? { ...uData(i), uid: uuid() } : i))
+  } else if (isArray(item)) {
+    item = item.map(i => (isObject(i) ? { ...uData(i), uid: uuid() } : i))
   }
   return item
 }

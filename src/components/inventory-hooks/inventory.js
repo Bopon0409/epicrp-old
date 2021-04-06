@@ -7,6 +7,7 @@ import Indicators from './modules/indicators'
 import RightWeightBar from './modules/right-weight-bar'
 import CloseBtn from './modules/close-btn'
 import Modal from './modules/modal'
+import LeftWeightBar from './modules/left-weight-bar'
 
 export default observer(() => {
   useEffect(() => {
@@ -29,6 +30,7 @@ export default observer(() => {
       <Container />
       <CloseBtn />
       <RightWeightBar />
+      <LeftWeightBar />
       <Indicators />
       {store.state.modal.isActive && <Modal />}
     </div>

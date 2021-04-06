@@ -28,11 +28,7 @@ export default observer(({ id, item }) => {
       className={drugId === 0 ? 'item item_hover' : 'item'}
       onClick={onClickHandler}
     >
-      <img
-        src={`./images/inventory/items/id${idItem}.png`}
-        alt=''
-        onClick={() => console.log(123)}
-      />
+      <img src={`./images/inventory/items/id${idItem}.png`} alt='' />
 
       <div className='item__label-container'>
         <div className='item__label-element'>{quantity}</div>

@@ -30,7 +30,7 @@ window.test = {
 // current tests
 const currentTests = () => {
   testBg.setBgActive(true)
-  inventoryTests.setInventoryActive(true, 1, 'Название инвентаря')
+  inventoryTests.setInventoryActive(true, 4)
   inventoryTests.testInventory()
 }
 
