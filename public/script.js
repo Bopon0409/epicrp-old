@@ -26,6 +26,8 @@ function trigger (eventName, ...args) {
 }
 
 function clientTrigger (triggerName, ...args) {
+  if (args.length)
+    args = args.map(el => (typeof el === 'object' ? JSON.stringify(el) : el))
   if (window.mp) window.mp.trigger(triggerName, ...args)
   else console.log(triggerName, ...args)
 }
