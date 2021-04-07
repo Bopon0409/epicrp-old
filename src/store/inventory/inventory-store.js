@@ -10,9 +10,6 @@ class InventoryStore {
     active: false,
     drugId: 0,
     mode: 0,
-    trunkName: '',
-    tradeName: '',
-    trunkSize: 0,
     modal: {
       isActive: false,
       item: {},
@@ -28,16 +25,21 @@ class InventoryStore {
     },
     clickParams: {
       isClicked: false,
-      clickCounter: 0,
       timer: null
     },
     trade: {
+      tradeName: '',
       input1: '',
-      input2: 0,
+      input2: '',
       isReady1: false,
       isReady2: false,
       maxMoney: 0,
       isFinish: false
+    },
+    trunk: {
+      trunkName: '',
+      trunkSize: 0,
+      trunkMaxWeight: 1000
     },
     inventory: []
   }
@@ -63,12 +65,22 @@ class InventoryStore {
     data = data.filter(el => {
       if (el.type === 'config') {
         inventoryId = el.inventoryId
-        if (el.trunkName !== undefined) this.state.trunkName = el.trunkName
-        if (el.tradeName !== undefined) this.state.tradeName = el.tradeName
-        if (el.trunkSize !== undefined) this.state.trunkSize = el.trunkSize
-        if (el.maxMoney !== undefined) this.state.trade.maxMoney = el.maxMoney
-        if (el.isReady !== undefined) this.state.trade.isReady2 = el.isReady
-        if (el.money !== undefined) this.state.trade.input2 = el.money
+
+        this.state.trunk = {
+          trunkName: el.trunkName || this.state.trunk.trunkName,
+          trunkSize: el.trunkSize || this.state.trunk.trunkSize,
+          trunkMaxWeight: el.trunkMaxWeight || this.state.trunk.trunkMaxWeight
+        }
+
+        this.state.trade = {
+          tradeName: el.tradeName || this.state.trade.tradeName,
+          input1: el.input1 || this.state.trade.input1,
+          input2: el.money || this.state.trade.input2,
+          isReady1: el.isReady1 || this.state.trade.isReady1,
+          isReady2: el.isReady || this.state.trade.isReady2,
+          maxMoney: el.maxMoney || this.state.trade.maxMoney,
+          isFinish: el.isFinish || this.state.trade.isFinish
+        }
         return false
       }
       return true
@@ -136,21 +148,6 @@ class InventoryStore {
     )
   }
 
-  getSlotQuantity = bagType => {
-    switch (bagType) {
-      case 0:
-        return 25
-      case 1:
-        return 30
-      case 2:
-        return 35
-      case 3:
-        return 35
-      default:
-        break
-    }
-  }
-
   // Триггеры, отправляемые на сервер
 
   convertItemIdForTrigger = idSlot => {
@@ -186,13 +183,19 @@ class InventoryStore {
 
   // ==========================   CULCULATED VALUES   ==========================
 
-  getArmor = () =>
-    this.state.inventory.find(el => el.armor && el.idSlot === 206)?.armor || 0
+  get armor () {
+    return (
+      this.state.inventory.find(el => el.armor && el.idSlot === 206)?.armor || 0
+    )
+  }
 
-  getBagType = () =>
-    this.state.inventory.find(el => el.bag && el.idSlot === 212)?.bag || 0
+  get bagType () {
+    return (
+      this.state.inventory.find(el => el.bag && el.idSlot === 212)?.bag || 0
+    )
+  }
 
-  getBagWeight = () => {
+  get bagWeight () {
     let weight = 0.2
     this.state.inventory.forEach(el => {
       if (el.idSlot >= 51 && el.idSlot <= 60) weight += el.weight * el.quantity
@@ -200,19 +203,7 @@ class InventoryStore {
     return weight
   }
 
-  getInventoryWeight = () => {
-    let totalWeight = 0
-    this.state.inventory.forEach(item => {
-      if ((item.idSlot >= 1 && item.idSlot <= 25) || item.idSlot === 212)
-        if (item.bag) {
-          totalWeight += this.getBagWeight()
-        } else totalWeight += item.weight * item.quantity
-    })
-
-    return totalWeight.toFixed(1)
-  }
-
-  getStockWeight = () => {
+  get stockWeight () {
     let totalWeight = 0
     for (let i = 401; i <= 500; i++) {
       const item = this.getItem(i)
@@ -221,8 +212,27 @@ class InventoryStore {
     return totalWeight.toFixed(1)
   }
 
-  getInventoryMaxWeight = () => {
-    switch (this.getBagType()) {
+  get trunkWeight () {
+    let totalWeight = 0
+    for (let i = 601; i <= 1000; i++) {
+      const item = this.getItem(i)
+      if (item) totalWeight += item.weight * item.quantity
+    }
+    return totalWeight.toFixed(1)
+  }
+
+  get inventoryWeight () {
+    let totalWeight = 0
+    this.state.inventory.forEach(item => {
+      if ((item.idSlot >= 1 && item.idSlot <= 25) || item.idSlot === 212)
+        if (item.bag) totalWeight += this.bagWeight
+        else totalWeight += item.weight * item.quantity
+    })
+    return totalWeight.toFixed(1)
+  }
+
+  get inventoryMaxWeight () {
+    switch (this.bagType) {
       case 0:
         return 10
       case 1:
@@ -236,10 +246,8 @@ class InventoryStore {
     }
   }
 
-  getItem = idSlot => this.state.inventory.find(el => el.idSlot === idSlot)
-
   // Возвращает свободный слот, или 1 слот, если все заняты
-  getFreeFastSlot = () => {
+  get freeFastSlot () {
     for (let i = 101; i < 104; i++) {
       if (!this.getItem(i)) return i
     }
@@ -247,14 +255,31 @@ class InventoryStore {
   }
 
   // Возвращает свободный слот, или false, если все заняты
-  getFreeInventorySlot = () => {
-    for (let i = 1; i < this.getSlotQuantity(this.getBagType()); i++) {
+  get freeInventorySlot () {
+    for (let i = 1; i < this.getSlotQuantity(this.bagType); i++) {
       if (!this.getItem(i)) return i
     }
     return false
   }
 
+  getSlotQuantity = bagType => {
+    switch (bagType) {
+      case 0:
+        return 25
+      case 1:
+        return 30
+      case 2:
+        return 35
+      case 3:
+        return 35
+      default:
+        break
+    }
+  }
+
   // ============================   ITEMS ACTIONS   ============================
+
+  getItem = idSlot => this.state.inventory.find(el => el.idSlot === idSlot)
 
   deleteItem = idSlot => {
     this.state.inventory = this.state.inventory.filter(
@@ -312,18 +337,18 @@ class InventoryStore {
   putOnItem = idSlot => {
     const item = this.getItem(idSlot)
     if (item.equipmentSlot) this.swap(idSlot, item.equipmentSlot)
-    else if (item.isFastSlot) this.swap(idSlot, this.getFreeFastSlot())
+    else if (item.isFastSlot) this.swap(idSlot, this.freeFastSlot)
   }
 
   // Снятие экиперовки
   putOffItem = idSlot => {
-    const freeSlot = this.getFreeInventorySlot()
+    const freeSlot = this.freeInventorySlot
     if (freeSlot) this.swap(idSlot, freeSlot)
   }
 
   // Разделение предмета
   separateItem = (idSlot, quantity) => {
-    const freeSlot = this.getFreeInventorySlot()
+    const freeSlot = this.freeInventorySlot
     if (freeSlot) {
       this.state.inventory.forEach(el => {
         if (el.idSlot === idSlot) el.quantity -= quantity

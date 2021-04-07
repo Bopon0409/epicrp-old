@@ -1,0 +1,90 @@
+.inventory-page {
+  .container {
+    .trade {
+      .title {
+        margin-bottom: 65px;
+      }
+
+      .trade-label {
+        text-align: center;
+        width: 100%;
+        font-weight: bold;
+        font-size: 18px;
+        letter-spacing: 2px;
+        text-transform: lowercase;
+        color: #ffffff;
+        margin-bottom: 6px;
+      }
+
+      .trade-form {
+        display: flex;
+        justify-content: space-between;
+        width: 102%;
+        margin-bottom: 30px;
+
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+        letter-spacing: 2px;
+        text-transform: lowercase;
+
+        .trade-money {
+          display: flex;
+          flex-wrap: wrap;
+          width: 58%;
+          background: rgba(255, 255, 255, 0.05);
+
+          .input,
+          .text {
+            width: 50%;
+            background: none;
+            outline: none;
+            border: none;
+            color: white;
+            padding: 2px 0;
+
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+          }
+
+          .input[type='number']::-webkit-outer-spin-button,
+          .input[type='number']::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+        }
+
+        .readiness {
+          cursor: pointer;
+          width: 40%;
+          background: rgba(255, 0, 0, 0.3);
+          padding-top: 1.5px;
+        }
+
+        .readiness-active {
+          background: #007621;
+        }
+      }
+
+      .trade-finish {
+        width: 101.5%;
+        cursor: pointer;
+        padding: 2px;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+        letter-spacing: 2px;
+        text-transform: lowercase;
+        background: rgba(255, 0, 0, 0.3);
+      }
+
+      .trade-finish-active {
+        background: #007621;
+      }
+    }
+  }
+}

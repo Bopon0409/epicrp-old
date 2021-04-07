@@ -10,8 +10,8 @@ import textHint from '../images/weight-hint.svg'
 
 export default observer(() => {
   const { mode } = store.state
-  const weight = mode === 3 && store.getStockWeight()
-  const maxWeight = mode === 3 && 10000
+  const weight = mode === 3 ? store.stockWeight : store.trunkWeight
+  const maxWeight = mode === 3 ? 10000 : store.state.trunk.trunkMaxWeight
 
   const styles = buildStyles({
     rotation: 0.5,

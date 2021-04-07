@@ -9,7 +9,11 @@ export default function EquipmentSlot ({ id, item }) {
     : 'equipment-list__slot equipment-list__slot_empty'
 
   return (
-    <div className={style} ref={useDroppable({ id }).setNodeRef}>
+    <div
+      className={style}
+      ref={useDroppable({ id }).setNodeRef}
+      id={`slot${id}`}
+    >
       {item ? (
         <Draggable id={id}>
           <Item item={item} id={id} />

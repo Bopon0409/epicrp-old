@@ -11,7 +11,7 @@ export default observer(({ id, item }) => {
   const { drugId } = store.state
 
   const weightView = item.bag
-    ? store.getBagWeight().toFixed(1)
+    ? store.bagWeight.toFixed(1)
     : (quantity * weight).toFixed(1)
 
   const onClickHandler = e => {

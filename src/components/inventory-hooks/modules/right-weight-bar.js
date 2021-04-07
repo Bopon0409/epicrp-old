@@ -9,8 +9,8 @@ import store from '../../../store/inventory/inventory-store'
 import textHint from '../images/weight-hint.svg'
 
 export default observer(() => {
-  const weight = store.getInventoryWeight()
-  const maxWeight = store.getInventoryMaxWeight()
+  const weight = store.inventoryWeight
+  const maxWeight = store.inventoryMaxWeight
 
   const styles = buildStyles({
     rotation: 0.5,

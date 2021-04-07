@@ -6,70 +6,6 @@
     justify-content: space-between;
     align-items: flex-start;
 
-    .skroll {
-      width: 455px;
-      padding-right: 7px;
-      overflow-y: auto !important;
-      overflow-x: none !important;
-    }
-
-    .slot-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      max-height: 440px;
-      overflow-y: none;
-      box-sizing: border-box;
-
-      .slot {
-        width: 80px;
-        height: 80px;
-        box-sizing: border-box;
-        margin-bottom: 10px;
-        background: rgba(255, 255, 255, 0.05);
-      }
-
-      &::-webkit-scrollbar {
-        position: absolute;
-        width: 8px;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.05);
-      }
-
-      &::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-        background: linear-gradient(0deg, #e6961e 0%, #f2c94c 100%),
-          rgba(255, 255, 255, 0.05);
-      }
-    }
-
-    .item {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      .item__label-container {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-
-        .item__label-element {
-          padding: 2px 4px 0px 4px;
-          font-weight: 800;
-          font-size: 9px;
-          color: rgba(255, 255, 255, 0.5);
-          background: rgba(255, 255, 255, 0.1);
-          text-transform: uppercase;
-        }
-      }
-    }
-
     .title {
       font-weight: bold;
       font-size: 18px;
@@ -99,100 +35,15 @@
       }
     }
 
-    .trade {
-      .title {
-        margin-bottom: 65px;
-      }
-
-      .trade-label {
-        text-align: center;
-        width: 100%;
-        font-weight: bold;
-        font-size: 18px;
-        letter-spacing: 2px;
-        text-transform: lowercase;
-        color: #ffffff;
-        margin-bottom: 6px;
-      }
-
-      .trade-form {
-        display: flex;
-        justify-content: space-between;
-        width: 102%;
-        margin-bottom: 30px;
-
-        text-align: center;
-        font-weight: bold;
-        font-size: 18px;
-        letter-spacing: 2px;
-        text-transform: lowercase;
-
-        .trade-money {
-          display: flex;
-          flex-wrap: wrap;
-          width: 58%;
-          background: rgba(255, 255, 255, 0.05);
-
-          .input,
-          .text {
-            width: 50%;
-            background: none;
-            outline: none;
-            border: none;
-            color: white;
-            padding: 2px 0;
-
-            text-align: center;
-            font-weight: bold;
-            font-size: 18px;
-            letter-spacing: 2px;
-            text-transform: lowercase;
-          }
-
-          .input[type='number']::-webkit-outer-spin-button,
-          .input[type='number']::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-          }
-        }
-
-        .readiness {
-          cursor: pointer;
-          width: 40%;
-          background: rgba(255, 0, 0, 0.3);
-          padding-top: 1.5px;
-        }
-
-        .readiness-active {
-          background: #007621;
-        }
-      }
-
-      .trade-finish {
-        width: 101.5%;
-        cursor: pointer;
-        padding: 2px;
-        color: white;
-        text-align: center;
-        font-weight: bold;
-        font-size: 18px;
-        letter-spacing: 2px;
-        text-transform: lowercase;
-        background: rgba(255, 0, 0, 0.3);
-      }
-
-      .trade-finish-active {
-        background: #007621;
-      }
-    }
-
     .bag {
       width: 170px;
       height: 645px;
+      position: relative;
 
       .icon {
+        position: absolute;
         margin-left: 65px;
-        margin-top: 20px;
+        bottom: -5px;
       }
 
       .small-bag {

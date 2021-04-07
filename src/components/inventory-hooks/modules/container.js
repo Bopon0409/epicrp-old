@@ -7,12 +7,11 @@ import bagIcon from '../images/bag.png'
 import SlotList from './slot-list'
 import Equipment from './equipment'
 import DragOverlay from './overlay'
+import Trade from './trade'
 
 export default observer(() => {
-  const { onDragStart, onDragEnd, getBagType } = store
-  const { setTraidInput, setTraidReady, setTradeFinish } = store
-  const { mode, trunkName, tradeName, trunkSize, trade } = store.state
-  const bagType = getBagType()
+  const { onDragStart, onDragEnd, bagType } = store
+  const { mode, trunk } = store.state
   const bagToSlot = bagType > 1 ? 60 : 55
 
   return (
@@ -22,64 +21,7 @@ export default observer(() => {
       <div className='inventory-page__container container'>
         {mode === 0 && <Equipment />}
 
-        {(mode === 1 || mode === 2) && (
-          <div className='inventory trade'>
-            <div className='title'>Обмен</div>
-            <div className='sub-title'>{tradeName}</div>
-
-            <div className='trade-label'>вы отдаете</div>
-            <SlotList fromSlot={301} toSlot={310} skroll={true} />
-
-            <div className='trade-form'>
-              <div className='trade-money'>
-                <div className='text'>деньги: </div>
-                <input
-                  className='input'
-                  type='number'
-                  max='3000'
-                  value={trade.input1}
-                  onChange={e => setTraidInput(e.target.value)}
-                />
-              </div>
-              <div
-                className={
-                  trade.isReady1 ? 'readiness readiness-active' : 'readiness'
-                }
-                onClick={setTraidReady}
-              >
-                {trade.isReady1 ? 'готов' : 'не готов'}
-              </div>
-            </div>
-
-            <div className='trade-label'>вы получаете</div>
-            <SlotList fromSlot={351} toSlot={360} skroll={true} />
-
-            <div className='trade-form'>
-              <div className='trade-money'>
-                <div className='text'>деньги: </div>
-                <div className='input'>{trade.input2}</div>
-              </div>
-              <div
-                className={
-                  trade.isReady2 ? 'readiness readiness-active' : 'readiness'
-                }
-              >
-                {trade.isReady2 ? 'игрок готов' : 'игрок не готов'}
-              </div>
-            </div>
-
-            <div
-              className={
-                trade.isFinish
-                  ? 'trade-finish trade-finish-active'
-                  : 'trade-finish'
-              }
-              onClick={setTradeFinish}
-            >
-              Завершить
-            </div>
-          </div>
-        )}
+        {(mode === 1 || mode === 2) && <Trade />}
 
         {mode === 3 && (
           <div className='inventory'>
@@ -91,8 +33,12 @@ export default observer(() => {
         {mode === 4 && (
           <div className='inventory'>
             <div className='title'>Багажник</div>
-            <div className='sub-title'>{trunkName}</div>
-            <SlotList fromSlot={601} toSlot={600 + trunkSize} skroll={true} />
+            <div className='sub-title'>{trunk.trunkName}</div>
+            <SlotList
+              fromSlot={601}
+              toSlot={600 + trunk.trunkSize}
+              skroll={true}
+            />
           </div>
         )}
 

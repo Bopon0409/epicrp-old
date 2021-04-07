@@ -15,7 +15,7 @@ import progressBarImg4 from '../images/progress-bar-img-4.svg'
 
 export default observer(() => {
   const { food, water, health } = store.state.userIndicators
-  const armor = store.getArmor()
+  const armor = store.armor
 
   const styleWrapper = type => {
     const colors = {

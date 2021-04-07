@@ -3,7 +3,8 @@
     "type": "config",
     "inventoryId": 4,
     "trunkName": "PICADOR A666AA",
-    "trunkSize": 20
+    "trunkSize": 20,
+    "trunkMaxWeight": 500
   },
   {
     "idItem": 0,

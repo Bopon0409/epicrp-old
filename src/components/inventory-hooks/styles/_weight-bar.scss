@@ -59,7 +59,7 @@
     }
 
     .trunk-weight {
-      background-image: url(../images/trunk-weight.png);
+      background-image: url(../images/trunk-weight.svg);
     }
 
     .stock-weight {
@@ -69,22 +69,22 @@
     .panel-inner {
       width: 50%;
       height: 50%;
-      text-align: right;
+      text-align: left;
       color: white;
       background-size: 100% 100%;
-      margin-left: 50px;
+      margin-left: 70px;
       text-transform: uppercase;
 
       .text {
         margin-top: 38px;
-        margin-right: 15px;
         font-size: 26px;
         font-weight: bold;
+        margin-left: 44px;
       }
 
       .subtext {
-        margin-right: 15px;
-        margin-top: 30px;
+        margin-top: 10px;
+        margin-left: 44px;
         font-size: 14px;
         font-weight: bold;
         color: rgba(255, 255, 255, 0.5);
