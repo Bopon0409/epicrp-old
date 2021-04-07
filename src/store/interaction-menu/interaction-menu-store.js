@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx'
-import CMenu from 'circular-menu/dist/js/circular-menu.js'
+import CMenu from './circular-menu'
 
 class InteractionMenuStore {
   constructor () {
