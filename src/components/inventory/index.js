@@ -1,3 +1,3 @@
-import './scss/inventory.scss'
-import './scss/modal.scss'
+import './inventory.scss'
+
 export { default } from './inventory'

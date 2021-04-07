@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Inventory from '../inventory-hooks'
+import Inventory from '../inventory'
 import Background from '../bg'
 import Auth from '../auth'
 import Hud from '../hud'

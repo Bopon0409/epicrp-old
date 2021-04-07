@@ -21,6 +21,8 @@ export default observer(() => {
   })
 
   const isActive = { display: mode === 3 || mode === 4 ? 'block' : 'none' }
+  const className =
+    mode === 3 ? 'panel-inner stock-weight' : 'panel-inner trunk-weight'
 
   return (
     <div className='left-weight-bar' style={isActive}>
@@ -31,7 +33,7 @@ export default observer(() => {
         value={((weight / maxWeight) * 100) / 2}
         counterClockwise
       >
-        <div className='panel-inner stock-weight'>
+        <div className={className}>
           <div className='text'>{weight} кг</div>
           <div className='subtext'>из {maxWeight} кг</div>
         </div>
