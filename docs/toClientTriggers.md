@@ -3,11 +3,7 @@
 ##### Выполняются через `browser.execute('trigger('triggerName', arguments)')`
 
 ## Инвентарь
-
-- `mp.trigger('inventory.use', idItem: int)` - Игрок использовал предмет
-- `mp.trigger('inventory.equip', idItem: int)` - Игрок надел предмет
-- `mp.trigger('inventory.take', idItem: int)` - Игрок снял предмет
-
+** Триггеры инвентаря в `inventory-triggers.json`**
 
 ## Авторизация
 

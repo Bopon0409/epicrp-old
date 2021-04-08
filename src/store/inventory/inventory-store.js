@@ -150,7 +150,7 @@ class InventoryStore {
 
   // Триггеры, отправляемые на сервер
 
-  convertItemIdForTrigger = idSlot => {
+  getInventoryId = idSlot => {
     switch (true) {
       case idSlot >= 1 && idSlot <= 212:
         return { id: idSlot, inventoryId: 0 }
@@ -168,7 +168,7 @@ class InventoryStore {
   }
 
   trigger = (triggerName, item) => {
-    const { id, inventoryId } = this.convertItemIdForTrigger(item.idSlot)
+    const { id, inventoryId } = this.getInventoryId(item.idSlot)
     switch (triggerName) {
       case 'putOn':
         return window.clientTrigger('inventory.equip', { id, inventoryId })
@@ -224,9 +224,10 @@ class InventoryStore {
   get inventoryWeight () {
     let totalWeight = 0
     this.state.inventory.forEach(item => {
-      if ((item.idSlot >= 1 && item.idSlot <= 25) || item.idSlot === 212)
+      if ((item.idSlot >= 1 && item.idSlot <= 25) || item.idSlot === 212) {
         if (item.bag) totalWeight += this.bagWeight
         else totalWeight += item.weight * item.quantity
+      }
     })
     return totalWeight.toFixed(1)
   }
@@ -286,7 +287,7 @@ class InventoryStore {
       el => el.idSlot !== idSlot
     )
 
-    window.clientTrigger('inventory.drop', this.convertItemIdForTrigger(idSlot))
+    window.clientTrigger('inventory.drop', this.getInventoryId(idSlot))
   }
 
   // Уменьшение количества предметов в стаке
@@ -308,8 +309,8 @@ class InventoryStore {
     })
     this.state.inventory = newInventory
     window.clientTrigger('inventory.merge', {
-      item1: this.convertItemIdForTrigger(item1.idSlot),
-      item2: this.convertItemIdForTrigger(item2.idSlot)
+      item1: this.getInventoryId(item1.idSlot),
+      item2: this.getInventoryId(item2.idSlot)
     })
   }
 
@@ -360,8 +361,8 @@ class InventoryStore {
     }
 
     window.clientTrigger('inventory.separate', {
-      item1: this.convertItemIdForTrigger(this.getItem(idSlot).idSlot),
-      item2: this.convertItemIdForTrigger(freeSlot),
+      item1: this.getInventoryId(this.getItem(idSlot).idSlot),
+      item2: this.getInventoryId(freeSlot),
       quantity
     })
   }
@@ -429,6 +430,36 @@ class InventoryStore {
     return true
   }
 
+  weightCheck = (fromSlot, toSlot) => {
+    const { inventoryId } = this.getInventoryId(toSlot)
+    // Проверка на одинаковые id инвентарей
+    if (inventoryId === this.getInventoryId(fromSlot).inventoryId) return true
+    let weight, maxweight
+
+    switch (inventoryId) {
+      case 1:
+      case 2:
+        // трейд не ограничен по весу
+        return true
+      case 0:
+        weight = this.inventoryWeight
+        maxweight = this.inventoryMaxWeight
+        break
+      case 3:
+        weight = this.stockWeight
+        maxweight = 10000
+        break
+      case 4:
+        weight = this.trunkWeight
+        maxweight = this.state.trunk.trunkMaxWeight
+        break
+      default:
+        break
+    }
+    const item = this.getItem(fromSlot)
+    return item.weight * item.quantity <= maxweight - weight
+  }
+
   // ================================   SWAP   =================================
 
   swap = (fromSlot, toSlot) => {
@@ -437,10 +468,12 @@ class InventoryStore {
     const swapParams = [toSlot, fromSlot, item1, item2]
 
     // Проверки
+    const weightResult = this.weightCheck(fromSlot, toSlot)
     const mergeResult = this.swapCheckMergeItems(item1, item2)
     const bagInBagResult = this.swapCheckBagInBag(...swapParams)
     const putOnPutOffResult = this.swapCheckPutOnPutOff(...swapParams)
-    const finalResult = mergeResult && bagInBagResult && putOnPutOffResult
+    const finalResult =
+      mergeResult && bagInBagResult && putOnPutOffResult && weightResult
     if (!finalResult) return false
 
     // Проверки на необходимость триггеров
@@ -454,8 +487,8 @@ class InventoryStore {
     })
 
     window.clientTrigger('inventory.swap', {
-      from: this.convertItemIdForTrigger(fromSlot),
-      to: this.convertItemIdForTrigger(toSlot)
+      from: this.getInventoryId(fromSlot),
+      to: this.getInventoryId(toSlot)
     })
   }
 

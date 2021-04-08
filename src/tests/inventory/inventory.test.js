@@ -11,7 +11,7 @@ const jsonData3 = JSON.stringify(data3)
 const jsonData4 = JSON.stringify(data4)
 
 const setInventoryActive = (active = true, id) =>
-  window.trigger('inventory.toggle', active, id || null)
+  window.trigger('inventory.toggle', active, id)
 
 const testInventory = () => {
   window.trigger('inventory.update', jsonData0)

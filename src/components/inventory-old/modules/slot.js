@@ -4,8 +4,6 @@ import { useDroppable } from '@dnd-kit/core'
 export default function Slot ({ setModal, item, id, isDrag }) {
   const { setNodeRef: setNodeRefDroppable } = useDroppable({ id })
 
-  console.log('render')
-
   return (
     <div
       className={isDrag ? 'slot' : 'slot slot-hover'}
