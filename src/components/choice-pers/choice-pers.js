@@ -12,10 +12,7 @@ export default observer(() => {
   useEffect(() => {
     const { EventManager: em } = window
     em.addHandler('character.toggleMenu', store.setChoicePers)
-
-    return () => {
-      em.removeHandler('character.toggleMenu', store.setChoicePers)
-    }
+    return () => em.removeHandler('character.toggleMenu', store.setChoicePers)
   }, [])
 
   const slotList = data.map((_el, i) => <SlotPers key={i} index={i} />)

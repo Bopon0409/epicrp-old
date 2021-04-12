@@ -534,6 +534,21 @@ class InventoryStore {
     }
   }
 
+  get useLabel () {
+    const { item } = this.state.modal
+    const isTakeOff =
+      item.equipmentSlot === item.idSlot ||
+      (item.isFastSlot && item.idSlot >= 101 && item.idSlot <= 104)
+
+    const isEquip =
+      (item.equipmentSlot && item.equipmentSlot !== item.idSlot) ||
+      (item.isFastSlot && (item.idSlot <= 101 || item.idSlot >= 104))
+
+    if (isTakeOff) return 'Снять'
+    else if (isEquip) return 'Надеть'
+    else return 'Использовать'
+  }
+
   toggleModalAction = action => {
     if (this.state.modal.action === action) this.state.modal.action = ''
     else this.state.modal.action = action

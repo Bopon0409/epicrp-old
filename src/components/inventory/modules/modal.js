@@ -7,7 +7,7 @@ import icon from '../images/modal-icon.svg'
 export default observer(() => {
   const { item, xCord, yCord, action, sliderValue } = store.state.modal
   const { toggleModalAction, setModalSliderValue } = store
-  const { modalAction, setModal } = store
+  const { modalAction, setModal, useLabel } = store
   const weight = (item?.weight * item?.quantity).toFixed(1)
 
   useEffect(() => {
@@ -15,26 +15,9 @@ export default observer(() => {
       const modalBlock = document.getElementsByClassName('modal')[0]
       if (!e.path.includes(modalBlock)) store.setModal(false, {}, 0, 0)
     }
-    setTimeout(
-      () => document.addEventListener('click', сlickOutside, false),
-      100
-    )
+    document.addEventListener('click', сlickOutside, false)
     return () => document.removeEventListener('click', сlickOutside, false)
   }, [])
-
-  const getUseLabel = () => {
-    if (
-      item.equipmentSlot === item.idSlot ||
-      (item.isFastSlot && item.idSlot >= 101 && item.idSlot <= 104)
-    )
-      return 'Снять'
-    if (
-      (item.equipmentSlot && item.equipmentSlot !== item.idSlot) ||
-      (item.isFastSlot && (item.idSlot <= 101 || item.idSlot >= 104))
-    )
-      return 'Надеть'
-    return 'Использовать'
-  }
 
   return (
     <>
@@ -59,7 +42,7 @@ export default observer(() => {
             }
             onClick={() => toggleModalAction('use')}
           >
-            {getUseLabel()}
+            {useLabel}
           </div>
 
           {item.quantity > 1 && (

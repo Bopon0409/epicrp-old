@@ -6,6 +6,7 @@ import * as testAuth from './modules/auth.test'
 import * as testChat from './modules/chat.test'
 import * as testHud from './modules/hud.test'
 import * as testInteractionMenu from './modules/interaction-menu.test'
+import * as testBank from './bank/bank.test'
 
 const { ...bgTests } = testBg
 const { ...createPersTests } = testCreatePers
@@ -15,6 +16,7 @@ const { ...authTests } = testAuth
 const { ...chatTests } = testChat
 const { ...hudTests } = testHud
 const { ...interactionMenuTests } = testInteractionMenu
+const { ...bankTests } = testBank
 
 window.test = {
   bgTests,
@@ -24,13 +26,14 @@ window.test = {
   authTests,
   chatTests,
   hudTests,
-  interactionMenuTests
+  interactionMenuTests,
+  bankTests
 }
 
 // current tests
 const currentTests = () => {
-  testBg.setBgActive(true)
-  inventoryTests.setInventoryActive(true, 4)
+  // bankTests.setActive(true)
+  inventoryTests.setInventoryActive(true, 0)
   inventoryTests.testInventory()
 }
 

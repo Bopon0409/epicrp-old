@@ -9,6 +9,7 @@ import ChoicePers from '../choice-pers'
 import CreatePers from '../create-pers'
 import TestModal from '../test-modal'
 import InteractionMenu from '../interaction-menu'
+import Bank from '../bank'
 
 import 'react-input-range/lib/css/index.css'
 
@@ -23,6 +24,7 @@ export default function App () {
   return (
     <>
       {process.env.NODE_ENV === 'development' && devModules}
+      <Bank />
       <Inventory />
       <Auth />
       <Hud />

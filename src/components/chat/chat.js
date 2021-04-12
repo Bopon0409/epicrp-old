@@ -3,42 +3,35 @@ import { observer } from 'mobx-react-lite'
 
 import store from '../../store/chat/chat-store'
 import MsgList from './modules/msg-list'
+import ButtonView from './modules/button-view'
 import chatInputIcon from './images/chat-input-icon.svg'
 
 export default observer(() => {
   const { active, isShow } = store.state
-  const { setActiveBtn, pushMessage, onInputChange, getInput } = store
-  const { inputValue, activeBtn } = getInput()
+  const { pushMessage, onInputChange, getInput } = store
+  const { inputValue } = getInput()
 
   const skrollRef = useRef()
   const inputRef = useRef()
   const skrollingOnPushMsg = () => skrollRef.current?.scrollIntoView()
 
   useEffect(() => {
-    const {
-      setChatActive,
-      clearChat,
-      keyPressHandler,
-      setChatShow,
-      pushChatMsgFromClient
-    } = store
-
     const { EventManager: em } = window
-    const keyPressHandlerWithSkroll = e => keyPressHandler(e, skrollRef)
+    const keyPressHandlerWithSkroll = e => store.keyPressHandler(e, skrollRef)
 
-    em.addHandler('chat.push', pushChatMsgFromClient)
+    em.addHandler('chat.push', store.pushChatMsgFromClient)
     em.addHandler('chat.push', skrollingOnPushMsg)
-    em.addHandler('chat.active', setChatActive)
-    em.addHandler('chat.show', setChatShow)
-    em.addHandler('chat.clear', clearChat)
+    em.addHandler('chat.active', store.setChatActive)
+    em.addHandler('chat.show', store.setChatShow)
+    em.addHandler('chat.clear', store.clearChat)
     document.addEventListener('keyup', keyPressHandlerWithSkroll)
 
     return () => {
-      em.removeHandler('chat.push', pushChatMsgFromClient)
+      em.removeHandler('chat.push', store.pushChatMsgFromClient)
       em.removeHandler('chat.push', skrollingOnPushMsg)
-      em.removeHandler('chat.active', setChatActive)
-      em.removeHandler('chat.show', setChatShow)
-      em.removeHandler('chat.clear', clearChat)
+      em.removeHandler('chat.active', store.setChatActive)
+      em.removeHandler('chat.show', store.setChatShow)
+      em.removeHandler('chat.clear', store.clearChat)
       document.removeEventListener('keyup', keyPressHandlerWithSkroll)
     }
   })
@@ -55,70 +48,13 @@ export default observer(() => {
       />
 
       <div className='btn-container'>
-        <div
-          className={activeBtn === 'ic' ? 'btn btn-active' : 'btn'}
-          onClick={() => {
-            setActiveBtn('ic')
-            inputRef.current.focus()
-          }}
-        >
-          IC <div className='line'></div>
-        </div>
-        <div
-          className={activeBtn === 'b' ? 'btn btn-active' : 'btn'}
-          onClick={() => {
-            setActiveBtn('b')
-            inputRef.current.focus()
-          }}
-        >
-          ООС <div className='line'></div>
-        </div>
-        <div
-          className={activeBtn === 'me' ? 'btn btn-active' : 'btn'}
-          onClick={() => {
-            setActiveBtn('me')
-            inputRef.current.focus()
-          }}
-        >
-          me <div className='line'></div>
-        </div>
-        <div
-          className={activeBtn === 'do' ? 'btn btn-active' : 'btn'}
-          onClick={() => {
-            setActiveBtn('do')
-            inputRef.current.focus()
-          }}
-        >
-          do <div className='line'></div>
-        </div>
-        <div
-          className={activeBtn === 'try' ? 'btn btn-active' : 'btn'}
-          onClick={() => {
-            setActiveBtn('try')
-            inputRef.current.focus()
-          }}
-        >
-          try <div className='line'></div>
-        </div>
-        <div
-          className={activeBtn === 'f' ? 'btn btn-active' : 'btn'}
-          onClick={() => {
-            setActiveBtn('f')
-            inputRef.current.focus()
-          }}
-        >
-          Рация <div className='line'></div>
-        </div>
-        <div
-          className={activeBtn === 'd' ? 'btn btn-active' : 'btn'}
-          onClick={() => {
-            setActiveBtn('d')
-            inputRef.current.focus()
-          }}
-        >
-          Департамент <div className='line'></div>
-        </div>
-
+        <ButtonView name='IC' value='ic' inputRef={inputRef} />
+        <ButtonView name='ООС' value='b' inputRef={inputRef} />
+        <ButtonView name='me' value='me' inputRef={inputRef} />
+        <ButtonView name='do' value='do' inputRef={inputRef} />
+        <ButtonView name='try' value='try' inputRef={inputRef} />
+        <ButtonView name='Рация' value='f' inputRef={inputRef} />
+        <ButtonView name='Департамент' value='d' inputRef={inputRef} />
         <img
           src={chatInputIcon}
           alt=''

@@ -14,29 +14,18 @@ export default observer(() => {
 
   useEffect(() => {
     const { EventManager: em } = window
-    const {
-      authServerAnswer,
-      regServerAnswer,
-      setAuthActive,
-      enterHandler
-    } = store
-
-    em.addHandler('auth.authAnswer', authServerAnswer)
-    em.addHandler('auth.registerAnswer', regServerAnswer)
-    em.addHandler('auth.toggle', setAuthActive)
-    document.addEventListener('keyup', enterHandler)
+    em.addHandler('auth.authAnswer', store.authServerAnswer)
+    em.addHandler('auth.registerAnswer', store.regServerAnswer)
+    em.addHandler('auth.toggle', store.setAuthActive)
+    document.addEventListener('keyup', store.enterHandler)
 
     return () => {
-      em.removeHandler('auth.authAnswer', authServerAnswer)
-      em.removeHandler('auth.registerAnswer', regServerAnswer)
-      em.removeHandler('auth.toggle', setAuthActive)
-      document.removeEventListener('keyup', enterHandler)
+      em.removeHandler('auth.authAnswer', store.authServerAnswer)
+      em.removeHandler('auth.registerAnswer', store.regServerAnswer)
+      em.removeHandler('auth.toggle', store.setAuthActive)
+      document.removeEventListener('keyup', store.enterHandler)
     }
   }, [])
-
-  const newsList = news.map(({ title, text, id }) => (
-    <NewsItem key={id} title={title} text={text} />
-  ))
 
   return (
     <div
@@ -56,7 +45,11 @@ export default observer(() => {
           <img src={refreshImg} alt='' className='refresh' />
           <div className='title'>Последние обновления</div>
         </div>
-        <div className='news-list'>{newsList}</div>
+        <div className='news-list'>
+          {news.map(({ title, text, id }) => (
+            <NewsItem key={id} title={title} text={text} />
+          ))}
+        </div>
       </div>
     </div>
   )
