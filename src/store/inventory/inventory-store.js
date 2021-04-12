@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx'
-import uData from '../../services/udata'
+import { uData } from '../../services/services'
 
 class InventoryStore {
   constructor () {

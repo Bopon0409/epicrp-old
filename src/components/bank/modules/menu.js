@@ -12,6 +12,7 @@ export default observer(() => {
     <div className='main-menu'>
       {menu.map((el, i) => (
         <div
+          key={i}
           className={
             currentMainMenuEl === i
               ? 'main-menu__item main-menu__item_active'

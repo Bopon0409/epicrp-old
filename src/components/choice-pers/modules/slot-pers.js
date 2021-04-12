@@ -2,6 +2,7 @@ import React from 'react'
 import { observer } from 'mobx-react-lite'
 
 import store from '../../../store/choise-pers/choise-pers-store'
+import { numberWithSpaces } from '../../../services/services'
 import BuyView from './buy-view'
 import EmptyView from './empty-view'
 import DeleteSvg from './delete-svg'
@@ -35,7 +36,7 @@ export default observer(({ index }) => {
           <span className='bold'>{pers.fraction}</span>
         </div>
         <div className='money'>
-          <span className='bold'>{pers.money}</span>
+          <span className='bold'>{numberWithSpaces(pers.money)}</span>
           <span>$</span>
         </div>
         <div className='reg flex-block'>

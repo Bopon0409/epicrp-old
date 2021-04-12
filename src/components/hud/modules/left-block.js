@@ -1,6 +1,7 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
 import store from '../../../store/hud/hud-store'
+import { numberWithSpaces } from '../../../services/services'
 
 import geoIcon from '../images/geo-icon.svg'
 import moneyIcon from '../images/money-icon.svg'
@@ -19,7 +20,7 @@ export default observer(() => {
       </div>
       <div className='money-block block'>
         <img src={moneyIcon} alt='' className='money-icon' />
-        <div className='money'>{money}</div>
+        <div className='money'>{numberWithSpaces(money)} $</div>
       </div>
       <div className='geo-block block'>
         <img src={geoIcon} alt='' className='geo-icon' />

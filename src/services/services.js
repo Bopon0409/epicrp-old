@@ -12,4 +12,6 @@ const uData = item => {
   return item
 }
 
-export default uData
+const numberWithSpaces = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+
+export { uData, numberWithSpaces }

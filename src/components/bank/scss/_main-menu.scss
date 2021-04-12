@@ -1,0 +1,37 @@
+.bank {
+  .main-menu {
+    position: absolute;
+    left: 0;
+    top: 225px;
+    width: 360px;
+    color: white;
+    z-index: 12;
+
+    .main-menu__item {
+      cursor: pointer;
+      height: 70px;
+      display: flex;
+      justify-content: flex-start;
+      padding-left: 75px;
+      align-items: center;
+
+      .main-menu__title {
+        font-weight: bold;
+        font-size: 16px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.3);
+        margin-left: 40px;
+      }
+    }
+
+    .main-menu__item_active {
+      background: rgba(4, 12, 40, 0.5);
+      border-radius: 0px 35px 35px 0px;
+
+      .main-menu__title {
+        color: white;
+      }
+    }
+  }
+}
