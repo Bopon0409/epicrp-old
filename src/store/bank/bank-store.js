@@ -15,7 +15,9 @@ class BankStore {
     if (data) this.state.data = data
   }
 
-  currentMainMenuEl = el => (this.state.currentMainMenuEl = el)
+  setCurrentMainMenuEl = el => {
+    this.state.currentMainMenuEl = el
+  }
 }
 
 export default new BankStore()

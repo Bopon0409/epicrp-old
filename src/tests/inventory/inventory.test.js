@@ -10,7 +10,7 @@ const jsonData2 = JSON.stringify(data2)
 const jsonData3 = JSON.stringify(data3)
 const jsonData4 = JSON.stringify(data4)
 
-const setInventoryActive = (active = true, id) =>
+const setInventoryActive = (active = true, id = 0) =>
   window.trigger('inventory.toggle', active, id)
 
 const testInventory = () => {

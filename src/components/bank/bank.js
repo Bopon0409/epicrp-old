@@ -5,6 +5,7 @@ import store from '../../store/bank/bank-store'
 import Menu from './modules/menu'
 
 export default observer(() => {
+  const { active } = store.state
   useEffect(() => {
     const { setActive } = store
     const { EventManager: em } = window
@@ -13,7 +14,7 @@ export default observer(() => {
   }, [])
 
   return (
-    <div className='bank'>
+    <div className='bank' style={{ display: active ? 'block' : 'none' }}>
       <Menu />
       <div className='bank-wrapper1' />
       <div className='bank-wrapper2' />
