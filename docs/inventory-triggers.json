@@ -1,19 +1,19 @@
 {
-  "inventory.equip": {"id": 0, "inventoryId": 0},
-  "inventory.take": {"id": 0, "inventoryId": 0},
-  "inventory.use": {"id": 0, "inventoryId": 0},
-  "inventory.drop": {"id": 0, "inventoryId": 0},
+  "inventory.equip": {"id": 1, "inventoryId": 0},
+  "inventory.take": {"id": 1, "inventoryId": 0},
+  "inventory.use": {"id": 1, "inventoryId": 0},
+  "inventory.drop": {"id": 1, "inventoryId": 0},
   "inventory.merge": {
-    "item1": {"id": 0, "inventoryId": 0},
-    "item2": {"id": 0, "inventoryId": 0}
+    "item1": {"id": 1, "inventoryId": 0},
+    "item2": {"id": 1, "inventoryId": 0}
   },
   "inventory.separate": {
-    "item1": {"id": 0, "inventoryId": 0},
-    "item2": {"id": 0, "inventoryId": 0},
+    "item1": {"id": 1, "inventoryId": 0},
+    "item2": {"id": 1, "inventoryId": 0},
     "quantity": 0
   },
   "inventory.swap": {
-    "from": {"id": 0, "inventoryId": 0},
-    "to": {"id": 0, "inventoryId": 0}
+    "from": {"id": 1, "inventoryId": 0},
+    "to": {"id": 1, "inventoryId": 0}
   }
 }
