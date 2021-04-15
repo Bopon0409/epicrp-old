@@ -18,7 +18,12 @@ class BankStore {
           { name: 'Перевод на счёт', change: -25000 }
         ]
       }
-    ]
+    ],
+    toggles: {
+      controlActions: 0,
+      paymentForServices: 0,
+      transfer: 0
+    }
   }
 
   constructor () {
@@ -32,6 +37,24 @@ class BankStore {
 
   setCurrentMainMenuEl = el => (this.state.currentMainMenuEl = el)
   setCurrentSubMenuEl = el => (this.state.currentSubMenuEl = el)
+
+  setControlActionsToggle = action => {
+    const { controlActions } = this.state.toggles
+    this.state.toggles.controlActions = controlActions === action ? 0 : action
+  }
+
+  setPaymentForServicesToggle = action => {
+    this.state.toggles.transfer = 0
+    const { paymentForServices } = this.state.toggles
+    this.state.toggles.paymentForServices =
+      paymentForServices === action ? 0 : action
+  }
+
+  setTransferToggle = action => {
+    this.state.toggles.paymentForServices = 0
+    const { transfer } = this.state.toggles
+    this.state.toggles.transfer = transfer === action ? 0 : action
+  }
 }
 
 export default new BankStore()

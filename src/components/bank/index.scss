@@ -1,6 +1,7 @@
 @import './scss/main-menu';
 @import './scss/sub-menu';
 @import './scss/main-page';
+@import './scss/toggle-bar';
 
 .bank {
   position: absolute;
@@ -44,4 +45,6 @@
     left: 130px;
     top: 70px;
   }
+
+
 }
