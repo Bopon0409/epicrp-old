@@ -17,6 +17,17 @@ class BankStore {
           { name: 'Списание', change: -25000 },
           { name: 'Перевод на счёт', change: -25000 }
         ]
+      },
+      {
+        balance: 20000,
+        name: 'Личный счёт',
+        id: '0000 0000 0000 0000',
+        num: '147832575',
+        operations: [
+          { name: 'Пополнение счёта', change: 70000 },
+          { name: 'Списание', change: -25000 },
+          { name: 'Перевод на счёт', change: -25000 }
+        ]
       }
     ],
     toggles: {
