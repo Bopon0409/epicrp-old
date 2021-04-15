@@ -6,7 +6,8 @@ class BankStore {
     currentMainMenuEl: 0,
     currentSubMenuEl: 0,
     userName: 'John Oils',
-    accounts: [
+    currentAccount: 0,
+    accountsData: [
       {
         balance: 20000,
         name: 'Личный счёт',
@@ -39,6 +40,10 @@ class BankStore {
 
   constructor () {
     makeAutoObservable(this, {}, { deep: true })
+  }
+
+  get currentAccountData () {
+    return this.state.accounts[this.state.currentAccount]
   }
 
   setActive = (active, data) => {
