@@ -10,10 +10,14 @@ export default observer(() => {
   const { currentSubMenuEl, accountsData } = store.state
   return (
     <div className='main-page'>
-      <div className='main-page__welcome'>
-        <div className='main-page__welcome_first'>С возвращением,</div>
-        <div className='main-page__welcome_second'>{store.state.userName}</div>
-      </div>
+      {store.state.userName && (
+        <div className='main-page__welcome'>
+          <div className='main-page__welcome_first'>С возвращением,</div>
+          <div className='main-page__welcome_second'>
+            {store.state.userName}
+          </div>
+        </div>
+      )}
 
       {currentSubMenuEl === 0 && <Control />}
       {currentSubMenuEl === 1 && <Transfer />}

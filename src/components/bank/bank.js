@@ -10,10 +10,14 @@ import MainPage from './modules/main-page'
 export default observer(() => {
   const { active, currentMainMenuEl } = store.state
   useEffect(() => {
-    const { setActive } = store
+    const { setActive, updateData } = store
     const { EventManager: em } = window
     em.addHandler('bank.toggle', setActive)
-    return () => em.removeHandler('bank.toggle', setActive)
+    em.addHandler('bank.update', updateData)
+    return () => {
+      em.removeHandler('bank.toggle', setActive)
+      em.removeHandler('bank.update', updateData)
+    }
   }, [])
 
   return (

@@ -5,35 +5,9 @@ class BankStore {
     active: false,
     currentMainMenuEl: 0,
     currentSubMenuEl: 0,
-    userName: 'John Oils',
+    userName: '',
     currentAccount: 0,
-    accountsData: [
-      {
-        balance: 20000,
-        name: 'Личный счёт №1',
-        id: '0000 0000 0000 1111',
-        num: '147832575',
-        operations: [
-          { name: 'Пополнение счёта', change: -70000 },
-          { name: 'Списание', change: 25000 },
-          { name: 'Перевод на счёт', change: 25000 }
-        ]
-      },
-      {
-        balance: 40000,
-        name: 'Личный счёт №2',
-        id: '0000 0000 0000 2222',
-        num: '147832557',
-        operations: [
-          { name: 'Пополнение счёта', change: -70000 },
-          { name: 'Списание', change: 25000 },
-          { name: 'Перевод на счёт', change: 25000 },
-          { name: 'Пополнение счёта', change: -70000 },
-          { name: 'Списание', change: 25000 },
-          { name: 'Перевод на счёт', change: 25000 }
-        ]
-      }
-    ],
+    accountsData: [],
     toggles: {
       controlActions: 0,
       paymentForServices: 0,
@@ -43,6 +17,12 @@ class BankStore {
 
   constructor () {
     makeAutoObservable(this, {}, { deep: true })
+  }
+
+  setActive = active => (this.state.active = active)
+  updateData = ({ userName, accountsData }) => {
+    this.state.userName = userName
+    this.state.accountsData = accountsData
   }
 
   get currentAccountData () {
@@ -58,11 +38,6 @@ class BankStore {
     }, this.currentAccountData.balance)
     chartData.push(lastValue)
     return chartData.reverse().map((el, i) => ({ Баланс: el, id: i }))
-  }
-
-  setActive = (active, data) => {
-    this.state.active = active
-    if (data) this.state.data = data
   }
 
   setCurrentMainMenuEl = el => (this.state.currentMainMenuEl = el)

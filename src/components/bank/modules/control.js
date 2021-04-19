@@ -9,9 +9,11 @@ export default observer(() => {
   const { accountsData } = store.state
   return (
     <div className='control'>
-      <div className='control-actions'>
-        <ToggleBar type='control-actions' />
-      </div>
+      {accountsData.length && (
+        <div className='control-actions'>
+          <ToggleBar type='control-actions' />
+        </div>
+      )}
 
       <div
         className='control__card-container'
