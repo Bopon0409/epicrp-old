@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import store from '../../../store/auth/auth-store'
 
 export default observer(() => {
-  const { login, pass, checkBox } = store.state
+  const { login, pass, checkBox, errorMsg } = store.state
   const { setField, loginToggle, checkBoxToggle, authValidate } = store
 
   return (
@@ -22,6 +22,8 @@ export default observer(() => {
         value={pass}
         onChange={e => setField('pass', e.target.value)}
       />
+
+      <div className='error-msg'>{errorMsg}</div>
 
       <div className='checkbox-block' onClick={checkBoxToggle}>
         <div className={checkBox ? 'checkbox active' : 'checkbox'}></div>

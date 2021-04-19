@@ -5,16 +5,16 @@ import store from '../../../store/bank/bank-store'
 import { AreaChart, Area, YAxis, XAxis, Tooltip } from 'recharts'
 
 export default observer(() => {
-  const charData = store.chartData
-  console.log(charData)
+  const width = window.innerWidth / 2 < 960 ? window.innerWidth / 2 : 960
+  const height = window.innerHeight / 3 < 360 ? window.innerWidth / 3 : 360
 
   return (
     <div className='order'>
       <div className='chart-wrapper'>
         <AreaChart
-          width={900}
-          height={300}
-          data={charData}
+          width={width}
+          height={height}
+          data={store.chartData}
           margin={{
             top: 10,
             right: 30,

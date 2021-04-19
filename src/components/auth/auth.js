@@ -10,7 +10,7 @@ import logoImg from './images/logo.svg'
 import refreshImg from './images/refresh.svg'
 
 export default observer(() => {
-  const { active, isLogin, errorMsg, news } = store.state
+  const { active, isLogin, news } = store.state
 
   useEffect(() => {
     const { EventManager: em } = window
@@ -35,7 +35,6 @@ export default observer(() => {
       <div className='title-block'>
         <img src={logoImg} alt='' className='logo' />
         <div className='title'>{isLogin ? 'Авторизация' : 'Регистрация'}</div>
-        <div className='error-msg'>{errorMsg}</div>
       </div>
 
       {isLogin ? <AuthForm /> : <RegisterForm />}

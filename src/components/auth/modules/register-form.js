@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import store from '../../../store/auth/auth-store'
 
 export default observer(() => {
-  const { email, login, pass, pass2 } = store.state
+  const { email, login, pass, pass2, errorMsg } = store.state
   const { setField, loginToggle, registerValidate } = store
 
   return (
@@ -36,6 +36,8 @@ export default observer(() => {
         value={pass2}
         onChange={e => setField('pass2', e.target.value)}
       />
+
+      <div className='error-msg'>{errorMsg}</div>
 
       <div className='bottom-panel'>
         <div className='switcher'>
