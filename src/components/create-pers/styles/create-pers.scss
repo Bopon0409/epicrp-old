@@ -34,3 +34,33 @@
     background: white;
   }
 }
+
+@media (min-width: 2560px) {
+  .create-pers {
+    zoom: 1.4;
+  }
+}
+
+@media (max-width: 1440px) {
+  .create-pers {
+    zoom: 0.9;
+  }
+}
+
+@media (max-width: 1366px) {
+  .create-pers {
+    zoom: 0.8;
+  }
+}
+
+@media (max-width: 1024px) {
+  .create-pers {
+    zoom: 0.7;
+  }
+}
+
+@media (max-width: 800px) {
+  .create-pers {
+    zoom: 0.55;
+  }
+}

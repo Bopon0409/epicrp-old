@@ -57,7 +57,7 @@ class InteractionMenuStore {
       }))
 
       CMenu('#menu1')
-        .config({ hideAfterClick: false, diameter: 400, menus })
+        .config({ hideAfterClick: false, diameter: window.innerWidth / 3, menus })
         .show([window.innerWidth / 2, window.innerHeight / 2])
         .styles({ 'background-color': 'rgba(0, 0, 0, 0.7)' })
     }

@@ -333,32 +333,23 @@
   }
 }
 
-@media (min-width: 2500px) {
+@media (min-width: 2560px) {
   .hud {
-    zoom: 1.5;
+    zoom: 1.6;
   }
 }
 
-@media (max-width: 1400px) {
-  .hud {
-    zoom: 1;
-  }
-}
-
-@media (max-width: 1140px) {
+@media (max-width: 1366px) {
   .hud {
     zoom: 0.9;
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1024px) {
   .hud {
     zoom: 0.8;
   }
 }
 
-@media (max-width: 900px) {
-  .hud {
-    zoom: 0.7;
-  }
+@media (max-width: 800px) {
 }
