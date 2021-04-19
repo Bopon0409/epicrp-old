@@ -1,0 +1,97 @@
+@import './scss/header';
+@import './scss/body';
+@import './scss/menu';
+@import './scss/transfer';
+
+.atm {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 10;
+  font-family: 'Nunito', sans-serif;
+
+  .atm__wrapper1 {
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    background: linear-gradient(
+      270deg,
+      rgba(66, 113, 255, 0.3) 0%,
+      rgba(66, 113, 255, 0) 100%
+    );
+    z-index: 11;
+  }
+
+  .atm__wrapper2 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      270deg,
+      rgba(66, 113, 255, 0.3) 0%,
+      rgba(66, 113, 255, 0) 100%
+    );
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    z-index: 11;
+  }
+
+  .atm__bg-container {
+    display: flex;
+    justify-content: center;
+
+    .atm__bg {
+      position: absolute;
+      bottom: 0;
+      z-index: 12;
+      height: 900px;
+    }
+
+    .atm-inner {
+      position: absolute;
+      z-index: 13;
+      width: 580px;
+      padding: 20px 40px;
+      box-sizing: border-box;
+      height: 420px;
+      bottom: 100px;
+      background-image: url('./images/atm-inner-bg.png');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+}
+
+@media (min-width: 2560px) {
+  .atm {
+    zoom: 1.4;
+  }
+}
+
+@media (max-width: 1600px) {
+  .atm {
+    zoom: 0.9;
+  }
+}
+
+@media (max-width: 1366px) {
+  .atm {
+    zoom: 0.8;
+  }
+}
+
+@media (max-width: 1280px) {
+  .atm {
+    zoom: 0.7;
+  }
+}
+
+@media (max-width: 800px) {
+  .atm {
+    zoom: 0.6;
+  }
+}

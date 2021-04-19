@@ -12,9 +12,16 @@ const uData = item => {
   return item
 }
 
+const removeSpaces = num =>
+  num
+    .split('')
+    .filter(el => el !== ' ')
+    .join('')
+
 const numberWithSpaces = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 const numberWithComma = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 const numberWithDott = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+const accountNumber = x => x.toString().replace(/\B(?=(\d{4})+(?!\d))/g, ' ')
 
 const cardNumber = num => {
   num = num.toString().replace(/\B(?=(\d{4})+(?!\d))/g, ' ')
@@ -23,4 +30,12 @@ const cardNumber = num => {
   })
 }
 
-export { uData, numberWithSpaces, numberWithComma, cardNumber, numberWithDott }
+export {
+  uData,
+  numberWithSpaces,
+  numberWithComma,
+  cardNumber,
+  numberWithDott,
+  removeSpaces,
+  accountNumber
+}
