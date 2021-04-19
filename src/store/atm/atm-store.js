@@ -41,6 +41,19 @@ class AtmStore {
     }
   }
 
+  get transferSubmitBtn () {
+    switch (this.state.currentPage) {
+      case 'Снятие наличных':
+        return 'Снять наличные'
+      case 'Перевод средств':
+        return 'Перевести средства'
+      case 'Пополнить счёт':
+        return 'Пополнить счёт'
+      default:
+        return null
+    }
+  }
+
   setCurrentPage = page => {
     this.state.currentPage = page
     this.clearInputs()

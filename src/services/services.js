@@ -21,7 +21,6 @@ const removeSpaces = num =>
 const numberWithSpaces = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 const numberWithComma = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 const numberWithDott = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-const accountNumber = x => x.toString().replace(/\B(?=(\d{4})+(?!\d))/g, ' ')
 
 const cardNumber = num => {
   num = num.toString().replace(/\B(?=(\d{4})+(?!\d))/g, ' ')
@@ -36,6 +35,5 @@ export {
   numberWithComma,
   cardNumber,
   numberWithDott,
-  removeSpaces,
-  accountNumber
+  removeSpaces
 }

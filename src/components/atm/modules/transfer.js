@@ -1,12 +1,12 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
 import store from '../../../store/atm/atm-store'
-import { numberWithSpaces, accountNumber } from '../../../services/services'
+import { numberWithSpaces } from '../../../services/services'
 
 export default observer(() => {
   const { value, setValue } = store.currentInputData
   const { receiverAccount } = store.state.transferData
-  const { setReceiverAccount } = store
+  const { setReceiverAccount, transferSubmitBtn } = store
   const { currentPage } = store.state
 
   return (
@@ -17,7 +17,7 @@ export default observer(() => {
           <input
             type='text'
             className='transfer__input'
-            value={accountNumber(receiverAccount)}
+            value={receiverAccount}
             onChange={e => setReceiverAccount(e.target.value)}
           />
         </div>
@@ -32,6 +32,8 @@ export default observer(() => {
           onChange={e => setValue(e.target.value)}
         />
       </div>
+
+      <div className='transfer__submit-btn'>{transferSubmitBtn}</div>
     </div>
   )
 })

@@ -1,6 +1,45 @@
 .atm {
   .atm__body {
     .transfer {
+      .transfer__input-container {
+        filter: drop-shadow(0px 15px 20px rgba(242, 241, 254, 0.45));
+        background: #f5f5f5;
+        box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        margin-bottom: 25px;
+        width: 330px;
+        padding: 13px 24px;
+
+        .transfer__input-hint {
+          font-weight: 600;
+          font-size: 13px;
+          color: #8f8f8f;
+        }
+
+        .transfer__input {
+          width: 100%;
+          font-family: 'Nunito', sans-serif;
+          background: none;
+          border: none;
+          outline: none;
+          font-weight: 700;
+          font-size: 13px;
+          color: #28282e;
+        }
+      }
+
+      .transfer__submit-btn {
+        cursor: pointer;
+        background: linear-gradient(96.22deg, #4271ff 10.19%, #5165d7 101.15%);
+        box-shadow: 0px 0px 15px rgba(66, 113, 255, 0.6);
+        border-radius: 30px;
+        padding: 20px 35px;
+        text-align: center;
+        display: inline-block;
+        font-weight: bold;
+        font-size: 14px;
+        color: #ffffff;
+      }
     }
   }
 }
