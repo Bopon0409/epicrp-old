@@ -70,6 +70,7 @@ class ChatStore {
 
   onInputChange = event => {
     const value = event.target.value
+    if (value.length >= 135) return
     this.state.inputValue = value
     if (value[0] === '/') {
       if (value.substr(1, 2) === 'b ') this.state.activeBtn = 'b'
