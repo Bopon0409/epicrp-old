@@ -1,0 +1,97 @@
+.bank {
+  .main-page {
+    .control__card-container {
+      position: absolute;
+      z-index: 12;
+      width: 900px;
+      height: 310px;
+      left: 50%;
+      top: 50%;
+      margin-left: -450px;
+      margin-top: -50px;
+
+      color: white;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 3px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .card-wrapper {
+        opacity: 0.5;
+        width: 420px;
+        height: 100%;
+        cursor: pointer;
+
+        .card__empty-text {
+          font-weight: 300;
+          font-size: 12px;
+          letter-spacing: 12px;
+          color: rgba(255, 255, 255, 0.3);
+        }
+
+        .card {
+          box-sizing: border-box;
+          background-image: url('../images/bank-card.png');
+          background-repeat: no-repeat;
+          height: 250px;
+          padding-top: 40px;
+          border-radius: 15px;
+
+          .card__balance-text {
+            font-weight: 300;
+            font-size: 12px;
+            margin-bottom: 10px;
+          }
+
+          .card__balance {
+            font-weight: 200;
+            font-size: 36px;
+            margin-bottom: 25px;
+          }
+
+          .card__id {
+            font-weight: 300;
+            font-size: 18px;
+            letter-spacing: 6px;
+          }
+        }
+
+        .card__num-hint {
+          margin-top: 15px;
+          font-weight: 300;
+          font-size: 12px;
+          letter-spacing: 13px;
+        }
+
+        .card__num-container {
+          display: flex;
+          justify-content: center;
+
+          .card__num-icon {
+            margin-right: 5px;
+          }
+
+          .card__num-text {
+            font-weight: bold;
+            font-size: 14px;
+          }
+        }
+      }
+
+      .card-wrapper:hover .card__empty-text {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .card-wrapper_active {
+        opacity: 1;
+
+        .card {
+          filter: drop-shadow(0px 0px 100px rgba(66, 113, 255, 0.3));
+        }
+      }
+    }
+  }
+}

@@ -54,6 +54,7 @@ class InventoryStore {
 
   // ================================   MAIN   =================================
   setInventoryActive = (active, inventoryId = 0) => {
+    console.log(active, inventoryId)
     this.state.active = active
     this.state.mode = this.state.active ? inventoryId : 0
   }

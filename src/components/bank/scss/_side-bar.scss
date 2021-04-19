@@ -1,0 +1,51 @@
+.bank {
+  .main-page {
+    .side-bar {
+      position: absolute;
+      z-index: 12;
+      top: 225px;
+      right: 100px;
+      color: white;
+      text-align: right;
+
+      .side-bar__title {
+        margin-bottom: 80px;
+        font-weight: 600;
+        font-size: 18px;
+      }
+
+      .side-bar__container {
+        .side-bar__item {
+          margin-bottom: 15px;
+
+          .item__title-container {
+            display: flex;
+            justify-content: flex-end;
+
+            .side-bar__title-icon {
+              margin-right: 5px;
+            }
+          }
+
+          .item__value {
+            color: #81c64b;
+          }
+
+          .item__value_negative {
+            color: #c64b4b;
+          }
+        }
+
+        .side-bar__item_disabled {
+          opacity: 0.4;
+        }
+      }
+    }
+
+    .side-bar.order {
+      .side-bar__item {
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,12 +1,11 @@
 import React from 'react'
+import EmptyCardSvg from '../svg/empty-card'
 
-export default function EmptyCard() {
+export default function EmptyCard () {
   return (
     <div className='card-wrapper'>
-          <div className='card_empty'>
-            <img src='' alt='' className='card__empty-icon' />
-          </div>
-          <div className='card__empty-text'>Личный счёт</div>
-        </div>
+      <EmptyCardSvg />
+      <div className='card__empty-text'>Оформимть новый счет</div>
+    </div>
   )
 }

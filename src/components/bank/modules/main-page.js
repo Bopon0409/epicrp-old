@@ -4,10 +4,10 @@ import SubMenu from './sub-menu'
 import store from '../../../store/bank/bank-store'
 import Control from './control'
 import Transfer from './transfer'
-import Discharge from './discharge'
+import Order from './order'
 
 export default observer(() => {
-  const { currentSubMenuEl } = store.state
+  const { currentSubMenuEl, accountsData } = store.state
   return (
     <div className='main-page'>
       <div className='main-page__welcome'>
@@ -17,8 +17,8 @@ export default observer(() => {
 
       {currentSubMenuEl === 0 && <Control />}
       {currentSubMenuEl === 1 && <Transfer />}
-      {currentSubMenuEl === 2 && <Discharge />}
-      <SubMenu />
+      {currentSubMenuEl === 2 && <Order />}
+      {accountsData.length && <SubMenu />}
     </div>
   )
 })

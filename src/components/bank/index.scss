@@ -2,6 +2,8 @@
 @import './scss/sub-menu';
 @import './scss/main-page';
 @import './scss/toggle-bar';
+@import './scss/card';
+@import './scss/side-bar';
 
 .bank {
   position: absolute;
@@ -52,5 +54,25 @@
     top: 70px;
     right: 140px;
     cursor: pointer;
+  }
+
+  .order {
+    .chart-wrapper {
+      position: absolute;
+      z-index: 11;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      * {
+        z-index: 13;
+        font-weight: 600;
+      }
+    }
   }
 }

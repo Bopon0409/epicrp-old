@@ -10,24 +10,27 @@ class BankStore {
     accountsData: [
       {
         balance: 20000,
-        name: 'Личный счёт',
-        id: '0000 0000 0000 0000',
+        name: 'Личный счёт №1',
+        id: '0000 0000 0000 1111',
         num: '147832575',
         operations: [
-          { name: 'Пополнение счёта', change: 70000 },
-          { name: 'Списание', change: -25000 },
-          { name: 'Перевод на счёт', change: -25000 }
+          { name: 'Пополнение счёта', change: -70000 },
+          { name: 'Списание', change: 25000 },
+          { name: 'Перевод на счёт', change: 25000 }
         ]
       },
       {
-        balance: 20000,
-        name: 'Личный счёт',
-        id: '0000 0000 0000 0000',
-        num: '147832575',
+        balance: 40000,
+        name: 'Личный счёт №2',
+        id: '0000 0000 0000 2222',
+        num: '147832557',
         operations: [
-          { name: 'Пополнение счёта', change: 70000 },
-          { name: 'Списание', change: -25000 },
-          { name: 'Перевод на счёт', change: -25000 }
+          { name: 'Пополнение счёта', change: -70000 },
+          { name: 'Списание', change: 25000 },
+          { name: 'Перевод на счёт', change: 25000 },
+          { name: 'Пополнение счёта', change: -70000 },
+          { name: 'Списание', change: 25000 },
+          { name: 'Перевод на счёт', change: 25000 }
         ]
       }
     ],
@@ -43,7 +46,18 @@ class BankStore {
   }
 
   get currentAccountData () {
-    return this.state.accounts[this.state.currentAccount]
+    return this.state.accountsData[this.state.currentAccount]
+  }
+
+  get chartData () {
+    const chartData = []
+    const changes = this.currentAccountData.operations.map(el => el.change)
+    const lastValue = changes.reduce((value, cur) => {
+      chartData.push(value)
+      return value - cur
+    }, this.currentAccountData.balance)
+    chartData.push(lastValue)
+    return chartData.reverse().map((el, i) => ({ Баланс: el, id: i }))
   }
 
   setActive = (active, data) => {
@@ -53,6 +67,7 @@ class BankStore {
 
   setCurrentMainMenuEl = el => (this.state.currentMainMenuEl = el)
   setCurrentSubMenuEl = el => (this.state.currentSubMenuEl = el)
+  setCurrentAccount = num => (this.state.currentAccount = num)
 
   setControlActionsToggle = action => {
     const { controlActions } = this.state.toggles

@@ -13,5 +13,14 @@ const uData = item => {
 }
 
 const numberWithSpaces = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+const numberWithComma = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+const numberWithDott = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
 
-export { uData, numberWithSpaces }
+const cardNumber = num => {
+  num = num.toString().replace(/\B(?=(\d{4})+(?!\d))/g, ' ')
+  return num.split('').map((char, i, arr) => {
+    return i < arr.length - 4 && char !== ' ' ? '*' : char
+  })
+}
+
+export { uData, numberWithSpaces, numberWithComma, cardNumber, numberWithDott }
