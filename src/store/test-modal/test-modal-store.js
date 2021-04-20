@@ -9,6 +9,7 @@ import * as testChat from '../../tests/modules/chat.test'
 import * as testHud from '../../tests/modules/hud.test'
 import * as testInteractionMenu from '../../tests/modules/interaction-menu.test'
 import * as testBank from '../../tests/bank/bank.test'
+import * as testAtm from '../../tests/atm/atm.test'
 
 class TestModalStore {
   constructor () {
@@ -34,6 +35,10 @@ class TestModalStore {
       testBank: {
         title: 'testBank',
         ...testBank
+      },
+      testAtm: {
+        title: 'test Atm',
+        ...testAtm
       }
     }
   }

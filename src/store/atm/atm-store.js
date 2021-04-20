@@ -7,16 +7,25 @@ class AtmStore {
   }
 
   state = {
-    balance: 100000,
-    cash: 20000,
+    active: false,
+    balance: 0,
+    cash: 0,
+    account: '',
     currentPage: 'Главное меню',
-    myAccounts: ['0000000000001111', '0000000000002222'],
     transferData: {
       receiverAccount: '',
       transferSum: 0,
       cashOutSum: 0,
       topUpSum: 0
     }
+  }
+
+  setAtmActive = active => (this.state.active = active)
+
+  updateAtmData = ({ balance, account, cash }) => {
+    this.state.balance = balance
+    this.state.account = account
+    this.state.cash = cash
   }
 
   get currentInputData () {

@@ -7,6 +7,7 @@ import * as testChat from './modules/chat.test'
 import * as testHud from './modules/hud.test'
 import * as testInteractionMenu from './modules/interaction-menu.test'
 import * as testBank from './bank/bank.test'
+import * as testAtm from './atm/atm.test'
 
 const { ...bgTests } = testBg
 const { ...createPersTests } = testCreatePers
@@ -17,6 +18,7 @@ const { ...chatTests } = testChat
 const { ...hudTests } = testHud
 const { ...interactionMenuTests } = testInteractionMenu
 const { ...bankTests } = testBank
+const { ...atmTests } = testAtm
 
 window.test = {
   bgTests,
@@ -27,12 +29,15 @@ window.test = {
   chatTests,
   hudTests,
   interactionMenuTests,
-  bankTests
+  bankTests,
+  atmTests
 }
 
 // current tests
 const currentTests = () => {
   bgTests.setBgActive(true)
+  atmTests.setActive(true)
+  atmTests.setData()
 }
 
 setTimeout(() => process.env.NODE_ENV === 'development' && currentTests(), 0)
