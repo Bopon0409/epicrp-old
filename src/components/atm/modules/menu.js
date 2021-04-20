@@ -19,12 +19,12 @@ export default function Menu () {
 
   const col1 = itemsData
     .filter((_, i) => i <= 2)
-    .map((el, i) => <MenuItem key={i} data={{ id: i + 1, ...el }} />)
+    .map((el, i) => <MenuItem key={i} data={{ id: i + 1, ...el }}/>)
 
   return (
     <div className='menu__container'>
       <div className='menu__col'>{col1}</div>
-      <div className='menu__col' />
+      <div className='menu__col'/>
     </div>
   )
 }

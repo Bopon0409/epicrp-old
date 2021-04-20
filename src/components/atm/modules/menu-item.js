@@ -5,11 +5,10 @@ import MenuIcon from '../svg/menu-icon'
 
 export default observer(({ data: { title, text, id } }) => {
   const [isHover, setHover] = useState(false)
-  const { setCurrentPage } = store
   return (
     <div
       className='menu__item'
-      onClick={() => setCurrentPage(title)}
+      onClick={() => store.setCurrentPage(title)}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >

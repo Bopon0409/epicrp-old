@@ -8,19 +8,22 @@ export default observer(() => {
   const { setCurrentModule, setCheckbox } = store
 
   useEffect(() => {
-    const pressKeyHandler = event => {
+    const pressKeyHandler = event =>
       event.keyCode === 120 && store.setActive(!store.state.active)
-    }
+
     document.addEventListener('keydown', pressKeyHandler)
     return () => document.removeEventListener('keydown', pressKeyHandler)
   }, [])
 
-  const selectOptions = Object.getOwnPropertyNames(testsModules).map(el => ({
-    value: el,
-    label: el
-  }))
+  const selectOptions = Object.getOwnPropertyNames(testsModules).map(el => (
+    {
+      value: el,
+      label: el
+    }
+  ))
 
-  const btns = Object.getOwnPropertyNames(testsModules[currentModule]).map(
+  const testButtons = Object.getOwnPropertyNames(
+    testsModules[currentModule]).map(
     (el, i) => {
       return el !== 'title' ? (
         <div
@@ -55,10 +58,10 @@ export default observer(() => {
           className={
             checkbox ? 'checkbox__box checkbox__box_active' : 'checkbox__box'
           }
-        ></div>
+        />
         <div className='checkbox__label'>Bolean first param</div>
       </div>
-      <div className='test-modal__container'>{btns}</div>
+      <div className='test-modal__container'>{testButtons}</div>
     </div>
   )
 })
