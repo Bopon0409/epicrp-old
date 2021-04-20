@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx'
-import { removeSpaces } from '../../services/services'
+import { clearFormatNum } from '../../services/services'
 
 class AtmStore {
   constructor () {
@@ -78,25 +78,25 @@ class AtmStore {
   }
 
   setTransferSum = val => {
-    val = removeSpaces(val)
+    val = clearFormatNum(val, ' ')
     if (!isNaN(val) && Number(val) <= this.state.balance)
       this.state.transferData.transferSum = val
   }
 
   setCashOutSum = val => {
-    val = removeSpaces(val)
+    val = clearFormatNum(val, ' ')
     if (!isNaN(val) && Number(val) <= this.state.balance)
       this.state.transferData.cashOutSum = val
   }
 
   setTopUpSum = val => {
-    val = removeSpaces(val)
+    val = clearFormatNum(val, ' ')
     if (!isNaN(val) && Number(val) <= this.state.cash)
       this.state.transferData.topUpSum = val
   }
 
   setReceiverAccount = val => {
-    val = removeSpaces(val)
+    val = clearFormatNum(val, ' ')
     if (!isNaN(val) && val.length <= 16)
       this.state.transferData.receiverAccount = val
   }

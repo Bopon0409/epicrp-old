@@ -1,11 +1,10 @@
-import { observer } from 'mobx-react-lite'
 import React, { useEffect } from 'react'
+import { observer } from 'mobx-react-lite'
 import store from '../../store/bank/bank-store'
-
-import bankLogo from './images/bank-logo.svg'
-import closeIcon from './images/close-icon.svg'
 import Menu from './modules/menu'
 import MainPage from './modules/main-page'
+import bankLogo from './images/bank-logo.svg'
+import closeIcon from './images/close-icon.svg'
 
 export default observer(() => {
   const { active, currentMainMenuEl } = store.state

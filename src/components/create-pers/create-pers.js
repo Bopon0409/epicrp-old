@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
 import store from '../../store/create-pers/create-pers-store'
-
 import Step1 from './modules/step1'
 import Step2 from './modules/step2'
 import Step3 from './modules/step3'
 import Header from './modules/header'
 import Transition from './modules/transition'
-
 import backgroundPng from './images/bg.png'
 
 export default observer(() => {

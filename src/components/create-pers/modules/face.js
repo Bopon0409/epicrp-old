@@ -1,7 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
 import store from '../../../store/create-pers/face-store'
-
 import Slider from './slider'
 
 export default observer(() => {

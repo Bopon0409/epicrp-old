@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 import { observer } from 'mobx-react-lite'
-
 import store from '../../store/chat/chat-store'
 import MsgList from './modules/msg-list'
 import ButtonView from './modules/button-view'

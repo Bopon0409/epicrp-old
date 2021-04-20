@@ -1,7 +1,7 @@
-import { observer } from 'mobx-react-lite'
 import React from 'react'
-import MainMenuItemSvg from '../svg/control-action-icon'
+import { observer } from 'mobx-react-lite'
 import store from '../../../store/bank/bank-store'
+import MainMenuItemSvg from '../svg/control-action-icon'
 
 export default observer(({ type }) => {
   const { controlActions, paymentForServices, transfer } = store.state.toggles

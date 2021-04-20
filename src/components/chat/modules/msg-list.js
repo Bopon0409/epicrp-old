@@ -1,6 +1,7 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
 import store from '../../../store/chat/chat-store'
+const className = require('classnames')
 
 export default observer(({ skrollRef }) => {
   const { messages, active, isOpacity } = store.state
@@ -41,12 +42,14 @@ export default observer(({ skrollRef }) => {
     </div>
   )
 
-  let chatClasses = 'container'
-  chatClasses = active ? chatClasses + ' skroll' : chatClasses
-  chatClasses = isOpacity ? chatClasses + ' translucent' : chatClasses
+  const chatClass = className(
+    'container',
+    active && 'skroll',
+    isOpacity && 'translucent'
+  )
 
   return (
-    <div className={chatClasses}>
+    <div className={chatClass}>
       {messages.map((msg, i, arr) => {
         switch (msg.type) {
           case 'try':

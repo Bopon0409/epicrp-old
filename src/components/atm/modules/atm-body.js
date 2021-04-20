@@ -1,9 +1,10 @@
-import { observer } from 'mobx-react-lite'
 import React from 'react'
+import { observer } from 'mobx-react-lite'
 import store from '../../../store/atm/atm-store'
-import backArrow from '../images/back-arrow.svg'
 import Menu from './menu'
 import Transfer from './transfer'
+import backArrow from '../images/back-arrow.svg'
+
 
 export default observer(() => {
   const { currentPage } = store.state

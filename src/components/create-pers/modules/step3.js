@@ -1,14 +1,12 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
 import store from '../../../store/create-pers/create-pers-store'
-
 import Menu from './menu'
 import Face from './face'
 import Leather from './leather'
 import Eyes from './eyes'
 import Hair from './hair'
 import Clothes from './clothes'
-
 import rotateHintImg from '../images/rotate-hint.svg'
 
 export default observer(() => {

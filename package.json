@@ -9,6 +9,7 @@
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.6.2",
     "circular-menu": "^1.0.6",
+    "classnames": "^2.3.1",
     "mobx": "^6.1.8",
     "mobx-react-lite": "^3.2.0",
     "node-sass": "^4.14.1",

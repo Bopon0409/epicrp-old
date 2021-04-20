@@ -1,7 +1,7 @@
-import { observer } from 'mobx-react-lite'
 import React from 'react'
-import numIcon from '../images/account-num-icon.svg'
+import { observer } from 'mobx-react-lite'
 import store from '../../../store/bank/bank-store'
+import numIcon from '../images/account-num-icon.svg'
 
 export default observer(({ data }) => {
   const list = data.map(({ num, balance }, i) => (

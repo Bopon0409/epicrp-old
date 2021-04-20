@@ -12,28 +12,20 @@ const uData = item => {
   return item
 }
 
-const removeSpaces = num =>
-  num
-    .split('')
-    .filter(el => el !== ' ')
-    .join('')
+const formatNum = (num, filler) => {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, filler)
+}
 
-const numberWithSpaces = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
-const numberWithComma = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-const numberWithDott = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-
-const cardNumber = num => {
+const formatCardNumber = num => {
   num = num.toString().replace(/\B(?=(\d{4})+(?!\d))/g, ' ')
   return num.split('').map((char, i, arr) => {
     return i < arr.length - 4 && char !== ' ' ? '*' : char
   })
 }
 
-export {
-  uData,
-  numberWithSpaces,
-  numberWithComma,
-  cardNumber,
-  numberWithDott,
-  removeSpaces
+const clearFormatNum = (num, filler) => {
+  const arr = num.split('')
+  return arr.filter(el => el !== filler).join('')
 }
+
+export { uData, formatNum, formatCardNumber, clearFormatNum }

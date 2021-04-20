@@ -1,9 +1,9 @@
-import { observer } from 'mobx-react-lite'
 import React from 'react'
+import { observer } from 'mobx-react-lite'
+import store from '../../../store/atm/atm-store'
+import { formatNum } from '../../../services/services'
 import atmLogo from '../images/atm-logo.svg'
 import balanceLogo from '../images/balance-logo.svg'
-import store from '../../../store/atm/atm-store'
-import { numberWithDott } from '../../../services/services'
 
 export default observer(() => {
   const { balance } = store.state
@@ -14,7 +14,7 @@ export default observer(() => {
       <div className='header__balance-container'>
         <div className='header__balance-text'>
           Баланс:
-          <span className='balance-num'>{numberWithDott(balance)} $</span>
+          <span className='balance-num'>{formatNum(balance, '.')} $</span>
         </div>
         <img src={balanceLogo} alt='' className='header__balance-logo' />
       </div>

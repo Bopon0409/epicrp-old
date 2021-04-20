@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import prevImg from '../images/prev.svg'
-import prevImgActive from '../images/prev-active.svg'
 import { observer } from 'mobx-react-lite'
 import store from '../../../store/create-pers/create-pers-store'
+import prevImg from '../images/prev.svg'
+import prevImgActive from '../images/prev-active.svg'
 
 export default observer(() => {
   const { step } = store.state

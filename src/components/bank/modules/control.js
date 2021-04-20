@@ -1,9 +1,9 @@
 import React from 'react'
+import { observer } from 'mobx-react-lite'
+import store from '../../../store/bank/bank-store'
 import ToggleBar from './toggle-bar'
 import Card from './card'
 import EmptyCard from './empty-card'
-import { observer } from 'mobx-react-lite'
-import store from '../../../store/bank/bank-store'
 
 export default observer(() => {
   const { accountsData } = store.state

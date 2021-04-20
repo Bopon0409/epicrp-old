@@ -1,21 +1,12 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
 import store from '../../../store/create-pers/create-pers-store'
-
 import enterIcon from '../images/enter.svg'
 import enterIconActive from '../images/enter-active.svg'
 
 export default observer(() => {
-  const {
-    name,
-    surname,
-    nameErr,
-    surnameErr,
-    sex,
-    hover,
-    age,
-    ageErr
-  } = store.state.step1
+  const { name, surname, sex, hover, age } = store.state.step1
+  const { nameErr, surnameErr, ageErr } = store.state.step1
   const { inputChangeHandler, validation, setSex, setHover } = store
 
   const inputClasses = err =>

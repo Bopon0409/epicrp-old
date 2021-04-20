@@ -1,7 +1,7 @@
-import { observer } from 'mobx-react-lite'
 import React, { useState } from 'react'
-import MenuIcon from '../svg/menu-icon'
+import { observer } from 'mobx-react-lite'
 import store from '../../../store/atm/atm-store'
+import MenuIcon from '../svg/menu-icon'
 
 export default observer(({ data: { title, text, id } }) => {
   const [isHover, setHover] = useState(false)

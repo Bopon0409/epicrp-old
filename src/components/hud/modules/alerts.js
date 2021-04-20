@@ -1,7 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
 import store from '../../../store/hud/hud-store'
-
 import alertConfirmImg from '../images/alertConfirmImg.svg'
 import alertWarningImg from '../images/alertWarningImg.svg'
 import alertErrorImg from '../images/alertErrorImg.svg'

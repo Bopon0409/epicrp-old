@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
 import store from '../../store/hud/hud-store'
-
-import {
-  IndicatorSvg1,
-  IndicatorSvg2,
-  IndicatorSvg3
-} from './modules/indicator-svg'
 import Speedometer from './modules/speedometer'
 import RightBlock from './modules/right-block'
 import Alerts from './modules/alerts'
 import LeftBlock from './modules/left-block'
 import timeIcon from './images/time-icon.svg'
+import {
+  IndicatorSvg1,
+  IndicatorSvg2,
+  IndicatorSvg3
+} from './modules/indicator-svg'
 
 export default observer(() => {
   const { active, time, date } = store.state

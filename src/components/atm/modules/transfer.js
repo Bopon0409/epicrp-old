@@ -1,7 +1,7 @@
-import { observer } from 'mobx-react-lite'
 import React from 'react'
+import { observer } from 'mobx-react-lite'
 import store from '../../../store/atm/atm-store'
-import { numberWithSpaces } from '../../../services/services'
+import { formatNum } from '../../../services/services'
 
 export default observer(() => {
   const { value, setValue } = store.currentInputData
@@ -28,7 +28,7 @@ export default observer(() => {
         <input
           type='text'
           className='transfer__input'
-          value={numberWithSpaces(value)}
+          value={formatNum(value, ' ')}
           onChange={e => setValue(e.target.value)}
         />
       </div>

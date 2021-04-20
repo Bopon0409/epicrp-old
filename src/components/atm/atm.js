@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
-import bg from './images/atm-bg.png'
-import AtmHeader from './modules/atm-header'
-import AtmBody from './modules/atm-body'
 import { observer } from 'mobx-react-lite'
 import store from '../../store/atm/atm-store'
+import AtmHeader from './modules/atm-header'
+import AtmBody from './modules/atm-body'
+
+import bg from './images/atm-bg.png'
 
 export default observer(() => {
   const style = { display: store.state.active ? 'block' : 'none' }

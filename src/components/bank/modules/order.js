@@ -1,8 +1,8 @@
-import { observer } from 'mobx-react-lite'
 import React from 'react'
-import SideBarOrder from './side-bar-order'
+import { observer } from 'mobx-react-lite'
 import store from '../../../store/bank/bank-store'
 import { AreaChart, Area, YAxis, XAxis, Tooltip } from 'recharts'
+import SideBarOrder from './side-bar-order'
 
 export default observer(() => {
   const width = window.innerWidth / 2 < 960 ? window.innerWidth / 2 : 960

@@ -1,8 +1,8 @@
-import { observer } from 'mobx-react-lite'
 import React from 'react'
-import { numberWithComma, cardNumber } from '../../../services/services'
-import numIcon from '../images/account-num-icon.svg'
+import { observer } from 'mobx-react-lite'
 import store from '../../../store/bank/bank-store'
+import { formatNum, formatCardNumber } from '../../../services/services'
+import numIcon from '../images/account-num-icon.svg'
 
 export default observer(({ account, id: accountId }) => {
   const { balance, name, id, num } = account
@@ -20,8 +20,8 @@ export default observer(({ account, id: accountId }) => {
       <div className='card'>
         <img src='' alt='' className='card__refresh-icon' />
         <div className='card__balance-text'>Текущий баланс</div>
-        <div className='card__balance'>$ {numberWithComma(balance)}</div>
-        <div className='card__id'>{cardNumber(id)}</div>
+        <div className='card__balance'>$ {formatNum(balance, ',')}</div>
+        <div className='card__id'>{formatCardNumber(id)}</div>
       </div>
       <div className='card__num-hint'>{name}</div>
       <div className='card__num-container'>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { numberWithDott } from '../../../services/services'
+import { formatNum } from '../../../services/services'
 
 export default function SideBarTransfer ({ data }) {
   const list = data.map(({ name, change }, i) => (
@@ -8,7 +8,7 @@ export default function SideBarTransfer ({ data }) {
         <div className='item__title'>{name}</div>
       </div>
       <div className={`item__value ${change < 0 && 'item__value_negative'}`}>
-        {numberWithDott(change)}$
+        {formatNum(change, '.')}$
       </div>
     </div>
   ))

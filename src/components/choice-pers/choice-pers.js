@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
-
 import SlotPers from './modules/slot-pers'
 import store from '../../store/choise-pers/choise-pers-store'
-
 import playBtnIcon from './images/play-btn-icon.svg'
 
 export default observer(() => {

@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
-
 import store from '../../store/auth/auth-store'
 import RegisterForm from './modules/register-form'
 import AuthForm from './modules/auth-form'
-
 import NewsItem from './modules/news-item'
 import logoImg from './images/logo.svg'
 import refreshImg from './images/refresh.svg'
