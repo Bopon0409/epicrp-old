@@ -36,8 +36,8 @@ window.test = {
 // current tests
 const currentTests = () => {
   bgTests.setBgActive(true)
-  atmTests.setActive(true)
-  atmTests.setData()
+  bankTests.setActive(true)
+  bankTests.updateData()
 }
 
 setTimeout(() => process.env.NODE_ENV === 'development' && currentTests(), 0)
