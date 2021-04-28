@@ -122,7 +122,7 @@ class ChatStore {
 
   setChatActive = active => {
     if (this.state.isShow) {
-      if (window.mp) window.mp.trigger('cef_cl_showCursor', active)
+      if (window.mp) window.mp.trigger('Client.Cursor:Show', active)
       this.state.active = active
       this.chatDischarge()
 
