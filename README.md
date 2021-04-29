@@ -5,11 +5,9 @@
 - `npm i` Установить зависимости
 - `npm run dev` Запуск development сервера
 - `npm run build` Компиляция билда
-- `npm run analyze` Запуск анализа билда
 - `npm run zip` Компиляция и архивация билда
-(*только в linux среде, необходим debian пакет `zip`, установка: `sudo apt install zip`*)
+- `npm run analyze` Запуск анализа билда
 - `npm run stats` Просмотр статистика проекта (кода)
-(*необходим npm пакет `sloc`, установка: `npm install -g sloc`*)
 
 # Документация
 
