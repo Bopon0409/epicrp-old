@@ -28,6 +28,29 @@ class AtmStore {
     this.state.cash = cash
   }
 
+  submitHandler = () => {
+    const {
+      receiverAccount,
+      transferSum,
+      cashOutSum,
+      topUpSum
+    } = this.state.transferData
+    switch (this.state.currentPage) {
+      case 'Снятие наличных':
+        return window.clientTrigger('atm.take', cashOutSum)
+      case 'Пополнить счёт':
+        return window.clientTrigger('atm.put', topUpSum)
+      case 'Перевод средств':
+        return window.clientTrigger(
+          'atm.transfer',
+          receiverAccount,
+          transferSum
+        )
+      default:
+        return null
+    }
+  }
+
   get currentInputData () {
     switch (this.state.currentPage) {
       case 'Снятие наличных':

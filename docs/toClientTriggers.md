@@ -24,6 +24,12 @@
 - `mp.trigger('character.update', type: String, value: String or Number)` - Пользователь что-то изменил при создании персонажа
 - `mp.trigger('character.created')` - Пользователь закончил создание персонажа
 
+## Банкомат
+
+- `mp.trigger('atm.put', money: int)` - Пользователь положил деньги на карту
+- `mp.trigger('atm.take', money: int)` - Пользователь снял наличные
+- `mp.trigger('atm.transfer', addressee: int, money: int)` - Пользователь сделал перевод
+
 #### Список параметров `character.update`
 
 1. name - String, Имя

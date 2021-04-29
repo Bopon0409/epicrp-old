@@ -5,7 +5,6 @@ import Slider from './slider'
 
 export default observer(() => {
   const { state, onValueChange } = store
-  console.log(state)
 
   const sliderList = []
   for (const item in state) {

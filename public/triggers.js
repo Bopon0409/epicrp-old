@@ -30,9 +30,7 @@ function clientTrigger (triggerName, ...args) {
     if (args.length)
       args = args.map(el => (typeof el === 'object' ? JSON.stringify(el) : el))
     window.mp.trigger(triggerName, ...args)
-  } else {
-    // console.log(triggerName, ...args)
-  }
+  } else console.log(triggerName, ...args)
 }
 
 window.EventManager = EventManager

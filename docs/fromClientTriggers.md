@@ -50,9 +50,24 @@
 
 ### Банк
 
+- `window.trigger('bank.toggle', active: bolean)` - Открыть/закрыть банк
+- `window.trigger('bank.update', data: json string)` - Загрузить данные банка
+
 ### Банкомат
 
+- `window.trigger('atm.toggle', active: bolean)` - Открыть/закрыть банкомат
+- `window.trigger('atm.update', data: json string)` - Загрузить данные банкомата
+
 ### Спиидометр
+
+- `window.trigger('speedometer.active', active: bolean)` - Открыть/закрыть спидометр
+- `window.trigger('speedometer.type', type: 0 | 1)` - Выбор типа спидометра
+- `window.trigger('speedometer.speed', speed: int)` - Изменение скорости
+- `window.trigger('speedometer.maxSpeed', maxSpeed: int)` - Изменение макс скорости
+- `window.trigger('speedometer.fuel', fuel: int)` - Изменение топлива (1-100)
+- `window.trigger('speedometer.badge', badge: jsonString)` - Открыть/закрыть спидометр
+
+##### Примеры json 'speedometer.badge' в speedometer-badges.json
 
 # chatAPI
 
