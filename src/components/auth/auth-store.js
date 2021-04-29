@@ -53,7 +53,13 @@ class AuthStore {
     this.state.errorMsg = ''
   }
 
-  setAuthActive = active => (this.state.active = active)
+  setAuthActive = (active, login, pass) => {
+    this.state.active = active
+    if (login && pass) {
+      this.state.login = login
+      this.state.pass = pass
+    }
+  }
   setErrorMsg = msg => (this.state.errorMsg = msg)
   setField = (fieldName, value) => (this.state[fieldName] = value)
   checkBoxToggle = () => (this.state.checkBox = !this.state.checkBox)
@@ -84,7 +90,7 @@ class AuthStore {
   }
 
   authValidate = () => {
-    const { login, pass } = this.state
+    const { login, pass, checkBox } = this.state
 
     if (/^[a-zA-Z1-9]+$/.test(login) === false)
       return this.setErrorMsg(this.ERROR_MESSAGES[0])
@@ -96,7 +102,7 @@ class AuthStore {
       return this.setErrorMsg(this.ERROR_MESSAGES[3])
 
     this.clearInputs()
-    window.clientTrigger('auth.signIn', login, pass)
+    window.clientTrigger('auth.signIn', login, pass, checkBox)
   }
 
   registerValidate = () => {

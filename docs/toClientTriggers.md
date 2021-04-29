@@ -7,7 +7,7 @@
 
 ## Авторизация
 
-- `mp.trigger('auth.signUp', login: string, pass: string)` - Авторизация
+- `mp.trigger('auth.signUp', login: string, pass: string, remember: boolean)` - Авторизация
 - `mp.trigger('auth.signIn', login: string, email: string, pass: string)` - Регистрация
 
 ## Выбор персонажа

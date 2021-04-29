@@ -9,7 +9,7 @@
 
 ### Авторизация
 
-- `window.trigger('auth.toggle', active: bolean)` - Открыть/Закрыть окно авторизации
+- `window.trigger('auth.toggle', active: bolean, login?: string, pass?: string)` - Открыть/Закрыть окно авторизации (логин и пароль опционально)  
 - `window.trigger('auth.authAnswer', result: boolean)` - Ответ на авторизацию
 - `window.trigger('auth.registerAnswer', result: boolean` - Ответ на регистрацию
 
@@ -33,7 +33,6 @@
 - `window.trigger('hud.geo', data: json string)` - Загрузка данных гео локации в hud
 - `window.trigger('hud.micro', data: json string)` - Загрузка данных микрофона в hud
 - `window.trigger('hud.mission', data: json string)` - Загрузка данных миссии в hud
-- `window.trigger('hud.speed', data: json string)` - Загрузка данных спидометра в hud
 - `window.trigger('hud.online', data: json string)` - Загрузка данных онлайна в hud
 - `window.trigger('hud.time', data: json string)` - Загрузка данных времени в hud
 
@@ -48,6 +47,12 @@
 ### Меню взаимодействия
 
 - `window.trigger('interaction-menu.toggle', active: bolean, data: json string)` - Открыть меню взаимодействия (с загрузкой данных)
+
+### Банк
+
+### Банкомат
+
+### Спиидометр
 
 # chatAPI
 
