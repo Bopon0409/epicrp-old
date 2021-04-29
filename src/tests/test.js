@@ -8,6 +8,7 @@ import * as testHud from './modules/hud.test'
 import * as testInteractionMenu from './modules/interaction-menu.test'
 import * as testBank from './bank/bank.test'
 import * as testAtm from './atm/atm.test'
+import * as testSpeedometer from './speedometer/speedometer.test'
 
 const { ...bgTests } = testBg
 const { ...createPersTests } = testCreatePers
@@ -19,6 +20,7 @@ const { ...hudTests } = testHud
 const { ...interactionMenuTests } = testInteractionMenu
 const { ...bankTests } = testBank
 const { ...atmTests } = testAtm
+const { ...speedometerTests } = testSpeedometer
 
 window.test = {
   bgTests,
@@ -30,14 +32,18 @@ window.test = {
   hudTests,
   interactionMenuTests,
   bankTests,
-  atmTests
+  atmTests,
+  speedometerTests
 }
 
 // current tests
 const currentTests = () => {
-  bgTests.setBgActive(true)
-  bankTests.setActive(true)
-  bankTests.updateData()
+  testBg.setBgActive(true)
+  testSpeedometer.setActive(true)
+  // testSpeedometer.testSpeed()
+  // testSpeedometer.testFuel()
+  // testSpeedometer.testBadges()
+  
 }
 
 setTimeout(() => process.env.NODE_ENV === 'development' && currentTests(), 0)

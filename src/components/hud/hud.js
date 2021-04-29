@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
 import store from '../../store/hud/hud-store'
-import Speedometer from './modules/speedometer'
 import RightBlock from './modules/right-block'
 import Alerts from './modules/alerts'
 import LeftBlock from './modules/left-block'
@@ -19,7 +18,7 @@ export default observer(() => {
     const { EventManager: em } = window
 
     const { setHudData, setHudOnline, setHudActive, setGeoHudData } = store
-    const { setMicroHudData, setMissionHudData, setSpeedometerHudData } = store
+    const { setMicroHudData, setMissionHudData } = store
     const { addAlert } = store
 
     em.addHandler('hud.notify', addAlert)
@@ -31,7 +30,6 @@ export default observer(() => {
     em.addHandler('hud.geo', setGeoHudData)
     em.addHandler('hud.micro', setMicroHudData)
     em.addHandler('hud.mission', setMissionHudData)
-    em.addHandler('hud.speed', setSpeedometerHudData)
 
     return () => {
       em.removeHandler('hud.notify', addAlert)
@@ -43,7 +41,6 @@ export default observer(() => {
       em.removeHandler('hud.geo', setGeoHudData)
       em.removeHandler('hud.micro', setMicroHudData)
       em.removeHandler('hud.mission', setMissionHudData)
-      em.removeHandler('hud.speed', setSpeedometerHudData)
     }
   }, [])
 
@@ -65,7 +62,6 @@ export default observer(() => {
       </div>
 
       <LeftBlock />
-      <Speedometer />
       <RightBlock />
       <Alerts />
     </div>

@@ -11,6 +11,7 @@ import TestModal from '../test-modal'
 import InteractionMenu from '../interaction-menu'
 import Bank from '../bank'
 import Atm from '../atm'
+import Speedometer from '../speedometer'
 
 import 'react-input-range/lib/css/index.css'
 
@@ -34,6 +35,7 @@ export default function App () {
       <CreatePers />
       <InteractionMenu />
       <Atm />
+      <Speedometer />
     </>
   )
 }
