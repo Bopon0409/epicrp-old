@@ -6,7 +6,7 @@ import store from '../speedometer-store'
 export default observer(() => {
   const { speed, fuel, badges } = store.state
   const { speedNulls } = store
-  console.log(speedNulls)
+
 
   return (
     <div className='simple-speedometer'>

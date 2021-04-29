@@ -8,7 +8,8 @@ class SpeedometerStore {
   state = {
     active: false,
     type: 0,
-    speed: 10,
+    speed: 0,
+    maxSpeed: 300,
     fuel: 0,
     badges: {
       fuel: false,
@@ -22,6 +23,7 @@ class SpeedometerStore {
   setActive = active => (this.state.active = active)
   setType = type => (this.state.type = type)
   setSpeed = speed => (this.state.speed = speed)
+  setMaxSpeed = max => (this.state.maxSpeed = max)
   setFuel = fuel => (this.state.fuel = fuel)
   setBadge = ({ badgeName, value }) => (this.state.badges[badgeName] = value)
 

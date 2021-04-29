@@ -40,9 +40,9 @@ window.test = {
 const currentTests = () => {
   testBg.setBgActive(true)
   testSpeedometer.setActive(true)
-  // testSpeedometer.testSpeed()
-  // testSpeedometer.testFuel()
-  // testSpeedometer.testBadges()
+  testSpeedometer.testSpeed()
+  testSpeedometer.testFuel()
+  testSpeedometer.testBadges()
   
 }
 
