@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../store/create-pers/create-pers-store'
+import store from './create-pers-store/create-pers-store'
 import Step1 from './modules/step1'
 import Step2 from './modules/step2'
 import Step3 from './modules/step3'

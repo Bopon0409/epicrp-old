@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/bank/bank-store'
+import store from '../bank-store'
 import MainMenuItemSvg from '../svg/control-action-icon'
 
 export default observer(({ type }) => {

@@ -1,64 +1,45 @@
 import { observer } from 'mobx-react-lite'
 import React, { useEffect } from 'react'
 import Select from 'react-select'
-import store from '../../store/test-modal/test-modal-store'
+import store from './test-modal-store'
 
 export default observer(() => {
-  const { currentModule, testsModules, checkbox, active } = store.state
-  const { setCurrentModule, setCheckbox } = store
+  const { curTest, checkbox, active } = store.state
+  const { setCurTest, setCheckbox, checkboxClasses } = store
+  const tests = window.test
 
   useEffect(() => {
-    const pressKeyHandler = event =>
-      event.keyCode === 120 && store.setActive(!store.state.active)
-
+    const { pressKeyHandler } = store
     document.addEventListener('keydown', pressKeyHandler)
     return () => document.removeEventListener('keydown', pressKeyHandler)
   }, [])
 
-  const selectOptions = Object.getOwnPropertyNames(testsModules).map(el => (
-    {
-      value: el,
-      label: el
-    }
-  ))
+  const testList = Object.getOwnPropertyNames(tests)
+  const selectOptions = testList.map(el => ({ value: el, label: el }))
 
-  const testButtons = Object.getOwnPropertyNames(
-    testsModules[currentModule]).map(
+  const testButtons = Object.getOwnPropertyNames(tests[curTest]).map(
     (el, i) => {
-      return el !== 'title' ? (
+      return (
         <div
           className='test-modal__btn'
           key={i}
-          onClick={() => testsModules[currentModule][el](checkbox)}
+          onClick={() => tests[curTest][el](checkbox)}
         >
           {el}
         </div>
-      ) : null
+      )
     }
   )
 
   return (
-    <div
-      className='test-modal'
-      style={active ? { display: 'block' } : { display: 'none' }}
-    >
+    <div className='test-modal' style={{ display: active ? 'block' : 'none' }}>
       <Select
         options={selectOptions}
-        onChange={option => {
-          setCurrentModule(option.value)
-          setCheckbox(false)
-        }}
-        value={{ value: currentModule, label: currentModule }}
+        onChange={option => setCurTest(option.value)}
+        value={{ value: curTest, label: curTest }}
       />
-      <div
-        className='test-modal__checkbox'
-        onClick={() => setCheckbox(!checkbox)}
-      >
-        <div
-          className={
-            checkbox ? 'checkbox__box checkbox__box_active' : 'checkbox__box'
-          }
-        />
+      <div className='test-modal__checkbox' onClick={setCheckbox}>
+        <div className={checkboxClasses} />
         <div className='checkbox__label'>Bolean first param</div>
       </div>
       <div className='test-modal__container'>{testButtons}</div>

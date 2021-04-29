@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/bank/bank-store'
+import store from '../bank-store'
 import ToggleBar from './toggle-bar'
 import SideBarTransfer from './side-bar-transfer'
 import transferIcon from '../images/transfer-icon.svg'

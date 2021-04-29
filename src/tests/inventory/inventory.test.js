@@ -23,4 +23,4 @@ const testInventory = () => {
   window.trigger('inventory.update', jsonData4)
 }
 
-export { setInventoryActive, testInventory }
+window.test.inventory = { setInventoryActive, testInventory }

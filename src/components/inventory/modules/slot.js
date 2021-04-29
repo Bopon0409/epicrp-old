@@ -3,7 +3,7 @@ import { useDroppable } from '@dnd-kit/core'
 import Draggable from './draggable'
 import Item from './item'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/inventory/inventory-store'
+import store from '../inventory-store'
 
 export default observer(({ id, item }) => {
   const isNotBlockTrade1 = id < 301 || id > 350 || !store.state.trade.isReady1

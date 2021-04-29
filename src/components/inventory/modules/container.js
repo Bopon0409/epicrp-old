@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { DndContext } from '@dnd-kit/core'
-import store from '../../../store/inventory/inventory-store'
+import store from '../inventory-store'
 
 import bagIcon from '../images/bag.png'
 import SlotList from './slot-list'

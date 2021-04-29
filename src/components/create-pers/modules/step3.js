@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/create-pers/create-pers-store'
+import store from '../create-pers-store/create-pers-store'
 import Menu from './menu'
 import Face from './face'
 import Leather from './leather'

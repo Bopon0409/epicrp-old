@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/create-pers/clothes-store'
+import store from '../create-pers-store/clothes-store'
 import ToggleImg from './toggle-img'
 import ToggleColor from './toggle-color'
 

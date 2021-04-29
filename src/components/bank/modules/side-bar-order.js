@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/bank/bank-store'
+import store from '../bank-store'
 import numIcon from '../images/account-num-icon.svg'
 
 export default observer(({ data }) => {

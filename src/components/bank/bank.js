@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../store/bank/bank-store'
+import store from './bank-store'
 import Menu from './modules/menu'
 import MainPage from './modules/main-page'
 import bankLogo from './images/bank-logo.svg'

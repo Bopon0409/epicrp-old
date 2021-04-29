@@ -5,7 +5,7 @@ import {
   buildStyles
 } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
-import store from '../../../store/inventory/inventory-store'
+import store from '../inventory-store'
 import textHint from '../images/weight-hint.svg'
 
 export default observer(() => {

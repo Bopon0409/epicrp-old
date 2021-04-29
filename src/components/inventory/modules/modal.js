@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React, { useEffect } from 'react'
-import store from '../../../store/inventory/inventory-store'
+import store from '../inventory-store'
 import InputRange from 'react-input-range'
 import icon from '../images/modal-icon.svg'
 

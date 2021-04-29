@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/hud/hud-store'
+import store from '../hud-store'
 import { formatNum } from '../../../services/services'
 import geoIcon from '../images/geo-icon.svg'
 import moneyIcon from '../images/money-icon.svg'

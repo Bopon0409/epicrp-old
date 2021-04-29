@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/create-pers/eyes-store'
+import store from '../create-pers-store/eyes-store'
 import ToggleColor from './toggle-color'
 import Slider from './slider'
 

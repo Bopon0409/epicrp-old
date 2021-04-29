@@ -1,7 +1,8 @@
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 import InputRange from 'react-input-range'
 
-export default function Slider (props) {
+export default observer(props => {
   const { onValueChange, min, max, step } = props
   const { title, value, valueName } = props.item
 
@@ -22,4 +23,4 @@ export default function Slider (props) {
       </div>
     </div>
   )
-}
+})

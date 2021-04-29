@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react'
-import { observer } from 'mobx-react-lite'
-import store from '../../store/bg/bg-store.js'
+import { useEffect, useState } from 'react'
 
-export default observer(() => {
+export default function Bg () {
+  const [active, setActive] = useState(false)
   useEffect(() => {
     const { EventManager: em } = window
-    em.addHandler('hud.toggleBg', store.setActive)
-    return () => em.removeHandler('hud.toggleBg', store.setActive)
+    em.addHandler('hud.toggleBg', setActive)
+    return () => em.removeHandler('hud.toggleBg', setActive)
   }, [])
 
-  const bgStyle = { display: store.active ? 'block' : 'none' }
+  const bgStyle = { display: active ? 'block' : 'none' }
   return <div className='background-test' style={bgStyle}></div>
-})
+}

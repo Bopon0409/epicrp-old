@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/bank/bank-store'
+import store from '../bank-store'
 import { AreaChart, Area, YAxis, XAxis, Tooltip } from 'recharts'
 import SideBarOrder from './side-bar-order'
 

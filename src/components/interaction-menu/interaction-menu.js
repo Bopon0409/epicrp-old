@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import React, { useEffect } from 'react'
 import './circular-menu.css'
-import store from '../../store/interaction-menu/interaction-menu-store'
+import store from './interaction-menu-store'
 
 export default observer(() => {
   const { active, currentText } = store.state

@@ -1,10 +1,11 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/create-pers/face-store'
+import store from '../create-pers-store/face-store'
 import Slider from './slider'
 
 export default observer(() => {
   const { state, onValueChange } = store
+  console.log(state)
 
   const sliderList = []
   for (const item in state) {

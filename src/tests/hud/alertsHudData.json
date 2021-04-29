@@ -1,0 +1,22 @@
+[
+  {
+    "type": "error",
+    "text": "Alert1"
+  },
+  {
+    "type": "confirm",
+    "text": "Alert2"
+  },
+  {
+    "type": "warning",
+    "text": "Alert3"
+  },
+  {
+    "type": "error",
+    "text": "Alert4"
+  },
+  {
+    "type": "confirm",
+    "text": "Alert5"
+  }
+]

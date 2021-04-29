@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/bank/bank-store'
+import store from '../bank-store'
 import ToggleBar from './toggle-bar'
 import Card from './card'
 import EmptyCard from './empty-card'

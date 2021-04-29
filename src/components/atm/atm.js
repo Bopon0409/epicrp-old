@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../store/atm/atm-store'
+import store from './atm-store'
 import AtmHeader from './modules/atm-header'
 import AtmBody from './modules/atm-body'
 

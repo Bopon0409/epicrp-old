@@ -1,5 +1,5 @@
 import React from 'react'
-import store from '../../../store/inventory/inventory-store'
+import store from '../inventory-store'
 
 export default function CloseBtn () {
   const clickHandler = () => store.setInventoryActive(false)

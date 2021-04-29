@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/create-pers/create-pers-store'
+import store from '../create-pers-store/create-pers-store'
 import prevImg from '../images/prev.svg'
 import prevImgActive from '../images/prev-active.svg'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/create-pers/leather-store'
+import store from '../create-pers-store/leather-store'
 import ToggleBar from './toggle-bar'
 
 export default observer(() => {

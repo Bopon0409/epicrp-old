@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/create-pers/create-pers-store'
+import store from '../create-pers-store/create-pers-store'
 import InputRange from 'react-input-range'
 import { mothers, fathers } from '../data'
 

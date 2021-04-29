@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../store/hud/hud-store'
+import store from './hud-store'
 import RightBlock from './modules/right-block'
 import Alerts from './modules/alerts'
 import LeftBlock from './modules/left-block'

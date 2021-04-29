@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/hud/hud-store'
+import store from '../hud-store'
 
 const IndicatorSvg1 = observer(() => {
   return store.state.indicators[0] ? (

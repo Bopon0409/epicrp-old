@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/inventory/inventory-store'
+import store from '../inventory-store'
 
 export default observer(({ id, item }) => {
   const { quantity, weight, idItem } = item

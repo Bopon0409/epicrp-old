@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/choise-pers/choise-pers-store'
+import store from '../choise-pers-store'
 import { formatNum } from '../../../services/services'
 import BuyView from './buy-view'
 import EmptyView from './empty-view'

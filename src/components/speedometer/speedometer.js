@@ -27,8 +27,6 @@ export default observer(() => {
     }
   }, [])
 
-  console.log(active, type)
-
   return (
     <div className='speedometer' style={{ display: active ? 'block' : 'none' }}>
       {type === 0 && <SimpleSpeedometer />}

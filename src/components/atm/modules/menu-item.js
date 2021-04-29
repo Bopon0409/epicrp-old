@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/atm/atm-store'
+import store from '../atm-store'
 import MenuIcon from '../svg/menu-icon'
 
 export default observer(({ data: { title, text, id } }) => {

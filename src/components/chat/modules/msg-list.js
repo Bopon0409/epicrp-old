@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/chat/chat-store'
+import store from '../chat-store'
 const className = require('classnames')
 
 export default observer(({ skrollRef }) => {

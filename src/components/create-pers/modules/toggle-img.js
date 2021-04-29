@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/create-pers/create-pers-store'
+import store from '../create-pers-store/create-pers-store'
 
 export default observer(
   ({ item: { title, value, valueName }, onValueChange, type }) => {

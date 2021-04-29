@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/atm/atm-store'
+import store from '../atm-store'
 import Menu from './menu'
 import Transfer from './transfer'
 import backArrow from '../images/back-arrow.svg'

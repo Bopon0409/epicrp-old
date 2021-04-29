@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
 import Slot from './slot'
-import store from '../../../store/inventory/inventory-store'
+import store from '../inventory-store'
 
 export default observer(({ fromSlot, toSlot, bagType, skroll }) => {
   const list = []

@@ -4,4 +4,4 @@ const jsonData = JSON.stringify(data)
 const setActive = active => window.trigger('atm.toggle', active)
 const setData = () => window.trigger('atm.update', jsonData)
 
-export { setActive, setData }
+window.test.atm = { setActive, setData }

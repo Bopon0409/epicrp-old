@@ -3,7 +3,7 @@ const setActive = (active = true) =>
 
 const setMaxSpeed = max => window.trigger('speedometer.maxSpeed', max)
 
-const setType = (type = 1) => window.trigger('speedometer.type', type)
+const setType = () => window.trigger('speedometer.type', 1)
 
 const testFuel = () => {
   let fuel = 0
@@ -42,4 +42,11 @@ const testBadges = () => {
   }, 500)
 }
 
-export { setActive, setType, testSpeed, testFuel, testBadges, setMaxSpeed }
+window.test.speedometer = {
+  setActive,
+  setType,
+  testSpeed,
+  testFuel,
+  testBadges,
+  setMaxSpeed
+}

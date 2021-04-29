@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/inventory/inventory-store'
+import store from '../inventory-store'
 import React from 'react'
 import EquipmentSlot from './equipment-slot'
 

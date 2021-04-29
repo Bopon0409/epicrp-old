@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/auth/auth-store'
+import store from '../auth-store'
 
 export default observer(() => {
   const { email, login, pass, pass2, errorMsg } = store.state

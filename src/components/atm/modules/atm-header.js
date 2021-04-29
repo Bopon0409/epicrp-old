@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../../../store/atm/atm-store'
+import store from '../atm-store'
 import { formatNum } from '../../../services/services'
 import atmLogo from '../images/atm-logo.svg'
 import balanceLogo from '../images/balance-logo.svg'

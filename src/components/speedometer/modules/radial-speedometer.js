@@ -6,7 +6,7 @@ import {
   buildStyles
 } from 'react-circular-progressbar'
 import store from '../speedometer-store'
-import { Fuel, Engine, Lock, Lights, Electricity } from './speedometer-svg'
+import { Engine, Lock, Lights, Electricity } from './speedometer-svg'
 
 export default observer(() => {
   const { speed, fuel, badges, maxSpeed } = store.state
