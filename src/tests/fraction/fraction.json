@@ -1,0 +1,321 @@
+{
+  "name": "Los Santos Police Departament",
+  "capabilities": {
+    "controlStorage": true,
+    "controlRanks": true,
+    "controlGroups": true,
+    "controlAds": true,
+    "controlCars": {
+      "changePermissions": true,
+      "spawn": true
+    },
+    "controlMembers": {
+      "changeRanks": [1, 2, 3, 4, 5, 6, 7, 8],
+      "changeGroups": true,
+      "giveReprimands": true,
+      "giveAward": true,
+      "dismiss": true
+    }
+  },
+  "description": "Департа́мент поли́ции Лос-А́нджелеса (англ. Los Angeles Police Department, LAPD) — правоохранительный орган города Лос-Анджелес, штат Калифорния, США. Имея штат в 10002 офицера полиции и 2952 гражданских сотрудника, он контролирует площадь 498 квадратных миль (1290 км²) и является третьим по величине полицейским департаментом в Соединённых Штатах после Департамента полиции Нью-Йорка и Департамента полиции Чикаго. Департамент был обильно представлен в многочисленных фильмах, романах и телешоу на протяжении всей своей истории. Он также был связан с целым рядом противоречий, главным образом связанных с расовой враждой, жестокостью полицейских и коррупцией в полиции.",
+  "ads": [
+    {
+      "author": "Ched Nocksfeel",
+      "authorRank": "Лидер фракции",
+      "lastChange": "26.04.2021 в 17:30",
+      "text": "1. Количество сотрудников для проведения допроса: от 2-х до 4-х. При этом в комнате с подозреваемым может находиться не более 2-х сотрудников.\n    1.1 В случае, если подозреваемый в результате допроса оказывается в нокауте, он подлежит немедленному освобождению.\n    1.2 В случае, если подозреваемы отказывается отыгрывать РП, ведет себя неадекватно, при этом со стороны сотрудников правила не нарушены - он подлежит немедленному освобождению. Так же, такой игрок понесет наказание за уход от РП в более строгом формате. | WARN\n    Примечание: если этот игрок состоит в криминальной организации - лидеру будет выдан выговор.\n    "
+    },
+    {
+      "author": "Ched Nocksfeel",
+      "authorRank": "Лидер фракции",
+      "lastChange": "26.04.2021 в 17:30",
+      "text": "1. Количество сотрудников для проведения допроса: от 2-х до 4-х. При этом в комнате с подозреваемым может находиться не более 2-х сотрудников.\n    1.1 В случае, если подозреваемый в результате допроса оказывается в нокауте, он подлежит немедленному освобождению.\n    1.2 В случае, если подозреваемы отказывается отыгрывать РП, ведет себя неадекватно, при этом со стороны сотрудников правила не нарушены - он подлежит немедленному освобождению. Так же, такой игрок понесет наказание за уход от РП в более строгом формате. | WARN\n    Примечание: если этот игрок состоит в криминальной организации - лидеру будет выдан выговор.\n    "
+    }
+  ],
+  "ranks": [
+    {
+      "rankNum": 1,
+      "rankName": "Police officer III"
+    },
+    {
+      "rankNum": 2,
+      "rankName": "Police officer III"
+    },
+    {
+      "rankNum": 3,
+      "rankName": "Police officer III"
+    },
+    {
+      "rankNum": 4,
+      "rankName": "Police officer III"
+    },
+    {
+      "rankNum": 5,
+      "rankName": "Police officer III"
+    },
+    {
+      "rankNum": 6,
+      "rankName": "Police officer III"
+    },
+    {
+      "rankNum": 7,
+      "rankName": "Police officer III"
+    },
+    {
+      "rankNum": 8,
+      "rankName": "Police officer III"
+    },
+    {
+      "rankNum": 9,
+      "rankName": "Police officer III"
+    },
+    {
+      "rankNum": 10,
+      "rankName": "Police officer III"
+    }
+  ],
+  "ranksSettings": [
+    {
+      "rankName": 1,
+      "settingsList": [
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        }
+      ]
+    },
+    {
+      "rankName": 2,
+      "settingsList": [
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        }
+      ]
+    },
+    {
+      "rankName": 3,
+      "settingsList": [
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "groupName": "Patroul Division",
+      "membersQuantity": 40,
+      "onlineMembersQuantity": 14,
+      "ranks": [
+        {
+          "rankNum": 1,
+          "settingsList": [
+            {
+              "rank": 1,
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "rank": 2,
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "rank": 3,
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "cars": [
+    {
+      "name": "POLICE 2",
+      "geo": "Гараж",
+      "fuel": 40,
+      "groupName": "Patroul Division",
+      "permissions": {
+        "groups": ["Patroul Division", "Traffic Division", "Academy"],
+        "ranks": [1, 2, 3, 4, 5, 6]
+      }
+    }
+  ],
+  "storage": {
+    "open": false,
+    "history": [
+      {
+        "name": "Tom Lindbrook",
+        "rank": 4,
+        "data": "27/04/2021",
+        "action": "Взял со склада M4A1"
+      },
+      {
+        "name": "Tom Lindbrook",
+        "rank": 4,
+        "data": "27/04/2021",
+        "action": "Взял со склада M4A1"
+      },
+      {
+        "name": "Tom Lindbrook",
+        "rank": 4,
+        "data": "27/04/2021",
+        "action": "Взял со склада M4A1"
+      },
+      {
+        "name": "Tom Lindbrook",
+        "rank": 4,
+        "data": "27/04/2021",
+        "action": "Взял со склада M4A1"
+      },
+      {
+        "name": "Tom Lindbrook",
+        "rank": 4,
+        "data": "27/04/2021",
+        "action": "Взял со склада M4A1"
+      }
+    ]
+  },
+  "members": [
+    {
+      "online": true,
+      "name": "Ched nocksfeel",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "sex": "male",
+      "phone": "1234-1234",
+      "group": "Patroul Division",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      },
+      "activityList": [
+        {
+          "activityName": "Статистика активности",
+          "activityFields": ["дата", "вход", "выход", "был онлайн"],
+          "activityList": [
+            ["26/04/2021", "17:03:03", "17:05:03", "00:02:03"],
+            ["26/04/2021", "17:03:03", "17:05:03", "00:02:03"],
+            ["26/04/2021", "17:03:03", "17:05:03", "00:02:03"]
+          ]
+        },
+        {
+          "activityName": "Статистика арестов",
+          "activityFields": ["дата", "вход", "подозреваемый", "срок"],
+          "activityList": [
+            ["26/04/2021", "17:03:03", "ID 555", "2 звезды"],
+            ["26/04/2021", "17:03:03", "ID 555", "2 звезды"],
+            ["26/04/2021", "17:03:03", "ID 555", "2 звезды"]
+          ]
+        },
+        {
+          "activityName": "Статистика штрафов",
+          "activityFields": ["дата", "вход", "подозреваемый", "сумма"],
+          "activityList": [
+            ["26/04/2021", "17:03:03", "ID 555", "$500.00"],
+            ["26/04/2021", "17:03:03", "ID 555", "$500.00"],
+            ["26/04/2021", "17:03:03", "ID 555", "$500.00"]
+          ]
+        }
+      ]
+    },
+    {
+      "online": true,
+      "name": "Ched nocksfeel",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "sex": "male",
+      "phone": "1234-1234",
+      "group": "Patroul Division",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      },
+      "activityList": [
+        {
+          "activityName": "Статистика активности",
+          "activityFields": ["дата", "вход", "выход", "был онлайн"],
+          "activityList": [
+            ["26/04/2021", "17:03:03", "17:05:03", "00:02:03"],
+            ["26/04/2021", "17:03:03", "17:05:03", "00:02:03"],
+            ["26/04/2021", "17:03:03", "17:05:03", "00:02:03"]
+          ]
+        },
+        {
+          "activityName": "Статистика арестов",
+          "activityFields": ["дата", "вход", "подозреваемый", "срок"],
+          "activityList": [
+            ["26/04/2021", "17:03:03", "ID 555", "2 звезды"],
+            ["26/04/2021", "17:03:03", "ID 555", "2 звезды"],
+            ["26/04/2021", "17:03:03", "ID 555", "2 звезды"]
+          ]
+        },
+        {
+          "activityName": "Статистика штрафов",
+          "activityFields": ["дата", "вход", "подозреваемый", "сумма"],
+          "activityList": [
+            ["26/04/2021", "17:03:03", "ID 555", "$500.00"],
+            ["26/04/2021", "17:03:03", "ID 555", "$500.00"],
+            ["26/04/2021", "17:03:03", "ID 555", "$500.00"]
+          ]
+        }
+      ]
+    }
+  ]
+}
