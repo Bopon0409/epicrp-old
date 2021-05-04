@@ -11,7 +11,7 @@
     },
     "controlSettings": true,
     "controlMembers": {
-      "changeRanks": 6,
+      "changeRanks": false,
       "changeGroups": true,
       "giveReprimands": true,
       "giveAward": true,
@@ -42,51 +42,61 @@
     {
       "rankNum": 1,
       "rankName": "Police officer III",
+      "groupId": 0,
       "color": "#000000"
     },
     {
       "rankNum": 2,
       "rankName": "Police officer III",
+      "groupId": 0,
       "color": "#000000"
     },
     {
       "rankNum": 3,
       "rankName": "Police officer III",
+      "groupId": 0,
       "color": "#000000"
     },
     {
       "rankNum": 4,
       "rankName": "Police officer III",
+      "groupName": false,
       "color": "#000000"
     },
     {
       "rankNum": 5,
       "rankName": "Police officer III",
+      "groupId": false,
       "color": "#000000"
     },
     {
       "rankNum": 6,
       "rankName": "Police officer III",
+      "groupId": false,
       "color": "#000000"
     },
     {
       "rankNum": 7,
       "rankName": "Police officer III",
+      "groupId": false,
       "color": "#000000"
     },
     {
       "rankNum": 8,
       "rankName": "Police officer III",
+      "groupId": false,
       "color": "#000000"
     },
     {
       "rankNum": 9,
       "rankName": "Police officer III",
+      "groupId": false,
       "color": "#000000"
     },
     {
       "rankNum": 10,
       "rankName": "Police officer III",
+      "groupId": false,
       "color": "#000000"
     }
   ],
@@ -169,6 +179,7 @@
   ],
   "groups": [
     {
+      "groupId": 0,
       "groupName": "Patroul Division",
       "membersQuantity": 40,
       "onlineMembersQuantity": 14,
@@ -259,6 +270,7 @@
       "name": "Ched nocksfeel",
       "rankName": "Police officer III",
       "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
       "sex": "male",
       "phone": "1234-1234",
       "group": "Patroul Division",
@@ -274,6 +286,7 @@
       "name": "Ched nocksfeel",
       "rankName": "Police officer III",
       "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
       "sex": "male",
       "phone": "1234-1234",
       "group": "Patroul Division",
