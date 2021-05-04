@@ -63,8 +63,9 @@ class FractionStore {
     return this.state.isSettingsMode ? 'Настройки' : this.state.name
   }
 
-  get menuItem () {
-    switch (this.state.activeMenuItem) {
+  getMenuItem (num) {
+    if (num === undefined) num = this.state.activeMenuItem
+    switch (num) {
       case 0:
         return { title: 'Информация', icon: 'info' }
       case 1:
@@ -82,9 +83,12 @@ class FractionStore {
     }
   }
 
-  setSearchValue = value => {
+  setSearchValue = event => {
+    const value = event.target.value
     if (value.length <= 30) this.state.searchValue = value
   }
+
+  setActiveMenuItem = item => (this.state.activeMenuItem = item)
 }
 
 export default new FractionStore()
