@@ -12,6 +12,7 @@ import InteractionMenu from '../interaction-menu'
 import Bank from '../bank'
 import Atm from '../atm'
 import Speedometer from '../speedometer'
+import Fraction from '../fraction'
 
 import 'react-input-range/lib/css/index.css'
 
@@ -36,6 +37,7 @@ export default function App () {
       <InteractionMenu />
       <Atm />
       <Speedometer />
+      <Fraction />
     </>
   )
 }

@@ -9,14 +9,20 @@
       "changePermissions": true,
       "spawn": true
     },
+    "controlSettings": true,
     "controlMembers": {
-      "changeRanks": [1, 2, 3, 4, 5, 6, 7, 8],
+      "changeRanks": 6,
       "changeGroups": true,
       "giveReprimands": true,
       "giveAward": true,
       "dismiss": true
     }
   },
+  "activityList": [
+    "Статистика активности",
+    "Статистика арестов",
+    "Статистика штрафов"
+  ],
   "description": "Департа́мент поли́ции Лос-А́нджелеса (англ. Los Angeles Police Department, LAPD) — правоохранительный орган города Лос-Анджелес, штат Калифорния, США. Имея штат в 10002 офицера полиции и 2952 гражданских сотрудника, он контролирует площадь 498 квадратных миль (1290 км²) и является третьим по величине полицейским департаментом в Соединённых Штатах после Департамента полиции Нью-Йорка и Департамента полиции Чикаго. Департамент был обильно представлен в многочисленных фильмах, романах и телешоу на протяжении всей своей истории. Он также был связан с целым рядом противоречий, главным образом связанных с расовой враждой, жестокостью полицейских и коррупцией в полиции.",
   "ads": [
     {
@@ -35,43 +41,53 @@
   "ranks": [
     {
       "rankNum": 1,
-      "rankName": "Police officer III"
+      "rankName": "Police officer III",
+      "color": "#000000"
     },
     {
       "rankNum": 2,
-      "rankName": "Police officer III"
+      "rankName": "Police officer III",
+      "color": "#000000"
     },
     {
       "rankNum": 3,
-      "rankName": "Police officer III"
+      "rankName": "Police officer III",
+      "color": "#000000"
     },
     {
       "rankNum": 4,
-      "rankName": "Police officer III"
+      "rankName": "Police officer III",
+      "color": "#000000"
     },
     {
       "rankNum": 5,
-      "rankName": "Police officer III"
+      "rankName": "Police officer III",
+      "color": "#000000"
     },
     {
       "rankNum": 6,
-      "rankName": "Police officer III"
+      "rankName": "Police officer III",
+      "color": "#000000"
     },
     {
       "rankNum": 7,
-      "rankName": "Police officer III"
+      "rankName": "Police officer III",
+      "color": "#000000"
     },
     {
       "rankNum": 8,
-      "rankName": "Police officer III"
+      "rankName": "Police officer III",
+      "color": "#000000"
     },
     {
       "rankNum": 9,
-      "rankName": "Police officer III"
+      "rankName": "Police officer III",
+      "color": "#000000"
     },
     {
       "rankNum": 10,
-      "rankName": "Police officer III"
+      "rankName": "Police officer III",
+      "color": "#000000"
     }
   ],
   "ranksSettings": [
@@ -161,19 +177,56 @@
           "rankNum": 1,
           "settingsList": [
             {
-              "rank": 1,
               "settingName": "Транспорт",
               "settingDescription": "Возможность брать транспорт для ранга",
               "value": false
             },
             {
-              "rank": 2,
               "settingName": "Транспорт",
               "settingDescription": "Возможность брать транспорт для ранга",
               "value": false
             },
             {
-              "rank": 3,
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            }
+          ]
+        },
+        {
+          "rankNum": 2,
+          "settingsList": [
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            }
+          ]
+        },
+        {
+          "rankNum": 3,
+          "settingsList": [
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
               "settingName": "Транспорт",
               "settingDescription": "Возможность брать транспорт для ранга",
               "value": false
@@ -197,41 +250,11 @@
   ],
   "storage": {
     "open": false,
-    "history": [
-      {
-        "name": "Tom Lindbrook",
-        "rank": 4,
-        "data": "27/04/2021",
-        "action": "Взял со склада M4A1"
-      },
-      {
-        "name": "Tom Lindbrook",
-        "rank": 4,
-        "data": "27/04/2021",
-        "action": "Взял со склада M4A1"
-      },
-      {
-        "name": "Tom Lindbrook",
-        "rank": 4,
-        "data": "27/04/2021",
-        "action": "Взял со склада M4A1"
-      },
-      {
-        "name": "Tom Lindbrook",
-        "rank": 4,
-        "data": "27/04/2021",
-        "action": "Взял со склада M4A1"
-      },
-      {
-        "name": "Tom Lindbrook",
-        "rank": 4,
-        "data": "27/04/2021",
-        "action": "Взял со склада M4A1"
-      }
-    ]
+    "history": []
   },
   "members": [
     {
+      "id": 0,
       "online": true,
       "name": "Ched nocksfeel",
       "rankName": "Police officer III",
@@ -243,38 +266,10 @@
       "reprimands": {
         "count": 2,
         "max": 3
-      },
-      "activityList": [
-        {
-          "activityName": "Статистика активности",
-          "activityFields": ["дата", "вход", "выход", "был онлайн"],
-          "activityList": [
-            ["26/04/2021", "17:03:03", "17:05:03", "00:02:03"],
-            ["26/04/2021", "17:03:03", "17:05:03", "00:02:03"],
-            ["26/04/2021", "17:03:03", "17:05:03", "00:02:03"]
-          ]
-        },
-        {
-          "activityName": "Статистика арестов",
-          "activityFields": ["дата", "вход", "подозреваемый", "срок"],
-          "activityList": [
-            ["26/04/2021", "17:03:03", "ID 555", "2 звезды"],
-            ["26/04/2021", "17:03:03", "ID 555", "2 звезды"],
-            ["26/04/2021", "17:03:03", "ID 555", "2 звезды"]
-          ]
-        },
-        {
-          "activityName": "Статистика штрафов",
-          "activityFields": ["дата", "вход", "подозреваемый", "сумма"],
-          "activityList": [
-            ["26/04/2021", "17:03:03", "ID 555", "$500.00"],
-            ["26/04/2021", "17:03:03", "ID 555", "$500.00"],
-            ["26/04/2021", "17:03:03", "ID 555", "$500.00"]
-          ]
-        }
-      ]
+      }
     },
     {
+      "id": 1,
       "online": true,
       "name": "Ched nocksfeel",
       "rankName": "Police officer III",
@@ -286,36 +281,7 @@
       "reprimands": {
         "count": 2,
         "max": 3
-      },
-      "activityList": [
-        {
-          "activityName": "Статистика активности",
-          "activityFields": ["дата", "вход", "выход", "был онлайн"],
-          "activityList": [
-            ["26/04/2021", "17:03:03", "17:05:03", "00:02:03"],
-            ["26/04/2021", "17:03:03", "17:05:03", "00:02:03"],
-            ["26/04/2021", "17:03:03", "17:05:03", "00:02:03"]
-          ]
-        },
-        {
-          "activityName": "Статистика арестов",
-          "activityFields": ["дата", "вход", "подозреваемый", "срок"],
-          "activityList": [
-            ["26/04/2021", "17:03:03", "ID 555", "2 звезды"],
-            ["26/04/2021", "17:03:03", "ID 555", "2 звезды"],
-            ["26/04/2021", "17:03:03", "ID 555", "2 звезды"]
-          ]
-        },
-        {
-          "activityName": "Статистика штрафов",
-          "activityFields": ["дата", "вход", "подозреваемый", "сумма"],
-          "activityList": [
-            ["26/04/2021", "17:03:03", "ID 555", "$500.00"],
-            ["26/04/2021", "17:03:03", "ID 555", "$500.00"],
-            ["26/04/2021", "17:03:03", "ID 555", "$500.00"]
-          ]
-        }
-      ]
+      }
     }
   ]
 }
