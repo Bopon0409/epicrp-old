@@ -5,9 +5,10 @@ import store from './fraction-store'
 import Header from './modules/header'
 import Aside from './modules/aside'
 import Body from './modules/body'
+import BottomMenu from './modules/bottom-menu'
+import Title from './modules/title'
 
 export default observer(() => {
-  const style = { display: store.active ? 'block' : 'none' }
   useEffect(() => {
     const { EventManager: em } = window
     const { setActive, setData } = store
@@ -19,14 +20,16 @@ export default observer(() => {
     }
   }, [])
 
+  const style = { display: store.state.active ? 'block' : 'none' }
+
   return (
     <div className='fraction' style={style}>
-      <div className='fraction'>
-        <div className='fraction__wrapper'>
-          <Header />
-          <Aside />
-          <Body />
-        </div>
+      <div className='fraction__wrapper'>
+        <Title />
+        <Header />
+        <Aside />
+        <Body />
+        <BottomMenu />
       </div>
     </div>
   )

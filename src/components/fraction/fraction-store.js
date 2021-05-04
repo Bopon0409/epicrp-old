@@ -58,6 +58,33 @@ class FractionStore {
     this.state.members = data.members
     this.state.activityList = data.activityList
   }
+
+  get tabletTitle () {
+    return this.state.isSettingsMode ? 'Настройки' : this.state.name
+  }
+
+  get menuItem () {
+    switch (this.state.activeMenuItem) {
+      case 0:
+        return { title: 'Информация', icon: 'info' }
+      case 1:
+        return { title: 'Список сотрудников', icon: 'members' }
+      case 2:
+        return { title: 'Меню активности', icon: 'activity' }
+      case 3:
+        return { title: 'Список отделов', icon: 'groups' }
+      case 4:
+        return { title: 'Автопарк', icon: 'cars' }
+      case 5:
+        return { title: 'Управление складом', icon: 'storage' }
+      case 6:
+        return { title: 'Управление рангами', icon: 'members' }
+    }
+  }
+
+  setSearchValue = value => {
+    if (value.length <= 30) this.state.searchValue = value
+  }
 }
 
 export default new FractionStore()

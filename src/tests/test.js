@@ -9,8 +9,10 @@ import './hud/hud.test'
 import './interaction-menu/interaction-menu.test'
 import './inventory/inventory.test'
 import './speedometer/speedometer.test'
+import './fraction/fraction.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  
+  window.test.fraction.setActive(true)
+  window.test.fraction.setData()
 }
