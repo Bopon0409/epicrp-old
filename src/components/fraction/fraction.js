@@ -21,8 +21,8 @@ export default observer(() => {
 
   return (
     <div className='fraction' style={style}>
-      <div className='fraction__bg-wrapper'>
-        <div className='fraction__inner-wrapper'>
+      <div className='fraction'>
+        <div className='fraction__wrapper'>
           <Header />
           <Aside />
           <Body />
