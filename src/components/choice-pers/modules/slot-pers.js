@@ -31,7 +31,7 @@ export default observer(({ index }) => {
           <span className='bold'>{pers.lvl}</span>
           <span>Уровень</span>
         </div>
-        <div className='fraction'>
+        <div className='details__fraction'>
           <span className='bold'>{pers.fraction}</span>
         </div>
         <div className='money'>

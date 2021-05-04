@@ -24,7 +24,12 @@ export default observer(() => {
       <div id='menu1' className='menu1' />
       <div className='bg-wrap' onClick={() => setActive(false)}></div>
       <div className='inner' onClick={() => setActive(false)}>
-        <div className='text'>{currentText}</div>
+        <div
+          className='text'
+          onClick={() => window.clientTrigger('interact.close')}
+        >
+          {currentText}
+        </div>
       </div>
     </div>
   )

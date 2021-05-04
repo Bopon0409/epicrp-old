@@ -6,7 +6,7 @@ class CreatePersStore {
     makeAutoObservable(this, {}, { deep: true })
   }
 
-  // =================================   STATE   ================================
+  // =================================   STATE   ===============================
 
   state = {
     active: false,
@@ -36,7 +36,7 @@ class CreatePersStore {
   // =================================   MAIN   ================================
   setStep = step => (this.state.step = step)
   setCreatePers = (active, data) => {
-    this.state.serverData = data ? data : {}
+    if (data) this.state.serverData = data
     this.state.active = active
   }
   finishCreate = () => window.clientTrigger('character.created')
@@ -53,6 +53,7 @@ class CreatePersStore {
 
   inputChangeHandler = (event, type) => {
     const str = event.target.value
+    console.log(str)
     if (str.length > 20) return
     switch (type) {
       case 'name':
@@ -94,6 +95,7 @@ class CreatePersStore {
   }
 
   // ================================   STEP2   ================================
+
   setActiveMother = value => (this.state.step2.activeMother = value)
   setActiveFather = value => (this.state.step2.activeFather = value)
   setSliderValue1 = value => (this.state.step2.sliderValue1 = value)

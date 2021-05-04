@@ -14,6 +14,7 @@ class ChoisePersStore {
   setCurrentPers = current => (this.state.currentPers = current)
 
   setChoicePers = (active, data) => {
+    console.log(data)
     this.state.data = data ? data : []
     this.state.componentActive = active
   }

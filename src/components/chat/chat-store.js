@@ -87,13 +87,17 @@ class ChatStore {
     const { storyPosition, active, storyMsg } = this.state
     switch (event.keyCode) {
       case 13:
-        this.pushMessage()
-        this.setChatActive(false)
-        if (active) skrollRef.current?.scrollIntoView()
+        if (active) {
+          skrollRef.current?.scrollIntoView()
+          this.pushMessage()
+          this.setChatActive(false)
+        }
         break
+
       case 27:
-        this.setChatActive(false)
+        if (active) this.setChatActive(false)
         break
+
       case 84:
         if (!active) this.setChatActive(true)
         break

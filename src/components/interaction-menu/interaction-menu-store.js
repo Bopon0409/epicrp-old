@@ -26,6 +26,7 @@ class InteractionMenuStore {
         )
     }
   }
+
   setCurrentText = text => (this.state.currentText = text)
 
   setInteractionMenu = (active, data) => {
@@ -34,11 +35,11 @@ class InteractionMenuStore {
     if (active && data.length) {
       const onHoverIn = data => this.setCurrentText(data.text)
       const onHoverOut = () => this.setCurrentText('Закрыть меню')
-      const clickHandler = icon => {
-        window.clientTrigger('interact.click', icon)
+      const clickHandler = name => {
+        window.clientTrigger('interact.click', name)
       }
 
-      const menus = data.map(({ text, icon, menus }) => ({
+      const menus = data.map(({ text, icon, menus, name }) => ({
         onHoverIn,
         onHoverOut,
         text,
@@ -48,16 +49,20 @@ class InteractionMenuStore {
               .map(subEl => ({
                 onHoverIn,
                 onHoverOut,
-                click: () => clickHandler(subEl.icon),
+                click: () => clickHandler(subEl.name),
                 ...subEl
               }))
               .reverse()
           : null,
-        click: () => clickHandler(icon)
+        click: () => clickHandler(name)
       }))
 
       CMenu('#menu1')
-        .config({ hideAfterClick: false, diameter: window.innerHeight / 2, menus })
+        .config({
+          hideAfterClick: false,
+          diameter: window.innerHeight / 2,
+          menus
+        })
         .show([window.innerWidth / 2, window.innerHeight / 2])
         .styles({ 'background-color': 'rgba(0, 0, 0, 0.7)' })
     }
