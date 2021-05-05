@@ -126,7 +126,10 @@ class ChatStore {
 
   setChatActive = active => {
     if (this.state.isShow) {
-      if (window.mp) window.mp.trigger('Client.Cursor:Show', active)
+      if (window.mp) {
+        window.mp.invoke('focus', active)
+        window.mp.trigger('chat.toggle', active)
+      }
       this.state.active = active
       this.chatDischarge()
 
