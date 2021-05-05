@@ -51,63 +51,63 @@
   "ranks": [
     {
       "rankNum": 1,
-      "rankName": "Police officer III",
+      "rankName": "Police officer 1",
       "groupId": 0,
-      "color": "#000000"
+      "color": "blue"
     },
     {
       "rankNum": 2,
-      "rankName": "Police officer III",
+      "rankName": "Police officer 2",
       "groupId": 0,
-      "color": "#000000"
+      "color": "green"
     },
     {
       "rankNum": 3,
-      "rankName": "Police officer III",
+      "rankName": "Police officer 3",
       "groupId": 0,
-      "color": "#000000"
+      "color": "gray"
     },
     {
       "rankNum": 4,
-      "rankName": "Police officer III",
+      "rankName": "Police officer 4",
       "groupName": false,
-      "color": "#000000"
+      "color": "lightgray"
     },
     {
       "rankNum": 5,
-      "rankName": "Police officer III",
+      "rankName": "Police officer 5",
       "groupId": false,
-      "color": "#000000"
+      "color": "lightblue"
     },
     {
       "rankNum": 6,
-      "rankName": "Police officer III",
+      "rankName": "Police officer 6",
       "groupId": false,
-      "color": "#000000"
+      "color": "pirple"
     },
     {
       "rankNum": 7,
-      "rankName": "Police officer III",
+      "rankName": "Police officer 7",
       "groupId": false,
-      "color": "#000000"
+      "color": "red"
     },
     {
       "rankNum": 8,
-      "rankName": "Police officer III",
+      "rankName": "Police officer 8",
       "groupId": false,
-      "color": "#000000"
+      "color": "white"
     },
     {
       "rankNum": 9,
-      "rankName": "Police officer III",
+      "rankName": "Police officer 9",
       "groupId": false,
-      "color": "#000000"
+      "color": "gray"
     },
     {
       "rankNum": 10,
-      "rankName": "Police officer III",
+      "rankName": "Police officer 10",
       "groupId": false,
-      "color": "#000000"
+      "color": "blue"
     }
   ],
   "ranksSettings": [
@@ -411,11 +411,11 @@
   },
   "members": [
     {
-      "id": 0,
+      "id": 11,
       "online": true,
       "name": "Ched nocksfeel 1",
       "rankName": "Police officer III",
-      "rankNum": 4,
+      "rankNum": 8,
       "duty": "Сотрудник | Начальник | Зам Начальника",
       "sex": "male",
       "phone": "1234-1234",
@@ -428,11 +428,11 @@
       }
     },
     {
-      "id": 0,
+      "id": 12,
       "online": true,
       "name": "Zhed nocksfeel 2",
       "rankName": "Police officer III",
-      "rankNum": 4,
+      "rankNum": 7,
       "duty": "Сотрудник | Начальник | Зам Начальника",
       "sex": "male",
       "phone": "1234-1234",
@@ -445,11 +445,11 @@
       }
     },
     {
-      "id": 1,
+      "id": 13,
       "online": false,
       "name": "Thed nocksfeel 3",
       "rankName": "Police officer III",
-      "rankNum": 4,
+      "rankNum": 6,
       "duty": "Сотрудник | Начальник | Зам Начальника",
       "sex": "male",
       "phone": "1234-1234",
@@ -462,11 +462,11 @@
       }
     },
     {
-      "id": 0,
+      "id": 14,
       "online": true,
       "name": "Ched nocksfeel 1",
       "rankName": "Police officer III",
-      "rankNum": 4,
+      "rankNum": 1,
       "duty": "Сотрудник | Начальник | Зам Начальника",
       "sex": "male",
       "phone": "1234-1234",
@@ -479,11 +479,11 @@
       }
     },
     {
-      "id": 0,
+      "id": 15,
       "online": false,
       "name": "Zhed nocksfeel 2",
       "rankName": "Police officer III",
-      "rankNum": 4,
+      "rankNum": 1,
       "duty": "Сотрудник | Начальник | Зам Начальника",
       "sex": "male",
       "phone": "1234-1234",
@@ -496,11 +496,11 @@
       }
     },
     {
-      "id": 1,
+      "id": 16,
       "online": true,
       "name": "Thed nocksfeel 3",
       "rankName": "Police officer III",
-      "rankNum": 4,
+      "rankNum": 2,
       "duty": "Сотрудник | Начальник | Зам Начальника",
       "sex": "male",
       "phone": "1234-1234",
@@ -513,11 +513,11 @@
       }
     },
     {
-      "id": 0,
+      "id": 17,
       "online": false,
       "name": "Ched nocksfeel 1",
       "rankName": "Police officer III",
-      "rankNum": 4,
+      "rankNum": 7,
       "duty": "Сотрудник | Начальник | Зам Начальника",
       "sex": "male",
       "phone": "1234-1234",
@@ -530,62 +530,11 @@
       }
     },
     {
-      "id": 0,
+      "id": 18,
       "online": true,
       "name": "Zhed nocksfeel 2",
       "rankName": "Police officer III",
-      "rankNum": 4,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "1",
-      "groupName": "Patroul Division 2",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 1,
-      "online": true,
-      "name": "Thed nocksfeel 3",
-      "rankName": "Police officer III",
-      "rankNum": 4,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "2",
-      "groupName": "Patroul Division 3",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 0,
-      "online": false,
-      "name": "Ched nocksfeel 1",
-      "rankName": "Police officer III",
-      "rankNum": 4,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "0",
-      "groupName": "Patroul Division 1",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 0,
-      "online": true,
-      "name": "Zhed nocksfeel 2",
-      "rankName": "Police officer III",
-      "rankNum": 4,
+      "rankNum": 9,
       "duty": "Сотрудник | Начальник | Зам Начальника",
       "sex": "male",
       "phone": "1234-1234",
@@ -615,7 +564,7 @@
       }
     },
     {
-      "id": 0,
+      "id": 2,
       "online": false,
       "name": "Ched nocksfeel 1",
       "rankName": "Police officer III",
@@ -632,7 +581,7 @@
       }
     },
     {
-      "id": 0,
+      "id": 3,
       "online": true,
       "name": "Zhed nocksfeel 2",
       "rankName": "Police officer III",
@@ -649,7 +598,58 @@
       }
     },
     {
-      "id": 1,
+      "id": 4,
+      "online": true,
+      "name": "Thed nocksfeel 3",
+      "rankName": "Police officer III",
+      "rankNum": 7,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "2",
+      "groupName": "Patroul Division 3",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 5,
+      "online": false,
+      "name": "Ched nocksfeel 1",
+      "rankName": "Police officer III",
+      "rankNum": 6,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "0",
+      "groupName": "Patroul Division 1",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 6,
+      "online": true,
+      "name": "Zhed nocksfeel 2",
+      "rankName": "Police officer III",
+      "rankNum": 5,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "1",
+      "groupName": "Patroul Division 2",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 7,
       "online": false,
       "name": "Thed nocksfeel 3",
       "rankName": "Police officer III",
@@ -666,11 +666,11 @@
       }
     },
     {
-      "id": 0,
+      "id": 8,
       "online": false,
       "name": "Ched nocksfeel 1",
       "rankName": "Police officer III",
-      "rankNum": 4,
+      "rankNum": 3,
       "duty": "Сотрудник | Начальник | Зам Начальника",
       "sex": "male",
       "phone": "1234-1234",
@@ -683,11 +683,11 @@
       }
     },
     {
-      "id": 0,
+      "id": 9,
       "online": true,
       "name": "Zhed nocksfeel 2",
       "rankName": "Police officer III",
-      "rankNum": 4,
+      "rankNum": 2,
       "duty": "Сотрудник | Начальник | Зам Начальника",
       "sex": "male",
       "phone": "1234-1234",
@@ -700,11 +700,11 @@
       }
     },
     {
-      "id": 1,
+      "id": 10,
       "online": false,
       "name": "Thed nocksfeel 3",
       "rankName": "Police officer III",
-      "rankNum": 4,
+      "rankNum": 1,
       "duty": "Сотрудник | Начальник | Зам Начальника",
       "sex": "male",
       "phone": "1234-1234",

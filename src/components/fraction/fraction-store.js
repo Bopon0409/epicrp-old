@@ -68,8 +68,19 @@ class FractionStore {
   get discrordList () {
     return this.state.groups.map(({ groupId, groupName }) => ({
       name: groupName,
-      list: this.state.members.filter(member => +member.groupId === groupId)
+      list: this.state.members.filter(member => {
+        const id = +member.groupId
+        const { searchValue } = this.state
+        if (!searchValue) return id === groupId
+        else return id === groupId && member.name.includes(searchValue)
+      })
     }))
+  }
+
+  getMemberColor = id => {
+    if (!this.state.members.length || !this.state.ranks.length) return '#ffffff'
+    const { rankNum } = this.state.members.find(member => member.id === id)
+    return this.state.ranks.find(rank => rank.rankNum === rankNum).color
   }
 
   getMenuItem (num) {
