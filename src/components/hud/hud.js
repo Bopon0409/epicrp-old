@@ -47,8 +47,6 @@ export default observer(() => {
   const hudStyle = active ? { display: 'block' } : { display: 'none' }
   return (
     <div className='hud' style={hudStyle}>
-      <div className='bg'></div>
-
       <div className='right-panel'>
         <IndicatorSvg1 />
         <IndicatorSvg2 />

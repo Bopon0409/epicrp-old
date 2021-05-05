@@ -23,6 +23,8 @@ const testSpeed = () => {
 
 const testBadges = () => {
   const data = [
+    { badgeName: 'handBrake', value: true },
+    { badgeName: 'handBrake', value: false },
     { badgeName: 'fuel', value: true },
     { badgeName: 'fuel', value: false },
     { badgeName: 'engine', value: true },
@@ -38,7 +40,7 @@ const testBadges = () => {
   let counter = 0
   const interval = setInterval(() => {
     window.trigger('speedometer.badge', JSON.stringify(data[counter++]))
-    if (counter === 10) clearInterval(interval)
+    if (counter === 12) clearInterval(interval)
   }, 500)
 }
 

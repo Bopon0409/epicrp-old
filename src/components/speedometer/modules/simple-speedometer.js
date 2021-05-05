@@ -6,13 +6,13 @@ import store from '../speedometer-store'
 export default observer(() => {
   const { speed, fuel, badges } = store.state
   const { speedNulls } = store
-
+  const fuelValue = store.state.fuel === 0 ? true : store.state.badges.fuel
 
   return (
     <div className='simple-speedometer'>
       <div className='main'>
         <div className='fuel-view'>
-          <Fuel active={badges.fuel} />
+          <Fuel active={fuelValue} />
           <div className='progress progress-moved'>
             <div className='progress-bar' style={{ width: `${fuel}%` }}></div>
           </div>
