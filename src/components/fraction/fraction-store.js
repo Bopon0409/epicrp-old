@@ -7,9 +7,10 @@ class FractionStore {
 
   state = {
     active: false,
-    isSettingsMode: false,
+    settingsMode: false,
     activeMenuItem: 0,
     searchValue: '',
+    user: {},
     name: '',
     capabilities: {
       controlStorage: false,
@@ -57,10 +58,11 @@ class FractionStore {
     this.state.storage.open = data.open
     this.state.members = data.members
     this.state.activityList = data.activityList
+    this.state.user = data.user
   }
 
   get tabletTitle () {
-    return this.state.isSettingsMode ? 'Настройки' : this.state.name
+    return this.state.settingsMode ? 'Настройки' : this.state.name
   }
 
   getMenuItem (num) {
@@ -80,12 +82,22 @@ class FractionStore {
         return { title: 'Управление складом', icon: 'storage' }
       case 6:
         return { title: 'Управление рангами', icon: 'members' }
+      default:
+        return null
     }
   }
 
   setSearchValue = event => {
     const value = event.target.value
     if (value.length <= 30) this.state.searchValue = value
+  }
+
+  setSettingsMode = active => {
+    const { controlSettings } = this.state.capabilities
+    if (controlSettings) {
+      this.state.settingsMode = active
+      this.state.activeMenuItem = active ? 5 : 0
+    }
   }
 
   setActiveMenuItem = item => (this.state.activeMenuItem = item)

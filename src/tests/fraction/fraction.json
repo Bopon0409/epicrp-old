@@ -1,5 +1,9 @@
 {
   "name": "Los Santos Police",
+  "user": {
+    "name": "Ched Nocksfeel",
+    "rankName": "Лидер организации"
+  },
   "capabilities": {
     "controlStorage": true,
     "controlRanks": true,
