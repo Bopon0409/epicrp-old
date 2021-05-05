@@ -65,7 +65,7 @@
 - `window.trigger('speedometer.speed', speed: int)` - Изменение скорости
 - `window.trigger('speedometer.maxSpeed', maxSpeed: int)` - Изменение макс скорости
 - `window.trigger('speedometer.fuel', fuel: int)` - Изменение топлива (1-100)
-- `window.trigger('speedometer.badge', badge: jsonString)` - Открыть/закрыть спидометр
+- `window.trigger('speedometer.badge', badge: jsonString)` - Изменение значков
 
 ##### Примеры json 'speedometer.badge' в speedometer-badges.json
 
