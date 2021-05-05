@@ -14,10 +14,10 @@ class InteractionMenuStore {
   setActive = active => {
     this.state.active = active
     const isContainMenu =
-      document.querySelector('.interaction-menu').childNodes.length === 4
+      document.querySelector('.interaction-menu').childNodes.length >= 3
     if (!active && isContainMenu) {
       document.querySelector('#menu1').remove()
-      document.querySelector('.circular-sub-menu').remove()
+      document.querySelector('.circular-sub-menu')?.remove()
       document
         .querySelector('.interaction-menu')
         .insertAdjacentHTML(

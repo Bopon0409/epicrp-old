@@ -77,8 +77,11 @@ class FractionStore {
     }))
   }
 
+  getMemberByName = name => this.state.members.find(memb => memb.name == name)
+
   getMemberColor = id => {
-    if (!this.state.members.length || !this.state.ranks.length) return '#ffffff'
+    if (!this.state.members.length || !this.state.ranks.length || !id)
+      return '#ffffff'
     const { rankNum } = this.state.members.find(member => member.id === id)
     return this.state.ranks.find(rank => rank.rankNum === rankNum).color
   }
