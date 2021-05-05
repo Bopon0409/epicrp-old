@@ -1,0 +1,27 @@
+.fraction {
+  .icon {
+    position: relative;
+    background: #575757;
+    border-radius: 50%;
+    display: flex;
+
+    &__letter {
+      margin: auto;
+      font-size: 26px;
+      text-transform: uppercase;
+      color: #216cb0;
+    }
+
+    &__online {
+      position: absolute;
+      right: 1px;
+      bottom: 1px;
+
+      border-radius: 50%;
+      width: 9px;
+      height: 9px;
+      background: #18c61f;
+      border: 2px solid #292b2f;
+    }
+  }
+}

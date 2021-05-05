@@ -430,7 +430,58 @@
     {
       "id": 0,
       "online": true,
-      "name": "Ched nocksfeel 2",
+      "name": "Zhed nocksfeel 2",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "1",
+      "groupName": "Patroul Division 2",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 1,
+      "online": false,
+      "name": "Thed nocksfeel 3",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "2",
+      "groupName": "Patroul Division 3",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 0,
+      "online": true,
+      "name": "Ched nocksfeel 1",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "0",
+      "groupName": "Patroul Division 1",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 0,
+      "online": false,
+      "name": "Zhed nocksfeel 2",
       "rankName": "Police officer III",
       "rankNum": 4,
       "duty": "Сотрудник | Начальник | Зам Начальника",
@@ -447,7 +498,211 @@
     {
       "id": 1,
       "online": true,
-      "name": "Ched nocksfeel 3",
+      "name": "Thed nocksfeel 3",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "2",
+      "groupName": "Patroul Division 3",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 0,
+      "online": false,
+      "name": "Ched nocksfeel 1",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "0",
+      "groupName": "Patroul Division 1",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 0,
+      "online": true,
+      "name": "Zhed nocksfeel 2",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "1",
+      "groupName": "Patroul Division 2",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 1,
+      "online": true,
+      "name": "Thed nocksfeel 3",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "2",
+      "groupName": "Patroul Division 3",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 0,
+      "online": false,
+      "name": "Ched nocksfeel 1",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "0",
+      "groupName": "Patroul Division 1",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 0,
+      "online": true,
+      "name": "Zhed nocksfeel 2",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "1",
+      "groupName": "Patroul Division 2",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 1,
+      "online": true,
+      "name": "Thed nocksfeel 3",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "2",
+      "groupName": "Patroul Division 3",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 0,
+      "online": false,
+      "name": "Ched nocksfeel 1",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "0",
+      "groupName": "Patroul Division 1",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 0,
+      "online": true,
+      "name": "Zhed nocksfeel 2",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "1",
+      "groupName": "Patroul Division 2",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 1,
+      "online": false,
+      "name": "Thed nocksfeel 3",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "2",
+      "groupName": "Patroul Division 3",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 0,
+      "online": false,
+      "name": "Ched nocksfeel 1",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "0",
+      "groupName": "Patroul Division 1",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 0,
+      "online": true,
+      "name": "Zhed nocksfeel 2",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "1",
+      "groupName": "Patroul Division 2",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 1,
+      "online": false,
+      "name": "Thed nocksfeel 3",
       "rankName": "Police officer III",
       "rankNum": 4,
       "duty": "Сотрудник | Начальник | Зам Начальника",

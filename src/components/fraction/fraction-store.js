@@ -67,8 +67,8 @@ class FractionStore {
 
   get discrordList () {
     return this.state.groups.map(({ groupId, groupName }) => ({
-      groupName,
-      groupList: this.state.members.filter(member => member.groupId == groupId)
+      name: groupName,
+      list: this.state.members.filter(member => +member.groupId === groupId)
     }))
   }
 
