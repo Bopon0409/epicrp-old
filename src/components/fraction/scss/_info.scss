@@ -1,0 +1,62 @@
+.fraction {
+  .info {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 70% 30%;
+
+    .about,
+    .discord-list {
+      height: 100%;
+    }
+
+    .about {
+      padding: 50px 50px;
+      font-weight: 500;
+      color: #ffffff;
+
+      &__title {
+        font-size: 22px;
+        line-height: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      &__description {
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px;
+        text-align: center;
+
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 15px;
+        padding: 20px 20px;
+      }
+
+      &__ads {
+        width: 100%;
+        margin-top: 80px;
+        cursor: pointer;
+
+        background: linear-gradient(
+          270deg,
+          rgba(83, 142, 250, 0.44) 0%,
+          rgba(13, 64, 156, 0.44) 100%
+        );
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+
+        font-size: 14px;
+        line-height: 100%;
+        color: #ffffff;
+        text-align: center;
+        padding: 15px 0;
+      }
+    }
+
+    .discord-list {
+      background: #2f3136;
+      border-radius: 0 0 15px 0;
+    }
+  }
+}

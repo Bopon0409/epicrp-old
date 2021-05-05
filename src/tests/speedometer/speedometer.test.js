@@ -17,7 +17,7 @@ const testSpeed = () => {
   let speed = 0
   const interval = setInterval(() => {
     window.trigger('speedometer.speed', speed++)
-    if (speed > 300) clearInterval(interval)
+    if (speed > 400) clearInterval(interval)
   }, 20)
 }
 

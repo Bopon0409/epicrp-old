@@ -1,61 +1,63 @@
-.bottom-menu {
-  background: #292b2f;
-  display: flex;
-  align-items: center;
-  padding: 0 17px;
-  font-weight: 500;
-  border-radius: 0 0 0 15px;
-
-  .icon {
-    position: relative;
-    width: 37px;
-    height: 37px;
-    background: #575757;
-    border-radius: 50%;
+.fraction {
+  .bottom-menu {
+    background: #292b2f;
     display: flex;
-    margin-right: 10px;
+    align-items: center;
+    padding: 0 17px;
+    font-weight: 500;
+    border-radius: 0 0 0 15px;
 
-    &__letter {
-      margin: auto;
-      font-size: 26px;
-      text-transform: uppercase;
-      color: #216cb0;
-    }
-
-    &__online {
-      position: absolute;
-      right: 1px;
-      bottom: 1px;
-
+    .icon {
+      position: relative;
+      width: 37px;
+      height: 37px;
+      background: #575757;
       border-radius: 50%;
-      width: 8px;
-      height: 8px;
-      background: #18C61F;
-      border: 2px solid #292b2f;
+      display: flex;
+      margin-right: 10px;
+
+      &__letter {
+        margin: auto;
+        font-size: 26px;
+        text-transform: uppercase;
+        color: #216cb0;
+      }
+
+      &__online {
+        position: absolute;
+        right: 1px;
+        bottom: 1px;
+
+        border-radius: 50%;
+        width: 8px;
+        height: 8px;
+        background: #18c61f;
+        border: 2px solid #292b2f;
+      }
     }
-  }
 
-  .text {
-    height: 30px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+    .text {
+      height: 30px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
 
-    &__name {
-      font-size: 14px;
-      line-height: 100%;
-      color: #216cb0;
+      &__name {
+        font-size: 14px;
+        line-height: 100%;
+        color: #216cb0;
+      }
+
+      &__rank {
+        font-size: 10px;
+        line-height: 100%;
+        color: #c4c4c4;
+      }
     }
 
-    &__rank {
-      font-size: 10px;
-      line-height: 100%;
-      color: #c4c4c4;
+    .settings {
+      margin-left: auto;
+      cursor: pointer;
     }
-  }
-
-  .settings {
-    margin-left: auto;
-    cursor: pointer;
   }
 }

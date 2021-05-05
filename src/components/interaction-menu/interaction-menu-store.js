@@ -30,6 +30,7 @@ class InteractionMenuStore {
   setCurrentText = text => (this.state.currentText = text)
 
   setInteractionMenu = (active, data) => {
+    if (active && this.state.active) return
     this.setActive(active)
 
     if (active && data.length) {

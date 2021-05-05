@@ -40,6 +40,12 @@
       "authorRank": "Лидер фракции",
       "lastChange": "26.04.2021 в 17:30",
       "text": "1. Количество сотрудников для проведения допроса: от 2-х до 4-х. При этом в комнате с подозреваемым может находиться не более 2-х сотрудников.\n    1.1 В случае, если подозреваемый в результате допроса оказывается в нокауте, он подлежит немедленному освобождению.\n    1.2 В случае, если подозреваемы отказывается отыгрывать РП, ведет себя неадекватно, при этом со стороны сотрудников правила не нарушены - он подлежит немедленному освобождению. Так же, такой игрок понесет наказание за уход от РП в более строгом формате. | WARN\n    Примечание: если этот игрок состоит в криминальной организации - лидеру будет выдан выговор.\n    "
+    },
+    {
+      "author": "Ched Nocksfeel",
+      "authorRank": "Лидер фракции",
+      "lastChange": "26.04.2021 в 17:30",
+      "text": "1. Количество сотрудников для проведения допроса: от 2-х до 4-х. При этом в комнате с подозреваемым может находиться не более 2-х сотрудников.\n    1.1 В случае, если подозреваемый в результате допроса оказывается в нокауте, он подлежит немедленному освобождению.\n    1.2 В случае, если подозреваемы отказывается отыгрывать РП, ведет себя неадекватно, при этом со стороны сотрудников правила не нарушены - он подлежит немедленному освобождению. Так же, такой игрок понесет наказание за уход от РП в более строгом формате. | WARN\n    Примечание: если этот игрок состоит в криминальной организации - лидеру будет выдан выговор.\n    "
     }
   ],
   "ranks": [
@@ -184,7 +190,143 @@
   "groups": [
     {
       "groupId": 0,
-      "groupName": "Patroul Division",
+      "groupName": "Patroul Division 1",
+      "membersQuantity": 40,
+      "onlineMembersQuantity": 14,
+      "ranks": [
+        {
+          "rankNum": 1,
+          "settingsList": [
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            }
+          ]
+        },
+        {
+          "rankNum": 2,
+          "settingsList": [
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            }
+          ]
+        },
+        {
+          "rankNum": 3,
+          "settingsList": [
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "groupId": 1,
+      "groupName": "Patroul Division 2",
+      "membersQuantity": 40,
+      "onlineMembersQuantity": 14,
+      "ranks": [
+        {
+          "rankNum": 1,
+          "settingsList": [
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            }
+          ]
+        },
+        {
+          "rankNum": 2,
+          "settingsList": [
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            }
+          ]
+        },
+        {
+          "rankNum": 3,
+          "settingsList": [
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "groupId": 2,
+      "groupName": "Patroul Division 3",
       "membersQuantity": 40,
       "onlineMembersQuantity": 14,
       "ranks": [
@@ -271,13 +413,31 @@
     {
       "id": 0,
       "online": true,
-      "name": "Ched nocksfeel",
+      "name": "Ched nocksfeel 1",
       "rankName": "Police officer III",
       "rankNum": 4,
       "duty": "Сотрудник | Начальник | Зам Начальника",
       "sex": "male",
       "phone": "1234-1234",
-      "group": "Patroul Division",
+      "groupId": "0",
+      "groupName": "Patroul Division 1",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 0,
+      "online": true,
+      "name": "Ched nocksfeel 2",
+      "rankName": "Police officer III",
+      "rankNum": 4,
+      "duty": "Сотрудник | Начальник | Зам Начальника",
+      "sex": "male",
+      "phone": "1234-1234",
+      "groupId": "1",
+      "groupName": "Patroul Division 2",
       "lastActivity": "17/03/2021 в 19:31",
       "reprimands": {
         "count": 2,
@@ -287,13 +447,14 @@
     {
       "id": 1,
       "online": true,
-      "name": "Ched nocksfeel",
+      "name": "Ched nocksfeel 3",
       "rankName": "Police officer III",
       "rankNum": 4,
       "duty": "Сотрудник | Начальник | Зам Начальника",
       "sex": "male",
       "phone": "1234-1234",
-      "group": "Patroul Division",
+      "groupId": "2",
+      "groupName": "Patroul Division 3",
       "lastActivity": "17/03/2021 в 19:31",
       "reprimands": {
         "count": 2,

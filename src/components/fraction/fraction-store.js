@@ -65,6 +65,13 @@ class FractionStore {
     return this.state.settingsMode ? 'Настройки' : this.state.name
   }
 
+  get discrordList () {
+    return this.state.groups.map(({ groupId, groupName }) => ({
+      groupName,
+      groupList: this.state.members.filter(member => member.groupId == groupId)
+    }))
+  }
+
   getMenuItem (num) {
     if (num === undefined) num = this.state.activeMenuItem
     switch (num) {
