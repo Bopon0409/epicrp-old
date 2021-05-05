@@ -36,13 +36,6 @@ class ChatStore {
     }
   }
 
-  getInput = () => {
-    const { inputValue, activeBtn, storyPosition, storyMsg } = this.state
-    return storyPosition !== -1
-      ? storyMsg[storyPosition]
-      : { inputValue, activeBtn }
-  }
-
   chatDischarge = () => {
     this.state.activeBtn = 'ic'
     this.state.inputValue = ''
@@ -69,18 +62,21 @@ class ChatStore {
   }
 
   onInputChange = event => {
-    const value = event.target.value
-    if (value.length >= 135) return
-    this.state.inputValue = value
-    if (value[0] === '/') {
-      if (value.substr(1, 2) === 'b ') this.state.activeBtn = 'b'
-      else if (value.substr(1, 3) === 'me ') this.state.activeBtn = 'me'
-      else if (value.substr(1, 3) === 'do ') this.state.activeBtn = 'do'
-      else if (value.substr(1, 4) === 'try ') this.state.activeBtn = 'try'
-      else if (value.substr(1, 2) === 'f ') this.state.activeBtn = 'f'
-      else if (value.substr(1, 2) === 'd ') this.state.activeBtn = 'd'
-      else this.state.activeBtn = 'ic'
+    const { value } = event.target
+    if (value.length < 135) {
+      this.state.inputValue = value
+      if (value[0] === '/') this.checkOnCommand(value)
     }
+  }
+
+  checkOnCommand = value => {
+    if (value.substr(1, 2) === 'b ') this.state.activeBtn = 'b'
+    else if (value.substr(1, 3) === 'me ') this.state.activeBtn = 'me'
+    else if (value.substr(1, 3) === 'do ') this.state.activeBtn = 'do'
+    else if (value.substr(1, 4) === 'try ') this.state.activeBtn = 'try'
+    else if (value.substr(1, 2) === 'f ') this.state.activeBtn = 'f'
+    else if (value.substr(1, 2) === 'd ') this.state.activeBtn = 'd'
+    else this.state.activeBtn = 'ic'
   }
 
   keyPressHandler = (event, skrollRef) => {
@@ -104,14 +100,20 @@ class ChatStore {
 
       case 38:
         if (!active) return
-        if (storyMsg.length > storyPosition + 1) this.state.storyPosition++
+        if (storyMsg.length > storyPosition + 1) {
+          const pos = ++this.state.storyPosition
+          this.state.inputValue = storyMsg[pos].inputValue
+          this.state.activeBtn = storyMsg[pos].activeBtn
+        }
         break
 
       case 40:
         if (!active) return
-        if (storyPosition > 0 && storyMsg[this.state.storyPosition - 1])
-          this.state.storyPosition--
-        else if (storyPosition === 0) {
+        if (storyPosition > 0 && storyMsg[this.state.storyPosition - 1]) {
+          const pos = --this.state.storyPosition
+          this.state.inputValue = storyMsg[pos].inputValue
+          this.state.activeBtn = storyMsg[pos].activeBtn
+        } else if (storyPosition === 0) {
           this.state.storyPosition--
           this.state.inputValue = ''
           this.state.activeBtn = 'ic'

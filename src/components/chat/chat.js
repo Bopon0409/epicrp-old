@@ -7,8 +7,7 @@ import chatInputIcon from './images/chat-input-icon.svg'
 
 export default observer(() => {
   const { active, isShow } = store.state
-  const { pushMessage, onInputChange, getInput } = store
-  const { inputValue } = getInput()
+  const { pushMessage, onInputChange } = store
 
   const skrollRef = useRef()
   const inputRef = useRef()
@@ -41,7 +40,7 @@ export default observer(() => {
         type='text'
         className='chat-input'
         onChange={onInputChange}
-        value={inputValue}
+        value={store.state.inputValue}
         ref={inputRef}
         autoFocus
       />

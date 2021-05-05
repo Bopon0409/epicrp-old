@@ -1,5 +1,4 @@
 import { makeAutoObservable } from 'mobx'
-import { HandBrake } from './modules/speedometer-svg'
 
 class SpeedometerStore {
   constructor () {

@@ -4,7 +4,7 @@ import store from '../chat-store'
 
 export default observer(({ name, value, inputRef }) => (
   <div
-    className={store.getInput().activeBtn === value ? 'btn btn-active' : 'btn'}
+    className={store.state.activeBtn === value ? 'btn btn-active' : 'btn'}
     onClick={() => {
       store.setActiveBtn(value)
       inputRef.current.focus()
