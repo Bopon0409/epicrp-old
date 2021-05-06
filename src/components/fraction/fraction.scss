@@ -5,6 +5,7 @@
 @import './scss/skroll';
 @import './scss/user-icon';
 @import './scss/ads';
+@import './scss/ads-edit';
 
 .fraction {
   position: absolute;
@@ -23,6 +24,10 @@
   padding: 35px 30px;
   box-sizing: border-box;
   font-family: TT Norms;
+
+  .fraction__blur {
+    filter: blur(2px);
+  }
 
   .fraction__wrapper {
     display: grid;

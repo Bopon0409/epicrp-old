@@ -31,8 +31,16 @@ class FractionStore {
       }
     },
     description: '',
-    adsActive: false,
     ads: [],
+    adsActive: false,
+    adsEditActive: false,
+    adsEdit: {
+      id: -1,
+      title: '',
+      author: '',
+      date: '',
+      text: ''
+    },
     ranks: [],
     ranksSettings: [],
     groups: [],
@@ -46,6 +54,10 @@ class FractionStore {
   }
 
   setActive = active => (this.state.active = active)
+
+  get isBlur () {
+    return this.state.adsEditActive || this.state.adsActive
+  }
 
   setData = data => {
     this.state.fractionName = data.fractionName
@@ -79,7 +91,7 @@ class FractionStore {
     }))
   }
 
-  getMemberByName = name => this.state.members.find(memb => memb.name == name)
+  getMemberByName = name => this.state.members.find(memb => memb.name === name)
 
   getMemberColor = id => {
     if (!this.state.members.length || !this.state.ranks.length || !id)
@@ -128,11 +140,64 @@ class FractionStore {
   // ADS
 
   setAdsActive = active => (this.state.adsActive = active)
-  
-  adsDelete = id => this.state.ads.filter(ad => ad.id !== id)
-  
-  adsEdit = (id, title, text) => {
-    this.state.ads.map(ad => (ad.id === id ? { title, text, ...ad } : ad))
+
+  setAdsEditActive = (active, ad) => {
+    this.setAdsActive(!active)
+    this.state.adsEditActive = active
+
+    if (ad) this.state.adsEdit = ad
+    if (!active)
+      this.state.adsEdit = {
+        id: -1,
+        title: '',
+        author: '',
+        date: '',
+        text: ''
+      }
+  }
+
+  setEditTitle = e => (this.state.adsEdit.title = e.target.value)
+  setEditText = e => (this.state.adsEdit.text = e.target.value)
+
+  getFreeAdId = () => {
+    let max = 0
+    this.state.ads.forEach(ad => {
+      max = ad.id > max ? ad.id : max
+    })
+    return ++max
+  }
+
+  editSubmit = () => {
+    if (this.state.adsEdit.id === -1) this.adsAdd()
+    else this.adsEdit()
+
+    this.setAdsEditActive(false)
+  }
+
+  adsDelete = id => {
+    this.state.ads = this.state.ads.filter(ad => ad.id !== id)
+    window.clientTrigger('fraction.ads.remove', id)
+  }
+
+  adsEdit = () => {
+    const { title, text, id } = this.state.adsEdit
+    this.state.ads = this.state.ads.map(ad => {
+      if (ad.id === id) {
+        ad.title = title
+        ad.text = text
+        return ad
+      } else return ad
+    })
+    window.clientTrigger('fraction.ads.edit', { id, title, text })
+  }
+
+  adsAdd = () => {
+    const { title, text } = this.state.adsEdit
+    const { name: author } = this.state.user
+    const date = new Date().toLocaleDateString('ru')
+    const id = this.getFreeAdId()
+    this.state.ads.push({ id, title, author, date, text })
+    window.clientTrigger('fraction.ads.add', { id, title, author, date, text })
   }
 }
 

@@ -3,7 +3,8 @@
 ##### Выполняются через `browser.execute('trigger('triggerName', arguments)')`
 
 ## Инвентарь
-** Триггеры инвентаря в `inventory-triggers.json`**
+
+** Триггеры инвентаря в `json/inventory-triggers.json`**
 
 ## Авторизация
 
@@ -30,15 +31,23 @@
 - `mp.trigger('atm.take', money: int)` - Пользователь снял наличные
 - `mp.trigger('atm.transfer', addressee: int, money: int)` - Пользователь сделал перевод
 
+## Планшет фракции
+
+- `mp.trigger('fraction.ads.add', data: json string)` - Добавление обявления
+- `mp.trigger('fraction.ads.remove',id: number)` - Удаление обявления
+- `mp.trigger('fraction.ads.add', data: json string)` - Изменение обявления
+
+** Триггеры фракций в `json/fraction-triggers.json`**
+
 #### Список параметров `character.update`
 
 1. name - String, Имя
 2. surname - String, Фамилия
 3. sex - String ('male', 'female'), Пол
 4. age - int
-4. mother - Int (id), Мать
-5. father - Int (id), Отец
-6. parentsSimilarity - Float (0-1), Схожесть с родителями
-7. skinColor - Float (0-1), Цвет кожи
+5. mother - Int (id), Мать
+6. father - Int (id), Отец
+7. parentsSimilarity - Float (0-1), Схожесть с родителями
+8. skinColor - Float (0-1), Цвет кожи
 
 **Остальные параметры в `create-pers-data.json`**

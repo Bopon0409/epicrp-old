@@ -1,0 +1,14 @@
+{
+  "fraction.ads.add": {
+    "id": 1,
+    "title": "string",
+    "author": "string",
+    "date": "string",
+    "text": "string"
+  },
+  "fraction.ads.edit": {
+    "id": 1,
+    "title": "string",
+    "text": "string"
+  }
+}

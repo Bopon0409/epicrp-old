@@ -8,16 +8,24 @@ import editBtnIcon from '../img/ad_edit.svg'
 
 export default observer(() => {
   const { ads, capabilities } = store.state
-  const { getMemberByName, getMemberColor } = store
+
+  const navClickHandler = id => {
+    const el = document.getElementById('ad' + id)
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   const navList = ads.map(({ id, title }) => (
-    <div className='nav__item' key={`ad nav ${id}`}>
+    <div
+      className='nav__item'
+      key={`ad nav ${id}`}
+      onClick={() => navClickHandler(id)}
+    >
       {title}
     </div>
   ))
 
-  const contentList = ads.map(({ id, title, author, lastChange, text }) => (
-    <div className='content__item' key={`ad content ${id}`}>
+  const contentList = ads.map(({ id, title, author, date, text }) => (
+    <div className='content__item' key={`ad content ${id}`} id={'ad' + id}>
       <div className='ad__title'>{title}</div>
       <div className='ad__text'>
         <div className='ad__text-line' />
@@ -25,21 +33,21 @@ export default observer(() => {
       </div>
       <div className='ad__footer'>
         <div className='ad__author'>
-          Автор:{' '}
-          <span style={{ color: getMemberColor(getMemberByName(author)) }}>
-            {author}
-          </span>
+          Автор: <span>{author}</span>
         </div>
-        <div className='ad__last-change'>
-          Последний раз редактировалось: {lastChange}
-        </div>
+        <div className='ad__last-change'>Дата публикации: {date}</div>
       </div>
       {capabilities.controlAds && (
         <div className='ad__btn-container'>
-          <button className='ad__button'>
+          <button
+            className='ad__button'
+            onClick={() =>
+              store.setAdsEditActive(true, { id, title, author, date, text })
+            }
+          >
             <img src={editBtnIcon} alt='' />
           </button>
-          <button className='ad__button'>
+          <button className='ad__button' onClick={() => store.adsDelete(id)}>
             <img src={deleteBtnIcon} alt='' />
           </button>
         </div>
@@ -53,10 +61,17 @@ export default observer(() => {
         <Icon icon='close' />
       </div>
       <div className='ads__content skroll'>{contentList}</div>
-      <div className='ads__nav skroll'>
-        <div className='nav__container'>{navList}</div>
+      <div className='ads__nav'>
+        <div className='nav__container skroll'>{navList}</div>
+
         {capabilities.controlAds && (
-          <button className='nav__ad-btn'> Добавить объявление</button>
+          <button
+            className='nav__ad-btn'
+            onClick={() => store.setAdsEditActive(true)}
+          >
+            {' '}
+            Добавить объявление
+          </button>
         )}
       </div>
     </div>
