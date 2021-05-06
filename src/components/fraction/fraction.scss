@@ -4,6 +4,7 @@
 @import './scss/info';
 @import './scss/skroll';
 @import './scss/user-icon';
+@import './scss/ads';
 
 .fraction {
   position: absolute;
@@ -27,7 +28,7 @@
     display: grid;
     grid-template-columns: 250px 690px;
     grid-template-rows: 70px 500px 60px;
-
+    
     div {
       box-sizing: border-box;
     }

@@ -11,7 +11,7 @@ class FractionStore {
     activeMenuItem: 0,
     searchValue: '',
     user: {},
-    name: '',
+    fractionName: '',
     capabilities: {
       controlStorage: false,
       controlRanks: false,
@@ -31,6 +31,7 @@ class FractionStore {
       }
     },
     description: '',
+    adsActive: false,
     ads: [],
     ranks: [],
     ranksSettings: [],
@@ -47,7 +48,7 @@ class FractionStore {
   setActive = active => (this.state.active = active)
 
   setData = data => {
-    this.state.name = data.name
+    this.state.fractionName = data.fractionName
     this.state.capabilities = data.capabilities
     this.state.description = data.description
     this.state.ads = data.ads
@@ -62,17 +63,18 @@ class FractionStore {
   }
 
   get tabletTitle () {
-    return this.state.settingsMode ? 'Настройки' : this.state.name
+    return this.state.settingsMode ? 'Настройки' : this.state.fractionName
   }
 
   get discrordList () {
     return this.state.groups.map(({ groupId, groupName }) => ({
       name: groupName,
-      list: this.state.members.filter(member => {
-        const id = +member.groupId
-        const { searchValue } = this.state
-        if (!searchValue) return id === groupId
-        else return id === groupId && member.name.includes(searchValue)
+      list: this.state.members.filter(({ name, groupId: memberGroupId }) => {
+        const id = +memberGroupId
+        const searchValue = this.state.searchValue.toLocaleLowerCase()
+        const groupCheck = id === groupId
+        const searchCheck = name.toLocaleLowerCase().includes(searchValue)
+        return searchValue ? searchCheck && groupCheck : groupCheck
       })
     }))
   }
@@ -122,6 +124,16 @@ class FractionStore {
   }
 
   setActiveMenuItem = item => (this.state.activeMenuItem = item)
+
+  // ADS
+
+  setAdsActive = active => (this.state.adsActive = active)
+  
+  adsDelete = id => this.state.ads.filter(ad => ad.id !== id)
+  
+  adsEdit = (id, title, text) => {
+    this.state.ads.map(ad => (ad.id === id ? { title, text, ...ad } : ad))
+  }
 }
 
 export default new FractionStore()

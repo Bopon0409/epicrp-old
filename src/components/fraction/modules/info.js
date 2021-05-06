@@ -11,7 +11,9 @@ export default observer(() => {
       <div className='about'>
         <div className='about__title'>{name}</div>
         <div className='about__description'>{description}</div>
-        <div className='about__ads'>Смотреть объявления фракции</div>
+        <div className='about__ads' onClick={() => store.setAdsActive(true)}>
+          Смотреть объявления фракции
+        </div>
       </div>
       <DiscordList />
       <Ads />

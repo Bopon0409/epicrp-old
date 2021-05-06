@@ -1,14 +1,15 @@
 import React from 'react'
+import { observer } from 'mobx-react-lite'
 import store from '../fraction-store'
 import UserIcon from './user-icon'
 
-export default function DiscordList () {
+export default observer(() => {
   const membersList = group =>
     group.list.map(({ name, online, id }, j) => {
       const color = store.getMemberColor(id)
       return (
         <div key={`dis-memb ${j}`} className='members__item' style={{ color }}>
-          <UserIcon size='37px' color={color} online={online} name={name} />
+          <UserIcon size='33px' color={color} online={online} name={name} />
           {name}
         </div>
       )
@@ -24,4 +25,4 @@ export default function DiscordList () {
       ))}
     </div>
   )
-}
+})
