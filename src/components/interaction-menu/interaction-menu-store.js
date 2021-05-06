@@ -16,7 +16,7 @@ class InteractionMenuStore {
     const isContainMenu =
       document.querySelector('.interaction-menu').childNodes.length >= 3
     if (!active && isContainMenu) {
-      document.querySelector('#menu1').remove()
+      document.querySelector('#menu1')?.remove()
       document.querySelector('.circular-sub-menu')?.remove()
       document
         .querySelector('.interaction-menu')
@@ -31,8 +31,6 @@ class InteractionMenuStore {
 
   setInteractionMenu = (active, data) => {
     if (active && this.state.active) return
-    this.setActive(active)
-
     if (active && data.length) {
       const onHoverIn = data => this.setCurrentText(data.text)
       const onHoverOut = () => this.setCurrentText('Закрыть меню')
@@ -67,6 +65,8 @@ class InteractionMenuStore {
         .show([window.innerWidth / 2, window.innerHeight / 2])
         .styles({ 'background-color': 'rgba(0, 0, 0, 0.7)' })
     }
+
+    this.setActive(active)
   }
 }
 
