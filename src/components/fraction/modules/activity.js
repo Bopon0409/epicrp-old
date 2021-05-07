@@ -5,7 +5,9 @@ import classNames from 'classnames'
 
 export default observer(() => {
   const user = store.state.infoUser || store.state.user
-  const { name, rankName, sex, phone, group } = user
+  const { name, rankNum, sex, phone, groupId } = user
+  const rankName = store.getRankName(rankNum)
+  const group = store.getGruopName(groupId)
   const color = store.getMemberColor(user.id)
   const { activityCurrent, activityData, activityList } = store.state
 

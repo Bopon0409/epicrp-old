@@ -4,17 +4,13 @@
     "id": 100,
     "online": true,
     "name": "Chak Noris",
-    "rankName": "Лидер",
     "rankNum": 999,
-    "sex": "male",
+    "duty": "Сотрудник",
+    "sex": true,
     "phone": "xxxx-xxxx",
-    "groupId": "",
-    "groupName": "",
+    "groupId": 2,
     "lastActivity": "17/03/2021 в 19:31",
-    "reprimands": {
-      "count": 2,
-      "max": 3
-    }
+    "reprimands": 2
   },
   "capabilities": {
     "controlStorage": true,
@@ -73,19 +69,19 @@
     {
       "rankNum": 1,
       "rankName": "Police officer 1",
-      "groupId": 0,
+      "groupId": 1,
       "color": "blue"
     },
     {
       "rankNum": 2,
       "rankName": "Police officer 2",
-      "groupId": 0,
+      "groupId": 1,
       "color": "green"
     },
     {
       "rankNum": 3,
       "rankName": "Police officer 3",
-      "groupId": 0,
+      "groupId": 1,
       "color": "gray"
     },
     {
@@ -210,78 +206,8 @@
   ],
   "groups": [
     {
-      "groupId": 0,
-      "groupName": "Patroul Division 1",
-      "membersQuantity": 40,
-      "onlineMembersQuantity": 14,
-      "ranks": [
-        {
-          "rankNum": 1,
-          "settingsList": [
-            {
-              "settingName": "Транспорт",
-              "settingDescription": "Возможность брать транспорт для ранга",
-              "value": false
-            },
-            {
-              "settingName": "Транспорт",
-              "settingDescription": "Возможность брать транспорт для ранга",
-              "value": false
-            },
-            {
-              "settingName": "Транспорт",
-              "settingDescription": "Возможность брать транспорт для ранга",
-              "value": false
-            }
-          ]
-        },
-        {
-          "rankNum": 2,
-          "settingsList": [
-            {
-              "settingName": "Транспорт",
-              "settingDescription": "Возможность брать транспорт для ранга",
-              "value": false
-            },
-            {
-              "settingName": "Транспорт",
-              "settingDescription": "Возможность брать транспорт для ранга",
-              "value": false
-            },
-            {
-              "settingName": "Транспорт",
-              "settingDescription": "Возможность брать транспорт для ранга",
-              "value": false
-            }
-          ]
-        },
-        {
-          "rankNum": 3,
-          "settingsList": [
-            {
-              "settingName": "Транспорт",
-              "settingDescription": "Возможность брать транспорт для ранга",
-              "value": false
-            },
-            {
-              "settingName": "Транспорт",
-              "settingDescription": "Возможность брать транспорт для ранга",
-              "value": false
-            },
-            {
-              "settingName": "Транспорт",
-              "settingDescription": "Возможность брать транспорт для ранга",
-              "value": false
-            }
-          ]
-        }
-      ]
-    },
-    {
       "groupId": 1,
-      "groupName": "Patroul Division 2",
-      "membersQuantity": 40,
-      "onlineMembersQuantity": 14,
+      "groupName": "Patroul Division 1",
       "ranks": [
         {
           "rankNum": 1,
@@ -347,9 +273,73 @@
     },
     {
       "groupId": 2,
+      "groupName": "Patroul Division 2",
+      "ranks": [
+        {
+          "rankNum": 1,
+          "settingsList": [
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            }
+          ]
+        },
+        {
+          "rankNum": 2,
+          "settingsList": [
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            }
+          ]
+        },
+        {
+          "rankNum": 3,
+          "settingsList": [
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "groupId": 3,
       "groupName": "Patroul Division 3",
-      "membersQuantity": 40,
-      "onlineMembersQuantity": 14,
       "ranks": [
         {
           "rankNum": 1,
@@ -417,11 +407,17 @@
   "cars": [
     {
       "name": "POLICE 2",
-      "geo": "Гараж",
-      "fuel": 40,
-      "groupName": "Patroul Division",
+      "groupId": "1",
       "permissions": {
-        "groups": ["Patroul Division", "Traffic Division", "Academy"],
+        "groupId": [1],
+        "ranks": [1, 2, 3, 4, 5, 6]
+      }
+    },
+    {
+      "name": "POLICE 3",
+      "groupId": "1",
+      "permissions": {
+        "groupId": [1],
         "ranks": [1, 2, 3, 4, 5, 6]
       }
     }
@@ -432,326 +428,40 @@
   },
   "members": [
     {
-      "id": 11,
-      "online": true,
-      "name": "Ched nocksfeel 1",
-      "rankName": "Police officer III",
-      "rankNum": 8,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "0",
-      "groupName": "Patroul Division 1",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 12,
-      "online": true,
-      "name": "Zhed nocksfeel 2",
-      "rankName": "Police officer III",
-      "rankNum": 7,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "1",
-      "groupName": "Patroul Division 2",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 13,
-      "online": false,
-      "name": "Thed nocksfeel 3",
-      "rankName": "Police officer III",
-      "rankNum": 6,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "2",
-      "groupName": "Patroul Division 3",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 14,
-      "online": true,
-      "name": "Ched nocksfeel 1",
-      "rankName": "Police officer III",
-      "rankNum": 1,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "0",
-      "groupName": "Patroul Division 1",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 15,
-      "online": false,
-      "name": "Zhed nocksfeel 2",
-      "rankName": "Police officer III",
-      "rankNum": 1,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "1",
-      "groupName": "Patroul Division 2",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 16,
-      "online": true,
-      "name": "Thed nocksfeel 3",
-      "rankName": "Police officer III",
-      "rankNum": 2,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "2",
-      "groupName": "Patroul Division 3",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 17,
-      "online": false,
-      "name": "Ched nocksfeel 1",
-      "rankName": "Police officer III",
-      "rankNum": 7,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "0",
-      "groupName": "Patroul Division 1",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 18,
-      "online": true,
-      "name": "Zhed nocksfeel 2",
-      "rankName": "Police officer III",
-      "rankNum": 9,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "1",
-      "groupName": "Patroul Division 2",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
       "id": 1,
       "online": true,
-      "name": "Thed nocksfeel 3",
-      "rankName": "Police officer III",
-      "rankNum": 4,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
+      "name": "Ched nocksfeel",
+      "rankNum": 8,
+      "duty": "Сотрудник",
+      "sex": true,
       "phone": "1234-1234",
-      "groupId": "2",
-      "groupName": "Patroul Division 3",
+      "groupId": 1,
       "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
+      "reprimands": 2
     },
     {
       "id": 2,
-      "online": false,
-      "name": "Ched nocksfeel 1",
-      "rankName": "Police officer III",
-      "rankNum": 4,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "0",
-      "groupName": "Patroul Division 1",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 3,
       "online": true,
-      "name": "Zhed nocksfeel 2",
-      "rankName": "Police officer III",
-      "rankNum": 4,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "1",
-      "groupName": "Patroul Division 2",
+      "name": "horex",
+      "rankNum": 999,
+      "duty": "Сотрудник",
+      "sex": true,
+      "phone": "xxxx-xxxx",
+      "groupId": 2,
       "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 4,
-      "online": true,
-      "name": "Thed nocksfeel 3",
-      "rankName": "Police officer III",
-      "rankNum": 7,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "2",
-      "groupName": "Patroul Division 3",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 5,
-      "online": false,
-      "name": "Ched nocksfeel 1",
-      "rankName": "Police officer III",
-      "rankNum": 6,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "0",
-      "groupName": "Patroul Division 1",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 6,
-      "online": true,
-      "name": "Zhed nocksfeel 2",
-      "rankName": "Police officer III",
-      "rankNum": 5,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "1",
-      "groupName": "Patroul Division 2",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 7,
-      "online": false,
-      "name": "Thed nocksfeel 3",
-      "rankName": "Police officer III",
-      "rankNum": 4,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "2",
-      "groupName": "Patroul Division 3",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
+      "reprimands": 2
     },
     {
       "id": 100,
       "online": true,
       "name": "Chak Noris",
-      "rankName": "Лидер",
       "rankNum": 999,
-      "sex": "male",
+      "duty": "Сотрудник",
+      "sex": true,
       "phone": "xxxx-xxxx",
-      "groupId": "",
-      "groupName": "",
+      "groupId": 2,
       "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 8,
-      "online": false,
-      "name": "Ched nocksfeel 1",
-      "rankName": "Police officer III",
-      "rankNum": 3,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "0",
-      "groupName": "Patroul Division 1",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 9,
-      "online": true,
-      "name": "Zhed nocksfeel 2",
-      "rankName": "Police officer III",
-      "rankNum": 2,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "1",
-      "groupName": "Patroul Division 2",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
-    },
-    {
-      "id": 10,
-      "online": false,
-      "name": "Thed nocksfeel 3",
-      "rankName": "Police officer III",
-      "rankNum": 1,
-      "duty": "Сотрудник | Начальник | Зам Начальника",
-      "sex": "male",
-      "phone": "1234-1234",
-      "groupId": "2",
-      "groupName": "Patroul Division 3",
-      "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": {
-        "count": 2,
-        "max": 3
-      }
+      "reprimands": 2
     }
   ]
 }

@@ -13,10 +13,12 @@ export default observer(() => {
           <div className='name'>{member.name}</div>
         </div>
         <div className='list__item list__item_bg'>
-          <div className='rank'>{member.rankName}</div>
+          <div className='rank'>{store.getRankName(member.rankNum)}</div>
         </div>
         <div className='list__item list__item_bg'>
-          <div className='group'>{member.groupName || 'Без отдела'}</div>
+          <div className='group'>
+            {member.groupId ? store.getGruopName(member.groupId) : 'Без отдела'}
+          </div>
         </div>
         <div className='list__item'>
           <div className='last-activity'>{member.lastActivity}</div>

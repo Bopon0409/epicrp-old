@@ -127,7 +127,10 @@ class CreatePersStore {
   }
 
   // ================================   STEP3   ================================
-  setMenuActive = value => (this.state.menuActive = value)
+  setMenuActive = value => {
+    this.state.menuActive = value
+    window.clientTrigger('character.menu.change', value - 1)
+  }
 }
 
 export default new CreatePersStore()

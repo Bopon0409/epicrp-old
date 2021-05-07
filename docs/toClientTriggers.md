@@ -23,7 +23,21 @@
 ## Создание персонажа
 
 - `mp.trigger('character.update', type: String, value: String or Number)` - Пользователь что-то изменил при создании персонажа
+- `mp.trigger('character.menu.change', menu: string)` - Пользователь выбрал параметр бокового меню
 - `mp.trigger('character.created')` - Пользователь закончил создание персонажа
+
+#### Список параметров `character.update`
+
+1. name - String, Имя
+2. surname - String, Фамилия
+3. sex - String ('male', 'female'), Пол
+4. age - int
+5. mother - Int (id), Мать
+6. father - Int (id), Отец
+7. parentsSimilarity - Float (0-1), Схожесть с родителями
+8. skinColor - Float (0-1), Цвет кожи
+
+**Остальные параметры в `create-pers-data.json`**
 
 ## Банкомат
 
@@ -38,16 +52,3 @@
 - `mp.trigger('fraction.ads.edit', data: json string)` - Изменение обявления
 
 ** Триггеры фракций в `json/fraction-triggers.json`**
-
-#### Список параметров `character.update`
-
-1. name - String, Имя
-2. surname - String, Фамилия
-3. sex - String ('male', 'female'), Пол
-4. age - int
-5. mother - Int (id), Мать
-6. father - Int (id), Отец
-7. parentsSimilarity - Float (0-1), Схожесть с родителями
-8. skinColor - Float (0-1), Цвет кожи
-
-**Остальные параметры в `create-pers-data.json`**

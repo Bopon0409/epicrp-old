@@ -28,6 +28,7 @@
     .ads__content {
       width: 550px;
       padding-right: 10px;
+      overflow-x: hidden;
 
       .content__item {
         margin-bottom: 20px;
@@ -57,6 +58,7 @@
             line-height: 156.5%;
             color: #ffffff;
             padding: 5px;
+            overflow-x: hidden;
           }
         }
 
