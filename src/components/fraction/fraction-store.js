@@ -185,6 +185,7 @@ class FractionStore {
       if (ad.id === id) {
         ad.title = title
         ad.text = text
+        ad.date = new Date().toLocaleDateString('ru')
         return ad
       } else return ad
     })

@@ -21,6 +21,8 @@ export default observer(() => {
     }
   }, [])
 
+  // console.log(store.state.active)
+
   return store.state.active ? (
     <div className='inventory-page'>
       <div className='inventory-page__wrapper' />

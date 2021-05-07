@@ -54,9 +54,10 @@ class InventoryStore {
 
   // ================================   MAIN   =================================
   setInventoryActive = (active, inventoryId = 0) => {
-    console.log(active, inventoryId)
+    console.log(inventoryId)
     this.state.active = active
     this.state.mode = this.state.active ? inventoryId : 0
+    console.log(this.state.mode, this.state.active)
   }
 
   setInventoryData = data => {
@@ -332,7 +333,7 @@ class InventoryStore {
   useConsumableItem = idSlot => {
     const item = this.getItem(idSlot)
     item.quantity > 1 ? this.decreaseItem(idSlot) : this.deleteItem(idSlot)
-    this.trigger('use', this.getItem(idSlot))
+    this.trigger('use', item)
   }
 
   // Надевание экиперовки
