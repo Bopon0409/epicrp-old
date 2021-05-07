@@ -53,7 +53,9 @@ class FractionStore {
       history: []
     },
     members: [],
-    activityList: []
+    activityList: [],
+    activityCurrent: '',
+    activityData: []
   }
 
   setActive = active => (this.state.active = active)
@@ -224,6 +226,15 @@ class FractionStore {
     const el = document.getElementById('ad' + id)
     el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
+
+  //==============================   Activity   ================================
+
+  requestActivity = name => {
+    this.state.activityCurrent = name
+    window.clientTrigger('fraction.activity', name)
+  }
+
+  setActivityData = data => (this.state.activityData = data.list)
 }
 
 export default new FractionStore()

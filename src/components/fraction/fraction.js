@@ -14,12 +14,14 @@ import AdsEdit from './modules/ads-edit'
 export default observer(() => {
   useEffect(() => {
     const { EventManager: em } = window
-    const { setActive, setData } = store
+    const { setActive, setData, setActivityData } = store
     em.addHandler('fraction.active', setActive)
     em.addHandler('fraction.data', setData)
+    em.addHandler('fraction.activity', setActivityData)
     return () => {
       em.removeHandler('fraction.active', setActive)
       em.removeHandler('fraction.data', setData)
+      em.removeHandler('fraction.activity', setActivityData)
     }
   }, [])
 

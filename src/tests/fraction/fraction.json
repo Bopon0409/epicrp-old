@@ -133,7 +133,7 @@
   ],
   "ranksSettings": [
     {
-      "rankName": 1,
+      "rankNum": 1,
       "settingsList": [
         {
           "settingName": "Какая - то настройка",
@@ -158,7 +158,7 @@
       ]
     },
     {
-      "rankName": 2,
+      "rankNum": 2,
       "settingsList": [
         {
           "settingName": "Какая - то настройка",
@@ -183,7 +183,7 @@
       ]
     },
     {
-      "rankName": 3,
+      "rankNum": 3,
       "settingsList": [
         {
           "settingName": "Какая - то настройка",

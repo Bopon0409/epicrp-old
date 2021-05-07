@@ -1,15 +1,35 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
 import store from '../fraction-store'
+import classNames from 'classnames'
 
 export default observer(() => {
   const user = store.state.infoUser || store.state.user
   const { name, rankName, sex, phone, group } = user
   const color = store.getMemberColor(user.id)
+  const { activityCurrent, activityData, activityList } = store.state
 
-  const activityButtonsList = store.state.activityList.map((activity, i) => (
-    <div className='header__activity-button' key={i}>
-      <div className='text'>{activity}</div>
+  const activityButtonsList = activityList.map((activity, i) => {
+    const active = activity === activityCurrent
+    const classes = classNames('header__activity-button', active && 'active')
+    return (
+      <div
+        className={classes}
+        onClick={() => store.requestActivity(activity)}
+        key={i}
+      >
+        <div className='text'>{activity}</div>
+      </div>
+    )
+  })
+
+  const activityListView = activityData.map((activity, i) => (
+    <div className='row' key={`activity row ${i}`}>
+      {activity.map((cell, j) => (
+        <div className='cell' key={`activity cell ${i}${j}`}>
+          {cell}
+        </div>
+      ))}
     </div>
   ))
 
@@ -35,21 +55,12 @@ export default observer(() => {
           {activityButtonsList}
         </div>
       </div>
-      <div className="activity__stat">
-        <div className="title">Статистика активности</div>
-        <div className="row row-header">
-          <div className="cell">Дата</div>
-          <div className="cell">Вход</div>
-          <div className="cell">Выход</div>
-          <div className="cell">Был онлайн</div>
+      {store.state.activityCurrent && (
+        <div className='activity__stat'>
+          <div className='title'>{store.state.activityCurrent}</div>
+          {activityListView}
         </div>
-        <div className="row">
-          <div className="cell">26/04/2021</div>
-          <div className="cell">17:03:03</div>
-          <div className="cell">17:05:03</div>
-          <div className="cell">00:02:03</div>
-        </div>
-      </div>
+      )}
     </div>
   )
 })
