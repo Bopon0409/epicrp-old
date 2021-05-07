@@ -88,7 +88,7 @@
 /* line 80, ../../sass/circular-menu.scss */
 .circular-menu ul li a span.cm-icon {
   display: inline-block;
-  background-size: cover;
+  /* background-size: cover; */
 }
 /* line 85, ../../sass/circular-menu.scss */
 .circular-menu ul li a span.text {

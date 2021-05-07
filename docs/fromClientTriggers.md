@@ -4,12 +4,12 @@
 
 ### Инвентарь
 
-- `window.trigger('inventory.toggle', active: bolean, id: int)` - Открыть/Закрыть инвентарь *
+- `window.trigger('inventory.toggle', active: bolean, id: int)` - Открыть/Закрыть инвентарь \*
 - `window.trigger('inventory.update', data: json string)` - Загрузка данных
 
 ### Авторизация
 
-- `window.trigger('auth.toggle', active: bolean, login?: string, pass?: string)` - Открыть/Закрыть окно авторизации (логин и пароль опционально)  
+- `window.trigger('auth.toggle', active: bolean, login?: string, pass?: string)` - Открыть/Закрыть окно авторизации (логин и пароль опционально)
 - `window.trigger('auth.authAnswer', result: boolean)` - Ответ на авторизацию
 - `window.trigger('auth.registerAnswer', result: boolean` - Ответ на регистрацию
 
@@ -66,6 +66,11 @@
 - `window.trigger('speedometer.maxSpeed', maxSpeed: int)` - Изменение макс скорости
 - `window.trigger('speedometer.fuel', fuel: int)` - Изменение топлива (1-100)
 - `window.trigger('speedometer.badge', badge: jsonString)` - Изменение значков
+
+### Планшет фракции
+
+- `window.trigger('fraction.active', active: bolean)` - Открыть/закрыть планшет фракции
+- `window.trigger('fraction.data', data: json string)` - Загрузить данные планшета фракции
 
 ##### Примеры json 'speedometer.badge' в speedometer-badges.json
 

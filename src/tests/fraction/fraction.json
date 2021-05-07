@@ -2,7 +2,10 @@
   "fractionName": "Los Santos Police",
   "user": {
     "name": "Ched Nocksfeel",
-    "rankName": "Лидер организации"
+    "rankName": "Лидер организации",
+    "sex": "male",
+    "phone": "xxxx-xxxx",
+    "group": "Patroul Division"
   },
   "capabilities": {
     "controlStorage": true,
