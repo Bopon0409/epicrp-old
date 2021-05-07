@@ -35,7 +35,7 @@
 
 - `mp.trigger('fraction.ads.add', data: json string)` - Добавление обявления
 - `mp.trigger('fraction.ads.remove',id: number)` - Удаление обявления
-- `mp.trigger('fraction.ads.add', data: json string)` - Изменение обявления
+- `mp.trigger('fraction.ads.edit', data: json string)` - Изменение обявления
 
 ** Триггеры фракций в `json/fraction-triggers.json`**
 
