@@ -7,8 +7,6 @@ import AtmBody from './modules/atm-body'
 import bg from './images/atm-bg.png'
 
 export default observer(() => {
-  const style = { display: store.state.active ? 'block' : 'none' }
-
   useEffect(() => {
     const { EventManager: em } = window
     const { setAtmActive, updateAtmData } = store
@@ -20,8 +18,8 @@ export default observer(() => {
     }
   }, [])
 
-  return (
-    <div className='atm' style={style}>
+  return store.state.active ? (
+    <div className='atm'>
       <div className='atm__wrapper1' />
       <div className='atm__wrapper2' />
       <div className='atm__bg-container'>
@@ -32,5 +30,5 @@ export default observer(() => {
         </div>
       </div>
     </div>
-  )
+  ) : null
 })

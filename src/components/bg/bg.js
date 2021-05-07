@@ -8,6 +8,5 @@ export default function Bg () {
     return () => em.removeHandler('hud.toggleBg', setActive)
   }, [])
 
-  const bgStyle = { display: active ? 'block' : 'none' }
-  return <div className='background-test' style={bgStyle}></div>
+  return active ? <div className='background-test'></div> : null
 }

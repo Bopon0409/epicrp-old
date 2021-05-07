@@ -26,7 +26,7 @@
   "scripts": {
     "dev": "react-scripts start",
     "build": "react-scripts build",
-    "zip": "react-scripts build & node archiver",
+    "zip": "react-scripts build; node archiver",
     "eject": "react-scripts eject",
     "analyze": "node analyze",
     "stats": "sloc src"

@@ -21,11 +21,8 @@ export default observer(() => {
     }
   }, [])
 
-  return (
-    <div
-      className='inventory-page'
-      style={{ display: store.state.active ? 'block' : 'none' }}
-    >
+  return store.state.active ? (
+    <div className='inventory-page'>
       <div className='inventory-page__wrapper' />
       <Container />
       <CloseBtn />
@@ -34,5 +31,5 @@ export default observer(() => {
       <Indicators />
       {store.state.modal.isActive && <Modal />}
     </div>
-  )
+  ) : null
 })

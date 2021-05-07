@@ -4,22 +4,18 @@ import store from '../fraction-store'
 import Icon from './icon'
 
 export default observer(() => {
-  const { adsEdit: ad } = store.state
-  const { setEditTitle, setEditText, editSubmit } = store
+  const { setEditTitle, setEditText, editSubmit, setAdsEditActive } = store
 
   return store.state.adsEditActive ? (
     <div className='ads-edit'>
-      <div
-        className='edit__close'
-        onClick={() => store.setAdsEditActive(false)}
-      >
+      <div className='edit__close' onClick={() => setAdsEditActive(false)}>
         <Icon icon='close' />
       </div>
       <input
         type='text'
         className='edit__title'
         placeholder='Введите заголовок'
-        value={ad.title}
+        value={store.state.adsEdit.title}
         onChange={setEditTitle}
       />
       <div className='text'>
@@ -27,7 +23,7 @@ export default observer(() => {
         <textarea
           className='text__content skroll'
           placeholder='Введите текст'
-          value={ad.text}
+          value={store.state.adsEdit.text}
           onChange={setEditText}
         />
       </div>

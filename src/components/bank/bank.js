@@ -8,6 +8,7 @@ import closeIcon from './images/close-icon.svg'
 
 export default observer(() => {
   const { active, currentMainMenuEl } = store.state
+
   useEffect(() => {
     const { setActive, updateData } = store
     const { EventManager: em } = window
@@ -19,8 +20,8 @@ export default observer(() => {
     }
   }, [])
 
-  return (
-    <div className='bank' style={{ display: active ? 'block' : 'none' }}>
+  return active ? (
+    <div className='bank'>
       <img src={bankLogo} alt='' className='bank__logo' />
       <Menu />
       <div className='bank-wrapper1' />
@@ -31,5 +32,5 @@ export default observer(() => {
 
       {currentMainMenuEl === 0 && <MainPage />}
     </div>
-  )
+  ) : null
 })

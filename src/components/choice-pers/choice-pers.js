@@ -15,9 +15,8 @@ export default observer(() => {
 
   const slotList = data.map((_el, i) => <SlotPers key={i} index={i} />)
 
-  const componentStyle = { display: componentActive ? 'block' : 'none' }
-  return (
-    <div style={componentStyle} className='choice-pers'>
+  return componentActive ? (
+    <div className='choice-pers'>
       <div className='title'>
         <span className='first'>Выбор</span>
         <span className='second'>Персонажа</span>
@@ -28,5 +27,5 @@ export default observer(() => {
       </div>
       <div className='slots'>{slotList}</div>
     </div>
-  )
+  ) : null
 })

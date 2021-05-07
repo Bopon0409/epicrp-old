@@ -21,12 +21,11 @@ export default observer(() => {
   }, [])
 
   const componentStyle = {
-    display: active ? 'block' : 'none',
     background: step === 1 ? 'rgba(0, 0, 0, 0.9)' : '',
     backgroundImage: step !== 1 ? `url(${backgroundPng})` : ''
   }
 
-  return (
+  return active ? (
     <div className='create-pers' style={componentStyle}>
       <Header step={step} />
       {step === 1 && <Step1 />}
@@ -35,5 +34,5 @@ export default observer(() => {
 
       {(step === 2 || step === 3) && <Transition />}
     </div>
-  )
+  ) : null
 })

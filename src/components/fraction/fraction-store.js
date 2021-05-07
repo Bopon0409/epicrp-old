@@ -137,7 +137,7 @@ class FractionStore {
 
   setActiveMenuItem = item => (this.state.activeMenuItem = item)
 
-  // ADS
+  //=================================   ADS   ==================================
 
   setAdsActive = active => (this.state.adsActive = active)
 
@@ -198,6 +198,11 @@ class FractionStore {
     const id = this.getFreeAdId()
     this.state.ads.push({ id, title, author, date, text })
     window.clientTrigger('fraction.ads.add', { id, title, author, date, text })
+  }
+
+  navClickHandler = id => {
+    const el = document.getElementById('ad' + id)
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 }
 

@@ -31,8 +31,8 @@ export default observer(() => {
     }
   )
 
-  return (
-    <div className='test-modal' style={{ display: active ? 'block' : 'none' }}>
+  return active ? (
+    <div className='test-modal'>
       <Select
         options={selectOptions}
         onChange={option => setCurTest(option.value)}
@@ -44,5 +44,5 @@ export default observer(() => {
       </div>
       <div className='test-modal__container'>{testButtons}</div>
     </div>
-  )
+  ) : null
 })

@@ -59,7 +59,7 @@ class InteractionMenuStore {
       CMenu('#menu1')
         .config({
           hideAfterClick: false,
-          diameter: window.innerHeight / 2,
+          diameter: 400,
           menus
         })
         .show([window.innerWidth / 2, window.innerHeight / 2])

@@ -27,10 +27,10 @@ export default observer(() => {
     }
   }, [])
 
-  return (
-    <div className='speedometer' style={{ display: active ? 'block' : 'none' }}>
+  return active ? (
+    <div className='speedometer'>
       {type === 0 && <SimpleSpeedometer />}
       {type === 1 && <RadialSpeedometer />}
     </div>
-  )
+  ) : null
 })

@@ -5,5 +5,4 @@ import tests from './tests/test'
 
 ReactDOM.render(<App />, document.getElementById('root'))
 
-process.env.NODE_ENV === 'development' && tests()
-
+process.env.NODE_ENV === 'development' && setTimeout(() => tests(), 0)

@@ -25,11 +25,8 @@ export default observer(() => {
     }
   }, [])
 
-  return (
-    <div
-      className='auth'
-      style={active ? { display: 'block' } : { display: 'none' }}
-    >
+  return active ? (
+    <div className='auth'>
       <div className='title-block'>
         <img src={logoImg} alt='' className='logo' />
         <div className='title'>{isLogin ? 'Авторизация' : 'Регистрация'}</div>
@@ -49,5 +46,5 @@ export default observer(() => {
         </div>
       </div>
     </div>
-  )
+  ) : null
 })

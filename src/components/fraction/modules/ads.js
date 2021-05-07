@@ -8,11 +8,7 @@ import editBtnIcon from '../img/ad_edit.svg'
 
 export default observer(() => {
   const { ads, capabilities } = store.state
-
-  const navClickHandler = id => {
-    const el = document.getElementById('ad' + id)
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
+  const { navClickHandler, setAdsEditActive, adsDelete, setAdsActive } = store
 
   const navList = ads.map(({ id, title }) => (
     <div
@@ -42,12 +38,12 @@ export default observer(() => {
           <button
             className='ad__button'
             onClick={() =>
-              store.setAdsEditActive(true, { id, title, author, date, text })
+              setAdsEditActive(true, { id, title, author, date, text })
             }
           >
             <img src={editBtnIcon} alt='' />
           </button>
-          <button className='ad__button' onClick={() => store.adsDelete(id)}>
+          <button className='ad__button' onClick={() => adsDelete(id)}>
             <img src={deleteBtnIcon} alt='' />
           </button>
         </div>
@@ -57,7 +53,7 @@ export default observer(() => {
 
   return store.state.adsActive ? (
     <div className='ads'>
-      <div className='ads__close' onClick={() => store.setAdsActive(false)}>
+      <div className='ads__close' onClick={() => setAdsActive(false)}>
         <Icon icon='close' />
       </div>
       <div className='ads__content skroll'>{contentList}</div>
@@ -67,9 +63,8 @@ export default observer(() => {
         {capabilities.controlAds && (
           <button
             className='nav__ad-btn'
-            onClick={() => store.setAdsEditActive(true)}
+            onClick={() => setAdsEditActive(true)}
           >
-            {' '}
             Добавить объявление
           </button>
         )}

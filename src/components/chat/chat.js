@@ -66,13 +66,13 @@ export default observer(() => {
     </>
   )
 
-  return (
+  return isShow ? (
     <>
-      <div className='chat' style={{ display: isShow ? 'block' : 'none' }}>
+      <div className='chat'>
         <MsgList skrollRef={skrollRef} />
         {inputContainer}
       </div>
       {isShow && <div className='background-chat'></div>}
     </>
-  )
+  ) : null
 })
