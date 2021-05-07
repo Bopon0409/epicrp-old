@@ -23,7 +23,7 @@
 ## Создание персонажа
 
 - `mp.trigger('character.update', type: String, value: String or Number)` - Пользователь что-то изменил при создании персонажа
-- `mp.trigger('character.menu.change', menu: string)` - Пользователь выбрал параметр бокового меню
+- `mp.trigger('character.menu.change', menu: number)` - Пользователь выбрал параметр бокового меню
 - `mp.trigger('character.created')` - Пользователь закончил создание персонажа
 
 #### Список параметров `character.update`
