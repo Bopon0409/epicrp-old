@@ -6,12 +6,15 @@ import UserIcon from './user-icon'
 
 export default observer(() => {
   const { user } = store.state
+  const color = store.getMemberColor(user.id)
 
   return (
     <div className='bottom-menu'>
-      <UserIcon size='37px' online={true} name={user.name} />
+      <UserIcon size='37px' online={true} name={user.name} color={color} />
       <div className='text'>
-        <div className='text__name'>{user.name}</div>
+        <div className='text__name' style={{ color }}>
+          {user.name}
+        </div>
         <div className='text__rank'>{user.rankName}</div>
       </div>
       <div className='settings' onClick={() => store.setSettingsMode(true)}>

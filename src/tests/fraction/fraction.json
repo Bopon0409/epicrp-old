@@ -1,11 +1,20 @@
 {
   "fractionName": "Los Santos Police",
   "user": {
-    "name": "Ched Nocksfeel",
-    "rankName": "Лидер организации",
+    "id": 100,
+    "online": true,
+    "name": "Chak Noris",
+    "rankName": "Лидер",
+    "rankNum": 999,
     "sex": "male",
     "phone": "xxxx-xxxx",
-    "group": "Patroul Division"
+    "groupId": "",
+    "groupName": "",
+    "lastActivity": "17/03/2021 в 19:31",
+    "reprimands": {
+      "count": 2,
+      "max": 3
+    }
   },
   "capabilities": {
     "controlStorage": true,
@@ -55,6 +64,12 @@
     }
   ],
   "ranks": [
+    {
+      "rankNum": 999,
+      "rankName": "Лидер фракции",
+      "groupId": false,
+      "color": "red"
+    },
     {
       "rankNum": 1,
       "rankName": "Police officer 1",
@@ -665,6 +680,22 @@
       "phone": "1234-1234",
       "groupId": "2",
       "groupName": "Patroul Division 3",
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": {
+        "count": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": 100,
+      "online": true,
+      "name": "Chak Noris",
+      "rankName": "Лидер",
+      "rankNum": 999,
+      "sex": "male",
+      "phone": "xxxx-xxxx",
+      "groupId": "",
+      "groupName": "",
       "lastActivity": "17/03/2021 в 19:31",
       "reprimands": {
         "count": 2,

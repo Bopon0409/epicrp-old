@@ -1,3 +1,5 @@
+import hudStore from '../hud/hud-store'
+
 const { makeAutoObservable } = require('mobx')
 
 class FractionStore {
@@ -11,6 +13,7 @@ class FractionStore {
     activeMenuItem: 0,
     searchValue: '',
     user: {},
+    infoUser: null,
     fractionName: '',
     capabilities: {
       controlStorage: false,
@@ -60,18 +63,18 @@ class FractionStore {
   }
 
   setData = data => {
-    this.state.fractionName = data.fractionName
-    this.state.capabilities = data.capabilities
-    this.state.description = data.description
-    this.state.ads = data.ads
-    this.state.ranks = data.ranks
-    this.state.ranksSettings = data.ranksSettings
-    this.state.groups = data.groups
-    this.state.cars = data.cars
-    this.state.storage.open = data.open
-    this.state.members = data.members
-    this.state.activityList = data.activityList
-    this.state.user = data.user
+    if (data.fractionName) this.state.fractionName = data.fractionName
+    if (data.capabilities) this.state.capabilities = data.capabilities
+    if (data.description) this.state.description = data.description
+    if (data.ads) this.state.ads = data.ads
+    if (data.ranks) this.state.ranks = data.ranks
+    if (data.ranksSettings) this.state.ranksSettings = data.ranksSettings
+    if (data.groups) this.state.groups = data.groups
+    if (data.cars) this.state.cars = data.cars
+    if (data.open) this.state.storage.open = data.open
+    if (data.members) this.state.members = data.members
+    if (data.activityList) this.state.activityList = data.activityList
+    if (data.user) this.state.user = data.user
   }
 
   get tabletTitle () {
@@ -79,16 +82,32 @@ class FractionStore {
   }
 
   get discrordList () {
-    return this.state.groups.map(({ groupId, groupName }) => ({
+    const list = this.state.groups.map(({ groupId, groupName }) => ({
       name: groupName,
       list: this.state.members.filter(({ name, groupId: memberGroupId }) => {
-        const id = +memberGroupId
+        let id
+        if (memberGroupId.length) id = +memberGroupId
         const searchValue = this.state.searchValue.toLocaleLowerCase()
         const groupCheck = id === groupId
         const searchCheck = name.toLocaleLowerCase().includes(searchValue)
         return searchValue ? searchCheck && groupCheck : groupCheck
       })
     }))
+    list.push({
+      name: this.state.fractionName,
+      list: this.state.members.filter(({ groupId }) => groupId === '')
+    })
+    return list
+  }
+
+  get membersList () {
+    const searchValue = this.state.searchValue.toLocaleLowerCase()
+    return this.state.members.filter(({ name, rankName, groupName }) => {
+      const nameCheck = name.toLocaleLowerCase().includes(searchValue)
+      const rankCheck = rankName.toLocaleLowerCase().includes(searchValue)
+      const groupCheck = groupName.toLocaleLowerCase().includes(searchValue)
+      return nameCheck || rankCheck || groupCheck
+    })
   }
 
   getMemberByName = name => this.state.members.find(memb => memb.name === name)
@@ -185,7 +204,7 @@ class FractionStore {
       if (ad.id === id) {
         ad.title = title
         ad.text = text
-        ad.date = new Date().toLocaleDateString('ru')
+        ad.date = hudStore.state.date + ' в ' + hudStore.state.time
         return ad
       } else return ad
     })
@@ -195,9 +214,9 @@ class FractionStore {
   adsAdd = () => {
     const { title, text } = this.state.adsEdit
     const { name: author } = this.state.user
-    const date = new Date().toLocaleDateString('ru')
+    const date = hudStore.state.date + ' в ' + hudStore.state.time
     const id = this.getFreeAdId()
-    this.state.ads.push({ id, title, author, date, text })
+    this.state.ads.unshift({ id, title, author, date, text })
     window.clientTrigger('fraction.ads.add', { id, title, author, date, text })
   }
 
