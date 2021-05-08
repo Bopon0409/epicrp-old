@@ -429,6 +429,18 @@
   },
   "members": [
     {
+      "id": 4,
+      "online": true,
+      "name": "Какой-то игрок",
+      "rankNum": 8,
+      "duty": "Сотрудник",
+      "sex": true,
+      "phone": "1234-1234",
+      "groupId": null,
+      "lastActivity": "17/03/2021 в 19:31",
+      "reprimands": 2
+    },
+    {
       "id": 1,
       "online": true,
       "name": "Ched nocksfeel",
@@ -442,7 +454,7 @@
     },
     {
       "id": 2,
-      "online": true,
+      "online": false,
       "name": "horex",
       "rankNum": 999,
       "duty": "Сотрудник",

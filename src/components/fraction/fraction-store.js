@@ -72,6 +72,7 @@ class FractionStore {
   }
 
   getGruopName = id => {
+    if (!id) return ''
     return this.state.groups.find(({ groupId }) => groupId === id).groupName
   }
 

@@ -100,8 +100,6 @@
       width: 330px;
       height: 100px;
       background: rgba(255, 255, 255, 0.03);
-      transition-property: all;
-      transition-duration: 0.5s;
       color: rgba(255, 255, 255, 0.5);
       font-weight: 300;
       box-sizing: border-box;
@@ -109,8 +107,6 @@
 
       .light-hover {
         opacity: 0;
-        transition-property: all;
-        transition-duration: 0.5s;
         width: 210px;
         height: 2px;
         background: white;
@@ -134,8 +130,7 @@
 
       .details {
         opacity: 0;
-        transition-property: all;
-        transition-duration: 0.5s;
+
 
         .lvl {
           font-size: 18px;

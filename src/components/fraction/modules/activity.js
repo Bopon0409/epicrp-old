@@ -47,9 +47,7 @@ export default observer(() => {
         <div className='header__info'>
           <div className='header__name'>{name}</div>
           <div className='header__rank'>Ранг: {rankName}</div>
-          <div className='header__sex'>
-            Пол: {sex === 'male' ? 'Мужской' : 'Женский'}
-          </div>
+          <div className='header__sex'>Пол: {sex ? 'Мужской' : 'Женский'}</div>
           <div className='header__phone'>Номер телефона: {phone}</div>
           <div className='header__group'>Отдел: {group || 'Без отдела'}</div>
         </div>
