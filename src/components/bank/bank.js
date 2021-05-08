@@ -4,7 +4,7 @@ import store from './bank-store'
 import Menu from './modules/menu'
 import MainPage from './modules/main-page'
 import bankLogo from './images/bank-logo.svg'
-import closeIcon from './images/close-icon.svg'
+// import closeIcon from './images/close-icon.svg'
 
 export default observer(() => {
   const { active, currentMainMenuEl } = store.state
@@ -26,10 +26,9 @@ export default observer(() => {
       <Menu />
       <div className='bank-wrapper1' />
       <div className='bank-wrapper2' />
-      <div className='bank__close-btn' onClick={() => store.setActive(false)}>
+      {/* <div className='bank__close-btn'>
         <img src={closeIcon} alt='' />
-      </div>
-
+      </div> */}
       {currentMainMenuEl === 0 && <MainPage />}
     </div>
   ) : null

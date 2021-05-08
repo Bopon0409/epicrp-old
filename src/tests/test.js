@@ -13,8 +13,5 @@ import './fraction/fraction.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.hud.setAllHudData()
-  window.test.fraction.setData()
-  // window.test.fraction.setStorage()
-  window.test.fraction.setActive(true)
+
 }
