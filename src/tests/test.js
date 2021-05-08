@@ -13,5 +13,6 @@ import './fraction/fraction.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-
+  window.test.hud.setHudActive(true)
+  window.test.hud.testAlerts()
 }

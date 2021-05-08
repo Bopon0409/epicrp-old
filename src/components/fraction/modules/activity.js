@@ -40,7 +40,7 @@ export default observer(() => {
       <div className='activity__header'>
         <div className='header__icon'>
           <div className='letter' style={{ color }}>
-            {name[0]}
+            {name ? name[0] : ''}
           </div>
           {true && <div className='online' />}
         </div>

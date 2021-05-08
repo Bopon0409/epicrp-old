@@ -26,7 +26,6 @@ class SpeedometerStore {
   setMaxSpeed = max => (this.state.maxSpeed = max)
   setBadge = ({ badgeName, value }) => (this.state.badges[badgeName] = value)
   setFuel = fuel => (this.state.fuel = fuel > 100 ? 100 : fuel)
-
   setSpeed = speed => (this.state.speed = speed > 999 ? 999 : speed)
 
   get speedNulls () {

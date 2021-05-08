@@ -14,7 +14,25 @@ class FractionStore {
     searchValue: '',
     user: {},
     fractionName: '',
-    capabilities: {},
+    capabilities: {
+      controlStorage: false,
+      controlRanks: false,
+      controlGroups: false,
+      controlAds: false,
+      controlCars: {
+        changePermissions: false,
+        spawn: false
+      },
+      controlSettings: false,
+      controlMembers: {
+        checkInfo: false,
+        changeRanks: false,
+        changeGroups: false,
+        giveReprimands: false,
+        giveAward: false,
+        dismiss: false
+      }
+    },
     description: '',
     ads: [],
     adsActive: false,
@@ -37,6 +55,7 @@ class FractionStore {
     members: [],
     activityId: 0,
     activityCurrent: '',
+    activityList: [],
     activityData: [],
     contextMenu: {
       active: false,
@@ -77,6 +96,7 @@ class FractionStore {
   }
 
   getRankName = id => {
+    if (!id) return ''
     return this.state.ranks.find(({ rankNum }) => rankNum === id).rankName
   }
 
