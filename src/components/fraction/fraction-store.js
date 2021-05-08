@@ -92,7 +92,7 @@ class FractionStore {
     }))
     list.push({
       name: this.state.fractionName,
-      list: this.state.members.filter(({ groupId }) => groupId === '')
+      list: this.state.members.filter(({ groupId }) => !groupId)
     })
     return list
   }
