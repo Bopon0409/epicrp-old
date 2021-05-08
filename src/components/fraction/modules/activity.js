@@ -4,16 +4,12 @@ import store from '../fraction-store'
 import classNames from 'classnames'
 
 export default observer(() => {
-  const user =
-    store.state.activityId !== 0
-      ? store.getMemberById(store.state.activityId)
-      : store.state.user
+  const { activityCurrent, activityData, activityList } = store.state
+  const { name, rankNum, sex, phone, groupId, id } = store.activityUser
 
-  const { name, rankNum, sex, phone, groupId } = user
   const rankName = store.getRankName(rankNum)
   const group = store.getGruopName(groupId)
-  const color = store.getMemberColor(user.id)
-  const { activityCurrent, activityData, activityList } = store.state
+  const color = store.getMemberColor(id)
 
   const activityButtonsList = activityList.map((activity, i) => {
     const active = activity === activityCurrent
@@ -61,7 +57,7 @@ export default observer(() => {
           {activityButtonsList}
         </div>
       </div>
-      {store.state.activityCurrent && (
+      {activityCurrent && (
         <div className='activity__stat'>
           <div className='title'>{store.state.activityCurrent}</div>
           {activityListView}

@@ -5,31 +5,37 @@ import Icon from './icon'
 
 export default observer(() => {
   const { title, icon } = store.getMenuItem()
-  const { activeMenuItem } = store.state
+  const { activeMenuItem, searchValue } = store.state
+
   const isSearchVision = activeMenuItem === 0 || activeMenuItem === 1
   const isCloseVision = activeMenuItem === 5 || activeMenuItem === 6
+
+  const searchView = isSearchVision && (
+    <div className='header__search'>
+      <input
+        className='header__input'
+        placeholder='Поиск сотрудников'
+        value={searchValue}
+        onChange={store.setSearchValue}
+      />
+      <Icon icon='search' />
+    </div>
+  )
+
+  const closeView = isCloseVision && (
+    <div className='close' onClick={() => store.setSettingsMode(false)}>
+      <Icon icon='close' />
+    </div>
+  )
+
   return (
     <div className='header'>
       <div className='header__title'>
         <Icon icon={icon} />
         <div className='header__text'>{title}</div>
       </div>
-      {isSearchVision && (
-        <div className='header__search'>
-          <input
-            className='header__input'
-            placeholder='Поиск сотрудников'
-            value={store.state.searchValue}
-            onChange={store.setSearchValue}
-          />
-          <Icon icon='search' />
-        </div>
-      )}
-      {isCloseVision && (
-        <div onClick={() => store.setSettingsMode(false)} className='close'>
-          <Icon icon='close' />
-        </div>
-      )}
+      {searchView}
+      {closeView}
     </div>
   )
 })

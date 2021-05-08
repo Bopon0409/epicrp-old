@@ -4,28 +4,24 @@ import store from '../fraction-store'
 
 export default observer(() => {
   const membersList = store.membersList.map((member, i) => {
+    const { groupId, rankNum, name, id, online, lastActivity } = member
+    const group = groupId ? store.getGruopName(groupId) : 'Без отдела'
+    const handler = e => store.memberClickHandler(e, id)
+
     return (
-      <div
-        className='row'
-        key={i}
-        onClick={e => store.memberClickHandler(e, member.id)}
-      >
+      <div className='row' key={i} onClick={handler}>
+        <div className='list__item'>{online && <div className='online' />}</div>
         <div className='list__item'>
-          {member.online && <div className='online' />}
-        </div>
-        <div className='list__item'>
-          <div className='name'>{member.name}</div>
+          <div className='name'>{name}</div>
         </div>
         <div className='list__item list__item_bg'>
-          <div className='rank'>{store.getRankName(member.rankNum)}</div>
+          <div className='rank'>{store.getRankName(rankNum)}</div>
         </div>
         <div className='list__item list__item_bg'>
-          <div className='group'>
-            {member.groupId ? store.getGruopName(member.groupId) : 'Без отдела'}
-          </div>
+          <div className='group'>{group}</div>
         </div>
         <div className='list__item'>
-          <div className='last-activity'>{member.lastActivity}</div>
+          <div className='last-activity'>{lastActivity}</div>
         </div>
       </div>
     )

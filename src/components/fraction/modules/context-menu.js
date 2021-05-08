@@ -7,12 +7,9 @@ export default observer(() => {
   const { active, id, xCoord, yCoord } = store.state.contextMenu
 
   useEffect(() => {
-    const сlickOutside = e => {
-      const modalBlock = document.getElementsByClassName('main-menu')[0]
-      if (!e.path.includes(modalBlock)) store.setContextMenu(false, 0, 0, 0)
-    }
-    document.addEventListener('click', сlickOutside, false)
-    return () => document.removeEventListener('click', сlickOutside, false)
+    const { clickOutsideContextMenu: handler } = store
+    document.addEventListener('click', handler, false)
+    return () => document.removeEventListener('click', handler, false)
   }, [])
 
   const mainMenuList = store.contextMenusItems.map(({ title, handler }) => (

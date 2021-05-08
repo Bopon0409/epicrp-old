@@ -145,6 +145,7 @@ class FractionStore {
   setActiveMenuItem = item => {
     this.state.activeMenuItem = item
     this.clearActivity()
+    this.state.searchValue = ''
     if (item !== 2) this.setActivityId(0)
   }
 
@@ -269,6 +270,11 @@ class FractionStore {
     this.state.contextMenu = { active, xCoord, yCoord, id }
   }
 
+  clickOutsideContextMenu = e => {
+    const modalBlock = document.getElementsByClassName('main-menu')[0]
+    if (!e.path.includes(modalBlock)) this.setContextMenu(false, 0, 0, 0)
+  }
+
   //==============================   Activity   ================================
 
   requestActivity = (name, id) => {
@@ -284,6 +290,11 @@ class FractionStore {
   clearActivity = () => {
     this.state.activityCurrent = ''
     this.state.activityData = []
+  }
+
+  get activityUser () {
+    const { activityId, user } = this.state
+    return this.state.activityId !== 0 ? this.getMemberById(activityId) : user
   }
 }
 
