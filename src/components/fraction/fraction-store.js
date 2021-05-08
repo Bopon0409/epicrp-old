@@ -13,26 +13,8 @@ class FractionStore {
     activeMenuItem: 0,
     searchValue: '',
     user: {},
-    infoUser: null,
     fractionName: '',
-    capabilities: {
-      controlStorage: false,
-      controlRanks: false,
-      controlGroups: false,
-      controlAds: false,
-      controlCars: {
-        changePermissions: false,
-        spawn: false
-      },
-      controlSettings: false,
-      controlMembers: {
-        changeRanks: false,
-        changeGroups: false,
-        giveReprimands: false,
-        giveAward: false,
-        dismiss: false
-      }
-    },
+    capabilities: {},
     description: '',
     ads: [],
     adsActive: false,
@@ -53,7 +35,7 @@ class FractionStore {
       history: []
     },
     members: [],
-    activityList: [],
+    activityId: 0,
     activityCurrent: '',
     activityData: [],
     contextMenu: {
@@ -65,10 +47,6 @@ class FractionStore {
   }
 
   setActive = active => (this.state.active = active)
-
-  get isBlur () {
-    return this.state.adsEditActive || this.state.adsActive
-  }
 
   setData = data => {
     if (data.fractionName) this.state.fractionName = data.fractionName
@@ -83,6 +61,10 @@ class FractionStore {
     if (data.members) this.state.members = data.members
     if (data.activityList) this.state.activityList = data.activityList
     if (data.user) this.state.user = data.user
+  }
+
+  get isBlur () {
+    return this.state.adsEditActive || this.state.adsActive
   }
 
   get tabletTitle () {
@@ -115,6 +97,8 @@ class FractionStore {
   }
 
   getMemberByName = name => this.state.members.find(memb => memb.name === name)
+
+  getMemberById = id => this.state.members.find(memb => memb.id === id)
 
   getMemberColor = id => {
     if (!this.state.members.length || !this.state.ranks.length || !id)
@@ -158,7 +142,11 @@ class FractionStore {
     }
   }
 
-  setActiveMenuItem = item => (this.state.activeMenuItem = item)
+  setActiveMenuItem = item => {
+    this.state.activeMenuItem = item
+    this.clearActivity()
+    if (item !== 2) this.setActivityId(0)
+  }
 
   //=================================   ADS   ==================================
 
@@ -232,14 +220,33 @@ class FractionStore {
   //============================   Members List   ==============================
 
   get contextMenusItems () {
-    return [
-      'Информация',
-      'Ранг',
-      'Отдел',
-      'Выдать выговор',
-      'Выдать премию',
-      'Уволить'
-    ]
+    const { controlMembers } = this.state.capabilities
+    const list = []
+
+    if (controlMembers.checkInfo)
+      list.push({ title: 'Информация', handler: this.infoContextHandler })
+
+    if (controlMembers.changeRanks)
+      list.push({ title: 'Ранг', handler: () => {} })
+
+    if (controlMembers.changeGroups)
+      list.push({ title: 'Отдел', handler: () => {} })
+
+    if (controlMembers.giveReprimands)
+      list.push({ title: 'Выдать выговор', handler: () => {} })
+
+    if (controlMembers.giveAward)
+      list.push({ title: 'Выдать премию', handler: () => {} })
+
+    if (controlMembers.dismiss)
+      list.push({ title: 'Уволить', handler: () => {} })
+    return list
+  }
+
+  infoContextHandler = id => {
+    this.setActivityId(id)
+    this.setActiveMenuItem(2)
+    this.setContextMenu(false, 0, 0, 0)
   }
 
   get membersList () {
@@ -255,33 +262,29 @@ class FractionStore {
   }
 
   memberClickHandler = ({ clientX, clientY }, id) => {
-    setTimeout(() => {
-      this.state.contextMenu = {
-        active: true,
-        xCoord: clientX,
-        yCoord: clientY,
-        id
-      }
-    }, 10)
+    setTimeout(() => this.setContextMenu(true, clientX, clientY, id), 10)
   }
 
-  closeContextMenu = () => {
-    this.state.contextMenu = {
-      active: false,
-      id: 0,
-      xCoord: 0,
-      yCoord: 0
-    }
+  setContextMenu = (active, xCoord, yCoord, id) => {
+    this.state.contextMenu = { active, xCoord, yCoord, id }
   }
 
   //==============================   Activity   ================================
 
-  requestActivity = name => {
+  requestActivity = (name, id) => {
+    if (id === 0) id = this.state.user.id
     this.state.activityCurrent = name
     window.clientTrigger('fraction.activity', name)
   }
 
   setActivityData = data => (this.state.activityData = data.list)
+
+  setActivityId = id => (this.state.activityId = id)
+
+  clearActivity = () => {
+    this.state.activityCurrent = ''
+    this.state.activityData = []
+  }
 }
 
 export default new FractionStore()

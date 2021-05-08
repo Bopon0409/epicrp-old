@@ -4,7 +4,11 @@ import store from '../fraction-store'
 import classNames from 'classnames'
 
 export default observer(() => {
-  const user = store.state.infoUser || store.state.user
+  const user =
+    store.state.activityId !== 0
+      ? store.getMemberById(store.state.activityId)
+      : store.state.user
+
   const { name, rankNum, sex, phone, groupId } = user
   const rankName = store.getRankName(rankNum)
   const group = store.getGruopName(groupId)

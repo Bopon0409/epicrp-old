@@ -9,18 +9,22 @@ export default observer(() => {
   useEffect(() => {
     const сlickOutside = e => {
       const modalBlock = document.getElementsByClassName('main-menu')[0]
-      if (!e.path.includes(modalBlock)) store.closeContextMenu()
+      if (!e.path.includes(modalBlock)) store.setContextMenu(false, 0, 0, 0)
     }
     document.addEventListener('click', сlickOutside, false)
     return () => document.removeEventListener('click', сlickOutside, false)
   }, [])
 
-  const mainMenuList = store.contextMenusItems.map(item => (
-    <div className='main-menu__item' key={`context ${item}`}>
+  const mainMenuList = store.contextMenusItems.map(({ title, handler }) => (
+    <div
+      className='main-menu__item'
+      key={`context ${title}`}
+      onClick={() => handler(id)}
+    >
       <div className='item__icon'>
-        <ContextIcon icon={item} />
+        <ContextIcon icon={title} />
       </div>
-      <div className='item__text'>{item}</div>
+      <div className='item__text'>{title}</div>
     </div>
   ))
 

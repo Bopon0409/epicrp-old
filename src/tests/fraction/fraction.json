@@ -23,7 +23,8 @@
     },
     "controlSettings": true,
     "controlMembers": {
-      "changeRanks": false,
+      "checkInfo": true,
+      "changeRanks": true,
       "changeGroups": true,
       "giveReprimands": true,
       "giveAward": true,
