@@ -5,7 +5,11 @@ import store from '../fraction-store'
 export default observer(() => {
   const membersList = store.membersList.map((member, i) => {
     return (
-      <div className='row' key={i}>
+      <div
+        className='row'
+        key={i}
+        onClick={e => store.memberClickHandler(e, member.id)}
+      >
         <div className='list__item'>
           {member.online && <div className='online' />}
         </div>

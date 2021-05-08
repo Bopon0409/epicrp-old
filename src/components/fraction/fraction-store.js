@@ -55,7 +55,13 @@ class FractionStore {
     members: [],
     activityList: [],
     activityCurrent: '',
-    activityData: []
+    activityData: [],
+    contextMenu: {
+      active: false,
+      id: 0,
+      xCoord: 0,
+      yCoord: 0
+    }
   }
 
   setActive = active => (this.state.active = active)
@@ -106,18 +112,6 @@ class FractionStore {
       list: this.state.members.filter(({ groupId }) => groupId === '')
     })
     return list
-  }
-
-  get membersList () {
-    const searchValue = this.state.searchValue.toLocaleLowerCase()
-    return this.state.members.filter(({ name, rankNum, groupId }) => {
-      const rankName = this.getRankName(rankNum)
-      const groupName = this.getGruopName(groupId)
-      const nameCheck = name.toLocaleLowerCase().includes(searchValue)
-      const rankCheck = rankName.toLocaleLowerCase().includes(searchValue)
-      const groupCheck = groupName.toLocaleLowerCase().includes(searchValue)
-      return nameCheck || rankCheck || groupCheck
-    })
   }
 
   getMemberByName = name => this.state.members.find(memb => memb.name === name)
@@ -233,6 +227,51 @@ class FractionStore {
   navClickHandler = id => {
     const el = document.getElementById('ad' + id)
     el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  //============================   Members List   ==============================
+
+  get contextMenusItems () {
+    return [
+      'Информация',
+      'Ранг',
+      'Отдел',
+      'Выдать выговор',
+      'Выдать премию',
+      'Уволить'
+    ]
+  }
+
+  get membersList () {
+    const searchValue = this.state.searchValue.toLocaleLowerCase()
+    return this.state.members.filter(({ name, rankNum, groupId }) => {
+      const rankName = this.getRankName(rankNum)
+      const groupName = this.getGruopName(groupId)
+      const nameCheck = name.toLocaleLowerCase().includes(searchValue)
+      const rankCheck = rankName.toLocaleLowerCase().includes(searchValue)
+      const groupCheck = groupName.toLocaleLowerCase().includes(searchValue)
+      return nameCheck || rankCheck || groupCheck
+    })
+  }
+
+  memberClickHandler = ({ clientX, clientY }, id) => {
+    setTimeout(() => {
+      this.state.contextMenu = {
+        active: true,
+        xCoord: clientX,
+        yCoord: clientY,
+        id
+      }
+    }, 10)
+  }
+
+  closeContextMenu = () => {
+    this.state.contextMenu = {
+      active: false,
+      id: 0,
+      xCoord: 0,
+      yCoord: 0
+    }
   }
 
   //==============================   Activity   ================================
