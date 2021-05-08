@@ -17,7 +17,7 @@ export default observer(() => {
     return (
       <div
         className={classes}
-        onClick={() => store.requestActivity(activity)}
+        onClick={() => store.requestActivity(activity, id)}
         key={i}
       >
         <div className='text'>{activity}</div>

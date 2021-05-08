@@ -15,14 +15,17 @@ import ContextMenu from './modules/context-menu'
 export default observer(() => {
   useEffect(() => {
     const { EventManager: em } = window
-    const { setActive, setData, setActivityData } = store
+    const { setActive, setData, setActivityData, setStorageData } = store
+
     em.addHandler('fraction.active', setActive)
     em.addHandler('fraction.data', setData)
     em.addHandler('fraction.activity', setActivityData)
+    em.addHandler('fraction.storage', setStorageData)
     return () => {
       em.removeHandler('fraction.active', setActive)
       em.removeHandler('fraction.data', setData)
       em.removeHandler('fraction.activity', setActivityData)
+      em.removeHandler('fraction.storage', setStorageData)
     }
   }, [])
 

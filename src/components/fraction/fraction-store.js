@@ -144,9 +144,12 @@ class FractionStore {
 
   setActiveMenuItem = item => {
     this.state.activeMenuItem = item
+
     this.clearActivity()
     this.state.searchValue = ''
+
     if (item !== 2) this.setActivityId(0)
+    if (item === 5) this.requestStorage()
   }
 
   //=================================   ADS   ==================================
@@ -280,7 +283,7 @@ class FractionStore {
   requestActivity = (name, id) => {
     if (id === 0) id = this.state.user.id
     this.state.activityCurrent = name
-    window.clientTrigger('fraction.activity', name)
+    window.clientTrigger('fraction.activity.request', name, id)
   }
 
   setActivityData = data => (this.state.activityData = data.list)
@@ -295,6 +298,19 @@ class FractionStore {
   get activityUser () {
     const { activityId, user } = this.state
     return this.state.activityId !== 0 ? this.getMemberById(activityId) : user
+  }
+
+  //===============================   Storage   ================================
+
+  requestStorage = () => window.clientTrigger('fraction.storage.request')
+
+  setStorageData = data => (this.state.storage = data)
+
+  setStorageOpen = () => {
+    if (this.state.capabilities.controlStorage) {
+      window.clientTrigger('fraction.storage.toggle', !this.state.storage.open)
+      this.state.storage.open = !this.state.storage.open
+    }
   }
 }
 
