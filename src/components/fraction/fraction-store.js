@@ -81,10 +81,10 @@ class FractionStore {
   }
 
   get discrordList () {
+    const searchValue = this.state.searchValue.toLocaleLowerCase()
     const list = this.state.groups.map(({ groupId, groupName }) => ({
       name: groupName,
       list: this.state.members.filter(({ name, groupId: memberGroupId }) => {
-        const searchValue = this.state.searchValue.toLocaleLowerCase()
         const groupCheck = memberGroupId === groupId
         const searchCheck = name.toLocaleLowerCase().includes(searchValue)
         return searchValue ? searchCheck && groupCheck : groupCheck
@@ -92,7 +92,10 @@ class FractionStore {
     }))
     list.push({
       name: this.state.fractionName,
-      list: this.state.members.filter(({ groupId }) => !groupId)
+      list: this.state.members.filter(({ name, groupId }) => {
+        const searchCheck = name.toLocaleLowerCase().includes(searchValue)
+        return searchValue ? searchCheck && !groupId : !groupId
+      })
     })
     return list
   }
