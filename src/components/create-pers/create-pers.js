@@ -13,10 +13,12 @@ export default observer(() => {
 
   useEffect(() => {
     const { EventManager: em } = window
-    const { setCreatePers } = store
-    em.addHandler('character.toggleCreation', setCreatePers)
+    const { setActive, setData } = store
+    em.addHandler('character.active', setActive)
+    em.addHandler('character.data', setData)
     return () => {
-      em.removeHandler('character.toggleCreation', setCreatePers)
+      em.removeHandler('character.active', setActive)
+      em.removeHandler('character.data', setData)
     }
   }, [])
 

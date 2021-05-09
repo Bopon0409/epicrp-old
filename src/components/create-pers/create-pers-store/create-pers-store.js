@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx'
+import { makeAutoObservable }       from 'mobx'
 import { motherNames, fatherNames } from './data'
 
 class CreatePersStore {
@@ -35,10 +35,8 @@ class CreatePersStore {
 
   // =================================   MAIN   ================================
   setStep = step => (this.state.step = step)
-  setCreatePers = (active, data) => {
-    if (data) this.state.serverData = data
-    this.state.active = active
-  }
+  setActive = active => this.state.active = active
+  setData = data => this.state.serverData = data
   finishCreate = () => window.clientTrigger('character.created')
 
   // ================================   STEP2   ================================
