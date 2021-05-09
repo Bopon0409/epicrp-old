@@ -261,7 +261,7 @@
       return true
     }
 
-    var callee = (typeof value === 'function'
+    (typeof value === 'function'
       ? classedFunction
       : value
       ? classedTrue
@@ -486,7 +486,7 @@
     return typeof icon === 'string' ? null : icon[1]
   }
 
-  function createIcon (parent, data, index) {
+  function createIcon (parent, data) {
     if (!hasIcon(data.icon)) return
 
     var span = document.createElement('span')
@@ -510,7 +510,7 @@
   const withIconMarginTop = '3px'
   const withIconTop = '-3px'
 
-  function createText (parent, data, index) {
+  function createText (parent, data) {
     var span = document.createElement('span')
     span.textContent = data.title
 

@@ -1,8 +1,6 @@
 const setActive = (active = true) =>
   window.trigger('speedometer.active', active)
-
 const setMaxSpeed = max => window.trigger('speedometer.maxSpeed', max)
-
 const setType = () => window.trigger('speedometer.type', 1)
 
 const testFuel = () => {
