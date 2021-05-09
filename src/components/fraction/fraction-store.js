@@ -90,7 +90,7 @@ class FractionStore {
     return this.state.settingsMode ? 'Настройки' : this.state.fractionName
   }
 
-  getGruopName = id => {
+  getGroupName = id => {
     if (!id) return ''
     return this.state.groups.find(({ groupId }) => groupId === id).groupName
   }
@@ -110,13 +110,14 @@ class FractionStore {
         return searchValue ? searchCheck && groupCheck : groupCheck
       })
     }))
-    list.push({
+    const unGrouped = {
       name: this.state.fractionName,
       list: this.state.members.filter(({ name, groupId }) => {
         const searchCheck = name.toLocaleLowerCase().includes(searchValue)
         return searchValue ? searchCheck && !groupId : !groupId
       })
-    })
+    }
+    list.push(unGrouped)
     return list
   }
 
@@ -281,7 +282,7 @@ class FractionStore {
     const searchValue = this.state.searchValue.toLocaleLowerCase()
     return this.state.members.filter(({ name, rankNum, groupId }) => {
       const rankName = this.getRankName(rankNum)
-      const groupName = this.getGruopName(groupId)
+      const groupName = this.getGroupName(groupId)
       const nameCheck = name.toLocaleLowerCase().includes(searchValue)
       const rankCheck = rankName.toLocaleLowerCase().includes(searchValue)
       const groupCheck = groupName.toLocaleLowerCase().includes(searchValue)

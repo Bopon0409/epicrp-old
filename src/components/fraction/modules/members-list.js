@@ -5,7 +5,7 @@ import store from '../fraction-store'
 export default observer(() => {
   const membersList = store.membersList.map((member, i) => {
     const { groupId, rankNum, name, id, online, lastActivity } = member
-    const group = groupId ? store.getGruopName(groupId) : 'Без отдела'
+    const group = groupId ? store.getGroupName(groupId) : 'Без отдела'
     const handler = e => store.memberClickHandler(e, id)
 
     return (

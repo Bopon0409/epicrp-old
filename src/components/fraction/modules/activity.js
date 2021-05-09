@@ -5,10 +5,10 @@ import classNames from 'classnames'
 
 export default observer(() => {
   const { activityCurrent, activityData, activityList } = store.state
-  const { name, rankNum, sex, phone, groupId, id } = store.activityUser
+  const { name, rankNum, sex, phone, groupId, id, online } = store.activityUser
 
   const rankName = store.getRankName(rankNum)
-  const group = store.getGruopName(groupId)
+  const group = store.getGroupName(groupId)
   const color = store.getMemberColor(id)
 
   const activityButtonsList = activityList.map((activity, i) => {
@@ -42,7 +42,7 @@ export default observer(() => {
           <div className='letter' style={{ color }}>
             {name ? name[0] : ''}
           </div>
-          {true && <div className='online' />}
+          {online && <div className='online' />}
         </div>
         <div className='header__info'>
           <div className='header__name'>{name}</div>

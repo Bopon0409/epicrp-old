@@ -1,5 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => (window.mp = mp))
-
 var EventManager = {
   events: {},
   addHandler (eventName, handler) {
@@ -13,10 +11,10 @@ var EventManager = {
 }
 
 var chatAPI = {
-  push: msg => trigger('chat.push', msg),
-  clear: () => trigger('chat.clear'),
-  activate: active => trigger('chat.active', active),
-  show: show => trigger('chat.show', show)
+  'chat:push': msg => trigger('chat.push', msg),
+  'chat:clear': () => trigger('chat.clear'),
+  'chat:activate': active => trigger('chat.active', active),
+  'chat:show': show => trigger('chat.show', show)
 }
 
 function trigger (eventName, ...args) {
@@ -32,6 +30,11 @@ function clientTrigger (triggerName, ...args) {
     window.mp.trigger(triggerName, ...args)
   } else console.log(triggerName, ...args)
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  window.mp = mp
+  if (window.mp) for (let fn in chatAPI) mp.events.add(fn, chatAPI[fn])
+})
 
 window.EventManager = EventManager
 window.chatAPI = chatAPI

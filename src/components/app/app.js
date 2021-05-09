@@ -1,5 +1,4 @@
 import React from 'react'
-
 import Inventory from '../inventory'
 import Background from '../bg'
 import Auth from '../auth'
