@@ -13,7 +13,7 @@
 - `window.trigger('auth.authAnswer', result: boolean)` - Ответ на авторизацию
 - `window.trigger('auth.registerAnswer', result: boolean` - Ответ на регистрацию
 
-### Фон (скрин игры)
+### Фон (скриншот игры)
 
 - `window.trigger('hud.toggleBg', active: bolean)` - Открыть/Закрыть фон
 
@@ -42,7 +42,8 @@
 
 ### Создание персонажа
 
-- `window.trigger('character.toggleCreation', active: bolean, data: json string)` - Открыть/Закрыть окно создания персонажа (c загрузкой данных)
+- `window.trigger('character.active', active: bolean)` - Открыть/Закрыть окно создания персонажа
+- `window.trigger('character.data', data: json string)` - Загрузка данных
 
 ### Меню взаимодействия
 
@@ -76,9 +77,8 @@
 
 # chatAPI
 
-##### Управление через глобальный объект chatAPI
-
-- `push(msg: json string)`
-- `clear()`
-- `activate(active: boolean)`
-- `show(show: boolean)`
+- **Управление через глобальный объект chatAPI**
+- `chat:push(msg: json string)`
+- `chat:clear()`
+- `chat:activate(active: boolean)`
+- `chat:show(show: boolean)`

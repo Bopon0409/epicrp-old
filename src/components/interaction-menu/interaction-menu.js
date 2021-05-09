@@ -1,7 +1,7 @@
-import { observer } from 'mobx-react-lite'
+import { observer }         from 'mobx-react-lite'
 import React, { useEffect } from 'react'
 import './circular-menu.css'
-import store from './interaction-menu-store'
+import store                from './interaction-menu-store'
 
 export default observer(() => {
   const { active, currentText } = store.state
@@ -21,15 +21,10 @@ export default observer(() => {
       className='interaction-menu'
       style={active ? { display: 'block' } : { display: 'none' }}
     >
-      <div id='menu1' className='menu1' />
-      <div className='bg-wrap' onClick={() => setActive(false)}></div>
+      <div id='menu1' className='menu1'/>
+      <div className='bg-wrap' onClick={() => setActive(false)}/>
       <div className='inner' onClick={() => setActive(false)}>
-        <div
-          className='text'
-          onClick={() => window.clientTrigger('interact.close')}
-        >
-          {currentText}
-        </div>
+        <div className='text'>{currentText}</div>
       </div>
     </div>
   )

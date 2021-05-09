@@ -19,6 +19,7 @@
 ## Меню взаимодействия
 
 - `mp.trigger('interact.click', icon: String)` - Пользователь нажал на кнопку
+- `mp.trigger('interact.close')` - Пользователь закрыл меню
 
 ## Создание персонажа
 
