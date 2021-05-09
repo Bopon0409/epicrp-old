@@ -47,16 +47,12 @@ class HudStore {
     turnAlerts: []
   }
 
-  setHudData = data => {
-    for (const key in data) this.state[key] = data[key]
-  }
-
-  setHudOnline = online => (this.state.online = online)
   setHudActive = active => (this.state.active = active)
-  setGeoHudData = geo => (this.state.geo = geo)
-  setMicroHudData = microphone => (this.state.microphone = microphone)
-  setMissionHudData = mission => (this.state.mission = mission)
-  setSpeedometerHudData = speedometer => (this.state.speedometer = speedometer)
+  setHudData = data => {
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) this.state[key] = data[key]
+    }
+  }
 
   addAlert = alert => {
     alert.id = this.state.alertsCount++

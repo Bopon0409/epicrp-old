@@ -27,14 +27,7 @@
 ### HUD
 
 - `window.trigger('hud.toggle', active: bolean)` - Открыть/Закрыть HUD
-- `window.trigger('hud.notify', data: json string)` - Прислать уведомление в HUD
-- `window.trigger('hud.setData', data: json string)` - Загрузка данных (малый набор) hud
-- `window.trigger('hud.setAllData', data: json string)` - Загрузка данных (весь набор) hud
-- `window.trigger('hud.geo', data: json string)` - Загрузка данных гео локации в hud
-- `window.trigger('hud.micro', data: json string)` - Загрузка данных микрофона в hud
-- `window.trigger('hud.mission', data: json string)` - Загрузка данных миссии в hud
-- `window.trigger('hud.online', data: json string)` - Загрузка данных онлайна в hud
-- `window.trigger('hud.time', data: json string)` - Загрузка данных времени в hud
+- `window.trigger('hud.data', data: json string)` - Загрузка данных
 
 ### Выбор персонажа
 

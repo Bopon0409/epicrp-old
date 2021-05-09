@@ -1,10 +1,11 @@
-import { observer }         from 'mobx-react-lite'
 import React, { useEffect } from 'react'
-import './circular-menu.css'
+import { observer }         from 'mobx-react-lite'
 import store                from './interaction-menu-store'
+import './circular-menu.css'
 
 export default observer(() => {
   const { active, currentText } = store.state
+  const style = { display: active ? 'block' : 'none' }
   const { setActive } = store
 
   useEffect(() => {
@@ -17,10 +18,7 @@ export default observer(() => {
   }, [])
 
   return (
-    <div
-      className='interaction-menu'
-      style={active ? { display: 'block' } : { display: 'none' }}
-    >
+    <div className='interaction-menu' style={style}>
       <div id='menu1' className='menu1'/>
       <div className='bg-wrap' onClick={() => setActive(false)}/>
       <div className='inner' onClick={() => setActive(false)}>
