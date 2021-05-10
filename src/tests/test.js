@@ -12,9 +12,7 @@ import './speedometer/speedometer.test'
 import './fraction/fraction.test'
 
 export default function curTest () {
-  // window.test.fraction.setActive(true)
-  // window.test.fraction.setData()
   window.test.bg.setActive(true)
-  window.test.hud.setActive(true)
-  window.test.hud.setAllData()
+  window.test.fraction.setData()
+  window.test.fraction.setActive(true)
 }

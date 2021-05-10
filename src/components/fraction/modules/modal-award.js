@@ -1,0 +1,51 @@
+import React        from 'react'
+import { observer } from 'mobx-react-lite'
+import ModalAside   from './modal-aside'
+import Icon         from './icon'
+import store        from '../fraction-store'
+import classNames   from 'classnames'
+
+export default observer(() => {
+  const { active, sum, text, activeBtn } = store.state.modalAward
+  const { setAwardActive, setAwardActiveBtn, setAwardSum, setAwardText } = store
+
+  const btnList = [
+    '$100', '$500', '$1000', '$1500', '$2000', '$2500', '$5000', 'Другое'
+  ].map(btn => {
+    const active = btn === activeBtn
+    return <div
+      className={classNames('btn', active && 'btn-active')}
+      onClick={() => setAwardActiveBtn(btn)}>
+      {btn}
+    </div>
+  })
+
+  return active && (
+    <div className='modal-award modal-member'>
+      <div className='close__item' onClick={() => setAwardActive(false)}>
+        <Icon
+        icon='close' />
+      </div>
+      <div className='modal__body'>
+        <div className='title'>Премия</div>
+        <div className='btn__container'>{btnList}</div>
+
+        {activeBtn === 'Другое' &&
+        <input
+          value={sum}
+          onChange={e => setAwardSum((e.target.value))}
+          className='sum-input'
+          placeholder='Введите сумму премии'
+        />}
+
+        <textarea
+          value={text}
+          onChange={e => setAwardText((e.target.value))}
+          className='text'
+          placeholder='Комментарий'
+        />
+      </div>
+      <ModalAside />
+    </div>
+  )
+})

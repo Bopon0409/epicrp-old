@@ -9,11 +9,14 @@ class FractionStore {
 
   state = {
     active: false,
-    settingsMode: false,
+    fractionName: '',
+    description: '',
+
     activeMenuItem: 0,
     searchValue: '',
+    settingsMode: false,
+
     user: {},
-    fractionName: '',
     capabilities: {
       controlStorage: false,
       controlRanks: false,
@@ -33,36 +36,28 @@ class FractionStore {
         dismiss: false
       }
     },
-    description: '',
+
     ads: [],
     adsActive: false,
     adsEditActive: false,
-    adsEdit: {
-      id: -1,
-      title: '',
-      author: '',
-      date: '',
-      text: ''
-    },
+    adsEdit: { id: -1, title: '', author: '', date: '', text: '' },
+
     ranks: [],
     ranksSettings: [],
     groups: [],
     cars: [],
-    storage: {
-      open: false,
-      history: []
-    },
+    storage: { open: false, history: [] },
     members: [],
+
     activityId: 0,
     activityCurrent: '',
     activityList: [],
     activityData: [],
-    contextMenu: {
-      active: false,
-      id: 0,
-      xCoord: 0,
-      yCoord: 0
-    }
+
+    contextMenu: { active: false, id: 0, xCord: 0, yCord: 0 },
+    modalAward: { active: false, id: 0, text: '', sum: '', activeBtn: '' },
+    modalReprimand: { active: true, id: 0, text: '' },
+    modalDismiss: { active: false, id: 0, text: '' }
   }
 
   setActive = active => (this.state.active = active)
@@ -100,7 +95,7 @@ class FractionStore {
     return this.state.ranks.find(({ rankNum }) => rankNum === id).rankName
   }
 
-  get discrordList () {
+  get discordList () {
     const searchValue = this.state.searchValue.toLocaleLowerCase()
     const list = this.state.groups.map(({ groupId, groupName }) => ({
       name: groupName,
@@ -302,6 +297,18 @@ class FractionStore {
     const modalBlock = document.getElementsByClassName('main-menu')[0]
     if (!e.path.includes(modalBlock)) this.setContextMenu(false, 0, 0, 0)
   }
+
+  //============================   Member modal   ==============================
+
+  setAwardActive = active => this.state.modalAward.active = active
+  setAwardActiveBtn = btn => this.state.modalAward.activeBtn = btn
+  setAwardSum = sum => this.state.modalAward.sum = sum
+  setAwardText = text => this.state.modalAward.text = text
+  setAwardId = id => this.state.modalAward.id = id
+
+  setReprimandActive = active => this.state.modalReprimand.active = active
+  setReprimandText = text => this.state.modalReprimand.text = text
+  setReprimandId = id => this.state.modalReprimand.id = id
 
   //==============================   Activity   ================================
 

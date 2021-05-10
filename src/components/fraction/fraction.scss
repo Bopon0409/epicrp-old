@@ -10,6 +10,8 @@
 @import './scss/activity';
 @import './scss/context-menu';
 @import './scss/storage';
+@import './scss/modal-aside';
+@import './scss/member-modal';
 
 .fraction {
   position: absolute;
@@ -21,13 +23,12 @@
   margin-left: -500px;
   margin-top: -350px;
 
-  background: url('./img/tablet.png');
   background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background: url('./img/tablet.png') no-repeat;
 
   padding: 35px 30px;
   box-sizing: border-box;
-  font-family: TT Norms;
+  font-family: TT Norms, serif;
 
   .fraction__blur {
     filter: blur(2px);
@@ -37,7 +38,7 @@
     display: grid;
     grid-template-columns: 250px 690px;
     grid-template-rows: 70px 500px 60px;
-    
+
     div {
       box-sizing: border-box;
     }

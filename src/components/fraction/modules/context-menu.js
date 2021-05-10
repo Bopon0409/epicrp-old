@@ -4,7 +4,7 @@ import store from '../fraction-store'
 import ContextIcon from './context-icon'
 
 export default observer(() => {
-  const { active, id, xCoord, yCoord } = store.state.contextMenu
+  const { active, id, xCord, yCord } = store.state.contextMenu
 
   useEffect(() => {
     const { clickOutsideContextMenu: handler } = store
@@ -30,7 +30,7 @@ export default observer(() => {
       className='context-menu'
       style={{ display: active ? 'block' : 'none' }}
     >
-      <div className='main-menu' style={{ left: xCoord, top: yCoord }}>
+      <div className='main-menu' style={{ left: xCord, top: yCord }}>
         {mainMenuList}
       </div>
       <div className='secondary-menu'></div>

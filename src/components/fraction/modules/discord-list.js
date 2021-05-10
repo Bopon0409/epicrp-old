@@ -17,7 +17,7 @@ export default observer(() => {
 
   return (
     <div className='discord-list skroll'>
-      {store.discrordList.map((group, i) => (
+      {store.discordList.map((group, i) => (
         <div className='discord-list__item' key={`discord group ${i}`}>
           <div className='discord-list__title'>{group.name}</div>
           <div className='members__list'>{membersList(group)}</div>

@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react'
-import { observer } from 'mobx-react-lite'
-import store from './fraction-store'
-import classNames from 'classnames'
+import { observer }         from 'mobx-react-lite'
+import store                from './fraction-store'
+import classNames           from 'classnames'
 
-import Header from './modules/header'
-import Aside from './modules/aside'
-import Body from './modules/body'
-import BottomMenu from './modules/bottom-menu'
-import Title from './modules/title'
-import Ads from './modules/ads'
-import AdsEdit from './modules/ads-edit'
-import ContextMenu from './modules/context-menu'
+import Header         from './modules/header'
+import Aside          from './modules/aside'
+import Body           from './modules/body'
+import BottomMenu     from './modules/bottom-menu'
+import Title          from './modules/title'
+import Ads            from './modules/ads'
+import AdsEdit        from './modules/ads-edit'
+import ContextMenu    from './modules/context-menu'
+import ModalAward     from './modules/modal-award'
+import ModalReprimand from './modules/modal-reprimand'
+import ModalDismiss   from './modules/modal-dismiss'
 
 export default observer(() => {
   useEffect(() => {
@@ -38,17 +41,21 @@ export default observer(() => {
     <div className='fraction-context'>
       <div className='fraction'>
         <div className={wrapperClasses}>
-          <Title />
-          <Header />
-          <Aside />
-          <Body />
-          <BottomMenu />
+          <Title/>
+          <Header/>
+          <Aside/>
+          <Body/>
+          <BottomMenu/>
         </div>
 
-        <Ads />
-        <AdsEdit />
+        <Ads/>
+        <AdsEdit/>
+
+        <ModalAward/>
+        <ModalReprimand/>
+        <ModalDismiss/>
       </div>
-      <ContextMenu />
+      <ContextMenu/>
     </div>
   ) : null
 })

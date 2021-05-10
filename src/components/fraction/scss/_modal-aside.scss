@@ -1,0 +1,88 @@
+.fraction {
+  .modal__aside {
+    width: 390px;
+    height: 550px;
+    background: #1f232d;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 50px;
+    box-sizing: border-box;
+
+    .aside__icon {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      background: #575757;
+      border-radius: 50%;
+      display: flex;
+      margin-bottom: 20px;
+
+      .text {
+        margin: auto;
+        font-weight: 500;
+        font-size: 85px;
+        text-transform: uppercase;
+        color: #216cb0;
+      }
+
+      .online {
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        width: 18px;
+        height: 18px;
+        border: 3px solid #1f232d;
+        background: #18c61f;
+        border-radius: 50%;
+      }
+    }
+
+    .aside__name {
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 100%;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .member-info {
+      width: 100%;
+      margin-bottom: 100px;
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+
+        .cell {
+          width: 50%;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 100%;
+          color: #ffffff;
+        }
+
+        .cell-online { color: #18c61f; }
+      }
+    }
+
+    .btn {
+      background: #19b428;
+      border-radius: 10px;
+      width: 230px;
+      height: 40px;
+      display: flex;
+      cursor: pointer;
+
+      .btn__text {
+        margin: auto;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 100%;
+        color: #ffffff;
+      }
+    }
+  }
+}
