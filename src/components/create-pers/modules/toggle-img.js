@@ -38,8 +38,6 @@ export default observer(
       )
     }
 
-    console.log(hairs.length)
-
     const getList = () => {
       switch (type) {
         case 'beard':

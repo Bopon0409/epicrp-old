@@ -1,14 +1,25 @@
 {
   "fraction.ads.add": {
-    "id": 1,
     "title": "string",
     "author": "string",
-    "date": "string",
     "text": "string"
   },
   "fraction.ads.edit": {
     "id": 1,
     "title": "string",
+    "text": "string"
+  },
+  "fraction.members.award": {
+    "id": 1,
+    "text": "string",
+    "sum": 100
+  },
+  "fraction.members.reprimand": {
+    "id": 1,
+    "text": "string"
+  },
+  "fraction.members.dismiss": {
+    "id": 1,
     "text": "string"
   }
 }

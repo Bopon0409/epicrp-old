@@ -48,10 +48,13 @@
 
 ## Планшет фракции
 
-- `mp.trigger('fraction.ads.add', data: json string)` - Добавление обявления
-- `mp.trigger('fraction.ads.remove',id: number)` - Удаление обявления
-- `mp.trigger('fraction.ads.edit', data: json string)` - Изменение обявления
-- `mp.trigger('fraction.activity.request', name: string, id: num)` - Запрос на историю актвиности
+- `mp.trigger('fraction.ads.add', data: json string)` - Добавление объявления
+- `mp.trigger('fraction.ads.remove',id: number)` - Удаление объявления
+- `mp.trigger('fraction.ads.edit', data: json string)` - Изменение объявления
+- `mp.trigger('fraction.members.award', data: json string)` - Выдача премии
+- `mp.trigger('fraction.members.reprimand', data: json string)` - Выдача выговора
+- `mp.trigger('fraction.members.dismiss', data: json string)` - Увольнение
+- `mp.trigger('fraction.activity.request', name: string, id: num)` - Запрос на историю активности
 - `mp.trigger('fraction.storage.request')` - Запрос на историю склада
 - `mp.trigger('fraction.storage.toggle')` - Склад открыт/закрыт
 

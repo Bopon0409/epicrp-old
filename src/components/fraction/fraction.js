@@ -41,21 +41,21 @@ export default observer(() => {
     <div className='fraction-context'>
       <div className='fraction'>
         <div className={wrapperClasses}>
-          <Title/>
-          <Header/>
-          <Aside/>
-          <Body/>
-          <BottomMenu/>
+          <Title />
+          <Header />
+          <Aside />
+          <Body />
+          <BottomMenu />
         </div>
 
-        <Ads/>
-        <AdsEdit/>
+        <Ads />
+        <AdsEdit />
 
-        <ModalAward/>
-        <ModalReprimand/>
-        <ModalDismiss/>
+        <ModalAward />
+        <ModalReprimand />
+        <ModalDismiss />
       </div>
-      <ContextMenu/>
+      <ContextMenu />
     </div>
   ) : null
 })

@@ -36,7 +36,7 @@ export default observer(() => {
           <div className='cell'>{reprimands}/3</div>
         </div>
       </div>
-      <div className='btn'>
+      <div className='btn' onClick={store.submitHandler}>
         <div className='btn__text'>Выдать</div>
       </div>
     </aside>

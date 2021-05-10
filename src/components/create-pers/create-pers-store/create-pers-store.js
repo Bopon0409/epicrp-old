@@ -51,7 +51,6 @@ class CreatePersStore {
 
   inputChangeHandler = (event, type) => {
     const str = event.target.value
-    console.log(str)
     if (str.length > 20) return
     switch (type) {
       case 'name':

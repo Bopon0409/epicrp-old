@@ -116,9 +116,15 @@ class FractionStore {
     return list
   }
 
-  getMemberByName = name => this.state.members.find(memb => memb.name === name)
+  getMemberByName = name => {
+    if (!name) return {}
+    return this.state.members.find(member => member.name === name)
+  }
 
-  getMemberById = id => this.state.members.find(memb => memb.id === id)
+  getMemberById = id => {
+    if (!id) return {}
+    return this.state.members.find(member => member.id === id)
+  }
 
   getMemberColor = id => {
     if (!this.state.members.length || !this.state.ranks.length || !id)
@@ -233,7 +239,7 @@ class FractionStore {
     const date = hudStore.state.date + ' в ' + hudStore.state.time
     const id = this.getFreeAdId()
     this.state.ads.unshift({ id, title, author, date, text })
-    window.clientTrigger('fraction.ads.add', { id, title, author, date, text })
+    window.clientTrigger('fraction.ads.add', { title, author, text })
   }
 
   navClickHandler = id => {
@@ -263,7 +269,7 @@ class FractionStore {
       list.push({ title: 'Выдать премию', handler: this.awardOpen })
 
     if (controlMembers.dismiss)
-      list.push({ title: 'Уволить', handler: () => {} })
+      list.push({ title: 'Уволить', handler: this.dismissOpen })
     return list
   }
 
@@ -298,20 +304,30 @@ class FractionStore {
     if (!e.path.includes(modalBlock)) this.setContextMenu(false, 0, 0, 0)
   }
 
-  //============================   Member modal   ==============================
+  //===========================   Member modals   ==============================
 
   get memberModalId () {
-    const { modalAward, modalReprimand } = this.state
+    const { modalAward, modalReprimand, modalDismiss } = this.state
     if (modalAward.active) return modalAward.id
     else if (modalReprimand.active) return modalReprimand.id
+    else if (modalDismiss.active) return modalDismiss.id
     else return 0
   }
+
+  submitHandler = () => {
+    if (this.state.modalAward.active) this.awardSubmit()
+    else if (this.state.modalReprimand.active) this.reprimandSubmit()
+  }
+
+  // Award
 
   awardOpen = id => {
     this.setContextMenu(false, 0, 0, 0)
     this.state.modalAward.id = id
     this.state.modalAward.active = true
+    this.setAwardActiveBtn('$100')
   }
+
   awardClose = () => {
     this.state.modalAward.active = false
     this.state.modalAward.id = 0
@@ -319,21 +335,76 @@ class FractionStore {
     this.state.modalAward.text = ''
     this.state.modalAward.activeBtn = ''
   }
-  setAwardActiveBtn = btn => this.state.modalAward.activeBtn = btn
-  setAwardSum = sum => this.state.modalAward.sum = sum
+
+  setAwardActiveBtn = btn => {
+    if (btn !== 'Другое') {
+      let arr = btn.split('')
+      arr.shift()
+      arr = Number(arr.join(''))
+      this.setAwardSum(arr)
+    }
+    this.state.modalAward.activeBtn = btn
+  }
+
+  setAwardSum = sum => {
+    const numSum = Number(sum)
+    if (!isNaN(numSum) && numSum < 100000) this.state.modalAward.sum = sum
+  }
+
   setAwardText = text => this.state.modalAward.text = text
+
+  awardSubmit = () => {
+    const { id, text, sum } = this.state.modalAward
+    window.clientTrigger(
+      'fraction.members.award',
+      { id, text, sum: Number(sum) }
+    )
+    this.awardClose()
+  }
+
+  // Reprimand
 
   reprimandOpen = id => {
     this.setContextMenu(false, 0, 0, 0)
     this.state.modalReprimand.id = id
     this.state.modalReprimand.active = true
   }
+
   reprimandClose = () => {
     this.state.modalReprimand.active = false
     this.state.modalReprimand.id = 0
     this.state.modalReprimand.text = ''
   }
+
   setReprimandText = text => this.state.modalReprimand.text = text
+
+  reprimandSubmit = () => {
+    const { id, text } = this.state.modalReprimand
+    window.clientTrigger('fraction.members.reprimand', { id, text })
+    this.reprimandClose()
+  }
+
+  // Dismiss
+
+  dismissOpen = id => {
+    this.setContextMenu(false, 0, 0, 0)
+    this.state.modalDismiss.id = id
+    this.state.modalDismiss.active = true
+  }
+
+  dismissClose = () => {
+    this.state.modalDismiss.id = 0
+    this.state.modalDismiss.text = ''
+    this.state.modalDismiss.active = false
+  }
+
+  setDismissText = text => this.state.modalDismiss.text = text
+
+  dismissSubmit = () => {
+    const { id, text } = this.state.modalDismiss
+    window.clientTrigger('fraction.members.dismiss', { id, text })
+    this.dismissClose()
+  }
 
   //==============================   Activity   ================================
 
