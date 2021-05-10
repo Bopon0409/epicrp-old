@@ -16,4 +16,5 @@ export default function curTest () {
   // window.test.fraction.setData()
   window.test.bg.setActive(true)
   window.test.hud.setActive(true)
+  window.test.hud.setAllData()
 }
