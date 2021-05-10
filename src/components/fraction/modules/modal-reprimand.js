@@ -6,10 +6,12 @@ import store        from '../fraction-store'
 
 export default observer(() => {
   const { active } = store.state.modalReprimand
-  const { setReprimandText } = store
+  const { setReprimandText, setReprimandActive } = store
   return active && (
     <div className='modal-reprimand modal-member'>
-      <div className='close__item'><Icon icon='close' /></div>
+      <div className='close__item' onClick={() => setReprimandActive(false)}>
+        <Icon icon='close' />
+      </div>
       <div className='modal__body'>
         <div className='title'>Выговор</div>
 

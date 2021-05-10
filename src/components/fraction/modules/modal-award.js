@@ -23,8 +23,7 @@ export default observer(() => {
   return active && (
     <div className='modal-award modal-member'>
       <div className='close__item' onClick={() => setAwardActive(false)}>
-        <Icon
-        icon='close' />
+        <Icon icon='close' />
       </div>
       <div className='modal__body'>
         <div className='title'>Премия</div>
