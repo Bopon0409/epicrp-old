@@ -456,13 +456,13 @@
       "id": 2,
       "online": false,
       "name": "horex",
-      "rankNum": 999,
+      "rankNum": 8,
       "duty": "Сотрудник",
       "sex": true,
       "phone": "xxxx-xxxx",
       "groupId": 2,
       "lastActivity": "17/03/2021 в 19:31",
-      "reprimands": 2
+      "reprimands": 0
     },
     {
       "id": 100,

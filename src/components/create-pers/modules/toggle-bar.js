@@ -3,7 +3,7 @@ import React from 'react'
 
 export default observer(
   ({ item: { title, value, valueName }, onValueChange }) => {
-    const toggleBarList = [1, 2, 3, 4, 5, 6, 7].map(item => (
+    const toggleBarList = [0, 1, 2, 3, 4, 5, 6].map(item => (
       <div
         key={item}
         className={

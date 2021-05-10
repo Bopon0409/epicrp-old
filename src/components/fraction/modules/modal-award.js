@@ -7,13 +7,14 @@ import classNames   from 'classnames'
 
 export default observer(() => {
   const { active, sum, text, activeBtn } = store.state.modalAward
-  const { setAwardActive, setAwardActiveBtn, setAwardSum, setAwardText } = store
+  const { awardClose, setAwardActiveBtn, setAwardSum, setAwardText } = store
 
   const btnList = [
     '$100', '$500', '$1000', '$1500', '$2000', '$2500', '$5000', 'Другое'
-  ].map(btn => {
+  ].map((btn, i) => {
     const active = btn === activeBtn
     return <div
+      key={`award btn ${i}`}
       className={classNames('btn', active && 'btn-active')}
       onClick={() => setAwardActiveBtn(btn)}>
       {btn}
@@ -22,7 +23,7 @@ export default observer(() => {
 
   return active && (
     <div className='modal-award modal-member'>
-      <div className='close__item' onClick={() => setAwardActive(false)}>
+      <div className='close__item' onClick={awardClose}>
         <Icon icon='close' />
       </div>
       <div className='modal__body'>

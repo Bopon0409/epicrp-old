@@ -13,6 +13,8 @@ import './fraction/fraction.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.fraction.setData()
-  window.test.fraction.setActive(true)
+  // window.test.fraction.setData()
+  // window.test.fraction.setActive(true)
+  window.test.createPers.setData()
+  window.test.createPers.setActive(true)
 }

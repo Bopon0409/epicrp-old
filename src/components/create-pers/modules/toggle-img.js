@@ -1,6 +1,6 @@
-import React from 'react'
+import React        from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../create-pers-store/create-pers-store'
+import store        from '../create-pers-store/create-pers-store'
 
 export default observer(
   ({ item: { title, value, valueName }, onValueChange, type }) => {
@@ -11,31 +11,34 @@ export default observer(
         key={i}
         className={
           +id === value
-            ? 'toggle-img__item toggle-img__item_active'
-            : 'toggle-img__item'
+          ? 'toggle-img__item toggle-img__item_active'
+          : 'toggle-img__item'
         }
         onClick={() => onValueChange(+id, valueName)}
         src={`images/create-pers/${type}/id${id}.png`}
         alt=''
-      ></img>
+      />
     )
 
     const hairs = []
-    for (let i = 0; i < 20; i++) {
+    const max = step1.sex === 'male' ? 74 : 78
+    for (let i = 0; i <= max; i++) {
       hairs.push(
         <img
           key={i}
           className={
             i === value
-              ? 'toggle-img__item toggle-img__item_active'
-              : 'toggle-img__item'
+            ? 'toggle-img__item toggle-img__item_active'
+            : 'toggle-img__item'
           }
           onClick={() => onValueChange(i, valueName)}
           src={`images/create-pers/${step1.sex}-hairs/id${i}.png`}
           alt=''
-        ></img>
+        />
       )
     }
+
+    console.log(hairs.length)
 
     const getList = () => {
       switch (type) {

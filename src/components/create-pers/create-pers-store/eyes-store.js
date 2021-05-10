@@ -6,7 +6,7 @@ class EyesStore {
   }
 
   state = {
-    eyeSize: { value: 0.5, valueName: 'eyeSize', title: 'Размер глаз' },
+    eyeSize: { value: 0, valueName: 'eyeSize', title: 'Размер глаз' },
     colorEyes: { value: '#324835', valueName: 'colorEyes', title: 'Цвет глаз' }
   }
 

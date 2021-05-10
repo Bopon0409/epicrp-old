@@ -14,8 +14,8 @@ export default observer(() => {
         key={state.eyebrows.valueName}
         item={state.eyebrows}
         onValueChange={onValueChange}
-        min={1}
-        max={30}
+        min={0}
+        max={33}
         step={1}
       />
       <ToggleColor
@@ -27,8 +27,8 @@ export default observer(() => {
         key={state.beard.valueName}
         item={state.beard}
         onValueChange={onValueChange}
-        min={1}
-        max={30}
+        min={0}
+        max={28}
         step={1}
       />
       <ToggleColor

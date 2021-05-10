@@ -6,19 +6,19 @@ class HairStore {
   }
 
   state = {
-    eyebrows: { value: 1, valueName: 'eyebrows', title: 'Брови' },
+    eyebrows: { value: 0, valueName: 'eyebrows', title: 'Брови' },
     colorEyebrows: {
       value: '#242323',
       valueName: 'colorEyebrows',
       title: 'Цвет Бровей'
     },
-    beard: { value: 1, valueName: 'beard', title: 'Борода/Усы' },
+    beard: { value: 0, valueName: 'beard', title: 'Борода/Усы' },
     colorBeard: {
       value: '#242323',
       valueName: 'colorBeard',
       title: 'Цвет Бороды/Усов'
     },
-    hairstyle: { value: 1, valueName: 'hairstyle', title: 'Прическа' },
+    hairstyle: { value: 0, valueName: 'hairstyle', title: 'Прическа' },
     colorHairstyle: {
       value: '#242323',
       valueName: 'colorHairstyle',

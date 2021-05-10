@@ -56,7 +56,7 @@ class FractionStore {
 
     contextMenu: { active: false, id: 0, xCord: 0, yCord: 0 },
     modalAward: { active: false, id: 0, text: '', sum: '', activeBtn: '' },
-    modalReprimand: { active: true, id: 0, text: '' },
+    modalReprimand: { active: false, id: 0, text: '' },
     modalDismiss: { active: false, id: 0, text: '' }
   }
 
@@ -257,10 +257,10 @@ class FractionStore {
       list.push({ title: 'Отдел', handler: () => {} })
 
     if (controlMembers.giveReprimands)
-      list.push({ title: 'Выдать выговор', handler: () => {} })
+      list.push({ title: 'Выдать выговор', handler: this.reprimandOpen })
 
     if (controlMembers.giveAward)
-      list.push({ title: 'Выдать премию', handler: () => {} })
+      list.push({ title: 'Выдать премию', handler: this.awardOpen })
 
     if (controlMembers.dismiss)
       list.push({ title: 'Уволить', handler: () => {} })
@@ -289,8 +289,8 @@ class FractionStore {
     setTimeout(() => this.setContextMenu(true, clientX, clientY, id), 10)
   }
 
-  setContextMenu = (active, xCoord, yCoord, id) => {
-    this.state.contextMenu = { active, xCoord, yCoord, id }
+  setContextMenu = (active, xCord, yCord, id) => {
+    this.state.contextMenu = { active, xCord, yCord, id }
   }
 
   clickOutsideContextMenu = e => {
@@ -300,15 +300,40 @@ class FractionStore {
 
   //============================   Member modal   ==============================
 
-  setAwardActive = active => this.state.modalAward.active = active
+  get memberModalId () {
+    const { modalAward, modalReprimand } = this.state
+    if (modalAward.active) return modalAward.id
+    else if (modalReprimand.active) return modalReprimand.id
+    else return 0
+  }
+
+  awardOpen = id => {
+    this.setContextMenu(false, 0, 0, 0)
+    this.state.modalAward.id = id
+    this.state.modalAward.active = true
+  }
+  awardClose = () => {
+    this.state.modalAward.active = false
+    this.state.modalAward.id = 0
+    this.state.modalAward.sum = ''
+    this.state.modalAward.text = ''
+    this.state.modalAward.activeBtn = ''
+  }
   setAwardActiveBtn = btn => this.state.modalAward.activeBtn = btn
   setAwardSum = sum => this.state.modalAward.sum = sum
   setAwardText = text => this.state.modalAward.text = text
-  setAwardId = id => this.state.modalAward.id = id
 
-  setReprimandActive = active => this.state.modalReprimand.active = active
+  reprimandOpen = id => {
+    this.setContextMenu(false, 0, 0, 0)
+    this.state.modalReprimand.id = id
+    this.state.modalReprimand.active = true
+  }
+  reprimandClose = () => {
+    this.state.modalReprimand.active = false
+    this.state.modalReprimand.id = 0
+    this.state.modalReprimand.text = ''
+  }
   setReprimandText = text => this.state.modalReprimand.text = text
-  setReprimandId = id => this.state.modalReprimand.id = id
 
   //==============================   Activity   ================================
 
