@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import { observer } from 'mobx-react-lite'
-import store from '../fraction-store'
-import ContextIcon from './context-icon'
+import { observer }         from 'mobx-react-lite'
+import store                from '../fraction-store'
+import ContextIcon          from './context-icon'
+import classNames           from 'classnames'
 
 export default observer(() => {
   const { active, id, xCord, yCord } = store.state.contextMenu
@@ -12,28 +13,55 @@ export default observer(() => {
     return () => document.removeEventListener('click', handler, false)
   }, [])
 
-  const mainMenuList = store.contextMenusItems.map(({ title, handler }) => (
+  const mainMenuList = store.contextMenusItems.map(el => (
     <div
-      className='main-menu__item'
-      key={`context ${title}`}
-      onClick={() => handler(id)}
+      className='menu__item'
+      key={`context ${el.title}`}
+      onClick={() => el.handler && el.handler(id)}
     >
       <div className='item__icon'>
-        <ContextIcon icon={title} />
+        <ContextIcon icon={el.title} />
       </div>
-      <div className='item__text'>{title}</div>
+      <div className='item__text'>{el.title}</div>
     </div>
   ))
 
-  return (
-    <div
-      className='context-menu'
-      style={{ display: active ? 'block' : 'none' }}
-    >
-      <div className='main-menu' style={{ left: xCord, top: yCord }}>
-        {mainMenuList}
+  const SecondaryContextMenu = store.secondaryContextMenusItems.map((el, i) => {
+    const { rankName, groupName, color, handler, active } = el
+    const content = rankName || groupName
+    const checkboxClasses = classNames(
+      'item__checkbox',
+      active && 'item__checkbox-active'
+    )
+
+    return (
+      <div className='menu__item checkbox__item' key={i} onClick={handler}>
+
+        {color
+         ? <div style={{ background: color }} className='color' />
+         : null}
+        <div className='item__text'>{content}</div>
+        <div className={checkboxClasses}>
+        </div>
       </div>
-      <div className='secondary-menu'></div>
+    )
+  })
+
+  const style = {
+    display: active ? 'flex' : 'none',
+    left: xCord,
+    top: yCord
+  }
+
+  return (
+    <div className='context-menu' style={style}>
+      <div className='main-menu'>
+        <div className='wrapper'>{mainMenuList}</div>
+      </div>
+      {store.secondaryContextMenusItems.length ?
+       <div className='secondary-menu'>
+         <div className='wrapper'>{SecondaryContextMenu}</div>
+       </div> : null}
     </div>
   )
 })

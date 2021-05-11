@@ -54,7 +54,8 @@ class FractionStore {
     activityList: [],
     activityData: [],
 
-    contextMenu: { active: false, id: 0, xCord: 0, yCord: 0 },
+    contextMenu: { active: false, id: 0, xCord: 0, yCord: 0, hoverEl: '' },
+
     modalAward: { active: false, id: 0, text: '', sum: '', activeBtn: '' },
     modalReprimand: { active: false, id: 0, text: '' },
     modalDismiss: { active: false, id: 0, text: '' }
@@ -257,29 +258,91 @@ class FractionStore {
     const list = []
 
     if (controlMembers.checkInfo)
-      list.push({ title: 'Информация', handler: this.infoContextHandler })
+      list.push({ title: 'Информация', handler: this.activityOpen })
 
     if (controlMembers.changeRanks)
-      list.push({ title: 'Ранг', handler: () => {} })
+      list.push({ title: 'Ранг', handler: this.ranksClickHandler })
 
     if (controlMembers.changeGroups)
-      list.push({ title: 'Отдел', handler: () => {} })
+      list.push({ title: 'Отдел', handler: this.groupsClickHandler })
 
-    if (controlMembers.giveReprimands)
+    if (controlMembers.giveReprimands) {
       list.push({ title: 'Выдать выговор', handler: this.reprimandOpen })
+      list.push({ title: 'Снять выговор', handler: this.reprimandTakeOff })
+    }
 
     if (controlMembers.giveAward)
       list.push({ title: 'Выдать премию', handler: this.awardOpen })
 
     if (controlMembers.dismiss)
       list.push({ title: 'Уволить', handler: this.dismissOpen })
+
     return list
   }
 
-  infoContextHandler = id => {
+  get secondaryContextMenusItems () {
+    const { id } = this.state.contextMenu
+    switch (this.state.contextMenu.hoverEl) {
+      case 'ranks':
+        return this.state.ranks.map(({ rankName, rankNum, color }) => ({
+          rankName,
+          color,
+          active: this.getMemberById(id).rankNum === rankNum,
+          handler: () => this.setMemberRank(id, rankNum)
+        }))
+
+      case 'groups':
+        return this.state.groups.map(({ groupName, groupId }) => ({
+          groupName,
+          active: this.getMemberById(id).groupId === groupId,
+          handler: () => this.setMemberGroup(id, groupId)
+        }))
+
+      default:
+        return []
+    }
+  }
+
+  setMemberGroup = (memberId, groupId) => {
+    if (this.state.capabilities.controlMembers.changeGroups) {
+      const member = this.state.members.find(({ id }) => id === memberId)
+      member.groupId = groupId
+      window.clientTrigger('fraction.members.group', memberId, groupId)
+    }
+  }
+
+  setMemberRank = (memberId, rankNum) => {
+    const access = this.state.user.rankNum > rankNum
+    if (this.state.capabilities.controlMembers.changeRanks && access) {
+      const member = this.state.members.find(({ id }) => id === memberId)
+      member.rankNum = rankNum
+      window.clientTrigger('fraction.members.rank', memberId, rankNum)
+    }
+  }
+
+  ranksClickHandler = () => {
+    const { hoverEl } = this.state.contextMenu
+    this.state.contextMenu.hoverEl = hoverEl === 'ranks' ? '' : 'ranks'
+  }
+
+  groupsClickHandler = () => {
+    const { hoverEl } = this.state.contextMenu
+    this.state.contextMenu.hoverEl = hoverEl === 'groups' ? '' : 'groups'
+  }
+
+  activityOpen = id => {
     this.setActivityId(id)
     this.setActiveMenuItem(2)
-    this.setContextMenu(false, 0, 0, 0)
+    this.setContextMenu(false, 0, 0, 0, '')
+  }
+
+  reprimandTakeOff = memberId => {
+    const member = this.state.members.find(({ id }) => memberId === id)
+    if (member.reprimands >= 1) {
+      window.clientTrigger('fraction.members.reprimand.drop', memberId)
+      member.reprimands -= 1
+    }
+    this.setContextMenu(false, 0, 0, 0, '')
   }
 
   get membersList () {
@@ -298,12 +361,13 @@ class FractionStore {
     setTimeout(() => this.setContextMenu(true, clientX, clientY, id), 10)
   }
 
-  setContextMenu = (active, xCord, yCord, id) => {
-    this.state.contextMenu = { active, xCord, yCord, id }
+  setContextMenu = (active, xCord, yCord, id, hoverEl) => {
+    this.state.contextMenu = { active, xCord, yCord, id, hoverEl }
   }
 
   clickOutsideContextMenu = e => {
-    const modalBlock = document.getElementsByClassName('main-menu')[0]
+    const modalBlock = document.querySelector(
+      '.context-menu')
     if (!e.path.includes(modalBlock)) this.setContextMenu(false, 0, 0, 0)
   }
 
@@ -385,6 +449,8 @@ class FractionStore {
     const { id, text } = this.state.modalReprimand
     window.clientTrigger('fraction.members.reprimand', { id, text })
     this.reprimandClose()
+    const member = this.state.members.find(({ id: memberId }) => memberId === id)
+    member.reprimands += 1
   }
 
   // Dismiss

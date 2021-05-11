@@ -100,6 +100,7 @@ export default function ContextIcon ({ icon }) {
         </svg>
       )
 
+    case 'Снять выговор':
     case 'Выдать выговор':
       return (
         <svg width='12' height='12' viewBox='0 0 12 12'>

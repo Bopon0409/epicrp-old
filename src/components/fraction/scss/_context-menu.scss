@@ -1,43 +1,67 @@
 .fraction-context {
-  font-family: TT Norms;
+  font-family: TT Norms, sans-serif;
 
   .context-menu {
-    .main-menu {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      z-index: 10;
+    position: absolute;
+    z-index: 10;
+    display: flex;
+
+    .wrapper {
       width: 160px;
       background: #2c2c2c;
-      border-radius: 5px;
-
+      margin-left: 10px;
+      height: auto;
       padding: 14px;
+      border-radius: 10px;
+    }
 
-      .main-menu__item {
+    .menu__item {
+      display: flex;
+      align-items: center;
+      height: 28px;
+      padding: 0 10px;
+      margin-bottom: 5px;
+      cursor: pointer;
+
+      .item__text {
+        margin-left: 10px;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 100%;
+        color: #ffffff;
+      }
+
+      .item__checkbox {
+        width: 10px;
+        height: 10px;
+        border: 0.4px solid white;
+        border-radius: 3px;
         display: flex;
-        align-items: center;
-        height: 28px;
-        padding: 0 10px;
-        margin-bottom: 5px;
 
-        .item__text {
-          margin-left: 10px;
-          font-weight: 500;
-          font-size: 13px;
-          line-height: 100%;
-          color: #ffffff;
-        }
-
-        &:hover {
-          background: #393c43;
-          border-radius: 5px;
+        img {
+          margin: auto;
         }
       }
 
-      .disabled {
-        .item__text {
-          color: gray;
-        }
+      .item__checkbox-active {
+        background: #4271ff;
+        border: 0.4px solid #4271ff;
+      }
+
+      &:hover {
+        background: #393c43;
+        border-radius: 5px;
+      }
+    }
+
+    .checkbox__item {
+      justify-content: space-between;
+
+      .color {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
       }
     }
   }
