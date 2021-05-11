@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx'
-import { uData } from '../../services/services'
+import { uData }              from '../../services/services'
 
 class InventoryStore {
   constructor () {
@@ -53,13 +53,6 @@ class InventoryStore {
   // Багажник: 4
 
   // ================================   MAIN   =================================
-  setInventoryActive = (active, inventoryId = 0) => {
-    console.log(inventoryId)
-    this.state.active = active
-    this.state.mode = this.state.active ? inventoryId : 0
-    console.log(this.state.mode, this.state.active)
-  }
-
   setInventoryData = data => {
     let inventoryId = 0
 
@@ -93,7 +86,8 @@ class InventoryStore {
 
     // Конвертация и загрузка данных в state
     this.convertData(uData(data), inventoryId)?.forEach(el =>
-      this.state.inventory.push(el)
+                                                          this.state.inventory.push(
+                                                            el)
     )
   }
 
@@ -323,8 +317,8 @@ class InventoryStore {
     if (item.equipmentSlot || item.isFastSlot) {
       // Проверка надет ли предмет
       const isEquipped =
-        item.idSlot === item.equipmentSlot ||
-        (item.idSlot >= 101 && item.idSlot <= 104)
+              item.idSlot === item.equipmentSlot ||
+              (item.idSlot >= 101 && item.idSlot <= 104)
       isEquipped ? this.putOffItem(idSlot) : this.putOnItem(idSlot)
     } else this.useConsumableItem(idSlot)
   }
@@ -475,7 +469,7 @@ class InventoryStore {
     const bagInBagResult = this.swapCheckBagInBag(...swapParams)
     const putOnPutOffResult = this.swapCheckPutOnPutOff(...swapParams)
     const finalResult =
-      mergeResult && bagInBagResult && putOnPutOffResult && weightResult
+            mergeResult && bagInBagResult && putOnPutOffResult && weightResult
     if (!finalResult) return false
 
     // Проверки на необходимость триггеров
@@ -499,8 +493,8 @@ class InventoryStore {
   onceClick = id => {
     const item = this.getItem(id)
     const { right, bottom } = document
-      .querySelector(`#slot${id}`)
-      .getBoundingClientRect()
+    .querySelector(`#slot${id}`)
+    .getBoundingClientRect()
 
     const x = window.innerWidth - right > 360 ? right : right - 460
     const y = window.innerHeight - bottom > 380 ? bottom : bottom - 235
@@ -539,12 +533,12 @@ class InventoryStore {
   get useLabel () {
     const { item } = this.state.modal
     const isTakeOff =
-      item.equipmentSlot === item.idSlot ||
-      (item.isFastSlot && item.idSlot >= 101 && item.idSlot <= 104)
+            item.equipmentSlot === item.idSlot ||
+            (item.isFastSlot && item.idSlot >= 101 && item.idSlot <= 104)
 
     const isEquip =
-      (item.equipmentSlot && item.equipmentSlot !== item.idSlot) ||
-      (item.isFastSlot && (item.idSlot <= 101 || item.idSlot >= 104))
+            (item.equipmentSlot && item.equipmentSlot !== item.idSlot) ||
+            (item.isFastSlot && (item.idSlot <= 101 || item.idSlot >= 104))
 
     if (isTakeOff) return 'Снять'
     else if (isEquip) return 'Надеть'

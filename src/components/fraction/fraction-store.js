@@ -78,7 +78,10 @@ class FractionStore {
   }
 
   get isBlur () {
-    return this.state.adsEditActive || this.state.adsActive
+    const isAds = this.state.adsActive || this.state.adsEditActive
+    const isModal = this.state.modalDismiss.active ||
+      this.state.modalAward.active || this.state.modalReprimand.active
+    return isAds || isModal
   }
 
   get tabletTitle () {

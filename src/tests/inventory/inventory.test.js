@@ -10,11 +10,10 @@ const jsonData2 = JSON.stringify(data2)
 const jsonData3 = JSON.stringify(data3)
 const jsonData4 = JSON.stringify(data4)
 
-const setInventoryActive = (active = true, id = 0) => {
-  window.trigger('inventory.toggle', active, id)
-}
+const setActive = active => window.trigger('inventory.active', active)
+const setMode = mode => window.trigger('inventory.mode', mode)
 
-const testInventory = () => {
+const setData = () => {
   window.trigger('inventory.update', jsonData0)
   window.trigger('inventory.update', jsonData1)
   window.trigger('inventory.update', jsonData2)
@@ -22,4 +21,4 @@ const testInventory = () => {
   window.trigger('inventory.update', jsonData4)
 }
 
-window.test.inventory = { setInventoryActive, testInventory }
+window.test.inventory = { setActive, setMode, setData }

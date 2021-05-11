@@ -9,11 +9,10 @@ import Equipment from './equipment'
 import DragOverlay from './overlay'
 import Trade from './trade'
 
-export default observer(() => {
+export default observer(({ mode }) => {
   const { onDragStart, onDragEnd, bagType } = store
-  const { mode, trunk } = store.state
+  const { trunk } = store.state
   const bagToSlot = bagType > 1 ? 60 : 55
-  console.log(mode)
 
   return (
     <DndContext onDragStart={onDragStart} onDragEnd={onDragEnd}>

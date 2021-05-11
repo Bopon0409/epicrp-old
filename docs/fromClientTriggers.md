@@ -4,8 +4,9 @@
 
 ### Инвентарь
 
-- `window.trigger('inventory.toggle', active: bolean, id: int)` - Открыть/Закрыть инвентарь \*
-- `window.trigger('inventory.update', data: json string)` - Загрузка данных
+- `window.trigger('inventory.active', active: bolean)` - Открыть/Закрыть инвентарь
+- `window.trigger('inventory.mode', mode: int)` - Смена типа инвентаря
+- `window.trigger('inventory.data', data: json string)` - Загрузка данных
 
 ### Авторизация
 
