@@ -14,6 +14,7 @@ import ContextMenu    from './modules/context-menu'
 import ModalAward     from './modules/modal-award'
 import ModalReprimand from './modules/modal-reprimand'
 import ModalDismiss   from './modules/modal-dismiss'
+import GroupCreate    from './modules/group-create'
 
 export default observer(() => {
   useEffect(() => {
@@ -54,6 +55,7 @@ export default observer(() => {
         <ModalAward />
         <ModalReprimand />
         <ModalDismiss />
+        <GroupCreate />
       </div>
       <ContextMenu />
     </div>

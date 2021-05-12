@@ -23,16 +23,18 @@ export default observer(() => {
   )
 
   return (
-    <div className='groups-container'>
+    <div className='groups-container skroll'>
       {store.groupList.map((group, i) => {
         const {
           groupName, members, quantity, onlineQuantity, handler, groupId
         } = group
         const onlineCss = { color: onlineQuantity > 0 ? '#18C61F' : '#007621' }
         const contextMenuHandler = e => store.memberClickHandler(e, groupId)
-        const imageClasses = classNames(
-          'expand__image',
+        const imageClasses = classNames('expand__image',
           groupExpand === groupId && 'expand__image-inverted'
+        )
+        const expandBtnClasses = classNames('expand__button',
+          quantity && 'expand__button-active'
         )
 
         return (
@@ -42,7 +44,7 @@ export default observer(() => {
             <div className='group__online' style={onlineCss}>
               Онлайн: {onlineQuantity}
             </div>
-            <div className='expand__button' onClick={handler}>
+            <div className={expandBtnClasses} onClick={handler}>
               {quantity ?
                 <img className={imageClasses} src={expandBtn} alt='' />
                 : null}
@@ -59,6 +61,10 @@ export default observer(() => {
               </div> : null}
           </div>)
       })}
+
+      <div className='btn-create'>
+        <div className='text'>Создать отдел</div>
+      </div>
     </div>
   )
 })
