@@ -1,5 +1,3 @@
-import hudStore from '../hud/hud-store'
-
 const { makeAutoObservable } = require('mobx')
 
 class FractionStore {
@@ -83,6 +81,10 @@ class FractionStore {
     const isModal = this.state.modalDismiss.active ||
       this.state.modalAward.active || this.state.modalReprimand.active
     return isAds || isModal
+  }
+
+  get user () {
+    return this.state.member
   }
 
   get tabletTitle () {
@@ -226,23 +228,12 @@ class FractionStore {
 
   adsEdit = () => {
     const { title, text, id } = this.state.adsEdit
-    this.state.ads = this.state.ads.map(ad => {
-      if (ad.id === id) {
-        ad.title = title
-        ad.text = text
-        ad.date = hudStore.state.date + ' в ' + hudStore.state.time
-        return ad
-      } else return ad
-    })
     window.frontTrigger('fraction.ads.edit', id, title, text)
   }
 
   adsAdd = () => {
     const { title, text } = this.state.adsEdit
     const { name: author } = this.state.user
-    const date = hudStore.state.date + ' в ' + hudStore.state.time
-    const id = this.getFreeAdId()
-    this.state.ads.unshift({ id, title, author, date, text })
     window.frontTrigger('fraction.ads.add', title, author, text)
   }
 
@@ -265,7 +256,7 @@ class FractionStore {
       list.push({ title: 'Отдел', handler: this.groupsClickHandler })
     if (controlMembers.giveReprimands) {
       list.push({ title: 'Выдать выговор', handler: this.reprimandOpen })
-      list.push({ title: 'Снять выговор', handler: this.reprimandTakeOff })
+      list.push({ title: 'Снять выговор', handler: this.reprimandRemove })
     }
     if (controlMembers.giveAward)
       list.push({ title: 'Выдать премию', handler: this.awardOpen })
@@ -336,12 +327,8 @@ class FractionStore {
     this.setContextMenu(false, 0, 0, 0, '')
   }
 
-  reprimandTakeOff = memberId => {
-    const member = this.state.members.find(({ id }) => memberId === id)
-    if (member.reprimands >= 1) {
-      window.frontTrigger('fraction.members.reprimand.drop', memberId)
-      member.reprimands -= 1
-    }
+  reprimandRemove = memberId => {
+    window.frontTrigger('fraction.members.reprimand.drop', memberId)
     this.setContextMenu(false, 0, 0, 0, '')
   }
 
@@ -446,8 +433,8 @@ class FractionStore {
     const { id, text } = this.state.modalReprimand
     window.frontTrigger('fraction.members.reprimand', id, text)
     this.reprimandClose()
-    const member = this.state.members.find(({ id: memberId }) => memberId === id)
-    member.reprimands += 1
+    // const member = this.state.members.find(({ id: memberId }) => memberId
+    // === id) member.reprimands += 1
   }
 
   // Dismiss
