@@ -60,7 +60,8 @@ class FractionStore {
     modalReprimand: { active: false, id: 0, text: '' },
     modalDismiss: { active: false, id: 0, text: '' },
 
-    groupExpand: 0
+    groupExpand: 0,
+    modalGroupCreate: { active: false, id: 0, name: '', boss: '', ranks: [] }
   }
 
   setActive = active => (this.state.active = active)
@@ -254,7 +255,8 @@ class FractionStore {
   }
 
   setContextMenu = (active, xCord, yCord, id, hoverEl) => {
-    this.state.contextMenu = { active, xCord, yCord, id, hoverEl }
+    if (this.context.main.length)
+      this.state.contextMenu = { active, xCord, yCord, id, hoverEl }
   }
 
   clickOutsideContextMenu = e => {
@@ -354,12 +356,22 @@ class FractionStore {
     this.state.groupExpand = groupExpand === groupId ? 0 : groupId
   }
 
-  groupEditClick = id => {
+  groupCreateClick = () => {
+    if (this.state.capabilities.controlGroups) {
 
+    }
+  }
+
+  groupEditClick = id => {
+    if (this.state.capabilities.controlGroups) {
+      this.setContextMenu(false, 0, 0, 0, '')
+    }
   }
 
   groupRemoveClick = id => {
-
+    if (this.state.capabilities.controlGroups) {
+      this.setContextMenu(false, 0, 0, 0, '')
+    }
   }
 
   //============================   Members List   ==============================
