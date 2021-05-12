@@ -13,7 +13,8 @@
 @import './scss/modal-aside';
 @import './scss/member-modal';
 @import './scss/modal-dismiss';
-@import "./scss/groups";
+@import './scss/groups';
+@import './scss/group-create';
 
 .fraction {
   position: absolute;
@@ -30,7 +31,6 @@
 
   padding: 35px 30px;
   box-sizing: border-box;
-  font-family: TT Norms, serif;
 
   .fraction__blur {
     filter: blur(2px);
@@ -41,9 +41,7 @@
     grid-template-columns: 250px 690px;
     grid-template-rows: 70px 500px 60px;
 
-    div {
-      box-sizing: border-box;
-    }
+    div { box-sizing: border-box }
 
     .fraction__title {
       background: #32353a;
