@@ -225,7 +225,7 @@ class FractionStore {
       list.push({ title: 'Отдел', handler: this.groupsClickHandler })
     if (controlMembers.giveReprimands) {
       list.push({ title: 'Выдать выговор', handler: this.reprimandOpen })
-      list.push({ title: 'Снять выговор', handler: this.reprimandTakeOff })
+      list.push({ title: 'Снять выговор', handler: this.reprimandRemove })
     }
     if (controlMembers.giveAward)
       list.push({ title: 'Выдать премию', handler: this.awardOpen })
