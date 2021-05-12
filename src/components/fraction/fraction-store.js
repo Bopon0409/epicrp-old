@@ -307,8 +307,13 @@ class FractionStore {
   }
 
   setMemberRank = (memberId, rankNum) => {
-    const access = this.state.user.rankNum > rankNum
-    if (this.state.capabilities.controlMembers.changeRanks && access) {
+    const currentMemberRank = this.getMemberById(memberId).rankNum
+    const access =
+      this.state.user.rankNum > rankNum &&
+      this.state.user.rankNum > currentMemberRank &&
+      this.state.capabilities.controlMembers.changeRanks
+
+    if (access) {
       const member = this.state.members.find(({ id }) => id === memberId)
       member.rankNum = rankNum
       window.frontTrigger('fraction.members.rank', memberId, rankNum)
