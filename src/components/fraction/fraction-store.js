@@ -15,6 +15,7 @@ class FractionStore {
     settingsMode: false,
 
     user: {},
+    userId: 0,
     capabilities: {
       controlStorage: false,
       controlRanks: false,
@@ -73,7 +74,7 @@ class FractionStore {
     if (data.open) this.state.storage.open = data.open
     if (data.members) this.state.members = data.members
     if (data.activityList) this.state.activityList = data.activityList
-    if (data.user) this.state.user = data.user
+    if (data.userId) this.state.userId = data.userId
   }
 
   get isBlur () {
@@ -84,7 +85,8 @@ class FractionStore {
   }
 
   get user () {
-    return this.state.member
+    const { userId } = this.state
+    return this.state.members.find(member => member.id === userId) || {}
   }
 
   get tabletTitle () {
@@ -233,7 +235,7 @@ class FractionStore {
 
   adsAdd = () => {
     const { title, text } = this.state.adsEdit
-    const { name: author } = this.state.user
+    const { name: author } = this.user
     window.frontTrigger('fraction.ads.add', title, author, text)
   }
 
@@ -300,8 +302,8 @@ class FractionStore {
   setMemberRank = (memberId, rankNum) => {
     const currentMemberRank = this.getMemberById(memberId).rankNum
     const access =
-      this.state.user.rankNum > rankNum &&
-      this.state.user.rankNum > currentMemberRank &&
+      this.user.rankNum > rankNum &&
+      this.user.rankNum > currentMemberRank &&
       this.state.capabilities.controlMembers.changeRanks
 
     if (access) {
@@ -462,7 +464,7 @@ class FractionStore {
   //==============================   Activity   ================================
 
   requestActivity = (name, id) => {
-    if (id === 0) id = this.state.user.id
+    if (id === 0) id = this.user.id
     this.state.activityCurrent = name
     window.frontTrigger('fraction.activity.request', name, id)
   }
@@ -477,7 +479,7 @@ class FractionStore {
   }
 
   get activityUser () {
-    const { activityId, user } = this.state
+    const { state: { activityId }, user } = this
     return this.state.activityId !== 0 ? this.getMemberById(activityId) : user
   }
 

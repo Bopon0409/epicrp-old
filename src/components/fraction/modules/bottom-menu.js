@@ -5,7 +5,7 @@ import Icon from './icon'
 import UserIcon from './user-icon'
 
 export default observer(() => {
-  const { name, rankNum, id } = store.state.user
+  const { name, rankNum, id } = store.user
   const rankName = store.getRankName(rankNum)
   const color = store.getMemberColor(id)
 
