@@ -349,70 +349,21 @@ class FractionStore {
     this.state.groupExpand = groupExpand === groupId ? 0 : groupId
   }
 
-  groupCreateClick = () => {
-    if (this.state.capabilities.controlGroups) {
-
-    }
-  }
-
   groupEditClick = id => {
     if (this.state.capabilities.controlGroups) {
       this.setContextMenu(false, 0, 0, 0, '')
+      console.log(id)
     }
   }
 
   groupRemoveClick = id => {
     if (this.state.capabilities.controlGroups) {
       this.setContextMenu(false, 0, 0, 0, '')
+      console.log(id)
     }
   }
 
   //============================   Members List   ==============================
-
-  get contextMenusItems () {
-    const { controlMembers } = this.state.capabilities
-    const list = []
-
-    if (controlMembers.checkInfo)
-      list.push({ title: 'Информация', handler: this.activityOpen })
-    if (controlMembers.changeRanks)
-      list.push({ title: 'Ранг', handler: this.ranksClickHandler })
-    if (controlMembers.changeGroups)
-      list.push({ title: 'Отдел', handler: this.groupsClickHandler })
-    if (controlMembers.giveReprimands) {
-      list.push({ title: 'Выдать выговор', handler: this.reprimandOpen })
-      list.push({ title: 'Снять выговор', handler: this.reprimandRemove })
-    }
-    if (controlMembers.giveAward)
-      list.push({ title: 'Выдать премию', handler: this.awardOpen })
-    if (controlMembers.dismiss)
-      list.push({ title: 'Уволить', handler: this.dismissOpen })
-
-    return list
-  }
-
-  get contextSecondaryMembersList () {
-    const { id } = this.state.contextMenu
-    switch (this.state.contextMenu.hoverEl) {
-      case 'ranks':
-        return this.state.ranks.map(({ rankName, rankNum, color }) => ({
-          rankName,
-          color,
-          active: this.getMemberById(id).rankNum === rankNum,
-          handler: () => this.setMemberRank(id, rankNum)
-        }))
-
-      case 'groups':
-        return this.state.groups.map(({ groupName, groupId }) => ({
-          groupName,
-          active: this.getMemberById(id).groupId === groupId,
-          handler: () => this.setMemberGroup(id, groupId)
-        }))
-
-      default:
-        return []
-    }
-  }
 
   setMemberGroup = (memberId, groupId) => {
     if (this.state.capabilities.controlMembers.changeGroups) {
