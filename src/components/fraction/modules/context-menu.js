@@ -13,40 +13,6 @@ export default observer(() => {
     return () => document.removeEventListener('click', handler, false)
   }, [])
 
-  const mainMenuList = store.contextMenusItems.map(el => (
-    <div
-      className='menu__item'
-      key={`context ${el.title}`}
-      onClick={() => el.handler && el.handler(id)}
-    >
-      <div className='item__icon'>
-        <ContextIcon icon={el.title} />
-      </div>
-      <div className='item__text'>{el.title}</div>
-    </div>
-  ))
-
-  const SecondaryContextMenu = store.secondaryContextMenusItems.map((el, i) => {
-    const { rankName, groupName, color, handler, active } = el
-    const content = rankName || groupName
-    const checkboxClasses = classNames(
-      'item__checkbox',
-      active && 'item__checkbox-active'
-    )
-
-    return (
-      <div className='menu__item checkbox__item' key={i} onClick={handler}>
-
-        {color
-         ? <div style={{ background: color }} className='color' />
-         : null}
-        <div className='item__text'>{content}</div>
-        <div className={checkboxClasses}>
-        </div>
-      </div>
-    )
-  })
-
   const style = {
     display: active ? 'flex' : 'none',
     left: xCord,
@@ -56,12 +22,51 @@ export default observer(() => {
   return (
     <div className='context-menu' style={style}>
       <div className='main-menu'>
-        <div className='wrapper'>{mainMenuList}</div>
+        <div className='wrapper'>{
+
+          store.context.main.map(el => (
+            <div
+              className='menu__item'
+              key={`context ${el.title}`}
+              onClick={() => el.handler && el.handler(id)}
+            >
+              <div className='item__icon'>
+                <ContextIcon icon={el.title} />
+              </div>
+              <div className='item__text'>{el.title}</div>
+            </div>
+          ))
+
+        }
+        </div>
       </div>
-      {store.secondaryContextMenusItems.length ?
-       <div className='secondary-menu'>
-         <div className='wrapper'>{SecondaryContextMenu}</div>
-       </div> : null}
+      {store.contextSecondaryMembersList.length ?
+        <div className='secondary-menu'>
+          <div className='wrapper'>{
+
+            store.context.second.map((el, i) => {
+              const { rankName, groupName, color, handler, active } = el
+              const content = rankName || groupName
+              const checkboxClasses = classNames(
+                'item__checkbox',
+                active && 'item__checkbox-active'
+              )
+
+              return (
+                <div className='menu__item checkbox__item' key={i}
+                  onClick={handler}>
+                  {color
+                    ? <div style={{ background: color }} className='color' />
+                    : null}
+                  <div className='item__text'>{content}</div>
+                  <div className={checkboxClasses}>
+                  </div>
+                </div>
+              )
+            })
+
+          }</div>
+        </div> : null}
     </div>
   )
 })

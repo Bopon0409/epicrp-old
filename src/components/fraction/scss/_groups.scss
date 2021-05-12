@@ -39,15 +39,24 @@
       }
 
       .expand__button {
-        width: 30px;
-        height: 30px;
+        margin-left: 20px;
+        width: 40px;
+        height: 40px;
         display: flex;
-        border-radius: 5px;
+        border-radius: 10px;
 
-        img {
+        .expand__image {
           margin: auto;
           width: 10px;
           height: 10px;
+        }
+
+        &:hover {
+          background-color: #393c43;
+        }
+
+        .expand__image-inverted {
+          transform: rotate(180deg);
         }
       }
 

@@ -6,10 +6,10 @@ export default observer(() => {
   const membersList = store.membersList.map((member, i) => {
     const { groupId, rankNum, name, id, online, lastActivity } = member
     const group = groupId ? store.getGroupName(groupId) : 'Без отдела'
-    const handler = e => store.memberClickHandler(e, id)
+    const contextMenuHandler = e => store.memberClickHandler(e, id)
 
     return (
-      <div className='row' key={i} onClick={handler}>
+      <div className='row' key={i} onClick={contextMenuHandler}>
         <div className='list__item'>{online && <div className='online' />}</div>
         <div className='list__item'>
           <div className='name'>{name}</div>

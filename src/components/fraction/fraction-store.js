@@ -184,6 +184,85 @@ class FractionStore {
     if (item === 5) this.requestStorage()
   }
 
+  //===============================   Context   ================================
+
+  get context () {
+    switch (this.state.activeMenuItem) {
+      case 1 :
+        return {
+          main: this.contextMembersList,
+          second: this.contextSecondaryMembersList
+        }
+      default:
+        return { main: this.contextGroupList, second: [] }
+    }
+  }
+
+  get contextGroupList () {
+    const groupId = this.state.contextMenu.id
+    if (this.state.capabilities.controlGroups) {
+      return [
+        { title: 'Настройки', handler: () => this.groupEditClick(groupId) },
+        { title: 'Удалить', handler: () => this.groupRemoveClick(groupId) }
+      ]
+    } else return []
+  }
+
+  get contextMembersList () {
+    const { controlMembers } = this.state.capabilities
+    const list = []
+
+    if (controlMembers.checkInfo)
+      list.push({ title: 'Информация', handler: this.activityOpen })
+    if (controlMembers.changeRanks)
+      list.push({ title: 'Ранг', handler: this.ranksClickHandler })
+    if (controlMembers.changeGroups)
+      list.push({ title: 'Отдел', handler: this.groupsClickHandler })
+    if (controlMembers.giveReprimands) {
+      list.push({ title: 'Выдать выговор', handler: this.reprimandOpen })
+      list.push({ title: 'Снять выговор', handler: this.reprimandTakeOff })
+    }
+    if (controlMembers.giveAward)
+      list.push({ title: 'Выдать премию', handler: this.awardOpen })
+    if (controlMembers.dismiss)
+      list.push({ title: 'Уволить', handler: this.dismissOpen })
+
+    return list
+  }
+
+  get contextSecondaryMembersList () {
+    const { id } = this.state.contextMenu
+    switch (this.state.contextMenu.hoverEl) {
+      case 'ranks':
+        return this.state.ranks.map(({ rankName, rankNum, color }) => ({
+          rankName,
+          color,
+          active: this.getMemberById(id).rankNum === rankNum,
+          handler: () => this.setMemberRank(id, rankNum)
+        }))
+
+      case 'groups':
+        return this.state.groups.map(({ groupName, groupId }) => ({
+          groupName,
+          active: this.getMemberById(id).groupId === groupId,
+          handler: () => this.setMemberGroup(id, groupId)
+        }))
+
+      default:
+        return []
+    }
+  }
+
+  setContextMenu = (active, xCord, yCord, id, hoverEl) => {
+    this.state.contextMenu = { active, xCord, yCord, id, hoverEl }
+  }
+
+  clickOutsideContextMenu = e => {
+    const modalBlock = document.querySelector(
+      '.context-menu')
+    if (!e.path.includes(modalBlock)) this.setContextMenu(false, 0, 0, 0)
+  }
+
   //=================================   ADS   ==================================
 
   setAdsActive = active => (this.state.adsActive = active)
@@ -275,52 +354,15 @@ class FractionStore {
     this.state.groupExpand = groupExpand === groupId ? 0 : groupId
   }
 
+  groupEditClick = id => {
+
+  }
+
+  groupRemoveClick = id => {
+
+  }
+
   //============================   Members List   ==============================
-
-  get contextMenusItems () {
-    const { controlMembers } = this.state.capabilities
-    const list = []
-
-    if (controlMembers.checkInfo)
-      list.push({ title: 'Информация', handler: this.activityOpen })
-    if (controlMembers.changeRanks)
-      list.push({ title: 'Ранг', handler: this.ranksClickHandler })
-    if (controlMembers.changeGroups)
-      list.push({ title: 'Отдел', handler: this.groupsClickHandler })
-    if (controlMembers.giveReprimands) {
-      list.push({ title: 'Выдать выговор', handler: this.reprimandOpen })
-      list.push({ title: 'Снять выговор', handler: this.reprimandTakeOff })
-    }
-    if (controlMembers.giveAward)
-      list.push({ title: 'Выдать премию', handler: this.awardOpen })
-    if (controlMembers.dismiss)
-      list.push({ title: 'Уволить', handler: this.dismissOpen })
-
-    return list
-  }
-
-  get secondaryContextMenusItems () {
-    const { id } = this.state.contextMenu
-    switch (this.state.contextMenu.hoverEl) {
-      case 'ranks':
-        return this.state.ranks.map(({ rankName, rankNum, color }) => ({
-          rankName,
-          color,
-          active: this.getMemberById(id).rankNum === rankNum,
-          handler: () => this.setMemberRank(id, rankNum)
-        }))
-
-      case 'groups':
-        return this.state.groups.map(({ groupName, groupId }) => ({
-          groupName,
-          active: this.getMemberById(id).groupId === groupId,
-          handler: () => this.setMemberGroup(id, groupId)
-        }))
-
-      default:
-        return []
-    }
-  }
 
   setMemberGroup = (memberId, groupId) => {
     if (this.state.capabilities.controlMembers.changeGroups) {
@@ -381,18 +423,15 @@ class FractionStore {
     })
   }
 
-  memberClickHandler = ({ clientX, clientY }, id) => {
-    setTimeout(() => this.setContextMenu(true, clientX, clientY, id), 10)
-  }
-
-  setContextMenu = (active, xCord, yCord, id, hoverEl) => {
-    this.state.contextMenu = { active, xCord, yCord, id, hoverEl }
-  }
-
-  clickOutsideContextMenu = e => {
-    const modalBlock = document.querySelector(
-      '.context-menu')
-    if (!e.path.includes(modalBlock)) this.setContextMenu(false, 0, 0, 0)
+  memberClickHandler = (event, id) => {
+    const { clientX, clientY } = event
+    const check1 = event.target.className.includes('expand__image')
+    const check2 = event.target.className.includes('expand__button')
+    if (check1 || check2) return
+    setTimeout(
+      () => this.setContextMenu(true, clientX, clientY, id),
+      50
+    )
   }
 
   //===========================   Member modals   ==============================
