@@ -37,7 +37,7 @@ class CreatePersStore {
   setStep = step => (this.state.step = step)
   setActive = active => this.state.active = active
   setData = data => this.state.serverData = data
-  finishCreate = () => window.clientTrigger('character.created')
+  finishCreate = () => window.frontTrigger('character.created')
 
   // ================================   STEP2   ================================
   setName = value => (this.state.step1.name = value)
@@ -83,10 +83,10 @@ class CreatePersStore {
     if (Number(age) < 14 || Number(age) > 100)
       return this.setAgeErr('Возраст не может быть больше 100 и меньше 14')
 
-    window.clientTrigger('character.update', 'name', name)
-    window.clientTrigger('character.update', 'surname', surname)
-    window.clientTrigger('character.update', 'sex', sex)
-    window.clientTrigger('character.update', 'age', age)
+    window.frontTrigger('character.update', 'name', name)
+    window.frontTrigger('character.update', 'surname', surname)
+    window.frontTrigger('character.update', 'sex', sex)
+    window.frontTrigger('character.update', 'age', age)
 
     this.setStep(2)
   }
@@ -103,30 +103,30 @@ class CreatePersStore {
   motherChangeHandler = (motherId, i) => {
     this.setActiveMother(i)
     this.setMotherName(motherNames[i])
-    window.clientTrigger('character.update', 'mother', motherId)
+    window.frontTrigger('character.update', 'mother', motherId)
   }
 
   fatherChangeHandler = (fatherId, i) => {
     this.setActiveFather(i)
     this.setFatherName(fatherNames[i])
-    window.clientTrigger('character.update', 'father', fatherId)
+    window.frontTrigger('character.update', 'father', fatherId)
   }
 
   sliderChangeHandler = (range, type) => {
     range = (range ^ 0) === range ? range : Number(range.toFixed(2))
     if (type === 1) {
       this.setSliderValue1(range)
-      window.clientTrigger('character.update', 'parentsSimilarity', range)
+      window.frontTrigger('character.update', 'parentsSimilarity', range)
     } else {
       this.setSliderValue2(range)
-      window.clientTrigger('character.update', 'skinColor', range)
+      window.frontTrigger('character.update', 'skinColor', range)
     }
   }
 
   // ================================   STEP3   ================================
   setMenuActive = value => {
     this.state.menuActive = value
-    window.clientTrigger('character.menu.change', value - 1)
+    window.frontTrigger('character.menu.change', value - 1)
   }
 }
 

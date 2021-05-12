@@ -21,7 +21,7 @@ class ChoisePersStore {
 
   clickPlay = () => {
     const { name, surname } = this.state.data[this.state.currentPers]
-    window.clientTrigger('character.selected', name, surname)
+    window.frontTrigger('character.selected', name, surname)
   }
 }
 

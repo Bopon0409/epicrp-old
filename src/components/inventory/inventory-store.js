@@ -167,11 +167,11 @@ class InventoryStore {
     const { id, inventoryId } = this.getInventoryId(item.idSlot)
     switch (triggerName) {
       case 'putOn':
-        return window.clientTrigger('inventory.equip', { id, inventoryId })
+        return window.frontTrigger('inventory.equip', { id, inventoryId })
       case 'putOff':
-        return window.clientTrigger('inventory.take', { id, inventoryId })
+        return window.frontTrigger('inventory.take', { id, inventoryId })
       case 'use':
-        return window.clientTrigger('inventory.use', { id, inventoryId })
+        return window.frontTrigger('inventory.use', { id, inventoryId })
       default:
         break
     }
@@ -283,7 +283,7 @@ class InventoryStore {
       el => el.idSlot !== idSlot
     )
 
-    window.clientTrigger('inventory.drop', this.getInventoryId(idSlot))
+    window.frontTrigger('inventory.drop', this.getInventoryId(idSlot))
   }
 
   // Уменьшение количества предметов в стаке
@@ -304,7 +304,7 @@ class InventoryStore {
       if (el.idSlot === item2.idSlot) el.quantity = sum
     })
     this.state.inventory = newInventory
-    window.clientTrigger('inventory.merge', {
+    window.frontTrigger('inventory.merge', {
       item1: this.getInventoryId(item1.idSlot),
       item2: this.getInventoryId(item2.idSlot)
     })
@@ -356,7 +356,7 @@ class InventoryStore {
       this.state.inventory.push(newItem)
     }
 
-    window.clientTrigger('inventory.separate', {
+    window.frontTrigger('inventory.separate', {
       item1: this.getInventoryId(this.getItem(idSlot).idSlot),
       item2: this.getInventoryId(freeSlot),
       quantity
@@ -482,7 +482,7 @@ class InventoryStore {
       else if (el.idSlot === toSlot) el.idSlot = fromSlot
     })
 
-    window.clientTrigger('inventory.swap', {
+    window.frontTrigger('inventory.swap', {
       from: this.getInventoryId(fromSlot),
       to: this.getInventoryId(toSlot)
     })

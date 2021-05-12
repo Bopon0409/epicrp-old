@@ -221,7 +221,7 @@ class FractionStore {
 
   adsDelete = id => {
     this.state.ads = this.state.ads.filter(ad => ad.id !== id)
-    window.clientTrigger('fraction.ads.remove', id)
+    window.frontTrigger('fraction.ads.remove', id)
   }
 
   adsEdit = () => {
@@ -234,7 +234,7 @@ class FractionStore {
         return ad
       } else return ad
     })
-    window.clientTrigger('fraction.ads.edit', { id, title, text })
+    window.frontTrigger('fraction.ads.edit', id, title, text)
   }
 
   adsAdd = () => {
@@ -243,7 +243,7 @@ class FractionStore {
     const date = hudStore.state.date + ' в ' + hudStore.state.time
     const id = this.getFreeAdId()
     this.state.ads.unshift({ id, title, author, date, text })
-    window.clientTrigger('fraction.ads.add', { title, author, text })
+    window.frontTrigger('fraction.ads.add', title, author, text)
   }
 
   navClickHandler = id => {
@@ -259,21 +259,16 @@ class FractionStore {
 
     if (controlMembers.checkInfo)
       list.push({ title: 'Информация', handler: this.activityOpen })
-
     if (controlMembers.changeRanks)
       list.push({ title: 'Ранг', handler: this.ranksClickHandler })
-
     if (controlMembers.changeGroups)
       list.push({ title: 'Отдел', handler: this.groupsClickHandler })
-
     if (controlMembers.giveReprimands) {
       list.push({ title: 'Выдать выговор', handler: this.reprimandOpen })
       list.push({ title: 'Снять выговор', handler: this.reprimandTakeOff })
     }
-
     if (controlMembers.giveAward)
       list.push({ title: 'Выдать премию', handler: this.awardOpen })
-
     if (controlMembers.dismiss)
       list.push({ title: 'Уволить', handler: this.dismissOpen })
 
@@ -307,7 +302,7 @@ class FractionStore {
     if (this.state.capabilities.controlMembers.changeGroups) {
       const member = this.state.members.find(({ id }) => id === memberId)
       member.groupId = groupId
-      window.clientTrigger('fraction.members.group', memberId, groupId)
+      window.frontTrigger('fraction.members.group', memberId, groupId)
     }
   }
 
@@ -316,7 +311,7 @@ class FractionStore {
     if (this.state.capabilities.controlMembers.changeRanks && access) {
       const member = this.state.members.find(({ id }) => id === memberId)
       member.rankNum = rankNum
-      window.clientTrigger('fraction.members.rank', memberId, rankNum)
+      window.frontTrigger('fraction.members.rank', memberId, rankNum)
     }
   }
 
@@ -339,7 +334,7 @@ class FractionStore {
   reprimandTakeOff = memberId => {
     const member = this.state.members.find(({ id }) => memberId === id)
     if (member.reprimands >= 1) {
-      window.clientTrigger('fraction.members.reprimand.drop', memberId)
+      window.frontTrigger('fraction.members.reprimand.drop', memberId)
       member.reprimands -= 1
     }
     this.setContextMenu(false, 0, 0, 0, '')
@@ -422,10 +417,7 @@ class FractionStore {
 
   awardSubmit = () => {
     const { id, text, sum } = this.state.modalAward
-    window.clientTrigger(
-      'fraction.members.award',
-      { id, text, sum: Number(sum) }
-    )
+    window.frontTrigger('fraction.members.award', id, text, Number(sum))
     this.awardClose()
   }
 
@@ -447,7 +439,7 @@ class FractionStore {
 
   reprimandSubmit = () => {
     const { id, text } = this.state.modalReprimand
-    window.clientTrigger('fraction.members.reprimand', { id, text })
+    window.frontTrigger('fraction.members.reprimand', id, text)
     this.reprimandClose()
     const member = this.state.members.find(({ id: memberId }) => memberId === id)
     member.reprimands += 1
@@ -471,7 +463,7 @@ class FractionStore {
 
   dismissSubmit = () => {
     const { id, text } = this.state.modalDismiss
-    window.clientTrigger('fraction.members.dismiss', { id, text })
+    window.frontTrigger('fraction.members.dismiss', id, text)
     this.dismissClose()
   }
 
@@ -480,7 +472,7 @@ class FractionStore {
   requestActivity = (name, id) => {
     if (id === 0) id = this.state.user.id
     this.state.activityCurrent = name
-    window.clientTrigger('fraction.activity.request', name, id)
+    window.frontTrigger('fraction.activity.request', name, id)
   }
 
   setActivityData = data => (this.state.activityData = data.list)
@@ -499,14 +491,17 @@ class FractionStore {
 
   //===============================   Storage   ================================
 
-  requestStorage = () => window.clientTrigger('fraction.storage.request')
+  requestStorage = () => window.frontTrigger('fraction.storage.request',
+    this.state.fractionName
+  )
 
   setStorageData = data => (this.state.storage = data)
 
   setStorageOpen = () => {
     if (this.state.capabilities.controlStorage) {
-      window.clientTrigger('fraction.storage.toggle', !this.state.storage.open)
-      this.state.storage.open = !this.state.storage.open
+      const { storage: { open }, fractionName } = this.state
+      this.state.storage.open = !open
+      window.frontTrigger('fraction.storage.toggle', !open, fractionName)
     }
   }
 }

@@ -12,7 +12,7 @@ class InteractionMenuStore {
   }
 
   setActive = active => {
-    if (!active) window.clientTrigger('interact.close')
+    if (!active) window.frontTrigger('interact.close')
     this.state.active = active
     const isContainMenu =
             document.querySelector('.interaction-menu').childNodes.length >= 3
@@ -36,7 +36,7 @@ class InteractionMenuStore {
       const onHoverIn = data => this.setCurrentText(data.text)
       const onHoverOut = () => this.setCurrentText('Закрыть меню')
       const clickHandler = name => {
-        window.clientTrigger('interact.click', name)
+        window.frontTrigger('interact.click', name)
       }
 
       const menus = data.map(({ text, icon, menus, name }) => ({

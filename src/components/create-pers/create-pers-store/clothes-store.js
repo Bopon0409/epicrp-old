@@ -28,7 +28,7 @@ class ClothesStore {
 
   onValueChange = (value, valueName) => {
     this.state[valueName].value = value
-    window.clientTrigger('character.update', valueName, value)
+    window.frontTrigger('character.update', valueName, value)
   }
 }
 

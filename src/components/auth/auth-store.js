@@ -102,7 +102,7 @@ class AuthStore {
       return this.setErrorMsg(this.ERROR_MESSAGES[3])
 
     this.clearInputs()
-    window.clientTrigger('auth.signIn', login, pass, checkBox)
+    window.frontTrigger('auth.signIn', login, pass, checkBox)
   }
 
   registerValidate = () => {
@@ -122,7 +122,7 @@ class AuthStore {
     if (pass !== pass2) return this.setErrorMsg(this.ERROR_MESSAGES[4])
 
     this.clearInputs()
-    window.clientTrigger('auth.signUp', login, email, pass)
+    window.frontTrigger('auth.signUp', login, email, pass)
   }
 }
 

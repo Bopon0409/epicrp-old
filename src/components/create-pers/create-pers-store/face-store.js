@@ -67,7 +67,7 @@ class FaceStore {
     if (typeof value === 'number')
       value = (value ^ 0) === value ? value : Number(value.toFixed(2))
     this.state[valueName].value = value
-    window.clientTrigger('character.update', valueName, value)
+    window.frontTrigger('character.update', valueName, value)
   }
 }
 

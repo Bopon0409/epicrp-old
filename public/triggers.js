@@ -1,3 +1,5 @@
+// noinspection ES6ConvertVarToLetConst
+
 var EventManager = {
   events: {},
   addHandler (eventName, handler) {
@@ -23,7 +25,7 @@ function trigger (eventName, ...args) {
   else handlers.forEach(handler => handler(...args.map(arg => JSON.parse(arg))))
 }
 
-function clientTrigger (triggerName, ...args) {
+function frontTrigger (triggerName, ...args) {
   if (window.mp) {
     if (args.length)
       args = args.map(el => (typeof el === 'object' ? JSON.stringify(el) : el))
@@ -39,5 +41,5 @@ document.addEventListener('DOMContentLoaded', () => {
 window.EventManager = EventManager
 window.chatAPI = chatAPI
 window.trigger = trigger
-window.clientTrigger = clientTrigger
+window.frontTrigger = frontTrigger
 window.test = {}

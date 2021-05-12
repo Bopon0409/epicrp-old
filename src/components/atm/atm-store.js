@@ -37,11 +37,11 @@ class AtmStore {
     } = this.state.transferData
     switch (this.state.currentPage) {
       case 'Снятие наличных':
-        return window.clientTrigger('atm.take', cashOutSum)
+        return window.frontTrigger('atm.take', cashOutSum)
       case 'Пополнить счёт':
-        return window.clientTrigger('atm.put', topUpSum)
+        return window.frontTrigger('atm.put', topUpSum)
       case 'Перевод средств':
-        return window.clientTrigger(
+        return window.frontTrigger(
           'atm.transfer',
           receiverAccount,
           transferSum
