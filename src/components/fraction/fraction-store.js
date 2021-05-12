@@ -1,5 +1,3 @@
-import hudStore from '../hud/hud-store'
-
 const { makeAutoObservable } = require('mobx')
 
 class FractionStore {
@@ -17,6 +15,7 @@ class FractionStore {
     settingsMode: false,
 
     user: {},
+    userId: 0,
     capabilities: {
       controlStorage: false,
       controlRanks: false,
@@ -78,7 +77,7 @@ class FractionStore {
     if (data.open) this.state.storage.open = data.open
     if (data.members) this.state.members = data.members
     if (data.activityList) this.state.activityList = data.activityList
-    if (data.user) this.state.user = data.user
+    if (data.userId) this.state.userId = data.userId
   }
 
   get isBlur () {
@@ -86,6 +85,11 @@ class FractionStore {
     const isModal = this.state.modalDismiss.active ||
       this.state.modalAward.active || this.state.modalReprimand.active
     return isAds || isModal
+  }
+
+  get user () {
+    const { userId } = this.state
+    return this.state.members.find(member => member.id === userId) || {}
   }
 
   get tabletTitle () {
@@ -309,23 +313,12 @@ class FractionStore {
 
   adsEdit = () => {
     const { title, text, id } = this.state.adsEdit
-    this.state.ads = this.state.ads.map(ad => {
-      if (ad.id === id) {
-        ad.title = title
-        ad.text = text
-        ad.date = hudStore.state.date + ' в ' + hudStore.state.time
-        return ad
-      } else return ad
-    })
     window.frontTrigger('fraction.ads.edit', id, title, text)
   }
 
   adsAdd = () => {
     const { title, text } = this.state.adsEdit
-    const { name: author } = this.state.user
-    const date = hudStore.state.date + ' в ' + hudStore.state.time
-    const id = this.getFreeAdId()
-    this.state.ads.unshift({ id, title, author, date, text })
+    const { name: author } = this.user
     window.frontTrigger('fraction.ads.add', title, author, text)
   }
 
@@ -376,6 +369,51 @@ class FractionStore {
 
   //============================   Members List   ==============================
 
+  get contextMenusItems () {
+    const { controlMembers } = this.state.capabilities
+    const list = []
+
+    if (controlMembers.checkInfo)
+      list.push({ title: 'Информация', handler: this.activityOpen })
+    if (controlMembers.changeRanks)
+      list.push({ title: 'Ранг', handler: this.ranksClickHandler })
+    if (controlMembers.changeGroups)
+      list.push({ title: 'Отдел', handler: this.groupsClickHandler })
+    if (controlMembers.giveReprimands) {
+      list.push({ title: 'Выдать выговор', handler: this.reprimandOpen })
+      list.push({ title: 'Снять выговор', handler: this.reprimandRemove })
+    }
+    if (controlMembers.giveAward)
+      list.push({ title: 'Выдать премию', handler: this.awardOpen })
+    if (controlMembers.dismiss)
+      list.push({ title: 'Уволить', handler: this.dismissOpen })
+
+    return list
+  }
+
+  get contextSecondaryMembersList () {
+    const { id } = this.state.contextMenu
+    switch (this.state.contextMenu.hoverEl) {
+      case 'ranks':
+        return this.state.ranks.map(({ rankName, rankNum, color }) => ({
+          rankName,
+          color,
+          active: this.getMemberById(id).rankNum === rankNum,
+          handler: () => this.setMemberRank(id, rankNum)
+        }))
+
+      case 'groups':
+        return this.state.groups.map(({ groupName, groupId }) => ({
+          groupName,
+          active: this.getMemberById(id).groupId === groupId,
+          handler: () => this.setMemberGroup(id, groupId)
+        }))
+
+      default:
+        return []
+    }
+  }
+
   setMemberGroup = (memberId, groupId) => {
     if (this.state.capabilities.controlMembers.changeGroups) {
       const member = this.state.members.find(({ id }) => id === memberId)
@@ -387,8 +425,8 @@ class FractionStore {
   setMemberRank = (memberId, rankNum) => {
     const currentMemberRank = this.getMemberById(memberId).rankNum
     const access =
-      this.state.user.rankNum > rankNum &&
-      this.state.user.rankNum > currentMemberRank &&
+      this.user.rankNum > rankNum &&
+      this.user.rankNum > currentMemberRank &&
       this.state.capabilities.controlMembers.changeRanks
 
     if (access) {
@@ -414,12 +452,8 @@ class FractionStore {
     this.setContextMenu(false, 0, 0, 0, '')
   }
 
-  reprimandTakeOff = memberId => {
-    const member = this.state.members.find(({ id }) => memberId === id)
-    if (member.reprimands >= 1) {
-      window.frontTrigger('fraction.members.reprimand.drop', memberId)
-      member.reprimands -= 1
-    }
+  reprimandRemove = memberId => {
+    window.frontTrigger('fraction.members.reprimand.drop', memberId)
     this.setContextMenu(false, 0, 0, 0, '')
   }
 
@@ -521,9 +555,8 @@ class FractionStore {
     const { id, text } = this.state.modalReprimand
     window.frontTrigger('fraction.members.reprimand', id, text)
     this.reprimandClose()
-    const member = this.state.members.find(({ id: memberId }) => memberId ===
-      id)
-    member.reprimands += 1
+    // const member = this.state.members.find(({ id: memberId }) => memberId
+    // === id) member.reprimands += 1
   }
 
   // Dismiss
@@ -551,7 +584,7 @@ class FractionStore {
   //==============================   Activity   ================================
 
   requestActivity = (name, id) => {
-    if (id === 0) id = this.state.user.id
+    if (id === 0) id = this.user.id
     this.state.activityCurrent = name
     window.frontTrigger('fraction.activity.request', name, id)
   }
@@ -566,7 +599,7 @@ class FractionStore {
   }
 
   get activityUser () {
-    const { activityId, user } = this.state
+    const { state: { activityId }, user } = this
     return this.state.activityId !== 0 ? this.getMemberById(activityId) : user
   }
 

@@ -1,17 +1,6 @@
 {
   "fractionName": "Los Santos Police",
-  "user": {
-    "id": 100,
-    "online": true,
-    "name": "Chak Noris",
-    "rankNum": 3,
-    "duty": "Сотрудник",
-    "sex": true,
-    "phone": "xxxx-xxxx",
-    "groupId": 2,
-    "lastActivity": "17/03/2021 в 19:31",
-    "reprimands": 2
-  },
+  "userId": 100,
   "capabilities": {
     "controlStorage": true,
     "controlRanks": true,
