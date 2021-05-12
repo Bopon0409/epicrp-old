@@ -58,7 +58,9 @@ class FractionStore {
 
     modalAward: { active: false, id: 0, text: '', sum: '', activeBtn: '' },
     modalReprimand: { active: false, id: 0, text: '' },
-    modalDismiss: { active: false, id: 0, text: '' }
+    modalDismiss: { active: false, id: 0, text: '' },
+
+    groupExpand: 0
   }
 
   setActive = active => (this.state.active = active)
@@ -249,6 +251,28 @@ class FractionStore {
   navClickHandler = id => {
     const el = document.getElementById('ad' + id)
     el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  //============================   Groups List   ===============================
+
+  get groupList () {
+    return this.state.groups.map(({ groupId, groupName }) => {
+      const members = this.state.members
+        .filter(member => member.groupId === groupId)
+      const quantity = members.length
+      const onlineQuantity = members.filter(member => member.online).length
+
+      const handler = () => {
+        if (quantity) this.groupListHandler(groupId)
+      }
+
+      return { groupName, members, quantity, onlineQuantity, groupId, handler }
+    })
+  }
+
+  groupListHandler = groupId => {
+    const { groupExpand } = this.state
+    this.state.groupExpand = groupExpand === groupId ? 0 : groupId
   }
 
   //============================   Members List   ==============================
@@ -446,7 +470,8 @@ class FractionStore {
     const { id, text } = this.state.modalReprimand
     window.frontTrigger('fraction.members.reprimand', id, text)
     this.reprimandClose()
-    const member = this.state.members.find(({ id: memberId }) => memberId === id)
+    const member = this.state.members.find(({ id: memberId }) => memberId ===
+      id)
     member.reprimands += 1
   }
 

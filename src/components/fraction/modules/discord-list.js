@@ -8,7 +8,7 @@ export default observer(() => {
     group.list.map(({ name, online, id }, j) => {
       const color = store.getMemberColor(id)
       return (
-        <div key={`dis-memb ${j}`} className='members__item' style={{ color }}>
+        <div key={j} className='members__item' style={{ color }}>
           <UserIcon size='33px' color={color} online={online} name={name} />
           {name}
         </div>

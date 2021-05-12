@@ -1,10 +1,11 @@
-import React from 'react'
+import React        from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../fraction-store'
-import Info from './info'
-import MembersList from './members-list'
-import Activity from './activity'
-import Storage from './storage'
+import store        from '../fraction-store'
+import Info         from './info'
+import MembersList  from './members-list'
+import Activity     from './activity'
+import Storage      from './storage'
+import Group        from './group'
 
 export default observer(() => {
   const getCurrentBlock = () => {
@@ -15,6 +16,8 @@ export default observer(() => {
         return <MembersList />
       case 2:
         return <Activity />
+      case 3:
+        return <Group />
       case 5:
         return <Storage />
       default:
@@ -22,5 +25,5 @@ export default observer(() => {
     }
   }
 
-  return <div className='body'>{getCurrentBlock()}</div>
+  return <div className="body">{getCurrentBlock()}</div>
 })
