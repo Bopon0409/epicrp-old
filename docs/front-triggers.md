@@ -88,25 +88,33 @@
 
 - `mp.trigger('fraction.members.award', id: number, text: string, sum: number)`
 
-Выдача выговора
+Выдача выговора игроку
 
 - `mp.trigger('fraction.members.reprimand', id: number, text: string)`
 
-Снятие выговора
+Снятие выговора у игрока
 
 - `mp.trigger('fraction.members.reprimand.drop', id: number)`
 
-Увольнение
+Увольнение игрока
 
 - `mp.trigger('fraction.members.dismiss', id: number, text: string)`
 
-Изменение ранга
+Изменение ранга игрока
 
 - `mp.trigger('fraction.members.group', userId: number, groupId: number)`
 
-Изменение группы
+Изменение группы игрока
 
 - `mp.trigger('fraction.members.rank', userId: number, rankNum: number)`
+
+Создание группы
+
+- `mp.trigger('fraction.group.create', data: json string)`
+  
+Удаление группы
+
+- `mp.trigger('fraction.group.remove', groupId: num)`
 
 Запрос на историю активности
 

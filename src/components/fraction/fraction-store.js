@@ -60,7 +60,7 @@ class FractionStore {
     modalDismiss: { active: false, id: 0, text: '' },
 
     groupExpand: 0,
-    modalGroupCreate: { active: false, id: 0, name: '', boss: '', ranks: [] }
+    modalGroupCreate: { active: false, name: '', boss: '', ranks: [] }
   }
 
   setActive = active => (this.state.active = active)
@@ -81,10 +81,12 @@ class FractionStore {
   }
 
   get isBlur () {
-    const isAds = this.state.adsActive || this.state.adsEditActive
-    const isModal = this.state.modalDismiss.active ||
-      this.state.modalAward.active || this.state.modalReprimand.active
-    return isAds || isModal
+    return this.state.adsActive ||
+      this.state.adsEditActive ||
+      this.state.modalDismiss.active ||
+      this.state.modalAward.active ||
+      this.state.modalReprimand.active ||
+      this.state.modalGroupCreate.active
   }
 
   get user () {
@@ -198,8 +200,10 @@ class FractionStore {
           main: this.contextMembersList,
           second: this.contextSecondaryMembersList
         }
-      default:
+      case 3:
         return { main: this.contextGroupList, second: [] }
+      default:
+        return { main: [], second: [] }
     }
   }
 
@@ -359,8 +363,53 @@ class FractionStore {
   groupRemoveClick = id => {
     if (this.state.capabilities.controlGroups) {
       this.setContextMenu(false, 0, 0, 0, '')
-      console.log(id)
+      window.frontTrigger('fraction.members.remove', id)
     }
+  }
+
+  //============================   Group Modals   ==============================
+
+  setGroupCreateModalName = name => this.state.modalGroupCreate.name = name
+
+  setGroupCreateModalBoss = boss => this.state.modalGroupCreate.boss = boss
+  toggleGroupCreateModalRank = id => {
+
+    const { modalGroupCreate } = this.state
+    const rank = modalGroupCreate.ranks.find(({ rankNum }) => rankNum === id)
+    rank.value = !rank.value
+  }
+
+  get groupCreateSelectList () {
+    const { members } = this.state
+    if (!members.length) return []
+    const applicants = members.filter(({ groupId }) => !groupId)
+    return applicants.map(({ id, name }) => ({ value: id, text: name }))
+  }
+
+  groupCreateOpen = () => {
+    const { ranks } = this.state
+    this.state.modalGroupCreate = {
+      active: true,
+      name: '',
+      boss: this.groupCreateSelectList[0],
+      ranks: ranks.map(({ rankNum, rankName, color }) => ({
+        rankNum, rankName, color, value: false
+      }))
+    }
+  }
+
+  groupCreateClose = () => {
+    this.state.modalGroupCreate = {
+      active: false, name: '', boss: '', ranks: []
+    }
+  }
+
+  groupCreateSubmit = () => {
+    const { name, boss: { id: chiefId }, ranks } = this.state.modalGroupCreate
+    let ranksList = ranks.filter(({ value }) => value)
+    ranksList = ranksList.map(({ rankNum }) => rankNum)
+    window.frontTrigger('fraction.group.create', { name, chiefId, ranksList })
+    this.groupCreateClose()
   }
 
   //============================   Members List   ==============================

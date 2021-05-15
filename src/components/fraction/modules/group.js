@@ -62,7 +62,7 @@ export default observer(() => {
           </div>)
       })}
 
-      <div className='btn-create'>
+      <div className='btn-create' onClick={store.groupCreateOpen}>
         <div className='text'>Создать отдел</div>
       </div>
     </div>
