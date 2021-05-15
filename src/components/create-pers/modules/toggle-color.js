@@ -1,7 +1,8 @@
-import React from 'react'
+import React        from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../create-pers-store/create-pers-store'
+import store        from '../create-pers-store/create-pers-store'
 import clothesStore from '../create-pers-store/clothes-store'
+import classNames   from 'classnames'
 
 export default observer(
   ({ item: { title, value, valueName }, onValueChange, type }) => {
@@ -12,20 +13,15 @@ export default observer(
       shoes: { value: shoesValue }
     } = clothesStore.state
 
-    const mapHandler = ({ color }, i) => {
-      return (
-        <div
-          key={i}
-          className={
-            color === value
-              ? 'toggle-color__item toggle-color__item_active'
-              : 'toggle-color__item'
-          }
-          onClick={() => onValueChange(color, valueName)}
-          style={{ background: color }}
-        ></div>
-      )
-    }
+    const mapHandler = ({ color }, i) => (
+      <div
+        key={i} style={{ background: color }}
+        onClick={() => onValueChange(color, valueName)}
+        className={classNames(
+          'toggle-color__item',
+          color === value && 'toggle-color__item_active'
+        )} />
+    )
 
     const getList = () => {
       switch (type) {

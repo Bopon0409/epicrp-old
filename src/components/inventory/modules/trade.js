@@ -4,7 +4,7 @@ import store from '../inventory-store'
 import SlotList from './slot-list'
 
 export default observer(() => {
-  const { setTraidInput, setTraidReady, setTradeFinish } = store
+  const { setTradeInput, setTradeReady, setTradeFinish } = store
   const { trade } = store.state
 
   return (
@@ -13,7 +13,7 @@ export default observer(() => {
       <div className='sub-title'>{trade.tradeName}</div>
 
       <div className='trade-label'>вы отдаете</div>
-      <SlotList fromSlot={301} toSlot={310} skroll={true} />
+      <SlotList fromSlot={301} toSlot={310} scroll={true} />
 
       <div className='trade-form'>
         <div className='trade-money'>
@@ -23,21 +23,21 @@ export default observer(() => {
             type='number'
             max='3000'
             value={trade.input1}
-            onChange={e => setTraidInput(e.target.value)}
+            onChange={e => setTradeInput(e.target.value)}
           />
         </div>
         <div
           className={
             trade.isReady1 ? 'readiness readiness-active' : 'readiness'
           }
-          onClick={setTraidReady}
+          onClick={setTradeReady}
         >
           {trade.isReady1 ? 'готов' : 'не готов'}
         </div>
       </div>
 
       <div className='trade-label'>вы получаете</div>
-      <SlotList fromSlot={351} toSlot={360} skroll={true} />
+      <SlotList fromSlot={351} toSlot={360} scroll={true} />
 
       <div className='trade-form'>
         <div className='trade-money'>

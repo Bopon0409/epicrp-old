@@ -11,12 +11,12 @@ export default observer(() => {
   const weight = (item?.weight * item?.quantity).toFixed(1)
 
   useEffect(() => {
-    const сlickOutside = e => {
+    const clickOutside = e => {
       const modalBlock = document.getElementsByClassName('modal')[0]
       if (!e.path.includes(modalBlock)) store.setModal(false, {}, 0, 0)
     }
-    document.addEventListener('click', сlickOutside, false)
-    return () => document.removeEventListener('click', сlickOutside, false)
+    document.addEventListener('click', clickOutside, false)
+    return () => document.removeEventListener('click', clickOutside, false)
   }, [])
 
   return (

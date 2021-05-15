@@ -23,7 +23,7 @@ export default observer(() => {
         <div className='text'>
           <div className='text__line' />
           <textarea
-            className='text__content skroll'
+            className='text__content scroll'
             placeholder='Введите текст'
             value={text}
             onChange={setEditText}

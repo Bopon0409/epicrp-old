@@ -48,7 +48,7 @@
           .ad__text-line {
             width: 4px;
             background: #fff205;
-            box-shadow: 0px 12px 17px rgba(157, 149, 0, 0.58);
+            box-shadow: 0 12px 17px rgba(157, 149, 0, 0.58);
           }
 
           .ad__text-content {
@@ -131,7 +131,7 @@
         width: 150px;
         font-size: 12px;
         color: #ffffff;
-        font-family: TT Norms;
+        font-family: TT Norms, sans-serif;
 
         background: rgba(196, 196, 196, 0.15);
         border: 0.4px solid rgba(255, 255, 255, 0.2);

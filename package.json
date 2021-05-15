@@ -30,7 +30,7 @@
     "eject": "react-scripts eject",
     "zip": "react-scripts build & node scripts/archiver",
     "analyze": "node scripts/analyze",
-    "stats": "sloc src"
+    "stats": "sloc . -e node_modules"
   },
   "eslintConfig": {
     "extends": [

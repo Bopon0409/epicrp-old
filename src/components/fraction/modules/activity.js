@@ -36,7 +36,7 @@ export default observer(() => {
   ))
 
   return (
-    <div className='activity skroll'>
+    <div className='activity scroll'>
       <div className='activity__header'>
         <div className='header__icon'>
           <div className='letter' style={{ color }}>

@@ -26,7 +26,7 @@ export default observer(({ mode }) => {
         {mode === 3 && (
           <div className='inventory'>
             <div className='title'>Склад</div>
-            <SlotList fromSlot={401} toSlot={500} skroll={true} />
+            <SlotList fromSlot={401} toSlot={500} scroll={true} />
           </div>
         )}
 
@@ -37,7 +37,7 @@ export default observer(({ mode }) => {
             <SlotList
               fromSlot={601}
               toSlot={600 + trunk.trunkSize}
-              skroll={true}
+              scroll={true}
             />
           </div>
         )}

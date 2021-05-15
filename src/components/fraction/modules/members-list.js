@@ -28,7 +28,7 @@ export default observer(() => {
   })
 
   return (
-    <div className='members-list skroll'>
+    <div className='members-list scroll'>
       <div className='row'>
         <div className='header__item'>Онлайн</div>
         <div className='header__item'>Имя</div>

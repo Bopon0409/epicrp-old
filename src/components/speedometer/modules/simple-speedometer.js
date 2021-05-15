@@ -14,7 +14,7 @@ export default observer(() => {
         <div className='fuel-view'>
           <Fuel active={fuelValue} />
           <div className='progress progress-moved'>
-            <div className='progress-bar' style={{ width: `${fuel}%` }}></div>
+            <div className='progress-bar' style={{ width: `${fuel}%` }}/>
           </div>
         </div>
         <div className='speed-view'>

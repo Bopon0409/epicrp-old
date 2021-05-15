@@ -1,7 +1,7 @@
-import React from 'react'
+import React        from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../fraction-store'
-import UserIcon from './user-icon'
+import store        from '../fraction-store'
+import UserIcon     from './user-icon'
 
 export default observer(() => {
   const membersList = group =>
@@ -16,7 +16,7 @@ export default observer(() => {
     })
 
   return (
-    <div className='discord-list skroll'>
+    <div className='discord-list scroll'>
       {store.discordList.map((group, i) => (
         <div className='discord-list__item' key={`discord group ${i}`}>
           <div className='discord-list__title'>{group.name}</div>

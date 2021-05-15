@@ -12,13 +12,12 @@
           cursor: pointer;
           filter: drop-shadow(0px 15px 20px rgba(242, 241, 254, 0.45));
           background: #f5f5f5;
-          box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
           border-radius: 5px;
           font-size: 13px;
           font-weight: 700;
           margin-bottom: 20px;
-          padding: 10px 12px;
-          padding-right: 30px;
+          padding: 10px 30px 10px 12px;
           box-sizing: border-box;
           position: relative;
 

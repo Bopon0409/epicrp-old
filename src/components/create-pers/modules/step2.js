@@ -50,7 +50,7 @@ export default observer(() => {
   return (
     <div className='step2'>
       <div className='catalog' style={{ left: '5%' }}>
-        <div className='catalog__list skroll'>{motherCatalog}</div>
+        <div className='catalog__list scroll'>{motherCatalog}</div>
         <div className='catalog__text text'>
           <div className='text__hint'>Мать</div>
           <div className='text__name'>{motherName}</div>
@@ -58,7 +58,7 @@ export default observer(() => {
       </div>
 
       <div className='catalog' style={{ right: '5%' }}>
-        <div className='catalog__list skroll'>{fatherCatalog}</div>
+        <div className='catalog__list scroll'>{fatherCatalog}</div>
         <div className='catalog__text text'>
           <div className='text__hint'>Отец</div>
           <div className='text__name'>{fatherName}</div>

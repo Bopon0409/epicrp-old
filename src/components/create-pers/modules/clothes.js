@@ -8,7 +8,7 @@ export default observer(() => {
   const { state, onValueChange } = store
 
   return (
-    <div className='current-block skroll'>
+    <div className='current-block scroll'>
       <ToggleImg
         item={state.shirt}
         onValueChange={onValueChange}

@@ -31,11 +31,11 @@ export default observer(() => {
         <div className='ads__close' onClick={() => setAdsActive(false)}>
           <Icon icon='close' />
         </div>
-        <div className='ads__content skroll'>
+        <div className='ads__content scroll'>
           <AdsContentList />
         </div>
         <div className='ads__nav'>
-          <div className='nav__container skroll'>{navList}</div>
+          <div className='nav__container scroll'>{navList}</div>
 
           <AddButton />
         </div>

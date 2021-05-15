@@ -41,7 +41,7 @@ export default observer(() => {
         <textarea
           value={text}
           onChange={e => setAwardText((e.target.value))}
-          className='text skroll'
+          className='text scroll'
           placeholder='Комментарий'
         />
       </div>

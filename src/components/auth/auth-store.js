@@ -27,20 +27,20 @@ class AuthStore {
       {
         id: 0,
         title: 'Новость',
-        text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-      quidem dolores quaerat animi iusto distinctio!`
+        text: `Lorem ipsum dolor sit amet consecrated animistic elite. Cupidity
+      quid dolores quart anime Giusto distinction!`
       },
       {
         id: 1,
         title: 'Новость',
-        text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-      quidem dolores quaerat animi iusto distinctio!`
+        text: `Lorem ipsum dolor sit amet consecrated animistic elite. Cupidity
+      quid dolores quart anime Giusto distinction!`
       },
       {
         id: 2,
         title: 'Новость',
-        text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-      quidem dolores quaerat animi iusto distinctio!`
+        text: `Lorem ipsum dolor sit amet consecrated animistic elite. Cupidity
+      quid dolores quart anime Giusto distinction!`
       }
     ]
   }

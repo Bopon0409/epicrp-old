@@ -1,3 +1,5 @@
+// noinspection JSIgnoredPromiseFromCall
+
 import { makeAutoObservable } from 'mobx'
 
 class ChatStore {

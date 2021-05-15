@@ -19,7 +19,7 @@ export default observer(() => {
 
   return (
     <div className='face current-block'>
-      <div className='current-wrap skroll'>{sliderList}</div>
+      <div className='current-wrap scroll'>{sliderList}</div>
     </div>
   )
 })

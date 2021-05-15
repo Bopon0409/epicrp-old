@@ -26,7 +26,7 @@ export default observer(() => {
       <div className='error-msg'>{errorMsg}</div>
 
       <div className='checkbox-block' onClick={checkBoxToggle}>
-        <div className={checkBox ? 'checkbox active' : 'checkbox'}></div>
+        <div className={checkBox ? 'checkbox active' : 'checkbox'}/>
         <div className='label'>Запомнить меня</div>
       </div>
 

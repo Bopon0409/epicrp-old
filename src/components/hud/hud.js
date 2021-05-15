@@ -29,20 +29,20 @@ export default observer(() => {
   return active ? (
     <div className='hud'>
       <div className='right-panel'>
-        <IndicatorSvg1/>
-        <IndicatorSvg2/>
-        <IndicatorSvg3/>
+        <IndicatorSvg1 />
+        <IndicatorSvg2 />
+        <IndicatorSvg3 />
       </div>
 
       <div className='time-block'>
-        <img src={timeIcon} alt='' className='icon'/>
+        <img src={timeIcon} alt='' className='icon' />
         <div className='time'>{time}</div>
         <div className='date'>{date}</div>
       </div>
 
-      <LeftBlock/>
-      <RightBlock/>
-      <Alerts/>
+      <LeftBlock />
+      <RightBlock />
+      <Alerts />
     </div>
   ) : null
 })

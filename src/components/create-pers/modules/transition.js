@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { observer } from 'mobx-react-lite'
-import store from '../create-pers-store/create-pers-store'
-import prevImg from '../images/prev.svg'
-import prevImgActive from '../images/prev-active.svg'
+import { observer }        from 'mobx-react-lite'
+import store               from '../create-pers-store/create-pers-store'
+import prevImg             from '../images/prev.svg'
+import prevImgActive       from '../images/prev-active.svg'
 
 export default observer(() => {
   const { step } = store.state
@@ -21,10 +21,9 @@ export default observer(() => {
   return (
     <div className='transition'>
       <div
-        className={prevBtnClasses}
+        className={prevBtnClasses} onClick={() => setStep(step - 1)}
         onMouseEnter={() => setPrevActive(true)}
         onMouseLeave={() => setPrevActive(false)}
-        onClick={() => setStep(step - 1)}
       >
         <img src={prevActive ? prevImgActive : prevImg} alt='' />
       </div>
