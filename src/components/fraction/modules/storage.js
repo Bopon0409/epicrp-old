@@ -1,7 +1,7 @@
-import React from 'react'
+import React        from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../fraction-store'
-import classNames from 'classnames'
+import store        from '../fraction-store'
+import classNames   from 'classnames'
 
 export default observer(() => {
   const { open, history } = store.state.storage
@@ -29,7 +29,7 @@ export default observer(() => {
       {storageStoryView.length > 0 && (
         <div className='story__title'>История активности на складе</div>
       )}
-      <div className='story skroll'>{storageStoryView}</div>
+      <div className='story scroll'>{storageStoryView}</div>
     </div>
   )
 })

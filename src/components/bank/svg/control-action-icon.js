@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ControlactionIcon ({ active, num }) {
+export default function ControlActionIcon ({ active, num }) {
   switch (num) {
     case 1:
       return (

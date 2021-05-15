@@ -3,14 +3,14 @@ import { observer } from 'mobx-react-lite'
 import store from '../chat-store'
 const className = require('classnames')
 
-export default observer(({ skrollRef }) => {
+export default observer(({ scrollRef }) => {
   const { messages, active, isOpacity } = store.state
 
   const getBasicMsg = (msg, i, arr) => (
     <div
       key={i}
       className={`msg-${msg.type}`}
-      ref={i === arr.length - 1 ? skrollRef : null}
+      ref={i === arr.length - 1 ? scrollRef : null}
     >
       {msg.text}
     </div>
@@ -20,7 +20,7 @@ export default observer(({ skrollRef }) => {
     <div
       key={i}
       className={`msg-me`}
-      ref={i === arr.length - 1 ? skrollRef : null}
+      ref={i === arr.length - 1 ? scrollRef : null}
     >
       {msg.text}
       {msg.result ? (
@@ -35,7 +35,7 @@ export default observer(({ skrollRef }) => {
     <div
       key={i}
       className={`msg-me`}
-      ref={i === arr.length - 1 ? skrollRef : null}
+      ref={i === arr.length - 1 ? scrollRef : null}
     >
       <span className='todo'>{msg.text1}, </span>
       {msg.text2}
@@ -44,7 +44,7 @@ export default observer(({ skrollRef }) => {
 
   const chatClass = className(
     'container',
-    active && 'skroll',
+    active && 'scroll',
     isOpacity && 'translucent'
   )
 

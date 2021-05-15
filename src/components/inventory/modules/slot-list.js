@@ -3,16 +3,16 @@ import React from 'react'
 import Slot from './slot'
 import store from '../inventory-store'
 
-export default observer(({ fromSlot, toSlot, bagType, skroll }) => {
+export default observer(({ fromSlot, toSlot, bagType, scroll }) => {
   const list = []
   for (let i = fromSlot; i <= toSlot; i++) {
     const item = store.getItem(i)
-    list.push(<Slot id={i} key={`slote#${i}`} item={item} />)
+    list.push(<Slot id={i} key={`slot#${i}`} item={item} />)
   }
 
   let classes = 'slot-list'
   if (bagType === 1) classes += ' small-bag'
-  if (skroll) classes += ' skroll'
+  if (scroll) classes += ' scroll'
 
   return <div className={classes}>{list}</div>
 })

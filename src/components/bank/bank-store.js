@@ -37,6 +37,7 @@ class BankStore {
       return value - cur
     }, this.currentAccountData.balance)
     chartData.push(lastValue)
+    // noinspection NonAsciiCharacters
     return chartData.reverse().map((el, i) => ({ Баланс: el, id: i }))
   }
 

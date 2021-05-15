@@ -85,10 +85,8 @@ class InventoryStore {
     this.cleanInventory(inventoryId)
 
     // Конвертация и загрузка данных в state
-    this.convertData(uData(data), inventoryId)?.forEach(el =>
-                                                          this.state.inventory.push(
-                                                            el)
-    )
+    this.convertData(uData(data), inventoryId)
+      ?.forEach(el => this.state.inventory.push(el))
   }
 
   // Конвертация предметов в формат фронта
@@ -177,7 +175,7 @@ class InventoryStore {
     }
   }
 
-  // ==========================   CULCULATED VALUES   ==========================
+  // ==========================   CALCULATED VALUES   ==========================
 
   get armor () {
     return (
@@ -317,8 +315,8 @@ class InventoryStore {
     if (item.equipmentSlot || item.isFastSlot) {
       // Проверка надет ли предмет
       const isEquipped =
-              item.idSlot === item.equipmentSlot ||
-              (item.idSlot >= 101 && item.idSlot <= 104)
+        item.idSlot === item.equipmentSlot ||
+        (item.idSlot >= 101 && item.idSlot <= 104)
       isEquipped ? this.putOffItem(idSlot) : this.putOnItem(idSlot)
     } else this.useConsumableItem(idSlot)
   }
@@ -330,14 +328,14 @@ class InventoryStore {
     this.trigger('use', item)
   }
 
-  // Надевание экиперовки
+  // Надевание экипировки
   putOnItem = idSlot => {
     const item = this.getItem(idSlot)
     if (item.equipmentSlot) this.swap(idSlot, item.equipmentSlot)
     else if (item.isFastSlot) this.swap(idSlot, this.freeFastSlot)
   }
 
-  // Снятие экиперовки
+  // Снятие экипировки
   putOffItem = idSlot => {
     const freeSlot = this.freeInventorySlot
     if (freeSlot) this.swap(idSlot, freeSlot)
@@ -382,9 +380,9 @@ class InventoryStore {
   swapCheckMergeItems = (item1, item2) => {
     if (item2) {
       const isEqual = item1.idItem === item2.idItem
-      const isDifferenSlots = item1.idSlot !== item2.idSlot
+      const isDifferentSlots = item1.idSlot !== item2.idSlot
       const isMerged = !item1.equipmentSlot && !item1.isFastSlot
-      if (isDifferenSlots && isEqual && isMerged) {
+      if (isDifferentSlots && isEqual && isMerged) {
         this.mergeItems(item1, item2)
         return false
       }
@@ -430,7 +428,7 @@ class InventoryStore {
     const { inventoryId } = this.getInventoryId(toSlot)
     // Проверка на одинаковые id инвентарей
     if (inventoryId === this.getInventoryId(fromSlot).inventoryId) return true
-    let weight, maxweight
+    let weight, maxWeight
 
     switch (inventoryId) {
       case 1:
@@ -439,21 +437,21 @@ class InventoryStore {
         return true
       case 0:
         weight = this.inventoryWeight
-        maxweight = this.inventoryMaxWeight
+        maxWeight = this.inventoryMaxWeight
         break
       case 3:
         weight = this.stockWeight
-        maxweight = 10000
+        maxWeight = 10000
         break
       case 4:
         weight = this.trunkWeight
-        maxweight = this.state.trunk.trunkMaxWeight
+        maxWeight = this.state.trunk.trunkMaxWeight
         break
       default:
         break
     }
     const item = this.getItem(fromSlot)
-    return item.weight * item.quantity <= maxweight - weight
+    return item.weight * item.quantity <= maxWeight - weight
   }
 
   // ================================   SWAP   =================================
@@ -469,7 +467,7 @@ class InventoryStore {
     const bagInBagResult = this.swapCheckBagInBag(...swapParams)
     const putOnPutOffResult = this.swapCheckPutOnPutOff(...swapParams)
     const finalResult =
-            mergeResult && bagInBagResult && putOnPutOffResult && weightResult
+      mergeResult && bagInBagResult && putOnPutOffResult && weightResult
     if (!finalResult) return false
 
     // Проверки на необходимость триггеров
@@ -493,8 +491,8 @@ class InventoryStore {
   onceClick = id => {
     const item = this.getItem(id)
     const { right, bottom } = document
-    .querySelector(`#slot${id}`)
-    .getBoundingClientRect()
+      .querySelector(`#slot${id}`)
+      .getBoundingClientRect()
 
     const x = window.innerWidth - right > 360 ? right : right - 460
     const y = window.innerHeight - bottom > 380 ? bottom : bottom - 235
@@ -533,12 +531,12 @@ class InventoryStore {
   get useLabel () {
     const { item } = this.state.modal
     const isTakeOff =
-            item.equipmentSlot === item.idSlot ||
-            (item.isFastSlot && item.idSlot >= 101 && item.idSlot <= 104)
+      item.equipmentSlot === item.idSlot ||
+      (item.isFastSlot && item.idSlot >= 101 && item.idSlot <= 104)
 
     const isEquip =
-            (item.equipmentSlot && item.equipmentSlot !== item.idSlot) ||
-            (item.isFastSlot && (item.idSlot <= 101 || item.idSlot >= 104))
+      (item.equipmentSlot && item.equipmentSlot !== item.idSlot) ||
+      (item.isFastSlot && (item.idSlot <= 101 || item.idSlot >= 104))
 
     if (isTakeOff) return 'Снять'
     else if (isEquip) return 'Надеть'
@@ -566,13 +564,13 @@ class InventoryStore {
     }
   }
 
-  // ===============================   TRAID   =================================
+  // ===============================   TRADE   =================================
 
-  setTraidInput = value => {
+  setTradeInput = value => {
     if (value <= this.state.trade.maxMoney && !this.state.trade.isReady1)
       this.state.trade.input1 = value
   }
-  setTraidReady = () => {
+  setTradeReady = () => {
     if (!this.state.trade.isFinish)
       this.state.trade.isReady1 = !this.state.trade.isReady1
   }

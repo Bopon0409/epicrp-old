@@ -58,7 +58,7 @@ export default observer(
     return (
       <div className='toggle-img'>
         <div className='toggle-img__title'>{title}</div>
-        <div className='toggle-img__container skroll'>{getList()}</div>
+        <div className='toggle-img__container scroll'>{getList()}</div>
       </div>
     )
   }

@@ -17,7 +17,7 @@ export default observer(() => {
         <textarea
           value={store.state.modalReprimand.text}
           onChange={e => setReprimandText((e.target.value))}
-          className='text skroll'
+          className='text scroll'
           placeholder='Причина выговора'
         />
       </div>

@@ -21,7 +21,7 @@ export default observer(({ index }) => {
       className={active ? 'slot-pers active-pers' : 'slot-pers'}
       onClick={() => setCurrentPers(index)}
     >
-      <div className='light-hover'></div>
+      <div className='light-hover'/>
       <div className='name-pers'>
         <span className='name'>{pers.name}</span>
         <span className='surname'>{pers.surname}</span>

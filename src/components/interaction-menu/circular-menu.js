@@ -1,4 +1,5 @@
 /* eslint-disable */
+// noinspection ES6ConvertVarToLetConst,JSUnresolvedFunction
 
 //circular-menu
 ;(function (global, factory) {

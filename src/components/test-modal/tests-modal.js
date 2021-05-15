@@ -40,7 +40,7 @@ export default observer(() => {
       />
       <div className='test-modal__checkbox' onClick={setCheckbox}>
         <div className={checkboxClasses} />
-        <div className='checkbox__label'>Bolean first param</div>
+        <div className='checkbox__label'>Boolean first param</div>
       </div>
       <div className='test-modal__container'>{testButtons}</div>
     </div>

@@ -10,6 +10,6 @@ export default observer(({ name, value, inputRef }) => (
       inputRef.current.focus()
     }}
   >
-    {name} <div className='line'></div>
+    {name} <div className='line'/>
   </div>
 ))

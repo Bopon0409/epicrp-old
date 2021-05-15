@@ -48,7 +48,7 @@ export default observer(() => {
             </div>
             <div className='text'>{item.text}</div>
             <div className='progress progress-moved'>
-              <div className='progress-bar' style={style}></div>
+              <div className='progress-bar' style={style}/>
             </div>
           </div>
           <br />

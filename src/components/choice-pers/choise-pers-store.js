@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx'
 
-class ChoisePersStore {
+class ChoicePersStore {
   constructor () {
     makeAutoObservable(this, {}, { deep: true })
   }
@@ -25,4 +25,4 @@ class ChoisePersStore {
   }
 }
 
-export default new ChoisePersStore()
+export default new ChoicePersStore()

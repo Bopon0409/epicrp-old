@@ -9,28 +9,28 @@ export default observer(() => {
   const { active, isShow } = store.state
   const { pushMessage, onInputChange } = store
 
-  const skrollRef = useRef()
+  const scrollRef = useRef()
   const inputRef = useRef()
-  const skrollingOnPushMsg = () => skrollRef.current?.scrollIntoView()
+  const scrollingOnPushMsg = () => scrollRef.current?.scrollIntoView()
 
   useEffect(() => {
     const { EventManager: em } = window
-    const keyPressHandlerWithSkroll = e => store.keyPressHandler(e, skrollRef)
+    const keyPressHandlerWithScroll = e => store.keyPressHandler(e, scrollRef)
 
     em.addHandler('chat.push', store.pushChatMsgFromClient)
-    em.addHandler('chat.push', skrollingOnPushMsg)
+    em.addHandler('chat.push', scrollingOnPushMsg)
     em.addHandler('chat.active', store.setChatActive)
     em.addHandler('chat.show', store.setChatShow)
     em.addHandler('chat.clear', store.clearChat)
-    document.addEventListener('keyup', keyPressHandlerWithSkroll)
+    document.addEventListener('keyup', keyPressHandlerWithScroll)
 
     return () => {
       em.removeHandler('chat.push', store.pushChatMsgFromClient)
-      em.removeHandler('chat.push', skrollingOnPushMsg)
+      em.removeHandler('chat.push', scrollingOnPushMsg)
       em.removeHandler('chat.active', store.setChatActive)
       em.removeHandler('chat.show', store.setChatShow)
       em.removeHandler('chat.clear', store.clearChat)
-      document.removeEventListener('keyup', keyPressHandlerWithSkroll)
+      document.removeEventListener('keyup', keyPressHandlerWithScroll)
     }
   })
 
@@ -59,7 +59,7 @@ export default observer(() => {
           className='chat-input-icon'
           onClick={() => {
             pushMessage()
-            skrollingOnPushMsg()
+            scrollingOnPushMsg()
           }}
         />
       </div>
@@ -69,10 +69,10 @@ export default observer(() => {
   return isShow ? (
     <>
       <div className='chat'>
-        <MsgList skrollRef={skrollRef} />
+        <MsgList scrollRef={scrollRef} />
         {inputContainer}
       </div>
-      {isShow && <div className='background-chat'></div>}
+      {isShow && <div className='background-chat'/>}
     </>
   ) : null
 })

@@ -1,5 +1,6 @@
 .inventory-page {
   .container {
+    //noinspection CssInvalidPropertyValue
     .slot-list {
       display: flex;
       flex-wrap: wrap;
@@ -17,7 +18,8 @@
       }
     }
 
-    .skroll {
+    //noinspection CssInvalidPropertyValue
+    .scroll {
       width: 455px;
       padding-right: 7px;
       overflow-y: auto !important;

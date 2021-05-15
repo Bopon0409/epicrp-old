@@ -1,6 +1,6 @@
-import React from 'react'
+import React        from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../fraction-store'
+import store        from '../fraction-store'
 
 export default observer(() => {
   return (
