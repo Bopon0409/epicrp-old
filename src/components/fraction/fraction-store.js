@@ -60,7 +60,8 @@ class FractionStore {
     modalDismiss: { active: false, id: 0, text: '' },
 
     groupExpand: 0,
-    modalGroupCreate: { active: false, name: '', boss: '', ranks: [] }
+    modalGroupCreate: { active: false, name: '', boss: '', ranks: [] },
+    modalGroupEdit: { active: false, id: 0, currentRank: 0 }
   }
 
   setActive = active => (this.state.active = active)
@@ -137,6 +138,16 @@ class FractionStore {
   getMemberById = id => {
     if (!id) return {}
     return this.state.members.find(member => member.id === id)
+  }
+
+  getRankById = id => {
+    if (id === 0) return null
+    return this.state.groups.find(({ rankNum }) => rankNum === id)
+  }
+
+  getGroupById = id => {
+    if (id === 0) return null
+    return this.state.groups.find(({ groupId }) => groupId === id)
   }
 
   getMemberColor = id => {
