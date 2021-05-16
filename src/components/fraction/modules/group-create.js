@@ -47,7 +47,7 @@ export default observer(() => {
         onChange={newValue => setGroupCreateModalBoss(newValue)}
       />
       <div className='input-label'>Настройки рангов</div>
-      <div className='ranks-container skroll'>{rankList}</div>
+      <div className='ranks-container scroll'>{rankList}</div>
       <div className='submit-btn' onClick={groupCreateSubmit}>
         <div className='text'>Создать отдел</div>
       </div>

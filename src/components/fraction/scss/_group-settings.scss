@@ -1,11 +1,114 @@
 .fraction-context {
   .group-settings {
     position: absolute;
-    width: 460px;
+    width: 700px;
     height: 580px;
     left: 50%;
     top: 50%;
-    margin-left: -230px;
+    margin-left: -350px;
     margin-top: -290px;
+
+    background: #2d3342;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+
+    padding: 30px 20px;
+    box-sizing: border-box;
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 20px;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .wrap {
+      display: flex;
+      justify-content: space-between;
+      color: white;
+      height: 420px;
+
+      .menu-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .ranks {
+        width: 30%;
+        height: 100%;
+
+        .ranks-list {
+          font-weight: 500;
+          font-size: 16px;
+          color: #ffffff;
+          height: 390px;
+
+          .rank__item {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            .color {
+              margin-right: 5px;
+              width: 8px;
+              height: 8px;
+              border-radius: 50%;
+            }
+          }
+
+          .rank-active {
+            background: #262b38;
+          }
+        }
+      }
+
+      .settings {
+        width: 65%;
+        height: 100%;
+
+        .settings-list {
+          background: #262b38;
+          padding: 10px;
+          height: 390px;
+          box-sizing: border-box;
+
+          .setting__item {
+            margin-bottom: 15px;
+            display: flex;
+
+            .setting__info {
+              width: 320px;
+
+              .name {
+                font-weight: 500;
+                font-size: 16px;
+                color: #ffffff;
+              }
+
+              .description {
+                font-weight: 300;
+                font-size: 14px;
+                color: #5c606a;
+              }
+            }
+
+            .toggle {
+              display: flex;
+
+              .setting-switch {
+                margin: auto;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

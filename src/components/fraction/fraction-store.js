@@ -142,7 +142,7 @@ class FractionStore {
 
   getRankById = id => {
     if (id === 0) return null
-    return this.state.groups.find(({ rankNum }) => rankNum === id)
+    return this.state.ranks.find(({ rankNum }) => rankNum === id)
   }
 
   getGroupById = id => {
@@ -200,6 +200,7 @@ class FractionStore {
 
     if (item !== 2) this.setActivityId(0)
     if (item === 5) this.requestStorage()
+    if (item !== 3) this.state.groupExpand = 0
   }
 
   //===============================   Context   ================================
@@ -367,7 +368,7 @@ class FractionStore {
   groupEditClick = id => {
     if (this.state.capabilities.controlGroups) {
       this.setContextMenu(false, 0, 0, 0, '')
-      console.log(id)
+      this.groupSettingsOpen(id)
     }
   }
 
@@ -381,10 +382,9 @@ class FractionStore {
   //============================   Group Modals   ==============================
 
   setGroupCreateModalName = name => this.state.modalGroupCreate.name = name
-
   setGroupCreateModalBoss = boss => this.state.modalGroupCreate.boss = boss
-  toggleGroupCreateModalRank = id => {
 
+  toggleGroupCreateModalRank = id => {
     const { modalGroupCreate } = this.state
     const rank = modalGroupCreate.ranks.find(({ rankNum }) => rankNum === id)
     rank.value = !rank.value
@@ -421,6 +421,32 @@ class FractionStore {
     ranksList = ranksList.map(({ rankNum }) => rankNum)
     window.frontTrigger('fraction.group.create', { name, chiefId, ranksList })
     this.groupCreateClose()
+  }
+
+  groupSettingsOpen = id => {
+    const currentRank = this.getGroupById(id).ranks[0].rankNum
+    this.state.modalGroupEdit = { id, active: true, currentRank }
+  }
+
+  groupSettingsClose = () => {
+    this.state.modalGroupEdit = { id: 0, active: false, currentRank: 0 }
+  }
+
+  get settingsList () {
+    const { currentRank, id } = this.state.modalGroupEdit
+    return this.getGroupById(id)?.ranks
+      .find(({ rankNum }) => rankNum === currentRank).settingsList
+  }
+
+  setGroupSettingCurrentRank = id => this.state.modalGroupEdit.currentRank = id
+
+  toggleRankSetting = (name) => {
+    const { id, currentRank } = this.state.modalGroupEdit
+    const group = this.state.groups.find(({ groupId }) => groupId === id)
+    const rank = group.ranks.find(({ rankNum }) => rankNum === currentRank)
+    const setting = rank.settingsList
+      .find(({ settingName }) => settingName === name)
+    setting.value = !setting.value
   }
 
   //============================   Members List   ==============================

@@ -1,6 +1,6 @@
 {
   "fractionName": "Los Santos Police",
-  "userId": 100,
+  "userId": 2,
   "capabilities": {
     "controlStorage": true,
     "controlRanks": true,
@@ -282,6 +282,21 @@
               "settingName": "Транспорт",
               "settingDescription": "Возможность брать транспорт для ранга",
               "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
+            },
+            {
+              "settingName": "Транспорт",
+              "settingDescription": "Возможность брать транспорт для ранга",
+              "value": false
             }
           ]
         },
@@ -399,16 +414,34 @@
       "name": "POLICE 2",
       "groupId": "1",
       "permissions": {
-        "groupId": [1],
-        "ranks": [1, 2, 3, 4, 5, 6]
+        "groupId": [
+          1
+        ],
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
       }
     },
     {
       "name": "POLICE 3",
       "groupId": "1",
       "permissions": {
-        "groupId": [1],
-        "ranks": [1, 2, 3, 4, 5, 6]
+        "groupId": [
+          1
+        ],
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
       }
     }
   ],

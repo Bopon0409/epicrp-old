@@ -19,6 +19,7 @@
     "react-responsive-select": "^7.0.1",
     "react-scripts": "^4.0.3",
     "react-select": "^4.3.0",
+    "react-switch": "^6.0.0",
     "recharts": "^2.0.9",
     "sass": "^1.32.12",
     "sloc": "^0.2.1",

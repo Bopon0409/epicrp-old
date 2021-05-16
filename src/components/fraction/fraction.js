@@ -3,18 +3,19 @@ import { observer }         from 'mobx-react-lite'
 import store                from './fraction-store'
 import classNames           from 'classnames'
 
-import Header         from './modules/header'
-import Aside          from './modules/aside'
-import Body           from './modules/body'
-import BottomMenu     from './modules/bottom-menu'
-import Title          from './modules/title'
-import Ads            from './modules/ads'
-import AdsEdit        from './modules/ads-edit'
-import ContextMenu    from './modules/context-menu'
-import ModalAward     from './modules/modal-award'
-import ModalReprimand from './modules/modal-reprimand'
-import ModalDismiss   from './modules/modal-dismiss'
-import GroupCreate    from './modules/group-create'
+import Header             from './modules/header'
+import Aside              from './modules/aside'
+import Body               from './modules/body'
+import BottomMenu         from './modules/bottom-menu'
+import Title              from './modules/title'
+import ModalAds           from './modules/ads'
+import ModalAdsEdit       from './modules/ads-edit'
+import ContextMenu        from './modules/context-menu'
+import ModalAward         from './modules/modal-award'
+import ModalReprimand     from './modules/modal-reprimand'
+import ModalDismiss       from './modules/modal-dismiss'
+import ModalGroupCreate   from './modules/group-create'
+import ModalGroupSettings from './modules/group-settings'
 
 export default observer(() => {
   useEffect(() => {
@@ -38,6 +39,16 @@ export default observer(() => {
     store.isBlur && 'fraction__blur'
   )
 
+  const modals = <>
+    <ModalAds />
+    <ModalAdsEdit />
+    <ModalAward />
+    <ModalReprimand />
+    <ModalDismiss />
+    <ModalGroupCreate />
+    <ModalGroupSettings />
+  </>
+
   return store.state.active ? (
     <div className='fraction-context'>
       <div className='fraction'>
@@ -48,14 +59,7 @@ export default observer(() => {
           <Body />
           <BottomMenu />
         </div>
-
-        <Ads />
-        <AdsEdit />
-
-        <ModalAward />
-        <ModalReprimand />
-        <ModalDismiss />
-        <GroupCreate />
+        {modals}
       </div>
       <ContextMenu />
     </div>
