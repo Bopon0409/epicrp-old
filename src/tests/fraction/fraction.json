@@ -414,34 +414,16 @@
       "name": "POLICE 2",
       "groupId": "1",
       "permissions": {
-        "groupId": [
-          1
-        ],
-        "ranks": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ]
+        "groupId": [1],
+        "ranks": [1, 2, 3, 4, 5, 6]
       }
     },
     {
       "name": "POLICE 3",
       "groupId": "1",
       "permissions": {
-        "groupId": [
-          1
-        ],
-        "ranks": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ]
+        "groupId": [1],
+        "ranks": [1, 2, 3, 4, 5, 6]
       }
     }
   ],

@@ -29,16 +29,17 @@ export default observer(() => {
     }
   }, [])
 
-  return (
-    <div className='inventory-page'
-         style={{ display: active ? 'block' : 'none' }}>
-      <div className='inventory-page__wrapper' />
-      <Container mode={mode} />
-      <CloseBtn />
-      <RightWeightBar />
-      <LeftWeightBar />
-      <Indicators />
-      {store.state.modal.isActive && <Modal />}
-    </div>
-  )
+  return null
+  // return (
+  //   <div className='inventory-page'
+  //        style={{ display: active ? 'block' : 'none' }}>
+  //     <div className='inventory-page__wrapper' />
+  //     <Container mode={mode} />
+  //     <CloseBtn />
+  //     <RightWeightBar />
+  //     <LeftWeightBar />
+  //     <Indicators />
+  //     {store.state.modal.isActive && <Modal />}
+  //   </div>
+  // )
 })

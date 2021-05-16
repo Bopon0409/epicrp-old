@@ -6,6 +6,8 @@ import MembersList  from './members-list'
 import Activity     from './activity'
 import Storage      from './storage'
 import Group        from './group'
+import Cars         from './cars'
+import RankSettings from './rank-settings'
 
 export default observer(() => {
   const getCurrentBlock = () => {
@@ -18,12 +20,16 @@ export default observer(() => {
         return <Activity />
       case 3:
         return <Group />
+      case 4:
+        return <Cars />
       case 5:
         return <Storage />
+      case 6:
+        return <RankSettings />
       default:
         return null
     }
   }
 
-  return <div className="body">{getCurrentBlock()}</div>
+  return <div className='body'>{getCurrentBlock()}</div>
 })

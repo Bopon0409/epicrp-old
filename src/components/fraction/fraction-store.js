@@ -82,12 +82,13 @@ class FractionStore {
   }
 
   get isBlur () {
-    return this.state.adsActive ||
-      this.state.adsEditActive ||
-      this.state.modalDismiss.active ||
-      this.state.modalAward.active ||
-      this.state.modalReprimand.active ||
-      this.state.modalGroupCreate.active
+    const {
+      adsActive, adsEditActive, modalDismiss, modalAward, modalReprimand,
+      modalGroupEdit, modalGroupCreate
+    } = this.state
+    return adsActive || adsEditActive ||
+      modalDismiss.active || modalAward.active || modalReprimand.active ||
+      modalGroupCreate.active || modalGroupEdit.active
   }
 
   get user () {
@@ -201,6 +202,13 @@ class FractionStore {
     if (item !== 2) this.setActivityId(0)
     if (item === 5) this.requestStorage()
     if (item !== 3) this.state.groupExpand = 0
+  }
+
+  //===========================   Ranks Settings   =============================
+
+  get ranksSorted () {
+    return this.state.ranks.slice()
+      .sort((rank1, rank2) => rank1.rankNum - rank2.rankNum)
   }
 
   //===============================   Context   ================================
