@@ -4,9 +4,6 @@ import store        from '../fraction-store'
 import carImg       from '../img/car_img.png'
 
 export default observer(() => {
-
-  console.log(store.state.contextMenu.hoverEl)
-
   const carsList = store.state.cars.map((car, i) => {
     const { name, groupId, fuel, geo, id } = car
     const groupName = store.getGroupName(groupId)

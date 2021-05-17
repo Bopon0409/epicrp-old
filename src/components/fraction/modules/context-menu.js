@@ -32,7 +32,6 @@ export default observer(() => {
     top: yCord
   }
 
-  console.log(store.context.second)
 
   return (
     <div className='context-menu' style={style}>

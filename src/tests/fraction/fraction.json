@@ -119,6 +119,19 @@
   ],
   "ranksSettings": [
     {
+      "rankNum": 999,
+      "settingsList": [
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        }
+      ]
+    },
+    {
       "rankNum": 1,
       "settingsList": [
         {
@@ -170,6 +183,206 @@
     },
     {
       "rankNum": 3,
+      "settingsList": [
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        }
+      ]
+    },
+    {
+      "rankNum": 4,
+      "settingsList": [
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        }
+      ]
+    },
+    {
+      "rankNum": 5,
+      "settingsList": [
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        }
+      ]
+    },
+    {
+      "rankNum": 6,
+      "settingsList": [
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        }
+      ]
+    },
+    {
+      "rankNum": 7,
+      "settingsList": [
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        }
+      ]
+    },
+    {
+      "rankNum": 8,
+      "settingsList": [
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        }
+      ]
+    },
+    {
+      "rankNum": 8,
+      "settingsList": [
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        }
+      ]
+    },
+    {
+      "rankNum": 9,
+      "settingsList": [
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        },
+        {
+          "settingName": "Какая - то настройка",
+          "value": true
+        }
+      ]
+    },
+    {
+      "rankNum": 10,
       "settingsList": [
         {
           "settingName": "Какая - то настройка",

@@ -61,7 +61,15 @@ class FractionStore {
 
     groupExpand: 0,
     modalGroupCreate: { active: false, name: '', boss: '', ranks: [] },
-    modalGroupEdit: { active: false, id: 0, currentRank: 0 }
+    modalGroupEdit: { active: false, id: 0, currentRank: 0 },
+
+    rankSettingsCurrent: 0,
+    rankSettings: {
+      name: '',
+      priority: 0,
+      color: '#ffffff',
+      colorPicker: false
+    }
   }
 
   setActive = active => (this.state.active = active)
@@ -210,6 +218,35 @@ class FractionStore {
     return this.state.ranks.slice()
       .sort((rank1, rank2) => rank1.rankNum - rank2.rankNum)
   }
+
+  get currentRankSettingsList () {
+    if (this.state.rankSettingsCurrent === 0)
+      this.state.rankSettingsCurrent = this.ranksSorted[0].rankNum
+    return this.state.ranksSettings
+      .find(({ rankNum }) => rankNum === this.state.rankSettingsCurrent)
+      ?.settingsList
+  }
+
+  setRankSetting = settingName => {
+    const { rankSettingsCurrent: currentNum } = this.state
+    const list = this.state.ranksSettings
+      .find(({ rankNum }) => rankNum === currentNum).settingsList
+    const setting = list.find(item => item.settingName === settingName)
+    setting.value = !setting.value
+  }
+
+  setCurrentSettingRank = rankNum => {
+    this.state.rankSettingsCurrent = rankNum
+  }
+
+  get currentRank () {
+    const { rankSettingsCurrent: currentRank } = this.state
+    return currentRank === 0 ? this.ranksSorted[0].rankNum : currentRank
+  }
+
+  setColorPicker = active => this.state.rankSettings.colorPicker = active
+
+  setRankColor = color => this.state.rankSettings.color = color
 
   //================================   Cars   ==================================
 
