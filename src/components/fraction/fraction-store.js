@@ -102,7 +102,7 @@ class FractionStore {
 
   getGroupName = id => {
     if (!id) return ''
-    return this.state.groups.find(({ groupId }) => groupId === id).groupName
+    return this.state.groups.find(({ groupId }) => groupId === id)?.groupName
   }
 
   getRankName = id => {
@@ -211,6 +211,85 @@ class FractionStore {
       .sort((rank1, rank2) => rank1.rankNum - rank2.rankNum)
   }
 
+  //================================   Cars   ==================================
+
+  get contextCarsList () {
+    const { changePermissions, spawn } = this.state.capabilities.controlCars
+    const list = []
+
+    if (changePermissions) {
+      list.push({
+        title: 'Допуск', handler: () => this.setContextHoverEl('Допуск')
+      })
+      list.push({
+        title: 'Отдел', handler: () => this.setContextHoverEl('Отдел')
+      })
+    }
+    if (spawn) {
+      list.push({ title: 'Зареспавнить', handler: this.spawnCar })
+      list.push({ title: 'Зареспавнить все', handler: this.spawnAllCars })
+    }
+
+    return list
+  }
+
+  setContextHoverEl = el => {
+    const { hoverEl } = this.state.contextMenu
+    this.state.contextMenu.hoverEl = hoverEl === el ? '' : el
+  }
+
+  get contextCarsSecondaryList () {
+    const { id } = this.state.contextMenu
+    const car = this.state.cars.find(car => car.id === id)
+    switch (this.state.contextMenu.hoverEl) {
+      case 'Допуск':
+        return this.state.ranks.map(({ rankName, rankNum, color }) => ({
+          rankName,
+          color,
+          active: car.permissions.ranks.includes(rankNum),
+          handler: () => this.setCarPermissionRank(id, rankNum)
+        }))
+
+      case 'Отдел':
+        return this.state.groups.map(({ groupName, groupId }) => ({
+          groupName,
+          active: car.permissions.groupId.includes(groupId),
+          handler: () => this.setCarPermissionGroup(id, groupId)
+        }))
+
+      default:
+        return []
+    }
+  }
+
+  spawnCar = id => {
+    console.log('spawn' + id + 'car')
+  }
+
+  spawnAllCars = () => {
+    console.log('spawn all car')
+  }
+
+  setCarPermissionRank = (carId, rankNum) => {
+    const car = this.state.cars.find(car => car.id === carId)
+    const carRanks = car.permissions.ranks
+    if (carRanks.includes(rankNum)) {
+      car.permissions.ranks = carRanks.filter(rank => rank !== rankNum)
+    } else {
+      car.permissions.ranks.push(rankNum)
+    }
+  }
+
+  setCarPermissionGroup = (carId, groupId) => {
+    const car = this.state.cars.find(car => car.id === carId)
+    const carGroups = car.permissions.groupId
+    if (carGroups.includes(groupId)) {
+      car.permissions.groupId = carGroups.filter(id => id !== groupId)
+    } else {
+      car.permissions.groupId.push(groupId)
+    }
+  }
+
   //===============================   Context   ================================
 
   get context () {
@@ -222,6 +301,11 @@ class FractionStore {
         }
       case 3:
         return { main: this.contextGroupList, second: [] }
+      case 4:
+        return {
+          main: this.contextCarsList,
+          second: this.contextCarsSecondaryList
+        }
       default:
         return { main: [], second: [] }
     }
@@ -244,9 +328,13 @@ class FractionStore {
     if (controlMembers.checkInfo)
       list.push({ title: 'Информация', handler: this.activityOpen })
     if (controlMembers.changeRanks)
-      list.push({ title: 'Ранг', handler: this.ranksClickHandler })
+      list.push({
+        title: 'Ранг', handler: () => this.setContextHoverEl('ranks')
+      })
     if (controlMembers.changeGroups)
-      list.push({ title: 'Отдел', handler: this.groupsClickHandler })
+      list.push({
+        title: 'Отдел', handler: () => this.setContextHoverEl('groups')
+      })
     if (controlMembers.giveReprimands) {
       list.push({ title: 'Выдать выговор', handler: this.reprimandOpen })
       list.push({ title: 'Снять выговор', handler: this.reprimandRemove })

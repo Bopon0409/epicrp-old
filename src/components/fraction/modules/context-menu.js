@@ -13,37 +13,35 @@ export default observer(() => {
     return () => document.removeEventListener('click', handler, false)
   }, [])
 
+  const mainMenu = store.context.main.map(el => (
+    <div
+      className='menu__item'
+      key={`context ${el.title}`}
+      onClick={() => el.handler && el.handler(id)}
+    >
+      <div className='item__icon'>
+        <ContextIcon icon={el.title} />
+      </div>
+      <div className='item__text'>{el.title}</div>
+    </div>
+  ))
+
   const style = {
     display: active ? 'flex' : 'none',
     left: xCord,
     top: yCord
   }
 
+  console.log(store.context.second)
+
   return (
     <div className='context-menu' style={style}>
-      <div className='main-menu'>
-        <div className='wrapper'>{
-
-          store.context.main.map(el => (
-            <div
-              className='menu__item'
-              key={`context ${el.title}`}
-              onClick={() => el.handler && el.handler(id)}
-            >
-              <div className='item__icon'>
-                <ContextIcon icon={el.title} />
-              </div>
-              <div className='item__text'>{el.title}</div>
-            </div>
-          ))
-
-        }
-        </div>
-      </div>
-      {store.contextSecondaryMembersList.length ?
+      {store.context.main.length ? <div className='main-menu'>
+        <div className='wrapper'>{mainMenu}</div>
+      </div> : null}
+      {store.context.second.length ?
         <div className='secondary-menu'>
           <div className='wrapper'>{
-
             store.context.second.map((el, i) => {
               const { rankName, groupName, color, handler, active } = el
               const content = rankName || groupName

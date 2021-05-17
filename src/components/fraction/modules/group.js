@@ -23,7 +23,7 @@ export default observer(() => {
   )
 
   return (
-    <div className='groups-container skroll'>
+    <div className='groups-container scroll'>
       {store.groupList.map((group, i) => {
         const {
           groupName, members, quantity, onlineQuantity, handler, groupId

@@ -411,18 +411,68 @@
   ],
   "cars": [
     {
+      "id": 1,
       "name": "POLICE 2",
-      "groupId": "1",
+      "groupId": 1,
+      "fuel": 40,
+      "geo": "Гараж",
       "permissions": {
         "groupId": [1],
         "ranks": [1, 2, 3, 4, 5, 6]
       }
     },
     {
+      "id": 2,
       "name": "POLICE 3",
-      "groupId": "1",
+      "groupId": 1,
+      "fuel": 40,
+      "geo": "Гараж",
       "permissions": {
         "groupId": [1],
+        "ranks": [1, 2, 3, 4, 5, 6]
+      }
+    },
+    {
+      "id": 3,
+      "name": "POLICE 2",
+      "groupId": 1,
+      "fuel": 40,
+      "geo": "Гараж",
+      "permissions": {
+        "groupId": [1],
+        "ranks": [1, 2, 3, 4, 5, 6]
+      }
+    },
+    {
+      "id": 4,
+      "name": "POLICE 3",
+      "groupId": 1,
+      "fuel": 40,
+      "geo": "Гараж",
+      "permissions": {
+        "groupId": [1],
+        "ranks": [1, 2, 3, 4, 5, 6]
+      }
+    },
+    {
+      "id": 5,
+      "name": "POLICE 2",
+      "groupId": 1,
+      "fuel": 40,
+      "geo": "Гараж",
+      "permissions": {
+        "groupId": [1],
+        "ranks": [1, 2, 3, 4, 5, 6]
+      }
+    },
+    {
+      "id": 6,
+      "name": "POLICE 3",
+      "groupId": 1,
+      "fuel": 40,
+      "geo": "Гараж",
+      "permissions": {
+        "groupId": [2],
         "ranks": [1, 2, 3, 4, 5, 6]
       }
     }

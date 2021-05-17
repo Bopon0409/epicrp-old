@@ -240,7 +240,7 @@ export default function ContextIcon ({ icon }) {
       )
 
     case 'Зареспавнить':
-    case 'Зареспавнить все Т/С':
+    case 'Зареспавнить все':
       return (
         <svg width="12" height="12" viewBox="0 0 12 12">
           <path
