@@ -1,4 +1,4 @@
-# Тригеры **Фронт -> Клиент**
+# Триггеры **Фронт -> Клиент**
 
 ##### Выполняются через `browser.execute('trigger('triggerName', arguments)')`
 
@@ -116,14 +116,34 @@
 
 - `mp.trigger('fraction.group.remove', groupId: num)`
 
+Удаление группы
+
+- `mp.trigger('fraction.group.edit', data: json string)`
+
 Запрос на историю активности
 
 - `mp.trigger('fraction.activity.request', name: string, id: num)`
 
 Запрос на историю склада
 
-- `mp.trigger('fraction.storage.request', fractionName: string)`
+- `mp.trigger('fraction.storage.request')`
 
 Склад открыт/закрыт
 
-- `mp.trigger('fraction.storage.toggle', open: boolean, fractionName: string)`
+- `mp.trigger('fraction.storage.toggle', open: boolean)`
+
+Спавн машины
+
+- `mp.trigger('fraction.cars.spawn', carId: num)`
+
+Спавн всех машины
+
+- `mp.trigger('fraction.cars.spawn-all')`
+
+Разрешения на машину обновились (ранги)
+
+- `mp.trigger('fraction.cars.permission.rank', data: json string)`
+
+Разрешения на машину обновились (группы)
+
+- `mp.trigger('fraction.cars.permission.group', data: json string)`

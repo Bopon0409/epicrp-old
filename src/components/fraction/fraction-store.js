@@ -299,13 +299,8 @@ class FractionStore {
     }
   }
 
-  spawnCar = id => {
-    console.log('spawn' + id + 'car')
-  }
-
-  spawnAllCars = () => {
-    console.log('spawn all car')
-  }
+  spawnCar = id => window.frontTrigger('fraction.cars.spawn', id)
+  spawnAllCars = () => window.frontTrigger('fraction.cars.spawn-all')
 
   setCarPermissionRank = (carId, rankNum) => {
     const car = this.state.cars.find(car => car.id === carId)
@@ -315,6 +310,7 @@ class FractionStore {
     } else {
       car.permissions.ranks.push(rankNum)
     }
+    window.frontTrigger('fraction.cars.permission.rank', carRanks)
   }
 
   setCarPermissionGroup = (carId, groupId) => {
@@ -325,6 +321,7 @@ class FractionStore {
     } else {
       car.permissions.groupId.push(groupId)
     }
+    window.frontTrigger('fraction.cars.permission.group', carGroups)
   }
 
   //===============================   Context   ================================
@@ -508,7 +505,7 @@ class FractionStore {
   groupRemoveClick = id => {
     if (this.state.capabilities.controlGroups) {
       this.setContextMenu(false, 0, 0, 0, '')
-      window.frontTrigger('fraction.members.remove', id)
+      window.frontTrigger('fraction.group.remove', id)
     }
   }
 
@@ -549,7 +546,10 @@ class FractionStore {
   }
 
   groupCreateSubmit = () => {
-    const { name, boss: { id: chiefId }, ranks } = this.state.modalGroupCreate
+    const {
+      name, boss: { value: chiefId }, ranks
+    } = this.state.modalGroupCreate
+
     let ranksList = ranks.filter(({ value }) => value)
     ranksList = ranksList.map(({ rankNum }) => rankNum)
     window.frontTrigger('fraction.group.create', { name, chiefId, ranksList })
@@ -580,6 +580,10 @@ class FractionStore {
     const setting = rank.settingsList
       .find(({ settingName }) => settingName === name)
     setting.value = !setting.value
+    window.frontTrigger('fraction.group.edit', {
+      groupId: id, rankNum: currentRank,
+      settingsName: name, value: setting.value
+    })
   }
 
   //============================   Members List   ==============================
@@ -775,17 +779,14 @@ class FractionStore {
 
   //===============================   Storage   ================================
 
-  requestStorage = () => window.frontTrigger('fraction.storage.request',
-    this.state.fractionName
-  )
+  requestStorage = () => window.frontTrigger('fraction.storage.request')
 
   setStorageData = data => (this.state.storage = data)
 
   setStorageOpen = () => {
     if (this.state.capabilities.controlStorage) {
-      const { storage: { open }, fractionName } = this.state
-      this.state.storage.open = !open
-      window.frontTrigger('fraction.storage.toggle', !open, fractionName)
+      this.state.storage.open = !this.state.storage
+      window.frontTrigger('fraction.storage.toggle', this.state.storage.open)
     }
   }
 }
