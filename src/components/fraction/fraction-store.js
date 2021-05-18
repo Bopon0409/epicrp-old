@@ -287,9 +287,10 @@ class FractionStore {
   }
 
   rankSettingSubmit = () => {
-    const {
+    let {
       newMember, rankNum, color, settingsList, name, priority
     } = this.state.settings
+    priority = Number.parseInt(priority)
     if (!newMember) {
       this.setSettingsBuffer('init')
       window.frontTrigger('fraction.rank.edit', {

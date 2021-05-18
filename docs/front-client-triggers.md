@@ -52,14 +52,14 @@
 
 #### Список параметров `character.update`
 
-1. name - String, Имя
-2. surname - String, Фамилия
-3. sex - String ('male', 'female'), Пол
-4. age - int
-5. mother - Int (id), Мать
-6. father - Int (id), Отец
-7. parentsSimilarity - Float (0-1), Схожесть с родителями
-8. skinColor - Float (0-1), Цвет кожи
+- name - String, Имя
+- surname - String, Фамилия
+- sex - String ('male', 'female'), Пол
+- age - int
+- mother - Int (id), Мать
+- father - Int (id), Отец
+- parentsSimilarity - Float (0-1), Схожесть с родителями
+- skinColor - Float (0-1), Цвет кожи
 
 **Остальные параметры в `create-pers-data.json`**
 
@@ -151,3 +151,11 @@
 Удаление ранга
 
 - `mp.trigger('fraction.rank.remove', rankNum: number)`
+
+Добавление ранга
+
+- `mp.trigger('fraction.rank.create', data: json string)`
+
+Изменение ранга
+
+- `mp.trigger('fraction.rank.edit', data: json string)`
