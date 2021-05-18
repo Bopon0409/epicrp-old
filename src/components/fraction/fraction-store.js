@@ -307,10 +307,11 @@ class FractionStore {
     const carRanks = car.permissions.ranks
     if (carRanks.includes(rankNum)) {
       car.permissions.ranks = carRanks.filter(rank => rank !== rankNum)
+      window.frontTrigger('fraction.cars.permission.rank.delete', car.id, rankNum)
     } else {
       car.permissions.ranks.push(rankNum)
+      window.frontTrigger('fraction.cars.permission.rank.add', car.id, rankNum)
     }
-    window.frontTrigger('fraction.cars.permission.rank', carRanks)
   }
 
   setCarPermissionGroup = (carId, groupId) => {
@@ -318,10 +319,13 @@ class FractionStore {
     const carGroups = car.permissions.groupId
     if (carGroups.includes(groupId)) {
       car.permissions.groupId = carGroups.filter(id => id !== groupId)
+      window.frontTrigger('fraction.cars.permission.group.delete',
+        car.id, groupId)
     } else {
       car.permissions.groupId.push(groupId)
+      window.frontTrigger('fraction.cars.permission.group.add', car.id, groupId)
+
     }
-    window.frontTrigger('fraction.cars.permission.group', carGroups)
   }
 
   //===============================   Context   ================================
@@ -405,7 +409,7 @@ class FractionStore {
   }
 
   setContextMenu = (active, xCord, yCord, id, hoverEl) => {
-    if (this.context.main.length)
+    if (this.context.main.length && !this.isBlur)
       this.state.contextMenu = { active, xCord, yCord, id, hoverEl }
   }
 

@@ -1,7 +1,7 @@
-import React from 'react'
+import React        from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../fraction-store'
-import classNames from 'classnames'
+import store        from '../fraction-store'
+import classNames   from 'classnames'
 
 export default observer(() => {
   const { activityCurrent, activityData, activityList } = store.state
@@ -40,7 +40,7 @@ export default observer(() => {
       <div className='activity__header'>
         <div className='header__icon'>
           <div className='letter' style={{ color }}>
-            {name ? name[0] : ''}
+            {name ? name[0].toUpperCase() : ''}
           </div>
           {online && <div className='online' />}
         </div>
