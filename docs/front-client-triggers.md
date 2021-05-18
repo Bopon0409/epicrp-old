@@ -147,3 +147,7 @@
 Разрешения на машину обновились (группы)
 
 - `mp.trigger('fraction.cars.permission.group', data: json string)`
+
+Удаление ранга
+
+- `mp.trigger('fraction.rank.remove', rankNum: number)`

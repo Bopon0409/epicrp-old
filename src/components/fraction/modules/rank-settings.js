@@ -7,13 +7,13 @@ import classNames           from 'classnames'
 import { HexColorPicker }   from 'react-colorful'
 
 const colors = [
-  '#FF0E0E', '#FF0E0E', '#FF0E0E', '#FF0E0E', '#FF0E0E', '#FF0E0E', '#FF0E0E',
-  '#FF0E0E', '#FF0E0E', '#FF0E0E', '#FF0E0E', '#FF0E0E', '#FF0E0E', '#FF0E0E',
-  '#FF0E0E', '#FF0E0E', '#FF0E0E', '#FF0E0E'
+  '#FF0000', '#CD5C5C', '#FFD700', '#FFFF00', '#F0E68C', '#FFA500', '#FF4500',
+  '#FFC0CB', '#FF69B4', '#C71585', '#EE82EE', '#800080', '#4B0082', '#BC8F8F',
+  '#D2691E', '#800000', '#87CEEB', '#0000FF', '#00008B', '#32CD32', '#008B8B',
+  '#00FF00', '#FFFFFF', '#000000', '#E6E6FA', '#8B008B'
 ]
 
 export default observer(() => {
-
   useEffect(() => {
     store.setSettingsBuffer('init')
     const { clickOutsideColorPicker: handler } = store
@@ -22,12 +22,13 @@ export default observer(() => {
   }, [])
 
   const {
-    rankNum, priority, name, colorPicker, color, settingsList
+    rankNum, priority, name, colorPicker, color, settingsList, newMember
   } = store.state.settings
 
   const {
     setRankSetting, setSettingColorPicker, setSettingColor, ranksSorted,
-    setSettingName, setSettingPriority, setSettingsBuffer
+    setSettingName, setSettingPriority, setSettingsBuffer,
+    rankSettingRemove, rankSettingSubmit
   } = store
 
   const rankList = ranksSorted.map((rank, i) => {
@@ -77,30 +78,36 @@ export default observer(() => {
         </div>
 
         <div className='color-panel'>
-          <div className='color' onClick={() => setSettingColorPicker(true)}>
-            <div className='color-text'>RGB</div>
-            <div className='color-block' style={{ background: color }} />
-            {colorPicker ? <div className='color-picker'
-              id='fraction-color-picker'>
-              <HexColorPicker color={color}
-                onChange={color => setSettingColor(color)} />
-            </div> : null}
-          </div>
+          <div className='color-text'>Цвет ранга</div>
           <div className='color-container'>
+            <div className='rgb-wrapper'>
+              <div className='color-block rgb' style={{ background: color }}
+                onClick={() => setSettingColorPicker(true)} />
+            </div>
+
             {colors.map((color, i) =>
-              <div className='color-block' style={{ background: color }}
-                onClick={() => setSettingColor(color)} key={i} />)
-            }
+              <div className='color-block__wrapper' key={i}>
+                <div className='color-block' style={{ background: color }}
+                  onClick={() => setSettingColor(color)} />
+              </div>
+            )}
           </div>
+          {colorPicker ? <div className='color-picker'
+            id='fraction-color-picker'>
+            <HexColorPicker color={color}
+              onChange={color => setSettingColor(color)} />
+          </div> : null}
         </div>
 
         <div className='settings-list scroll'>{settingsListView}</div>
         <div className='button__container'>
-          <div className='button'>
+          {!newMember && <div className='button' onClick={rankSettingRemove}>
             <div className='text'>Удалить ранг</div>
-          </div>
-          <div className='button'>
-            <div className='text'>Сохранить настройки</div>
+          </div>}
+          <div className='button' onClick={rankSettingSubmit}>
+            <div className='text'>{
+              newMember ? 'Создать ранг' : 'Сохранить настройки'
+            }</div>
           </div>
         </div>
       </div>

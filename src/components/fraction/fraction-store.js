@@ -249,7 +249,8 @@ class FractionStore {
   setSettingName = name => this.state.settings.name = name
 
   setSettingPriority = priority => {
-    if (priority > 999) this.state.settings.priority = priority
+    if (priority < 999 && priority.length < 4)
+      this.state.settings.priority = priority
   }
 
   getSettingRank = rankNum => {
@@ -276,8 +277,29 @@ class FractionStore {
       name: rank.rankName,
       priority: rank.rankNum,
       rankNum: rank.rankNum,
-      settingsList,
+      settingsList: JSON.parse(JSON.stringify(settingsList)),
       newMember: rankNum === 0
+    }
+  }
+
+  rankSettingRemove = () => {
+    window.frontTrigger('fraction.rank.remove', this.state.settings.rankNum)
+  }
+
+  rankSettingSubmit = () => {
+    const {
+      newMember, rankNum, color, settingsList, name, priority
+    } = this.state.settings
+    if (!newMember) {
+      this.setSettingsBuffer('init')
+      window.frontTrigger('fraction.rank.edit', {
+        rankNumOld: rankNum, rankNumNew: priority,
+        rankName: name, color, settingsList
+      })
+    } else {
+      window.frontTrigger('fraction.rank.create', {
+        rankNum: priority, rankName: name, color: color, settingsList
+      })
     }
   }
 
@@ -361,7 +383,6 @@ class FractionStore {
     } else {
       car.permissions.groupId.push(groupId)
       window.frontTrigger('fraction.cars.permission.group.add', car.id, groupId)
-
     }
   }
 
