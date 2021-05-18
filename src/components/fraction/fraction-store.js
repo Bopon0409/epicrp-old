@@ -63,12 +63,15 @@ class FractionStore {
     modalGroupCreate: { active: false, name: '', boss: '', ranks: [] },
     modalGroupEdit: { active: false, id: 0, currentRank: 0 },
 
-    rankSettingsCurrent: 0,
-    rankSettings: {
+    defaultRankSettings: [],
+    settings: {
+      rankNum: 0,
       name: '',
       priority: 0,
       color: '#ffffff',
-      colorPicker: false
+      colorPicker: false,
+      settingsList: [],
+      newMember: false
     }
   }
 
@@ -87,6 +90,8 @@ class FractionStore {
     if (data.members) this.state.members = data.members
     if (data.activityList) this.state.activityList = data.activityList
     if (data.userId) this.state.userId = data.userId
+    if (data.defaultRankSettings)
+      this.state.defaultRankSettings = data.defaultRankSettings
   }
 
   get isBlur () {
@@ -215,38 +220,66 @@ class FractionStore {
   //===========================   Ranks Settings   =============================
 
   get ranksSorted () {
-    return this.state.ranks.slice()
-      .sort((rank1, rank2) => rank1.rankNum - rank2.rankNum)
+    const list = this.state.ranks.slice().sort((rank1, rank2) =>
+      rank1.rankNum - rank2.rankNum)
+    if (this.state.settings.newMember) list.push({
+      rankNum: 0, rankName: 'Новый ранг', color: 'white'
+    })
+    return list
   }
 
-  get currentRankSettingsList () {
-    if (this.state.rankSettingsCurrent === 0)
-      this.state.rankSettingsCurrent = this.ranksSorted[0].rankNum
-    return this.state.ranksSettings
-      .find(({ rankNum }) => rankNum === this.state.rankSettingsCurrent)
-      ?.settingsList
+  clickOutsideColorPicker = e => {
+    const colorPickerCheck = typeof e.target.className == 'string' &&
+      e.target.className.includes('color-block')
+
+    if (!colorPickerCheck) {
+      const modalBlock = document.querySelector('#fraction-color-picker')
+      if (!e.path.includes(modalBlock)) this.setSettingColorPicker(false)
+    }
   }
 
   setRankSetting = settingName => {
-    const { rankSettingsCurrent: currentNum } = this.state
-    const list = this.state.ranksSettings
-      .find(({ rankNum }) => rankNum === currentNum).settingsList
+    const list = this.state.settings.settingsList
     const setting = list.find(item => item.settingName === settingName)
     setting.value = !setting.value
   }
 
-  setCurrentSettingRank = rankNum => {
-    this.state.rankSettingsCurrent = rankNum
+  setSettingColorPicker = active => this.state.settings.colorPicker = active
+  setSettingColor = color => this.state.settings.color = color
+  setSettingName = name => this.state.settings.name = name
+
+  setSettingPriority = priority => {
+    if (priority > 999) this.state.settings.priority = priority
   }
 
-  get currentRank () {
-    const { rankSettingsCurrent: currentRank } = this.state
-    return currentRank === 0 ? this.ranksSorted[0].rankNum : currentRank
+  getSettingRank = rankNum => {
+    switch (rankNum) {
+      case 0:
+        return { rankNum: 0, rankName: 'Новый ранг', color: 'white' }
+      case 'init':
+        return this.ranksSorted[0]
+      default:
+        return this.getRankById(rankNum)
+    }
   }
 
-  setColorPicker = active => this.state.rankSettings.colorPicker = active
+  setSettingsBuffer = (rankNum) => {
+    const rank = this.getSettingRank(rankNum)
+    const settingsList = rankNum === 0 ?
+      this.state.defaultRankSettings :
+      this.state.ranksSettings
+        .find(({ rankNum }) => rankNum === rank.rankNum).settingsList
 
-  setRankColor = color => this.state.rankSettings.color = color
+    this.state.settings = {
+      color: rank.color,
+      colorPicker: false,
+      name: rank.rankName,
+      priority: rank.rankNum,
+      rankNum: rank.rankNum,
+      settingsList,
+      newMember: rankNum === 0
+    }
+  }
 
   //================================   Cars   ==================================
 
@@ -307,7 +340,10 @@ class FractionStore {
     const carRanks = car.permissions.ranks
     if (carRanks.includes(rankNum)) {
       car.permissions.ranks = carRanks.filter(rank => rank !== rankNum)
-      window.frontTrigger('fraction.cars.permission.rank.delete', car.id, rankNum)
+      window.frontTrigger('fraction.cars.permission.rank.delete',
+        car.id,
+        rankNum
+      )
     } else {
       car.permissions.ranks.push(rankNum)
       window.frontTrigger('fraction.cars.permission.rank.add', car.id, rankNum)
@@ -320,7 +356,8 @@ class FractionStore {
     if (carGroups.includes(groupId)) {
       car.permissions.groupId = carGroups.filter(id => id !== groupId)
       window.frontTrigger('fraction.cars.permission.group.delete',
-        car.id, groupId)
+        car.id, groupId
+      )
     } else {
       car.permissions.groupId.push(groupId)
       window.frontTrigger('fraction.cars.permission.group.add', car.id, groupId)

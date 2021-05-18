@@ -117,6 +117,28 @@
       "color": "blue"
     }
   ],
+  "defaultRankSettings": [
+    {
+      "settingName": "Какая - то настройка",
+      "value": false
+    },
+    {
+      "settingName": "Какая - то настройка",
+      "value": false
+    },
+    {
+      "settingName": "Какая - то настройка",
+      "value": false
+    },
+    {
+      "settingName": "Какая - то настройка",
+      "value": false
+    },
+    {
+      "settingName": "Какая - то настройка",
+      "value": false
+    }
+  ],
   "ranksSettings": [
     {
       "rankNum": 999,
