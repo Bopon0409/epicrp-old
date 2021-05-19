@@ -1,0 +1,162 @@
+.house {
+  .outside {
+    position: absolute;
+    width: 1240px;
+    height: 660px;
+    background: url('../img/outside_bg.png') 100% no-repeat;
+    top: 50%;
+    left: 50%;
+    margin-left: -620px;
+    margin-top: -330px;
+    display: flex;
+
+    .main {
+      padding-top: 80px;
+      width: 510px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #343434;
+      line-height: 35px;
+
+      &__icon {
+        width: 100px;
+        margin-bottom: 10px;
+      }
+
+      &__title {
+        font-weight: bold;
+        font-size: 64px;
+        margin-bottom: 10px;
+      }
+
+      &__number {
+        width: 162px;
+        text-align: right;
+        font-size: 36px;
+        margin-bottom: 80px;
+      }
+
+      .owner {
+        width: 330px;
+        margin-bottom: 60px;
+
+        &__text {
+          font-weight: bold;
+          font-size: 24px;
+          text-align: left;
+          margin-bottom: 5px;
+        }
+
+        &__name {
+          font-size: 36px;
+        }
+      }
+
+      &__button {
+        width: 277px;
+        height: 77px;
+        background: url('../img/outside_bg_button1.svg') 100% no-repeat;
+        display: flex;
+        cursor: pointer;
+
+        .text {
+          margin: auto;
+          font-weight: 500;
+          font-size: 24px;
+          color: #ffffff;
+        }
+      }
+    }
+
+    .info {
+      width: 730px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 80px;
+      color: #343434;
+      line-height: 35px;
+
+      &__title {
+        font-weight: bold;
+        font-size: 35px;
+        margin-bottom: 60px;
+      }
+
+      &__row {
+        width: 455px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .info__field {
+          font-size: 18px;
+        }
+
+        .info__value {
+          font-weight: 500;
+          font-size: 26px;
+        }
+      }
+
+      .info__row-bold {
+        margin-top: 50px;
+
+        .info__field {
+          font-weight: 500;
+        }
+
+        .info__value {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .button {
+      position: absolute;
+      background-repeat: no-repeat;
+      width: 250px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      background-size: 120% 120%;
+      background-position: 50% 50%;
+      padding-top: 10px;
+
+      &__icon {
+        margin-right: 20px;
+      }
+
+      &__text {
+        font-weight: 500;
+        font-size: 14px;
+        color: #343434;
+      }
+    }
+
+    .button-garage {
+      left: 255px;
+      bottom: -38px;
+      background-image: url('../img/outside_bg_button2.svg');
+    }
+
+    .button-lock {
+      left: 578px;
+      bottom: -57px;
+      background-image: url('../img/outside_bg_button3.svg');
+    }
+
+    .button-sell {
+      right: 90px;
+      bottom: -78px;
+      background-image: url('../img/outside_bg_button3.svg');
+    }
+  }
+}

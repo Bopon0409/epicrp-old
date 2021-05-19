@@ -1,0 +1,39 @@
+@import './scss/houseOutside';
+@import './scss/houseInside';
+@import './scss/roommates';
+@import './scss/garage';
+@import './scss/header';
+
+.house {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  font-family: TT Norms, sans-serif;
+  text-transform: uppercase;
+  background: radial-gradient(
+      118.98% 118.98% at 50% 50%,
+      rgba(79, 79, 79, 0.75) 0%,
+      rgba(0, 12, 35, 0.75) 100%
+  );
+
+  .scroll {
+    overflow-y: scroll;
+    position: relative;
+  }
+
+  .scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 2px;
+  }
+
+  .scroll::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scroll::-webkit-scrollbar-thumb {
+    background: #343434;
+    border-radius: 2px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+}

@@ -1,0 +1,119 @@
+.house {
+  .roommates {
+    position: absolute;
+    width: 1270px;
+    height: 524px;
+    top: 50%;
+    left: 50%;
+    margin-left: -635px;
+    margin-top: -262px;
+    background-image: url('../img/roommates_bg.png');
+    display: flex;
+    justify-content: space-between;
+    padding-top: 75px;
+    padding-bottom: 45px;
+    box-sizing: border-box;
+
+    .column-title {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 35px;
+      color: #000000;
+      margin-bottom: 30px;
+    }
+
+    .members {
+      width: 362px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .title {
+        width: 100%;
+        padding-left: 25px;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 35px;
+        color: #000000;
+        margin-bottom: 18px;
+      }
+
+      .roommate__member {
+        width: 90%;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 35px;
+        color: #343434;
+        align-self: flex-start;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .roommate__member-active {
+        background: linear-gradient(269.95deg, #f2c94c 4.55%, #f2c94c 99.96%);
+      }
+
+      .roommates__list {
+        width: 90%;
+        align-self: flex-start;
+        text-align: center;
+        height: 180%;
+
+        .roommate__member {
+          cursor: pointer;
+          padding: 8px 0;
+          width: 100%;
+          margin-bottom: 10px;
+        }
+      }
+
+    }
+
+    .access {
+      width: 385px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .access__list {
+        width: 300px;
+
+        .access__item {
+          margin-bottom: 12px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding-right: 20px;
+
+          .access__name {
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 35px;
+            color: #343434;
+          }
+        }
+      }
+    }
+
+    .info {
+      width: 411px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .info__row {
+        width: 310px;
+        display: flex;
+        justify-content: space-between;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 35px;
+        color: #343434;
+
+        .info__value {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}

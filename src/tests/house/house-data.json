@@ -1,0 +1,134 @@
+{
+  "houseNumber": 52,
+  "owner": "Ched nocksfeel",
+  "open": false,
+  "cupboardOpen": false,
+  "houseClass": "S",
+  "tax": 3500,
+  "roomQuantity": 10,
+  "garageAvailability": true,
+  "garagePlaceQuantity": 10,
+  "price": 3000000,
+  "roommates": [
+    {
+      "id": 1,
+      "name": "Ched nocksfeel 1",
+      "populated": "23/04/2021",
+      "rentPrice": 4000,
+      "garagePlace": null,
+      "online": false,
+      "access": [
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false },
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false },
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Ched nocksfeel 2",
+      "populated": "23/04/2021",
+      "rentPrice": 4000,
+      "garagePlace": 3,
+      "online": false,
+      "access": [
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false },
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false },
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Ched nocksfeel 3",
+      "populated": "23/04/2021",
+      "rentPrice": 4000,
+      "garagePlace": null,
+      "online": false,
+      "access": [
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false },
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false },
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Ched nocksfeel 4",
+      "populated": "23/04/2021",
+      "rentPrice": 4000,
+      "garagePlace": null,
+      "online": false,
+      "access": [
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false },
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false },
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Ched nocksfeel 5",
+      "populated": "23/04/2021",
+      "rentPrice": 4000,
+      "garagePlace": null,
+      "online": false,
+      "access": [
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false },
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false },
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Ched nocksfeel 6",
+      "populated": "23/04/2021",
+      "rentPrice": 4000,
+      "garagePlace": null,
+      "online": false,
+      "access": [
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false },
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false },
+        { "name": "Доступ к шкафу", "value": true },
+        { "name": "Доступ к шкафу", "value": false }
+      ]
+    }
+  ],
+  "garage": [
+    {
+      "placeId": 1,
+      "carId": 2,
+      "car": "AUDI RS7 A666AA",
+      "carOwner": "Ched nocksfeel",
+      "color": "blue"
+    },
+    {
+      "placeId": 2,
+      "carId": null
+    },
+    {
+      "placeId": 3,
+      "carId": 2,
+      "car": "AUDI RS7 A666AA",
+      "carOwner": "Ched nocksfeel 2",
+      "color": "white"
+    },
+    {
+      "placeId": 4,
+      "carId": null
+    }
+  ]
+}

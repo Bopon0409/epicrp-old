@@ -10,9 +10,10 @@ import './interaction-menu/interaction-menu.test'
 import './inventory/inventory.test'
 import './speedometer/speedometer.test'
 import './fraction/fraction.test'
+import './house/house.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.fraction.setData()
-  window.test.fraction.setActive(true)
+  window.test.house.openHouseOutside()
+  window.test.house.setData()
 }
