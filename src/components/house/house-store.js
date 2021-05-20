@@ -7,6 +7,15 @@ class HouseStore {
 
   state = {
     mode: 0,
+    capabilities: {
+      enterGarage: true,
+      lockHouse: true,
+      lockCupboard: true,
+      sell: false,
+      pay: true,
+      roommatesManager: true,
+      garageManager: true
+    },
     houseNumber: 0,
     owner: '',
     open: false,
@@ -22,7 +31,13 @@ class HouseStore {
     garage: []
   }
 
-  setMode = mode => this.state.mode = mode
+  setMode = mode => {
+    const { roommatesManager, garageManager } = this.state.capabilities
+    if (!roommatesManager && mode === 4) return
+    if (!garageManager && mode === 3) return
+    this.state.mode = mode
+  }
+
   setData = data => {
     if (data.garagePlaceQuantity)
       this.state.garagePlaceQuantity = data.garagePlaceQuantity
@@ -67,23 +82,55 @@ class HouseStore {
     }
   }
 
-  roommatesInit = () => {
-    const { currentRoommateId, roommates } = this.state
-    if (currentRoommateId === 0) this.state.currentRoommateId = roommates[0]?.id
-  }
-
   get currentRoommate () {
     this.roommatesInit()
     const { currentRoommateId, roommates } = this.state
     return roommates.find(({ id }) => id === currentRoommateId)
   }
 
+  roommatesInit = () => {
+    const { currentRoommateId, roommates } = this.state
+    if (currentRoommateId === 0) this.state.currentRoommateId = roommates[0]?.id
+  }
+
   setRoommate = id => this.state.currentRoommateId = id
 
   setAccess = accessName => {
-    const { access } = this.currentRoommate
+    const { houseNumber } = this.state
+    const { access, id } = this.currentRoommate
     const setting = access.find(({ name }) => name === accessName)
     setting.value = !setting.value
+    window.frontTrigger('house.roommate.access',
+      houseNumber, id, setting.name, setting.value)
+  }
+
+  moveRoommateOut = () => {
+    const { state: { houseNumber }, currentRoommate: { id } } = this
+    window.frontTrigger('house.roommate.move_out', houseNumber, id)
+  }
+
+  houseLock = () => {
+    const { open, houseNumber, capabilities } = this.state
+    if (capabilities.lockHouse) this.state.open = !open
+    window.frontTrigger('house.lock.house', houseNumber, !open)
+  }
+
+  cupboardLock = () => {
+    const { cupboardOpen, houseNumber, capabilities } = this.state
+    if (capabilities.lockCupboard) this.state.cupboardOpen = !cupboardOpen
+    window.frontTrigger('house.lock.cupboard', houseNumber, !cupboardOpen)
+  }
+
+  sellHouse = () => {
+    window.frontTrigger('house.sell', this.state.houseNumber)
+  }
+
+  enterHouse = () => {
+    window.frontTrigger('house.enter.house', this.state.houseNumber)
+  }
+
+  enterGarage = () => {
+    window.frontTrigger('house.enter.garage', this.state.houseNumber)
   }
 }
 

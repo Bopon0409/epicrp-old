@@ -28,9 +28,9 @@
         height: 100%;
         top: 0;
         background: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.81) 0%,
-            rgba(0, 0, 0, 0.39) 100%
+                        180deg,
+                        rgba(0, 0, 0, 0.81) 0%,
+                        rgba(0, 0, 0, 0.39) 100%
         );
 
         &:hover {
@@ -53,13 +53,27 @@
         box-sizing: border-box;
 
         font-weight: 500;
-        font-size: 18px;
+        font-size: 16px;
         line-height: 35px;
         color: #343434;
       }
 
       &:hover {
         filter: drop-shadow(5px 5px 100px rgba(242, 242, 242, 0.55));
+      }
+    }
+
+    .button-disabled {
+      .button__bg:hover {
+        background: linear-gradient(
+                        180deg,
+                        rgba(0, 0, 0, 0.81) 0%,
+                        rgba(0, 0, 0, 0.39) 100%
+        );
+      }
+
+      &:hover {
+        filter: none;
       }
     }
   }

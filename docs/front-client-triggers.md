@@ -111,7 +111,7 @@
 Создание группы
 
 - `mp.trigger('fraction.group.create', data: json string)`
-  
+
 Удаление группы
 
 - `mp.trigger('fraction.group.remove', groupId: num)`
@@ -159,3 +159,33 @@
 Изменение ранга
 
 - `mp.trigger('fraction.rank.edit', data: json string)`
+
+## Дом
+
+Вход в дом
+
+- `mp.trigger('house.enter.house', houseNumber: number)`
+
+Вход в гараж
+
+- `mp.trigger('house.enter.garage', houseNumber: number)`
+
+Продажа дома
+
+- `mp.trigger('house.sell', houseNumber: number)`
+
+Открытие/Закрытие шкафа
+
+- `mp.trigger('house.lock.access', houseNumber: numb, memberId: num, settingName: str, settingValue: str)`
+
+Выселение сожителя
+
+- `mp.trigger('house.roommate.move_out', houseNum: num, memberId: num)`
+
+Открытие/Закрытие дома
+
+- `mp.trigger('house.lock.house', houseNumber: number, open: bool)`
+
+Открытие/Закрытие шкафа
+
+- `mp.trigger('house.lock.cupboard', houseNumber: number, open: bool)`
