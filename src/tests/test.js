@@ -14,6 +14,6 @@ import './house/house.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.house.setData()
-  window.test.house.openHouseInside()
+  window.test.hud.setActive(true)
+  window.test.hud.setAllData()
 }

@@ -9,6 +9,15 @@
   "garageAvailability": true,
   "garagePlaceQuantity": 10,
   "price": 3000000,
+  "capabilities": {
+    "enterGarage": true,
+    "lockHouse": false,
+    "lockCupboard": false,
+    "sell": false,
+    "pay": false,
+    "roommatesManager": false,
+    "garageManager": true
+  },
   "roommates": [
     {
       "id": 1,
@@ -18,12 +27,30 @@
       "garagePlace": null,
       "online": false,
       "access": [
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false },
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false },
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false }
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        }
       ]
     },
     {
@@ -34,12 +61,30 @@
       "garagePlace": 3,
       "online": false,
       "access": [
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false },
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false },
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false }
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        }
       ]
     },
     {
@@ -50,12 +95,30 @@
       "garagePlace": null,
       "online": false,
       "access": [
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false },
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false },
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false }
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        }
       ]
     },
     {
@@ -66,12 +129,30 @@
       "garagePlace": null,
       "online": false,
       "access": [
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false },
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false },
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false }
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        }
       ]
     },
     {
@@ -82,12 +163,30 @@
       "garagePlace": null,
       "online": false,
       "access": [
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false },
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false },
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false }
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        }
       ]
     },
     {
@@ -98,13 +197,73 @@
       "garagePlace": null,
       "online": false,
       "access": [
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false },
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false },
-        { "name": "Доступ к шкафу", "value": true },
-        { "name": "Доступ к шкафу", "value": false }
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": true
+        },
+        {
+          "name": "Доступ к шкафу",
+          "value": false
+        }
       ]
+    }
+  ],
+  "carList": [
+    {
+      "carId": 3,
+      "car": "AUDI RS7 A666AA",
+      "color": "blue"
+    },
+    {
+      "carId": 4,
+      "car": "AUDI RS7 A666AA",
+      "color": "white"
+    },
+    {
+      "carId": 5,
+      "car": "AUDI RS7 A666AA",
+      "color": "green"
+    },
+    {
+      "carId": 6,
+      "car": "AUDI RS7 A666AA",
+      "color": "green"
+    },
+    {
+      "carId": 7,
+      "car": "AUDI RS7 A666AA",
+      "color": "green"
+    },
+    {
+      "carId": 8,
+      "car": "AUDI RS7 A666AA",
+      "color": "green"
+    },
+    {
+      "carId": 9,
+      "car": "AUDI RS7 A666AA",
+      "color": "green"
+    },
+    {
+      "carId": 10,
+      "car": "AUDI RS7 A666AA",
+      "color": "green"
     }
   ],
   "garage": [

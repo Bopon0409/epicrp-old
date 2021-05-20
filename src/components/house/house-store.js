@@ -28,7 +28,8 @@ class HouseStore {
     price: 0,
     currentRoommateId: 0,
     roommates: [],
-    garage: []
+    garage: [],
+    carList: []
   }
 
   setMode = mode => {
@@ -43,11 +44,13 @@ class HouseStore {
       this.state.garagePlaceQuantity = data.garagePlaceQuantity
     if (data.garageAvailability)
       this.state.garageAvailability = data.garageAvailability
+    if (data.capabilities) this.state.capabilities = data.capabilities
     if (data.cupboardOpen) this.state.cupboardOpen = data.cupboardOpen
     if (data.roomQuantity) this.state.roomQuantity = data.roomQuantity
     if (data.houseNumber) this.state.houseNumber = data.houseNumber
     if (data.houseClass) this.state.houseClass = data.houseClass
     if (data.roommates) this.state.roommates = data.roommates
+    if (data.carList) this.state.carList = data.carList
     if (data.garage) this.state.garage = data.garage
     if (data.price) this.state.price = data.price
     if (data.owner) this.state.owner = data.owner

@@ -6,6 +6,40 @@
   z-index: 3;
   font-family: Nunito, serif;
 
+  .hint {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    margin-left: -300px;
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .text {
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 25px;
+      color: #FFFFFF;
+      filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.5));
+    }
+
+    .button {
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 33px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #FFFFFF;
+      background: #efbd42;
+      padding: 2px 8px;
+      margin: 0 10px;
+      border-radius: 5px;
+      filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.5));
+    }
+  }
+
   .top-right-panel {
     z-index: 3;
     position: absolute;

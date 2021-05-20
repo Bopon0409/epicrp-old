@@ -12,7 +12,7 @@ import {
 }                           from './modules/indicator-svg'
 
 export default observer(() => {
-  const { active, time, date } = store.state
+  const { active, time, date, hint } = store.state
 
   useEffect(() => {
     const { EventManager: em } = window
@@ -39,6 +39,12 @@ export default observer(() => {
         <div className='time'>{time}</div>
         <div className='date'>{date}</div>
       </div>
+
+      {hint.action ? <div className='hint'>
+        <div className='text'>Нажмите клавишу</div>
+        <div className='button'>{hint.button}</div>
+        <div className='text'>{hint.action}</div>
+      </div> : null}
 
       <LeftBlock />
       <RightBlock />

@@ -1,3 +1,63 @@
 .house {
+  .garage {
+    .available-cars {
+      position: absolute;
+      width: 1200px;
+      height: 220px;
+      right: 150px;
+      bottom: 30px;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
+      .header {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .header__text {
+          font-size: 18px;
+          line-height: 35px;
+          text-transform: uppercase;
+          color: #FFFFFF;
+          margin-left: 15px;
+        }
+      }
+
+      .car-list {
+        display: flex;
+        overflow-x: scroll;
+
+        .car-list__item {
+          width: 210px;
+          margin-right: 30px;
+
+          .car {
+            cursor: pointer;
+          }
+
+          .car-name {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 20px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.55);
+            text-align: center;
+          }
+        }
+
+        &::-webkit-scrollbar {
+          position: absolute;
+          height: 6px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          border-radius: 5px;
+          background: #D5B34A;
+        }
+      }
+    }
+  }
 }

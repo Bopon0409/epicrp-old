@@ -24,6 +24,10 @@ class HudStore {
       active: false,
       btn: 'N'
     },
+    hint: {
+      button: '',
+      action: ''
+    },
     mission: {
       active: false,
       title: '',
