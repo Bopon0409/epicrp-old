@@ -8,12 +8,16 @@
     "item2": {"idSlot": 1, "inventoryId": 0}
   },
   "inventory.separate": {
-    "item1": {"id": 1, "inventoryId": 0},
-    "item2": {"id": 1, "inventoryId": 0},
+    "item1": {"idSlot": 1, "inventoryId": 0},
+    "item2": {"idSlot": 1, "inventoryId": 0},
     "quantity": 0
   },
+  "inventory.move": {
+    "from": {"idSlot": 1, "inventoryId": 0},
+    "to": {"idSlot": 1, "inventoryId": 0}
+  },
   "inventory.swap": {
-    "from": {"id": 1, "inventoryId": 0},
-    "to": {"id": 1, "inventoryId": 0}
+    "item1": {"idSlot": 1, "inventoryId": 0},
+    "item2": {"idSlot": 1, "inventoryId": 0}
   }
 }
