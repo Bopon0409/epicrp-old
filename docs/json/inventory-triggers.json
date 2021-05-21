@@ -1,11 +1,11 @@
 {
-  "inventory.equip": {"id": 1, "inventoryId": 0},
-  "inventory.take": {"id": 1, "inventoryId": 0},
-  "inventory.use": {"id": 1, "inventoryId": 0},
-  "inventory.drop": {"id": 1, "inventoryId": 0},
+  "inventory.equip": {"idSlot": 1, "inventoryId": 0},
+  "inventory.take": {"idSlot": 1, "inventoryId": 0},
+  "inventory.use": {"idSlot": 1, "inventoryId": 0},
+  "inventory.drop": {"idSlot": 1, "inventoryId": 0},
   "inventory.merge": {
-    "item1": {"id": 1, "inventoryId": 0},
-    "item2": {"id": 1, "inventoryId": 0}
+    "item1": {"idSlot": 1, "inventoryId": 0},
+    "item2": {"idSlot": 1, "inventoryId": 0}
   },
   "inventory.separate": {
     "item1": {"id": 1, "inventoryId": 0},

@@ -165,11 +165,17 @@ class InventoryStore {
     const { id, inventoryId } = this.getInventoryId(item.idSlot)
     switch (triggerName) {
       case 'putOn':
-        return window.frontTrigger('inventory.equip', { id, inventoryId })
+        return window.frontTrigger('inventory.equip',
+          { idSlot: id, inventoryId }
+        )
       case 'putOff':
-        return window.frontTrigger('inventory.take', { id, inventoryId })
+        return window.frontTrigger('inventory.take',
+          { idSlot: id, inventoryId }
+        )
       case 'use':
-        return window.frontTrigger('inventory.use', { id, inventoryId })
+        return window.frontTrigger('inventory.use',
+          { idSlot: id, inventoryId }
+        )
       default:
         break
     }
@@ -281,7 +287,10 @@ class InventoryStore {
       el => el.idSlot !== idSlot
     )
 
-    window.frontTrigger('inventory.drop', this.getInventoryId(idSlot))
+    const { id, inventoryId } = this.getInventoryId((idSlot))
+    window.frontTrigger('inventory.drop', {
+      idSlot: id, inventoryId
+    })
   }
 
   // Уменьшение количества предметов в стаке
@@ -303,8 +312,14 @@ class InventoryStore {
     })
     this.state.inventory = newInventory
     window.frontTrigger('inventory.merge', {
-      item1: this.getInventoryId(item1.idSlot),
-      item2: this.getInventoryId(item2.idSlot)
+      item1: {
+        idSlot: this.getInventoryId(item1.idSlot).id,
+        inventoryId: this.getInventoryId(item1.idSlot).inventoryId
+      },
+      item2: {
+        idSlot: this.getInventoryId(item2.idSlot).id,
+        inventoryId: this.getInventoryId(item2.idSlot).inventoryId
+      }
     })
   }
 
@@ -355,8 +370,14 @@ class InventoryStore {
     }
 
     window.frontTrigger('inventory.separate', {
-      item1: this.getInventoryId(this.getItem(idSlot).idSlot),
-      item2: this.getInventoryId(freeSlot),
+      item1: {
+        idSlot: this.getInventoryId(idSlot).id,
+        inventoryId: this.getInventoryId(idSlot).inventoryId
+      },
+      item2: {
+        idSlot: this.getInventoryId(freeSlot).id,
+        inventoryId: this.getInventoryId(freeSlot).inventoryId
+      },
       quantity
     })
   }
@@ -480,10 +501,30 @@ class InventoryStore {
       else if (el.idSlot === toSlot) el.idSlot = fromSlot
     })
 
-    window.frontTrigger('inventory.swap', {
-      from: this.getInventoryId(fromSlot),
-      to: this.getInventoryId(toSlot)
-    })
+    if (item1 && item2) {
+      window.frontTrigger('inventory.swap', {
+        item1: {
+          idSlot: this.getInventoryId(fromSlot).id,
+          inventoryId: this.getInventoryId(fromSlot).inventoryId
+        },
+        item2: {
+          idSlot: this.getInventoryId(toSlot).id,
+          inventoryId: this.getInventoryId(toSlot).inventoryId
+        }
+      })
+    } else {
+      window.frontTrigger('inventory.move', {
+        from: {
+          idSlot: this.getInventoryId(fromSlot).id,
+          inventoryId: this.getInventoryId(fromSlot).inventoryId
+        },
+        to: {
+          idSlot: this.getInventoryId(toSlot).id,
+          inventoryId: this.getInventoryId(toSlot).inventoryId
+        }
+      })
+
+    }
   }
 
   // =============================   ITEM MODAL   ==============================
