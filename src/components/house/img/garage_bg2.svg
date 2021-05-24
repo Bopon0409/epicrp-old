@@ -1,0 +1,9 @@
+<svg width="676" height="207" viewBox="0 0 676 207" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="1" width="674" height="1" fill="white"/>
+<rect x="674" y="2" width="1" height="166" fill="white"/>
+<rect width="1" height="170" transform="matrix(-1 0 0 1 1 1)" fill="white"/>
+<path d="M675 167.096C675 180.064 661.653 206 630.799 206C618.8 206 584.546 199.311 573.375 168.222C563.662 141.188 608 47.494 624.999 3" stroke="white"/>
+<path d="M0.5 170C0.5 183 -0.0987701 205 36 205C50.0384 205 86 193.081 98 174.5C113.5 150.5 177.5 42.5 202 2" stroke="white"/>
+<path d="M418.5 1L322 200" stroke="white"/>
+<circle cx="322" cy="200" r="3" fill="white"/>
+</svg>

@@ -6,7 +6,6 @@
       height: 220px;
       right: 150px;
       bottom: 30px;
-      border: 1px solid black;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -21,7 +20,7 @@
           font-size: 18px;
           line-height: 35px;
           text-transform: uppercase;
-          color: #FFFFFF;
+          color: #ffffff;
           margin-left: 15px;
         }
       }
@@ -55,7 +54,64 @@
 
         &::-webkit-scrollbar-thumb {
           border-radius: 5px;
-          background: #D5B34A;
+          background: #d5b34a;
+        }
+      }
+    }
+
+    .garage-body {
+      position: absolute;
+      width: 1110px;
+      height: 206px;
+      background: url('../img/garage_bg4.svg');
+      top: 50%;
+      left: 50%;
+      margin-left: -560px;
+      margin-top: -102px;
+      box-sizing: border-box;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 155px;
+      padding-right: 100px;
+      padding-top: 10px;
+
+      .garage__car {
+        position: relative;
+        cursor: pointer;
+        width: 200px;
+        height: 240px;
+
+        .info {
+          position: absolute;
+          top: -45px;
+          right: -40px;
+          text-transform: uppercase;
+          text-align: center;
+
+          .title1 {
+            font-weight: 500;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 10px;
+          }
+
+          .title2 {
+            font-weight: bold;
+            font-size: 18px;
+            color: #ffffff;
+          }
+        }
+      }
+
+      .garage__item-empty {
+        .garage__car {
+          display: flex;
+
+          .garage__empty {
+            margin: auto;
+          }
         }
       }
     }
