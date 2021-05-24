@@ -1,15 +1,14 @@
 import { observer } from 'mobx-react-lite'
-import React from 'react'
+import React        from 'react'
 import {
   CircularProgressbarWithChildren,
   buildStyles
-} from 'react-circular-progressbar'
+}                   from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
-import store from '../inventory-store'
-import textHint from '../images/weight-hint.svg'
+import store        from '../inventory-store'
+import textHint     from '../images/weight-hint.svg'
 
-export default observer(() => {
-  const { mode } = store.state
+export default observer(({ mode }) => {
   const weight = mode === 3 ? store.stockWeight : store.trunkWeight
   const maxWeight = mode === 3 ? 10000 : store.state.trunk.trunkMaxWeight
 

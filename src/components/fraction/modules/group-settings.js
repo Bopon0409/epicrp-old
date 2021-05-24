@@ -1,15 +1,17 @@
-import React from 'react'
-import { observer } from 'mobx-react-lite'
-import store from '../fraction-store'
-import Icon from './icon'
-import classNames from 'classnames'
-import Switch from 'react-switch'
+import React                                   from 'react'
+import { observer }                            from 'mobx-react-lite'
+import store                                   from '../fraction-store'
+import Icon                                    from './icon'
+import classNames                              from 'classnames'
+import Switch                                  from 'react-switch'
+import { CaretIcon, ModalCloseButton, Select } from 'react-responsive-select'
 
 export default observer(() => {
-  const { active, id, currentRank } = store.state.modalGroupEdit
+  const { active, id, currentRank, boss } = store.state.modalGroupEdit
   const {
     groupSettingsClose, settingsList, setGroupSettingCurrentRank,
-    toggleRankSetting
+    toggleRankSetting, setGroupSettingCurrentBoss, groupSettingSelectList,
+    groupSettingBossSubmit
   } = store
   const group = store.getGroupById(id)
 
@@ -49,6 +51,20 @@ export default observer(() => {
         <Icon icon='close' />
       </div>
       <div className='title'>Настройки отдела</div>
+      <div className='boss-select'>
+        <Select
+          prefix='Начальник отдела: '
+          name='boss-select'
+          modalCloseButton={<ModalCloseButton />}
+          options={groupSettingSelectList}
+          caretIcon={<CaretIcon />}
+          selectedValue={boss?.value}
+          onChange={newValue => setGroupSettingCurrentBoss(newValue) }
+        />
+        <div className='submit-btn' onClick={groupSettingBossSubmit}>
+          <div className='text'>Назначить</div>
+        </div>
+      </div>
       <div className='wrap'>
         <div className='ranks'>
           <div className='menu-title'>Ранги</div>

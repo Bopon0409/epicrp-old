@@ -36,7 +36,7 @@ export default observer(() => {
       <Container mode={mode} />
       <CloseBtn />
       <RightWeightBar />
-      <LeftWeightBar />
+      <LeftWeightBar mode={mode} />
       <Indicators />
       {store.state.modal.isActive && <Modal />}
     </div>

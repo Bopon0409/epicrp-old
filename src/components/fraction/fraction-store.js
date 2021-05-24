@@ -61,7 +61,7 @@ class FractionStore {
 
     groupExpand: 0,
     modalGroupCreate: { active: false, name: '', boss: '', ranks: [] },
-    modalGroupEdit: { active: false, id: 0, currentRank: 0 },
+    modalGroupEdit: { active: false, id: 0, boss: null, currentRank: 0 },
 
     defaultRankSettings: [],
     settings: {
@@ -71,7 +71,8 @@ class FractionStore {
       color: '#ffffff',
       colorPicker: false,
       settingsList: [],
-      newMember: false
+      newMember: false,
+      priorityError: ''
     }
   }
 
@@ -249,8 +250,14 @@ class FractionStore {
   setSettingName = name => this.state.settings.name = name
 
   setSettingPriority = priority => {
-    if (priority < 999 && priority.length < 4)
-      this.state.settings.priority = priority
+    let rankBusy = this.state.ranks
+      .find(({ rankNum }) => rankNum === Number(priority))
+
+    if (rankBusy && Number(priority) !== this.state.settings.rankNum)
+      this.state.settings.priorityError = 'Приоритет занят другим рангом'
+    else this.state.settings.priorityError = ''
+
+    if (priority < 999) this.state.settings.priority = priority
   }
 
   getSettingRank = rankNum => {
@@ -583,7 +590,7 @@ class FractionStore {
     rank.value = !rank.value
   }
 
-  get groupCreateSelectList () {
+  get groupBossPretenders () {
     const { members } = this.state
     if (!members.length) return []
     const applicants = members.filter(({ groupId }) => !groupId)
@@ -595,7 +602,7 @@ class FractionStore {
     this.state.modalGroupCreate = {
       active: true,
       name: '',
-      boss: this.groupCreateSelectList[0],
+      boss: this.groupBossPretenders[0],
       ranks: ranks.map(({ rankNum, rankName, color }) => ({
         rankNum, rankName, color, value: false
       }))
@@ -619,13 +626,23 @@ class FractionStore {
     this.groupCreateClose()
   }
 
+  getGroupInitBoss = id => {
+    if (this.getGroupById(id).bossId) {
+      const member = this.getMemberById(this.getGroupById(id).bossId)
+      return { value: member.id, text: member.name }
+    } else return this.groupBossPretenders[0]
+  }
+
   groupSettingsOpen = id => {
     const currentRank = this.getGroupById(id).ranks[0].rankNum
-    this.state.modalGroupEdit = { id, active: true, currentRank }
+    const boss = this.getGroupInitBoss(id)
+    this.state.modalGroupEdit = { id, active: true, currentRank, boss }
   }
 
   groupSettingsClose = () => {
-    this.state.modalGroupEdit = { id: 0, active: false, currentRank: 0 }
+    this.state.modalGroupEdit = {
+      id: 0, active: false, currentRank: 0, boss: null
+    }
   }
 
   get settingsList () {
@@ -635,6 +652,24 @@ class FractionStore {
   }
 
   setGroupSettingCurrentRank = id => this.state.modalGroupEdit.currentRank = id
+  setGroupSettingCurrentBoss = boss => {
+    this.state.modalGroupEdit.boss = boss
+  }
+
+  groupSettingBossSubmit = () => {
+    const { id, boss } = this.state.modalGroupEdit
+    window.frontTrigger('fraction.group.boss_edit', id, boss.value)
+  }
+
+  get groupSettingSelectList () {
+    const list = this.groupBossPretenders
+    const bossId = this.getGroupById(this.state.modalGroupEdit.id)?.bossId
+    const boss = {
+      value: this.getMemberById(bossId).id,
+      text: this.getMemberById(bossId).name
+    }
+    return bossId ? [boss, ...list] : list
+  }
 
   toggleRankSetting = (name) => {
     const { id, currentRank } = this.state.modalGroupEdit
@@ -643,6 +678,7 @@ class FractionStore {
     const setting = rank.settingsList
       .find(({ settingName }) => settingName === name)
     setting.value = !setting.value
+
     window.frontTrigger('fraction.group.edit', {
       groupId: id, rankNum: currentRank,
       settingsName: name, value: setting.value
@@ -792,8 +828,6 @@ class FractionStore {
     const { id, text } = this.state.modalReprimand
     window.frontTrigger('fraction.members.reprimand', id, text)
     this.reprimandClose()
-    // const member = this.state.members.find(({ id: memberId }) => memberId
-    // === id) member.reprimands += 1
   }
 
   // Dismiss

@@ -433,6 +433,7 @@
     {
       "groupId": 1,
       "groupName": "Patroul Division 1",
+      "bossId": 1,
       "ranks": [
         {
           "rankNum": 1,
@@ -499,6 +500,7 @@
     {
       "groupId": 2,
       "groupName": "Patroul Division 2",
+      "bossId": 100,
       "ranks": [
         {
           "rankNum": 1,
@@ -557,6 +559,7 @@
         },
         {
           "rankNum": 3,
+          "boss": null,
           "settingsList": [
             {
               "settingName": "Транспорт",
@@ -580,6 +583,7 @@
     {
       "groupId": 3,
       "groupName": "Patroul Division 3",
+      "bossId": null,
       "ranks": [
         {
           "rankNum": 1,
@@ -652,8 +656,8 @@
       "fuel": 40,
       "geo": "Гараж",
       "permissions": {
-        "groupId": [1],
-        "ranks": [1, 2, 3, 4, 5, 6]
+        "groupId": [ 1 ],
+        "ranks": [ 1, 2, 3, 4, 5, 6 ]
       }
     },
     {
@@ -663,8 +667,8 @@
       "fuel": 40,
       "geo": "Гараж",
       "permissions": {
-        "groupId": [1],
-        "ranks": [1, 2, 3, 4, 5, 6]
+        "groupId": [ 1 ],
+        "ranks": [ 1, 2, 3, 4, 5, 6 ]
       }
     },
     {
@@ -674,8 +678,8 @@
       "fuel": 40,
       "geo": "Гараж",
       "permissions": {
-        "groupId": [1],
-        "ranks": [1, 2, 3, 4, 5, 6]
+        "groupId": [ 1 ],
+        "ranks": [ 1, 2, 3, 4, 5, 6 ]
       }
     },
     {
@@ -685,8 +689,8 @@
       "fuel": 40,
       "geo": "Гараж",
       "permissions": {
-        "groupId": [1],
-        "ranks": [1, 2, 3, 4, 5, 6]
+        "groupId": [ 1 ],
+        "ranks": [ 1, 2, 3, 4, 5, 6 ]
       }
     },
     {
@@ -696,8 +700,8 @@
       "fuel": 40,
       "geo": "Гараж",
       "permissions": {
-        "groupId": [1],
-        "ranks": [1, 2, 3, 4, 5, 6]
+        "groupId": [ 1 ],
+        "ranks": [ 1, 2, 3, 4, 5, 6 ]
       }
     },
     {
@@ -707,14 +711,14 @@
       "fuel": 40,
       "geo": "Гараж",
       "permissions": {
-        "groupId": [2],
-        "ranks": [1, 2, 3, 4, 5, 6]
+        "groupId": [ 2 ],
+        "ranks": [ 1, 2, 3, 4, 5, 6 ]
       }
     }
   ],
   "storage": {
     "open": false,
-    "history": []
+    "history": [ ]
   },
   "members": [
     {

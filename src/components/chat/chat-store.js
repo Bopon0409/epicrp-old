@@ -4,6 +4,7 @@ import { makeAutoObservable } from 'mobx'
 
 class ChatStore {
   OPACITY_DELAY = 20000000
+  MAX_CHAT_MESSAGES = 700
   MAX_STORY_MESSAGE = 60
 
   constructor () {
@@ -57,8 +58,11 @@ class ChatStore {
   }
 
   pushChatMsgFromClient = msg => {
+    const { messages } = this.state
+    console.log(messages.length)
     if (msg.type) {
-      this.state.messages.push(msg)
+      messages.push(msg)
+      if (messages.length > this.MAX_CHAT_MESSAGES) messages.shift()
       this.dropOpacity(true)
     }
   }

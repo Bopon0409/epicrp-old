@@ -10,7 +10,7 @@ export default observer(() => {
   const { active, name, boss, ranks } = store.state.modalGroupCreate
   const {
     setGroupCreateModalName, setGroupCreateModalBoss, groupCreateSubmit,
-    toggleGroupCreateModalRank, groupCreateSelectList, groupCreateClose
+    toggleGroupCreateModalRank, groupBossPretenders, groupCreateClose
   } = store
 
   const rankList = ranks.map(({ rankNum, rankName, color, value }, i) => {
@@ -25,8 +25,8 @@ export default observer(() => {
     </div>
   })
 
-  const selectList = groupCreateSelectList.length ?
-    groupCreateSelectList :
+  const selectList = groupBossPretenders.length ?
+    groupBossPretenders :
     [{ value: '', text: '' }]
 
   return active ? (
@@ -43,7 +43,7 @@ export default observer(() => {
         modalCloseButton={<ModalCloseButton />}
         options={selectList}
         caretIcon={<CaretIcon />}
-        selectedValue={boss.value}
+        selectedValue={boss?.value}
         onChange={newValue => setGroupCreateModalBoss(newValue)}
       />
       <div className='input-label'>Настройки рангов</div>

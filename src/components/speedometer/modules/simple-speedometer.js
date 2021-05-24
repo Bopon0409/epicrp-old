@@ -1,12 +1,16 @@
-import { observer } from 'mobx-react-lite'
-import React from 'react'
+import { observer }                                from 'mobx-react-lite'
+import React                                       from 'react'
 import { Fuel, Engine, Lock, Lights, Electricity } from './speedometer-svg'
-import store from '../speedometer-store'
+import store                                       from '../speedometer-store'
+import classNames                                  from 'classnames'
 
 export default observer(() => {
   const { speed, fuel, badges } = store.state
   const { speedNulls } = store
   const fuelValue = store.state.fuel === 0 ? true : store.state.badges.fuel
+  const progressClasses = classNames('progress-bar',
+    fuel >= 96 && 'progress-bar-full'
+  )
 
   return (
     <div className='simple-speedometer'>
@@ -14,7 +18,11 @@ export default observer(() => {
         <div className='fuel-view'>
           <Fuel active={fuelValue} />
           <div className='progress progress-moved'>
-            <div className='progress-bar' style={{ width: `${fuel}%` }}/>
+            <div className={progressClasses} style={{ width: `${fuel}%` }} />
+            {fuel > 0 && fuel <= 95 ?
+              <div className='progress-stick' style={{ left: `${fuel}%` }} />
+              : null
+            }
           </div>
         </div>
         <div className='speed-view'>

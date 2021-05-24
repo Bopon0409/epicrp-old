@@ -22,7 +22,8 @@ export default observer(() => {
   }, [])
 
   const {
-    rankNum, priority, name, colorPicker, color, settingsList, newMember
+    rankNum, priority, name, colorPicker, color, settingsList, newMember,
+    priorityError
   } = store.state.settings
 
   const {
@@ -67,14 +68,13 @@ export default observer(() => {
           <div className='input-label'>Название ранга</div>
           <input type='text' className='input'
             value={name} onChange={e => setSettingName(e.target.value)} />
-          <div className='input-error'>{}</div>
         </div>
 
         <div className='input-group'>
           <div className='input-label'>Приоритет</div>
           <input type='number' className='input input-num' value={priority}
             onChange={e => setSettingPriority(e.target.value)} />
-          <div className='input-error'>{}</div>
+          <div className='input-error'>{priorityError}</div>
         </div>
 
         <div className='color-panel'>

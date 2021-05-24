@@ -116,9 +116,13 @@
 
 - `mp.trigger('fraction.group.remove', groupId: num)`
 
-Удаление группы
+Изменение настроек группы
 
 - `mp.trigger('fraction.group.edit', data: json string)`
+
+Изменение начальника группы
+
+- `mp.trigger('fraction.group.boss_edit', groupId: num, bossId: num)`
 
 Запрос на историю активности
 

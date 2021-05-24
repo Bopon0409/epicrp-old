@@ -47,8 +47,8 @@ class InventoryStore {
   // ============================   INVENTORY ID   =============================
 
   // Инвентарь: 0
-  // Трейд мой: 1
-  // Трейд чужой: 2
+  // Trade мой: 1
+  // Trade чужой: 2
   // Склад: 3
   // Багажник: 4
 
@@ -293,7 +293,7 @@ class InventoryStore {
     })
   }
 
-  // Уменьшение количества предметов в стаке
+  // Уменьшение количества предметов в слоте
   decreaseItem = idSlot => {
     const { quantity } = this.getItem(idSlot)
     if (quantity === 1) this.deleteItem(idSlot)
@@ -302,7 +302,7 @@ class InventoryStore {
     }
   }
 
-  // Слияние (стак) предметов
+  // Слияние предметов
   mergeItems = (item1, item2) => {
     const { inventory } = this.state
     const sum = item1.quantity + item2.quantity
@@ -397,7 +397,7 @@ class InventoryStore {
     if (item2) if (toSlot >= 101 && toSlot <= 212) this.trigger('putOn', item2)
   }
 
-  // Проверка на стак предметов
+  // Проверка на слияние предметов
   swapCheckMergeItems = (item1, item2) => {
     if (item2) {
       const isEqual = item1.idItem === item2.idItem
@@ -454,7 +454,7 @@ class InventoryStore {
     switch (inventoryId) {
       case 1:
       case 2:
-        // трейд не ограничен по весу
+        // Trade не ограничен по весу
         return true
       case 0:
         weight = this.inventoryWeight
@@ -482,6 +482,10 @@ class InventoryStore {
     const item2 = this.getItem(toSlot)
     const swapParams = [toSlot, fromSlot, item1, item2]
 
+    // Проверки на необходимость триггеров
+    this.swapCheckPutOn(...swapParams)
+    this.swapCheckPutOff(...swapParams)
+
     // Проверки
     const weightResult = this.weightCheck(fromSlot, toSlot)
     const mergeResult = this.swapCheckMergeItems(item1, item2)
@@ -490,10 +494,6 @@ class InventoryStore {
     const finalResult =
       mergeResult && bagInBagResult && putOnPutOffResult && weightResult
     if (!finalResult) return false
-
-    // Проверки на необходимость триггеров
-    this.swapCheckPutOn(...swapParams)
-    this.swapCheckPutOff(...swapParams)
 
     // Перемещение предметов
     this.state.inventory.forEach(el => {
@@ -523,7 +523,6 @@ class InventoryStore {
           inventoryId: this.getInventoryId(toSlot).inventoryId
         }
       })
-
     }
   }
 
@@ -540,6 +539,7 @@ class InventoryStore {
 
     this.setModal(true, item, x, y)
   }
+
   doubleClick = id => {
     this.useItem(id)
     this.setModal(false, {}, 0, 0)
