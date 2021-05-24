@@ -3,7 +3,7 @@
     position: absolute;
     width: 1240px;
     height: 660px;
-    background: url('../img/outside_bg.png') 100% no-repeat;
+    background: url('../img/outside_bg.svg') 100% no-repeat;
     top: 50%;
     left: 50%;
     margin-left: -620px;
@@ -17,7 +17,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      color: #343434;
+      color: white;
       line-height: 35px;
 
       &__icon {
@@ -57,7 +57,8 @@
       &__button {
         width: 277px;
         height: 77px;
-        background: url('../img/outside_bg_button1.svg') 100% no-repeat;
+        background-size: 140% 140%;
+        background: url('../img/outside_bg_button1.svg') no-repeat 50% 50%;
         display: flex;
         cursor: pointer;
 
@@ -65,7 +66,7 @@
           margin: auto;
           font-weight: 500;
           font-size: 24px;
-          color: #ffffff;
+          color: #343434;
         }
       }
     }
@@ -77,7 +78,7 @@
       flex-direction: column;
       align-items: center;
       padding-top: 80px;
-      color: #343434;
+      color: white;
       line-height: 35px;
 
       &__title {

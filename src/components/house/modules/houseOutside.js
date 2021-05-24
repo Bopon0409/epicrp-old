@@ -35,7 +35,7 @@ export default observer(() => {
         <div className="main__number">№{houseNumber}</div>
         <div className="owner">
           <div className="owner__text">Владелец</div>
-          <div className="owner__name">{owner}</div>
+          <div className="owner__name">{owner || 'Государство'}</div>
         </div>
         <div className="main__button" onClick={enterHouse}>
           <div className="text">Войти</div>

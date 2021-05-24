@@ -7,7 +7,7 @@
     left: 50%;
     margin-left: -635px;
     margin-top: -262px;
-    background-image: url('../img/roommates_bg.png');
+    background-image: url('../img/roommates_bg.svg');
     display: flex;
     justify-content: space-between;
     padding-top: 75px;
@@ -18,7 +18,7 @@
       font-weight: 500;
       font-size: 24px;
       line-height: 35px;
-      color: #000000;
+      color: white;
       margin-bottom: 30px;
     }
 
@@ -34,7 +34,7 @@
         font-weight: 500;
         font-size: 18px;
         line-height: 35px;
-        color: #000000;
+        color: white;
         margin-bottom: 18px;
       }
 
@@ -43,13 +43,14 @@
         font-weight: 500;
         font-size: 24px;
         line-height: 35px;
-        color: #343434;
+        color: white;
         align-self: flex-start;
         text-align: center;
         margin-bottom: 40px;
       }
 
       .roommate__member-active {
+        color: #343434;
         background: linear-gradient(269.95deg, #f2c94c 4.55%, #f2c94c 99.96%);
       }
 
@@ -89,7 +90,7 @@
             font-weight: bold;
             font-size: 16px;
             line-height: 35px;
-            color: #343434;
+            color: white;
           }
         }
       }
@@ -105,8 +106,8 @@
         width: 210px;
         height: 65px;
         background-image: url("../img/roommates_button.svg");
-        background-size: 120% 120%;
-        background-position: 50%;
+        background-size: 140% 140%;
+        background-position: 50% 50%;
         display: flex;
         margin-top: 60px;
         cursor: pointer;
@@ -127,7 +128,7 @@
         font-weight: 500;
         font-size: 16px;
         line-height: 35px;
-        color: #343434;
+        color: white;
         margin-bottom: 15px;
 
         .info__value {

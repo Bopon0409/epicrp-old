@@ -11,11 +11,11 @@
   "price": 3000000,
   "capabilities": {
     "enterGarage": true,
-    "lockHouse": false,
-    "lockCupboard": false,
-    "sell": false,
-    "pay": false,
-    "roommatesManager": false,
+    "lockHouse": true,
+    "lockCupboard": true,
+    "sell": true,
+    "pay": true,
+    "roommatesManager": true,
     "garageManager": true
   },
   "roommates": [

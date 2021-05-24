@@ -35,7 +35,7 @@ export default observer(() => {
       <div className="roommates">
         <div className="members">
           <div className="title">Владелец дома</div>
-          <div className="roommate__member">{owner}</div>
+          <div className="roommate__member">{owner || 'Государство'}</div>
           <div className="title">Жильца дома</div>
           <div className="roommates__list scroll">{roommatesList}</div>
         </div>
