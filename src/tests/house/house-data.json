@@ -224,7 +224,21 @@
       ]
     }
   ],
-  "carList": [
+  "garage": [
+    {
+      "placeId": 1,
+      "carId": 1,
+      "carName": "AUDI RS7 A666AA",
+      "carOwner": "Ched nocksfeel",
+      "color": "blue"
+    },
+    {
+      "placeId": 3,
+      "carId": 2,
+      "carName": "AUDI RS7 A666AA",
+      "carOwner": "Ched nocksfeel 2",
+      "color": "white"
+    },
     {
       "placeId": 101,
       "carId": 3,
@@ -278,32 +292,8 @@
       "placeId": 108,
       "carId": 10,
       "carName": "AUDI RS7 A666AA",
-      "color": "green",
-      "carOwner": "Ched nocksfeel"
-    }
-  ],
-  "garage": [
-    {
-      "placeId": 1,
-      "carId": 1,
-      "carName": "AUDI RS7 A666AA",
       "carOwner": "Ched nocksfeel",
-      "color": "blue"
-    },
-    {
-      "placeId": 2,
-      "carId": null
-    },
-    {
-      "placeId": 3,
-      "carId": 2,
-      "carName": "AUDI RS7 A666AA",
-      "carOwner": "Ched nocksfeel 2",
-      "color": "white"
-    },
-    {
-      "placeId": 4,
-      "carId": null
+      "color": "green"
     }
   ]
 }

@@ -8,16 +8,19 @@ import CarListItem                 from './car-list-item'
 import Car                         from './car'
 
 export default observer(() => {
-  const { carList, garage, dragId } = store.state
-  const { swap, dragStart, carColor, overlayRotate } = store
+  const {
+    swap, dragStart, carColor, overlayRotate, carList, getGarageItem
+  } = store
 
   const carListView = carList.map(car =>
     <CarListItem car={car} key={`car-list ${car.carId}`} />
   )
 
-  const garageView = garage.map(car =>
-    <GarageItem car={car} key={`garage ${car.placeId}`} />
-  )
+  const garageList = []
+  for (let i = 1; i <= 4; i++) {
+    const car = getGarageItem(i)
+    garageList.push(<GarageItem car={car} key={`garage ${i}`} />)
+  }
 
   return (
     <div className='garage'>
@@ -34,13 +37,13 @@ export default observer(() => {
         </div>
 
         <DragOverlay>
-          {dragId !== 0 ? (
+          {store.state.dragId !== 0 ? (
             <Car color={carColor} type={overlayRotate} />
           ) : null}
         </DragOverlay>
 
         <div className='garage-body'>
-          {garageView}
+          {garageList}
         </div>
       </DndContext>
     </div>

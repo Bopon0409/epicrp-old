@@ -6,7 +6,7 @@ class HouseStore {
   }
 
   state = {
-    mode: 3,
+    mode: 0,
     capabilities: {
       enterGarage: true,
       lockHouse: true,
@@ -141,16 +141,7 @@ class HouseStore {
   get carColor () {
     const { dragId } = this.state
     if (dragId === 0) return ''
-
-    switch (true) {
-      case dragId < 100:
-        return this.state.garage.find(({ placeId }) => placeId === dragId).color
-      case dragId >= 101 && dragId < 200 :
-        return this.state.carList
-          .find(({ placeId }) => placeId === dragId)?.color
-      default:
-        return 'white'
-    }
+    return this.state.garage.find(({ placeId }) => placeId === dragId).color
   }
 
   get overlayRotate () {
@@ -163,52 +154,34 @@ class HouseStore {
       case dragId >= 101 && dragId < 200 :
         return 'list'
       default:
-        return 'white'
+        return ''
     }
   }
 
   dragStart = ({ active }) => this.state.dragId = active.id
 
+  getGarageItem = id => {
+    return this.state.garage.find(({ placeId }) => placeId === id) ||
+      { carId: null, placeId: id }
+  }
+
+  get carList () {
+    return this.state.garage.filter(({ placeId }) => placeId >= 101)
+      .sort((item1, item2) => item1.placeId - item2.placeId)
+  }
+
   swap = event => {
     this.state.dragId = 0
     if (!event.over) return
     const { active: { id: slotFrom }, over: { id: slotTo } } = event
-    // Перемещение в рамках гаража
-    if (slotFrom < 100 && slotTo < 100)
-      this.garageSwap(slotFrom, slotTo)
-    // Из списка автомобилей в гараж
-    if (slotFrom >= 101 && slotFrom < 200 && slotTo < 100)
-      this.moveCarToGarage(slotFrom, slotTo)
-
+    this.garageSwap(slotFrom, slotTo)
   }
 
   garageSwap = (slotFrom, slotTo) => {
-    const indexTo = this.state.garage
-      .findIndex(({ placeId }) => placeId === slotTo)
-    const indexFrom = this.state.garage
-      .findIndex(({ placeId }) => placeId === slotFrom)
-    const list = this.state.garage
-    ;[list[indexTo], list[indexFrom]] = [list[indexFrom], list[indexTo]]
-  }
-
-  moveCarToGarage = (slotFrom, slotTo) => {
-    const { garage, carList } = this.state
-    const isSwap = !!garage
-      .find(({ placeId, carId }) => placeId === slotTo && carId)
-
-    const garageIndex = this.state.garage
-      .findIndex(({ placeId }) => placeId === slotTo)
-    const moveCar = JSON.parse(JSON.stringify(
-      carList.find(({ placeId }) => placeId === slotFrom)
-    ))
-    moveCar.placeId = garageIndex + 1
-    this.state.garage[garageIndex] = moveCar
-
-    if (isSwap) {
-
-    } else {
-      this.state.carList = carList.filter(({ placeId }) => placeId !== slotFrom)
-    }
+    const item1 = this.state.garage.find(({ placeId }) => placeId === slotFrom)
+    const item2 = this.state.garage.find(({ placeId }) => placeId === slotTo)
+    if (item1) item1.placeId = slotTo
+    if (item2) item2.placeId = slotFrom
   }
 }
 

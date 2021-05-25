@@ -5,7 +5,7 @@ import Car              from './car'
 import carEmpty         from '../img/car_empty.svg'
 import Draggable        from './draggable'
 
-export default function ({ car }) {
+export default function GarageItem ({ car }) {
   const { placeId, carId, color, carName, carOwner } = car
   const classes = classNames('garage__item',
     !carId && 'garage__item-empty'
