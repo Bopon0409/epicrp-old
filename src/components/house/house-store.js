@@ -127,7 +127,9 @@ class HouseStore {
   }
 
   sellHouse = () => {
-    window.frontTrigger('house.sell', this.state.houseNumber)
+    this.state.owner ?
+      window.frontTrigger('house.sell', this.state.houseNumber) :
+      window.frontTrigger('house.buy', this.state.houseNumber)
   }
 
   enterHouse = () => {

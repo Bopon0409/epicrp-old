@@ -178,6 +178,10 @@
 
 - `mp.trigger('house.sell', houseNumber: number)`
 
+Покупка дома
+
+- `mp.trigger('house.buy', houseNumber: number)`
+
 Открытие/Закрытие шкафа
 
 - `mp.trigger('house.lock.access', houseNumber: numb, memberId: num, settingName: str, settingValue: str)`
