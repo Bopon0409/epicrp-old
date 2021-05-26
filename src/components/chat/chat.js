@@ -7,7 +7,7 @@ import chatInputIcon from './images/chat-input-icon.svg'
 
 export default observer(() => {
   const { active, isShow } = store.state
-  const { pushMessage, onInputChange } = store
+  const { pushMessage, onInputChange, setChatActive } = store
 
   const scrollRef = useRef()
   const inputRef = useRef()
@@ -58,8 +58,9 @@ export default observer(() => {
           alt=''
           className='chat-input-icon'
           onClick={() => {
-            pushMessage()
             scrollingOnPushMsg()
+            pushMessage()
+            setChatActive(false)
           }}
         />
       </div>

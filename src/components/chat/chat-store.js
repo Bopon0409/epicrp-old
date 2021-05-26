@@ -59,7 +59,6 @@ class ChatStore {
 
   pushChatMsgFromClient = msg => {
     const { messages } = this.state
-    console.log(messages.length)
     if (msg.type) {
       messages.push(msg)
       if (messages.length > this.MAX_CHAT_MESSAGES) messages.shift()

@@ -9,6 +9,7 @@ export default observer(() => {
   const { setStep, finishCreate } = store
   const [prevActive, setPrevActive] = useState(false)
   const [nextActive, setNextActive] = useState(false)
+  const randomHandler = () => window.frontTrigger('character.random')
 
   const prevBtnClasses = prevActive
     ? 'transition__prev transition__prev_active'
@@ -20,6 +21,9 @@ export default observer(() => {
 
   return (
     <div className='transition'>
+      <div className='transition__random' onClick={randomHandler}>
+        Случайно
+      </div>
       <div
         className={prevBtnClasses} onClick={() => setStep(step - 1)}
         onMouseEnter={() => setPrevActive(true)}

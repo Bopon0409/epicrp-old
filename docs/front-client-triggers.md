@@ -52,6 +52,10 @@
 
 - `mp.trigger('character.menu.change', menu: number)`
 
+Пользователь нажал кнопку случайно
+
+- `mp.trigger('character.random')`
+
 Пользователь закончил создание персонажа
 
 - `mp.trigger('character.created')`
