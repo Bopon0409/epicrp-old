@@ -8,7 +8,7 @@ import GarageRoommates from './garage-roommates'
 import Overlay         from './overlay'
 
 export default observer(() => {
-  const { swap, dragStart, getGarageItem } = store
+  const { swap, dragStart, getGarageItem, isOwner } = store
   const garageList = []
   for (let i = 1; i <= 4; i++) {
     garageList.push(<GarageItem car={getGarageItem(i)} key={`garage ${i}`} />)
@@ -19,7 +19,7 @@ export default observer(() => {
       <DndContext onDragEnd={e => swap(e)} onDragStart={e => dragStart(e)}>
         <div className='garage-body'>{garageList}</div>
         <CarList />
-        <GarageRoommates />
+        {isOwner && <GarageRoommates />}
         <Overlay />
       </DndContext>
     </div>

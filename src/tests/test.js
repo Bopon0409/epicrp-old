@@ -14,10 +14,6 @@ import './house/house.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  // window.test.house.setData()
-  // window.trigger('house.mode', 3)
-  window.test.chat.setChatShow(true)
-  window.test.chat.testChatPushMsg()
-  window.test.hud.setAllData()
-  window.test.hud.setActive(true)
+  window.test.house.setData()
+  window.trigger('house.mode', 3)
 }

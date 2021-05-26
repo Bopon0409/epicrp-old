@@ -75,11 +75,6 @@
       "online": false,
       "cars": [
         {
-          "carId": 2,
-          "carName": "AUDI RS7 A666AA",
-          "color": "white"
-        },
-        {
           "carId": 130,
           "carName": "AUDI RS7 A666AA",
           "color": "white"

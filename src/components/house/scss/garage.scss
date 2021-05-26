@@ -141,6 +141,13 @@
           text-transform: uppercase;
           text-align: center;
 
+          .remove-icon {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            margin-left: -10px;
+          }
+
           .title1 {
             font-weight: 500;
             font-size: 14px;

@@ -27,7 +27,6 @@ class HouseStore {
     garageAvailability: false,
     garagePlaceQuantity: 0,
     price: 0,
-    currentRoommateId: 0,
     roommates: [],
     garage: [],
     dragId: 0,
@@ -59,6 +58,10 @@ class HouseStore {
     if (data.owner) this.state.owner = data.owner
     if (data.open) this.state.open = data.open
     if (data.tax) this.state.tax = data.tax
+  }
+
+  get isOwner () {
+    return this.state.userName === this.state.owner
   }
 
   get headerData () {
@@ -206,7 +209,20 @@ class HouseStore {
   }
 
   roommateSet = (slotFrom, slotTo) => {
-    console.log(slotFrom, slotTo)
+    const car = this.state.roommates[slotFrom - 300].cars[0]
+    car.carOwner = this.state.roommates[slotFrom - 300].name
+    car.placeId = slotTo
+    this.state.garage.push(car)
+    this.state.roommates[slotFrom - 300].cars.shift()
+  }
+
+  carRemove = car => {
+    const roommate = this.state.roommates
+      .find(({ name }) => car.carOwner === name)
+    // console.log(roommate)
+    roommate.cars.push(car)
+    this.state.garage = this.state.garage
+      .filter(item => item.carId !== car.carId)
   }
 
   garageSwap = (slotFrom, slotTo) => {
