@@ -1,7 +1,15 @@
 [
   {
     "type": "error",
-    "text": "Alert1"
+    "text": "ALERT1"
+  },
+  {
+    "type": "dialogue",
+    "text": "Гражданин (35) предлагает Вам познакомиться"
+  },
+  {
+    "type": "error",
+    "text": "ALERT1"
   },
   {
     "type": "confirm",

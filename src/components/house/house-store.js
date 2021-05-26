@@ -18,6 +18,7 @@ class HouseStore {
     },
     houseNumber: 0,
     owner: '',
+    userName: '',
     open: false,
     cupboardOpen: true,
     houseClass: '',
@@ -29,8 +30,8 @@ class HouseStore {
     currentRoommateId: 0,
     roommates: [],
     garage: [],
-    carList: [],
-    dragId: 0
+    dragId: 0,
+    sliderPosition: 0
   }
 
   setMode = mode => {
@@ -51,6 +52,7 @@ class HouseStore {
     if (data.houseNumber) this.state.houseNumber = data.houseNumber
     if (data.houseClass) this.state.houseClass = data.houseClass
     if (data.roommates) this.state.roommates = data.roommates
+    if (data.userName) this.state.userName = data.userName
     if (data.carList) this.state.carList = data.carList
     if (data.garage) this.state.garage = data.garage
     if (data.price) this.state.price = data.price
@@ -140,10 +142,13 @@ class HouseStore {
     window.frontTrigger('house.enter.garage', this.state.houseNumber)
   }
 
+  //================================   OverLay   ===============================
+
   get carColor () {
     const { dragId } = this.state
     if (dragId === 0) return ''
-    return this.state.garage.find(({ placeId }) => placeId === dragId).color
+    return this.state.garage.find(({ placeId }) => placeId === dragId)?.color ||
+      'green'
   }
 
   get overlayRotate () {
@@ -156,9 +161,15 @@ class HouseStore {
       case dragId >= 101 && dragId < 200 :
         return 'list'
       default:
-        return ''
+        return 'list'
     }
   }
+
+  get roommateDragName () {
+    return this.roommatesGarageList[this.state.dragId - 300]?.name || ''
+  }
+
+  //===============================   DragNDrop   ==============================
 
   dragStart = ({ active }) => this.state.dragId = active.id
 
@@ -167,23 +178,78 @@ class HouseStore {
       { carId: null, placeId: id }
   }
 
-  get carList () {
-    return this.state.garage.filter(({ placeId }) => placeId >= 101)
-      .sort((item1, item2) => item1.placeId - item2.placeId)
+  get freeSlot () {
+    for (let i = 101; i < 200; i++) {
+      if (!this.getGarageItem(i).carId) return i
+    }
+    return null
   }
 
   swap = event => {
     this.state.dragId = 0
     if (!event.over) return
+
     const { active: { id: slotFrom }, over: { id: slotTo } } = event
-    this.garageSwap(slotFrom, slotTo)
+    if (slotFrom === slotTo || (slotFrom > 100 && slotTo === 100)) return
+
+    if (slotFrom >= 300) return this.roommateSet(slotFrom, slotTo)
+    if (slotTo !== 100) this.garageSwap(slotFrom, slotTo)
+    if (slotTo === 100) this.garageSwap(slotFrom, this.freeSlot)
+  }
+
+  sliderPositionCheck = (slotFrom, slotTo) => {
+    const { sliderPosition } = this.state
+    const check1 = slotFrom > 100 && slotTo < 100
+    const check2 = (sliderPosition + 4) === this.carListSize
+    const check3 = !this.getGarageItem(slotTo).carId
+    if (check1 && check2 && check3) this.state.sliderPosition--
+  }
+
+  roommateSet = (slotFrom, slotTo) => {
+    console.log(slotFrom, slotTo)
   }
 
   garageSwap = (slotFrom, slotTo) => {
     const item1 = this.state.garage.find(({ placeId }) => placeId === slotFrom)
     const item2 = this.state.garage.find(({ placeId }) => placeId === slotTo)
+
+    // Проверка на изменение позиции слайдера
+    this.sliderPositionCheck(slotFrom, slotTo)
+
+    // Проверка на владельца автомобиля
+    const { userName } = this.state
+    if (item1 && item1.carOwner !== userName) return
+    if (item2 && item2.carOwner !== userName) return
+
     if (item1) item1.placeId = slotTo
     if (item2) item2.placeId = slotFrom
+  }
+
+  get roommatesGarageList () {
+    return this.state.roommates.filter(({ cars }) => cars.length)
+  }
+
+  //===============================   Car List   ===============================
+
+  get carListSize () {
+    return this.state.garage.filter(({ placeId }) => placeId >= 101).length
+  }
+
+  sliderInc = () => {
+    const { sliderPosition } = this.state
+    if ((sliderPosition + 4) < this.carListSize) this.state.sliderPosition++
+  }
+
+  sliderDec = () => {
+    const { sliderPosition } = this.state
+    if (sliderPosition > 0) this.state.sliderPosition--
+  }
+
+  get carList () {
+    const { garage, sliderPosition } = this.state
+    return garage.filter(({ placeId }) => placeId >= 101)
+      .sort((car1, car2) => car1.placeId - car2.placeId)
+      .slice(sliderPosition, sliderPosition + 4)
   }
 }
 

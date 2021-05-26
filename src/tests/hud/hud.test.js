@@ -20,7 +20,7 @@ const testAlerts = () => {
   const interval = setInterval(() => {
     window.trigger('hud.notify', JSON.stringify(alertsData[counter++]))
     if (counter === 5) clearInterval(interval)
-  }, 2000)
+  }, 500)
 }
 
 window.test.hud = {

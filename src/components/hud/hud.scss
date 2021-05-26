@@ -20,7 +20,7 @@
       font-weight: bold;
       font-size: 18px;
       line-height: 25px;
-      color: #FFFFFF;
+      color: #ffffff;
       filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.5));
     }
 
@@ -31,7 +31,7 @@
       display: flex;
       align-items: center;
       text-align: center;
-      color: #FFFFFF;
+      color: #ffffff;
       background: #efbd42;
       padding: 2px 8px;
       margin: 0 10px;
@@ -119,6 +119,54 @@
     svg { filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.5)); }
   }
 
+  .progress {
+    width: 100%;
+    height: 3px;
+    border-radius: 1px;
+  }
+
+  .progress-bar {
+    height: 3px;
+    width: 0;
+    border-radius: 1px;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.05)
+    );
+    transition: 0.01s linear;
+    transition-property: width, background-color;
+  }
+
+  .progress-confirm {
+    background: linear-gradient(90deg, rgba(72, 222, 114, 0.8) 0%, rgba(0, 118, 33, 0.8) 99.99%);
+    box-shadow: 0 0 5px 1px rgba(87, 161, 108, 0.5);
+  }
+
+  .progress-error {
+    background: linear-gradient(90deg, rgba(222, 72, 72, 0.8) 0%, rgba(118, 0, 0, 0.8) 99.99%);
+    box-shadow: 0 0 5px 1px rgba(161, 87, 87, 0.5);
+  }
+
+  .progress-warning {
+    background: linear-gradient(270deg, rgba(230, 150, 30, 0.8) 0%, rgba(242, 201, 76, 0.8) 100.00%);
+    box-shadow: 0 0 5px 1px rgba(242, 201, 76, 0.5);
+  }
+
+  .progress-moved .progress-bar {
+    animation: progressAnimation 14s;
+  }
+
+  @keyframes progressAnimation {
+    0% {
+      width: 100%;
+    }
+
+    100% {
+      width: 0;
+    }
+  }
+
   .alerts {
     z-index: 3;
     position: absolute;
@@ -128,20 +176,87 @@
     bottom: 50px;
     color: white;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    .alert-out {
-      animation: alert-out-animation 1s;
-    }
+    .alert-dialogue {
+      width: 650px;
+      height: 100px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-content: flex-start;
+      margin-bottom: 10px;
 
-    @keyframes alert-out-animation {
-      0% {
-        opacity: 1;
-        left: 0;
+      .head {
+        position: relative;
+        width: 100%;
+        height: 60px;
+        display: flex;
+        flex-direction: column;
+        align-content: space-between;
+        background: rgba(0, 0, 0, 0.5);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+        .text {
+          width: 100%;
+          margin: auto;
+          font-size: 18px;
+          line-height: 28px;
+          color: #ffffff;
+        }
       }
 
-      100% {
-        opacity: 0;
-        left: 300px;
+      .button {
+        margin-top: 10px;
+        width: 280px;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        .button__key {
+          width: 40px;
+          height: 100%;
+          display: flex;
+          background: rgba(0, 0, 0, 0.8);
+
+          .text {
+            margin: auto;
+            font-weight: 600;
+            font-size: 22px;
+            color: #FFFFFF;
+            position: relative;
+            top: 2px;
+          }
+        }
+
+        .button__text {
+          width: 230px;
+          height: 100%;
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          backdrop-filter: blur(30px);
+          display: flex;
+
+          .text {
+            margin: auto;
+            font-weight: 600;
+            font-size: 14px;
+            color: #FFFFFF;
+          }
+        }
+
+        .button__text-accept {
+          background: rgba(236, 192, 44, 0.5);
+          box-shadow: 0 0 50px rgba(236, 192, 44, 0.45);
+        }
+
+        .button__text-cancel {
+          background: rgba(236, 44, 44, 0.5);
+          box-shadow: 0 0 50px rgba(236, 44, 44, 0.45);
+        }
       }
     }
 
@@ -154,10 +269,10 @@
       background: rgba(0, 0, 0, 0.5);
       font-size: 18px;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-      margin-bottom: 5px;
       transition: all 1s;
       left: 0;
       opacity: 1;
+      margin-bottom: 10px;
 
       .img-wrap {
         width: 48px;
@@ -170,39 +285,6 @@
 
       .text {
         padding: 0 10px;
-      }
-
-      .progress {
-        width: 100%;
-        height: 3px;
-        border-radius: 1px;
-      }
-
-      .progress-bar {
-        height: 3px;
-        width: 0;
-        border-radius: 1px;
-        background-image: linear-gradient(
-            to bottom,
-            rgba(255, 255, 255, 0.3),
-            rgba(255, 255, 255, 0.05)
-        );
-        transition: 0.4s linear;
-        transition-property: width, background-color;
-      }
-
-      .progress-moved .progress-bar {
-        animation: progressAnimation 14s;
-      }
-
-      @keyframes progressAnimation {
-        0% {
-          width: 100%;
-        }
-
-        100% {
-          width: 0;
-        }
       }
     }
   }

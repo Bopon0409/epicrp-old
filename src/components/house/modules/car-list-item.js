@@ -1,15 +1,21 @@
-import React     from 'react'
-import Car       from './car'
-import Draggable from './draggable'
+import React        from 'react'
+import { observer } from 'mobx-react-lite'
+import store        from '../house-store'
+import Car          from './car'
+import Draggable    from './draggable'
 
-export default function CarListItem ({ car }) {
+export default observer(({ car }) => {
   const { carName, placeId, color } = car
   return (
     <Draggable id={placeId}>
       <div className='car-list__item'>
-        <Car color={color} type={'list'} />
-        <div className='car-name'>{carName}</div>
+        {store.state.dragId !== placeId && (
+          <>
+            <Car color={color} type={'list'} />
+            <div className='car-name'>{carName}</div>
+          </>
+        )}
       </div>
     </Draggable>
   )
-}
+})

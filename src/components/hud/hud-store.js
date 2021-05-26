@@ -48,7 +48,8 @@ class HudStore {
     },
     alerts: [],
     alertsCount: 0,
-    turnAlerts: []
+    turnAlerts: [],
+    dialogueTimer: null
   }
 
   setHudActive = active => (this.state.active = active)
@@ -64,11 +65,27 @@ class HudStore {
       this.state.turnAlerts.unshift(alert)
     } else {
       this.state.alerts.unshift(alert)
-      setTimeout(this.deleteAlert, 15000)
+      const timer = setTimeout(() => this.deleteAlert(alert.id), 15000)
+      if (alert.type === 'dialogue') this.state.dialogueTimer = timer
     }
   }
 
-  deleteAlert = () => this.state.alerts.pop()
+  deleteAlert = id => {
+    this.state.alerts = this.state.alerts.filter(alert => alert.id !== id)
+  }
+
+  dialogueAccept = id => {
+    window.frontTrigger('hud.dialogue.accept')
+    this.deleteAlert(id)
+    clearTimeout(this.state.dialogueTimer)
+
+  }
+
+  dialogueDecline = id => {
+    window.frontTrigger('hud.dialogue.decline')
+    this.deleteAlert(id)
+    clearTimeout(this.state.dialogueTimer)
+  }
 }
 
 export default new HudStore()

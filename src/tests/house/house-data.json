@@ -1,6 +1,7 @@
 {
+  "userName": "Ched nocksfeel",
   "houseNumber": 52,
-  "owner": null,
+  "owner": "Ched nocksfeel",
   "open": false,
   "cupboardOpen": false,
   "houseClass": "S",
@@ -26,6 +27,18 @@
       "rentPrice": 4000,
       "garagePlace": null,
       "online": false,
+      "cars": [
+        {
+          "carId": 120,
+          "carName": "AUDI RS7 A666AA",
+          "color": "blue"
+        },
+        {
+          "carId": 121,
+          "carName": "AUDI RS7 A666AA",
+          "color": "blue"
+        }
+      ],
       "access": [
         {
           "name": "Доступ к шкафу",
@@ -60,6 +73,18 @@
       "rentPrice": 4000,
       "garagePlace": 3,
       "online": false,
+      "cars": [
+        {
+          "carId": 2,
+          "carName": "AUDI RS7 A666AA",
+          "color": "white"
+        },
+        {
+          "carId": 130,
+          "carName": "AUDI RS7 A666AA",
+          "color": "white"
+        }
+      ],
       "access": [
         {
           "name": "Доступ к шкафу",
@@ -94,6 +119,18 @@
       "rentPrice": 4000,
       "garagePlace": null,
       "online": false,
+      "cars": [
+        {
+          "carId": 122,
+          "carName": "AUDI RS7 A666AA",
+          "color": "green"
+        },
+        {
+          "carId": 123,
+          "carName": "AUDI RS7 A666AA",
+          "color": "green"
+        }
+      ],
       "access": [
         {
           "name": "Доступ к шкафу",
@@ -128,6 +165,18 @@
       "rentPrice": 4000,
       "garagePlace": null,
       "online": false,
+      "cars": [
+        {
+          "carId": 124,
+          "carName": "AUDI RS7 A666AA",
+          "color": "black"
+        },
+        {
+          "carId": 125,
+          "carName": "AUDI RS7 A666AA",
+          "color": "black"
+        }
+      ],
       "access": [
         {
           "name": "Доступ к шкафу",
@@ -162,6 +211,7 @@
       "rentPrice": 4000,
       "garagePlace": null,
       "online": false,
+      "cars": [ ],
       "access": [
         {
           "name": "Доступ к шкафу",
@@ -196,6 +246,7 @@
       "rentPrice": 4000,
       "garagePlace": null,
       "online": false,
+      "cars": [ ],
       "access": [
         {
           "name": "Доступ к шкафу",
@@ -264,28 +315,28 @@
       "placeId": 104,
       "carId": 6,
       "carName": "AUDI RS7 A666AA",
-      "color": "green",
+      "color": "darkblue",
       "carOwner": "Ched nocksfeel"
     },
     {
       "placeId": 105,
       "carId": 7,
       "carName": "AUDI RS7 A666AA",
-      "color": "green",
+      "color": "lightgray",
       "carOwner": "Ched nocksfeel"
     },
     {
       "placeId": 106,
       "carId": 8,
       "carName": "AUDI RS7 A666AA",
-      "color": "green",
+      "color": "gray",
       "carOwner": "Ched nocksfeel"
     },
     {
       "placeId": 107,
       "carId": 9,
       "carName": "AUDI RS7 A666AA",
-      "color": "green",
+      "color": "lightgreen",
       "carOwner": "Ched nocksfeel"
     },
     {
@@ -293,7 +344,7 @@
       "carId": 10,
       "carName": "AUDI RS7 A666AA",
       "carOwner": "Ched nocksfeel",
-      "color": "green"
+      "color": "black"
     }
   ]
 }
