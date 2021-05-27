@@ -1,5 +1,5 @@
 {
-  "userName": "Ched nocksfeel",
+  "userName": "Ched nocksfeel 2",
   "houseNumber": 52,
   "owner": "Ched nocksfeel",
   "open": false,
@@ -14,7 +14,7 @@
     "enterGarage": true,
     "lockHouse": true,
     "lockCupboard": true,
-    "sell": true,
+    "sell": false,
     "pay": true,
     "roommatesManager": true,
     "garageManager": true
@@ -290,55 +290,55 @@
       "carId": 3,
       "carName": "AUDI RS7 A666AA",
       "color": "blue",
-      "carOwner": "Ched nocksfeel"
+      "carOwner": "Ched nocksfeel 2"
     },
     {
       "placeId": 102,
       "carId": 4,
       "carName": "AUDI RS7 A666AA",
       "color": "white",
-      "carOwner": "Ched nocksfeel"
+      "carOwner": "Ched nocksfeel 2"
     },
     {
       "placeId": 103,
       "carId": 5,
       "carName": "AUDI RS7 A666AA",
       "color": "green",
-      "carOwner": "Ched nocksfeel"
+      "carOwner": "Ched nocksfeel 2"
     },
     {
       "placeId": 104,
       "carId": 6,
       "carName": "AUDI RS7 A666AA",
       "color": "darkblue",
-      "carOwner": "Ched nocksfeel"
+      "carOwner": "Ched nocksfeel 2"
     },
     {
       "placeId": 105,
       "carId": 7,
       "carName": "AUDI RS7 A666AA",
       "color": "lightgray",
-      "carOwner": "Ched nocksfeel"
+      "carOwner": "Ched nocksfeel 2"
     },
     {
       "placeId": 106,
       "carId": 8,
       "carName": "AUDI RS7 A666AA",
       "color": "gray",
-      "carOwner": "Ched nocksfeel"
+      "carOwner": "Ched nocksfeel 2"
     },
     {
       "placeId": 107,
       "carId": 9,
       "carName": "AUDI RS7 A666AA",
       "color": "lightgreen",
-      "carOwner": "Ched nocksfeel"
+      "carOwner": "Ched nocksfeel 2"
     },
     {
       "placeId": 108,
       "carId": 10,
       "carName": "AUDI RS7 A666AA",
-      "carOwner": "Ched nocksfeel",
+      "carOwner": "Ched nocksfeel 2",
       "color": "black"
     }
   ]

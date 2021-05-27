@@ -17,7 +17,7 @@ class HouseStore {
       garageManager: true
     },
     houseNumber: 0,
-    owner: '',
+    owner: null,
     userName: '',
     open: false,
     cupboardOpen: true,
@@ -131,11 +131,9 @@ class HouseStore {
     window.frontTrigger('house.lock.cupboard', houseNumber, !cupboardOpen)
   }
 
-  sellHouse = () => {
-    this.state.owner ?
-      window.frontTrigger('house.sell', this.state.houseNumber) :
-      window.frontTrigger('house.buy', this.state.houseNumber)
-  }
+  sellHouse = () => window.frontTrigger('house.sell', this.state.houseNumber)
+
+  buyHouse = () => window.frontTrigger('house.buy', this.state.houseNumber)
 
   enterHouse = () => {
     window.frontTrigger('house.enter.house', this.state.houseNumber)
@@ -200,6 +198,25 @@ class HouseStore {
     if (slotTo === 100) this.garageSwap(slotFrom, this.freeSlot)
   }
 
+  garageSwap = (slotFrom, slotTo) => {
+    const item1 = this.state.garage.find(({ placeId }) => placeId === slotFrom)
+    const item2 = this.state.garage.find(({ placeId }) => placeId === slotTo)
+    // Проверка на изменение позиции слайдера
+    this.sliderPositionCheck(slotFrom, slotTo)
+
+    // Проверка на перемещение чужих автомобилей
+
+    const { userName } = this.state
+    if (item1 && item1.carOwner !== userName) return
+    if (item2 && item2.carOwner !== userName) return
+
+    // Проверка на перемещение в пустой слот (только для хозяина)
+    if (!item2 && slotTo < 100 && !this.isOwner) return
+
+    if (item1) item1.placeId = slotTo
+    if (item2) item2.placeId = slotFrom
+  }
+
   sliderPositionCheck = (slotFrom, slotTo) => {
     const { sliderPosition } = this.state
     const check1 = slotFrom > 100 && slotTo < 100
@@ -223,22 +240,6 @@ class HouseStore {
     roommate.cars.push(car)
     this.state.garage = this.state.garage
       .filter(item => item.carId !== car.carId)
-  }
-
-  garageSwap = (slotFrom, slotTo) => {
-    const item1 = this.state.garage.find(({ placeId }) => placeId === slotFrom)
-    const item2 = this.state.garage.find(({ placeId }) => placeId === slotTo)
-
-    // Проверка на изменение позиции слайдера
-    this.sliderPositionCheck(slotFrom, slotTo)
-
-    // Проверка на владельца автомобиля
-    const { userName } = this.state
-    if (item1 && item1.carOwner !== userName) return
-    if (item2 && item2.carOwner !== userName) return
-
-    if (item1) item1.placeId = slotTo
-    if (item2) item2.placeId = slotFrom
   }
 
   get roommatesGarageList () {

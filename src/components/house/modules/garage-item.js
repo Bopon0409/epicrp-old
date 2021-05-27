@@ -29,7 +29,7 @@ export default observer(({ car }) => {
               <Car color={color} type='top' />
             </Draggable>
             <div className='info'>
-              {carOwner !== userName && (
+              {carOwner !== userName && store.isOwner && (
                 <img src={carRemove} alt='' className='remove-icon'
                   onClick={() => store.carRemove(car)} />
               )}

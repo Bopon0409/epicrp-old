@@ -13,7 +13,7 @@ export default observer(() => {
     garageAvailability, garagePlaceQuantity, price, open
   } = store.state
 
-  const { enterHouse, enterGarage, sellHouse, houseLock } = store
+  const { enterHouse, enterGarage, sellHouse, buyHouse, houseLock } = store
 
   const lockButton = open ? (
     <div className='button button-lock' onClick={houseLock}>
@@ -73,15 +73,20 @@ export default observer(() => {
         <img src={garageIcon} alt='' className='button__icon' />
         <div className='button__text'>Войти в гараж</div>
       </div>
+
       {lockButton}
-      {capabilities.sell && (
+
+      {owner && capabilities.sell && (
         <div className='button button-sell' onClick={sellHouse}>
           <img src={sellIcon} alt='' className='button__icon' />
-          <div className='button__text'>
-            {owner ? 'Продать дом' : 'Купить дом'}
-          </div>
+          <div className='button__text'>Продать дом</div>
         </div>
       )}
+
+      {!owner && <div className='button button-sell' onClick={buyHouse}>
+        <img src={sellIcon} alt='' className='button__icon' />
+        <div className='button__text'>Купить дом</div>
+      </div>}
     </div>
   )
 })
