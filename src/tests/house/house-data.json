@@ -290,55 +290,55 @@
       "carId": 3,
       "carName": "AUDI RS7 A666AA",
       "color": "blue",
-      "carOwner": "Ched nocksfeel 2"
+      "carOwner": "Ched nocksfeel"
     },
     {
       "placeId": 102,
       "carId": 4,
       "carName": "AUDI RS7 A666AA",
       "color": "white",
-      "carOwner": "Ched nocksfeel 2"
+      "carOwner": "Ched nocksfeel"
     },
     {
       "placeId": 103,
       "carId": 5,
       "carName": "AUDI RS7 A666AA",
       "color": "green",
-      "carOwner": "Ched nocksfeel 2"
+      "carOwner": "Ched nocksfeel"
     },
     {
       "placeId": 104,
       "carId": 6,
       "carName": "AUDI RS7 A666AA",
       "color": "darkblue",
-      "carOwner": "Ched nocksfeel 2"
+      "carOwner": "Ched nocksfeel"
     },
     {
       "placeId": 105,
       "carId": 7,
       "carName": "AUDI RS7 A666AA",
       "color": "lightgray",
-      "carOwner": "Ched nocksfeel 2"
+      "carOwner": "Ched nocksfeel"
     },
     {
       "placeId": 106,
       "carId": 8,
       "carName": "AUDI RS7 A666AA",
       "color": "gray",
-      "carOwner": "Ched nocksfeel 2"
+      "carOwner": "Ched nocksfeel"
     },
     {
       "placeId": 107,
       "carId": 9,
       "carName": "AUDI RS7 A666AA",
       "color": "lightgreen",
-      "carOwner": "Ched nocksfeel 2"
+      "carOwner": "Ched nocksfeel"
     },
     {
       "placeId": 108,
       "carId": 10,
       "carName": "AUDI RS7 A666AA",
-      "carOwner": "Ched nocksfeel 2",
+      "carOwner": "Ched nocksfeel",
       "color": "black"
     }
   ]

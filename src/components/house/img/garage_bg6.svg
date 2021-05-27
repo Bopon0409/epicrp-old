@@ -1,0 +1,17 @@
+<svg width="1549" height="206" viewBox="0 0 1549 206" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="1" width="1547" height="1" fill="white"/>
+<rect x="1548" y="1" width="1" height="166" fill="white"/>
+<rect width="1" height="170" transform="matrix(-1 0 0 1 1 1)" fill="white"/>
+<path d="M1548.5 166C1548.5 179 1532.88 205 1496.78 205C1482.75 205 1442.67 198.295 1429.6 167.129C1418.24 140.029 1470.11 46.1036 1490 1.5" stroke="white"/>
+<path d="M0.5 170C0.5 183 -0.0987701 205 36 205C50.0384 205 86 193.081 98 174.5C113.5 150.5 177.5 42.5 202 2" stroke="white"/>
+<path d="M1303.5 1L1207 200" stroke="white"/>
+<path d="M1082.5 1L986 200" stroke="white"/>
+<path d="M861.5 1L765 200" stroke="white"/>
+<path d="M640.5 1L544 200" stroke="white"/>
+<path d="M418.5 1L322 200" stroke="white"/>
+<circle cx="322" cy="200" r="3" fill="white"/>
+<circle cx="544" cy="200" r="3" fill="white"/>
+<circle cx="765" cy="200" r="3" fill="white"/>
+<circle cx="986" cy="200" r="3" fill="white"/>
+<circle cx="1207" cy="200" r="3" fill="white"/>
+</svg>

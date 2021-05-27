@@ -157,10 +157,12 @@ class HouseStore {
     if (dragId === 0) return ''
 
     switch (true) {
-      case dragId < 100:
+      case dragId <= 6:
         return 'top'
       case dragId >= 101 && dragId < 200 :
         return 'list'
+      case dragId > 6 && dragId <= 10:
+        return 'bottom'
       default:
         return 'list'
     }

@@ -112,12 +112,9 @@
 
     .garage-body {
       position: absolute;
-      width: 1110px;
       height: 206px;
-      background: url('../img/garage_bg4.svg');
       top: 50%;
       left: 50%;
-      margin-left: -560px;
       margin-top: -102px;
       box-sizing: border-box;
 
@@ -127,6 +124,7 @@
       padding-left: 155px;
       padding-right: 100px;
       padding-top: 10px;
+      background-repeat: no-repeat;
 
       .garage__car {
         position: relative;
@@ -163,6 +161,15 @@
         }
       }
 
+      .garage__car-bottom {
+        margin-bottom: 20px;
+
+        .info {
+          top: 235px;
+          height: 47px;
+        }
+      }
+
       .garage__item-empty {
         .garage__car {
           display: flex;
@@ -171,6 +178,37 @@
             margin: auto;
           }
         }
+      }
+
+      &-2 {
+        background: url('../img/garage_bg2.svg');
+        width: 675px;
+        margin-left: -337.5px;
+      }
+
+      &-4 {
+        background: url('../img/garage_bg4.svg');
+        width: 1110px;
+        margin-left: -560px;
+      }
+
+      &-6 {
+        background: url('../img/garage_bg6.svg');
+        width: 1549px;
+        margin-left: -775px;
+      }
+
+      &-top {
+        margin-top: -270px;
+      }
+
+      &-bottom {
+        width: 1110px;
+        margin-top: 20px;
+        margin-left: -335px;
+        background: url('../img/garage_bg4-bottom.svg') no-repeat;
+        padding-left: 175px;
+        padding-right: 100px;
       }
     }
   }

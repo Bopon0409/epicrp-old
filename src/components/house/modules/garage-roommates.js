@@ -4,7 +4,7 @@ import store        from '../house-store'
 import Draggable    from './draggable'
 
 export default observer(() => {
-    return (
+    return store.isOwner && (
       <div className='roommates-menu'>
         <div className='hint'>Перетащите сожителя на нужную ячейку</div>
         <div className='roommates-list scroll'>

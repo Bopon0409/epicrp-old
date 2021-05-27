@@ -18,15 +18,19 @@ export default observer(({ car }) => {
   const { isOver, setNodeRef: dropRef } = useDroppable({ id: placeId })
   const style = { color: isOver ? 'green' : undefined }
 
+  const classesGarageCar = classNames('garage__car',
+    placeId >= 7 && placeId <= 10 && 'garage__car-bottom'
+  )
+
   return (
     <div className={classes} ref={dropRef} style={style}>
       {carId ?
 
-        <div className='garage__car'>
+        <div className={classesGarageCar}>
           {dragId !== placeId &&
           <>
             <Draggable id={placeId}>
-              <Car color={color} type='top' />
+              <Car color={color} type={placeId < 7 ? 'top' : 'bottom'} />
             </Draggable>
             <div className='info'>
               {carOwner !== userName && store.isOwner && (
@@ -41,14 +45,15 @@ export default observer(({ car }) => {
         </div>
 
         :
-        <div className='garage__car'>
+        <div className={classesGarageCar}>
           <img src={carEmpty} alt='' className='garage__empty' />
           <div className='info'>
-            <div className='title1'>Место свободно</div>
+            <div className='title1'>
+              {store.isOwner ? 'Место свободно' : 'Место владельца'}
+            </div>
           </div>
         </div>
       }
     </div>
   )
-}
-)
+})
