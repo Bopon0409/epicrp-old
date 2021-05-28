@@ -20,9 +20,7 @@ class AtmStore {
 
     inputData: {
       receiverAccount: '',
-      transferValue: '',
-      withdrawValue: '',
-      topUpValue: ''
+      cash: ''
     }
   }
 
@@ -62,23 +60,14 @@ class AtmStore {
   pinEnterError = ({ error }) => this.state.pin = error
 
   submitHandler = () => {
-    const {
-      receiverAccount,
-      transferValue,
-      withdrawValue,
-      topUpValue
-    } = this.state.inputData
+    const { receiverAccount, cash } = this.state.inputData
     switch (this.state.currentPage) {
       case 'Снятие наличных':
-        return window.frontTrigger('atm.take', withdrawValue)
+        return window.frontTrigger('atm.take', cash)
       case 'Пополнить счёт':
-        return window.frontTrigger('atm.put', topUpValue)
+        return window.frontTrigger('atm.put', cash)
       case 'Перевод средств':
-        return window.frontTrigger(
-          'atm.transfer',
-          receiverAccount,
-          transferValue
-        )
+        return window.frontTrigger('atm.transfer', receiverAccount, cash)
       default:
         return null
     }
@@ -86,69 +75,42 @@ class AtmStore {
 
   get currentInputData () {
     switch (this.state.currentPage) {
-      case 'Снятие наличных':
-        return {
-          value: this.state.inputData.withdrawValue,
-          setValue: this.setCashOutSum
-        }
-      case 'Перевод средств':
-        return {
-          value: this.state.inputData.transferValue,
-          setValue: this.setTransferSum
-        }
       case 'Пополнить счёт':
         return {
-          value: this.state.inputData.topUpValue,
+          value: this.state.inputData.cash,
           setValue: this.setTopUpSum
         }
       default:
-        return null
-    }
-  }
-
-  get transferSubmitBtn () {
-    switch (this.state.currentPage) {
-      case 'Снятие наличных':
-        return 'Снять наличные'
-      case 'Перевод средств':
-        return 'Перевести средства'
-      case 'Пополнить счёт':
-        return 'Пополнить счёт'
-      default:
-        return null
+        return {
+          value: this.state.inputData.cash,
+          setValue: this.setInputData
+        }
     }
   }
 
   setCurrentPage = page => {
-    this.state.currentPage = page
-    this.clearInputs()
-  }
-
-  clearInputs = () => {
-    this.state.inputData = {
-      receiverAccount: '',
-      transferValue: '',
-      withdrawValue: '',
-      topUpValue: ''
+    if (page === 'Функция недоступна') return
+    if (page === 'Выход') this.state.active = false
+    else {
+      this.state.currentPage = page
+      this.clearInputs()
     }
   }
 
-  setTransferSum = val => {
-    val = clearFormatNum(val, ' ')
-    if (!isNaN(val) && Number(val) <= this.balance)
-      this.state.inputData.transferValue = val
+  clearInputs = () => {
+    this.state.inputData = { receiverAccount: '', cash: '' }
   }
 
-  setCashOutSum = val => {
+  setInputData = val => {
     val = clearFormatNum(val, ' ')
     if (!isNaN(val) && Number(val) <= this.balance)
-      this.state.inputData.withdrawValue = val
+      this.state.inputData.cash = val
   }
 
   setTopUpSum = val => {
     val = clearFormatNum(val, ' ')
     if (!isNaN(val) && val.length <= 14)
-      this.state.inputData.topUpValue = val
+      this.state.inputData.cash = val
   }
 
   setReceiverAccount = val => {

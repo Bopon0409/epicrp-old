@@ -1,20 +1,24 @@
-import React from 'react'
+import React        from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../atm-store'
-import Menu from './menu'
-import Transfer from './transfer'
-import backArrow from '../images/back-arrow.svg'
-
+import store        from '../atm-store'
+import Menu         from './menu'
+import Transfer     from './transfer'
+import backArrow    from '../images/back-arrow.svg'
+import { Services } from './services'
 
 export default observer(() => {
   const { currentPage } = store.state
   const { setCurrentPage } = store
 
   const isMenu = currentPage === 'Главное меню'
+  const isServices = currentPage === 'Оплата услуг'
   const isTransfer =
     currentPage === 'Снятие наличных' ||
     currentPage === 'Перевод средств' ||
-    currentPage === 'Пополнить счёт'
+    currentPage === 'Пополнить счёт' ||
+    currentPage === 'Оплатить счёта телефона' ||
+    currentPage === 'Оплата жилья' ||
+    currentPage === 'Оплата бизнеса'
 
   return (
     <div className='atm__body'>
@@ -32,6 +36,7 @@ export default observer(() => {
       </div>
       <div className='body__header-line' />
 
+      {isServices && <Services />}
       {isMenu && <Menu />}
       {isTransfer && <Transfer />}
     </div>

@@ -6,10 +6,11 @@
 
       .menu__col {
         width: 48%;
-        height: 60px;
+        height: 100%;
 
         .menu__item {
           cursor: pointer;
+          height: 72px;
           filter: drop-shadow(0px 15px 20px rgba(242, 241, 254, 0.45));
           background: #f5f5f5;
           box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);

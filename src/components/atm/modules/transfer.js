@@ -6,7 +6,7 @@ import { formatNum } from '../../../services/services'
 export default observer(() => {
   const { value, setValue } = store.currentInputData
   const { receiverAccount } = store.state.inputData
-  const { setReceiverAccount, transferSubmitBtn, submitHandler } = store
+  const { setReceiverAccount, submitHandler } = store
   const { currentPage } = store.state
 
   return (
@@ -34,7 +34,7 @@ export default observer(() => {
       </div>
 
       <div className='transfer__submit-btn' onClick={submitHandler}>
-        {transferSubmitBtn}
+        {currentPage}
       </div>
     </div>
   )

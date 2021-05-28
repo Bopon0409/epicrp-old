@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { observer } from 'mobx-react-lite'
-import store from '../atm-store'
-import MenuIcon from '../svg/menu-icon'
+import { observer }        from 'mobx-react-lite'
+import store               from '../atm-store'
+import MenuIcon            from '../svg/menu-icon'
 
-export default observer(({ data: { title, text, id } }) => {
+export default observer(({ data }) => {
+  const { title, text } = data
   const [isHover, setHover] = useState(false)
   const { setCurrentPage } = store
   return (
@@ -15,7 +16,7 @@ export default observer(({ data: { title, text, id } }) => {
     >
       <div className='item__title'>{title}</div>
       <div className='item__text'>{text}</div>
-      <MenuIcon num={id} active={isHover}/>
+      {data.id ? <MenuIcon num={data.id} active={isHover} /> : null}
     </div>
   )
 })
