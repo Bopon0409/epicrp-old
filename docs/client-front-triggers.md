@@ -55,8 +55,11 @@
 
 ### Банкомат
 
-- `window.trigger('atm.toggle', active: bolean)` - Открыть/закрыть банкомат
-- `window.trigger('atm.update', data: json string)` - Загрузить данные банкомата
+- `window.trigger('atm.active', active: bolean)` - Открыть/закрыть банкомат
+- `window.trigger('atm.data', data: json string)` - Загрузить данные банкомата
+- `window.trigger('atm.enter.success')` - Вход подтверждён
+- `window.trigger('atm.enter.error', '{ error: 'Неверный пин-код' }')` - Ошибка
+  входа
 
 ### Спидометр
 
@@ -79,12 +82,12 @@
 ### Дом
 
 - `window.trigger('house.mode', mode: number)` - Переключение режима дома.
-  - Значения mode:
-    - 0: выключен
-    - 1: меню снаружи
-    - 2: меню внутри
-    - 3: меню гаража
-    - 4: меню сожителей
+    - Значения mode:
+        - 0: выключен
+        - 1: меню снаружи
+        - 2: меню внутри
+        - 3: меню гаража
+        - 4: меню сожителей
 - `window.trigger('house.data', data: json string)` - Загрузить данные планшета
   фракции
 

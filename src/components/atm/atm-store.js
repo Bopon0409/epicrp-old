@@ -8,10 +8,13 @@ class AtmStore {
 
   state = {
     active: false,
-    access: true,
+    access: false,
     pin: '',
-    currentCard: 0,
+
+    currentCard: null,
     currentPage: 'Главное меню',
+    currentHouse: null,
+    currentBusiness: null,
 
     cards: [],
     houses: [],
@@ -31,9 +34,17 @@ class AtmStore {
     if (data.houses) this.state.houses = data.houses
     if (data.businesses) this.state.businesses = data.businesses
     if (data.phoneNumber) this.state.phoneNumber = data.phoneNumber
+    if (data.businesses.length)
+      this.state.currentBusiness = data.businesses[0].id
+    if (data.phoneNumber.length)
+      this.state.currentHouse = data.phoneNumber[0]
   }
 
   setCard = id => this.state.currentCard = id
+
+  setCurrentBusiness = ({ value }) => this.state.currentBusiness = value
+
+  setCurrentHouse = ({ value }) => this.state.currentHouse = value
 
   get balance () {
     const { currentCard } = this.state
@@ -60,14 +71,27 @@ class AtmStore {
   pinEnterError = ({ error }) => this.state.pin = error
 
   submitHandler = () => {
+    const { currentCard, currentHouse, currentBusiness } = this.state
     const { receiverAccount, cash } = this.state.inputData
     switch (this.state.currentPage) {
       case 'Снятие наличных':
-        return window.frontTrigger('atm.take', cash)
+        return window.frontTrigger('atm.take', currentCard, cash)
       case 'Пополнить счёт':
-        return window.frontTrigger('atm.put', cash)
+        return window.frontTrigger('atm.put', currentCard, cash)
+      case 'Оплатить счёта телефона':
+        return window.frontTrigger('atm.pay.phone', currentCard, cash)
+      case 'Оплата бизнеса':
+        return window.frontTrigger('atm.pay.business',
+          currentCard, currentBusiness, cash
+        )
+      case 'Оплата жилья':
+        return window.frontTrigger('atm.pay.house',
+          currentCard, currentHouse, cash
+        )
       case 'Перевод средств':
-        return window.frontTrigger('atm.transfer', receiverAccount, cash)
+        return window.frontTrigger('atm.transfer',
+          currentCard, receiverAccount, cash
+        )
       default:
         return null
     }
@@ -90,11 +114,13 @@ class AtmStore {
 
   setCurrentPage = page => {
     if (page === 'Функция недоступна') return
-    if (page === 'Выход') this.state.active = false
-    else {
-      this.state.currentPage = page
-      this.clearInputs()
+    if (page === 'Выход') {
+      this.state.active = false
+      return window.frontTrigger('atm.exit')
     }
+    this.state.currentPage = page
+    this.clearInputs()
+
   }
 
   clearInputs = () => {

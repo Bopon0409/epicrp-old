@@ -79,10 +79,34 @@
 
 ## Банкомат
 
-- `mp.trigger('atm.put', money: int)` - Пользователь положил деньги на карту
-- `mp.trigger('atm.take', money: int)` - Пользователь снял наличные
-- `mp.trigger('atm.transfer', addressee: int, money: int)` - Пользователь сделал
-  перевод
+Игрок вышел из банкомата
+
+- `mp.trigger('atm.exit')`
+
+Игрок положил деньги на карту
+
+- `mp.trigger('atm.put', cardId: int, money: int)`
+
+Игрок снял наличные
+
+- `mp.trigger('atm.take', cardId: int, money: int)`
+
+Пользователь сделал перевод
+
+- `mp.trigger('atm.transfer', cardId: int, addressee: int, money: int)`
+
+Пользователь оплатит дом
+
+- `mp.trigger('atm.pay.house', cardId: int, houseId: int, money: int)`
+
+Пользователь оплатит бизнес
+
+- `mp.trigger('atm.pay.business', cardId: int, businessId: int, money: int)`
+
+Пользователь мобильную связь
+
+- `mp.trigger('atm.pay.phone', cardId: int, money: int)`
+
 
 ## Планшет фракции
 
