@@ -5,7 +5,7 @@ import { formatNum } from '../../../services/services'
 
 export default observer(() => {
   const { value, setValue } = store.currentInputData
-  const { receiverAccount } = store.state.transferData
+  const { receiverAccount } = store.state.inputData
   const { setReceiverAccount, transferSubmitBtn, submitHandler } = store
   const { currentPage } = store.state
 

@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx'
-import { clearFormatNum } from '../../services/services'
+import { clearFormatNum }     from '../../services/services'
 
 class AtmStore {
   constructor () {
@@ -8,43 +8,71 @@ class AtmStore {
 
   state = {
     active: false,
-    balance: 0,
-    cash: 0,
+    balance: 100000,
+
+    access: false,
+    pin: 'Ошибка',
+
     account: '',
+    cards: [],
+    houses: [],
+    businesses: [],
+
+    phoneNumber: '',
+    currentCard: null,
     currentPage: 'Главное меню',
-    transferData: {
+    inputData: {
       receiverAccount: '',
-      transferSum: 0,
-      cashOutSum: 0,
-      topUpSum: 0
+      transferValue: 0,
+      withdrawValue: 0,
+      topUpValue: 0
     }
   }
 
-  setAtmActive = active => (this.state.active = active)
+  setActive = active => (this.state.active = active)
 
-  updateAtmData = ({ balance, account, cash }) => {
-    this.state.balance = balance
-    this.state.account = account
-    this.state.cash = cash
+  setData = data => {
+    if (data.cards) this.state.cards = data.cards
+    if (data.houses) this.state.houses = data.houses
+    if (data.businesses) this.state.businesses = data.businesses
+    if (data.phoneNumber) this.state.phoneNumber = data.phoneNumber
+  }
+
+  setCard = id => this.state.currentCard = id
+
+  setPin = value => {
+    if (isNaN(this.state.pin)) this.state.pin = ''
+    if (this.state.pin.length < 4) this.state.pin += value
+  }
+
+  clearPin = () => {
+    const { pin } = this.state
+    if (pin.length > 0)
+      this.state.pin = pin.substr(0, pin.length - 1)
+  }
+
+  enterPin = () => {
+    const { currentCard, pin } = this.state
+    window.frontTrigger('atm.enter.pin', currentCard, pin)
   }
 
   submitHandler = () => {
     const {
       receiverAccount,
-      transferSum,
-      cashOutSum,
-      topUpSum
-    } = this.state.transferData
+      transferValue,
+      withdrawValue,
+      topUpValue
+    } = this.state.inputData
     switch (this.state.currentPage) {
       case 'Снятие наличных':
-        return window.frontTrigger('atm.take', cashOutSum)
+        return window.frontTrigger('atm.take', withdrawValue)
       case 'Пополнить счёт':
-        return window.frontTrigger('atm.put', topUpSum)
+        return window.frontTrigger('atm.put', topUpValue)
       case 'Перевод средств':
         return window.frontTrigger(
           'atm.transfer',
           receiverAccount,
-          transferSum
+          transferValue
         )
       default:
         return null
@@ -55,17 +83,17 @@ class AtmStore {
     switch (this.state.currentPage) {
       case 'Снятие наличных':
         return {
-          value: this.state.transferData.cashOutSum,
+          value: this.state.inputData.withdrawValue,
           setValue: this.setCashOutSum
         }
       case 'Перевод средств':
         return {
-          value: this.state.transferData.transferSum,
+          value: this.state.inputData.transferValue,
           setValue: this.setTransferSum
         }
       case 'Пополнить счёт':
         return {
-          value: this.state.transferData.topUpSum,
+          value: this.state.inputData.topUpValue,
           setValue: this.setTopUpSum
         }
       default:
@@ -92,7 +120,7 @@ class AtmStore {
   }
 
   clearInputs = () => {
-    this.state.transferData = {
+    this.state.inputData = {
       receiverAccount: '',
       transferSum: '',
       cashOutSum: '',
@@ -103,25 +131,24 @@ class AtmStore {
   setTransferSum = val => {
     val = clearFormatNum(val, ' ')
     if (!isNaN(val) && Number(val) <= this.state.balance)
-      this.state.transferData.transferSum = val
+      this.state.inputData.transferValue = val
   }
 
   setCashOutSum = val => {
     val = clearFormatNum(val, ' ')
     if (!isNaN(val) && Number(val) <= this.state.balance)
-      this.state.transferData.cashOutSum = val
+      this.state.inputData.withdrawValue = val
   }
 
   setTopUpSum = val => {
     val = clearFormatNum(val, ' ')
-    if (!isNaN(val) && Number(val) <= this.state.cash)
-      this.state.transferData.topUpSum = val
+    if (!isNaN(val)) this.state.inputData.topUpValue = val
   }
 
   setReceiverAccount = val => {
     val = clearFormatNum(val, ' ')
     if (!isNaN(val) && val.length <= 16)
-      this.state.transferData.receiverAccount = val
+      this.state.inputData.receiverAccount = val
   }
 }
 

@@ -1,0 +1,93 @@
+.atm {
+  .card-choice {
+    background: rgba(0, 0, 0, 0.65);
+    position: absolute;
+    bottom: 0;
+    z-index: 14;
+    width: 1116px;
+    height: 900px;
+    display: flex;
+    padding-top: 300px;
+    box-sizing: border-box;
+
+    .card__container {
+      width: 550px;
+      height: 250px;
+      margin: auto;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      .title {
+        font-weight: bold;
+        font-size: 18px;
+        color: #ffffff;
+        text-align: center;
+      }
+
+      .card__list {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .car__item {
+          width: 265px;
+          height: 150px;
+          background: url('../images/card_bg.svg');
+          border-radius: 15px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+          font-weight: 300;
+          line-height: 20px;
+          color: #ffffff;
+          cursor: pointer;
+
+          .card__name {
+            font-size: 12px;
+            margin-bottom: 15px;
+          }
+
+          .card__number {
+            font-size: 15px;
+          }
+
+          &:hover {
+            filter: drop-shadow(0px 0px 100px rgba(66, 113, 255, 0.3));
+          }
+        }
+      }
+
+      .hint {
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 20px;
+        color: #ffffff;
+        text-align: center;
+      }
+
+      .button {
+        width: 380px;
+        height: 48px;
+        display: flex;
+        background: #5165d7;
+        box-shadow: 0 1px 2px rgba(97, 97, 97, 0.2), 0 2px 4px rgba(97, 97, 97, 0.2);
+        border-radius: 8px;
+        cursor: pointer;
+
+        .text {
+          margin: auto;
+          font-weight: bold;
+          font-size: 14px;
+          letter-spacing: 0.05em;
+          text-transform: capitalize;
+          color: #E0E0E0;
+        }
+      }
+    }
+  }
+}

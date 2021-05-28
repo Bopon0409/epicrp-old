@@ -8,8 +8,8 @@ export default observer(() => {
       <div className='roommates-menu'>
         <div className='hint'>Перетащите сожителя на нужную ячейку</div>
         <div className='roommates-list scroll'>
-          {store.roommatesGarageList.map(({ name }, i) =>
-            <Draggable id={300 + i} key={i} classname='roommates__item'>
+          {store.roommatesGarageList.map(({ name, id }) =>
+            <Draggable id={300 + id} key={id} classname='roommates__item'>
               <div className='text'>{name}</div>
             </Draggable>
           )}

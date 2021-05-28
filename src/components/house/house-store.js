@@ -228,11 +228,12 @@ class HouseStore {
   }
 
   roommateSet = (slotFrom, slotTo) => {
-    const car = this.state.roommates[slotFrom - 300].cars[0]
+    const roommate = this.state.roommates.find(({id}) => id === slotFrom - 300)
+    const car = roommate.cars[0]
     car.carOwner = this.state.roommates[slotFrom - 300].name
     car.placeId = slotTo
     this.state.garage.push(car)
-    this.state.roommates[slotFrom - 300].cars.shift()
+    roommate.cars.shift()
   }
 
   carRemove = car => {
