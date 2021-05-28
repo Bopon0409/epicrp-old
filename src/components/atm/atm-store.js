@@ -8,24 +8,21 @@ class AtmStore {
 
   state = {
     active: false,
-    balance: 100000,
+    access: true,
+    pin: '',
+    currentCard: 0,
+    currentPage: 'Главное меню',
 
-    access: false,
-    pin: 'Ошибка',
-
-    account: '',
     cards: [],
     houses: [],
     businesses: [],
-
     phoneNumber: '',
-    currentCard: null,
-    currentPage: 'Главное меню',
+
     inputData: {
       receiverAccount: '',
-      transferValue: 0,
-      withdrawValue: 0,
-      topUpValue: 0
+      transferValue: '',
+      withdrawValue: '',
+      topUpValue: ''
     }
   }
 
@@ -39,6 +36,11 @@ class AtmStore {
   }
 
   setCard = id => this.state.currentCard = id
+
+  get balance () {
+    const { currentCard } = this.state
+    return this.state.cards.find(({ id }) => id === currentCard).balance || ''
+  }
 
   setPin = value => {
     if (isNaN(this.state.pin)) this.state.pin = ''
@@ -55,6 +57,9 @@ class AtmStore {
     const { currentCard, pin } = this.state
     window.frontTrigger('atm.enter.pin', currentCard, pin)
   }
+
+  pinEnterSuccess = () => this.state.access = true
+  pinEnterError = ({ error }) => this.state.pin = error
 
   submitHandler = () => {
     const {
@@ -122,27 +127,28 @@ class AtmStore {
   clearInputs = () => {
     this.state.inputData = {
       receiverAccount: '',
-      transferSum: '',
-      cashOutSum: '',
-      topUpSum: ''
+      transferValue: '',
+      withdrawValue: '',
+      topUpValue: ''
     }
   }
 
   setTransferSum = val => {
     val = clearFormatNum(val, ' ')
-    if (!isNaN(val) && Number(val) <= this.state.balance)
+    if (!isNaN(val) && Number(val) <= this.balance)
       this.state.inputData.transferValue = val
   }
 
   setCashOutSum = val => {
     val = clearFormatNum(val, ' ')
-    if (!isNaN(val) && Number(val) <= this.state.balance)
+    if (!isNaN(val) && Number(val) <= this.balance)
       this.state.inputData.withdrawValue = val
   }
 
   setTopUpSum = val => {
     val = clearFormatNum(val, ' ')
-    if (!isNaN(val)) this.state.inputData.topUpValue = val
+    if (!isNaN(val) && val.length <= 14)
+      this.state.inputData.topUpValue = val
   }
 
   setReceiverAccount = val => {

@@ -6,7 +6,7 @@ import atmLogo from '../images/atm-logo.svg'
 import balanceLogo from '../images/balance-logo.svg'
 
 export default observer(() => {
-  const { balance } = store.state
+  const { balance } = store
   return (
     <div className='atm__header'>
       <img src={atmLogo} alt='' className='header__logo' />

@@ -13,12 +13,16 @@ export default observer(() => {
 
   useEffect(() => {
     const { EventManager: em } = window
-    const { setActive, setData } = store
+    const { setActive, setData, pinEnterSuccess, pinEnterError } = store
     em.addHandler('atm.active', setActive)
     em.addHandler('atm.data', setData)
+    em.addHandler('atm.enter.success', pinEnterSuccess)
+    em.addHandler('atm.enter.error', pinEnterError)
     return () => {
       em.removeHandler('atm.active', setActive)
       em.removeHandler('atm.data', setData)
+      em.removeHandler('atm.enter.success', pinEnterSuccess)
+      em.removeHandler('atm.enter.error', pinEnterError)
     }
   }, [])
 
