@@ -367,19 +367,19 @@ class InventoryStore {
       newItem.quantity = quantity
       newItem.idSlot = freeSlot
       this.state.inventory.push(newItem)
-    }
 
-    window.frontTrigger('inventory.separate', {
-      item1: {
-        idSlot: this.getInventoryId(idSlot).id,
-        inventoryId: this.getInventoryId(idSlot).inventoryId
-      },
-      item2: {
-        idSlot: this.getInventoryId(freeSlot).id,
-        inventoryId: this.getInventoryId(freeSlot).inventoryId
-      },
-      quantity
-    })
+      window.frontTrigger('inventory.separate', {
+        item1: {
+          idSlot: this.getInventoryId(idSlot).id,
+          inventoryId: this.getInventoryId(idSlot).inventoryId
+        },
+        item2: {
+          idSlot: this.getInventoryId(freeSlot).id,
+          inventoryId: this.getInventoryId(freeSlot).inventoryId
+        },
+        quantity
+      })
+    }
   }
 
   // ============================   SWAP CHECKS   ==============================
