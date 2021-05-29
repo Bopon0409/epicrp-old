@@ -195,6 +195,18 @@ class HouseStore {
     if (item2) item2.placeId = slotFrom
   }
 
+  swapTrigger = (slotFrom, slotTo) => {
+    const { houseNumber } = this.state
+    switch (true) {
+      case slotFrom < 100 && slotTo < 100:
+        return window.frontTrigger('garage.move', houseNumber, slotFrom, slotTo)
+      case slotFrom > 100 && slotTo < 100:
+        return window.frontTrigger('garage.add', houseNumber, slotFrom, slotTo)
+      case slotFrom < 100 && slotTo > 100:
+        return window.frontTrigger('garage.move', houseNumber, slotFrom, slotTo)
+    }
+  }
+
   sliderPositionCheck = (slotFrom, slotTo) => {
     const { sliderPosition } = this.state
     const check1 = slotFrom > 100 && slotTo < 100
@@ -204,7 +216,8 @@ class HouseStore {
   }
 
   roommateSet = (slotFrom, slotTo) => {
-    const roommate = this.state.roommates.find(({id}) => id === slotFrom - 300)
+    const roommate = this.state.roommates.find(({ id }) => id === slotFrom -
+      300)
     const car = roommate.cars[0]
     car.carOwner = this.state.roommates[slotFrom - 300].name
     car.placeId = slotTo

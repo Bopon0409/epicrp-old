@@ -14,6 +14,10 @@ import './house/house.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.house.setData()
-  window.trigger('house.mode', 3)
+  window.test.bank.updateData()
+  window.test.bank.setActive(true)
+  // window.test.fraction.setData()
+  // window.test.fraction.setActive(true)
+  // window.test.house.setData()
+  // window.trigger('house.mode', 3)
 }

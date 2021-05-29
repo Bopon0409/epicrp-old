@@ -200,21 +200,20 @@ class FractionStore {
   }
 
   setSettingsMode = active => {
-    const { controlSettings } = this.state.capabilities
-    if (controlSettings) {
+    if (this.state.capabilities.controlSettings) {
       this.state.settingsMode = active
-      this.state.activeMenuItem = active ? 5 : 0
+      this.setActiveMenuItem(active ? 5 : 0)
     }
   }
 
   setActiveMenuItem = item => {
     this.state.activeMenuItem = item
-
     this.clearActivity()
     this.state.searchValue = ''
+    const menuName = this.getMenuItem(item).icon
+    window.frontTrigger(`fraction.change-menu.${menuName}`)
 
     if (item !== 2) this.setActivityId(0)
-    if (item === 5) this.requestStorage()
     if (item !== 3) this.state.groupExpand = 0
   }
 
@@ -487,7 +486,10 @@ class FractionStore {
 
   //=================================   ADS   ==================================
 
-  setAdsActive = active => (this.state.adsActive = active)
+  setAdsActive = active => {
+    if (active) window.frontTrigger('fraction.change-menu.ads')
+    this.state.adsActive = active
+  }
 
   setAdsEditActive = (active, ad) => {
     this.setAdsActive(!active)
@@ -518,12 +520,10 @@ class FractionStore {
   editSubmit = () => {
     if (this.state.adsEdit.id === -1) this.adsAdd()
     else this.adsEdit()
-
     this.setAdsEditActive(false)
   }
 
   adsDelete = id => {
-    this.state.ads = this.state.ads.filter(ad => ad.id !== id)
     window.frontTrigger('fraction.ads.remove', id)
   }
 
@@ -875,8 +875,6 @@ class FractionStore {
   }
 
   //===============================   Storage   ================================
-
-  requestStorage = () => window.frontTrigger('fraction.storage.request')
 
   setStorageData = data => (this.state.storage = data)
 

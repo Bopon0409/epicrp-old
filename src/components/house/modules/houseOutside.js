@@ -57,7 +57,7 @@ export default observer(() => {
         </div>
         <div className='info__row'>
           <div className='info__field'>Гараж</div>
-          <div className='info__value'>{garageAvailability}</div>
+          <div className='info__value'>{garageAvailability || 'Нет'}</div>
         </div>
         <div className='info__row'>
           <div className='info__field'>Мест в гараже</div>
