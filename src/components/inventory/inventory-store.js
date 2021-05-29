@@ -530,6 +530,7 @@ class InventoryStore {
 
   onceClick = id => {
     const item = this.getItem(id)
+    if (!item) return
     const { right, bottom } = document
       .querySelector(`#slot${id}`)
       .getBoundingClientRect()
@@ -624,6 +625,7 @@ class InventoryStore {
 
   onDragStart = ({ active }) => {
     this.state.drugId = active.id
+    clearTimeout(this.state.clickParams.timer)
     this.clickHandler(active.id)
   }
 
