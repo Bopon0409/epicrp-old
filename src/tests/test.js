@@ -14,6 +14,6 @@ import './house/house.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.atm.setData()
-  window.test.atm.setActive(true)
+  window.test.house.setData()
+  window.trigger('house.mode', 3)
 }

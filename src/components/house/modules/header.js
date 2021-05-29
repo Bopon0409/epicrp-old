@@ -4,7 +4,32 @@ import store        from '../house-store'
 import hintIcon     from '../img/hint-icon.svg'
 
 export default observer(() => {
-  const { title, subTitle } = store.headerData
+  const getHeaderData = () => {
+    switch (store.state.mode) {
+      case 1:
+        return { title: null, subTitle: null }
+      case 2:
+        return {
+          title: 'Меню дома',
+          subTitle: 'Тут вы можете управлять всеми аспектами своего дома'
+        }
+      case 3:
+        return {
+          title: 'Гараж',
+          subTitle: 'Меняйте расположение своих Т/С так, как удобно Вам.'
+        }
+      case 4:
+        return {
+          title: 'Управление сожителями',
+          subTitle: 'Тут вы можете управлять своими сожителями'
+        }
+      default:
+        return null
+    }
+  }
+
+  const { title, subTitle } = getHeaderData()
+
   return (
     <div className='header'>
       <div className='hint'>

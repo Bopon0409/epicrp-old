@@ -7,12 +7,12 @@ import Switch       from 'react-switch'
 export default observer(() => {
   store.roommatesInit()
   const { roommates, currentRoommateId, owner } = store.state
-  const { setRoommate, setAccess, moveRoommateOut, currentRoommate } = store
+  const { setCurrentRoommate, setRoommateAccess, moveRoommateOut, currentRoommate } = store
   const { populated, rentPrice, garagePlace, online } = currentRoommate
 
   const roommatesList = roommates.map(({ name, id }) => {
     const active = currentRoommateId === id
-    const handler = () => setRoommate(id)
+    const handler = () => setCurrentRoommate(id)
     const classes = classNames(
       'roommate__member',
       active && 'roommate__member-active'
@@ -26,7 +26,7 @@ export default observer(() => {
   const accessList = currentRoommate.access.map(({ name, value }, i) =>
     <div className="access__item" key={i}>
       <div className="access__name">{name}</div>
-      <Switch onChange={() => setAccess(name)} checked={value} />
+      <Switch onChange={() => setRoommateAccess(name)} checked={value} />
     </div>
   )
 

@@ -64,32 +64,7 @@ class HouseStore {
     return this.state.userName === this.state.owner
   }
 
-  get headerData () {
-    switch (this.state.mode) {
-      case 1:
-        return {
-          title: null,
-          subTitle: null
-        }
-      case 2:
-        return {
-          title: 'Меню дома',
-          subTitle: 'Тут вы можете управлять всеми аспектами своего дома'
-        }
-      case 3:
-        return {
-          title: 'Гараж',
-          subTitle: 'Меняйте расположение своих Т/С так, как удобно Вам.'
-        }
-      case 4:
-        return {
-          title: 'Управление сожителями',
-          subTitle: 'Тут вы можете управлять своими сожителями'
-        }
-      default:
-        return null
-    }
-  }
+  //===========================   Roommates Manager   ==========================
 
   get currentRoommate () {
     this.roommatesInit()
@@ -102,9 +77,9 @@ class HouseStore {
     if (currentRoommateId === 0) this.state.currentRoommateId = roommates[0]?.id
   }
 
-  setRoommate = id => this.state.currentRoommateId = id
+  setCurrentRoommate = id => this.state.currentRoommateId = id
 
-  setAccess = accessName => {
+  setRoommateAccess = accessName => {
     const { houseNumber } = this.state
     const { access, id } = this.currentRoommate
     const setting = access.find(({ name }) => name === accessName)
@@ -118,6 +93,8 @@ class HouseStore {
     const { state: { houseNumber }, currentRoommate: { id } } = this
     window.frontTrigger('house.roommate.move_out', houseNumber, id)
   }
+
+  //============================   House Functions   ===========================
 
   houseLock = () => {
     const { open, houseNumber, capabilities } = this.state
@@ -145,16 +122,19 @@ class HouseStore {
 
   //================================   OverLay   ===============================
 
-  get carColor () {
+  get overlayCarColor () {
     const { dragId } = this.state
     if (dragId === 0) return ''
     return this.state.garage.find(({ placeId }) => placeId === dragId)?.color ||
       'green'
   }
 
+  get overlayRoommateName () {
+    return this.roommatesGarageList[this.state.dragId - 300]?.name || ''
+  }
+
   get overlayRotate () {
     const { dragId } = this.state
-    if (dragId === 0) return ''
 
     switch (true) {
       case dragId <= 6:
@@ -164,17 +144,25 @@ class HouseStore {
       case dragId > 6 && dragId <= 10:
         return 'bottom'
       default:
-        return 'list'
+        return ''
     }
-  }
-
-  get roommateDragName () {
-    return this.roommatesGarageList[this.state.dragId - 300]?.name || ''
   }
 
   //===============================   DragNDrop   ==============================
 
   dragStart = ({ active }) => this.state.dragId = active.id
+
+  dragOver = event => {
+    this.state.dragId = 0
+    if (!event.over) return
+
+    const { active: { id: slotFrom }, over: { id: slotTo } } = event
+    if (slotFrom === slotTo || (slotFrom > 100 && slotTo === 100)) return
+
+    if (slotFrom >= 300) return this.roommateSet(slotFrom, slotTo)
+    if (slotTo !== 100) this.garageSwap(slotFrom, slotTo)
+    if (slotTo === 100) this.garageSwap(slotFrom, this.freeSlot)
+  }
 
   getGarageItem = id => {
     return this.state.garage.find(({ placeId }) => placeId === id) ||
@@ -186,18 +174,6 @@ class HouseStore {
       if (!this.getGarageItem(i).carId) return i
     }
     return null
-  }
-
-  swap = event => {
-    this.state.dragId = 0
-    if (!event.over) return
-
-    const { active: { id: slotFrom }, over: { id: slotTo } } = event
-    if (slotFrom === slotTo || (slotFrom > 100 && slotTo === 100)) return
-
-    if (slotFrom >= 300) return this.roommateSet(slotFrom, slotTo)
-    if (slotTo !== 100) this.garageSwap(slotFrom, slotTo)
-    if (slotTo === 100) this.garageSwap(slotFrom, this.freeSlot)
   }
 
   garageSwap = (slotFrom, slotTo) => {
@@ -239,7 +215,6 @@ class HouseStore {
   carRemove = car => {
     const roommate = this.state.roommates
       .find(({ name }) => car.carOwner === name)
-    // console.log(roommate)
     roommate.cars.push(car)
     this.state.garage = this.state.garage
       .filter(item => item.carId !== car.carId)

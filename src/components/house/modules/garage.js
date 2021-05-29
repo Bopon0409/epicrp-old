@@ -8,11 +8,11 @@ import Overlay         from './overlay'
 import { GarageBody }  from './garage-body'
 
 export default observer(() => {
-  const { swap, dragStart } = store
+  const { dragOver, dragStart } = store
 
   return (
     <div className='garage'>
-      <DndContext onDragEnd={e => swap(e)} onDragStart={e => dragStart(e)}>
+      <DndContext onDragEnd={e => dragOver(e)} onDragStart={e => dragStart(e)}>
         <CarList />
         <Overlay />
         <GarageBody />
