@@ -559,7 +559,7 @@ class InventoryStore {
     this.state.clickParams.timer = setTimeout(() => {
       this.state.clickParams.isClicked = false
       if (this.state.drugId === 0) this.onceClick(id)
-    }, 200)
+    }, 400)
   }
 
   setModal = (isActive, item, xCord, yCord) => {
