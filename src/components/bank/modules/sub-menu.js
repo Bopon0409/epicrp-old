@@ -4,7 +4,7 @@ import store from '../bank-store'
 import SubMenuItemSvg from '../svg/sub-menu-item-svg'
 
 export default observer(() => {
-  const menu = ['Управление счётом', 'Платежи и переводы', 'Выписка по счёту']
+  const menu = ['Информация', 'Платежи и переводы', 'Выписка по счёту']
   const { currentSubMenuEl } = store.state
   const { setCurrentSubMenuEl } = store
 

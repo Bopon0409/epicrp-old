@@ -1,5 +1,5 @@
 .bank {
-  .main-page {
+  .main-page, .my-account {
     .control__card-container {
       position: absolute;
       z-index: 12;
@@ -39,6 +39,13 @@
           height: 250px;
           padding-top: 40px;
           border-radius: 15px;
+          position: relative;
+
+          .card__settings-icon {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+          }
 
           .card__balance-text {
             font-weight: 300;
@@ -92,6 +99,22 @@
           filter: drop-shadow(0px 0px 100px rgba(66, 113, 255, 0.3));
         }
       }
+    }
+  }
+
+  .my-account {
+
+
+    .title {
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 25px;
+      color: #FFFFFF;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .control__card-container {
     }
   }
 }

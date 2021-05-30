@@ -1,13 +1,15 @@
-import React from 'react'
-import { observer } from 'mobx-react-lite'
-import store from '../bank-store'
+import React                           from 'react'
+import { observer }                    from 'mobx-react-lite'
+import store                           from '../bank-store'
 import { formatNum, formatCardNumber } from '../../../services/services'
-import numIcon from '../images/account-num-icon.svg'
+import numIcon                         from '../images/account-num-icon.svg'
+import cardSettingsIcon                from '../images/card_settings.svg'
 
-export default observer(({ account, id: accountId }) => {
-  const { balance, name, id, num } = account
-  const { setCurrentAccount } = store
-  const { currentAccount } = store.state
+export default observer(({ account }) => {
+  const { balance, accountPrivate, cardName, cardId, accountId } = account
+  const { setCurrentAccount, openCardSettings } = store
+  const { currentAccount, currentMainMenuEl } = store.state
+
   return (
     <div
       className={
@@ -18,15 +20,20 @@ export default observer(({ account, id: accountId }) => {
       onClick={() => setCurrentAccount(accountId)}
     >
       <div className='card'>
-        <img src='' alt='' className='card__refresh-icon' />
-        <div className='card__balance-text'>Текущий баланс</div>
+        {currentMainMenuEl === 3 && (
+          <img src={cardSettingsIcon} alt='' className='card__settings-icon'
+          onClick={() => openCardSettings(cardId)}/>
+        )}
+        <div className='card__balance-text'>{cardName}</div>
         <div className='card__balance'>$ {formatNum(balance, ',')}</div>
-        <div className='card__id'>{formatCardNumber(id)}</div>
+        <div className='card__id'>{formatCardNumber(cardId)}</div>
       </div>
-      <div className='card__num-hint'>{name}</div>
+      <div className='card__num-hint'>
+        {accountPrivate ? 'Личный счёт' : 'Счёт организации'}
+      </div>
       <div className='card__num-container'>
         <img src={numIcon} alt='' className='card__num-icon' />
-        <div className='card__num-text'>{num}</div>
+        <div className='card__num-text'>{accountId}</div>
       </div>
     </div>
   )

@@ -3,9 +3,10 @@
   "accountsData": [
     {
       "balance": 20000,
-      "name": "Личный счёт №1",
-      "id": "0000 0000 0000 1111",
-      "num": "147832575",
+      "accountPrivate": true,
+      "cardName": "Карта №1",
+      "cardId": "0000 0000 0000 1111",
+      "accountId": "147832575",
       "operations": [
         {
           "name": "Пополнение счёта",
@@ -23,9 +24,10 @@
     },
     {
       "balance": 40000,
-      "name": "Личный счёт №2",
-      "id": "0000 0000 0000 2222",
-      "num": "147832557",
+      "accountPrivate": false,
+      "cardName": "Счёт LSPD",
+      "cardId": "0000 0000 0000 2222",
+      "accountId": "147832557",
       "operations": [
         {
           "name": "Пополнение счёта",

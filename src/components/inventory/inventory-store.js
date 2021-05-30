@@ -143,7 +143,6 @@ class InventoryStore {
   }
 
   // Триггеры, отправляемые на сервер
-
   getInventoryId = idSlot => {
     switch (true) {
       case idSlot >= 1 && idSlot <= 212:
@@ -500,7 +499,7 @@ class InventoryStore {
       else if (el.idSlot === toSlot) el.idSlot = fromSlot
     })
 
-    // Проверки на необходимость триггеров
+    // Проверки на необходимость триггеров надеть/снять
     this.swapCheckPutOn(fromSlot, toSlot, item1)
     this.swapCheckPutOff(fromSlot, toSlot, item1)
 

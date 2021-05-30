@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
-import { observer } from 'mobx-react-lite'
-import store from './bank-store'
-import Menu from './modules/menu'
-import MainPage from './modules/main-page'
-import bankLogo from './images/bank-logo.svg'
+import { observer }         from 'mobx-react-lite'
+import store                from './bank-store'
+import Menu                 from './modules/menu'
+import MainPage             from './modules/main-page'
+import bankLogo             from './images/bank-logo.svg'
+import { MyAccount }        from './modules/my-account'
 // import closeIcon from './images/close-icon.svg'
 
 export default observer(() => {
@@ -30,6 +31,7 @@ export default observer(() => {
         <img src={closeIcon} alt='' />
       </div> */}
       {currentMainMenuEl === 0 && <MainPage />}
+      {currentMainMenuEl === 3 && <MyAccount />}
     </div>
   ) : null
 })

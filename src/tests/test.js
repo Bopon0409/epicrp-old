@@ -14,4 +14,6 @@ import './house/house.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
+  window.test.bank.updateData()
+  window.test.bank.setActive(true)
 }
