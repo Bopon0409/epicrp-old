@@ -204,6 +204,8 @@ class HouseStore {
         return window.frontTrigger('garage.add', houseNumber, slotFrom, slotTo)
       case slotFrom < 100 && slotTo > 100:
         return window.frontTrigger('garage.move', houseNumber, slotFrom, slotTo)
+      default:
+        return
     }
   }
 
