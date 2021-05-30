@@ -1,0 +1,193 @@
+.bank {
+  .card-settings {
+    position: absolute;
+    z-index: 12;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(5, 40, 96, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .card-wrapper {
+      opacity: 1;
+      color: white;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 3px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 100px;
+      right: 100px;
+      cursor: pointer;
+    }
+
+    .title {
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 25px;
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 120px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .button-list {
+        box-sizing: border-box;
+        padding-left: 40px;
+        height: 250px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .button {
+          width: 220px;
+          height: 40px;
+          background: linear-gradient(96.22deg, #4271ff 10.19%, #5165d7 101.15%);
+          box-shadow: 0 0 15px rgba(66, 113, 255, 0.6);
+          border-radius: 2px;
+          display: flex;
+          cursor: pointer;
+
+          .text {
+            margin: auto;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 35px;
+            color: #ffffff;
+          }
+        }
+
+        .recovery {
+          background: #f44336;
+          box-shadow: 0 0 15px #f44336;
+        }
+
+        .remove {
+          background: #ecc02c;
+          box-shadow: 0 0 15px #ecc02c;
+        }
+      }
+    }
+
+    .modal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .title {
+        text-align: center;
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 20px;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin-bottom: 100px;
+      }
+    }
+
+    .name-modal {
+      .name-input {
+        width: 600px;
+        height: 40px;
+        font-weight: 300;
+        font-size: 22px;
+        color: #ffffff;
+        border: none;
+        border-bottom: 1px solid #ffffff;;
+        background: none;
+        outline: none;
+        padding: 10px 20px;
+        box-sizing: border-box;
+      }
+
+      .input-counter {
+        width: 100%;
+        margin-top: 5px;
+        text-align: right;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 20px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #ffffff;
+        opacity: 0.75;
+        margin-bottom: 100px;
+      }
+
+      .submit {
+        cursor: pointer;
+        width: 320px;
+        height: 40px;
+        background: linear-gradient(96.22deg, #4271ff 10.19%, #5165d7 101.15%);
+        box-shadow: 0 0 15px rgba(66, 113, 255, 0.6);
+        border-radius: 2px;
+        display: flex;
+
+        .text {
+          margin: auto;
+          font-weight: bold;
+          font-size: 22px;
+          line-height: 35px;
+          color: #FFFFFF;
+        }
+      }
+    }
+
+    .recovery-modal, .remove-modal {
+      .question {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 40px;
+        text-align: center;
+        letter-spacing: 3px;
+        color: #ffffff;
+        margin-bottom: 100px;
+      }
+
+      .button-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .button {
+          width: 300px;
+          height: 40px;
+          border-radius: 2px;
+          display: flex;
+          cursor: pointer;
+
+          .text {
+            margin: auto;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 35px;
+            color: #ffffff;
+          }
+        }
+
+        .submit {
+          background: linear-gradient(96.22deg, #4271ff 10.19%, #5165d7 101.15%);
+          box-shadow: 0 0 15px rgba(66, 113, 255, 0.6);
+        }
+
+        .drop {
+          background: #f44336;
+          box-shadow: 0 0 15px #f44336;
+        }
+      }
+    }
+  }
+}

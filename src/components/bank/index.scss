@@ -4,6 +4,7 @@
 @import './scss/toggle-bar';
 @import './scss/card';
 @import './scss/side-bar';
+@import './scss/card-settings';
 
 .bank {
   position: absolute;
@@ -20,9 +21,9 @@
     right: 0;
     top: 0;
     background: linear-gradient(
-      270deg,
-      rgba(66, 113, 255, 0.3) 0%,
-      rgba(66, 113, 255, 0) 100%
+        270deg,
+        rgba(66, 113, 255, 0.3) 0%,
+        rgba(66, 113, 255, 0) 100%
     );
     z-index: 11;
   }
@@ -34,9 +35,9 @@
     width: 60%;
     height: 100%;
     background: linear-gradient(
-      270deg,
-      rgba(66, 113, 255, 0.3) 0%,
-      rgba(66, 113, 255, 0) 100%
+        270deg,
+        rgba(66, 113, 255, 0.3) 0%,
+        rgba(66, 113, 255, 0) 100%
     );
     transform: matrix(-1, 0, 0, 1, 0, 0);
     z-index: 11;

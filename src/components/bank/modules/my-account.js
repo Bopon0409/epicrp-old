@@ -8,7 +8,6 @@ export const MyAccount = observer(() => {
   const { accountsData } = store.state
   return (
     <div className='my-account'>
-      <div className='title'>Управление картами</div>
       <div
         className='control__card-container'
         style={{

@@ -1,9 +1,10 @@
 {
   "userName": "John Oils",
+  "phone": { "number": 73452343, "remainder": 1400 },
+  "house": { "number": 63, "tax": 1400, "reminder": 2 },
   "accountsData": [
     {
       "balance": 20000,
-      "accountPrivate": true,
       "cardName": "Карта №1",
       "cardId": "0000 0000 0000 1111",
       "accountId": "147832575",
@@ -24,8 +25,7 @@
     },
     {
       "balance": 40000,
-      "accountPrivate": false,
-      "cardName": "Счёт LSPD",
+      "cardName": "Карта №1",
       "cardId": "0000 0000 0000 2222",
       "accountId": "147832557",
       "operations": [

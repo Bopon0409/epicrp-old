@@ -80,6 +80,10 @@ class BankStore {
 
   //============================   Card Settings   =============================
 
+  getCardById = id => {
+    return this.state.accountsData.find(({ cardId }) => cardId === id)
+  }
+
   openCardSettings = cardId => {
     this.state.cardSettings.active = true
     this.state.cardSettings.cardId = cardId
@@ -91,6 +95,7 @@ class BankStore {
   }
 
   cardSettingsNameChange = name => this.state.cardSettings.nameInput = name
+
   cardSettingsPinChange = pin => {
     const { pinInput } = this.state.cardSettings
     if (isNaN(pinInput)) this.state.cardSettings.pinInput = ''
@@ -105,27 +110,30 @@ class BankStore {
   }
 
   cardSettingsPinSubmit = () => {
-    const { cardId } = this.currentAccountData
+    const { accountId } = this.currentAccountData
     const { pinInput } = this.state.cardSettings
-    window.frontTrigger('bank.card.name', cardId, pinInput)
+    window.frontTrigger('bank.card.name', accountId, pinInput)
     this.state.cardSettings.pinActive = false
     this.state.cardSettings.pinInput = ''
   }
+
   cardSettingsNameSubmit = () => {
-    const { cardId } = this.currentAccountData
+    const { accountId } = this.currentAccountData
     const { nameInput } = this.state.cardSettings
-    window.frontTrigger('bank.card.name', cardId, nameInput)
+    window.frontTrigger('bank.card.name', accountId, nameInput)
     this.state.cardSettings.nameActive = false
     this.state.cardSettings.nameInput = ''
   }
+
   cardSettingsRecoverySubmit = () => {
-    const { cardId } = this.currentAccountData
-    window.frontTrigger('bank.card.recovery', cardId)
+    const { accountId } = this.currentAccountData
+    window.frontTrigger('bank.card.recovery', accountId)
     this.state.cardSettings.recoveryActive = false
   }
+
   cardSettingsRemoveSubmit = () => {
-    const { cardId } = this.currentAccountData
-    window.frontTrigger('bank.card.remove', cardId)
+    const { accountId } = this.currentAccountData
+    window.frontTrigger('bank.card.remove', accountId)
     this.state.cardSettings.removeActive = false
   }
 
@@ -133,6 +141,8 @@ class BankStore {
   cardSettingsNameOpen = () => this.state.cardSettings.nameActive = true
   cardSettingsRecoveryOpen = () => this.state.cardSettings.recoveryActive = true
   cardSettingsRemoveOpen = () => this.state.cardSettings.removeActive = true
+  cardSettingsRecoveryClose = () => this.state.cardSettings.recoveryActive = false
+  cardSettingsRemoveClose = () => this.state.cardSettings.removeActive = false
 }
 
 export default new BankStore()

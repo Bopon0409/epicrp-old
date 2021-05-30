@@ -386,17 +386,21 @@ class InventoryStore {
   // Проверка на надевание (для отправки на сервер)
   swapCheckPutOn = (fromSlot, toSlot, item) => {
     if (fromSlot >= 100 && fromSlot <= 104 && toSlot >= 100 && toSlot <= 104)
-      return
-    if (toSlot >= 101 && toSlot <= 212)
+      return true
+    else if (toSlot >= 101 && toSlot <= 212) {
       this.trigger('putOn', item)
+      return false
+    } else return true
   }
 
   // Проверка на снятие (для отправки на сервер)
   swapCheckPutOff = (fromSlot, toSlot, item) => {
     if (fromSlot >= 100 && fromSlot <= 104 && toSlot >= 100 && toSlot <= 104)
-      return
-    if (fromSlot >= 101 && fromSlot <= 212)
+      return true
+    else if (fromSlot >= 101 && fromSlot <= 212) {
       this.trigger('putOff', item)
+      return false
+    } else return true
   }
 
   // Проверка на слияние предметов
@@ -500,8 +504,9 @@ class InventoryStore {
     })
 
     // Проверки на необходимость триггеров надеть/снять
-    this.swapCheckPutOn(fromSlot, toSlot, item1)
-    this.swapCheckPutOff(fromSlot, toSlot, item1)
+    const putOnCheck = this.swapCheckPutOn(fromSlot, toSlot, item1)
+    const putOffCheck = this.swapCheckPutOff(fromSlot, toSlot, item1)
+    if (!putOnCheck || !putOffCheck) return
 
     if (item1 && item2) {
       window.frontTrigger('inventory.swap', {

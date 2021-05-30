@@ -5,6 +5,7 @@ import Menu                 from './modules/menu'
 import MainPage             from './modules/main-page'
 import bankLogo             from './images/bank-logo.svg'
 import { MyAccount }        from './modules/my-account'
+import { CardSettings }     from './modules/card-settings'
 // import closeIcon from './images/close-icon.svg'
 
 export default observer(() => {
@@ -28,10 +29,11 @@ export default observer(() => {
       <div className='bank-wrapper1' />
       <div className='bank-wrapper2' />
       {/* <div className='bank__close-btn'>
-        <img src={closeIcon} alt='' />
-      </div> */}
+       <img src={closeIcon} alt='' />
+       </div> */}
       {currentMainMenuEl === 0 && <MainPage />}
       {currentMainMenuEl === 3 && <MyAccount />}
+      <CardSettings />
     </div>
   ) : null
 })
