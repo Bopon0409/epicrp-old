@@ -385,16 +385,19 @@ class InventoryStore {
   // ============================   SWAP CHECKS   ==============================
 
   // Проверка на надевание (для отправки на сервер)
-  swapCheckPutOn = (toSlot, fromSlot, item1, item2) => {
-    if (toSlot >= 101 && toSlot <= 212) this.trigger('putOn', item1)
-    if (item2)
-      if (fromSlot >= 101 && fromSlot <= 212) this.trigger('putOff', item2)
+  swapCheckPutOn = (fromSlot, toSlot, item) => {
+    if (fromSlot >= 100 && fromSlot <= 104 && toSlot >= 100 && toSlot <= 104)
+      return
+    if (toSlot >= 101 && toSlot <= 212)
+      this.trigger('putOn', item)
   }
 
   // Проверка на снятие (для отправки на сервер)
-  swapCheckPutOff = (toSlot, fromSlot, item1, item2) => {
-    if (fromSlot >= 101 && fromSlot <= 212) this.trigger('putOff', item1)
-    if (item2) if (toSlot >= 101 && toSlot <= 212) this.trigger('putOn', item2)
+  swapCheckPutOff = (fromSlot, toSlot, item) => {
+    if (fromSlot >= 100 && fromSlot <= 104 && toSlot >= 100 && toSlot <= 104)
+      return
+    if (fromSlot >= 101 && fromSlot <= 212)
+      this.trigger('putOff', item)
   }
 
   // Проверка на слияние предметов
@@ -482,10 +485,6 @@ class InventoryStore {
     const item2 = this.getItem(toSlot)
     const swapParams = [toSlot, fromSlot, item1, item2]
 
-    // Проверки на необходимость триггеров
-    this.swapCheckPutOn(...swapParams)
-    this.swapCheckPutOff(...swapParams)
-
     // Проверки
     const weightResult = this.weightCheck(fromSlot, toSlot)
     const mergeResult = this.swapCheckMergeItems(item1, item2)
@@ -500,6 +499,10 @@ class InventoryStore {
       if (el.idSlot === fromSlot) el.idSlot = toSlot
       else if (el.idSlot === toSlot) el.idSlot = fromSlot
     })
+
+    // Проверки на необходимость триггеров
+    this.swapCheckPutOn(fromSlot, toSlot, item1)
+    this.swapCheckPutOff(fromSlot, toSlot, item1)
 
     if (item1 && item2) {
       window.frontTrigger('inventory.swap', {

@@ -16,7 +16,7 @@ export default function curTest () {
   window.test.bg.setActive(true)
   window.test.inventory.setActive(true)
   window.test.inventory.setData()
-  window.test.inventory.setMode(4)
+  window.test.inventory.setMode(0)
   // window.test.bank.updateData()
   // window.test.bank.setActive(true)
   // window.test.fraction.setData()
