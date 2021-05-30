@@ -65,8 +65,10 @@ export const CardSettings = observer(() => {
       {pinActive && (
         <div className='pin-modal modal'>
           <div className='title'>Смена пин-кода карты "{card.cardName}"</div>
+          <div className='pin-input'>
+            <div className='text'>{pinInput}</div>
+          </div>
           <div className='container'>
-            <div className='pin-input'>{pinInput}</div>
             {buttons.map(item => (
               <div className='button' key={item}
                 onClick={() => cardSettingsPinChange(item)}>

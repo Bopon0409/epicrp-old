@@ -355,9 +355,43 @@ class InventoryStore {
     if (freeSlot) this.swap(idSlot, freeSlot)
   }
 
+  getFreeContextSlot = idSlot => {
+    const { trunkSize } = this.state.trunk
+    let min, max
+    switch (true) {
+      case idSlot >= 1 && idSlot <= 212:
+        return this.freeInventorySlot
+      case idSlot >= 301 && idSlot <= 350:
+        min = 301
+        max = 320
+        break
+      case idSlot >= 351 && idSlot <= 370:
+        min = 351
+        max = 370
+        break
+      case idSlot >= 401 && idSlot <= 600:
+        min = 401
+        max = 500
+        break
+      case idSlot >= 601 && idSlot <= 600 + trunkSize:
+        min = 601
+        max = 600 + trunkSize
+        break
+      default:
+    }
+
+    console.log(idSlot)
+
+    for (let i = min; i <= max; i++) {
+      if (!this.getItem(i)) return i
+    }
+
+    return false
+  }
+
   // Разделение предмета
   separateItem = (idSlot, quantity) => {
-    const freeSlot = this.freeInventorySlot
+    const freeSlot = this.getFreeContextSlot(idSlot)
     if (freeSlot) {
       this.state.inventory.forEach(el => {
         if (el.idSlot === idSlot) el.quantity -= quantity

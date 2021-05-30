@@ -99,7 +99,8 @@ class BankStore {
   cardSettingsPinChange = pin => {
     const { pinInput } = this.state.cardSettings
     if (isNaN(pinInput)) this.state.cardSettings.pinInput = ''
-    if (pinInput.length < 4) this.state.cardSettings.pinInput += pin
+    if (this.state.cardSettings.pinInput.length < 4)
+      this.state.cardSettings.pinInput += pin
   }
 
   cardSettingsPinClear = () => {
@@ -112,6 +113,10 @@ class BankStore {
   cardSettingsPinSubmit = () => {
     const { accountId } = this.currentAccountData
     const { pinInput } = this.state.cardSettings
+    if (isNaN(pinInput) || pinInput.length !== 4) {
+      this.state.cardSettings.pinInput = 'Некорректный пин-код'
+      return
+    }
     window.frontTrigger('bank.card.name', accountId, pinInput)
     this.state.cardSettings.pinActive = false
     this.state.cardSettings.pinInput = ''
