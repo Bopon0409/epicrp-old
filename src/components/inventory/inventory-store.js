@@ -204,7 +204,7 @@ class InventoryStore {
 
   get stockWeight () {
     let totalWeight = 0
-    for (let i = 401; i <= 500; i++) {
+    for (let i = 401; i <= 550; i++) {
       const item = this.getItem(i)
       if (item) totalWeight += item.weight * item.quantity
     }
@@ -371,7 +371,7 @@ class InventoryStore {
         break
       case idSlot >= 401 && idSlot <= 600:
         min = 401
-        max = 500
+        max = 550
         break
       case idSlot >= 601 && idSlot <= 600 + trunkSize:
         min = 601
@@ -418,23 +418,17 @@ class InventoryStore {
   // ============================   SWAP CHECKS   ==============================
 
   // Проверка на надевание (для отправки на сервер)
-  swapCheckPutOn = (fromSlot, toSlot, item) => {
+  swapCheckPutOn = (fromSlot, toSlot) => {
     if (fromSlot >= 100 && fromSlot <= 104 && toSlot >= 100 && toSlot <= 104)
-      return true
-    else if (toSlot >= 101 && toSlot <= 212) {
-      this.trigger('putOn', item)
       return false
-    } else return true
+    else return toSlot >= 101 && toSlot <= 212;
   }
 
   // Проверка на снятие (для отправки на сервер)
-  swapCheckPutOff = (fromSlot, toSlot, item) => {
+  swapCheckPutOff = (fromSlot, toSlot) => {
     if (fromSlot >= 100 && fromSlot <= 104 && toSlot >= 100 && toSlot <= 104)
-      return true
-    else if (fromSlot >= 101 && fromSlot <= 212) {
-      this.trigger('putOff', item)
       return false
-    } else return true
+    else return fromSlot >= 101 && fromSlot <= 212;
   }
 
   // Проверка на слияние предметов
@@ -538,9 +532,9 @@ class InventoryStore {
     })
 
     // Проверки на необходимость триггеров надеть/снять
-    const putOnCheck = this.swapCheckPutOn(fromSlot, toSlot, item1)
-    const putOffCheck = this.swapCheckPutOff(fromSlot, toSlot, item1)
-    if (!putOnCheck || !putOffCheck) return
+    let triggerName = 'move'
+    if (this.swapCheckPutOn(fromSlot, toSlot)) triggerName = 'equip'
+    if (this.swapCheckPutOff(fromSlot, toSlot)) triggerName = 'take'
 
     if (item1 && item2) {
       window.frontTrigger('inventory.swap', {
@@ -554,7 +548,7 @@ class InventoryStore {
         }
       })
     } else {
-      window.frontTrigger('inventory.move', {
+      window.frontTrigger(`inventory.${triggerName}`, {
         from: {
           idSlot: this.getInventoryId(fromSlot).id,
           inventoryId: this.getInventoryId(fromSlot).inventoryId

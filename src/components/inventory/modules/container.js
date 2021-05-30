@@ -26,7 +26,7 @@ export default observer(({ mode }) => {
         {mode === 3 && (
           <div className='inventory'>
             <div className='title'>Склад</div>
-            <SlotList fromSlot={401} toSlot={500} scroll={true} />
+            <SlotList fromSlot={401} toSlot={550} scroll={true} />
           </div>
         )}
 
