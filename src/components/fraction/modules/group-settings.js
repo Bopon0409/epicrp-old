@@ -51,7 +51,7 @@ export default observer(() => {
         <Icon icon='close' />
       </div>
       <div className='title'>Настройки отдела</div>
-      <div className='boss-select'>
+      {groupSettingSelectList.length ? <div className='boss-select'>
         <Select
           prefix='Начальник отдела: '
           name='boss-select'
@@ -59,12 +59,12 @@ export default observer(() => {
           options={groupSettingSelectList}
           caretIcon={<CaretIcon />}
           selectedValue={boss?.value}
-          onChange={newValue => setGroupSettingCurrentBoss(newValue) }
+          onChange={newValue => setGroupSettingCurrentBoss(newValue)}
         />
         <div className='submit-btn' onClick={groupSettingBossSubmit}>
           <div className='text'>Назначить</div>
         </div>
-      </div>
+      </div> : <div className='title'>Начальник отдела не назначен</div>}
       <div className='wrap'>
         <div className='ranks'>
           <div className='menu-title'>Ранги</div>

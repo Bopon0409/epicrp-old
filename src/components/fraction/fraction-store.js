@@ -14,7 +14,6 @@ class FractionStore {
     searchValue: '',
     settingsMode: false,
 
-    user: {},
     userId: 0,
     capabilities: {
       controlStorage: false,
@@ -223,8 +222,11 @@ class FractionStore {
   //===========================   Ranks Settings   =============================
 
   get ranksSorted () {
-    const list = this.state.ranks.slice().sort((rank1, rank2) =>
-      rank1.rankNum - rank2.rankNum)
+    const member = this.state.members.find(({ id }) => id === this.state.userId)
+    const list = this.state.ranks.slice()
+      .filter(({ rankNum }) => rankNum <= member.rankNum)
+      .sort((rank1, rank2) => rank1.rankNum - rank2.rankNum)
+
     if (this.state.settings.newMember) list.push({
       rankNum: 0, rankName: 'Новый ранг', color: 'white'
     })
@@ -419,7 +421,10 @@ class FractionStore {
 
   get contextGroupList () {
     const groupId = this.state.contextMenu.id
-    if (this.state.capabilities.controlGroups) {
+    const { userId } = this.state
+    const bossId = this.state.groups
+      .find(group => group.groupId === groupId)?.bossId
+    if (this.state.capabilities.controlGroups || bossId === userId) {
       return [
         { title: 'Настройки', handler: () => this.groupEditClick(groupId) },
         { title: 'Удалить', handler: () => this.groupRemoveClick(groupId) }
@@ -606,14 +611,19 @@ class FractionStore {
   }
 
   get groupBossPretenders () {
+    const user = this.state.members.find(({ id }) => id === this.state.userId)
     const { members } = this.state
     if (!members.length) return []
-    const applicants = members.filter(({ groupId }) => !groupId)
+    const applicants = members.filter(({ groupId, rankNum }) => {
+      return !groupId && rankNum < user.rankNum
+    })
     return applicants.map(({ id, name }) => ({ value: id, text: name }))
   }
 
   groupCreateOpen = () => {
-    const { ranks } = this.state
+    const member = this.state.members.find(({ id }) => id === this.state.userId)
+    const ranks = this.ranksWithoutGroups
+      .filter(({ rankNum }) => rankNum < member.rankNum)
     this.state.modalGroupCreate = {
       active: true,
       name: '',
@@ -631,10 +641,8 @@ class FractionStore {
   }
 
   groupCreateSubmit = () => {
-    const {
-      name, boss: { value: chiefId }, ranks
-    } = this.state.modalGroupCreate
-
+    const { name, boss, ranks } = this.state.modalGroupCreate
+    const chiefId = boss?.value || 0
     let ranksList = ranks.filter(({ value }) => value)
     ranksList = ranksList.map(({ rankNum }) => rankNum)
     window.frontTrigger('fraction.group.create', { name, chiefId, ranksList })
