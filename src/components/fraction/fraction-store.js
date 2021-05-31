@@ -453,13 +453,25 @@ class FractionStore {
     return list
   }
 
+  get ranksWithoutGroups () {
+    return this.state.ranks.filter(({ rankNum }) => {
+      return !this.state.groups.find(({ ranks }) => {
+        return ranks.find(({ rankNum: rankNum2 }) => rankNum === rankNum2)
+      })
+    })
+  }
+
   get contextSecondaryMembersList () {
     const { id } = this.state.contextMenu
+    const playerGroup = this.getMemberById(id).groupId
+    const rankList = playerGroup ?
+      this.state.ranks.filter(({ groupId }) => groupId === playerGroup) :
+      this.ranksWithoutGroups
+
     switch (this.state.contextMenu.hoverEl) {
       case 'ranks':
-        return this.state.ranks.map(({ rankName, rankNum, color }) => ({
-          rankName,
-          color,
+        return rankList.map(({ rankName, rankNum, color }) => ({
+          rankName, color,
           active: this.getMemberById(id).rankNum === rankNum,
           handler: () => this.setMemberRank(id, rankNum)
         }))
@@ -693,8 +705,8 @@ class FractionStore {
   setMemberGroup = (memberId, groupId) => {
     if (this.state.capabilities.controlMembers.changeGroups) {
       const member = this.state.members.find(({ id }) => id === memberId)
-      member.groupId = groupId
-      window.frontTrigger('fraction.members.group', memberId, groupId)
+      member.groupId = member.groupId === groupId ? 0 : groupId
+      window.frontTrigger('fraction.members.group', memberId, member.groupId)
     }
   }
 

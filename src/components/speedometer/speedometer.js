@@ -29,8 +29,8 @@ export default observer(() => {
 
   return active ? (
     <div className='speedometer'>
-      {type === 0 && <SimpleSpeedometer />}
-      {type === 1 && <RadialSpeedometer />}
+      {type === 0 && <RadialSpeedometer />}
+      {type === 1 && <SimpleSpeedometer />}
     </div>
   ) : null
 })
