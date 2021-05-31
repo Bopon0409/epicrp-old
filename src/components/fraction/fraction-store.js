@@ -880,7 +880,7 @@ class FractionStore {
 
   setStorageOpen = () => {
     if (this.state.capabilities.controlStorage) {
-      this.state.storage.open = !this.state.storage
+      this.state.storage.open = !this.state.storage.open
       window.frontTrigger('fraction.storage.toggle', this.state.storage.open)
     }
   }

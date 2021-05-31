@@ -6,8 +6,9 @@ import numIcon                         from '../images/account-num-icon.svg'
 import cardSettingsIcon                from '../images/card_settings.svg'
 
 export default observer(({ account, settingsMode }) => {
-  const { balance, cardName, cardId, accountId } = account
-  const { setCurrentAccount, openCardSettings } = store
+  const { balance, cardName, accountId } = account
+  const cardId = accountId.substr(accountId.length - 4)
+  const { setCurrentAccount, openCardSettings, modalOpen } = store
   const { currentAccount, currentMainMenuEl } = store.state
 
   return (
@@ -22,13 +23,13 @@ export default observer(({ account, settingsMode }) => {
       <div className='card'>
         {currentMainMenuEl === 3 && !settingsMode && (
           <img src={cardSettingsIcon} alt='' className='card__settings-icon'
-            onClick={() => openCardSettings(cardId)} />
+            onClick={() => openCardSettings(accountId)} />
         )}
         <div className='card__balance-text'>{cardName}</div>
         <div className='card__balance'>$ {formatNum(balance, ',')}</div>
-        <div className='card__id'>{formatCardNumber(cardId)}</div>
+        <div className='card__id'>**** **** **** {cardId}</div>
       </div>
-      {!settingsMode && (
+      {currentMainMenuEl !== 3 && !settingsMode && (
         <>
           <div className='card__num-hint'>Личный счёт</div>
           <div className='card__num-container'>
@@ -39,5 +40,4 @@ export default observer(({ account, settingsMode }) => {
       )}
     </div>
   )
-}
-)
+})

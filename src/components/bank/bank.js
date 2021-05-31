@@ -6,6 +6,7 @@ import MainPage             from './modules/main-page'
 import bankLogo             from './images/bank-logo.svg'
 import { MyAccount }        from './modules/my-account'
 import { CardSettings }     from './modules/card-settings'
+import { Modal }            from './modules/modal'
 // import closeIcon from './images/close-icon.svg'
 
 export default observer(() => {
@@ -34,6 +35,7 @@ export default observer(() => {
       {currentMainMenuEl === 0 && <MainPage />}
       {currentMainMenuEl === 3 && <MyAccount />}
       <CardSettings />
+      <Modal />
     </div>
   ) : null
 })

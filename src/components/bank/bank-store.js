@@ -10,9 +10,11 @@ class BankStore {
     userName: '',
     currentAccount: 0,
     accountsData: [],
+    house: { number: 0, tax: 0, reminder: 0 },
+    phone: { number: 0, remainder: 0 },
     cardSettings: {
       active: false,
-      cardId: 0,
+      accountId: 0,
       nameInput: '',
       pinInput: '',
       pinActive: false,
@@ -20,12 +22,22 @@ class BankStore {
       recoveryActive: false,
       removeActive: false
     },
-    toggles: {
-      controlActions: 0,
-      paymentForServices: 0,
-      transfer: 0
+    modal: {
+      active: false,
+      type: '',
+      accountInput: '',
+      sumInput: ''
     }
   }
+
+  // Модалки: {
+  //   Пополнить счёт: 'modal_top_up',
+  //   Обналичить счёт: 'modal_cash_out',
+  //   Оплата имущества: 'payment_for_property',
+  //   Мобильная связь: 'payment_phone',
+  //   Перевод Личный счёт: 'transfer_private',
+  //   Перевод Счёт организации: 'transfer_organization'
+  // }
 
   constructor () {
     makeAutoObservable(this, {}, { deep: true })
@@ -34,6 +46,8 @@ class BankStore {
   setActive = active => (this.state.active = active)
   updateData = data => {
     if (data.userName) this.state.userName = data.userName
+    if (data.phone) this.state.phone = data.phone
+    if (data.house) this.state.house = data.house
     if (data.accountsData) {
       this.state.accountsData = data.accountsData
       this.state.currentAccount = data.accountsData[0].accountId
@@ -60,38 +74,20 @@ class BankStore {
   setCurrentSubMenuEl = el => (this.state.currentSubMenuEl = el)
   setCurrentAccount = num => this.state.currentAccount = num
 
-  setControlActionsToggle = action => {
-    const { controlActions } = this.state.toggles
-    this.state.toggles.controlActions = controlActions === action ? 0 : action
-  }
-
-  setPaymentForServicesToggle = action => {
-    this.state.toggles.transfer = 0
-    const { paymentForServices } = this.state.toggles
-    this.state.toggles.paymentForServices =
-      paymentForServices === action ? 0 : action
-  }
-
-  setTransferToggle = action => {
-    this.state.toggles.paymentForServices = 0
-    const { transfer } = this.state.toggles
-    this.state.toggles.transfer = transfer === action ? 0 : action
-  }
-
   //============================   Card Settings   =============================
 
-  getCardById = id => {
-    return this.state.accountsData.find(({ cardId }) => cardId === id)
+  getCard = id => {
+    return this.state.accountsData.find(({ accountId }) => accountId === id)
   }
 
-  openCardSettings = cardId => {
+  openCardSettings = accountId => {
     this.state.cardSettings.active = true
-    this.state.cardSettings.cardId = cardId
+    this.state.cardSettings.accountId = accountId
   }
 
   closeCardSettings = () => {
     this.state.cardSettings.active = false
-    this.state.cardSettings.cardId = 0
+    this.state.cardSettings.accountId = 0
   }
 
   cardSettingsNameChange = name => this.state.cardSettings.nameInput = name
@@ -148,6 +144,70 @@ class BankStore {
   cardSettingsRemoveOpen = () => this.state.cardSettings.removeActive = true
   cardSettingsRecoveryClose = () => this.state.cardSettings.recoveryActive = false
   cardSettingsRemoveClose = () => this.state.cardSettings.removeActive = false
+
+  //================================   Modal   =================================
+
+  getToggleParams = type => {
+    switch (type) {
+      case 'control-actions':
+        return {
+          title: null, icon: true,
+          text1: 'Пополнить счет', text2: 'Обналичить счет',
+          handler1: () => this.modalOpen('modal_top_up'),
+          handler2: () => this.modalOpen('modal_cash_out')
+        }
+      case 'payment-for-services':
+        return {
+          title: 'Оплата услуг', icon: false,
+          text1: 'Оплата имущества', text2: 'Мобильная связь',
+          handler1: () => this.modalOpen('payment_for_property'),
+          handler2: () => this.modalOpen('payment_phone')
+        }
+      case 'transfer':
+        return {
+          title: 'Перевод на счета', icon: false,
+          text1: 'Личный счет', text2: 'Счет организации',
+          handler1: () => this.modalOpen('transfer_private'),
+          handler2: () => this.modalOpen('transfer_organization')
+        }
+      default:
+        return null
+    }
+  }
+
+  get modalText () {
+    switch (this.state.modal.type) {
+      case 'modal_top_up':
+        return { title: 'Пополнить счет', button: 'Пополнить средства' }
+      case 'modal_cash_out':
+        return { title: 'Обналичить счет', button: 'Снять средства' }
+      case 'payment_for_property':
+        return { title: 'Оплата имущества', button: 'Оплатить' }
+      case 'payment_phone':
+        return { title: 'Мобильная связь', button: 'Оплатить' }
+      case 'transfer_private':
+        return { title: 'Личный счет', button: 'Перевести' }
+      case 'transfer_organization':
+        return { title: 'Счет организации', button: 'Перевести' }
+      default:
+        return ''
+    }
+  }
+
+  modalOpen = type => {
+    this.state.active = true
+    this.state.type = type
+  }
+
+  modalClose = () => {
+    this.state.modal = {
+      active: false, type: '', accountInput: '', sumInput: ''
+    }
+  }
+
+  modalSubmit = () => {
+
+  }
 }
 
 export default new BankStore()

@@ -4,15 +4,15 @@ import store from '../bank-store'
 import numIcon from '../images/account-num-icon.svg'
 
 export default observer(({ data }) => {
-  const list = data.map(({ accountId, balance }, i) => (
+  const list = data.map(({ accountId, balance }) => (
     <div
       className={
-        store.state.currentAccount === i
+        store.state.currentAccount === accountId
           ? 'side-bar__item'
           : 'side-bar__item side-bar__item_disabled'
       }
-      key={i}
-      onClick={() => store.setCurrentAccount(i)}
+      key={accountId}
+      onClick={() => store.setCurrentAccount(accountId)}
     >
       <div className='item__title-container'>
         <img src={numIcon} alt='' className='side-bar__title-icon' />

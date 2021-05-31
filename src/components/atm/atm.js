@@ -4,9 +4,8 @@ import store                from './atm-store'
 import AtmHeader            from './modules/atm-header'
 import AtmBody              from './modules/atm-body'
 import { CardChoice }       from './modules/card-choice'
-
-import bg           from './images/atm-bg.png'
-import { EnterPin } from './modules/enterPin'
+import bg                   from './images/atm-bg.png'
+import { EnterPin }         from './modules/enterPin'
 
 export default observer(() => {
   const { active, currentCard, access } = store.state

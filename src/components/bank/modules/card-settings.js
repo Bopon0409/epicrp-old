@@ -7,10 +7,10 @@ import closeIcon    from '../images/close-icon.svg'
 export const CardSettings = observer(() => {
   const buttons = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   const {
-    cardId, active, nameInput, pinInput,
+    active, nameInput, pinInput, accountId,
     nameActive, pinActive, recoveryActive, removeActive
   } = store.state.cardSettings
-  const card = store.getCardById(cardId)
+  const card = store.getCard(accountId)
 
   const {
     closeCardSettings, cardSettingsNameOpen, cardSettingsPinOpen,
