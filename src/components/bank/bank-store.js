@@ -22,6 +22,12 @@ class BankStore {
       recoveryActive: false,
       removeActive: false
     },
+    create: {
+      active: false,
+      step: 1,
+      name: '',
+      pin: ''
+    },
     modal: {
       active: false,
       type: '',
@@ -43,20 +49,35 @@ class BankStore {
     makeAutoObservable(this, {}, { deep: true })
   }
 
-  setActive = active => (this.state.active = active)
-  updateData = data => {
+  setActive = active => {
+    this.state.active = active
+    this.state.currentMainMenuEl = 0
+    this.state.currentSubMenuEl = 0
+  }
+
+  closeBank = () => {
+    this.setActive(false)
+    window.frontTrigger('bank.exit')
+  }
+
+  setData = data => {
     if (data.userName) this.state.userName = data.userName
     if (data.phone) this.state.phone = data.phone
     if (data.house) this.state.house = data.house
     if (data.accountsData) {
       this.state.accountsData = data.accountsData
-      this.state.currentAccount = data.accountsData[0].accountId
+      this.state.currentAccount = data.accountsData[0]?.accountId
     }
+  }
+
+  get isBlur () {
+    const { cardSettings, modal, create } = this.state
+    return cardSettings.active || modal.active || create.active
   }
 
   get currentAccountData () {
     return this.state.accountsData
-      .find(({ accountId }) => accountId === this.state.currentAccount)
+      .find(({ accountId }) => accountId === this.state.currentAccount) || {}
   }
 
   get chartData () {
@@ -113,17 +134,17 @@ class BankStore {
       this.state.cardSettings.pinInput = 'Некорректный пин-код'
       return
     }
-    window.frontTrigger('bank.card.name', accountId, pinInput)
-    this.state.cardSettings.pinActive = false
-    this.state.cardSettings.pinInput = ''
+    window.frontTrigger('bank.card.pin', accountId, pinInput)
   }
 
   cardSettingsNameSubmit = () => {
     const { accountId } = this.currentAccountData
     const { nameInput } = this.state.cardSettings
-    window.frontTrigger('bank.card.name', accountId, nameInput)
-    this.state.cardSettings.nameActive = false
-    this.state.cardSettings.nameInput = ''
+    if (nameInput.length) {
+      window.frontTrigger('bank.card.name', accountId, nameInput)
+      this.state.cardSettings.nameActive = false
+      this.state.cardSettings.nameInput = ''
+    }
   }
 
   cardSettingsRecoverySubmit = () => {
@@ -144,6 +165,12 @@ class BankStore {
   cardSettingsRemoveOpen = () => this.state.cardSettings.removeActive = true
   cardSettingsRecoveryClose = () => this.state.cardSettings.recoveryActive = false
   cardSettingsRemoveClose = () => this.state.cardSettings.removeActive = false
+
+  pinEnterSuccess = () => {
+    this.state.cardSettings.pinActive = false
+    this.state.cardSettings.pinInput = ''
+  }
+  pinEnterError = ({ error }) => this.state.cardSettings.pinInput = error
 
   //================================   Modal   =================================
 
@@ -195,8 +222,18 @@ class BankStore {
   }
 
   modalOpen = type => {
-    this.state.active = true
-    this.state.type = type
+    this.state.modal.active = true
+    this.state.modal.type = type
+  }
+
+  modalSumChange = value => {
+    if (value <= this.currentAccountData.balance)
+      this.state.modal.sumInput = value
+  }
+
+  modalAccountChange = value => {
+    if (value.length <= 9 && !isNaN(value))
+      this.state.modal.accountInput = value
   }
 
   modalClose = () => {
@@ -206,7 +243,61 @@ class BankStore {
   }
 
   modalSubmit = () => {
+    const { type, sumInput, accountInput } = this.state.modal
+    const { accountId } = this.currentAccountData
+    this.modalClose()
+    switch (type) {
+      case 'modal_top_up':
+        return window.frontTrigger('bank.modal_top_up', accountId, sumInput)
+      case 'modal_cash_out':
+        return window.frontTrigger('bank.modal_cash_out', accountId, sumInput)
+      case 'payment_for_property':
+        return window.frontTrigger('bank.payment_for_property',
+          accountId, sumInput
+        )
+      case 'payment_phone':
+        return window.frontTrigger('bank.payment_phone', accountId, sumInput)
+      case 'transfer_private':
+        return window.frontTrigger('bank.transfer_private',
+          accountId, accountInput, sumInput
+        )
+      case 'transfer_organization':
+        return window.frontTrigger('bank.transfer_organization',
+          accountId, accountInput, sumInput
+        )
+    }
+  }
 
+  //=============================   Create Card   ==============================
+
+  createCardOpen = () => this.state.create.active = true
+  createCardSubmit = () => {
+    const { pin, name } = this.state.create
+    if (pin.length === 4) {
+      window.frontTrigger('bank.card.create', name, pin)
+      this.state.create = { active: false, pin: '', name: '', step: 1 }
+    } else {
+      this.state.create.pin = 'Некорректный пин-код'
+    }
+  }
+
+  setCreateCardName = value => this.state.create.name = value
+
+  setCreateCardStep = value => {
+    if (this.state.create.name.length) this.state.create.step = value
+  }
+
+  createCardPinChange = value => {
+    const { pin } = this.state.create
+    if (isNaN(pin)) this.state.create.pin = ''
+    if (this.state.create.pin.length < 4)
+      this.state.create.pin += value
+  }
+
+  createCardPinClear = () => {
+    const { pin } = this.state.create
+    if (pin.length > 0)
+      this.state.create.pin = pin.substr(0, pin.length - 1)
   }
 }
 

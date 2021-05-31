@@ -1,46 +1,13 @@
 {
   "userName": "John Oils",
-  "phone": { "number": 73452343, "remainder": 1400 },
-  "house": { "number": 63, "tax": 1400, "reminder": 2 },
+  "phone": { "number": 73452343, "remind": 1400 },
+  "house": { "number": 63, "tax": 1400, "remind": 2 },
   "accountsData": [
     {
       "balance": 20000,
       "cardName": "Карта №1",
-      "cardId": "0000 0000 0000 1111",
       "accountId": "147832575",
       "operations": [
-        {
-          "name": "Пополнение счёта",
-          "change": -70000
-        },
-        {
-          "name": "Списание",
-          "change": 25000
-        },
-        {
-          "name": "Перевод на счёт",
-          "change": 25000
-        }
-      ]
-    },
-    {
-      "balance": 40000,
-      "cardName": "Карта №2",
-      "cardId": "0000 0000 0000 2222",
-      "accountId": "147832557",
-      "operations": [
-        {
-          "name": "Пополнение счёта",
-          "change": -70000
-        },
-        {
-          "name": "Списание",
-          "change": 25000
-        },
-        {
-          "name": "Перевод на счёт",
-          "change": 25000
-        },
         {
           "name": "Пополнение счёта",
           "change": -70000

@@ -76,7 +76,10 @@ class FractionStore {
     }
   }
 
-  setActive = active => (this.state.active = active)
+  setActive = active => {
+    this.state.active = active
+    this.state.activeMenuItem = 0
+  }
 
   setData = data => {
     if (data.fractionName) this.state.fractionName = data.fractionName

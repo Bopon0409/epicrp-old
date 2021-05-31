@@ -1,11 +1,11 @@
-import React from 'react'
+import React        from 'react'
+import { observer } from 'mobx-react-lite'
+import store        from '../bank-store'
 import EmptyCardSvg from '../svg/empty-card'
 
-export default function EmptyCard () {
-  return (
-    <div className='card-wrapper'>
-      <EmptyCardSvg />
-      <div className='card__empty-text'>Оформимть новый счет</div>
-    </div>
-  )
-}
+export default observer(() =>
+  <div className='card-wrapper' onClick={store.createCardOpen}>
+    <EmptyCardSvg />
+    <div className='card__empty-text'>Оформить новый счет</div>
+  </div>
+)

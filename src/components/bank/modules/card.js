@@ -1,14 +1,14 @@
 import React                           from 'react'
 import { observer }                    from 'mobx-react-lite'
 import store                           from '../bank-store'
-import { formatNum, formatCardNumber } from '../../../services/services'
+import { formatNum } from '../../../services/services'
 import numIcon                         from '../images/account-num-icon.svg'
 import cardSettingsIcon                from '../images/card_settings.svg'
 
 export default observer(({ account, settingsMode }) => {
   const { balance, cardName, accountId } = account
   const cardId = accountId.substr(accountId.length - 4)
-  const { setCurrentAccount, openCardSettings, modalOpen } = store
+  const { setCurrentAccount, openCardSettings } = store
   const { currentAccount, currentMainMenuEl } = store.state
 
   return (

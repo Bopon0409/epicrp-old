@@ -5,7 +5,7 @@ import store        from '../bank-store'
 import closeIcon    from '../images/close-icon.svg'
 
 export const CardSettings = observer(() => {
-  const buttons = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  const pinButtons = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   const {
     active, nameInput, pinInput, accountId,
     nameActive, pinActive, recoveryActive, removeActive
@@ -69,7 +69,7 @@ export const CardSettings = observer(() => {
             <div className='text'>{pinInput}</div>
           </div>
           <div className='container'>
-            {buttons.map(item => (
+            {pinButtons.map(item => (
               <div className='button' key={item}
                 onClick={() => cardSettingsPinChange(item)}>
                 <div className='text'>{item}</div>

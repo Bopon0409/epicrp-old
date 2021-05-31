@@ -8,7 +8,9 @@ export default observer(({ type }) => {
   const TOGGLE_CLASS = 'toggle-bar__btn'
   const TOGGLE_CLASS_ACTIVE = 'toggle-bar__btn_active'
 
-  const { title, icon, text1, text2 } = store.getToggleParams(type)
+  const {
+    title, icon, text1, text2, handler1, handler2
+  } = store.getToggleParams(type)
 
   const [hover1, setHover1] = useState(false)
   const [hover2, setHover2] = useState(false)
@@ -21,6 +23,7 @@ export default observer(({ type }) => {
       {title && <div className='toggle-bar__title'>{title}</div>}
       <div className='toggle-bar__container'>
         <div className={classes1}
+          onClick={handler1}
           onMouseEnter={() => setHover1(true)}
           onMouseLeave={() => setHover1(false)}
         >
@@ -29,6 +32,7 @@ export default observer(({ type }) => {
           <div className='toggle-bar__line' />
         </div>
         <div className={classes2}
+          onClick={handler2}
           onMouseEnter={() => setHover2(true)}
           onMouseLeave={() => setHover2(false)}
         >

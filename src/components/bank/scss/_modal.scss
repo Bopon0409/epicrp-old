@@ -1,5 +1,117 @@
-.bank {
-  .transfer-modal {
+.bank-context {
+  .modal-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 14;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(5, 40, 96, 0.9);
 
+    .modal {
+      background: url('../images/modal_bg.png') no-repeat;
+      background-size: 100% 100%;
+      width: 650px;
+      box-sizing: border-box;
+
+      .header {
+        width: 100%;
+        height: 60px;
+        background: rgba(66, 113, 255, 0.35);
+        border-radius: 16px 16px 0 0;
+        display: flex;
+        position: relative;
+
+        .close-btn {
+          position: absolute;
+          right: 15px;
+          top: 15px;
+          cursor: pointer;
+        }
+
+        .title {
+          margin: auto;
+          font-size: 28px;
+          line-height: 20px;
+          color: #ffffff;
+        }
+      }
+
+      .body {
+        background: white;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 0 0 16px 16px;
+
+        .modal__info {
+          margin-bottom: 20px;
+          color: #4d4d4d;
+          line-height: 24px;
+          font-size: 14px;
+
+          .modal__row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 250px;
+
+            .bold {
+              font-weight: 700;
+            }
+          }
+        }
+
+        .modal__input {
+          padding: 0 20px;
+          margin-bottom: 20px;
+          width: 220px;
+          border: none;
+          outline: none;
+          height: 40px;
+          background: #ffffff;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+          font-weight: 600;
+          font-size: 14px;
+          color: #4d4d4d;
+
+          &::placeholder {
+            font-weight: normal;
+            font-size: 14px;
+            color: #b3b3b3;
+          }
+
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+          }
+        }
+      }
+    }
+
+    .submit-btn {
+      width: 220px;
+      margin-top: 30px;
+      height: 60px;
+      display: flex;
+      background: linear-gradient(96.22deg, #4271FF 10.19%, #5165D7 101.15%);
+      box-shadow: 0 0 15px rgba(66, 113, 255, 0.6);
+      border-radius: 2px;
+      cursor: pointer;
+
+      .text {
+        margin: auto;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        color: #FFFFFF;
+      }
+    }
   }
 }

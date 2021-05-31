@@ -1,4 +1,4 @@
-.bank {
+.bank-context {
   .card-settings {
     position: absolute;
     z-index: 12;
@@ -6,7 +6,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(5, 40, 96, 0.9);
+    background: rgba(5, 40, 96, 0.8);
     display: flex;
     flex-direction: column;
     justify-content: center;
