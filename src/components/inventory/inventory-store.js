@@ -421,14 +421,14 @@ class InventoryStore {
   swapCheckPutOn = (fromSlot, toSlot) => {
     if (fromSlot >= 100 && fromSlot <= 104 && toSlot >= 100 && toSlot <= 104)
       return false
-    else return toSlot >= 101 && toSlot <= 212;
+    else return toSlot >= 101 && toSlot <= 212
   }
 
   // Проверка на снятие (для отправки на сервер)
   swapCheckPutOff = (fromSlot, toSlot) => {
     if (fromSlot >= 100 && fromSlot <= 104 && toSlot >= 100 && toSlot <= 104)
       return false
-    else return fromSlot >= 101 && fromSlot <= 212;
+    else return fromSlot >= 101 && fromSlot <= 212
   }
 
   // Проверка на слияние предметов
@@ -595,13 +595,15 @@ class InventoryStore {
   }
 
   setModal = (isActive, item, xCord, yCord) => {
-    this.state.modal = {
-      isActive,
-      item,
-      xCord,
-      yCord,
-      sliderValue: 0,
-      action: ''
+    if (this.state.modal.item.idSlot !== item.idSlot) {
+      this.state.modal = {
+        isActive, item, xCord, yCord, sliderValue: 0, action: ''
+      }
+    } else {
+      this.state.modal =  {
+        isActive: false, item: {}, xCord: 0,
+        yCord: 0, action: '', sliderValue: 0
+      }
     }
   }
 
@@ -660,6 +662,7 @@ class InventoryStore {
 
   onDragStart = ({ active }) => {
     this.state.drugId = active.id
+    this.state.modal.isActive = false
     clearTimeout(this.state.clickParams.timer)
     this.clickHandler(active.id)
   }

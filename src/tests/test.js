@@ -14,6 +14,6 @@ import './house/house.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.fraction.setData()
-  window.test.fraction.setActive(true)
+  window.test.inventory.setActive(true)
+  window.test.inventory.setData()
 }
