@@ -1,6 +1,11 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 
 export const Shop: FC = () => {
+  useEffect(() => {
+    return () => {
+
+    }
+  })
   return (
     <div>
 

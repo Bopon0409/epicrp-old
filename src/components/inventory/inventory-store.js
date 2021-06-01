@@ -29,8 +29,8 @@ class InventoryStore {
     },
     trade: {
       tradeName: '',
-      input1: '',
-      input2: '',
+      input1: 0,
+      input2: 0,
       isReady1: false,
       isReady2: false,
       maxMoney: 0,
@@ -514,6 +514,12 @@ class InventoryStore {
     return item.weight * item.quantity <= maxWeight - weight
   }
 
+  swapCheckTrade = toSlot => {
+    const { isReady1 } = this.state.trade
+    if (toSlot >= 351 && toSlot <= 360) return false
+    return !(isReady1 && toSlot >= 301 && toSlot <= 310)
+  }
+
   // ================================   SWAP   =================================
 
   swap = (fromSlot, toSlot) => {
@@ -526,8 +532,9 @@ class InventoryStore {
     const mergeResult = this.swapCheckMergeItems(item1, item2)
     const bagInBagResult = this.swapCheckBagInBag(...swapParams)
     const putOnPutOffResult = this.swapCheckPutOnPutOff(...swapParams)
-    const finalResult =
-      mergeResult && bagInBagResult && putOnPutOffResult && weightResult
+    const tradeCheck = this.swapCheckTrade(toSlot)
+    const finalResult = mergeResult && bagInBagResult && putOnPutOffResult &&
+      weightResult && tradeCheck
     if (!finalResult) return false
 
     // Перемещение предметов
@@ -651,17 +658,30 @@ class InventoryStore {
   // ===============================   TRADE   =================================
 
   setTradeInput = value => {
-    if (value <= this.state.trade.maxMoney && !this.state.trade.isReady1)
-      this.state.trade.input1 = value
+    const { maxMoney, isReady1, input1 } = this.state.trade
+    if (Number(value) === input1) return
+    if (!isNaN(value) && value <= maxMoney && !isReady1) {
+      this.state.trade.input1 = Number(value)
+      window.frontTrigger('inventory.trade.money', Number(value))
+    }
   }
+
   setTradeReady = () => {
-    if (!this.state.trade.isFinish)
-      this.state.trade.isReady1 = !this.state.trade.isReady1
+    if (!this.state.trade.isReady1) {
+      this.state.trade.isReady1 = true
+      window.frontTrigger('inventory.trade.ready')
+    }
   }
+
   setTradeFinish = () => {
-    const { isReady1, isReady2 } = this.state.trade
-    if (isReady1 && isReady2) this.state.trade.isFinish = true
+    const { isReady1, isReady2, isFinish } = this.state.trade
+    if (isReady1 && isReady2 && !isFinish) {
+      this.state.trade.isFinish = true
+      window.frontTrigger('inventory.trade.finish')
+    }
   }
+
+  setTradeCancel = () => window.frontTrigger('inventory.trade.cancel')
 
   // ============================   DRAG'N'DROP   ==============================
 
