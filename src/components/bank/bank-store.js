@@ -265,6 +265,8 @@ class BankStore {
         return window.frontTrigger('bank.transfer_organization',
           accountId, accountInput, sumInput
         )
+      default:
+        return null
     }
   }
 

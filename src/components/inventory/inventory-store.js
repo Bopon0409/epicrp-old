@@ -281,14 +281,19 @@ class InventoryStore {
 
   getItem = idSlot => this.state.inventory.find(el => el.idSlot === idSlot)
 
-  deleteItem = idSlot => {
-    this.state.inventory = this.state.inventory.filter(
-      el => el.idSlot !== idSlot
-    )
+  deleteItem = (idSlot, sliderValue) => {
+    const item = this.getItem(idSlot)
+    if (item.quantity > 1 && sliderValue) {
+      item.quantity -= sliderValue
+    } else {
+      this.state.inventory = this.state.inventory.filter(
+        el => el.idSlot !== idSlot
+      )
+    }
 
     const { id, inventoryId } = this.getInventoryId((idSlot))
     window.frontTrigger('inventory.drop', {
-      idSlot: id, inventoryId
+      idSlot: id, inventoryId, quantity: sliderValue || 1
     })
   }
 
@@ -591,7 +596,7 @@ class InventoryStore {
     this.state.clickParams.timer = setTimeout(() => {
       this.state.clickParams.isClicked = false
       if (this.state.drugId === 0) this.onceClick(id)
-    }, 400)
+    }, 800)
   }
 
   setModal = (isActive, item, xCord, yCord) => {
@@ -600,7 +605,7 @@ class InventoryStore {
         isActive, item, xCord, yCord, sliderValue: 0, action: ''
       }
     } else {
-      this.state.modal =  {
+      this.state.modal = {
         isActive: false, item: {}, xCord: 0,
         yCord: 0, action: '', sliderValue: 0
       }
@@ -635,7 +640,7 @@ class InventoryStore {
       case 'use':
         return this.useItem(id)
       case 'drop':
-        return this.deleteItem(id)
+        return this.deleteItem(id, sliderValue)
       case 'separate':
         return this.separateItem(id, sliderValue)
       default:

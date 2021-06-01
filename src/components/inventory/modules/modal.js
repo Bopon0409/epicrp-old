@@ -1,8 +1,8 @@
-import { observer } from 'mobx-react-lite'
+import { observer }         from 'mobx-react-lite'
 import React, { useEffect } from 'react'
-import store from '../inventory-store'
-import InputRange from 'react-input-range'
-import icon from '../images/modal-icon.svg'
+import store                from '../inventory-store'
+import InputRange           from 'react-input-range'
+import icon                 from '../images/modal-icon.svg'
 
 export default observer(() => {
   const { item, xCord, yCord, action, sliderValue } = store.state.modal
@@ -67,9 +67,9 @@ export default observer(() => {
           </div>
         </div>
 
-        {action === 'separate' && (
+        {action === 'separate' || (action === 'drop' && item.quantity > 1) ? (
           <div className='modal__slider'>
-            <div className='slider__title'>Разделение предмета</div>
+            <div className='slider__title'>Выберете количество</div>
             <div className='slider__text'>
               Перетяните ползунок до необходимого значения, либо введите число
               вручную
@@ -81,7 +81,7 @@ export default observer(() => {
               onChange={value => setModalSliderValue(value)}
             />
           </div>
-        )}
+        ) : null}
 
         {action !== '' && !(action === 'separate' && sliderValue === 0) && (
           <div className='modal__confirm'>

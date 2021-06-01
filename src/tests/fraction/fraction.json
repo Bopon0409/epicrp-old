@@ -648,6 +648,28 @@
       ]
     }
   ],
+  "defaultGroupSettings": [
+    {
+      "settingName": "Какая - то настройка",
+      "value": false
+    },
+    {
+      "settingName": "Какая - то настройка",
+      "value": false
+    },
+    {
+      "settingName": "Какая - то настройка",
+      "value": false
+    },
+    {
+      "settingName": "Какая - то настройка",
+      "value": false
+    },
+    {
+      "settingName": "Какая - то настройка",
+      "value": false
+    }
+  ],
   "cars": [
     {
       "id": 1,
