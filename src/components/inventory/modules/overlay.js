@@ -11,7 +11,7 @@ export default observer(() => {
       {dragId !== 0 ? (
         <img
           style={{ position: 'relative', left: '18px', top: '19px' }}
-          src={`./images/inventory/items/id${idItem}.png`}
+          src={`./images/items/id${idItem}.png`}
           alt=''
         />
       ) : null}
