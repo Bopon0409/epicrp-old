@@ -1,0 +1,174 @@
+{
+  "businessName": "Bla bla Auto sport",
+  "money": {
+    "cash": 18000,
+    "cards": [
+      {
+        "balance": 20000,
+        "cardName": "Карта №1",
+        "accountId": "147832575"
+      },
+      {
+        "balance": 20000,
+        "cardName": "Карта №1",
+        "accountId": "147832575"
+      }
+    ]
+  },
+  "carList": [
+    {
+      "id": 0,
+      "name": "BMW M5 E60",
+      "price": 300000,
+      "props": {
+        "speed": { "relativelyValue": 60, "absoluteValue": 135 },
+        "tank": { "relativelyValue": 80, "absoluteValue": 70 },
+        "trunk": { "relativelyValue": 40, "absoluteValue": 40 },
+        "roadGrip": { "relativelyValue": 25, "absoluteValue": 25 }
+      }
+    },
+    {
+      "id": 1,
+      "name": "BMW M5 E60",
+      "price": 300000,
+      "props": {
+        "speed": { "relativelyValue": 60, "absoluteValue": 135 },
+        "tank": { "relativelyValue": 80, "absoluteValue": 70 },
+        "trunk": { "relativelyValue": 40, "absoluteValue": 40 },
+        "roadGrip": { "relativelyValue": 25, "absoluteValue": 25 }
+      }
+    },
+    {
+      "id": 2,
+      "name": "BMW M5 E60",
+      "price": 300000,
+      "props": {
+        "speed": { "relativelyValue": 60, "absoluteValue": 135 },
+        "tank": { "relativelyValue": 80, "absoluteValue": 70 },
+        "trunk": { "relativelyValue": 40, "absoluteValue": 40 },
+        "roadGrip": { "relativelyValue": 25, "absoluteValue": 25 }
+      }
+    },
+    {
+      "id": 3,
+      "name": "BMW M5 E60",
+      "price": 300000,
+      "props": {
+        "speed": { "relativelyValue": 60, "absoluteValue": 135 },
+        "tank": { "relativelyValue": 80, "absoluteValue": 70 },
+        "trunk": { "relativelyValue": 40, "absoluteValue": 40 },
+        "roadGrip": { "relativelyValue": 25, "absoluteValue": 25 }
+      }
+    },
+    {
+      "id": 4,
+      "name": "BMW M5 E60",
+      "price": 300000,
+      "props": {
+        "speed": { "relativelyValue": 60, "absoluteValue": 135 },
+        "tank": { "relativelyValue": 80, "absoluteValue": 70 },
+        "trunk": { "relativelyValue": 40, "absoluteValue": 40 },
+        "roadGrip": { "relativelyValue": 25, "absoluteValue": 25 }
+      }
+    },
+    {
+      "id": 5,
+      "name": "BMW M5 E60",
+      "price": 300000,
+      "props": {
+        "speed": { "relativelyValue": 60, "absoluteValue": 135 },
+        "tank": { "relativelyValue": 80, "absoluteValue": 70 },
+        "trunk": { "relativelyValue": 40, "absoluteValue": 40 },
+        "roadGrip": { "relativelyValue": 25, "absoluteValue": 25 }
+      }
+    },
+    {
+      "id": 6,
+      "name": "BMW M5 E60",
+      "price": 300000,
+      "props": {
+        "speed": { "relativelyValue": 60, "absoluteValue": 135 },
+        "tank": { "relativelyValue": 80, "absoluteValue": 70 },
+        "trunk": { "relativelyValue": 40, "absoluteValue": 40 },
+        "roadGrip": { "relativelyValue": 25, "absoluteValue": 25 }
+      }
+    },
+    {
+      "id": 7,
+      "name": "BMW M5 E60",
+      "price": 300000,
+      "props": {
+        "speed": { "relativelyValue": 60, "absoluteValue": 135 },
+        "tank": { "relativelyValue": 80, "absoluteValue": 70 },
+        "trunk": { "relativelyValue": 40, "absoluteValue": 40 },
+        "roadGrip": { "relativelyValue": 25, "absoluteValue": 25 }
+      }
+    },
+    {
+      "id": 8,
+      "name": "BMW M5 E60",
+      "price": 300000,
+      "props": {
+        "speed": { "relativelyValue": 60, "absoluteValue": 135 },
+        "tank": { "relativelyValue": 80, "absoluteValue": 70 },
+        "trunk": { "relativelyValue": 40, "absoluteValue": 40 },
+        "roadGrip": { "relativelyValue": 25, "absoluteValue": 25 }
+      }
+    },
+    {
+      "id": 9,
+      "name": "BMW M5 E60",
+      "price": 300000,
+      "props": {
+        "speed": { "relativelyValue": 60, "absoluteValue": 135 },
+        "tank": { "relativelyValue": 80, "absoluteValue": 70 },
+        "trunk": { "relativelyValue": 40, "absoluteValue": 40 },
+        "roadGrip": { "relativelyValue": 25, "absoluteValue": 25 }
+      }
+    },
+    {
+      "id": 10,
+      "name": "BMW M5 E60",
+      "price": 300000,
+      "props": {
+        "speed": { "relativelyValue": 60, "absoluteValue": 135 },
+        "tank": { "relativelyValue": 80, "absoluteValue": 70 },
+        "trunk": { "relativelyValue": 40, "absoluteValue": 40 },
+        "roadGrip": { "relativelyValue": 25, "absoluteValue": 25 }
+      }
+    },
+    {
+      "id": 11,
+      "name": "BMW M5 E60",
+      "price": 300000,
+      "props": {
+        "speed": { "relativelyValue": 60, "absoluteValue": 135 },
+        "tank": { "relativelyValue": 80, "absoluteValue": 70 },
+        "trunk": { "relativelyValue": 40, "absoluteValue": 40 },
+        "roadGrip": { "relativelyValue": 25, "absoluteValue": 25 }
+      }
+    },
+    {
+      "id": 12,
+      "name": "BMW M5 E60",
+      "price": 300000,
+      "props": {
+        "speed": { "relativelyValue": 60, "absoluteValue": 135 },
+        "tank": { "relativelyValue": 80, "absoluteValue": 70 },
+        "trunk": { "relativelyValue": 40, "absoluteValue": 40 },
+        "roadGrip": { "relativelyValue": 25, "absoluteValue": 25 }
+      }
+    },
+    {
+      "id": 13,
+      "name": "BMW M5 E60",
+      "price": 300000,
+      "props": {
+        "speed": { "relativelyValue": 60, "absoluteValue": 135 },
+        "tank": { "relativelyValue": 80, "absoluteValue": 70 },
+        "trunk": { "relativelyValue": 40, "absoluteValue": 40 },
+        "roadGrip": { "relativelyValue": 25, "absoluteValue": 25 }
+      }
+    }
+  ]
+}

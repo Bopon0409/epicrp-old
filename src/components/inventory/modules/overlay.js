@@ -8,13 +8,10 @@ export default observer(() => {
   const idItem = store.getItem(dragId)?.idItem
   return (
     <DragOverlay dropAnimation={null}>
-      {dragId !== 0 ? (
-        <img
-          style={{ position: 'relative', left: '18px', top: '19px' }}
-          src={`./images/items/id${idItem}.png`}
-          alt=''
-        />
-      ) : null}
+      {dragId !== 0 && (
+        <img style={{ position: 'relative', left: '18px', top: '19px' }}
+          src={`./images/items/id${idItem}.png`} alt='' />
+      )}
     </DragOverlay>
   )
 })
