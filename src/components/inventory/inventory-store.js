@@ -422,20 +422,6 @@ class InventoryStore {
 
   // ============================   SWAP CHECKS   ==============================
 
-  // Проверка на надевание (для отправки на сервер)
-  swapCheckPutOn = (fromSlot, toSlot) => {
-    if (fromSlot >= 100 && fromSlot <= 104 && toSlot >= 100 && toSlot <= 104)
-      return false
-    else return toSlot >= 101 && toSlot <= 212
-  }
-
-  // Проверка на снятие (для отправки на сервер)
-  swapCheckPutOff = (fromSlot, toSlot) => {
-    if (fromSlot >= 100 && fromSlot <= 104 && toSlot >= 100 && toSlot <= 104)
-      return false
-    else return fromSlot >= 101 && fromSlot <= 212
-  }
-
   // Проверка на слияние предметов
   swapCheckMergeItems = (item1, item2) => {
     if (item2) {
@@ -545,8 +531,8 @@ class InventoryStore {
 
     // Проверки на необходимость триггеров надеть/снять
     let triggerName = 'move'
-    if (this.swapCheckPutOn(fromSlot, toSlot)) triggerName = 'equip'
-    if (this.swapCheckPutOff(fromSlot, toSlot)) triggerName = 'take'
+    if (toSlot >= 201 && toSlot <= 212) triggerName = 'equip'
+    if (fromSlot >= 201 && fromSlot <= 212) triggerName = 'take'
 
     if (item1 && item2) {
       window.frontTrigger('inventory.swap', {
@@ -575,35 +561,29 @@ class InventoryStore {
 
   // =============================   ITEM MODAL   ==============================
 
-  onceClick = id => {
+  simpleClick = id => {
     const item = this.getItem(id)
     if (!item) return
     const { right, bottom } = document
       .querySelector(`#slot${id}`)
       .getBoundingClientRect()
-
     const x = window.innerWidth - right > 360 ? right : right - 460
     const y = window.innerHeight - bottom > 380 ? bottom : bottom - 235
-
     this.setModal(true, item, x, y)
   }
 
-  doubleClick = id => {
+  rightClick = id => {
     this.useItem(id)
     this.setModal(false, {}, 0, 0)
   }
 
-  clickHandler = id => {
-    if (this.state.clickParams.isClicked) {
-      clearTimeout(this.state.clickParams.timer)
-      this.state.clickParams.isClicked = false
-      return this.doubleClick(id)
-    }
-    this.state.clickParams.isClicked = true
-    this.state.clickParams.timer = setTimeout(() => {
-      this.state.clickParams.isClicked = false
-      if (this.state.drugId === 0) this.onceClick(id)
-    }, 800)
+  clickHandler = (id, e) => {
+    setTimeout(() => {
+      if (this.state.drugId === 0) {
+        if (e.button === 0) this.simpleClick(id)
+        else if (e.button === 2) this.rightClick(id)
+      }
+    }, 300)
   }
 
   setModal = (isActive, item, xCord, yCord) => {
@@ -687,9 +667,6 @@ class InventoryStore {
 
   onDragStart = ({ active }) => {
     this.state.drugId = active.id
-    this.state.modal.isActive = false
-    clearTimeout(this.state.clickParams.timer)
-    this.clickHandler(active.id)
   }
 
   onDragEnd = ({ active, over }) => {
