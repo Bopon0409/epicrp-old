@@ -8,7 +8,7 @@ class InventoryStore {
 
   state = {
     active: false,
-    drugId: 0,
+    dragId: 0,
     mode: 0,
     modal: {
       isActive: false,
@@ -579,7 +579,7 @@ class InventoryStore {
 
   clickHandler = (id, e) => {
     setTimeout(() => {
-      if (this.state.drugId === 0) {
+      if (this.state.dragId === 0) {
         if (e.button === 0) this.simpleClick(id)
         else if (e.button === 2) this.rightClick(id)
       }
@@ -666,11 +666,11 @@ class InventoryStore {
   // ============================   DRAG'N'DROP   ==============================
 
   onDragStart = ({ active }) => {
-    this.state.drugId = active.id
+    this.state.dragId = active.id
   }
 
   onDragEnd = ({ active, over }) => {
-    this.state.drugId = 0
+    this.state.dragId = 0
     if (over) active.id !== over.id && this.swap(active.id, over.id)
   }
 }

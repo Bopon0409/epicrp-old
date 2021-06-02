@@ -4,11 +4,11 @@ import { DragOverlay } from '@dnd-kit/core'
 import store           from '../inventory-store'
 
 export default observer(() => {
-  const { drugId } = store.state
-  const idItem = store.getItem(drugId)?.idItem
+  const { dragId } = store.state
+  const idItem = store.getItem(dragId)?.idItem
   return (
     <DragOverlay dropAnimation={null}>
-      {drugId !== 0 ? (
+      {dragId !== 0 ? (
         <img
           style={{ position: 'relative', left: '18px', top: '19px' }}
           src={`./images/inventory/items/id${idItem}.png`}
