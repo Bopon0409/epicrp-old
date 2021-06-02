@@ -36,14 +36,14 @@ export default observer(() => {
         </div>
 
         <div className='modal__btn-container'>
-          <div
+          {item.usable || item.equipmentSlot || item.isFastSlot ? <div
             className={
               action === 'use' ? 'modal__btn modal__btn_active' : 'modal__btn'
             }
             onClick={() => toggleModalAction('use')}
           >
             {useLabel}
-          </div>
+          </div> : null}
 
           {item.quantity > 1 && (
             <div

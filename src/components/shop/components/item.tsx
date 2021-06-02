@@ -9,8 +9,8 @@ export const Item = observer((props: { item: IItem }) => {
   return (
     <div className='item'>
       <div className='item__name'>{item.name}</div>
-      <div className='item__description'>{item?.description}</div>
-      <div className='item__price'>{item?.price} $</div>
+      <div className='item__description'>{item.description}</div>
+      <div className='item__price'>{item.price} $</div>
       <div className='item__button' onClick={() => cartAdd(item)}>
         Добавить в корзину
       </div>

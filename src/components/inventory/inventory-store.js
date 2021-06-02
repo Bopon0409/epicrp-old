@@ -343,8 +343,7 @@ class InventoryStore {
   // Использование расходных предметов
   useConsumableItem = idSlot => {
     const item = this.getItem(idSlot)
-    item.quantity > 1 ? this.decreaseItem(idSlot) : this.deleteItem(idSlot)
-    this.trigger('use', item)
+    if (item.usable) this.trigger('use', item)
   }
 
   // Надевание экипировки
@@ -506,6 +505,21 @@ class InventoryStore {
     return !(isReady1 && toSlot >= 301 && toSlot <= 310)
   }
 
+  // Проверка на надевание (для отправки на сервер)
+  swapCheckPutOn = (fromSlot, toSlot) => {
+    if (fromSlot >= 100 && fromSlot <= 104 && toSlot >= 100 && toSlot <= 104)
+      return false
+    else return toSlot >= 101 && toSlot <= 212
+  }
+
+  // Проверка на снятие (для отправки на сервер)
+  swapCheckPutOff = (fromSlot, toSlot) => {
+    if (fromSlot >= 100 && fromSlot <= 104 && toSlot >= 100 && toSlot <= 104)
+      return false
+    else return fromSlot >= 101 && fromSlot <= 212
+  }
+
+
   // ================================   SWAP   =================================
 
   swap = (fromSlot, toSlot) => {
@@ -531,8 +545,8 @@ class InventoryStore {
 
     // Проверки на необходимость триггеров надеть/снять
     let triggerName = 'move'
-    if (toSlot >= 201 && toSlot <= 212) triggerName = 'equip'
-    if (fromSlot >= 201 && fromSlot <= 212) triggerName = 'take'
+    if (this.swapCheckPutOn(fromSlot, toSlot)) triggerName = 'equip'
+    if (this.swapCheckPutOff(fromSlot, toSlot)) triggerName = 'take'
 
     if (item1 && item2) {
       window.frontTrigger('inventory.swap', {

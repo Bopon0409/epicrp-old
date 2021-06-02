@@ -12,7 +12,7 @@ class ShopStore {
     money: { cash: 0, cards: [] },
     sectionList: [],
     shoppingCart: [],
-    section: 0
+    sectionCurrent: 0
   }
 
   setActive = (active: boolean) => this.state.active = active
@@ -23,7 +23,7 @@ class ShopStore {
     if (data.sectionList) this.state.sectionList = data.sectionList
   }
 
-  setSection = (sectionId: number) => this.state.section = sectionId
+  setSection = (sectionId: number) => this.state.sectionCurrent = sectionId
 
   cartAdd = (item: IItem) => this.state.shoppingCart.push(item)
 

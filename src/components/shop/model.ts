@@ -22,7 +22,7 @@ export interface IState {
   businessId: number,
   money: { cash: number, cards: ICard[] },
   sectionList: ISection[],
-  section: number,
+  sectionCurrent: number,
   shoppingCart: IItem[]
 }
 

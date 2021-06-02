@@ -11,6 +11,7 @@
     "idSlot": 14,
     "quantity": 3,
     "weight": 0.2,
+    "usable": true,
     "isFastSlot": false,
     "equipmentSlot": false,
     "name": "Яблочко",

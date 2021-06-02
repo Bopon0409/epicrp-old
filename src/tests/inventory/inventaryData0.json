@@ -3,8 +3,9 @@
   {
     "idItem": 0,
     "idSlot": 14,
-    "quantity": 3,
+    "quantity": 1,
     "weight": 0.2,
+    "usable": false,
     "isFastSlot": false,
     "equipmentSlot": false,
     "name": "Яблочко",
