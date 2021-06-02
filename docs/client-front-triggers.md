@@ -79,6 +79,12 @@
 - `window.trigger('fraction.data', data: json string)` - Загрузить данные
   планшета фракции
 
+### Экран загрузки
+
+- `window.trigger('loading.set', data: json string)` - Открыть/Закрыть экран
+  загрузки
+- loading.set JSON: `{ active: boolean, hint?: string }`
+
 ### Дом
 
 - `window.trigger('house.mode', mode: number)` - Переключение режима дома.

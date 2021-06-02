@@ -11,9 +11,10 @@ import './inventory/inventory.test'
 import './speedometer/speedometer.test'
 import './fraction/fraction.test'
 import './house/house.test'
+import './loading-page/loading-page.test'
+import './shop/shop.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.inventory.setActive(true)
-  window.test.inventory.setData()
+  window.test.loading.setLoading(true)
 }

@@ -13,6 +13,7 @@ import Atm             from '../atm'
 import Speedometer     from '../speedometer'
 import Fraction        from '../fraction'
 import House           from '../house'
+import { LoadingPage } from '../loading-page/loading-page'
 import { Shop }        from '../shop'
 
 import 'react-input-range/lib/css/index.css'
@@ -41,6 +42,7 @@ export default function App () {
       <Fraction />
       <House />
       <Shop />
+      <LoadingPage />
     </>
   )
 }

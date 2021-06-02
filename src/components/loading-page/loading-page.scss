@@ -1,0 +1,42 @@
+.loading-page {
+  position: absolute;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-image: url('./img/bg.png');
+  font-family: TT Norms, sans-serif;
+
+  .logo {
+    margin: auto;
+  }
+
+  .loader-wrapper {
+    position: absolute;
+    z-index: 21;
+    left: 50%;
+    bottom: 15%;
+  }
+
+  .hint-container {
+    position: absolute;
+    width: 800px;
+    left: 50%;
+    bottom: 5%;
+    margin-left: -400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .hint-icon {
+      margin-right: 15px;
+    }
+
+    .hint-text {
+      font-size: 24px;
+      line-height: 35px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+  }
+}
