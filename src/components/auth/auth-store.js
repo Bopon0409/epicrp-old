@@ -53,16 +53,18 @@ class AuthStore {
     this.state.errorMsg = ''
   }
 
-  setAuthActive = (active, login, pass) => {
+  setAuthActive = (active, autoLogin, login) => {
     this.state.active = active
-    if (login && pass) {
-      this.state.login = login
-      this.state.pass = pass
-    }
+    if (autoLogin) this.state.checkBox = autoLogin
+    if (login) this.state.login = login
   }
+
   setErrorMsg = msg => (this.state.errorMsg = msg)
+
   setField = (fieldName, value) => (this.state[fieldName] = value)
+
   checkBoxToggle = () => (this.state.checkBox = !this.state.checkBox)
+
   loginToggle = () => {
     this.state.isLogin = !this.state.isLogin
     this.clearInputs()

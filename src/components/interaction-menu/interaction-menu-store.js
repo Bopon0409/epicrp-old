@@ -15,16 +15,16 @@ class InteractionMenuStore {
     if (!active) window.frontTrigger('interact.close')
     this.state.active = active
     const isContainMenu =
-            document.querySelector('.interaction-menu').childNodes.length >= 3
+      document.querySelector('.interaction-menu').childNodes.length >= 3
     if (!active && isContainMenu) {
       document.querySelector('#menu1')?.remove()
       document.querySelector('.circular-sub-menu')?.remove()
       document
-      .querySelector('.interaction-menu')
-      .insertAdjacentHTML(
-        'afterbegin',
-        `<div id='menu1' className='menu1' />`
-      )
+        .querySelector('.interaction-menu')
+        .insertAdjacentHTML(
+          'afterbegin',
+          `<div id='menu1' className='menu1' />`
+        )
     }
   }
 
@@ -44,27 +44,21 @@ class InteractionMenuStore {
         onHoverOut,
         text,
         icon,
-        menus: menus
-               ? menus
-               .map(subEl => ({
-                 onHoverIn,
-                 onHoverOut,
-                 click: () => clickHandler(subEl.name),
-                 ...subEl
-               }))
-               .reverse()
-               : null,
+        menus: menus ? menus.map(subEl => ({
+          onHoverIn, onHoverOut, click: () => clickHandler(subEl.name),
+          ...subEl
+        })).reverse() : null,
         click: () => clickHandler(name)
       }))
 
       CMenu('#menu1')
-      .config({
-                hideAfterClick: false,
-                diameter: 400,
-                menus
-              })
-      .show([window.innerWidth / 2, window.innerHeight / 2])
-      .styles({ 'background-color': 'rgba(0, 0, 0, 0.7)' })
+        .config({
+          hideAfterClick: false,
+          diameter: 450,
+          menus
+        })
+        .show([window.innerWidth / 2, window.innerHeight / 2])
+        .styles({ 'background-color': 'rgba(0, 0, 0, 0.7)' })
     }
 
     this.setActive(active)

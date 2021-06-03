@@ -1,25 +1,17 @@
 [
+  { "text": "car_handbrake", "icon": "car_handbrake", "name": "car_handbrake" },
+  { "text": "interaction", "icon": "interaction", "name": "interaction" },
+  { "text": "car_trunk", "icon": "car_trunk", "name": "car_trunk" },
+  { "text": "handshake", "icon": "handshake", "name": "handshake" },
+  { "text": "car_door", "icon": "car_door", "name": "car_door" },
+  { "text": "fraction", "icon": "fraction", "name": "fraction" },
+  { "text": "licenses", "icon": "licenses", "name": "licenses" },
+  { "text": "car_hood", "icon": "car_hood", "name": "car_hood" },
+  { "text": "trade", "icon": "trade", "name": "trade" },
+  { "text": "docs", "icon": "docs", "name": "docs" },
   {
-    "text": "Показать документы",
-    "icon": "docs",
-    "name": "name1",
-    "menus": [
-      { "text": "Показать паспорт", "icon": "docs", "name": "name2" },
-      { "text": "Показать лицензии", "icon": "docs", "name": "name3" },
-      { "text": "Показать водительские права", "icon": "docs", "name": "name4" }
-    ]
-  },
-  { "text": "Позвать друзей пить пиво", "icon": "docs", "name": "name5" },
-  { "text": "Позвать друзей пить пиво", "icon": "docs", "name": "name6" },
-  { "text": "Позвать друзей пить пиво", "icon": "docs", "name": "name7" },
-  {
-    "text": "Показать документы",
-    "icon": "docs",
-    "name": "name1",
-    "menus": [
-      { "text": "Показать паспорт", "icon": "docs", "name": "name2" },
-      { "text": "Показать лицензии", "icon": "docs", "name": "name3" },
-      { "text": "Показать водительские права", "icon": "docs", "name": "name4" }
-    ]
+    "text": "car_safety_belt",
+    "icon": "car_safety_belt",
+    "name": "car_safety_belt"
   }
 ]

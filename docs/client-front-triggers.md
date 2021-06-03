@@ -11,8 +11,8 @@
 
 ### Авторизация
 
-- `window.trigger('auth.toggle', active: bolean, login?: string, pass?: string)`
-    - Открыть/Закрыть окно авторизации (логин и пароль опционально)
+- `window.trigger('auth.toggle', active: bolean, autoLogin?: bool, login?: string)`
+    - Открыть/Закрыть окно авторизации (логин и чекбокс опционально)
 - `window.trigger('auth.authAnswer', result: boolean)` - Ответ на авторизацию
 - `window.trigger('auth.registerAnswer', result: boolean` - Ответ на регистрацию
 
