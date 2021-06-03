@@ -10,11 +10,11 @@
 
 Авторизация
 
-- `mp.trigger('auth.signUp', login: string, pass: string, remember: boolean)`
+- `mp.trigger('auth.signIn', login: string, pass: string, remember: boolean)`
 
 Регистрация
 
-- `mp.trigger('auth.signIn', login: string, email: string, pass: string)`
+- `mp.trigger('auth.signUp', login: string, email: string, pass: string)`
 
 ## Выбор персонажа
 

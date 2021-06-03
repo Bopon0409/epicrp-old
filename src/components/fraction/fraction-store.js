@@ -78,6 +78,7 @@ class FractionStore {
   setActive = active => {
     this.state.active = active
     this.state.activeMenuItem = 0
+    this.state.settingsMode = false
   }
 
   setData = data => {

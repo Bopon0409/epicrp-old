@@ -15,8 +15,8 @@ const colors = [
 
 export default observer(() => {
   useEffect(() => {
-    store.setSettingsBuffer('init')
-    const { clickOutsideColorPicker: handler } = store
+    const { setSettingsBuffer, clickOutsideColorPicker: handler } = store
+    setSettingsBuffer('init')
     document.addEventListener('click', handler, false)
     return () => document.removeEventListener('click', handler, false)
   }, [])
