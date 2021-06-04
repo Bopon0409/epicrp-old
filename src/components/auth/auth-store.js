@@ -53,7 +53,7 @@ class AuthStore {
     this.state.errorMsg = ''
   }
 
-  setAuthActive = (active, autoLogin, login) => {
+  setAuthActive = ({ active, autoLogin, login }) => {
     this.state.active = active
     if (autoLogin) this.state.checkBox = autoLogin
     if (login) this.state.login = login

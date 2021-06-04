@@ -1,5 +1,5 @@
 import { makeAutoObservable }   from 'mobx'
-import { IData, IItem, IState } from './model'
+import { IData, IItem, IState } from './models'
 
 class ShopStore {
   constructor () {
@@ -10,12 +10,28 @@ class ShopStore {
     active: false,
     businessId: 0,
     money: { cash: 0, cards: [] },
+    sectionCurrent: 0,
     sectionList: [],
-    shoppingCart: [],
-    sectionCurrent: 0
+    cartMode: false,
+    shoppingCart: []
   }
 
   setActive = (active: boolean) => this.state.active = active
+
+  menuInit = () => {
+    if (this.state.sectionList.length)
+      this.state.sectionCurrent = this.state.sectionList[0].sectionId
+  }
+
+  setCartMode = (active: boolean) => {
+    if (active) {
+      this.state.cartMode = true
+      this.state.sectionCurrent = null
+    } else {
+      this.state.cartMode = false
+      this.menuInit()
+    }
+  }
 
   setData = (data: IData) => {
     if (data.money) this.state.money = data.money
