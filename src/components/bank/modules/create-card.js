@@ -20,7 +20,7 @@ export const CreateCard = observer(() => {
             maxLength={50} />
           <div className='input-counter'>{name.length} / 50</div>
           <div className='submit' onClick={() => setCreateCardStep(2)}>
-            <div className='text'>Сменить название</div>
+            <div className='text'>Сохранить название</div>
           </div>
         </div>
       )}

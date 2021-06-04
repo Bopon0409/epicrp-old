@@ -27,7 +27,7 @@ export const Modal = observer(() => {
           <div className='body'>
             <div className='modal__info'>
               <div className='hint'>
-                Вы собираетесь положить наличные средства а банковский счет
+                Вы собираетесь положить наличные средства в банковский счет
               </div>
             </div>
             <input type='number' className='modal__input' value={sumInput}

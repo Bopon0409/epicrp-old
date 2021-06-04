@@ -55,10 +55,7 @@ class BankStore {
     this.state.currentSubMenuEl = 0
   }
 
-  closeBank = () => {
-    this.setActive(false)
-    window.frontTrigger('bank.exit')
-  }
+  closeBank = () => window.frontTrigger('bank.exit')
 
   setData = data => {
     if (data.userName) this.state.userName = data.userName
@@ -66,7 +63,8 @@ class BankStore {
     if (data.house) this.state.house = data.house
     if (data.accountsData) {
       this.state.accountsData = data.accountsData
-      this.state.currentAccount = data.accountsData[0]?.accountId
+      if (data.accountsData.length)
+        this.state.currentAccount = data.accountsData[0].accountId
     }
   }
 
@@ -170,7 +168,6 @@ class BankStore {
     this.state.cardSettings.pinActive = false
     this.state.cardSettings.pinInput = ''
   }
-  pinEnterError = () => this.state.cardSettings.pinInput = 'Некорректный пин'
 
   //================================   Modal   =================================
 
