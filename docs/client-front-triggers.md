@@ -1,4 +1,4 @@
-# Тригеры **Клиент -> Фронт**
+# Триггеры **Клиент -> Фронт**
 
 ##### Выполняются через `browser.execute('trigger('triggerName', arguments)')`
 
@@ -52,6 +52,9 @@
 
 - `window.trigger('bank.toggle', active: bolean)` - Открыть/закрыть банк
 - `window.trigger('bank.update', data: json string)` - Загрузить данные банка
+- `window.trigger('bank.pin.success')` - Успешная смена пин-кода
+- `window.trigger('bank.pin.error', data: json string)` - Ошибка смены пин-кода
+- error data: `{ error: 'Ошибка' }`
 
 ### Банкомат
 

@@ -1,0 +1,14 @@
+.shop {
+  .container {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none;
+    box-sizing: border-box;
+    border-radius: 10px 10px 0 0;
+    width: 70%;
+    height: 80%;
+    position: absolute;
+    bottom: 0;
+    right: 40px;
+  }
+}

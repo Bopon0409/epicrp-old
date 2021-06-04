@@ -8,7 +8,7 @@ const setActive = (active: boolean): void => {
 }
 const setData = (): void => {
   // @ts-ignore
-  window.trigger('shop.active', jsonData)
+  window.trigger('shop.data', jsonData)
 }
 
 // @ts-ignore

@@ -1,13 +1,17 @@
-import React, { FC, useEffect } from 'react'
-import { store }                from './shop-store'
+import React, { useEffect } from 'react'
+import { store }            from './shop-store'
+import { Aside }            from './components/aside'
+import { CartLabel }        from './components/cart-label'
+import { Container }        from './components/container'
+import { observer }         from 'mobx-react-lite'
+import './shop.scss'
 
-export const Shop: FC = () => {
+export const Shop = observer(() => {
   useEffect(() => {
     // @ts-ignore
     const { EventManager: em } = window
-    const { setActive, setData, menuInit } = store
+    const { setActive, setData } = store
 
-    menuInit()
     em.addHandler('shop.active', setActive)
     em.addHandler('shop.data', setData)
     return () => {
@@ -15,9 +19,12 @@ export const Shop: FC = () => {
       em.removeHandler('shop.data', setData)
     }
   }, [])
-  return (
-    <div className='shop'>
 
+  return store.state.active ? (
+    <div className='shop'>
+      <Aside />
+      <CartLabel />
+      <Container />
     </div>
-  )
-}
+  ) : null
+})

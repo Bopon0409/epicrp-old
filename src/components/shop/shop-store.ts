@@ -1,5 +1,5 @@
-import { makeAutoObservable }   from 'mobx'
-import { IData, IItem, IState } from './models'
+import { makeAutoObservable }             from 'mobx'
+import { IData, IItem, IState, TPayment } from './models'
 
 class ShopStore {
   constructor () {
@@ -10,10 +10,33 @@ class ShopStore {
     active: false,
     businessId: 0,
     money: { cash: 0, cards: [] },
-    sectionCurrent: 0,
+    sectionCurrent: null,
     sectionList: [],
     cartMode: false,
-    shoppingCart: []
+    shoppingCart: [],
+    payment: 'cash'
+  }
+
+  get cartSum (): { sum: number, quantity: number } {
+    const sumReducer = (sum: number, { price, quantity }: IItem): number =>
+      sum + (price * quantity)
+
+    const quantityReducer = (sum: number, { quantity }: IItem): number =>
+      sum + quantity
+
+    if (this.state.shoppingCart.length) {
+      return {
+        sum: this.state.shoppingCart.reduce(sumReducer, 0),
+        quantity: this.state.shoppingCart.reduce(quantityReducer, 0)
+      }
+    } else return { sum: 0, quantity: 0 }
+  }
+
+  get currentSectionItems (): IItem[] {
+    const { sectionCurrent } = this.state
+    const section = this.state.sectionList
+      .find((section) => section.sectionId === sectionCurrent)
+    return section ? section.items : []
   }
 
   setActive = (active: boolean) => this.state.active = active
@@ -22,6 +45,8 @@ class ShopStore {
     if (this.state.sectionList.length)
       this.state.sectionCurrent = this.state.sectionList[0].sectionId
   }
+
+  setPayment = (value: TPayment) => this.state.payment = value
 
   setCartMode = (active: boolean) => {
     if (active) {
@@ -33,22 +58,50 @@ class ShopStore {
     }
   }
 
+  get funds (): number {
+    const { cash, cards } = this.state.money
+    switch (this.state.payment) {
+      case 'cash':
+        return cash
+      case 'card1':
+        return cards[0].balance
+      case 'card2':
+        return cards[1].balance
+      default:
+        return 0
+    }
+  }
+
   setData = (data: IData) => {
     if (data.money) this.state.money = data.money
     if (data.businessId) this.state.businessId = data.businessId
-    if (data.sectionList) this.state.sectionList = data.sectionList
+    if (data.sectionList) {
+      this.state.sectionList = data.sectionList
+      this.menuInit()
+    }
   }
 
   setSection = (sectionId: number) => this.state.sectionCurrent = sectionId
 
-  cartAdd = (item: IItem) => this.state.shoppingCart.push(item)
+  cartAddItem = (item: IItem) => {
+    const cartItem = this.state.shoppingCart
+      .find(({ itemId }: IItem) => item.itemId === itemId)
+    if (cartItem) {
+      if (cartItem.quantity < item.quantity) cartItem.quantity += 1
+    } else {
+      const itemCopy = JSON.parse(JSON.stringify(item))
+      this.state.shoppingCart.push(itemCopy)
+    }
+  }
 
-  cartClear = () => this.state.shoppingCart = []
-
-  cartRemove = (itemId: number) => {
-    this.state.shoppingCart = this.state.shoppingCart.filter(
-      (item: IItem) => item.itemId !== itemId
-    )
+  cartRemoveItem = (itemId: number) => {
+    const cartItem: IItem | undefined = this.state.shoppingCart
+      .find((item: IItem) => item.itemId === itemId)
+    if (cartItem) {
+      if (cartItem.quantity > 1) cartItem.quantity -= 1
+      else this.state.shoppingCart
+        .filter((item: IItem) => item.itemId !== itemId)
+    }
   }
 
 }

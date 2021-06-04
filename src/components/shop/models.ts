@@ -18,14 +18,17 @@ export interface ISection {
   items: IItem[]
 }
 
+export type TPayment = 'cash' | 'card1' | 'card2'
+
 export interface IState {
-  active: boolean,
-  businessId: number,
   money: { cash: number, cards: ICard[] },
   sectionCurrent: number | null,
   sectionList: ISection[],
+  shoppingCart: IItem[],
+  businessId: number,
   cartMode: boolean,
-  shoppingCart: IItem[]
+  payment: TPayment
+  active: boolean,
 }
 
 export interface IData {
