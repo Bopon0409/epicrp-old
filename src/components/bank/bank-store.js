@@ -170,7 +170,7 @@ class BankStore {
     this.state.cardSettings.pinActive = false
     this.state.cardSettings.pinInput = ''
   }
-  pinEnterError = ({ error }) => this.state.cardSettings.pinInput = error
+  pinEnterError = () => this.state.cardSettings.pinInput = 'Некорректный пин'
 
   //================================   Modal   =================================
 

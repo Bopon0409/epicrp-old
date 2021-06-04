@@ -53,8 +53,7 @@
 - `window.trigger('bank.toggle', active: bolean)` - Открыть/закрыть банк
 - `window.trigger('bank.update', data: json string)` - Загрузить данные банка
 - `window.trigger('bank.pin.success')` - Успешная смена пин-кода
-- `window.trigger('bank.pin.error', data: json string)` - Ошибка смены пин-кода
-- error data: `{ error: 'Ошибка' }`
+- `window.trigger('bank.pin.error')` - Ошибка смены пин-кода
 
 ### Банкомат
 
