@@ -224,10 +224,7 @@ class BankStore {
     this.state.modal.type = type
   }
 
-  modalSumChange = value => {
-    if (value <= this.currentAccountData.balance)
-      this.state.modal.sumInput = value
-  }
+  modalSumChange = value => this.state.modal.sumInput = value
 
   modalAccountChange = value => {
     if (value.length <= 9 && !isNaN(value))
