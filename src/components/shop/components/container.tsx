@@ -13,7 +13,7 @@ export const Container = observer(() => {
 
   return (
     <div className='container'>
-      {cartMode ? <div className='title'>Корзина</div> : null}
+      <div className='title'>{cartMode ? 'Корзина' : 'Список товаров'}</div>
       {listView}
     </div>
   )

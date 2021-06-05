@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { store }            from './shop-store'
 import { Aside }            from './components/aside'
-import { CartLabel }        from './components/cart-label'
-import { Container }        from './components/container'
-import { observer }         from 'mobx-react-lite'
+import { CartLabel } from './components/cart-label'
+import { Container } from './components/container'
+import { observer }  from 'mobx-react-lite'
 import './shop.scss'
 
 export const Shop = observer(() => {

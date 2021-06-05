@@ -100,12 +100,18 @@ class ShopStore {
     const cartItem = this.state.shoppingCart
       .find(({ itemId }: IItem) => item.itemId === itemId)
     const shopItem = this.getItem(item.itemId)
+    const { funds, cartSum: { sum } } = this
+
     if (cartItem && shopItem) {
-      if (cartItem.quantity < shopItem.quantity) cartItem.quantity += 1
+      const moneyCheck = (sum + shopItem.price) <= funds
+      if (cartItem.quantity < shopItem.quantity && moneyCheck)
+        cartItem.quantity += 1
     } else {
-      const itemCopy = JSON.parse(JSON.stringify(item))
-      itemCopy.quantity = 1
-      this.state.shoppingCart.push(itemCopy)
+      if (sum < funds) {
+        const itemCopy = JSON.parse(JSON.stringify(item))
+        itemCopy.quantity = 1
+        this.state.shoppingCart.push(itemCopy)
+      }
     }
   }
 
@@ -122,6 +128,12 @@ class ShopStore {
     }
   }
 
+  buy = () => {
+    const data = this.state.shoppingCart
+      .map(({ itemId, quantity }) => ({ itemId, quantity }))
+    // @ts-ignore
+    window.frontTrigger('shop.buy', JSON.stringify(data))
+  }
 }
 
 const store = new ShopStore()

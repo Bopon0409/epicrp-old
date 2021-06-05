@@ -7,29 +7,32 @@ import selectIcon          from '../image/select_icon.svg'
 
 export const Aside = observer(() => {
   const [selectActive, setSelectActive] = useState(false)
-  const { setSection, setPayment, funds } = store
+  const { setSection, setPayment, buy, funds } = store
   const {
     sectionList, sectionCurrent, businessId, payment, money
   } = store.state
 
   const sectionListView = sectionList
     .map(({ sectionName, sectionId }, i) => {
-      const itemClasses = classNames('button',
-        sectionId === sectionCurrent && 'button--active'
-      )
-      const handler = () => setSection(sectionId)
-      return (
-        <div className={itemClasses} onClick={handler} key={i}>
-          <div className='text'>{sectionName}</div>
-        </div>
-      )
-    }
-  )
+        const itemClasses = classNames('button',
+          sectionId === sectionCurrent && 'button--active'
+        )
+        const handler = () => setSection(sectionId)
+        return (
+          <div className={itemClasses} onClick={handler} key={i}>
+            <div className='text'>{sectionName}</div>
+          </div>
+        )
+      }
+    )
 
   const selectView = money.cards.length && selectActive ? (
     <div className='select'>{
       money.cards.map(({ balance, cardName, accountId }: ICard, i) =>
-        <div onClick={() => setPayment(i === 0 ? 'card1' : 'card2')}
+        <div onClick={() => {
+          setPayment(i === 0 ? 'card1' : 'card2')
+          setSelectActive(!selectActive)
+        }}
           className='select-item' key={i}>
           <div className='select__name'>{cardName}</div>
           <div className='select__name'>{balance}$</div>
@@ -57,20 +60,22 @@ export const Aside = observer(() => {
           </div>
           <div className={classNames('button',
             payment !== 'cash' && 'button--active'
-          )} onClick={() => setSelectActive(!selectActive)}>
+          )} onClick={() => setSelectActive(!selectActive)}
+            style={{ position: 'relative' }}
+          >
             <div className='text'>Карта</div>
             <img src={selectIcon} alt='' className='select-icon' style={{
               transform: selectActive ? '' : 'rotate(180deg)'
             }} />
-            {selectView}
           </div>
         </div>
+        {selectView}
         <div className='money-menu'>
           <div className='hint'>Ваши средства:</div>
           <div className='value'>{funds}</div>
         </div>
         <div className='pay-button-container'>
-          <div className='button button--active'>
+          <div className='button button--active' onClick={buy}>
             <div className='text'>Оплатить</div>
           </div>
         </div>

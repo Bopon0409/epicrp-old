@@ -121,5 +121,37 @@
         }
       }
     }
+
+    .select {
+      position: relative;
+      top: -20px;
+      left: 25px;
+      width: 270px;
+
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+
+      .select-item {
+        background: #212225;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4px 10px;
+
+        &:hover {
+          background: #9b8129;
+        }
+      }
+    }
+
+    .select-icon {
+      position: absolute;
+      right: 24px;
+      top: 24px;
+      width: 24px;
+      height: 24px;
+    }
   }
 }
