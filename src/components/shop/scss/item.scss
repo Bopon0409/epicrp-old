@@ -65,7 +65,7 @@
       background: #a89f4e;
       box-shadow: 0 0 15px rgba(168, 159, 78, 0.25);
       border-radius: 0 0 15px 15px;
-      display: flex;
+      display: none;
       justify-content: center;
       align-items: center;
 
@@ -76,7 +76,7 @@
         border: 1px solid rgba(255, 255, 255, 0.25);
         box-sizing: border-box;
         border-radius: 5px;
-        display: none;
+        display: flex;
         margin: 0 20px;
 
         .text {
@@ -90,6 +90,7 @@
 
       &__button {
         color: rgba(0, 0, 0, 0.6);
+
       }
     }
 

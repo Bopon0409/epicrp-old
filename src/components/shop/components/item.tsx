@@ -12,7 +12,7 @@ export const Item = observer((props: IItemProps) => {
   const { item, mode } = props
   const { name, description, price, quantity } = item
   const { cartAddItem } = store
-  console.log(mode)
+
   return (
     <div className='item'>
       <div className='item__name'>{name}</div>
