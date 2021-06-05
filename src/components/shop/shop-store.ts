@@ -39,6 +39,16 @@ class ShopStore {
     return section ? section.items : []
   }
 
+  getItem = (itemId: number): IItem | null => {
+    let result: IItem | null = null
+    this.state.sectionList.forEach((section) => {
+      section.items.forEach((item) => {
+        if (item.itemId === itemId) result = item
+      })
+    })
+    return result
+  }
+
   setActive = (active: boolean) => this.state.active = active
 
   menuInit = () => {
@@ -82,13 +92,16 @@ class ShopStore {
     }
   }
 
-  setSection = (sectionId: number) => this.state.sectionCurrent = sectionId
+  setSection = (sectionId: number) => {
+    if (!this.state.cartMode) this.state.sectionCurrent = sectionId
+  }
 
   cartAddItem = (item: IItem) => {
     const cartItem = this.state.shoppingCart
       .find(({ itemId }: IItem) => item.itemId === itemId)
-    if (cartItem) {
-      if (cartItem.quantity < item.quantity) cartItem.quantity += 1
+    const shopItem = this.getItem(item.itemId)
+    if (cartItem && shopItem) {
+      if (cartItem.quantity < shopItem.quantity) cartItem.quantity += 1
     } else {
       const itemCopy = JSON.parse(JSON.stringify(item))
       itemCopy.quantity = 1
@@ -97,12 +110,15 @@ class ShopStore {
   }
 
   cartRemoveItem = (itemId: number) => {
-    const cartItem: IItem | undefined = this.state.shoppingCart
+    const { shoppingCart } = this.state
+    const cartItem: IItem | undefined = shoppingCart
       .find((item: IItem) => item.itemId === itemId)
     if (cartItem) {
       if (cartItem.quantity > 1) cartItem.quantity -= 1
-      else this.state.shoppingCart
-        .filter((item: IItem) => item.itemId !== itemId)
+      else {
+        this.state.shoppingCart = shoppingCart
+          .filter((item: IItem) => item.itemId !== itemId)
+      }
     }
   }
 

@@ -12,7 +12,7 @@ import { CreateCard }       from './modules/create-card'
 import classNames           from 'classnames'
 
 export default observer(() => {
-  const { active, currentMainMenuEl } = store.state
+  const { active, currentMainMenuEl, modal } = store.state
   const bankClasses = classNames('bank', store.isBlur && 'bank-blur')
 
   useEffect(() => {
@@ -32,14 +32,17 @@ export default observer(() => {
 
   return active ? (
     <div className='bank-context'>
+      {!modal.active && (
+        <div className='bank__close-btn' onClick={store.closeClick}>
+          <img src={closeIcon} alt='' />
+        </div>
+      )
+      }
       <div className={bankClasses}>
         <img src={bankLogo} alt='' className='bank__logo' />
         <Menu />
         <div className='bank-wrapper1' />
         <div className='bank-wrapper2' />
-        <div className='bank__close-btn' onClick={store.closeBank}>
-          <img src={closeIcon} alt='' />
-        </div>
         {currentMainMenuEl === 0 && <MainPage />}
         {currentMainMenuEl === 3 && <MyAccount />}
       </div>

@@ -55,7 +55,12 @@ class BankStore {
     this.state.currentSubMenuEl = 0
   }
 
-  closeBank = () => window.frontTrigger('bank.exit')
+  closeClick = () => {
+    const { create, cardSettings } = this.state
+    if (create.active) this.createCardClose()
+    else if (cardSettings.active) this.closeCardSettings()
+    else window.frontTrigger('bank.toggle.menu', false)
+  }
 
   setData = data => {
     if (data.userName) this.state.userName = data.userName
@@ -121,8 +126,9 @@ class BankStore {
   cardSettingsPinClear = () => {
     const { pinInput } = this.state.cardSettings
     if (pinInput.length > 0)
-      this.state.cardSettings.pinInput =
-        pinInput.substr(0, pinInput.length - 1)
+      this.state.cardSettings.pinInput = pinInput.substr(
+        0, pinInput.length - 1
+      )
   }
 
   cardSettingsPinSubmit = () => {
@@ -268,6 +274,11 @@ class BankStore {
   //=============================   Create Card   ==============================
 
   createCardOpen = () => this.state.create.active = true
+
+  createCardClose = () => {
+    this.state.create = { active: false, pin: '', name: '', step: 1 }
+  }
+
   createCardSubmit = () => {
     const { pin, name } = this.state.create
     if (pin.length === 4) {

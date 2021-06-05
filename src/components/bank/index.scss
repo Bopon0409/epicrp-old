@@ -9,9 +9,21 @@
 
 .bank-context {
   font-family: 'Nunito', sans-serif;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  .bank__close-btn {
+    cursor: pointer;
+    position: absolute;
+    z-index: 20;
+    top: 70px;
+    right: 140px;
+  }
 
   .bank {
     position: absolute;
+    top: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.9);
@@ -50,14 +62,6 @@
       position: absolute;
       left: 130px;
       top: 70px;
-    }
-
-    .bank__close-btn {
-      cursor: pointer;
-      position: absolute;
-      z-index: 12;
-      top: 70px;
-      right: 140px;
     }
 
     .order {

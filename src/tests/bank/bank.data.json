@@ -1,6 +1,23 @@
 {
-  "userName": "John Oils",
-  "phone": { "number": 73452343, "remind": 1400 },
-  "house": { "number": 63, "tax": 1400, "remind": 2 },
-  "accountsData": [ ]
+  "userName": "Robert West18",
+  "phone": { "number": 123123, "remind": 500 },
+  "house": { "number": 65, "tax": 50, "remind": 2 },
+  "accountsData": [
+    {
+      "balance": 0,
+      "cardName": "test",
+      "accountId": "000000005",
+      "operations": [
+        {
+          "name": "Пополнение счёта", "change": 25000
+        }
+      ]
+    },
+    {
+      "balance": 0,
+      "cardName": "123",
+      "accountId": "000000006",
+      "operations": [ { "name": "Пополнение счёта", "change": 25000 } ]
+    }
+  ]
 }

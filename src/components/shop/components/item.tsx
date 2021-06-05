@@ -1,7 +1,7 @@
-import React from 'react'
+import React        from 'react'
 import { observer } from 'mobx-react-lite'
-import { IItem } from '../models'
-import { store } from '../shop-store'
+import { IItem }    from '../models'
+import { store }    from '../shop-store'
 
 export interface IItemProps {
   item: IItem,
@@ -11,7 +11,7 @@ export interface IItemProps {
 export const Item = observer((props: IItemProps) => {
   const { item, mode } = props
   const { name, description, price, quantity } = item
-  const { cartAddItem } = store
+  const { cartAddItem, cartRemoveItem } = store
 
   return (
     <div className='item'>
@@ -23,11 +23,16 @@ export const Item = observer((props: IItemProps) => {
           <div className='text'>Добавить в корзину</div>
         </div>) : (
         <div className='counter'>
-          <div className='counter__button'>-</div>
+          <div className='counter__button' onClick={() => cartAddItem(item)}>
+            <div className='text'>+</div>
+          </div>
           <div className='counter__num'>
             <div className='text'>{quantity}</div>
           </div>
-          <div className='counter__button'>+</div>
+          <div className='counter__button'
+            onClick={() => cartRemoveItem(item.itemId)}>
+            <div className='text'>-</div>
+          </div>
         </div>
       )}
     </div>

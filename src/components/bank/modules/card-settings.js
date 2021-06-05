@@ -2,7 +2,6 @@ import React        from 'react'
 import { observer } from 'mobx-react-lite'
 import Card         from './card'
 import store        from '../bank-store'
-import closeIcon    from '../images/close-icon.svg'
 
 export const CardSettings = observer(() => {
   const pinButtons = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -13,7 +12,7 @@ export const CardSettings = observer(() => {
   const card = store.getCard(accountId)
 
   const {
-    closeCardSettings, cardSettingsNameOpen, cardSettingsPinOpen,
+    cardSettingsNameOpen, cardSettingsPinOpen,
     cardSettingsRecoveryOpen, cardSettingsRemoveOpen, cardSettingsNameChange,
     cardSettingsPinChange, cardSettingsNameSubmit, cardSettingsPinSubmit,
     cardSettingsPinClear, cardSettingsRecoverySubmit, cardSettingsRemoveSubmit,
@@ -24,9 +23,6 @@ export const CardSettings = observer(() => {
     <div className='card-settings'>
       {!nameActive && !pinActive && !recoveryActive && !removeActive && <>
         <div className='title'>Управление счетом № {card.accountId}</div>
-        <div className='close-btn' onClick={closeCardSettings}>
-          <img src={closeIcon} alt='' />
-        </div>
         <div className='container'>
           <Card account={card} settingsMode />
           <div className='button-list'>

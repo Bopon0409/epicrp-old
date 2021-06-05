@@ -65,7 +65,7 @@
       background: #a89f4e;
       box-shadow: 0 0 15px rgba(168, 159, 78, 0.25);
       border-radius: 0 0 15px 15px;
-      display: none;
+      display: flex;
       justify-content: center;
       align-items: center;
 
@@ -84,13 +84,25 @@
           font-weight: bold;
           font-size: 28px;
           text-transform: uppercase;
-          color: #FFFFFF;
+          color: #ffffff;
         }
       }
 
       &__button {
-        color: rgba(0, 0, 0, 0.6);
+        position: relative;
+        display: flex;
+        width: 40px;
+        height: 40px;
+        z-index: 10;
 
+        .text {
+          margin: auto;
+          color: rgba(0, 0, 0, 0.6);
+          font-size: 34px;
+          font-weight: 700;
+          line-height: 100%;
+          top: -2px;
+        }
       }
     }
 
