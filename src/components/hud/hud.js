@@ -27,28 +27,30 @@ export default observer(() => {
   }, [])
 
   return active ? (
-    <div className='hud'>
-      <div className='right-panel'>
-        <IndicatorSvg1 />
-        <IndicatorSvg2 />
-        <IndicatorSvg3 />
+    <>
+      <div className='hud'>
+        <div className='right-panel'>
+          <IndicatorSvg1 />
+          <IndicatorSvg2 />
+          <IndicatorSvg3 />
+        </div>
+
+        <div className='time-block'>
+          <img src={timeIcon} alt='' className='icon' />
+          <div className='time'>{time}</div>
+          <div className='date'>{date}</div>
+        </div>
+
+        {hint.action ? <div className='hint'>
+          <div className='text'>Нажмите клавишу</div>
+          <div className='button'>{hint.button}</div>
+          <div className='text'>{hint.action}</div>
+        </div> : null}
+
+        <LeftBlock />
+        <RightBlock />
       </div>
-
-      <div className='time-block'>
-        <img src={timeIcon} alt='' className='icon' />
-        <div className='time'>{time}</div>
-        <div className='date'>{date}</div>
-      </div>
-
-      {hint.action ? <div className='hint'>
-        <div className='text'>Нажмите клавишу</div>
-        <div className='button'>{hint.button}</div>
-        <div className='text'>{hint.action}</div>
-      </div> : null}
-
-      <LeftBlock />
-      <RightBlock />
       <Alerts />
-    </div>
+    </>
   ) : null
 })
