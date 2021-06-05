@@ -20,7 +20,7 @@ export const Aside = observer(() => {
       const handler = () => setSection(sectionId)
       return (
         <div className={itemClasses} onClick={handler} key={i}>
-          {sectionName}
+          <div className='text'>{sectionName}</div>
         </div>
       )
     }
@@ -45,11 +45,14 @@ export const Aside = observer(() => {
         <div className='title__name'>Магазин 24/7</div>
       </div>
       <div className='menu'>
-        <div className='menu-list'>{sectionListView}</div>
+        <div className='menu-title'>Меню:</div>
+        <div className='menu-list'>
+          {sectionListView}
+        </div>
         <div className='payment-menu'>
           <div className={classNames('button',
             payment === 'cash' && 'button--active'
-          )}>
+          )} onClick={() => setPayment('cash')}>
             <div className='text'>Наличные</div>
           </div>
           <div className={classNames('button',
@@ -67,7 +70,7 @@ export const Aside = observer(() => {
           <div className='value'>{funds}</div>
         </div>
         <div className='pay-button-container'>
-          <div className='button'>
+          <div className='button button--active'>
             <div className='text'>Оплатить</div>
           </div>
         </div>

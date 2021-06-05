@@ -1,0 +1,125 @@
+.shop {
+  .aside {
+    width: 400px;
+    height: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+
+    .title {
+      color: #FFFFFF;
+      margin-bottom: 100px;
+
+      &__number {
+        font-size: 24px;
+        line-height: 33px;
+      }
+
+      &__name {
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 45px;
+      }
+    }
+
+    .menu {
+
+      .menu-title {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 33px;
+        color: #FFFFFF;
+      }
+
+      .menu-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 400px;
+        overflow-y: scroll;
+        padding: 20px;
+        box-sizing: border-box;
+        border-bottom: 1px dashed rgba(196, 196, 196, 0.1);
+        border-right: 1px dashed rgba(196, 196, 196, 0.1);
+
+        &::-webkit-scrollbar {
+          position: absolute;
+          width: 5px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: #6C6C6C;
+          border-radius: 4px;
+        }
+      }
+
+      .payment-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 210px;
+        padding: 20px;
+        box-sizing: border-box;
+        border-right: 1px dashed rgba(196, 196, 196, 0.1);
+      }
+
+      .money-menu {
+        border-right: 1px dashed rgba(196, 196, 196, 0.1);
+        color: #FFFFFF;
+        text-transform: uppercase;
+        padding-left: 20px;
+
+        .hint {
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 100%;
+          opacity: 0.4;
+        }
+
+        .value {
+          font-weight: 600;
+          font-size: 28px;
+          line-height: 100%;
+        }
+      }
+
+      .pay-button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        box-sizing: border-box;
+        border-right: 1px dashed rgba(196, 196, 196, 0.1);
+      }
+    }
+
+    .button {
+      width: 270px;
+      min-height: 72px;
+      background: rgba(73, 73, 73, 0.2);
+      border-radius: 6px;
+      display: flex;
+      margin-bottom: 25px;
+      cursor: pointer;
+
+      .text {
+        margin: auto;
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 93.02%;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        opacity: 0.15;
+      }
+
+      &--active {
+        background: #ECC02C;
+        box-shadow: 0 0 15px rgba(236, 192, 44, 0.25);
+
+        .text {
+          color: #2B2B2B;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

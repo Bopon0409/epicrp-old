@@ -48,7 +48,8 @@ class ShopStore {
 
   setPayment = (value: TPayment) => this.state.payment = value
 
-  setCartMode = (active: boolean) => {
+  setCartMode = () => {
+    const active = !this.state.cartMode
     if (active) {
       this.state.cartMode = true
       this.state.sectionCurrent = null
@@ -90,6 +91,7 @@ class ShopStore {
       if (cartItem.quantity < item.quantity) cartItem.quantity += 1
     } else {
       const itemCopy = JSON.parse(JSON.stringify(item))
+      itemCopy.quantity = 1
       this.state.shoppingCart.push(itemCopy)
     }
   }

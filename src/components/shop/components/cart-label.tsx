@@ -5,13 +5,14 @@ import cartIcon     from '../image/cart_icon.svg'
 
 export const CartLabel = observer(() => {
   const { sum, quantity } = store.cartSum
+  const { setCartMode } = store
   return (
     <div className='cart-label'>
-      <div className='num'>{sum}</div>
+      <div className='money'>{sum}$</div>
       <div className='quantity'>
         <div className='text'>{quantity}</div>
       </div>
-      <img src={cartIcon} alt='' className='icon' />
+      <img src={cartIcon} alt='' className='icon' onClick={setCartMode} />
     </div>
   )
 })

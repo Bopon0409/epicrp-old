@@ -5,10 +5,35 @@
     border-bottom: none;
     box-sizing: border-box;
     border-radius: 10px 10px 0 0;
-    width: 70%;
-    height: 80%;
+    width: 1300px;
+    height: 880px;
     position: absolute;
     bottom: 0;
     right: 40px;
+    padding: 40px;
+    overflow-y: scroll;
+
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .title {
+      font-weight: bold;
+      font-size: 36px;
+      line-height: 93.02%;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+
+    &::-webkit-scrollbar {
+      position: absolute;
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #6C6C6C;
+      border-radius: 4px;
+    }
   }
 }

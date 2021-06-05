@@ -9,11 +9,12 @@ export const Container = observer(() => {
 
   const listView = cartMode ?
     shoppingCart.map((item, i) => <Item item={item} mode={'cart'} key={i} />) :
-    list.map((item, i) => <Item item={item} mode={'cart'} key={i} />)
+    list.map((item, i) => <Item item={item} mode={'shop'} key={i} />)
 
   return (
     <div className='container'>
-      <div className='wrapper'>{listView}</div>
+      {cartMode ? <div className='title'>Корзина</div> : null}
+      {listView}
     </div>
   )
 })

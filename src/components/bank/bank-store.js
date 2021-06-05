@@ -155,6 +155,7 @@ class BankStore {
     const { accountId } = this.currentAccountData
     window.frontTrigger('bank.card.remove', accountId)
     this.state.cardSettings.removeActive = false
+    this.closeCardSettings()
   }
 
   cardSettingsPinOpen = () => this.state.cardSettings.pinActive = true
