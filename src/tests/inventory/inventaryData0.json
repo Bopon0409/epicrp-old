@@ -1,7 +1,7 @@
 [
   { "type": "config", "inventoryId": 0 },
   {
-    "idItem": 0,
+    "idItem": 15,
     "idSlot": 14,
     "quantity": 1,
     "weight": 0.2,

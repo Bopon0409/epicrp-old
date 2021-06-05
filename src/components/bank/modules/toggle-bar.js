@@ -21,6 +21,7 @@ export default observer(({ type }) => {
   const classes1 = classNames(TOGGLE_CLASS,
     active1 && hover1 && TOGGLE_CLASS_ACTIVE
   )
+
   const classes2 = classNames(TOGGLE_CLASS,
     active2 && hover2 && TOGGLE_CLASS_ACTIVE
   )
