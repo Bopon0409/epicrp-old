@@ -12,18 +12,25 @@ export default observer(({ type }) => {
     title, icon, text1, text2, handler1, handler2
   } = store.getToggleParams(type)
 
+  const active1 = type === 'payment-for-services' ? store.state.hasHouse : true
+  const active2 = type === 'payment-for-services' ? store.state.hasPhone : true
+
   const [hover1, setHover1] = useState(false)
   const [hover2, setHover2] = useState(false)
 
-  const classes1 = classNames(TOGGLE_CLASS, hover1 && TOGGLE_CLASS_ACTIVE)
-  const classes2 = classNames(TOGGLE_CLASS, hover2 && TOGGLE_CLASS_ACTIVE)
+  const classes1 = classNames(TOGGLE_CLASS,
+    active1 && hover1 && TOGGLE_CLASS_ACTIVE
+  )
+  const classes2 = classNames(TOGGLE_CLASS,
+    active2 && hover2 && TOGGLE_CLASS_ACTIVE
+  )
 
   return (
     <>
       {title && <div className='toggle-bar__title'>{title}</div>}
       <div className='toggle-bar__container'>
         <div className={classes1}
-          onClick={handler1}
+          onClick={active1 ? handler1 : null}
           onMouseEnter={() => setHover1(true)}
           onMouseLeave={() => setHover1(false)}
         >
@@ -32,7 +39,7 @@ export default observer(({ type }) => {
           <div className='toggle-bar__line' />
         </div>
         <div className={classes2}
-          onClick={handler2}
+          onClick={active2 ? handler2 : null}
           onMouseEnter={() => setHover2(true)}
           onMouseLeave={() => setHover2(false)}
         >

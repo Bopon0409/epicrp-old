@@ -1,6 +1,8 @@
 {
   "userName": "Robert West18",
+  "hasPhone": false,
   "phone": { "number": 123123, "remind": 500 },
+  "hasHouse": false,
   "house": { "number": 65, "tax": 50, "remind": 2 },
   "accountsData": [
     {

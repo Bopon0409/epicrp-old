@@ -10,7 +10,9 @@ class BankStore {
     userName: '',
     currentAccount: 0,
     accountsData: [],
+    hasHouse: false,
     house: { number: 0, tax: 0, reminder: 0 },
+    hasPhone: false,
     phone: { number: 0, remainder: 0 },
     cardSettings: {
       active: false,
@@ -64,7 +66,9 @@ class BankStore {
 
   setData = data => {
     if (data.userName) this.state.userName = data.userName
+    if (data.hasPhone) this.state.hasPhone = data.hasPhone
     if (data.phone) this.state.phone = data.phone
+    if (data.hasHouse) this.state.hasHouse = data.hasHouse
     if (data.house) this.state.house = data.house
     if (data.accountsData) {
       this.state.accountsData = data.accountsData
