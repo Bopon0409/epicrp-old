@@ -2,16 +2,16 @@ import React, { useState } from 'react'
 import { observer }        from 'mobx-react-lite'
 import { store }           from '../shop-store'
 import classNames          from 'classnames'
-import selectIcon          from '../image/select_icon.svg'
 import { SectionList }     from './section-list'
 import { Select }          from './select'
+import selectIcon          from '../image/select_icon.svg'
 
 export const Aside = observer(() => {
   const { setPayment, buy, funds, state: { businessId, payment } } = store
 
   const [selectActive, setSelectActive] = useState(false)
   const selectHandler = () => setSelectActive(!selectActive)
-  const selectIconStyle = { transform: selectActive ? '' : 'rotate(180deg)' }
+  const selectIconStyle = { transform: !selectActive ? '' : 'rotate(180deg)' }
 
   const cashClassNames = classNames('button',
     payment === 'cash' && 'button--active'
