@@ -120,6 +120,10 @@
           opacity: 1;
         }
       }
+
+      &--relative {
+        position: relative;
+      }
     }
 
     .select {
