@@ -40,13 +40,10 @@ class InteractionMenuStore {
       }
 
       const menus = data.map(({ text, icon, menus, name }) => ({
-        onHoverIn,
-        onHoverOut,
-        text,
-        icon,
+        onHoverIn, onHoverOut, text, icon: `${icon} icon`,
         menus: menus ? menus.map(subEl => ({
           onHoverIn, onHoverOut, click: () => clickHandler(subEl.name),
-          ...subEl
+          icon: `${subEl.icon} icon`, ...subEl
         })).reverse() : null,
         click: () => clickHandler(name)
       }))

@@ -1,17 +1,48 @@
 [
-  { "text": "car_handbrake", "icon": "car_handbrake", "name": "car_handbrake" },
-  { "text": "interaction", "icon": "interaction", "name": "interaction" },
-  { "text": "car_trunk", "icon": "car_trunk", "name": "car_trunk" },
-  { "text": "handshake", "icon": "handshake", "name": "handshake" },
-  { "text": "car_door", "icon": "car_door", "name": "car_door" },
-  { "text": "fraction", "icon": "fraction", "name": "fraction" },
-  { "text": "licenses", "icon": "licenses", "name": "licenses" },
-  { "text": "car_hood", "icon": "car_hood", "name": "car_hood" },
-  { "text": "trade", "icon": "trade", "name": "trade" },
-  { "text": "docs", "icon": "docs", "name": "docs" },
+  {
+    "text": "interaction", "icon": "interaction_icon", "name": "interaction",
+    "menus": [
+      { "text": "car_trunk", "icon": "car_trunk_icon", "name": "car_trunk" },
+      { "text": "handshake", "icon": "handshake_icon", "name": "handshake" },
+      { "text": "car_door", "icon": "car_door_icon", "name": "car_door" },
+      { "text": "fraction", "icon": "fraction_icon", "name": "fraction" },
+      { "text": "licenses", "icon": "licenses_icon", "name": "licenses" },
+      { "text": "car_hood", "icon": "car_hood_icon", "name": "car_hood" },
+      { "text": "trade", "icon": "trade_icon", "name": "trade" },
+      { "text": "docs", "icon": "docs_icon", "name": "docs" },
+      {
+        "text": "interaction",
+        "icon": "interaction_icon",
+        "name": "interaction"
+      },
+      {
+        "text": "car_handbrake",
+        "icon": "car_handbrake_icon",
+        "name": "car_handbrake"
+      },
+      {
+        "text": "car_safety_belt",
+        "icon": "car_safety_belt_icon",
+        "name": "car_safety_belt"
+      }
+    ]
+  },
+  { "text": "car_trunk", "icon": "car_trunk_icon", "name": "car_trunk" },
+  { "text": "handshake", "icon": "handshake_icon", "name": "handshake" },
+  { "text": "car_door", "icon": "car_door_icon", "name": "car_door" },
+  { "text": "fraction", "icon": "fraction_icon", "name": "fraction" },
+  { "text": "licenses", "icon": "licenses_icon", "name": "licenses" },
+  { "text": "car_hood", "icon": "car_hood_icon", "name": "car_hood" },
+  { "text": "trade", "icon": "trade_icon", "name": "trade" },
+  { "text": "docs", "icon": "docs_icon", "name": "docs" },
+  {
+    "text": "car_handbrake",
+    "icon": "car_handbrake_icon",
+    "name": "car_handbrake"
+  },
   {
     "text": "car_safety_belt",
-    "icon": "car_safety_belt",
+    "icon": "car_safety_belt_icon",
     "name": "car_safety_belt"
   }
 ]

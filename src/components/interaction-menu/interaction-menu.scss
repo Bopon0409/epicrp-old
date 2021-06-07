@@ -51,14 +51,31 @@
   cursor: pointer;
 }
 
-.car_door { content: url('images/car_door_icon.svg') }
-.car_handbrake { content: url('images/car_handbrake_icon.svg') }
-.car_hood { content: url('images/car_hood_icon.svg') }
-.car_safety_belt { content: url('images/car_safety_belt_icon.svg') }
-.car_trunk { content: url('images/car_trunk_icon.svg') }
-.docs { content: url('images/docs_icon.svg') }
-.fraction { content: url('images/fraction_icon.svg') }
-.handshake { content: url('images/handshake_icon.svg') }
-.interaction { content: url('images/interaction_icon.svg') }
-.licenses { content: url('images/licenses_icon.svg') }
-.trade { content: url('images/trade_icon.svg') }
+.cm-icon {
+  width: 56px !important;
+  height: 56px !important;
+}
+
+.car_door_icon {
+  content: url('images/car_door_icon.svg');
+}
+
+.car_handbrake_icon { content: url('images/car_handbrake_icon.svg') }
+
+.car_hood_icon { content: url('images/car_hood_icon.svg') }
+
+.car_safety_belt_icon { content: url('images/car_safety_belt_icon.svg') }
+
+.car_trunk_icon { content: url('images/car_trunk_icon.svg') }
+
+.docs_icon { content: url('images/docs_icon.svg') }
+
+.fraction_icon { content: url('images/fraction_icon.svg') }
+
+.handshake_icon { content: url('images/handshake_icon.svg') }
+
+.interaction_icon { content: url('images/interaction_icon.svg') }
+
+.licenses_icon { content: url('images/licenses_icon.svg') }
+
+.trade_icon { content: url('images/trade_icon.svg') }
