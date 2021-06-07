@@ -10,6 +10,13 @@ export default observer(() => {
   const { modalAction, setModal, useLabel } = store
   const weight = (item?.weight * item?.quantity).toFixed(1)
 
+  console.log(store.state.trade.isReady1, item.idSlot)
+  const isDisabled = (item.idSlot >= 351 && item.idSlot <= 360) ||
+    (store.state.trade.isReady1 && item.idSlot >= 301 && item.idSlot <= 310)
+
+  const useBtnRender = item.usable || item.equipmentSlot || item.isFastSlot
+  const separateBtnRender = item.quantity > 1
+
   useEffect(() => {
     const clickOutside = e => {
       const modalBlock = document.getElementsByClassName('modal')[0]
@@ -35,28 +42,20 @@ export default observer(() => {
           </div>
         </div>
 
-        <div className='modal__btn-container'>
-          {item.usable || item.equipmentSlot || item.isFastSlot ? <div
-            className={
-              action === 'use' ? 'modal__btn modal__btn_active' : 'modal__btn'
-            }
-            onClick={() => toggleModalAction('use')}
-          >
+        {!isDisabled && <div className='modal__btn-container'>
+          {useBtnRender ? <div className={
+            action === 'use' ? 'modal__btn modal__btn_active' : 'modal__btn'
+          } onClick={() => toggleModalAction('use')}>
             {useLabel}
           </div> : null}
 
-          {item.quantity > 1 && (
-            <div
-              className={
-                action === 'separate'
-                  ? 'modal__btn modal__btn_active'
-                  : 'modal__btn'
-              }
-              onClick={() => toggleModalAction('separate')}
-            >
-              Разделить
-            </div>
-          )}
+          {separateBtnRender && <div className={action === 'separate'
+            ? 'modal__btn modal__btn_active'
+            : 'modal__btn'}
+            onClick={() => toggleModalAction('separate')}>
+            Разделить
+          </div>
+          }
           <div
             className={
               action === 'drop' ? 'modal__btn modal__btn_active' : 'modal__btn'
@@ -65,7 +64,7 @@ export default observer(() => {
           >
             Выбросить
           </div>
-        </div>
+        </div>}
 
         {action === 'separate' || (action === 'drop' && item.quantity > 1) ? (
           <div className='modal__slider'>

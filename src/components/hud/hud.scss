@@ -119,54 +119,6 @@
     svg { filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.5)); }
   }
 
-  .progress {
-    width: 100%;
-    height: 3px;
-    border-radius: 1px;
-  }
-
-  .progress-bar {
-    height: 3px;
-    width: 0;
-    border-radius: 1px;
-    background-image: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.3),
-        rgba(255, 255, 255, 0.05)
-    );
-    transition: 0.01s linear;
-    transition-property: width, background-color;
-  }
-
-  .progress-confirm {
-    background: linear-gradient(90deg, rgba(72, 222, 114, 0.8) 0%, rgba(0, 118, 33, 0.8) 99.99%);
-    box-shadow: 0 0 5px 1px rgba(87, 161, 108, 0.5);
-  }
-
-  .progress-error {
-    background: linear-gradient(90deg, rgba(222, 72, 72, 0.8) 0%, rgba(118, 0, 0, 0.8) 99.99%);
-    box-shadow: 0 0 5px 1px rgba(161, 87, 87, 0.5);
-  }
-
-  .progress-warning {
-    background: linear-gradient(270deg, rgba(230, 150, 30, 0.8) 0%, rgba(242, 201, 76, 0.8) 100.00%);
-    box-shadow: 0 0 5px 1px rgba(242, 201, 76, 0.5);
-  }
-
-  .progress-moved .progress-bar {
-    animation: progressAnimation 14s;
-  }
-
-  @keyframes progressAnimation {
-    0% {
-      width: 100%;
-    }
-
-    100% {
-      width: 0;
-    }
-  }
-
   .bottom-left-panel {
     z-index: 3;
     color: white;
@@ -316,7 +268,7 @@
           margin: auto;
           font-weight: 600;
           font-size: 22px;
-          color: #FFFFFF;
+          color: #ffffff;
           position: relative;
           top: 2px;
         }
@@ -333,7 +285,7 @@
           margin: auto;
           font-weight: 600;
           font-size: 14px;
-          color: #FFFFFF;
+          color: #ffffff;
         }
       }
 
@@ -374,6 +326,54 @@
 
     .text {
       padding: 0 10px;
+    }
+  }
+
+  .progress {
+    width: 100%;
+    height: 3px;
+    border-radius: 1px;
+  }
+
+  .progress-bar {
+    height: 3px;
+    width: 0;
+    border-radius: 1px;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.05)
+    );
+    transition: 0.01s linear;
+    transition-property: width, background-color;
+  }
+
+  .progress-confirm {
+    background: linear-gradient(90deg, rgba(72, 222, 114, 0.8) 0%, rgba(0, 118, 33, 0.8) 99.99%);
+    box-shadow: 0 0 5px 1px rgba(87, 161, 108, 0.5);
+  }
+
+  .progress-error {
+    background: linear-gradient(90deg, rgba(222, 72, 72, 0.8) 0%, rgba(118, 0, 0, 0.8) 99.99%);
+    box-shadow: 0 0 5px 1px rgba(161, 87, 87, 0.5);
+  }
+
+  .progress-warning {
+    background: linear-gradient(270deg, rgba(230, 150, 30, 0.8) 0%, rgba(242, 201, 76, 0.8) 100.00%);
+    box-shadow: 0 0 5px 1px rgba(242, 201, 76, 0.5);
+  }
+
+  .progress-moved .progress-bar {
+    animation: progressAnimation 14s;
+  }
+
+  @keyframes progressAnimation {
+    0% {
+      width: 100%;
+    }
+
+    100% {
+      width: 0;
     }
   }
 }

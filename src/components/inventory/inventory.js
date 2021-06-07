@@ -15,17 +15,18 @@ export default observer(() => {
 
   useEffect(() => {
     const { EventManager: em } = window
-    const { setInventoryData, getState } = store
+    const { setInventoryData, dropReady } = store
 
     em.addHandler('inventory.update', setInventoryData)
     em.addHandler('inventory.active', setActive)
     em.addHandler('inventory.mode', setMode)
-    em.addHandler('inventory.state', getState)
+    em.addHandler('inventory.drop-ready', dropReady)
+
     return () => {
       em.removeHandler('inventory.update', setInventoryData)
       em.removeHandler('inventory.active', setActive)
       em.removeHandler('inventory.mode', setMode)
-      em.removeHandler('inventory.state', getState)
+      em.removeHandler('inventory.drop-ready', dropReady)
     }
   }, [])
 

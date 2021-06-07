@@ -89,6 +89,11 @@ class InventoryStore {
       ?.forEach(el => this.state.inventory.push(el))
   }
 
+  dropReady = () => {
+    this.state.trade.isReady1 = false
+    this.state.trade.isReady2 = false
+  }
+
   // Конвертация предметов в формат фронта
   convertData = (data, id = 0) => data.map(el => this.convertItem(el, id))
 
@@ -499,9 +504,10 @@ class InventoryStore {
     return item.weight * item.quantity <= maxWeight - weight
   }
 
-  swapCheckTrade = toSlot => {
+  swapCheckTrade = (fromSlot, toSlot) => {
     const { isReady1 } = this.state.trade
     if (toSlot >= 351 && toSlot <= 360) return false
+    if (fromSlot >= 351 && fromSlot <= 360) return false
     return !(isReady1 && toSlot >= 301 && toSlot <= 310)
   }
 
@@ -519,7 +525,6 @@ class InventoryStore {
     else return fromSlot >= 101 && fromSlot <= 212
   }
 
-
   // ================================   SWAP   =================================
 
   swap = (fromSlot, toSlot) => {
@@ -532,7 +537,7 @@ class InventoryStore {
     const mergeResult = this.swapCheckMergeItems(item1, item2)
     const bagInBagResult = this.swapCheckBagInBag(...swapParams)
     const putOnPutOffResult = this.swapCheckPutOnPutOff(...swapParams)
-    const tradeCheck = this.swapCheckTrade(toSlot)
+    const tradeCheck = this.swapCheckTrade(fromSlot, toSlot)
     const finalResult = mergeResult && bagInBagResult && putOnPutOffResult &&
       weightResult && tradeCheck
     if (!finalResult) return false
@@ -661,10 +666,8 @@ class InventoryStore {
   }
 
   setTradeReady = () => {
-    if (!this.state.trade.isReady1) {
-      this.state.trade.isReady1 = true
-      window.frontTrigger('inventory.trade.ready')
-    }
+    this.state.trade.isReady1 = !this.state.trade.isReady1
+    window.frontTrigger('inventory.trade.ready', this.state.trade.isReady1)
   }
 
   setTradeFinish = () => {
