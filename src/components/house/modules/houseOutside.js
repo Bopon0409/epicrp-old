@@ -74,7 +74,7 @@ export default observer(() => {
         <div className='button__text'>Войти в гараж</div>
       </div>
 
-      {lockButton}
+      {capabilities.lockHouse ? lockButton : null}
 
       {owner && capabilities.sell && (
         <div className='button button-sell' onClick={sellHouse}>

@@ -25,6 +25,7 @@ export const ListMenu = observer(() => {
       <div className='text'>{item.text}</div>
     </div>)
   )
+
   return active ? (
     <div className='list-menu'>
       <div className='menu'>

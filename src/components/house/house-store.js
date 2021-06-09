@@ -55,7 +55,7 @@ class HouseStore {
     if (data.carList) this.state.carList = data.carList
     if (data.garage) this.state.garage = data.garage
     if (data.price) this.state.price = data.price
-    if (data.owner) this.state.owner = data.owner
+    if (data.owner !== undefined) this.state.owner = data.owner
     if (data.open) this.state.open = data.open
     if (data.tax) this.state.tax = data.tax
   }
@@ -98,8 +98,10 @@ class HouseStore {
 
   houseLock = () => {
     const { open, houseNumber, capabilities } = this.state
-    if (capabilities.lockHouse) this.state.open = !open
-    window.frontTrigger('house.lock.house', houseNumber, !open)
+    if (capabilities.lockHouse) {
+      this.state.open = !open
+      window.frontTrigger('house.lock.house', houseNumber, !open)
+    }
   }
 
   cupboardLock = () => {

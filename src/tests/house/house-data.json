@@ -1,7 +1,7 @@
 {
   "userName": "Ched nocksfeel",
   "houseNumber": 52,
-  "owner": "Ched nocksfeel",
+  "owner": null,
   "open": false,
   "cupboardOpen": false,
   "houseClass": "S",
@@ -12,7 +12,7 @@
   "price": 3000000,
   "capabilities": {
     "enterGarage": true,
-    "lockHouse": true,
+    "lockHouse": false,
     "lockCupboard": true,
     "sell": false,
     "pay": true,
