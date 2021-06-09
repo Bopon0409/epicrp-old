@@ -9,19 +9,17 @@ export const ListMenu = observer(() => {
   useEffect(() => {
     // @ts-ignore
     const { EventManager: em } = window
-    const { setActive, setData, setTitle } = store
+    const { openMenu, closeMenu } = store
 
-    em.addHandler('list-menu.active', setActive)
-    em.addHandler('list-menu.data', setData)
-    em.addHandler('list-menu.title', setTitle)
+    em.addHandler('list-menu.open', openMenu)
+    em.addHandler('list-menu.close', closeMenu)
     return () => {
-      em.removeHandler('list-menu.active', setActive)
-      em.removeHandler('list-menu.data', setData)
-      em.removeHandler('list-menu.title', setTitle)
+      em.removeHandler('list-menu.open', openMenu)
+      em.removeHandler('list-menu.close', closeMenu)
     }
   })
 
-  const list = store.state.data.map((item, i) => (
+  const list = store.state.list.map((item, i) => (
     <div className='menu__button' key={i}
       onClick={() => clickHandler(item.value)}>
       <div className='text'>{item.text}</div>

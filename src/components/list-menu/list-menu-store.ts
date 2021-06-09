@@ -1,5 +1,5 @@
-import { makeAutoObservable } from 'mobx'
-import { IListItem, IState }  from './models'
+import { makeAutoObservable }       from 'mobx'
+import { IData, IState } from './models'
 
 class ListMenuStore {
   constructor () {
@@ -9,11 +9,15 @@ class ListMenuStore {
   state: IState = {
     active: false,
     title: '',
-    data: []
+    list: []
   }
 
-  setTitle = (obj: { title: string }) => this.state.title = obj.title
-  setData = (data: IListItem[]) => this.state.data = data
+  openMenu = (data: IData) => {
+    this.state = { active: true, list: data.list, title: data.title }
+  }
+
+  closeMenu = () => this.state = { active: false, title: '', list: [] }
+
   setActive = (active: boolean) => this.state.active = active
 
   clickHandler = (value: string) => {

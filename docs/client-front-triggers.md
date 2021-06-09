@@ -47,12 +47,11 @@
 
 - `window.trigger('interaction-menu.toggle', active: bolean, data: json string)`
     - Открыть меню взаимодействия (с загрузкой данных)
-    
+
 ### Меню список
 
-- `window.trigger('list-menu.active', active: boolean)` - Открыть/Закрыть
-- `window.trigger('list-menu.title', title: json string)` - Изменить название
-- `window.trigger('list-menu.data', data: json string)` - Загрузка данных
+- `window.trigger('list-menu.open', data: json)` - Открыть с загрузкой данных
+- `window.trigger('list-menu.close')` - Закрыть
 
 ### Банк
 

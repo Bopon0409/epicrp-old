@@ -1,3 +1,8 @@
+export interface IData {
+  title: string,
+  list: IListItem[]
+}
+
 export interface IListItem {
   text: string,
   value: string
@@ -6,5 +11,5 @@ export interface IListItem {
 export interface IState {
   active: boolean,
   title: string,
-  data: IListItem[]
+  list: IListItem[]
 }
