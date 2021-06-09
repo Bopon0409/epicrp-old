@@ -4,7 +4,7 @@ import { store }            from './list-menu-store'
 import './list-menu.scss'
 
 export const ListMenu = observer(() => {
-  const { clickHandler } = store
+  const { clickHandler, state: { active } } = store
 
   useEffect(() => {
     // @ts-ignore
@@ -25,7 +25,7 @@ export const ListMenu = observer(() => {
       <div className='text'>{item.text}</div>
     </div>)
   )
-  return (
+  return active ? (
     <div className='list-menu'>
       <div className='menu'>
         <div className='menu__title'>Выход</div>
@@ -36,5 +36,5 @@ export const ListMenu = observer(() => {
         </div>
       </div>
     </div>
-  )
+  ) : null
 })
