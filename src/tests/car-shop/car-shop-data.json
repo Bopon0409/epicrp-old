@@ -1,16 +1,16 @@
 {
   "businessName": "Bla bla Auto sport",
   "money": {
-    "cash": 18000,
+    "cash": 8000,
     "cards": [
       {
-        "balance": 20000,
+        "balance": 10000,
         "cardName": "Карта №1",
         "accountId": "147832575"
       },
       {
-        "balance": 20000,
-        "cardName": "Карта №1",
+        "balance": 5000,
+        "cardName": "Карта №2",
         "accountId": "147832575"
       }
     ]
