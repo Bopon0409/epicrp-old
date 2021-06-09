@@ -6,8 +6,6 @@ import hintIcon     from '../img/hint-icon.svg'
 export default observer(() => {
   const getHeaderData = () => {
     switch (store.state.mode) {
-      case 1:
-        return { title: null, subTitle: null }
       case 2:
         return {
           title: 'Меню дома',
@@ -24,7 +22,7 @@ export default observer(() => {
           subTitle: 'Тут вы можете управлять своими сожителями'
         }
       default:
-        return null
+        return { title: null, subTitle: null }
     }
   }
 
@@ -39,6 +37,7 @@ export default observer(() => {
           <div className='hint__subtitle-text'>{subTitle}</div>
         </div>}
       </div>
+
       <div className='exit'>
         <div className='exit__btn'>
           <div className='text'>Esc</div>

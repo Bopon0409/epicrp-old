@@ -47,6 +47,12 @@
 
 - `window.trigger('interaction-menu.toggle', active: bolean, data: json string)`
     - Открыть меню взаимодействия (с загрузкой данных)
+    
+### Меню список
+
+- `window.trigger('list-menu.active', active: boolean)` - Открыть/Закрыть
+- `window.trigger('list-menu.title', title: json string)` - Изменить название
+- `window.trigger('list-menu.data', data: json string)` - Загрузка данных
 
 ### Банк
 
@@ -96,6 +102,7 @@
         - 2: меню внутри
         - 3: меню гаража
         - 4: меню сожителей
+        - 5: меню выхода
 - `window.trigger('house.data', data: json string)` - Загрузить данные планшета
   фракции
 

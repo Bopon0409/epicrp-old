@@ -10,7 +10,7 @@ import { Payment }          from '../payment/payment'
 import './car-shop.scss'
 
 export const CarShop = observer(() => {
-  const { state: { money }, currentCar, payAction } = store
+  const { state: { money, active }, currentCar, payAction } = store
 
   useEffect(() => {
     // @ts-ignore
@@ -25,7 +25,7 @@ export const CarShop = observer(() => {
     }
   }, [])
 
-  return (
+  return active ? (
     <div className='car-shop'>
       <CarList />
       <aside className='aside'>
@@ -36,5 +36,5 @@ export const CarShop = observer(() => {
       <Title />
       <Payment money={money} price={currentCar?.price} payAction={payAction} />
     </div>
-  )
+  ) : null
 })

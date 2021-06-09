@@ -6,7 +6,6 @@ import HouseOutside        from './modules/houseOutside'
 import Garage              from './modules/garage'
 import Header              from './modules/header'
 import Roommates           from './modules/roommates'
-import { Exit }            from './modules/exit'
 
 export default observer(() => {
   const { mode } = store.state
@@ -31,8 +30,6 @@ export default observer(() => {
         return <Garage />
       case 4:
         return <Roommates />
-      case 5:
-        return <Exit />
       default:
         return null
     }

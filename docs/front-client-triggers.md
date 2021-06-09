@@ -32,6 +32,12 @@
 
 - `mp.trigger('interact.click', icon: String)`
 
+## Меню список
+
+Пользователь нажал на кнопку
+
+- `mp.trigger('list-menu.click', value: string)`
+
 Пользователь закрыл меню
 
 - `mp.trigger('interact.close')`
@@ -106,7 +112,6 @@
 Пользователь мобильную связь
 
 - `mp.trigger('atm.pay.phone', cardId: int, money: int)`
-
 
 ## Планшет фракции
 
