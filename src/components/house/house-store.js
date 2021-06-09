@@ -41,23 +41,27 @@ class HouseStore {
   }
 
   setData = data => {
-    if (data.garagePlaceQuantity)
+    if (data.garagePlaceQuantity !== undefined)
       this.state.garagePlaceQuantity = data.garagePlaceQuantity
-    if (data.garageAvailability)
+    if (data.garageAvailability !== undefined)
       this.state.garageAvailability = data.garageAvailability
-    if (data.capabilities) this.state.capabilities = data.capabilities
-    if (data.cupboardOpen) this.state.cupboardOpen = data.cupboardOpen
-    if (data.roomQuantity) this.state.roomQuantity = data.roomQuantity
-    if (data.houseNumber) this.state.houseNumber = data.houseNumber
-    if (data.houseClass) this.state.houseClass = data.houseClass
-    if (data.roommates) this.state.roommates = data.roommates
-    if (data.userName) this.state.userName = data.userName
-    if (data.carList) this.state.carList = data.carList
-    if (data.garage) this.state.garage = data.garage
-    if (data.price) this.state.price = data.price
+    if (data.capabilities !==
+      undefined) this.state.capabilities = data.capabilities
+    if (data.cupboardOpen !==
+      undefined) this.state.cupboardOpen = data.cupboardOpen
+    if (data.roomQuantity !==
+      undefined) this.state.roomQuantity = data.roomQuantity
+    if (data.houseNumber !==
+      undefined) this.state.houseNumber = data.houseNumber
+    if (data.houseClass !== undefined) this.state.houseClass = data.houseClass
     if (data.owner !== undefined) this.state.owner = data.owner
-    if (data.open) this.state.open = data.open
-    if (data.tax) this.state.tax = data.tax
+    if (data.roommates !== undefined) this.state.roommates = data.roommates
+    if (data.userName !== undefined) this.state.userName = data.userName
+    if (data.carList !== undefined) this.state.carList = data.carList
+    if (data.garage !== undefined) this.state.garage = data.garage
+    if (data.price !== undefined) this.state.price = data.price
+    if (data.open !== undefined) this.state.open = data.open
+    if (data.tax !== undefined) this.state.tax = data.tax
   }
 
   get isOwner () {
@@ -100,7 +104,7 @@ class HouseStore {
     const { open, houseNumber, capabilities } = this.state
     if (capabilities.lockHouse) {
       this.state.open = !open
-      window.frontTrigger('house.lock.house', houseNumber, !open)
+      window.frontTrigger('house.lock.house', houseNumber, open)
     }
   }
 

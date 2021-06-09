@@ -13,6 +13,8 @@ export default observer(() => {
     garageAvailability, garagePlaceQuantity, price, open
   } = store.state
 
+  console.log(garageAvailability)
+
   const { enterHouse, enterGarage, sellHouse, buyHouse, houseLock } = store
 
   const lockButton = open ? (
@@ -57,7 +59,9 @@ export default observer(() => {
         </div>
         <div className='info__row'>
           <div className='info__field'>Гараж</div>
-          <div className='info__value'>{garageAvailability || 'Нет'}</div>
+          <div className='info__value'>
+            {garageAvailability ? 'Есть' : 'Нет'}
+          </div>
         </div>
         <div className='info__row'>
           <div className='info__field'>Мест в гараже</div>
