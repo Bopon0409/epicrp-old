@@ -20,7 +20,7 @@ export const CarProps = observer(() => {
 
       <div className='prop'>
         <div className='prop__text'>
-          <div className='prop__name'>Максимальная скорость</div>
+          <div className='prop__name'>Объем бака</div>
           <div className='prop__value'>{tank.absoluteValue} литров</div>
         </div>
         <PropBar value={tank.relativelyValue} />
@@ -28,7 +28,7 @@ export const CarProps = observer(() => {
 
       <div className='prop'>
         <div className='prop__text'>
-          <div className='prop__name'>Максимальная скорость</div>
+          <div className='prop__name'>Объем багажника</div>
           <div className='prop__value'>{trunk.absoluteValue} кг</div>
         </div>
         <PropBar value={trunk.relativelyValue} />
@@ -36,7 +36,7 @@ export const CarProps = observer(() => {
 
       <div className='prop'>
         <div className='prop__text'>
-          <div className='prop__name'>Максимальная скорость</div>
+          <div className='prop__name'>Сцепление с дорогой</div>
           <div className='prop__value'>{roadGrip.absoluteValue} %</div>
         </div>
         <PropBar value={roadGrip.relativelyValue} />

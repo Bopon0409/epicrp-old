@@ -32,6 +32,8 @@ class CarShopStore {
     const { carList, currentCar } = this.state
     return carList.find((car) => car.id === currentCar) || null
   }
+
+  payAction = () => {}
 }
 
 const store = new CarShopStore()

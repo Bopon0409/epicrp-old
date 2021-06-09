@@ -21,10 +21,10 @@
       "name": "BMW M5 E60",
       "price": 300000,
       "props": {
-        "speed": { "relativelyValue": 60, "absoluteValue": 135 },
-        "tank": { "relativelyValue": 80, "absoluteValue": 70 },
-        "trunk": { "relativelyValue": 40, "absoluteValue": 40 },
-        "roadGrip": { "relativelyValue": 25, "absoluteValue": 25 }
+        "speed": { "relativelyValue": 70, "absoluteValue": 135 },
+        "tank": { "relativelyValue": 40, "absoluteValue": 70 },
+        "trunk": { "relativelyValue": 10, "absoluteValue": 40 },
+        "roadGrip": { "relativelyValue": 75, "absoluteValue": 25 }
       }
     },
     {

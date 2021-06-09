@@ -21,7 +21,7 @@ export const ColorBar = observer((props: ColorBarProps) => {
         const className = classNames('color', active && 'color--active')
         const handler = () => setMainColor(color)
 
-        return <div className={className} onClick={handler} />
+        return <div className={className} onClick={handler} key={color} />
       })}
 
       <div className='title'>Дополнительный цвет</div>
@@ -30,7 +30,7 @@ export const ColorBar = observer((props: ColorBarProps) => {
         const className = classNames('color', active && 'color--active')
         const handler = () => setAdditionalColor(color)
 
-        return <div className={className} onClick={handler} />
+        return <div className={className} onClick={handler} key={color} />
       })}
     </div>
   )

@@ -1,0 +1,25 @@
+.prop-bar {
+  width: 100%;
+  height: 10px;
+  display: flex;
+  justify-content: space-between;
+
+  .bar {
+    width: 18%;
+    height: 100%;
+    background: rgba(160, 160, 160, 0.35);
+    border-radius: 4px;
+    position: relative;
+
+    &__fill {
+      position: absolute;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: #f2c94c;
+      box-shadow: 1px 0 8px rgba(114, 153, 255, 0.35),
+      inset 0px -1px 3px rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+    }
+  }
+}

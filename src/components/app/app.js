@@ -15,7 +15,7 @@ import Fraction        from '../fraction'
 import House           from '../house'
 import { LoadingPage } from '../loading-page/loading-page'
 import { Shop }        from '../shop'
-
+import { CarShop }     from '../car-shop/car-shop'
 import 'react-input-range/lib/css/index.css'
 
 export default function App () {
@@ -43,6 +43,7 @@ export default function App () {
       <House />
       <Shop />
       <LoadingPage />
+      <CarShop />
     </>
   )
 }

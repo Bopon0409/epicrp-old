@@ -1,0 +1,19 @@
+.car-shop {
+  .title {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    color: #ffffff;
+
+    &__header {
+      font-size: 24px;
+      line-height: 33px;
+    }
+
+    &__name {
+      font-weight: 600;
+      font-size: 48px;
+      line-height: 45px;
+    }
+  }
+}

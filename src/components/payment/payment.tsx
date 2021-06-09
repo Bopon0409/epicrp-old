@@ -7,8 +7,8 @@ import { Select }   from './select'
 
 export interface PaymentProps {
   money: IMoney,
-  price: number,
-  payAction: () => {}
+  price: number | undefined,
+  payAction: () => void
 }
 
 export const Payment = observer((props: PaymentProps) => {
@@ -23,7 +23,7 @@ export const Payment = observer((props: PaymentProps) => {
       <Select money={money} />
       <div className={cashClasses} onClick={cashHandler}>Наличкой</div>
       <div className={cardClasses} onClick={selectToggle}>Картой</div>
-      <div className='btn' onClick={payAction}>Оплатить {price}$</div>
+      <div className='btn' onClick={payAction}>Оплатить {price || 0}$</div>
     </div>
   )
 })

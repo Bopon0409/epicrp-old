@@ -13,8 +13,10 @@ import './fraction/fraction.test'
 import './house/house.test'
 import './loading-page/loading-page.test'
 import './shop/shop.test'
+import './car-shop/car-shop.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.house.openHouseOutside()
+  window.test.carShop.setActive(true)
+  window.test.carShop.setData()
 }
