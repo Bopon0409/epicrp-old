@@ -4,10 +4,12 @@
 
 ### Инвентарь
 
-- `window.trigger('inventory.active', active: bolean)` - Открыть/Закрыть
+- `window.trigger('inventory.active', active: bolean)` - Открыть/закрыть
   инвентарь
 - `window.trigger('inventory.mode', mode: int)` - Смена типа инвентаря
 - `window.trigger('inventory.data', data: json string)` - Загрузка данных
+- `window.trigger('inventory.drop-ready')` - Сброс кнопок готов в trade
+- `window.trigger('inventory.clear', inventoryId: number)` - Очистка инвентаря
 
 ### Авторизация
 

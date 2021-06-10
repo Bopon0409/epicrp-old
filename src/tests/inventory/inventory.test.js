@@ -13,6 +13,7 @@ const jsonData4 = JSON.stringify(data4)
 const setActive = active => window.trigger('inventory.active', active)
 const setMode = mode => window.trigger('inventory.mode', mode)
 const dropReady = () => window.trigger('inventory.drop-ready')
+const clear = () => window.trigger('inventory.clear', 0)
 
 const setData = () => {
   window.trigger('inventory.update', jsonData0)
@@ -22,4 +23,4 @@ const setData = () => {
   window.trigger('inventory.update', jsonData4)
 }
 
-window.test.inventory = { setActive, setMode, setData, dropReady }
+window.test.inventory = { setActive, setMode, setData, dropReady, clear }

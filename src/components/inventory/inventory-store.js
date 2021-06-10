@@ -81,7 +81,6 @@ class InventoryStore {
       return true
     })
 
-    // Удаление предыдущей версии инвентаря
     this.cleanInventory(inventoryId)
 
     // Конвертация и загрузка данных в state
@@ -114,6 +113,17 @@ class InventoryStore {
     }
   }
 
+  clearTrade = () => {
+    this.state.trade = {
+      tradeName: '', input1: 0, input2: 0, isReady1: false,
+      isReady2: false, maxMoney: 0, isFinish: false
+    }
+  }
+
+  clearTrunk = () => {
+    this.state.trunk = { trunkName: '', trunkSize: 0, trunkMaxWeight: 1000 }
+  }
+
   // Очистка предметов одного из инвентарей (перед загрузкой с сервера)
   cleanInventory = inventoryId => {
     let min, max
@@ -123,10 +133,12 @@ class InventoryStore {
         max = 212
         break
       case 1:
+        this.clearTrade()
         min = 301
         max = 350
         break
       case 2:
+        this.clearTrade()
         min = 351
         max = 400
         break
@@ -135,6 +147,7 @@ class InventoryStore {
         max = 600
         break
       case 4:
+        this.clearTrunk()
         min = 601
         max = 1000
         break
