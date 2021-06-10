@@ -10,7 +10,6 @@ export default observer(() => {
   const { modalAction, setModal, useLabel } = store
   const weight = (item?.weight * item?.quantity).toFixed(1)
 
-  console.log(store.state.trade.isReady1, item.idSlot)
   const isDisabled = (item.idSlot >= 351 && item.idSlot <= 360) ||
     (store.state.trade.isReady1 && item.idSlot >= 301 && item.idSlot <= 310)
 

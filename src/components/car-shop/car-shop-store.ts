@@ -34,7 +34,6 @@ class CarShopStore {
   }
 
   payAction = (method: 'card' | 'cash', currentCard: string | null) => {
-    console.log(method, currentCard)
     if (this.currentCar)
       // @ts-ignore
       window.frontTrigger('car-shop.buy', this.currentCar?.id)

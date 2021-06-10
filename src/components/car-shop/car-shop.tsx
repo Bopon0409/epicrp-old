@@ -28,13 +28,18 @@ export const CarShop = observer(() => {
   return active ? (
     <div className='car-shop'>
       <CarList />
-      <aside className='aside'>
-        <CarProps />
-        <ColorBar main={[]} additional={[]} />
-      </aside>
       <Hints />
       <Title />
-      <Payment money={money} price={currentCar?.price} payAction={payAction} />
+
+      {currentCar ? (<>
+        <aside className='aside'>
+          <CarProps />
+          <ColorBar main={[]} additional={[]} />
+        </aside>
+        <Payment money={money} price={currentCar?.price}
+          payAction={payAction} />
+      </>) : null}
+
     </div>
   ) : null
 })

@@ -56,8 +56,6 @@ class InventoryStore {
   setInventoryData = data => {
     let inventoryId = 0
 
-    this.cleanInventory(inventoryId)
-
     // Чтение конфига, и выпиливание его из массива предметов
     data = data.filter(el => {
       if (el.type === 'config') {
@@ -126,7 +124,6 @@ class InventoryStore {
 
   // Очистка предметов одного из инвентарей (перед загрузкой с сервера)
   cleanInventory = inventoryId => {
-    console.log(inventoryId)
     let min, max
     switch (inventoryId) {
       case 0:

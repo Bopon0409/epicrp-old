@@ -13,8 +13,6 @@ export default observer(() => {
     garageAvailability, garagePlaceQuantity, price, open
   } = store.state
 
-  console.log(garageAvailability)
-
   const { enterHouse, enterGarage, sellHouse, buyHouse, houseLock } = store
 
   const lockButton = open ? (
