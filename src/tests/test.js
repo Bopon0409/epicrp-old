@@ -18,5 +18,5 @@ import './list-menu/list-menu.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.loading.setLoading(true)
+  window.test.listMenu.open()
 }

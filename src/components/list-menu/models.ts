@@ -1,11 +1,11 @@
 export interface IData {
   title: string,
-  list: IListItem[]
+  list: string[]
 }
 
 export interface IListItem {
   text: string,
-  value: string
+  value: number
 }
 
 export interface IState {

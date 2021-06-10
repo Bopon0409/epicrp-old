@@ -2,6 +2,9 @@ import { makeAutoObservable }  from 'mobx'
 import { IState, IData, ICar } from './models'
 import colors                  from './colors.json'
 
+type TMethod = 'card' | 'cash'
+type TCardId = string | null
+
 class CarShopStore {
   constructor () {
     makeAutoObservable(this, {}, { deep: true })
@@ -34,22 +37,22 @@ class CarShopStore {
     return carList.find((car) => car.id === currentCar) || null
   }
 
-  getCurrentMoney = (method: 'card' | 'cash',
-    currentCard: string | null): number => {
+  getCurrentMoney = (method: TMethod, cardId: TCardId): number => {
     const { cash, cards } = this.state.money
-    if (method === 'cash') return cash
-    else return cards
-      .find((card) => card.accountId === currentCard)?.balance || 0
+    if (method === 'card') {
+      const card = cards.find((card) => card.accountId === cardId)
+      return card?.balance || 0
+    } else return cash
   }
 
-  payAction = (method: 'card' | 'cash', currentCard: string | null) => {
-    const curMoney = this.getCurrentMoney(method, currentCard)
+  payAction = (method: TMethod, cardId: TCardId) => {
+    const curMoney = this.getCurrentMoney(method, cardId)
     if (this.currentCar && this.currentCar.price <= curMoney) {
       const { state: { colorMain, colorAdditional }, currentCar } = this
       // @ts-ignore
       window.frontTrigger('car-shop.buy', {
         carId: currentCar.id, colorMain, colorAdditional,
-        method, cardId: currentCard
+        method, cardId: cardId
       })
     }
   }

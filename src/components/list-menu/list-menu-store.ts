@@ -1,5 +1,5 @@
 import { makeAutoObservable }       from 'mobx'
-import { IData, IState } from './models'
+import { IData, IListItem, IState } from './models'
 
 class ListMenuStore {
   constructor () {
@@ -12,17 +12,26 @@ class ListMenuStore {
     list: []
   }
 
+  convert = (list: string[]): IListItem[] => {
+    return list.map((item, i) => ({ value: i, text: item }))
+  }
+
   openMenu = (data: IData) => {
-    this.state = { active: true, list: data.list, title: data.title }
+    this.state = {
+      active: true, list: this.convert(data.list), title: data.title
+    }
   }
 
   closeMenu = () => this.state = { active: false, title: '', list: [] }
 
   setActive = (active: boolean) => this.state.active = active
 
-  clickHandler = (value: string) => {
+  clickHandler = (value: number | string) => {
     // @ts-ignore
-    window.frontTrigger('list-menu.click', value)
+    if (value === 'close') window.frontTrigger('list-menu.close')
+    // @ts-ignore
+    else window.frontTrigger('list-menu.click', value)
+    this.closeMenu()
   }
 }
 
