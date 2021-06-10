@@ -5,6 +5,8 @@
   height: 100%;
   display: flex;
   background-image: url('./img/bg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   font-family: TT Norms, sans-serif;
 
   .logo {
@@ -38,5 +40,35 @@
       text-transform: uppercase;
       color: #FFFFFF;
     }
+  }
+}
+
+@media (min-width: 2560px) {
+  .loading-page {
+    zoom: 1.2;
+  }
+}
+
+@media (max-width: 1600px) {
+  .loading-page {
+    zoom: 0.9;
+  }
+}
+
+@media (max-width: 1440px) {
+  .loading-page {
+    zoom: 0.75;
+  }
+}
+
+@media (max-width: 1024px) {
+  .loading-page {
+    zoom: 0.65;
+  }
+}
+
+@media (max-width: 800px) {
+  .loading-page {
+    zoom: 0.6;
   }
 }

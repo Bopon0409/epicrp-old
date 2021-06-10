@@ -1,9 +1,12 @@
 .shop {
   .aside {
-    width: 400px;
+    width: 500px;
     height: 100%;
     padding: 40px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     .title {
       color: #FFFFFF;
@@ -93,7 +96,7 @@
     }
 
     .button {
-      width: 270px;
+      width: 100%;
       min-height: 72px;
       background: rgba(73, 73, 73, 0.2);
       border-radius: 6px;

@@ -4,3 +4,33 @@
 .speedometer {
   font-family: Nunito, sans-serif;
 }
+
+@media (min-width: 2560px) {
+  .speedometer {
+    zoom: 1.5;
+  }
+}
+
+@media (max-width: 1600px) {
+  .speedometer {
+    zoom: 0.9;
+  }
+}
+
+@media (max-width: 1366px) {
+  .speedometer {
+    zoom: 0.85;
+  }
+}
+
+@media (max-width: 1024px) {
+  .speedometer {
+    zoom: 0.8;
+  }
+}
+
+@media (max-width: 800px) {
+  .speedometer {
+    zoom: 0.7;
+  }
+}

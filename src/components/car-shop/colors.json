@@ -1,0 +1,70 @@
+{
+  "main": [
+    {
+      "name": "white",
+      "value": "linear-gradient(168.32deg, #FFFFFF 10.95%, #FFFFFF 44.89%, #FFFFFF 78.84%, #FFFFFF 97.85%)"
+    },
+    {
+      "name": "red",
+      "value": "linear-gradient(168.32deg, #E22626 10.95%, #9E0808 44.89%, #BF1212 78.84%, #F31111 97.85%)"
+    },
+    {
+      "name": "lightblue",
+      "value": "linear-gradient(180deg, #365AB2 0%, #3179FF 108.09%)"
+    },
+    {
+      "name": "yellow",
+      "value": "linear-gradient(168.32deg, #E2B926 10.95%, #EFF24B 44.89%, #FFF730 78.84%, #F3EA11 97.85%)"
+    },
+    {
+      "name": "purple",
+      "value": "linear-gradient(168.32deg, #8F26E2 10.95%, #B013E7 44.89%, #7E12BF 78.84%, #9011F3 97.85%)"
+    },
+    {
+      "name": "black",
+      "value": "linear-gradient(168.32deg, #0D0D0F 10.95%, #1D1D21 38.87%, #28282C 60.95%, #000000 97.85%)"
+    },
+    {
+      "name": "green",
+      "value": "linear-gradient(168.32deg, #26E244 10.95%, #089E0E 44.89%, #16BF12 78.84%, #11F328 97.85%)"
+    },
+    {
+      "name": "blue",
+      "value": "linear-gradient(168.32deg, #151FFF 10.95%, #08179E 44.89%, #1224BF 78.84%, #111AF3 97.85%)"
+    }
+  ],
+  "additional": [
+    {
+      "name": "white",
+      "value": "linear-gradient(168.32deg, #FFFFFF 10.95%, #FFFFFF 44.89%, #FFFFFF 78.84%, #FFFFFF 97.85%)"
+    },
+    {
+      "name": "red",
+      "value": "linear-gradient(168.32deg, #E22626 10.95%, #9E0808 44.89%, #BF1212 78.84%, #F31111 97.85%)"
+    },
+    {
+      "name": "lightblue",
+      "value": "linear-gradient(180deg, #365AB2 0%, #3179FF 108.09%)"
+    },
+    {
+      "name": "yellow",
+      "value": "linear-gradient(168.32deg, #E2B926 10.95%, #EFF24B 44.89%, #FFF730 78.84%, #F3EA11 97.85%)"
+    },
+    {
+      "name": "purple",
+      "value": "linear-gradient(168.32deg, #8F26E2 10.95%, #B013E7 44.89%, #7E12BF 78.84%, #9011F3 97.85%)"
+    },
+    {
+      "name": "black",
+      "value": "linear-gradient(168.32deg, #0D0D0F 10.95%, #1D1D21 38.87%, #28282C 60.95%, #000000 97.85%)"
+    },
+    {
+      "name": "green",
+      "value": "linear-gradient(168.32deg, #26E244 10.95%, #089E0E 44.89%, #16BF12 78.84%, #11F328 97.85%)"
+    },
+    {
+      "name": "blue",
+      "value": "linear-gradient(168.32deg, #151FFF 10.95%, #08179E 44.89%, #1224BF 78.84%, #111AF3 97.85%)"
+    }
+  ]
+}

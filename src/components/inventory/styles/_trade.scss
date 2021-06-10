@@ -69,21 +69,34 @@
         }
       }
 
-      .trade-finish {
-        width: 101.5%;
-        cursor: pointer;
-        padding: 2px;
-        color: white;
-        text-align: center;
-        font-weight: bold;
-        font-size: 18px;
-        letter-spacing: 2px;
-        text-transform: lowercase;
-        background: rgba(255, 0, 0, 0.3);
+      .second-form {
+        margin-bottom: 25px;
       }
 
-      .trade-finish-active {
-        background: #007621;
+      .button__container {
+        display: flex;
+        justify-content: space-between;
+        width: 102%;
+
+        .trade-finish {
+          height: 35px;
+          width: 46%;
+          cursor: pointer;
+          color: white;
+          text-align: center;
+          font-weight: bold;
+          font-size: 18px;
+          letter-spacing: 2px;
+          text-transform: lowercase;
+          background: rgba(255, 0, 0, 0.3);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .trade-finish-active {
+          background: #007621;
+        }
       }
     }
   }

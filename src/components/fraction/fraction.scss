@@ -72,3 +72,33 @@
     }
   }
 }
+
+@media (min-width: 2560px) {
+  .fraction {
+    zoom: 1.5;
+  }
+}
+
+@media (max-width: 1600px) {
+  .fraction {
+    zoom: 0.9;
+  }
+}
+
+@media (max-width: 1366px) {
+  .fraction {
+    zoom: 0.8;
+  }
+}
+
+@media (max-width: 1024px) {
+  .fraction {
+    zoom: 0.7;
+  }
+}
+
+@media (max-width: 800px) {
+  .fraction {
+    zoom: 0.6;
+  }
+}

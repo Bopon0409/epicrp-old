@@ -42,7 +42,7 @@ export default observer(() => {
       <div className='trade-label'>вы получаете</div>
       <SlotList fromSlot={351} toSlot={360} scroll={true} />
 
-      <div className='trade-form'>
+      <div className='trade-form second-form'>
         <div className='trade-money'>
           <div className='text'>Деньги:</div>
           <div className='input'>{trade.input2}</div>
@@ -52,12 +52,13 @@ export default observer(() => {
         </div>
       </div>
 
-      <div className={finishClasses} onClick={setTradeFinish}>
-        Завершить
-      </div>
-
-      <div className={'trade-finish'} onClick={setTradeCancel}>
-        Отменить
+      <div className='button__container'>
+        <div className={'trade-finish'} onClick={setTradeCancel}>
+          Отменить
+        </div>
+        <div className={finishClasses} onClick={setTradeFinish}>
+          Завершить
+        </div>
       </div>
     </div>
   )

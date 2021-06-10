@@ -28,6 +28,7 @@ class HouseStore {
     garagePlaceQuantity: 0,
     price: 0,
     roommates: [],
+    currentRoommateId: 0,
     garage: [],
     dragId: 0,
     sliderPosition: 0

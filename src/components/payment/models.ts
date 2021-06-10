@@ -13,6 +13,6 @@ export interface ICard {
 }
 
 export interface IMoney {
-  cash?: number,
-  cards?: ICard[]
+  cash: number,
+  cards: ICard[]
 }

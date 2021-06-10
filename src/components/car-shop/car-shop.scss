@@ -22,10 +22,40 @@
     position: absolute;
     right: 65px;
     top: 50%;
-    height: 520px;
+    height: 420px;
     margin-top: -260px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+}
+
+@media (min-width: 2560px) {
+  .car-shop {
+    zoom: 1.4;
+  }
+}
+
+@media (max-width: 1600px) {
+  .car-shop {
+    zoom: 0.9;
+  }
+}
+
+@media (max-width: 1440px) {
+  .car-shop {
+    zoom: 0.8;
+  }
+}
+
+@media (max-width: 1024px) {
+  .car-shop {
+    zoom: 0.7;
+  }
+}
+
+@media (max-width: 900px) {
+  .car-shop {
+    zoom: 0.6;
   }
 }

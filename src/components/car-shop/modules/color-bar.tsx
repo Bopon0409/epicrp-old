@@ -3,9 +3,14 @@ import { observer } from 'mobx-react-lite'
 import { store }    from '../car-shop-store'
 import classNames   from 'classnames'
 
-interface ColorBarProps {
-  main: string[],
-  additional: string[]
+export interface IColor {
+  name: string,
+  value: string
+}
+
+export interface ColorBarProps {
+  main: IColor[],
+  additional: IColor[]
 }
 
 export const ColorBar = observer((props: ColorBarProps) => {
@@ -16,22 +21,24 @@ export const ColorBar = observer((props: ColorBarProps) => {
   return (
     <div className='color-bar'>
       <div className='title'>Основной цвет</div>
-      {main.map((color) => {
-        const active = color === colorMain
+      <div className='color-list'>{main.map((color) => {
+        const active = color.name === colorMain
         const className = classNames('color', active && 'color--active')
-        const handler = () => setMainColor(color)
+        const handler = () => setMainColor(color.name)
 
-        return <div className={className} onClick={handler} key={color} />
-      })}
+        return <div className={className} onClick={handler} key={color.name}
+          style={{ background: color.value }} />
+      })}</div>
 
       <div className='title'>Дополнительный цвет</div>
-      {additional.map((color) => {
-        const active = color === colorAdditional
+      <div className='color-list'>{additional.map((color) => {
+        const active = color.name === colorAdditional
         const className = classNames('color', active && 'color--active')
-        const handler = () => setAdditionalColor(color)
+        const handler = () => setAdditionalColor(color.name)
 
-        return <div className={className} onClick={handler} key={color} />
-      })}
+        return <div className={className} onClick={handler} key={color.name}
+          style={{ background: color.value }} />
+      })}</div>
     </div>
   )
 })

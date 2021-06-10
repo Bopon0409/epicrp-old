@@ -1,5 +1,6 @@
 import { makeAutoObservable }  from 'mobx'
 import { IState, IData, ICar } from './models'
+import colors                  from './colors.json'
 
 class CarShopStore {
   constructor () {
@@ -11,8 +12,8 @@ class CarShopStore {
     currentCar: null,
     businessName: '',
     carList: [],
-    colorMain: null,
-    colorAdditional: null,
+    colorMain: colors.main[0].name,
+    colorAdditional: colors.additional[0].name,
     money: { cash: 0, cards: [] }
   }
 
@@ -33,10 +34,24 @@ class CarShopStore {
     return carList.find((car) => car.id === currentCar) || null
   }
 
+  getCurrentMoney = (method: 'card' | 'cash',
+    currentCard: string | null): number => {
+    const { cash, cards } = this.state.money
+    if (method === 'cash') return cash
+    else return cards
+      .find((card) => card.accountId === currentCard)?.balance || 0
+  }
+
   payAction = (method: 'card' | 'cash', currentCard: string | null) => {
-    if (this.currentCar)
+    const curMoney = this.getCurrentMoney(method, currentCard)
+    if (this.currentCar && this.currentCar.price <= curMoney) {
+      const { state: { colorMain, colorAdditional }, currentCar } = this
       // @ts-ignore
-      window.frontTrigger('car-shop.buy', this.currentCar?.id)
+      window.frontTrigger('car-shop.buy', {
+        carId: currentCar.id, colorMain, colorAdditional,
+        method, cardId: currentCard
+      })
+    }
   }
 }
 

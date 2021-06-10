@@ -7,6 +7,7 @@ import { ColorBar }         from './modules/color-bar'
 import { Hints }            from './modules/hints'
 import { Title }            from './modules/title'
 import { Payment }          from '../payment/payment'
+import colors               from './colors.json'
 import './car-shop.scss'
 
 export const CarShop = observer(() => {
@@ -34,7 +35,7 @@ export const CarShop = observer(() => {
       {currentCar ? (<>
         <aside className='aside'>
           <CarProps />
-          <ColorBar main={[]} additional={[]} />
+          <ColorBar main={colors.main} additional={colors.additional} />
         </aside>
         <Payment money={money} price={currentCar?.price}
           payAction={payAction} />

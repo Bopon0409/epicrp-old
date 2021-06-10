@@ -18,9 +18,5 @@ import './list-menu/list-menu.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.inventory.setData()
-  window.test.inventory.setActive(true)
-  window.test.inventory.setMode(2)
-  // window.test.carShop.setData()
-  // window.test.carShop.setActive(true)
+  window.test.loading.setLoading(true)
 }
