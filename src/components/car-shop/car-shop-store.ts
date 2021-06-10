@@ -33,7 +33,12 @@ class CarShopStore {
     return carList.find((car) => car.id === currentCar) || null
   }
 
-  payAction = () => {}
+  payAction = (method: 'card' | 'cash', currentCard: string | null) => {
+    console.log(method, currentCard)
+    if (this.currentCar)
+      // @ts-ignore
+      window.frontTrigger('car-shop.buy', this.currentCar?.id)
+  }
 }
 
 const store = new CarShopStore()

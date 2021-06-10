@@ -1,5 +1,5 @@
-import { makeAutoObservable }     from 'mobx'
-import { ICard, IState, TMethod } from './models'
+import { makeAutoObservable }             from 'mobx'
+import { ICard, IMoney, IState, TMethod } from './models'
 
 class PaymentStore {
   constructor () {
@@ -17,15 +17,19 @@ class PaymentStore {
     this.state.method = method
   }
 
-  selectToggle = () => this.state.selectActive = !this.state.selectActive
+  selectToggle = (money: IMoney) => {
+    const { selectActive } = this.state
+    if (money.cards?.length)
+      this.state.selectActive = !selectActive
+  }
 
   cashHandler = () => this.setMethod('cash')
 
   cardHandler = (card: ICard) => this.setMethod('card', card.accountId)
 
-  selectItemHandler = (card: ICard) => {
+  selectItemHandler = (card: ICard, money: IMoney) => {
     store.cardHandler(card)
-    store.selectToggle()
+    store.selectToggle(money)
   }
 }
 
