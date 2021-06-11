@@ -53,6 +53,17 @@ class WorkStore {
         return emptyContent
     }
   }
+
+  setWorkStatus = () => {
+    const { type } = this.state
+    // @ts-ignore
+    window.frontTrigger('work.work-status', type, !this.state.workStatus)
+  }
+
+  setTransport = (num: number) => {
+    // @ts-ignore
+    window.frontTrigger('work.transport', num)
+  }
 }
 
 const store = new WorkStore()

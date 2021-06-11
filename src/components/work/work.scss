@@ -3,7 +3,69 @@
 @import 'scss/stat';
 
 .work {
-  .container {
+  font-family: Nunito, sans-serif;
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  background: #1f232d;
+  //overflow: hidden;
+  display: flex;
 
+  .container {
+    margin: auto;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 90%;
+    display: flex;
+    justify-content: space-between;
+
+    .description-block {
+      width: 40%;
+    }
+
+    .stat-block {
+      width: 30%;
+    }
+
+    .transport-block {
+      width: 30%;
+    }
+  }
+}
+
+@media (min-width: 2560px) {
+  .work {
+    zoom: 1.4;
+  }
+}
+
+@media (max-width: 1600px) {
+  .work {
+    zoom: 0.9;
+  }
+}
+
+@media (max-width: 1440px) {
+  .work {
+    zoom: 0.8;
+  }
+}
+
+@media (max-width: 1280px) {
+  .work {
+    zoom: 0.7;
+  }
+}
+
+@media (max-width: 1024px) {
+  .work {
+    zoom: 0.6;
+  }
+}
+
+@media (max-width: 800px) {
+  .work {
+    zoom: 0.45;
   }
 }

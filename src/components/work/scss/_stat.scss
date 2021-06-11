@@ -1,5 +1,77 @@
 .work {
   .stat-block {
-    
+    border-left: 1px dashed rgba(255, 255, 255, 0.45);
+    border-right: 1px dashed rgba(255, 255, 255, 0.45);
+    padding: 20px;
+    box-sizing: border-box;
+
+    .stat__title {
+      width: 100%;
+      text-align: center;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 138%;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin-bottom: 100px;
+    }
+
+    .stat__container {
+      display: grid;
+      grid-template: repeat(5, 120px) / 50% 50%;
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        text-transform: uppercase;
+
+        &__title {
+          font-size: 18px;
+          line-height: 140%;
+          text-align: center;
+          color: #ecc02c;
+        }
+
+        &__value {
+          font-size: 24px;
+          line-height: 38px;
+          color: #ffffff;
+
+          .item__progress {
+            font-size: 16px;
+            line-height: 22px;
+            color: #484e5e;
+          }
+        }
+
+        &__value--rent {
+          color: #2bb466;
+        }
+
+        &__value--rent--none {
+          color: #EE204D;
+        }
+      }
+
+      .item--big {
+        grid-column: 1/3;
+        margin-bottom: 40px;
+
+        .item__title {
+          font-weight: bold;
+          font-size: 22px;
+          line-height: 30px;
+        }
+
+        .item__value {
+          font-weight: bold;
+          font-size: 78px;
+          line-height: 106px;
+        }
+      }
+    }
   }
 }

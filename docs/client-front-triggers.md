@@ -83,16 +83,18 @@
 
 ### Планшет фракции
 
-- `window.trigger('fraction.active', active: bolean)` - Открыть/закрыть планшет
-  фракции
-- `window.trigger('fraction.data', data: json string)` - Загрузить данные
-  планшета фракции
+- `window.trigger('fraction.active', active: bolean)` - Открыть/закрыть
+- `window.trigger('fraction.data', data: json)` - Загрузить данные
 
 ### Экран загрузки
 
-- `window.trigger('loading.set', data: json string)` - Открыть/Закрыть экран
-  загрузки
+- `window.trigger('loading.set', data: json)` - Открыть/Закрыть
 - loading.set JSON: `{ active: boolean, hint?: string }`
+
+### Экран работ
+
+- `window.trigger('work.active', active: bolean)` - Открыть/закрыть
+- `window.trigger('work.data', data: json)` - Загрузить данные
 
 ### Дом
 

@@ -6,6 +6,16 @@
 
 ** Триггеры инвентаря в `json/inventory-triggers.json`**
 
+## Экран работы
+
+Устроиться / Уволиться
+
+- `mp.trigger('work.work-status', workType: 1 | 2 | 3, workStatus: booolean)`
+
+Выбор транспорта
+
+- `mp.trigger('work.work-status', transportNum: 1 | 2 | 3)`
+
 ## Авторизация
 
 Авторизация

@@ -7,8 +7,9 @@ import taxiImg      from '../img/title_taxi.png'
 import stepsImg     from '../img/steps.svg'
 
 export const Description = observer(() => {
-  const { state: { type }, content } = store
-  const { name, description, progressName, steps, transport } = content
+  const { state: { type, workStatus }, content, setWorkStatus } = store
+  const { name, description, steps } = content
+
   return (
     <div className='description-block'>
       <div className='title'>
@@ -31,6 +32,23 @@ export const Description = observer(() => {
           <div className='step__item'>{steps[2]}</div>
         </div>
       </div>
+
+      <div className='description'>
+        <div className='description__title'>Описание работы</div>
+        <div className='description__container'>
+          <div className='description__text'>{description}</div>
+        </div>
+      </div>
+
+      {!workStatus ? (
+        <div className='button button--active' onClick={setWorkStatus}>
+          <div className='text'>Устроиться</div>
+        </div>
+      ) : (
+        <div className='button button--no-active' onClick={setWorkStatus}>
+          <div className='text'>Уволиться</div>
+        </div>
+      )}
     </div>
   )
 })
