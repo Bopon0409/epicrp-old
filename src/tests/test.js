@@ -15,8 +15,10 @@ import './loading-page/loading-page.test'
 import './shop/shop.test'
 import './car-shop/car-shop.test'
 import './list-menu/list-menu.test'
+import './work/work.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.listMenu.open()
+  window.test.work.setActive(true)
+  window.test.work.setData()
 }

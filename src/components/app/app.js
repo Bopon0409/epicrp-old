@@ -16,8 +16,9 @@ import House           from '../house'
 import { LoadingPage } from '../loading-page/loading-page'
 import { Shop }        from '../shop'
 import { CarShop }     from '../car-shop/car-shop'
-import 'react-input-range/lib/css/index.css'
 import { ListMenu }    from '../list-menu/list-menu'
+import { Work }        from '../work/work'
+import 'react-input-range/lib/css/index.css'
 
 export default function App () {
   const devModules = (
@@ -46,6 +47,7 @@ export default function App () {
       <LoadingPage />
       <CarShop />
       <ListMenu />
+      <Work />
     </>
   )
 }

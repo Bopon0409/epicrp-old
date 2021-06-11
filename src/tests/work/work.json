@@ -1,3 +1,12 @@
 {
-  "type": "taxi"
+  "type": 0,
+  "workStatus": true,
+  "lvl": 1,
+  "nextLvl": 150,
+  "progress": 15,
+  "rentStatus": true,
+  "car": "BMW M5 E60",
+  "dayEarned": 33.533,
+  "weekEarned": 533.533,
+  "taxiRate": [ 15, 30, 100 ]
 }
