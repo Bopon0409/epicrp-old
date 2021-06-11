@@ -95,6 +95,10 @@
 
 - `window.trigger('work.active', active: bolean)` - Открыть/закрыть
 - `window.trigger('work.data', data: json)` - Загрузить данные
+- types:
+    - 1: taxi
+    - 2: bus driver
+    - 3: carrier
 
 ### Дом
 

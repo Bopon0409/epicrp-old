@@ -35,8 +35,9 @@ class HouseStore {
   }
 
   setMode = mode => {
+    const { roommates } = this.state
     const { roommatesManager, garageManager } = this.state.capabilities
-    if (!roommatesManager && mode === 4) return
+    if ((!roommatesManager || !roommates.length) && mode === 4) return
     if (!garageManager && mode === 3) return
     this.state.mode = mode
   }

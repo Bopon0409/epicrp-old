@@ -19,6 +19,6 @@ import './work/work.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.work.setActive(true)
-  window.test.work.setData()
+  window.test.house.setData()
+  window.test.house.openHouseInside()
 }

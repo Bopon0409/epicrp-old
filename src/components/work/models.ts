@@ -13,7 +13,7 @@ export interface IState {
 }
 
 export interface IData {
-  type?: 0 | 1 | 2 | 3,
+  type?: 1 | 2 | 3,
   workStatus?: boolean,
   lvl?: number,
   nextLvl?: number,

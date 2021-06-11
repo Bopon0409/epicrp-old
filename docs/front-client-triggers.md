@@ -14,7 +14,7 @@
 
 Выбор транспорта
 
-- `mp.trigger('work.work-status', transportNum: 1 | 2 | 3)`
+- `mp.trigger('work.transport', transportNum: 1 | 2 | 3)`
 
 ## Авторизация
 

@@ -11,15 +11,16 @@ import insideImage5 from '../img/inside__image5.png'
 export default observer(() => {
   const { houseLock, cupboardLock } = store
   const {
-    open, cupboardOpen, capabilities: {
+    open, cupboardOpen, roommates, capabilities: {
       garageManager, roommatesManager, lockCupboard, lockHouse, pay
     }
   } = store.state
 
   const garageManagerClasses =
     classNames('button', !garageManager && 'button-disabled')
-  const roommatesManagerClasses =
-    classNames('button', !roommatesManager && 'button-disabled')
+  const roommatesManagerClasses = classNames('button',
+    !roommates.length || !roommatesManager ? 'button-disabled' : null
+  )
   const openHouseClasses =
     classNames('button', !lockHouse && 'button-disabled')
   const openCupboardClasses =
@@ -27,47 +28,47 @@ export default observer(() => {
   const payClasses =
     classNames('button', !pay && 'button-disabled')
 
-  return <div className="inside">
+  return <div className='inside'>
     <div className={openHouseClasses} onClick={houseLock}>
-      <img src={insideImage1} alt="" className="button__img" />
-      <div className="button__title">
+      <img src={insideImage1} alt='' className='button__img' />
+      <div className='button__title'>
         {open ? 'Закрыть дом' : 'Открыть дом'}
         {!lockHouse && ' (Недоступно)'}
       </div>
-      <div className="button__bg" />
+      <div className='button__bg' />
     </div>
 
     <div className={garageManagerClasses} onClick={() => store.setMode(3)}>
-      <img src={insideImage2} alt="" className="button__img" />
-      <div className="button__title">
+      <img src={insideImage2} alt='' className='button__img' />
+      <div className='button__title'>
         Менеджер Гаража {!garageManager && '(Недоступно)'}
       </div>
-      <div className="button__bg" />
+      <div className='button__bg' />
     </div>
 
     <div className={payClasses}>
-      <img src={insideImage3} alt="" className="button__img" />
-      <div className="button__title">
+      <img src={insideImage3} alt='' className='button__img' />
+      <div className='button__title'>
         Оплата дома {!pay && '(Недоступно)'}
       </div>
-      <div className="button__bg" />
+      <div className='button__bg' />
     </div>
 
     <div className={roommatesManagerClasses} onClick={() => store.setMode(4)}>
-      <img src={insideImage4} alt="" className="button__img" />
-      <div className="button__title">
+      <img src={insideImage4} alt='' className='button__img' />
+      <div className='button__title'>
         Менеджер сожителей {!roommatesManager && '(Недоступно)'}
       </div>
-      <div className="button__bg" />
+      <div className='button__bg' />
     </div>
 
     <div className={openCupboardClasses} onClick={cupboardLock}>
-      <img src={insideImage5} alt="" className="button__img" />
-      <div className="button__title">
+      <img src={insideImage5} alt='' className='button__img' />
+      <div className='button__title'>
         {cupboardOpen ? 'Закрыть шкаф' : 'Открыть шкаф'}
         {!lockCupboard && ' (Недоступно)'}
       </div>
-      <div className="button__bg" />
+      <div className='button__bg' />
     </div>
   </div>
 })
