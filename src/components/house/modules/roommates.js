@@ -7,7 +7,13 @@ import Switch       from 'react-switch'
 export default observer(() => {
   store.roommatesInit()
   const { roommates, currentRoommateId, owner } = store.state
-  const { setCurrentRoommate, setRoommateAccess, moveRoommateOut, currentRoommate } = store
+  const {
+    setCurrentRoommate, setRoommateAccess, moveRoommateOut, currentRoommate
+  } = store
+  if (!currentRoommate) {
+    store.setMode(2)
+    return null
+  }
   const { populated, rentPrice, garagePlace, online } = currentRoommate
 
   const roommatesList = roommates.map(({ name, id }) => {
@@ -24,49 +30,49 @@ export default observer(() => {
   })
 
   const accessList = currentRoommate.access.map(({ name, value }, i) =>
-    <div className="access__item" key={i}>
-      <div className="access__name">{name}</div>
+    <div className='access__item' key={i}>
+      <div className='access__name'>{name}</div>
       <Switch onChange={() => setRoommateAccess(name)} checked={value} />
     </div>
   )
 
   return (
     <>
-      <div className="roommates">
-        <div className="members">
-          <div className="title">Владелец дома</div>
-          <div className="roommate__member">{owner || 'Государство'}</div>
-          <div className="title">Жильца дома</div>
-          <div className="roommates__list scroll">{roommatesList}</div>
+      <div className='roommates'>
+        <div className='members'>
+          <div className='title'>Владелец дома</div>
+          <div className='roommate__member'>{owner || 'Государство'}</div>
+          <div className='title'>Жильца дома</div>
+          <div className='roommates__list scroll'>{roommatesList}</div>
         </div>
-        <div className="access">
-          <div className="column-title">Разрешения</div>
-          <div className="access__list scroll">{accessList}</div>
+        <div className='access'>
+          <div className='column-title'>Разрешения</div>
+          <div className='access__list scroll'>{accessList}</div>
         </div>
-        <div className="info">
-          <div className="column-title">Информация</div>
-          <div className="info__row">
-            <div className="info__field">Заселён</div>
-            <div className="info__value">{populated}</div>
+        <div className='info'>
+          <div className='column-title'>Информация</div>
+          <div className='info__row'>
+            <div className='info__field'>Заселён</div>
+            <div className='info__value'>{populated}</div>
           </div>
-          <div className="info__row">
-            <div className="info__field">Стоимость аренды</div>
-            <div className="info__value">{rentPrice}</div>
+          <div className='info__row'>
+            <div className='info__field'>Стоимость аренды</div>
+            <div className='info__value'>{rentPrice}</div>
           </div>
-          <div className="info__row">
-            <div className="info__field">Место в гараже</div>
-            <div className="info__value">{garagePlace || 'Нет'}</div>
+          <div className='info__row'>
+            <div className='info__field'>Место в гараже</div>
+            <div className='info__value'>{garagePlace || 'Нет'}</div>
           </div>
-          <div className="info__row">
-            <div className="info__field">Статус</div>
-            <div className="info__value">{online ? 'В сети' : 'Не в сети'}</div>
+          <div className='info__row'>
+            <div className='info__field'>Статус</div>
+            <div className='info__value'>{online ? 'В сети' : 'Не в сети'}</div>
           </div>
-          <div className="info__button" onClick={moveRoommateOut}>
-            <div className="text">Выселить</div>
+          <div className='info__button' onClick={moveRoommateOut}>
+            <div className='text'>Выселить</div>
           </div>
         </div>
       </div>
-      <div className="roommates-hint">
+      <div className='roommates-hint'>
         бла
         Во избежании курьёзных ситуаций настоятельно рекомендуем внимательно
         выбирать настройки для сожителей.

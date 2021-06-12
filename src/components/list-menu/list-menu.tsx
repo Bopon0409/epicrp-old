@@ -17,7 +17,7 @@ export const ListMenu = observer(() => {
       em.removeHandler('list-menu.open', openMenu)
       em.removeHandler('list-menu.close', closeMenu)
     }
-  })
+  }, [])
 
   const list = store.state.list.map((item, i) => (
     <div className='menu__button' key={i}

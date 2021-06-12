@@ -18,7 +18,7 @@ export const Work = observer(() => {
       em.removeHandler('work.active', setActive)
       em.removeHandler('work.data', setData)
     }
-  })
+  }, [])
 
   return store.state.active ? (
     <div className='work'>

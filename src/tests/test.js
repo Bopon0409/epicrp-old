@@ -16,9 +16,9 @@ import './shop/shop.test'
 import './car-shop/car-shop.test'
 import './list-menu/list-menu.test'
 import './work/work.test'
+import './electrician/electrician.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.house.setData()
-  window.test.house.openHouseInside()
+  window.test.electrician.open(1)
 }

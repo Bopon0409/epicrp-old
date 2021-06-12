@@ -19,6 +19,7 @@ import { CarShop }     from '../car-shop/car-shop'
 import { ListMenu }    from '../list-menu/list-menu'
 import { Work }        from '../work/work'
 import 'react-input-range/lib/css/index.css'
+import { Electrician } from '../electrician/electrician'
 
 export default function App () {
   const devModules = (
@@ -48,6 +49,7 @@ export default function App () {
       <CarShop />
       <ListMenu />
       <Work />
+      <Electrician />
     </>
   )
 }

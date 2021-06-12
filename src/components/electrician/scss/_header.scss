@@ -1,0 +1,45 @@
+.electrician {
+  .header {
+    position: absolute;
+    width: 660px;
+    height: 40px;
+    top: -80px;
+    left: 50%;
+    margin-left: -330px;
+
+    .content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      font-weight: bold;
+      font-size: 48px;
+      line-height: 90%;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .process {
+      color: #ffffff;
+      background: radial-gradient(50% 50% at 50% 50%,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
+
+    .fail {
+      color: #b42b2b;
+      background: radial-gradient(50% 50% at 50% 50%,
+        rgba(180, 43, 43, 0.4) 0%,
+        rgba(180, 43, 43, 0) 100%
+      );
+    }
+
+    .win {
+      color: #2bb466;
+      background: radial-gradient(50% 50% at 50% 50%,
+        rgba(43, 180, 102, 0.4) 0%,
+        rgba(43, 180, 102, 0) 100%
+      );
+    }
+  }
+}
