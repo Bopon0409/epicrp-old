@@ -1,0 +1,58 @@
+{
+  "lvl": 2,
+  "progress": 500,
+  "nextLvl": 1000,
+  "rating": 5,
+  "workTime": "3ч 23мин",
+  "workStatus": true,
+  "car": "Toyota Camry",
+  "carClass": "Комфорт",
+  "rate": 50,
+  "activeOrder": {
+    "id": 1,
+    "client": "Al Capone",
+    "rating": 3.3,
+    "distance": 700,
+    "addressFrom": "Highway 69, Grand Senora",
+    "addressTo": "Highway 69, Grand Senora",
+    "comment": "На завод колы, срочно!",
+    "taximeter": 55
+  },
+  "orders": [
+    {
+      "id": 1,
+      "client": "Al Capone",
+      "distance": 700,
+      "time": "7 минут",
+      "comment": "На завод колы, срочно!"
+    },
+    {
+      "id": 2,
+      "client": "Al Capone",
+      "distance": 700,
+      "time": "7 минут",
+      "comment": "На завод колы, срочно!"
+    },
+    {
+      "id": 3,
+      "client": "Al Capone",
+      "distance": 700,
+      "time": "7 минут",
+      "comment": "На завод колы, срочно!"
+    },
+    {
+      "id": 4,
+      "client": "Al Capone",
+      "distance": 700,
+      "time": "7 минут",
+      "comment": "На завод колы, срочно!"
+    },
+    {
+      "id": 5,
+      "client": "Al Capone",
+      "distance": 700,
+      "time": "7 минут",
+      "comment": "На завод колы, срочно!"
+    }
+  ]
+}

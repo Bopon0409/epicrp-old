@@ -56,11 +56,7 @@ export const testInit: IItem[] = [
 ]
 
 export const testFinish: IItem[] = [
-  {
-    figure: 1,
-    position: [1, 1],
-    rotation: 1
-  },
+  { figure: 1, position: [1, 1], rotation: 1 },
   {
     figure: 1,
     position: [1, 2],
