@@ -9,7 +9,6 @@ export interface IActiveOrder {
   distance: number
   addressFrom: string
   addressTo: string
-  comment: string
   taximeter: number
 }
 
