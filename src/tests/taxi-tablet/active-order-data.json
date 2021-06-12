@@ -1,0 +1,10 @@
+{
+  "id": 1,
+  "client": "Al Capone",
+  "rating": 3.3,
+  "distance": 700,
+  "addressFrom": "Highway 69, Grand Senora",
+  "addressTo": "Highway 69, Grand Senora",
+  "comment": "На завод колы, срочно!",
+  "taximeter": 55
+}
