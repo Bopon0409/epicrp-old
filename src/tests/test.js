@@ -20,5 +20,6 @@ import './electrician/electrician.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.electrician.open(1)
+  window.test.inventory.setData()
+  window.test.inventory.setActive(true)
 }

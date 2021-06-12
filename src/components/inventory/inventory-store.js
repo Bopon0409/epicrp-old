@@ -60,6 +60,7 @@ class InventoryStore {
     data = data.filter(el => {
       if (el.type === 'config') {
         inventoryId = el.inventoryId
+        this.cleanInventory(inventoryId)
 
         this.state.trunk = {
           trunkName: el.trunkName || this.state.trunk.trunkName,
