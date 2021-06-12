@@ -21,6 +21,7 @@ class TaxiTabletStore {
     userName: '',
     workStatus: false,
     progress: 0,
+    transported: 0,
     workTime: '',
     carClass: '',
     nextLvl: 0,

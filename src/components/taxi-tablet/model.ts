@@ -34,6 +34,7 @@ export interface IState {
 
   // Данные игрока
   workStatus: boolean
+  transported: number
   userName: string
   progress: number
   workTime: string
@@ -55,6 +56,7 @@ export interface IData {
   userName?: string
   progress?: number
   workTime?: string
+  transported?: number
   carClass?: string
   nextLvl?: number
   rating?: number

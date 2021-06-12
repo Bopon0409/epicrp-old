@@ -30,7 +30,7 @@ export default observer(() => {
         <div className='trade-money'>
           <div className='text'>Деньги:</div>
           <input
-            className='input' type='text' value={trade.input1}
+            className='input' type='number' value={trade.input1}
             onChange={e => setTradeInput(e.target.value)}
           />
         </div>

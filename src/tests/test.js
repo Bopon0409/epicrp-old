@@ -20,5 +20,7 @@ import './electrician/electrician.test'
 import './taxi-tablet/taxi-tablet.test'
 
 export default function curTest () {
-  window.test.bg.setActive(true)
+  window.test.inventory.setData()
+  window.test.inventory.setActive(true)
+  window.test.inventory.setMode(2)
 }

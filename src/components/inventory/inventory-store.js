@@ -70,12 +70,12 @@ class InventoryStore {
 
         this.state.trade = {
           tradeName: el.tradeName || this.state.trade.tradeName,
-          input1: el.input1 || this.state.trade.input1,
           input2: el.money || this.state.trade.input2,
           isReady1: el.isReady1 || this.state.trade.isReady1,
           isReady2: el.isReady || this.state.trade.isReady2,
           maxMoney: el.maxMoney || this.state.trade.maxMoney,
-          isFinish: el.isFinish || this.state.trade.isFinish
+          isFinish: el.isFinish || this.state.trade.isFinish,
+          input1: this.state.trade.input1
         }
         return false
       }
@@ -112,10 +112,16 @@ class InventoryStore {
     }
   }
 
-  clearTrade = () => {
-    this.state.trade = {
-      tradeName: '', input1: 0, input2: 0, isReady1: false,
-      isReady2: false, maxMoney: 0, isFinish: false
+  clearTrade = (inventoryId) => {
+    if (inventoryId === 1) {
+      this.state.trade.tradeName = ''
+      this.state.trade.input1 = 0
+      this.state.trade.isReady1 = false
+      this.state.trade.maxMoney = 0
+      this.state.trade.isFinish = false
+    } else if (inventoryId === 2) {
+      this.state.trade.input2 = 0
+      this.state.trade.isReady2 = false
     }
   }
 
@@ -132,12 +138,12 @@ class InventoryStore {
         max = 212
         break
       case 1:
-        this.clearTrade()
+        this.clearTrade(inventoryId)
         min = 301
         max = 350
         break
       case 2:
-        this.clearTrade()
+        this.clearTrade(inventoryId)
         min = 351
         max = 400
         break
@@ -667,10 +673,10 @@ class InventoryStore {
   // ===============================   TRADE   =================================
 
   setTradeInput = value => {
-    const { maxMoney, isReady1, input1 } = this.state.trade
-    if (Number(value) === input1) return
+    const { maxMoney, isReady1 } = this.state.trade
+    value = Number(value)
     if (!isNaN(value) && value <= maxMoney && !isReady1) {
-      this.state.trade.input1 = Number(value)
+      this.state.trade.input1 = value || 0
       window.frontTrigger('inventory.trade.money', Number(value))
     }
   }
