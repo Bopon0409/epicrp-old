@@ -1,8 +1,8 @@
-import { makeAutoObservable }           from 'mobx'
+import { makeAutoObservable } from 'mobx'
 import {
   IState, TPosition, TFigure, TRotation, IItem, TStatus, TGame
-}                                       from './models'
-import { testFinish, testInit, timers } from './config'
+}                       from './models'
+import { gameData, timers } from './config'
 
 class ElectricianStore {
   constructor () {
@@ -21,8 +21,8 @@ class ElectricianStore {
 
   get boardSize (): 3 | 4 | 5 {
     const { gameType } = this.state
-    if (gameType > 6) return 5
-    else if (gameType > 3) return 4
+    if (gameType > 8) return 5
+    else if (gameType > 4) return 4
     else return 3
   }
 
@@ -30,12 +30,17 @@ class ElectricianStore {
     return timers[this.boardSize - 3]
   }
 
-  get initData () {
-    return testInit
+  get initData (): IItem[] {
+    return gameData.game9
+    // const newData: IItem[] = JSON.parse(JSON.stringify(gameData.test))
+    // return newData.map((item) => {
+    //   item.rotation = this.getRandomRotation(item.figure)
+    //   return item
+    // })
   }
 
-  get winData () {
-    return testFinish
+  get winData (): IItem[] {
+    return gameData.game9
   }
 
   get timerString () {
@@ -106,8 +111,7 @@ class ElectricianStore {
   }
 
   rotate = (position: TPosition) => {
-    const [x, y] = position
-    const item = this.getItem([x, y], this.state.board)
+    const item = this.getItem(position, this.state.board)
     if (item) item.rotation = this.getNextRotation(item.figure, item.rotation)
     if (this.checkWin()) this.finish('win')
   }
@@ -121,6 +125,17 @@ class ElectricianStore {
       else return 1
     } else if (figure === 3) return rotation === 1 ? 2 : 1
     else return rotation
+  }
+
+  getRandomRotation = (figure: TFigure): TRotation => {
+    if (figure === 1 || figure === 2) return this.getRandomInteger(1, 4)
+    else if (figure === 3) return this.getRandomInteger(1, 2)
+    else return 1
+  }
+
+  getRandomInteger = (min: number, max: number): TRotation => {
+    // @ts-ignore
+    return Math.floor(min + Math.random() * (max + 1 - min))
   }
 }
 

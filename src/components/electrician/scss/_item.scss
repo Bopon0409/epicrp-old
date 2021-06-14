@@ -1,15 +1,12 @@
 .electrician {
   .item {
     background: rgba(124, 115, 69, 0.2);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
-    border: 1px solid #b4b3ad;
+    //box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+    //border: 1px solid #b4b3ad;
   }
 
   .figure {
-    position: relative;
-    top: -1.5%;
-    left: -1.5%;
-    width: 103%;
-    height: 103%;
+    width: 100%;
+    height: 100%;
   }
 }

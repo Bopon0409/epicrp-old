@@ -1,5 +1,5 @@
 {
-  "userName": "Ched nocksfeel",
+  "userName": "Ched nocksfeel 1",
   "houseNumber": 52,
   "owner": "Ched nocksfeel",
   "open": false,
@@ -8,7 +8,7 @@
   "tax": 3500,
   "roomQuantity": 10,
   "garageAvailability": true,
-  "garagePlaceQuantity": 2,
+  "garagePlaceQuantity": 6,
   "price": 3000000,
   "capabilities": {
     "enterGarage": true,

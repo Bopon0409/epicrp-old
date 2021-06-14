@@ -1,6 +1,6 @@
 export interface IState {
   active: boolean,
-  type: 0 | 1 | 2 | 3,
+  type: 0 | 1 | 2 | 3 | 4,
   workStatus: boolean,
   lvl: number,
   nextLvl: number,
@@ -13,7 +13,7 @@ export interface IState {
 }
 
 export interface IData {
-  type?: 1 | 2 | 3,
+  type?: 1 | 2 | 3 | 4,
   workStatus?: boolean,
   lvl?: number,
   nextLvl?: number,
@@ -26,8 +26,9 @@ export interface IData {
 }
 
 export interface ITransport {
-  str1: string,
-  str2: string
+  str1?: string,
+  str2?: string
+  str?: string
 }
 
 export interface IContent {
@@ -35,5 +36,5 @@ export interface IContent {
   steps: [string, string, string],
   description: string,
   progressName: string,
-  transport: [ITransport, ITransport, ITransport]
+  transport: ITransport[]
 }

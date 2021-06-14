@@ -137,7 +137,9 @@ class HouseStore {
   }
 
   get overlayRoommateName () {
-    return this.roommatesGarageList[this.state.dragId - 300]?.name || ''
+    const { dragId } = this.state
+    return this.state.roommates
+        .find(roommate => roommate.id === dragId - 300)?.name || ''
   }
 
   get overlayRotate () {
@@ -225,10 +227,11 @@ class HouseStore {
   }
 
   roommateSet = (slotFrom, slotTo) => {
-    const roommate = this.state.roommates.find(({ id }) => id === slotFrom -
-      300)
+    if (this.getGarageItem(slotTo).carId) return false
+    const roommate = this.state.roommates
+      .find(({ id }) => id === slotFrom - 300)
     const car = roommate.cars[0]
-    car.carOwner = this.state.roommates[slotFrom - 300].name
+    car.carOwner = roommate.name
     car.placeId = slotTo
     this.state.garage.push(car)
     roommate.cars.shift()
