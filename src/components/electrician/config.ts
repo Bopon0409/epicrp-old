@@ -1,6 +1,6 @@
 import { IItem } from './models'
 
-export const timers = [5, 30, 60]
+export const timers = [10, 30, 60]
 
 export const hintText = `В данной мини - игре Вам предстоит вращать фигуры при
   помощи левой кнопки мыши так, чтобы все они были замкнуты между собой. На
