@@ -1,8 +1,8 @@
 import { makeAutoObservable } from 'mobx'
 import {
   IState, TPosition, TFigure, TRotation, IItem, TStatus, TGame
-}                       from './models'
-import { gameData, timers } from './config'
+}                             from './models'
+import { gameData, timers }   from './config'
 
 class ElectricianStore {
   constructor () {
@@ -31,16 +31,18 @@ class ElectricianStore {
   }
 
   get initData (): IItem[] {
-    return gameData.game9
-    // const newData: IItem[] = JSON.parse(JSON.stringify(gameData.test))
-    // return newData.map((item) => {
-    //   item.rotation = this.getRandomRotation(item.figure)
-    //   return item
-    // })
+    // @ts-ignore
+    const data = gameData[`game${this.state.gameType}`]
+    const newData: IItem[] = JSON.parse(JSON.stringify(data))
+    return newData.map((item) => {
+      item.rotation = this.getRandomRotation(item.figure)
+      return item
+    })
   }
 
   get winData (): IItem[] {
-    return gameData.game9
+    // @ts-ignore
+    return gameData[`game${this.state.gameType}`]
   }
 
   get timerString () {
