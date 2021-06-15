@@ -54,12 +54,16 @@ class CreatePersStore {
     if (str.length > 20) return
     switch (type) {
       case 'name':
-        this.setName(str)
-        this.setNameErr('')
+        if (/^[a-zA-Z]+$/i.test(str)) {
+          this.setName(str)
+          this.setNameErr('')
+        }
         break
       case 'surname':
-        this.setSurname(str)
-        this.setSurnameErr('')
+        if (/^[a-zA-Z]+$/i.test(str)) {
+          this.setSurname(str)
+          this.setSurnameErr('')
+        }
         break
       case 'age':
         const numAge = Number(str)
