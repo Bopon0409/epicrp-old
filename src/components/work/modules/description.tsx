@@ -8,7 +8,10 @@ import electricianImg from '../img/title_electrician.png'
 import stepsImg       from '../img/steps.svg'
 
 export const Description = observer(() => {
-  const { state: { type, workStatus }, content, setWorkStatus } = store
+  const {
+    state: { type, workStatus, workShift },
+    content, setWorkStatus, workShiftCancel
+  } = store
   const { name, description, steps } = content
 
   return (
@@ -40,15 +43,23 @@ export const Description = observer(() => {
         </div>
       </div>
 
-      {!workStatus ? (
-        <div className='button button--active' onClick={setWorkStatus}>
-          <div className='text'>Устроиться</div>
-        </div>
-      ) : (
-        <div className='button button--no-active' onClick={setWorkStatus}>
-          <div className='text'>Уволиться</div>
-        </div>
-      )}
+      <div className='button-container'>
+        {workShift ? (
+          <div className='button button--no-active' onClick={workShiftCancel}>
+            <div className='text'>Закончить работу</div>
+          </div>
+        ) : null}
+
+        {!workStatus ? (
+          <div className='button button--active' onClick={setWorkStatus}>
+            <div className='text'>Устроиться</div>
+          </div>
+        ) : (
+          <div className='button button--no-active' onClick={setWorkStatus}>
+            <div className='text'>Уволиться</div>
+          </div>
+        )}
+      </div>
     </div>
   )
 })

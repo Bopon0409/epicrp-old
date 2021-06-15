@@ -16,6 +16,7 @@ class WorkStore {
     active: false,
     type: 0,
     workStatus: true,
+    workShift: false,
     lvl: 1,
     nextLvl: 150,
     progress: 15,
@@ -29,6 +30,7 @@ class WorkStore {
   setActive = (active: boolean) => this.state.active = active
 
   setData = (data: IData) => {
+    if (data.workShift !== undefined) this.state.workShift = data.workShift
     if (data.workStatus !== undefined) this.state.workStatus = data.workStatus
     if (data.rentStatus !== undefined) this.state.rentStatus = data.rentStatus
     if (data.weekEarned !== undefined) this.state.weekEarned = data.weekEarned
@@ -60,9 +62,19 @@ class WorkStore {
     window.frontTrigger('work.work-status', type, !this.state.workStatus)
   }
 
-  setTransport = (num: number) => {
+  workShiftCancel = () => {
     // @ts-ignore
-    window.frontTrigger('work.transport', num)
+    window.frontTrigger('work.work-shift-cancel')
+    this.state.workShift = false
+  }
+
+  setTransport = (num: number) => {
+    const { lvl, workShift, workStatus } = this.state
+    if (num <= lvl && workStatus && !workShift) {
+      // @ts-ignore
+      window.frontTrigger('work.transport', num)
+      this.state.workShift = true
+    }
   }
 }
 

@@ -6,7 +6,8 @@ import classNames       from 'classnames'
 
 export const Transport = observer(() => {
   const {
-    content: { transport }, state: { type, lvl, workStatus, taxiRate },
+    content: { transport },
+    state: { type, lvl, workStatus, workShift, taxiRate },
     setTransport
   } = store
 
@@ -14,7 +15,8 @@ export const Transport = observer(() => {
   const taxiRates = (num: number): string | undefined =>
     type === 1 ? `Тариф: $${taxiRate[num - 1]}/км` : transport[num - 1].str2
 
-  const isActive = (num: number): boolean => num <= lvl && workStatus
+  const isActive = (num: number): boolean =>
+    num <= lvl && workStatus && !workShift
   const buttonClasses = (num: number) => classNames('info__button',
     !isActive(num) ? 'info__button--disabled' : null
   )
@@ -33,7 +35,9 @@ export const Transport = observer(() => {
           </>
         )}
         <div className={buttonClasses(num)} onClick={() => setTransport(num)}>
-          <div className='text'>{isActive(num) ? 'Выбрать' : 'Недоступно'}</div>
+          <div className='text'>{
+            isActive(num) ? 'Начать работу' : 'Недоступно'
+          }</div>
         </div>
       </div>
     </div>

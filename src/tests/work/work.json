@@ -2,6 +2,7 @@
   "type": 4,
   "workStatus": true,
   "lvl": 2,
+  "workShift": false,
   "nextLvl": 150,
   "progress": 15,
   "rentStatus": true,
