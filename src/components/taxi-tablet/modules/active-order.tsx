@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import { store }    from '../taxi-tablet-store'
 
 export const ActiveOrder = observer(() => {
-  const { state: { activeOrder }, orderTimeString } = store
+  const { state: { activeOrder }, orderTimeString, rejectOrder } = store
   if (!activeOrder) return null
 
   const {
@@ -32,7 +32,7 @@ export const ActiveOrder = observer(() => {
         <div className='active-order__value'>{taximeter}</div>
       </div>
 
-      <div className='active-order__reject-btn'>
+      <div className='active-order__reject-btn' onClick={rejectOrder}>
         <div className='text'>Отказаться</div>
       </div>
     </div>

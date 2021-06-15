@@ -1,5 +1,57 @@
 .taxi-tablet {
   .reject-next {
+    width: 600px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+    &__text {
+      margin-top: 60px;
+      margin-bottom: 90px;
+      font-size: 16px;
+      line-height: 19px;
+      color: #ffffff;
+    }
+
+    &__question {
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 19px;
+      color: #f2c94c;
+      margin-bottom: 30px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      width: 360px;
+
+      .reject-next__btn {
+        width: 150px;
+        height: 35px;
+        border-radius: 3px;
+        display: flex;
+        cursor: pointer;
+
+        .text {
+          margin: auto;
+          font-weight: bold;
+          font-size: 13px;
+          line-height: 16px;
+          color: #ffffff;
+        }
+
+        &--active {
+          background: #2bb466;
+          box-shadow: 0 0 15px rgba(43, 180, 102, 0.45);
+        }
+
+        &--inactive {
+          background: #ef2a2a;
+          box-shadow: 0 0 15px rgba(239, 42, 42, 0.45);
+        }
+      }
+    }
   }
 }

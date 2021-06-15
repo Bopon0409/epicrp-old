@@ -6,7 +6,7 @@ import classNames   from 'classnames'
 export const Aside = observer(() => {
   const {
     userName, lvl, progress, nextLvl, rating, transported,
-    workTime, workStatus, car, carClass, rate
+    workTime, workStatus, car, carClass, rate, tabletStatus
   } = store.state
 
   const buttonText = workStatus ? 'Уйти с линии' : 'Выйти на линию'
@@ -57,9 +57,11 @@ export const Aside = observer(() => {
         <div className='aside__value'>${rate}/км</div>
       </div>
 
-      <div className={buttonClasses} onClick={store.changeStatus}>
-        <div className='text'>{buttonText}</div>
-      </div>
+      {tabletStatus === 'list' ? (
+        <div className={buttonClasses} onClick={store.changeStatus}>
+          <div className='text'>{buttonText}</div>
+        </div>
+      ) : null}
     </div>
   )
 })

@@ -62,37 +62,49 @@ class TaxiTabletStore {
   setActiveOrder = (activeOrder: IActiveOrder) => {
     this.state.activeOrder = activeOrder
     this.setStatus('order')
-    this.state.orderTimer = setInterval(() => {
-      this.state.orderTime += 1
-    }, 1000)
+    this.state.orderTimer = setInterval(this.incOrderTime, 1000)
   }
+
+  incOrderTime = () => this.state.orderTime += 1
 
   //=============================   Front Trigger   ============================
 
   takeOrder = (id: number) => {
     // @ts-ignore
-    window.frontTrigger('taxi.get-order', id)
+    window.frontTrigger('taxi.order.take', id)
   }
 
   changeStatus = () => {
     // @ts-ignore
     window.frontTrigger('taxi.status', !this.state.workStatus)
+    this.state.workStatus = !this.state.workStatus
+  }
+
+  rejectOrder = () => this.state.tabletStatus = 'reject'
+
+  rejectConfirm = () => {
+    // @ts-ignore
+    window.frontTrigger('taxi.order.reject', this.state.rejectReason)
+    this.state.tabletStatus = 'reject-next'
+    this.state.activeOrder = null
+    this.state.rejectReason = ''
+  }
+
+  rejectNext = (continueWork: boolean) => {
+    if (!continueWork) this.changeStatus()
+    this.state.tabletStatus = 'list'
   }
 
   get orderTimeString (): string {
     const { orderTime } = this.state
     if (orderTime === 0) return '0'
-    const minutes = orderTime / 60
+    const minutes = Math.floor(orderTime / 60)
     if (minutes >= 1) {
       return `${minutes} мин ${orderTime - minutes * 60} сек`
     } else return `${orderTime} сек`
   }
 
-  setRejectOrder = (value: string) => this.state.rejectReason = value
-
-  rejectSubmit = () => {
-    this.setStatus('reject-next')
-  }
+  setRejectReason = (value: string) => this.state.rejectReason = value
 
   setStatus = (status: TTabletStatus) => this.state.tabletStatus = status
 }
