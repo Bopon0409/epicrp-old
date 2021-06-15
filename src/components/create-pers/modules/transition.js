@@ -10,6 +10,7 @@ export default observer(() => {
   const [prevActive, setPrevActive] = useState(false)
   const [nextActive, setNextActive] = useState(false)
   const randomHandler = () => window.frontTrigger('character.random')
+  const cancelHandler = () => window.frontTrigger('character.cancel')
 
   const prevBtnClasses = prevActive
     ? 'transition__prev transition__prev_active'
@@ -21,7 +22,10 @@ export default observer(() => {
 
   return (
     <div className='transition'>
-      <div className='transition__random' onClick={randomHandler}>
+      <div className='transition__item' onClick={cancelHandler}>
+        Отменить
+      </div>
+      <div className='transition__item' onClick={randomHandler}>
         Случайно
       </div>
       <div
