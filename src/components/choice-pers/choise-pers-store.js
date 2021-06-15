@@ -11,7 +11,16 @@ class ChoicePersStore {
     currentPers: 0
   }
 
-  setCurrentPers = current => (this.state.currentPers = current)
+  setCurrentPers = current => {
+    if (this.state.currentPers !== current) {
+      window.frontTrigger('character.select', current)
+      this.state.currentPers = current
+    }
+  }
+
+  deleteCharacter = () => {
+    window.frontTrigger('character.delete', this.state.currentPers)
+  }
 
   setChoicePers = (active, data) => {
     this.state.data = data ? data : []
@@ -20,7 +29,7 @@ class ChoicePersStore {
 
   clickPlay = () => {
     const { name, surname } = this.state.data[this.state.currentPers]
-    window.frontTrigger('character.selected', name, surname)
+    window.frontTrigger('character.play', name, surname)
   }
 }
 

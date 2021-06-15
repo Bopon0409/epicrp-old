@@ -3,17 +3,17 @@ import { observer } from 'mobx-react-lite'
 import { store }    from '../taxi-tablet-store'
 
 export const OrderList = observer(() => {
-  const { orders } = store.state
+  const { state: { orders }, takeOrder } = store
 
   const orderList = orders.map((order) => (
-    <div className='order'>
+    <div className='order' key={order.id}>
       <div className='order__value'>
         {order.client}
-        <span className='time'>{order.time}</span>
+        <div className='time'>(Ожидает {order.time})</div>
       </div>
       <div className='order__value'>{order.comment}</div>
       <div className='order__value'>{order.distance}</div>
-      <div className='order__button'>
+      <div className='order__button' onClick={() => takeOrder(order.id)}>
         <div className='text'>Принять</div>
       </div>
     </div>
@@ -25,10 +25,11 @@ export const OrderList = observer(() => {
       <div className='order-list'>
         {orders.length ? (
           <>
-            <div className='order--head'>
+            <div className='order order--head'>
               <div className='order__value'>Заказчик</div>
               <div className='order__value'>Комментарий</div>
               <div className='order__value'>Расстояние до клиента</div>
+              <div className='order__value' />
             </div>
             {orderList}
           </>

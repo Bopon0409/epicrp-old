@@ -21,6 +21,8 @@ import './taxi-tablet/taxi-tablet.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.taxiTablet.setData()
-  window.test.taxiTablet.setActive(true)
+  window.test.choisePers.setChoicePers()
+  // window.test.taxiTablet.setData()
+  // window.test.taxiTablet.start()
+  // window.test.taxiTablet.setActive(true)
 }

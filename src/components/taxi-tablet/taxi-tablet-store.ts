@@ -34,6 +34,8 @@ class TaxiTabletStore {
     orders: []
   }
 
+  //============================   Client Trigger   ============================
+
   setActive = (active: boolean) => this.state.active = active
 
   setData = (data: IData) => {
@@ -63,6 +65,18 @@ class TaxiTabletStore {
     this.state.orderTimer = setInterval(() => {
       this.state.orderTime += 1
     }, 1000)
+  }
+
+  //=============================   Front Trigger   ============================
+
+  takeOrder = (id: number) => {
+    // @ts-ignore
+    window.frontTrigger('taxi.get-order', id)
+  }
+
+  changeStatus = () => {
+    // @ts-ignore
+    window.frontTrigger('taxi.status', !this.state.workStatus)
   }
 
   get orderTimeString (): string {

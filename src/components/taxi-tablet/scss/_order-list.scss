@@ -1,5 +1,93 @@
 .taxi-tablet {
   .order-list {
+    width: 600px;
+    height: 100%;
 
+    .order-list {
+      overflow-y: auto;
+      padding-right: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+
+      .orders--empty {
+        margin: auto;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 27px;
+        color: rgba(255, 255, 255, 0.45);
+        opacity: 0.45;
+      }
+
+      &::-webkit-scrollbar {
+        width: 2px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: #f2c94c;
+      }
+
+      .order {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 35px;
+        margin-bottom: 15px;
+
+        &__value {
+          font-size: 14px;
+          line-height: 19px;
+          color: #ffffff;
+          text-align: center;
+
+          &:nth-child(1) {
+            width: 25%;
+          }
+
+          &:nth-child(2) {
+            width: 30%;
+          }
+
+          &:nth-child(3) {
+            width: 20%;
+          }
+        }
+
+        .time {
+          font-size: 10px;
+          line-height: 14px;
+          color: #f2c94c;
+        }
+
+        &__button {
+          background: #2bb466;
+          border-radius: 3px;
+          display: flex;
+          width: 25%;
+          height: 30px;
+          cursor: pointer;
+
+          .text {
+            margin: auto;
+            font-size: 12px;
+            line-height: 16px;
+            text-align: center;
+            color: #ffffff;
+          }
+        }
+      }
+
+      .order--head {
+        justify-content: flex-start;
+
+        .order__value {
+          font-size: 12px;
+          line-height: 16px;
+          color: rgba(255, 255, 255, 0.45);
+          opacity: 0.75;
+        }
+      }
+    }
   }
 }

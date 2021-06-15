@@ -11,7 +11,7 @@ import timeIcon from '../images/time-icon.svg'
 export default observer(({ index }) => {
   const pers = store.state.data[index]
   const active = store.state.currentPers === index
-  const { setCurrentPers } = store
+  const { setCurrentPers, deleteCharacter } = store
 
   if (pers.empty && pers.bought === false) return <BuyView />
   if (pers.empty) return <EmptyView />
@@ -48,7 +48,7 @@ export default observer(({ index }) => {
           <span>Время в игре: </span>
           <span className='bold'>{pers.playTime}</span>
         </div>
-        <div className='delete flex-block'>
+        <div className='delete flex-block' onClick={deleteCharacter}>
           <DeleteSvg />
           <span>Удалить персонажа</span>
         </div>

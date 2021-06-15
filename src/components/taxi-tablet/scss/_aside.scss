@@ -1,5 +1,93 @@
 .taxi-tablet {
   .aside {
+    width: 300px;
+    padding: 40px;
+    box-sizing: border-box;
+    border-right: 1px dashed rgba(255, 255, 255, 0.45);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
 
+    .aside__title {
+      width: 100%;
+
+      .aside__name {
+        width: 100%;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 30px;
+        text-transform: uppercase;
+      }
+
+      .aside__sub-name {
+        width: 100%;
+        font-size: 16px;
+        line-height: 22px;
+        color: #f2c94c;
+        margin-bottom: 20px;
+      }
+    }
+
+
+    .aside__grid {
+      display: grid;
+      width: 100%;
+      grid-template: repeat(9, 20px) / 50% 50%;
+      align-content: space-between;
+      height: 220px;
+
+      .next-lvl {
+        color: rgba(255, 255, 255, 0.45);
+      }
+
+      .aside__info {
+        font-size: 13px;
+        line-height: 16px;
+      }
+
+      .aside__value {
+        font-weight: bold;
+        font-size: 13px;
+        line-height: 16px;
+        text-align: right;
+
+        &--active {
+          color: #2bb466;
+        }
+
+        &--inactive {
+          color: #ef2a2a;
+        }
+      }
+    }
+
+    .aside__button {
+      width: 100%;
+      height: 40px;
+      border-radius: 3px;
+      display: flex;
+      margin-top: 30px;
+      cursor: pointer;
+
+      .text {
+        margin: auto;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      &--active {
+        background: #2bb466;
+        box-shadow: 0 0 15px rgba(43, 180, 102, 0.45);
+      }
+
+      &--inactive {
+        background: #ef2a2a;
+        box-shadow: 0 0 15px rgba(239, 42, 42, 0.45);
+      }
+    }
   }
 }

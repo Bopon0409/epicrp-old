@@ -3,8 +3,13 @@ import { observer }         from 'mobx-react-lite'
 import { store }            from './taxi-tablet-store'
 import './taxi-tablet.scss'
 import { Aside }            from './modules/aside'
+import { OrderList }        from './modules/order-list'
+import { ActiveOrder }      from './modules/active-order'
+import { Reject }           from './modules/reject'
+import { RejectNext }       from './modules/reject-next'
 
 export const TaxiTablet = observer(() => {
+  const { active, tabletStatus } = store.state
 
   useEffect(() => {
     // @ts-ignore
@@ -25,9 +30,23 @@ export const TaxiTablet = observer(() => {
     }
   }, [])
 
-  return store.state.active ? (
+  const currentPage = () => {
+    switch (tabletStatus) {
+      case 'list':
+        return <OrderList />
+      case 'order':
+        return <ActiveOrder />
+      case 'reject':
+        return <Reject />
+      case 'reject-next':
+        return <RejectNext />
+    }
+  }
+
+  return active ? (
     <div className='taxi-tablet'>
       <Aside />
+      {currentPage()}
     </div>
   ) : null
 })
