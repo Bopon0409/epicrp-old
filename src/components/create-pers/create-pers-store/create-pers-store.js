@@ -52,15 +52,16 @@ class CreatePersStore {
   inputChangeHandler = (event, type) => {
     const str = event.target.value
     if (str.length > 20) return
+    const check = (/^[a-zA-Z]+$/i.test(str) || str === '')
     switch (type) {
       case 'name':
-        if (/^[a-zA-Z]+$/i.test(str)) {
+        if (check) {
           this.setName(str)
           this.setNameErr('')
         }
         break
       case 'surname':
-        if (/^[a-zA-Z]+$/i.test(str)) {
+        if (check) {
           this.setSurname(str)
           this.setSurnameErr('')
         }
