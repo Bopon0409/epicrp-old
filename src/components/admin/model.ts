@@ -1,5 +1,13 @@
 export type TPage = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
+export type TPunishmentModal = 'mute' | 'voice_mute' | 'jail' | 'prison' |
+  'kick ' | 'warn' | 'ban' | 'hardban' | 'silence_ban' | 'social_ban' | null
+
+export interface IPunishmentModal {
+  title: string
+  term: 'минут' | 'часов' | 'дней' | null
+}
+
 export interface IPunishment {
   date: string
   adminName: string
@@ -65,7 +73,7 @@ export interface IPlayer {
 export interface IState {
   active: boolean
   page: TPage
-  punishmentsModalActive: boolean
+
   player: IPlayer | null
   console: string[]
   chat: IChatMessage[]
@@ -73,4 +81,10 @@ export interface IState {
   realCars: string[]
   killLogs: ILog[]
   adminLogs: ILog[]
+
+  punishmentsModalHistory: boolean
+  punishmentModal: TPunishmentModal | null
+
+  modalInputTerm: string
+  modalInputReason: string
 }

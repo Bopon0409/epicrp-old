@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { observer }         from 'mobx-react-lite'
-import './admin.scss'
 import { store }            from './admin-store'
+import './admin.scss'
 
 export const Admin = observer(() => {
 
@@ -31,8 +31,6 @@ export const Admin = observer(() => {
       em.removeHandler('admin.player', pushPlayer)
     }
   }, [])
-
-  console.log(store.state)
 
   return (
     <div className='admin'>
