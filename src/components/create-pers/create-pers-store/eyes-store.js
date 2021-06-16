@@ -1,14 +1,18 @@
 import { makeAutoObservable } from 'mobx'
 
+const initState = {
+  eyeSize: { value: 0, valueName: 'eyeSize', title: 'Размер глаз' },
+  colorEyes: { value: '#324835', valueName: 'colorEyes', title: 'Цвет глаз' }
+}
+
 class EyesStore {
   constructor () {
     makeAutoObservable(this, {}, { deep: true })
   }
 
-  state = {
-    eyeSize: { value: 0, valueName: 'eyeSize', title: 'Размер глаз' },
-    colorEyes: { value: '#324835', valueName: 'colorEyes', title: 'Цвет глаз' }
-  }
+  state = initState
+
+  clear = () => this.state = initState
 
   onValueChange = (value, valueName) => {
     if (typeof value === 'number')

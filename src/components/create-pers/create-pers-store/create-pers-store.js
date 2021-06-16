@@ -1,5 +1,20 @@
 import { makeAutoObservable }       from 'mobx'
 import { motherNames, fatherNames } from './data'
+import clothesStore                 from './clothes-store'
+import eyesStore                    from './eyes-store'
+import faceStore                    from './face-store'
+import hairStore                    from './hair-store'
+import leatherStore                 from './leather-store'
+
+const initStep1 = {
+  name: '', surname: '', nameErr: '', surnameErr: '',
+  sex: 'male', age: '', ageErr: '', hover: false
+}
+
+const initStep2 = {
+  activeMother: 0, activeFather: 0, sliderValue1: 0.5,
+  sliderValue2: 0.5, motherName: 'Hannah', fatherName: 'Benjamin'
+}
 
 class CreatePersStore {
   constructor () {
@@ -11,26 +26,23 @@ class CreatePersStore {
   state = {
     active: false,
     step: 1,
-    step1: {
-      name: '',
-      surname: '',
-      nameErr: '',
-      surnameErr: '',
-      sex: 'male',
-      age: '',
-      ageErr: '',
-      hover: false
-    },
-    step2: {
-      activeMother: 0,
-      activeFather: 0,
-      sliderValue1: 0.5,
-      sliderValue2: 0.5,
-      motherName: 'Hannah',
-      fatherName: 'Benjamin'
-    },
+    step1: initStep1,
+    step2: initStep2,
     menuActive: 1,
     serverData: {}
+  }
+
+  clear = () => {
+    this.state.step = 1
+    this.state.menuActive = 1
+    this.state.step1 = initStep1
+    this.state.step2 = initStep2
+
+    clothesStore.clear()
+    eyesStore.clear()
+    faceStore.clear()
+    hairStore.clear()
+    leatherStore.clear()
   }
 
   // =================================   MAIN   ================================

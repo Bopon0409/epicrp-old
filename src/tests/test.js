@@ -18,9 +18,8 @@ import './list-menu/list-menu.test'
 import './work/work.test'
 import './electrician/electrician.test'
 import './taxi-tablet/taxi-tablet.test'
+import './admin/admin.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.work.setData()
-  window.test.work.setActive(true)
 }

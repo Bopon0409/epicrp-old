@@ -1,16 +1,20 @@
 import { makeAutoObservable } from 'mobx'
 
+const initState = {
+  stains: { value: 0, valueName: 'stains', title: 'Пятна' },
+  leatherAge: { value: 0, valueName: 'leatherAge', title: 'Возраст кожи' },
+  sunDamage: { value: 0, valueName: 'sunDamage', title: 'Урон от солнца' },
+  freckles: { value: 0, valueName: 'freckles', title: 'Веснушки' }
+}
+
 class LeatherStore {
   constructor () {
     makeAutoObservable(this, {}, { deep: true })
   }
 
-  state = {
-    stains: { value: 0, valueName: 'stains', title: 'Пятна' },
-    leatherAge: { value: 0, valueName: 'leatherAge', title: 'Возраст кожи' },
-    sunDamage: { value: 0, valueName: 'sunDamage', title: 'Урон от солнца' },
-    freckles: { value: 0, valueName: 'freckles', title: 'Веснушки' }
-  }
+  state = initState
+
+  clear = () => this.state = initState
 
   onValueChange = (value, valueName) => {
     if (typeof value === 'number')
