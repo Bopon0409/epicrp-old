@@ -2,6 +2,7 @@
   <dictionary name="nevai">
     <words>
       <w>boxville</w>
+      <w>hardban</w>
       <w>lspd</w>
       <w>neadmin</w>
       <w>pers</w>
@@ -14,6 +15,7 @@
       <w>пофиксить</w>
       <w>фронтендер</w>
       <w>фронтендов</w>
+      <w>чапалах</w>
     </words>
   </dictionary>
 </component>

@@ -1,9 +1,30 @@
 export type TPage = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
+export interface IPunishment {
+  date: string
+  adminName: string
+  type: string
+  term: string
+  comment: string
+}
+
+export interface ILog {
+  name1: string
+  name2?: string
+  action: string
+}
+
 export interface IChatMessage {
   lvl: number
   name: string
   msg: string
+}
+
+export interface ITransport {
+  carName: string,
+  carNum: string,
+  carId: number,
+  adminName: string
 }
 
 export interface IPlayerTransport {
@@ -38,8 +59,17 @@ export interface IPlayer {
   fraction: string
   property: IPlayerProperty[]
   transport: IPlayerTransport[]
+  punishments: IPunishment[]
 }
 
 export interface IState {
+  active: boolean
   page: TPage
+  player: IPlayer | null
+  console: string[]
+  chat: IChatMessage[]
+  transport: ITransport[]
+  realCars: string[]
+  killLogs: ILog[]
+  adminLogs: ILog[]
 }

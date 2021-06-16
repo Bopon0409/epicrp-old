@@ -1,11 +1,10 @@
 import React        from 'react'
 import { observer } from 'mobx-react-lite'
-import './admin.scss'
 
-export const Admin = observer(() => {
+export const Menu = observer(() => {
   return (
-    <div className='admin'>
-
+    <div className='menu'>
+      
     </div>
   )
 })

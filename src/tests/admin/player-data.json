@@ -1,0 +1,56 @@
+{
+  "online": true,
+  "id": 332,
+  "sid": 86942,
+  "name": "Chad Nickel",
+  "lvl": 8,
+  "phoneNumber": "8-800-355-35-35",
+  "cash": 333333333,
+  "card1": 333333333,
+  "card2": null,
+  "fraction": "LSPD | 10 ранг",
+  "family": "Синий кит",
+  "warn": 0,
+  "ban": "23.03.2021",
+  "socialId": "ZalupaKonyaBadulaya",
+  "login": "Master_Margarita",
+  "regIp": "192.168.0.1",
+  "lastIp": "333.333.333",
+  "property": [
+    { "type": "Дом", "num": 444 },
+    { "type": "Квартира", "num": 444 },
+    { "type": "Бизнес", "num": 444 },
+    { "type": "Дом", "num": 444 },
+    { "type": "Квартира", "num": 444 },
+    { "type": "Бизнес", "num": 444 }
+  ],
+  "transport": [
+    {
+      "id": 666666, "gid": 843, "name": "Audi RS6 twin-turbo", "num": "ZX123ZCX"
+    },
+    {
+      "id": 666666, "gid": 843, "name": "Audi RS6 twin-turbo", "num": "ZX123ZCX"
+    },
+    {
+      "id": 666666, "gid": 843, "name": "Audi RS6 twin-turbo", "num": "ZX123ZCX"
+    },
+    {
+      "id": 666666, "gid": 843, "name": "Audi RS6 twin-turbo", "num": "ZX123ZCX"
+    },
+    {
+      "id": 666666, "gid": 843, "name": "Audi RS6 twin-turbo", "num": "ZX123ZCX"
+    },
+    {
+      "id": 666666, "gid": 843, "name": "Audi RS6 twin-turbo", "num": "ZX123ZCX"
+    }
+  ],
+  "punishments": [
+    {
+      "date": "23.03.2021",
+      "adminName": "Admin Admin",
+      "type": "hardban",
+      "term": "permanent",
+      "comment": "Сверхзвуковой чапалах"
+    }
+  ]
+}
