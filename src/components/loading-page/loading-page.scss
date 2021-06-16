@@ -8,6 +8,12 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   font-family: TT Norms, sans-serif;
+  transition: opacity 1s;
+  opacity: 0;
+
+  &--active {
+    opacity: 1;
+  }
 
   .logo {
     margin: auto;
@@ -17,6 +23,7 @@
     position: absolute;
     z-index: 21;
     left: 50%;
+    margin-left: -50px;
     bottom: 15%;
   }
 
