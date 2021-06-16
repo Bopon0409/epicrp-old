@@ -3,6 +3,8 @@ export type TPage = 0 | 1 | 2 | 3 | 4 | 5 | 6
 export type TPunishmentModal = 'mute' | 'voice_mute' | 'jail' | 'prison' |
   'kick ' | 'warn' | 'ban' | 'hardban' | 'silence_ban' | 'social_ban' | null
 
+export type TSpawnCar = 'Спавн всем' | 'Спавн игроку' | 'Спавн себе'
+
 export interface IPunishmentModal {
   title: string
   term: 'минут' | 'часов' | 'дней' | null
@@ -87,4 +89,13 @@ export interface IState {
 
   modalInputTerm: string
   modalInputReason: string
+
+  spawnCar: {
+    realCar: string | null
+    carName: string
+    carNum: string
+    playerId: string
+    mode: TSpawnCar | null
+    color: string
+  }
 }

@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 import {
   IChatMessage, ILog, IPlayer, IPunishmentModal, IState,
-  ITransport, TPage, TPunishmentModal
+  ITransport, TPage, TPunishmentModal, TSpawnCar
 }                             from './model'
 
 class AdminStore {
@@ -25,7 +25,33 @@ class AdminStore {
     punishmentModal: null,
 
     modalInputTerm: '',
-    modalInputReason: ''
+    modalInputReason: '',
+
+    spawnCar: {
+      playerId: '',
+      carName: '',
+      carNum: '',
+      mode: null,
+      realCar: null,
+      color: '#ffffff'
+    }
+  }
+
+  //==============================   Spawn Car   ===============================
+
+  setSpawnCarPlayerId = (value: string) => this.state.spawnCar.playerId = value
+  setSpawnCarColor = (value: string) => this.state.spawnCar.color = value
+  setSpawnCarName = (value: string) => this.state.spawnCar.carName = value
+  setSpawnCarNum = (value: string) => this.state.spawnCar.carNum = value
+
+  setSpawnCarMode = (value: TSpawnCar | null) => {
+    const { mode } = this.state.spawnCar
+    this.state.spawnCar.mode = mode === value ? null : value
+  }
+
+  setSpawnCarRealCar = (car: string | null) => {
+    const { realCar } = this.state.spawnCar
+    this.state.spawnCar.realCar = realCar === car ? null : car
   }
 
   //============================   Client Trigger   ============================
@@ -98,10 +124,41 @@ class AdminStore {
     )
   }
 
+  playerUnPunishment = (name: string) => {
+    const { player } = this.state
+    // @ts-ignore
+    window.frontTrigger(`admin.un-punishment.${name}`, player?.id)
+  }
+
   adminAction = (name: string) => {
     const { player } = this.state
     // @ts-ignore
     window.frontTrigger(`admin.action.${name}`, player?.id)
+  }
+
+  adminTeleport = (teleport: string) => {
+    // @ts-ignore
+    window.frontTrigger(`admin.teleport.${teleport}`)
+  }
+
+  chatMsgDispatch = (msg: string) => {
+    // @ts-ignore
+    window.frontTrigger(`admin.msg`, msg)
+  }
+
+  consoleDispatch = (command: string) => {
+    // @ts-ignore
+    window.frontTrigger(`admin.console`, command)
+  }
+
+  playerRequest = (value: string) => {
+    // @ts-ignore
+    window.frontTrigger(`admin.player`, value)
+  }
+
+  transportActions = (carId: number, action: string) => {
+    // @ts-ignore
+    window.frontTrigger(`admin.transport.${action}`, carId)
   }
 }
 
