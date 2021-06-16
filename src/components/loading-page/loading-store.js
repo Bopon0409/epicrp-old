@@ -22,7 +22,7 @@ class LoadingStore {
     console.log('close')
     this.state.hint = ''
     this.state.opacity = false
-    setTimeout(this.close, 1000)
+    setTimeout(this.close, 500)
   }
 
   close = () => this.state.active = false

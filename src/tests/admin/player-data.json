@@ -17,12 +17,9 @@
   "regIp": "192.168.0.1",
   "lastIp": "333.333.333",
   "property": [
-    { "type": "Дом", "num": 444 },
-    { "type": "Квартира", "num": 444 },
-    { "type": "Бизнес", "num": 444 },
-    { "type": "Дом", "num": 444 },
-    { "type": "Квартира", "num": 444 },
-    { "type": "Бизнес", "num": 444 }
+    { "type": "Дом", "num": "#444" },
+    { "type": "Квартира", "num": "#444" },
+    { "type": "Бизнес", "num": "Заправка: 444" }
   ],
   "transport": [
     {
@@ -46,6 +43,36 @@
   ],
   "punishments": [
     {
+      "date": "23.03.2021",
+      "adminName": "Admin Admin",
+      "type": "hardban",
+      "term": "permanent",
+      "comment": "Сверхзвуковой чапалах"
+    }, {
+      "date": "23.03.2021",
+      "adminName": "Admin Admin",
+      "type": "hardban",
+      "term": "permanent",
+      "comment": "Сверхзвуковой чапалах"
+    }, {
+      "date": "23.03.2021",
+      "adminName": "Admin Admin",
+      "type": "hardban",
+      "term": "permanent",
+      "comment": "Сверхзвуковой чапалах"
+    }, {
+      "date": "23.03.2021",
+      "adminName": "Admin Admin",
+      "type": "hardban",
+      "term": "permanent",
+      "comment": "Сверхзвуковой чапалах"
+    }, {
+      "date": "23.03.2021",
+      "adminName": "Admin Admin",
+      "type": "hardban",
+      "term": "permanent",
+      "comment": "Сверхзвуковой чапалах"
+    }, {
       "date": "23.03.2021",
       "adminName": "Admin Admin",
       "type": "hardban",

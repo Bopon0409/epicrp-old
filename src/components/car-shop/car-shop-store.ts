@@ -59,5 +59,4 @@ class CarShopStore {
 }
 
 const store = new CarShopStore()
-
 export { store }
