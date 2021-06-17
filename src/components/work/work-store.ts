@@ -65,7 +65,6 @@ class WorkStore {
   workShiftCancel = () => {
     // @ts-ignore
     window.frontTrigger('work.work-shift-cancel')
-    this.state.workShift = false
   }
 
   setTransport = (num: number) => {
@@ -73,7 +72,6 @@ class WorkStore {
     if (num <= lvl && workStatus && !workShift) {
       // @ts-ignore
       window.frontTrigger('work.transport', num)
-      this.state.workShift = true
     }
   }
 }
