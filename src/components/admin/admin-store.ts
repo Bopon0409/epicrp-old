@@ -11,7 +11,12 @@ class AdminStore {
     page: 0,
     punishmentsModalActive: false,
     player: null,
-    console: [],
+    console: [
+      'Здравствуйте Ched Nocksfeel!',
+      'Версия консоли 0.1 alpha',
+      'По любым проблемам с консолью - пишите в баг - трекер',
+      'Для информации о командах введите --help'
+    ],
     chat: [],
     transport: [],
     realCars: [],
@@ -20,7 +25,8 @@ class AdminStore {
   }
 
   setActive = (active: boolean) => this.state.active = active
-  setPage = (page: TPage) => this.state.page = page
+  // setPage = (page: TPage) => this.state.page = page
+  setPage = (page: number) => this.state.page = page
   setPunishmentsModalActive = (active: boolean) => {
     this.state.punishmentsModalActive = active
   }
@@ -32,6 +38,7 @@ class AdminStore {
 
   pushRealCars = (cars: string[]) => this.state.realCars = cars
   pushPlayer = (player: IPlayer) => this.state.player = player
+
 }
 
 const store = new AdminStore()

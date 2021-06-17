@@ -1,5 +1,44 @@
 .admin {
   .admin-log {
+    position: relative;
+    width: 95%;
+    height: 316px;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    &__list{
+      width: 495px;
+      max-height: 320px;
+      margin-top: 42px;
+      margin-left: 26px;
+      overflow: scroll;
+      overflow-x: hidden;
+      &::-webkit-scrollbar {
+        width: 2px;
+        background-color: rgba(255, 255, 255, 0.25);
+        border-radius: 1px;
+        height: 204px;
+      }
+      &::-webkit-scrollbar-thumb {
+        width: 2px;
+        background: #F2C94C;
+        border-radius: 1px;
+      }
 
+      &-log{
+        width: 95%;
+        height: 16px;
+        font-family: Nunito;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+        color: #FFFFFF;
+        &>span{
+          margin-right: 5px;
+        }
+      }
+    }
   }
+  
 }

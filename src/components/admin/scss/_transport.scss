@@ -1,5 +1,293 @@
 .admin {
   .transport {
+    width: 95%;
+    height: 400px;
+    margin-top: 20px;
+    margin-left: 40px;
+    display: flex;
+    // background-color: chartreuse;
+    &__vehicles{
+      width: 663px;
+      .name{
+        width: 262px;
+        height: 16px;
+        margin-bottom: 20px;
+        font-family: Nunito;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 19px;
+        color: #F2C94C;
+      }
+      .vehiclesList__vehicle-info{
+        width: 608px;
+        height: 17px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        margin-bottom: 11px;
+        color: rgba(255, 255, 255, 1);
+        .info{
+          width:  180px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-family: Nunito;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 16px;
+          margin-right:17px;
+          &>span{
+            white-space: nowrap;
+            word-wrap: normal;
+          }
+        }
+        .owner{
+          width: 140px;
+          margin-right: 10px;
+          font-family: Nunito;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 12px;
+          line-height: 16px;
+          color: #F2C94C;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+        .moves{
+          width: 261px;
+          height: 17px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          & > div{
+            width: 77px;
+            height: 17px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.25);
+            border-radius: 3px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 14px;
+            transition: all .14 ease-in;
+            color: rgba(255,255,255,1);
+            &:hover{
+              background-color: rgba(242, 201, 76, 1);
+              color: rgba(0, 0, 0, 1);
+              transition: all .14 ease-out;
+            }
+          }
+        }
+      }
+      .vehiclesList__vehicle{
+        width: 100%;
+        margin-left: 13px;
+        max-height: 326px;
+        overflow: scroll;
+        overflow-x: hidden;
+        &::-webkit-scrollbar {
+          width: 2px;
+          background-color: rgba(255, 255, 255, 0.25);
+          border-radius: 1px;
+          height: 120px;
+        }
+        &::-webkit-scrollbar-thumb {
+          width: 2px;
+          background: #F2C94C;
+          border-radius: 1px;
+        }
+      }
+    }
+    &__create-vehicle{
+      margin-left: 35px;
+      width: 490px;
+      height: 100%;
+      // background-color: rgba(255,255,255,.1);
+      .name{
+        width: 140px;
+        margin-left: 14px;
+        margin-bottom: 44px;
+        color: rgba(242, 201, 76, 1);
+        font-family: Nunito;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 19px;
+      }
+      .input_block{
+        width: 483px;
+        margin-bottom: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &-inputBg{
+          width: 483px;
+          height: 35px;
+          background: #353535;
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          &_icon{
+            height: 30px;
+            width: 30px;
+            margin-left: 19px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          &_input{
+            width: 403px;
+            margin-left: 20px;
+            height: 30px;
+            background: #353535;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            &::placeholder{
+              font-family: Nunito;
+              font-style: normal;
+              font-weight: normal;
+              font-size: 12px;
+              line-height: 14px;
+              color: #ffffff;
+            }
+        }
+        }
+        &>span{
+          margin-top: 5px;
+          font-family: Nunito;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 10px;
+          line-height: 12px;
+          color: rgba(255, 255, 255, 0.75);
+        }
+      }
+      .transport__create-property{
+        height: 258px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
 
+        &_type{
+          height: 80%;
+          width: 115px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          &>div,input{
+            width: 102;
+            padding-left: 7px;
+            padding-right: 6px;
+            height: 29px;
+            background-color: rgba(53, 53, 53, 1);
+            outline: none;
+            border: none;
+            color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            font-family: Nunito;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 16px;
+            color: #FFFFFF;
+            transition: all .14s ease-in;
+            &::placeholder{
+              font-family: Nunito;
+              font-style: normal;
+              font-weight: normal;
+              font-size: 12px;
+              line-height: 16px;
+              color: #FFFFFF;
+            }
+          }
+          &>div:hover{
+            background-color: rgba(242, 201, 76, 1);
+            color: rgba(0, 0, 0, 1);
+            transition: all .14s ease-out;
+          }
+        }
+        &-color_palette{
+          width: 267px;
+          height: 257.27px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+    .real_vehicles{
+      width: 573px;
+      height: 365px;
+      margin-left: 50px;
+      &-name{
+        width: 150px;
+        font-family: Nunito;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 19px;
+        color: #F2C94C;
+      }
+      &-blocks{
+        width: 573px;
+        max-height: 304px;
+        margin-top: 45px;
+        display: flex;
+        flex-wrap: wrap;
+        overflow: scroll;
+        overflow-x: hidden;
+        align-items: center;
+        &-vehicleBlock{
+          margin-top: 10px;
+          width: 128px;
+          height: 31px;
+          background-color: rgba(255, 255, 255, 0.25);
+          border-radius: 3px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-right: 49px;
+          color: rgba(255, 255, 255, 0.25);
+          font-family: Nunito;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 20px;
+          line-height: 27px;
+          transition: all .14s ease-in;
+            &:hover{
+            background: #F2C94C;
+            color: black;
+            transition: all .14s ease-out;
+          }
+        }
+        &::-webkit-scrollbar {
+          width: 2px;
+          background-color: rgba(255, 255, 255, 0.25);
+          border-radius: 1px;
+          height: 120px;
+        }
+        &::-webkit-scrollbar-thumb {
+          width: 2px;
+          background: #F2C94C;
+          border-radius: 1px;
+        }
+      }
+    }
   }
+}
+
+.orange{
+  color: #F2C94C;
 }

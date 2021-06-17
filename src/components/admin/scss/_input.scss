@@ -1,5 +1,28 @@
 .admin {
   .input {
-
+    width: 920px;
+    height: 42px;
+    margin-top: 18px;
+    background: rgba(53, 53, 53, 1);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    &__field{
+      height: 16px;
+      width: 843px;
+      margin-left: 21px;
+      font-size: 14px;
+      color: #FFFFFF;
+      outline: none;
+      background-color: rgba(255,255,255,0);
+      border: none;
+    }
+    &__button{
+      height: 41px;
+      width:41px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
