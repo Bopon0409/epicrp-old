@@ -16,6 +16,10 @@
 
 - `mp.trigger('work.transport', transportNum: 1 | 2 | 3)`
 
+Закончить работу
+
+- `mp.trigger('work.work-shift-cancel')`
+
 ## Авторизация
 
 Авторизация
