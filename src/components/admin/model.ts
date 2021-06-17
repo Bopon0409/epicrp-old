@@ -74,8 +74,8 @@ export interface IPlayer {
 
 export interface IState {
   active: boolean
-  page: TPage
-
+  page: number
+  punishmentsModalActive: boolean
   player: IPlayer | null
   console: string[]
   chat: IChatMessage[]

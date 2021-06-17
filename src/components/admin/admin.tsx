@@ -1,7 +1,25 @@
 import React, { useEffect } from 'react'
 import { observer }         from 'mobx-react-lite'
-import { store }            from './admin-store'
 import './admin.scss'
+import { store }            from './admin-store'
+
+import { Console }   from './modules/console'
+import { Chat }      from './modules/chat'
+import { Player }    from './modules/player'
+import { Teleport }  from './modules/teleport'
+import { Transport } from './modules/transport'
+import { KillLog }   from './modules/kill-log'
+import { AdminLog }  from './modules/admin-log'
+
+const Pages = [
+  'Консоль',
+  'Чат',
+  'Игрок',
+  'Телепорт',
+  'Транспорт',
+  'Kill log',
+  'Admin log'
+]
 
 export const Admin = observer(() => {
 
@@ -32,9 +50,47 @@ export const Admin = observer(() => {
     }
   }, [])
 
+  const currentPage = () => {
+    switch (store.state.page) {
+      case 0: {
+        return <Console />
+      }
+      case 1: {
+        return <Chat />
+      }
+      case 2: {
+        return <Player />
+      }
+      case 3: {
+        return <Teleport />
+      }
+      case 4: {
+        return <Transport />
+      }
+      case 5: {
+        return <KillLog />
+      }
+      case 6: {
+        return <AdminLog />
+      }
+    }
+  }
+
   return (
     <div className='admin'>
-
+      <div className='pages'>{
+        Pages.map((v, id) => {
+          return (
+            <div className='page' key={id} onClick={() => store.setPage(id)}>
+              <div className={store.state.page ===
+              id ? 'activeText' : 'passiveText'}>{v}</div>
+              <div className={store.state.page === id ? 'activeLine' : ''} />
+            </div>
+          )
+        })}
+      </div>
+      <div className='line' />
+      {currentPage()}
     </div>
   )
 })

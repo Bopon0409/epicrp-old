@@ -1,0 +1,139 @@
+$green: rgba(43, 180, 102, 1);
+$red: rgba(239, 42, 42, 1);
+$white: rgba(255, 255, 255, 1);
+$orange: #f2c94c;
+
+.player {
+  &__stats {
+    width: 1064px;
+    height: 320px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    &-leftBlock {
+      width: 257px;
+      height: 320px;
+
+      .name {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 19px;
+        color: #f2c94c;
+        margin-bottom: 15px;
+      }
+
+      .player__stats-letBlock-info {
+        width: 100%;
+        height: 223px;
+        background-color: rgba(255, 0, 0, .02);
+
+        .info__line {
+          width: 100%;
+        }
+      }
+    }
+
+    &-rightBlock {
+      width: 752px;
+      height: 152px;
+      // background-color: blue;
+      .rightBlock-name {
+        width: 100%;
+        height: 19px;
+        text-align: center;
+        color: $orange;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 19px;
+      }
+
+      .rightBlock-property {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+
+        &__building {
+          width: 230px;
+          height: 116px;
+          overflow: scroll;
+          overflow-x: hidden;
+          scroll-behavior: smooth;
+
+          &::-webkit-scrollbar {
+            width: 2px;
+            background-color: rgba(255, 255, 255, 0.25);
+            border-radius: 1px;
+            height: 110px;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            width: 2px;
+            background: #f2c94c;
+            border-radius: 1px;
+          }
+
+          .info__line {
+            width: 95%;
+
+            &:nth-child(3n) {
+              margin-bottom: 4px;
+            }
+          }
+        }
+
+        &__vehicles {
+          width: 470px;
+          height: 116px;
+          overflow: scroll;
+          overflow-x: hidden;
+          scroll-behavior: smooth;
+
+          &::-webkit-scrollbar {
+            width: 2px;
+            background-color: rgba(255, 255, 255, 0.25);
+            border-radius: 1px;
+            height: 110px;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            width: 2px;
+            background: #f2c94c;
+            border-radius: 1px;
+          }
+
+          .info__line {
+            width: 95%;
+
+            &:nth-child(5n) {
+              margin-bottom: 4px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.green {
+  color: $green;
+}
+
+.red {
+  color: $red;
+}
+
+.info__line {
+  height: 19px;
+  display: flex;
+  justify-content: space-between;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: $white;
+}
