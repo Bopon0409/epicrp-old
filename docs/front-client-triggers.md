@@ -250,3 +250,8 @@
 Открытие/Закрытие шкафа
 
 - `mp.trigger('house.lock.cupboard', houseNumber: number, open: bool)`
+
+## Электрики
+
+- `mp.trigger('electrician.win')`
+- `mp.trigger('electrician.fail')`

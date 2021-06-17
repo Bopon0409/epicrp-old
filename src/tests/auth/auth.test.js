@@ -7,12 +7,12 @@ const setAuthActive = active => window.trigger('auth.toggle', authData(active))
 
 const autoLogin = () => window.trigger('auth.toggle', autoLoginData)
 
-const testAuthAnswer = (result = false) => {
-  window.trigger('auth.authAnswer', result)
+const testAuthAnswer = (result = false, error = 'Ошибка') => {
+  window.trigger('auth.authAnswer', result, error)
 }
 
-const testRegisterAnswer = (result = false) => {
-  window.trigger('auth.registerAnswer', result)
+const testRegisterAnswer = (result = false, error = 'Ошибка') => {
+  window.trigger('auth.registerAnswer', result, error)
 }
 
 window.test.auth = {

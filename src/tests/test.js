@@ -22,13 +22,14 @@ import './admin/admin.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
+  window.test.electrician.open(1)
 
-  window.test.admin.testAdminLog()
-  window.test.admin.testCarLog()
-  window.test.admin.testKillLog()
-  window.test.admin.testMsgData()
-
-  window.test.admin.loadPlayerData()
-  window.test.admin.loadCars()
-  window.test.admin.setActive(true)
+  // window.test.admin.testAdminLog()
+  // window.test.admin.testCarLog()
+  // window.test.admin.testKillLog()
+  // window.test.admin.testMsgData()
+  //
+  // window.test.admin.loadPlayerData()
+  // window.test.admin.loadCars()
+  // window.test.admin.setActive(true)
 }

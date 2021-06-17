@@ -8,7 +8,6 @@ class AuthStore {
   ERROR_MESSAGES = [
     'В логине должны быть только латинские буквы и цифры',
     'В логине должен быть от 4 до 20 символов',
-    'Логине должен начинаться с буквы',
     'Пароль должен быть не менее 6 символов, и состоять только из латинских символов и цифр',
     'Пароли не совпадают',
     'Некорректный email'
@@ -70,16 +69,16 @@ class AuthStore {
     this.clearInputs()
   }
 
-  authServerAnswer = isSuccess => {
-    if (isSuccess) this.state.active = false
-    else this.state.errorMsg = 'Неверный логин или пароль'
+  authServerAnswer = (result, error) => {
+    if (result) this.state.active = false
+    else this.state.errorMsg = error
   }
 
-  regServerAnswer = isSuccess => {
-    if (isSuccess) {
+  regServerAnswer = (result, error) => {
+    if (result) {
       this.state.isLogin = true
       this.clearInputs()
-    } else this.state.errorMsg = 'Такой пользователь уже существует'
+    } else this.state.errorMsg = error
   }
 
   enterHandler = event => {
@@ -98,10 +97,8 @@ class AuthStore {
       return this.setErrorMsg(this.ERROR_MESSAGES[0])
     if (login.length < 4 || login.length > 20)
       return this.setErrorMsg(this.ERROR_MESSAGES[1])
-    if (parseInt(login.substr(0, 1)))
-      return this.setErrorMsg(this.ERROR_MESSAGES[2])
     if (/^[a-zA-Z1-9]{6,}$/i.test(pass) === false)
-      return this.setErrorMsg(this.ERROR_MESSAGES[3])
+      return this.setErrorMsg(this.ERROR_MESSAGES[2])
 
     this.clearInputs()
     window.frontTrigger('auth.signIn', login, pass, checkBox)
@@ -110,18 +107,17 @@ class AuthStore {
   registerValidate = () => {
     const { email, login, pass, pass2 } = this.state
 
-    const emailRegExp = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
+    const emailRegExp = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
     if (emailRegExp.test(email) === false)
       return this.setErrorMsg(this.ERROR_MESSAGES[5])
     if (/^[a-zA-Z1-9]+$/.test(login) === false)
       return this.setErrorMsg(this.ERROR_MESSAGES[0])
     if (login.length < 4 || login.length > 20)
       return this.setErrorMsg(this.ERROR_MESSAGES[1])
-    if (parseInt(login.substr(0, 1)))
+    if (/^.*(?=.{6,})(?=.*d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/i
+      .test(pass) === false)
       return this.setErrorMsg(this.ERROR_MESSAGES[2])
-    if (/^[a-zA-Z1-9]{6,}$/i.test(pass) === false)
-      return this.setErrorMsg(this.ERROR_MESSAGES[3])
-    if (pass !== pass2) return this.setErrorMsg(this.ERROR_MESSAGES[4])
+    if (pass !== pass2) return this.setErrorMsg(this.ERROR_MESSAGES[3])
 
     this.clearInputs()
     window.frontTrigger('auth.signUp', login, email, pass)

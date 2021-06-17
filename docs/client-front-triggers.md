@@ -91,6 +91,12 @@
 - `window.trigger('loading.set', data: json)` - Открыть/Закрыть
 - loading.set JSON: `{ active: boolean, hint?: string }`
 
+### Электрики
+
+- `window.trigger('electrician.open', gameType: 1-12, isFirstTime: boolean)`
+- Начать игру
+- `window.trigger('electrician.close')` - Закрыть игру
+
 ### Экран работ
 
 - `window.trigger('work.active', active: bolean)` - Открыть/закрыть
