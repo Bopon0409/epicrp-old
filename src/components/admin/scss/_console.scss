@@ -7,36 +7,39 @@
     display: flex;
     flex-direction: column;
 
-    .messages{
+    .messages {
       width: 100%;
       height: 228px;
       margin-top: 30px;
       overflow: scroll;
       overflow-x: hidden;
       scroll-behavior: smooth;
+
       &::-webkit-scrollbar {
         width: 2px;
         background-color: rgba(255, 255, 255, 0.25);
         border-radius: 1px;
         height: 204px;
       }
+
       &::-webkit-scrollbar-thumb {
         width: 2px;
-        background: #F2C94C;
+        background: #f2c94c;
         border-radius: 1px;
       }
-      .message{
+
+      .message {
         height: 16px;
         width: 886px;
-        font-family: Roboto;
         font-style: normal;
         font-weight: normal;
         font-size: 12px;
         line-height: 14px;
-        color: #FFFFFF;
+        color: #ffffff;
       }
     }
-    .send__message{
+
+    .send__message {
       width: 920px;
       height: 42px;
       margin-top: 18px;
@@ -44,17 +47,19 @@
       border-radius: 5px;
       display: flex;
       align-items: center;
-      &-input{
+
+      &-input {
         height: 16px;
         width: 843px;
         margin-left: 21px;
         font-size: 14px;
-        color: #FFFFFF;
+        color: #ffffff;
         outline: none;
-        background-color: rgba(255,255,255,0);
+        background-color: rgba(255, 255, 255, 0);
         border: none;
       }
-      &-image{
+
+      &-image {
         height: 42px;
         width: 42px;
         display: flex;

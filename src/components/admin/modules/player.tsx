@@ -1,9 +1,8 @@
-import React        from 'react'
-import { observer } from 'mobx-react-lite'
-
-import { PlayerStats } from './player-stats';
-import { PlayerMoves } from './player-moves';
-import { Input } from './input';
+import React           from 'react'
+import { observer }    from 'mobx-react-lite'
+import { PlayerStats } from './player-stats'
+import { PlayerMoves } from './player-moves'
+import { Input }       from './input'
 
 export const Player = observer(() => {
   return (
@@ -17,4 +16,4 @@ export const Player = observer(() => {
       </div>
     </div>
   )
-});
+})

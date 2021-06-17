@@ -11,124 +11,131 @@
 @import 'scss/menu';
 
 .admin {
-    position: absolute;
-    width: 100%;
-    min-height: 379px;
-    padding-bottom: 21px;
-    left: 0;
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 3;
-    overflow: hidden;
+  position: absolute;
+  width: 100%;
+  min-height: 379px;
+  padding-bottom: 21px;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 3;
+  overflow: hidden;
+  font-family: Nunito, sans-serif;
 
-    .pages{
-        width: 899px;
-        height: 31px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 17px;
-        margin-left: 40px;
-        
-        .page{
-            height: 31px;
-            width: 108px;
-            // background-color: green;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+  .pages {
+    width: 899px;
+    height: 31px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 17px;
+    margin-left: 40px;
 
-            .activeText{
-                font-family: Nunito;
-                font-style: normal;
-                font-weight: 600;
-                font-size: 16px;
-                line-height: 22px;
-                color: #F2C94C;
-            }
-            .passiveText{
-                font-family: Nunito;
-                font-style: normal;
-                font-weight: 600;
-                font-size: 16px;
-                line-height: 22px;
-                color: #FFFFFF;
-            }
+    .page {
+      height: 31px;
+      width: 108px;
+      // background-color: green;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-            .activeLine{
-                position: absolute;
-                width: 108px;
-                height: 3px;
-                background: #F2C94C;
-                box-shadow: 0px 0px 10px rgba(242, 201, 76, 0.45);
-                border-radius: 3px;
-                margin-top: 32px;
-                z-index: 1;
-                // transition: all .12s ease;
-            }
-        }
-    }
-    .line{
+      .activeText {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+        color: #f2c94c;
+      }
+
+      .passiveText {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+        color: #ffffff;
+      }
+
+      .activeLine {
         position: absolute;
-        width: 899px;
-        height: 1px;
-        background: #FFFFFF;
-        opacity: 0.45;
-        margin-left: 40px;
+        width: 108px;
+        height: 3px;
+        background: #f2c94c;
+        box-shadow: 0 0 10px rgba(242, 201, 76, 0.45);
+        border-radius: 3px;
+        margin-top: 32px;
+        z-index: 1;
+        // transition: all .12s ease;
+      }
     }
+  }
+
+  .line {
+    position: absolute;
+    width: 899px;
+    height: 1px;
+    background: #ffffff;
+    opacity: 0.45;
+    margin-left: 40px;
+  }
 }
 
 @media (min-width: 2560px) {
-    .admin {
-      zoom: 1.3;
-    }
+  .admin {
+    zoom: 1.3;
   }
-  @media (max-width: 2220px) {
-    .admin {
-      zoom: 1.12;
-    }
+}
+
+@media (max-width: 2220px) {
+  .admin {
+    zoom: 1.12;
   }
-  @media (max-width: 1920px) {
-    .admin {
-      zoom: 1;
-    }
+}
+
+@media (max-width: 1920px) {
+  .admin {
+    zoom: 1;
   }
-  @media (max-width: 1780px) {
-    .admin {
-      zoom: 0.9;
-    }
+}
+
+@media (max-width: 1780px) {
+  .admin {
+    zoom: 0.9;
   }
-  @media (max-width: 1600px) {
-    .admin {
-      zoom: 0.77;
-    }
+}
+
+@media (max-width: 1600px) {
+  .admin {
+    zoom: 0.77;
   }
-  
-  @media (max-width: 1440px) {
-    .admin {
-      zoom: 0.68;
-    }
+}
+
+@media (max-width: 1440px) {
+  .admin {
+    zoom: 0.68;
   }
-  
-  @media (max-width: 1280px) {
-    .admin {
-      zoom: 0.6;
-    }
+}
+
+@media (max-width: 1280px) {
+  .admin {
+    zoom: 0.6;
   }
-  @media (max-width: 1100px) {
-    .admin {
-      zoom: 0.56;
-    }
+}
+
+@media (max-width: 1100px) {
+  .admin {
+    zoom: 0.56;
   }
-  @media (max-width: 1024px) {
-    .admin {
-      zoom: 0.5;
-    }
+}
+
+@media (max-width: 1024px) {
+  .admin {
+    zoom: 0.5;
   }
-  
-  @media (max-width: 800px) {
-    .admin {
-      zoom: 0.44;
-    }
+}
+
+@media (max-width: 800px) {
+  .admin {
+    zoom: 0.44;
   }
+}
   

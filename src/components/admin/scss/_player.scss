@@ -5,7 +5,8 @@
     margin-left: 40px;
     display: flex;
     flex-direction: column;
-    &__blocks{
+
+    &__blocks {
       width: 100%;
       height: 316px;
       display: flex;
@@ -14,7 +15,8 @@
       // background-color: brown;
     }
   }
-  &__input{
+
+  &__input {
     width: 95%;
     height: 42px;
     background-color: black;
