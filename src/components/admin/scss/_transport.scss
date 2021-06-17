@@ -282,6 +282,11 @@
           line-height: 27px;
           transition: all .14s ease-in;
 
+          &--active {
+            background: #f2c94c;
+            color: black;
+          }
+
           &:hover {
             background: #f2c94c;
             color: black;

@@ -5,7 +5,7 @@ import { Input }         from './input'
 
 export const Chat = observer(() => {
   let messagesEnd = useRef<HTMLInputElement>(null)
-  const { chat } = store.state
+  const { state: { chat }, chatMsgDispatch } = store
 
   return (
     <div className='chat_block'>
@@ -18,7 +18,8 @@ export const Chat = observer(() => {
           </div>
         )}
       </div>
-      <Input placeholder='Введите текст' action='chat' blockRef={messagesEnd} />
+      <Input placeholder='Введите текст' action={chatMsgDispatch}
+        blockRef={messagesEnd} />
     </div>
   )
 })

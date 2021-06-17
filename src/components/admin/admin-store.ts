@@ -1,7 +1,6 @@
 import { makeAutoObservable } from 'mobx'
 import {
-  IChatMessage, ILog, IPlayer, IPunishmentModal, IState,
-  ITransport, TPage, TPunishmentModal, TSpawnCar
+  IChatMessage, ILog, IPlayer, IPunishmentModal, IState, ITransport
 }                             from './model'
 
 class AdminStore {
@@ -28,35 +27,8 @@ class AdminStore {
 
     punishmentsModalHistory: false,
     punishmentModal: null,
-
     modalInputTerm: '',
-    modalInputReason: '',
-
-    spawnCar: {
-      playerId: '',
-      carName: '',
-      carNum: '',
-      mode: null,
-      realCar: null,
-      color: '#ffffff'
-    }
-  }
-
-  //==============================   Spawn Car   ===============================
-
-  setSpawnCarPlayerId = (value: string) => this.state.spawnCar.playerId = value
-  setSpawnCarColor = (value: string) => this.state.spawnCar.color = value
-  setSpawnCarName = (value: string) => this.state.spawnCar.carName = value
-  setSpawnCarNum = (value: string) => this.state.spawnCar.carNum = value
-
-  setSpawnCarMode = (value: TSpawnCar | null) => {
-    const { mode } = this.state.spawnCar
-    this.state.spawnCar.mode = mode === value ? null : value
-  }
-
-  setSpawnCarRealCar = (car: string | null) => {
-    const { realCar } = this.state.spawnCar
-    this.state.spawnCar.realCar = realCar === car ? null : car
+    modalInputReason: ''
   }
 
   //============================   Client Trigger   ============================
@@ -70,7 +42,7 @@ class AdminStore {
   pushPlayer = (player: IPlayer) => this.state.player = player
 
   setActive = (active: boolean) => this.state.active = active
-  setPage = (page: TPage) => this.state.page = page
+  setPage = (page: number) => this.state.page = page
 
   //==============================   Admin Logic   =============================
 
@@ -84,30 +56,36 @@ class AdminStore {
 
   setPunishmentsModalHistory = (active: boolean) =>
     this.state.punishmentsModalHistory = active
-  setPunishmentModal = (type: TPunishmentModal) =>
+  setPunishmentModal = (type: string | null) =>
     this.state.punishmentModal = type
+
+  adminActionSwitch = (action: string, id: number) => {
+    if (id === 0 || id === 1 || id === 3) this.adminAction(action)
+    if (id === 2) this.setPunishmentModal(action)
+    if (id === 4) this.setPunishmentsModalHistory(true)
+  }
 
   get punishmentModalData (): IPunishmentModal {
     switch (this.state.punishmentModal) {
       case 'ban':
-        return { title: 'Бан', term: 'дней' }
+        return { title: 'Забанить', term: 'дней' }
       case 'hardban':
-        return { title: 'Вечный бан', term: null }
+        return { title: 'Забанить навсегда', term: null }
       case 'jail':
         return { title: 'Посадить в тюрьму', term: 'минут' }
-      case 'kick ':
-        return { title: 'Кик', term: null }
+      case 'kick':
+        return { title: 'Кикнуть', term: null }
       case 'mute':
         return { title: 'Заглушить чат', term: 'минут' }
       case 'prison':
         return { title: 'Посадить в деморган', term: 'минут' }
-      case 'silence_ban':
-        return { title: 'Забанить', term: 'дней' }
+      case 'silent ban':
+        return { title: 'Забанить (тихо)', term: 'дней' }
       case 'warn':
-        return { title: 'Варн', term: null }
-      case 'social_ban':
-        return { title: 'Бан по social', term: 'дней' }
-      case 'voice_mute':
+        return { title: 'Выдать варн', term: null }
+      case 'social ban':
+        return { title: 'Забанить по social', term: 'дней' }
+      case 'voice mute':
         return { title: 'Заглушить voice', term: 'минут' }
       default:
         return { title: '', term: null }
@@ -115,6 +93,11 @@ class AdminStore {
   }
 
   //============================   Front Trigger   =============================
+
+  spawnCar = (carName: string, carNum: string, color: string, type: number) => {
+    // @ts-ignore
+    window.frontTrigger(`admin.car.spawn`, { carName, carNum, color, type })
+  }
 
   playerPunishment = () => {
     const {

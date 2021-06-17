@@ -116,7 +116,7 @@ export const PlayerStats = observer(() => {
           </div>
           <div className='rightBlock-property__vehicles'>{
             player.transport.map((transport, id) =>
-              <div className='info__line'>
+              <div className='info__line' key={id}>
                 <span>Машина #{id + 1}:</span>
                 <span>{getTransportStr(transport)}</span>
               </div>

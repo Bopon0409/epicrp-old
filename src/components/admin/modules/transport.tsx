@@ -12,37 +12,32 @@ export const Transport = observer(() => {
 
   const [color, setColor] = useState('#aabbcc')
 
-  // изменение состояния при изменении input'a (vehicle name)
+  // изменение состояния при изменении input (vehicle name)
   const changeVehicleNameValue = useCallback((e: any) => {
     if (e.target.value.length <= 30) setVehicleName(e.target.value)
   }, [vehicleName, setVehicleName])
   // изменение состояния при нажатии на блок с irl автомобилями
-  const changeVehicleNameValueOnIRLVehicle = useCallback((vname: string) => {
-    setVehicleName(vname)
+  const changeVehicleNameValueOnIRLVehicle = useCallback((name: string) => {
+    setVehicleName(name)
   }, [setVehicleName])
 
-  // изменение состояния при изменении input'a (vehicle num)
+  // изменение состояния при изменении input (vehicle num)
   const changeVehicleNumValue = useCallback((e: any) => {
     if (e.target.value.length <= 7) setVehicleNum(e.target.value)
   }, [vehicleNum, setVehicleNum])
 
-  // изменение состояния при изменении input'a (vehicle num)
+  // изменение состояния при изменении input (vehicle num)
   const changePlayerIdValue = useCallback((e: any) => {
     if (e.target.value.length <= 4) setPlayerId(e.target.value)
   }, [playerId, setPlayerId])
 
   // действия с машинами
   const vehicleMoves = (type: string, vehicle: number) => {
-    console.log(type, vehicle)
-    switch (type) {
-      case 'goto':
-        return
-      case 'tpcar':
-        return
-      case 'removecar':
-        return
+    store.transportActions(vehicle, type)
+  }
 
-    }
+  const spawnAction = (type: number) => {
+    store.spawnCar(vehicleName, vehicleNum, color, type)
   }
 
   return (
@@ -51,6 +46,10 @@ export const Transport = observer(() => {
         <div className='name'>Список заспавненого транспорта</div>
         <div className='vehiclesList__vehicle'>{
           store.state.transport.map((vehicle, id) => {
+            const handler1 = () => vehicleMoves('goto', vehicle.carId)
+            const handler2 = () => vehicleMoves('tpcar', vehicle.carId)
+            const handler3 = () => vehicleMoves('removecar', vehicle.carId)
+
             return (
               <div className='vehiclesList__vehicle-info' key={id}>
                 <span className='info'>
@@ -62,16 +61,11 @@ export const Transport = observer(() => {
                 </span>
                 <span className='owner'>{vehicle.adminName}</span>
                 <div className='moves'>
-                  <div className='moves-goto'
-                    onClick={() => vehicleMoves('goto', id)}>
-                    goto
-                  </div>
+                  <div className='moves-goto' onClick={handler1}>goto</div>
                   <div className='moves-tpcar'
-                    onClick={() => vehicleMoves('tpcar', id)}>
-                    tpcar
+                    onClick={handler2}>tpcar
                   </div>
-                  <div className='moves-removecar'
-                    onClick={() => vehicleMoves('removecar', id)}>
+                  <div className='moves-removecar' onClick={handler3}>
                     удалить
                   </div>
                 </div>
@@ -113,9 +107,9 @@ export const Transport = observer(() => {
               value={playerId}
               onChange={changePlayerIdValue}
             />
-            <div>Спавн всем</div>
-            <div>Спавн игроку</div>
-            <div>Спавн себе</div>
+            <div onClick={() => spawnAction(0)}>Спавн всем</div>
+            <div onClick={() => spawnAction(1)}>Спавн игроку</div>
+            <div onClick={() => spawnAction(2)}>Спавн себе</div>
           </div>
           <div className='transport__create-property-color_palette'>
             <HexColorPicker color={color} onChange={setColor} />
@@ -125,13 +119,14 @@ export const Transport = observer(() => {
       <div className='real_vehicles'>
         <div className='real_vehicles-name'>Автомобили ИРЛ</div>
         <div className='real_vehicles-blocks'>{
-          REAL_VEHICLES.map((name, id) =>
-            <div className='real_vehicles-blocks-vehicleBlock'
-              key={id}
-              onClick={() => changeVehicleNameValueOnIRLVehicle(name)}>
-              {name}
-            </div>
-          )}
+          REAL_VEHICLES.map((name, id) => {
+            return (
+              <div className='real_vehicles-blocks-vehicleBlock' key={id}
+                onClick={() => changeVehicleNameValueOnIRLVehicle(name)}>
+                {name}
+              </div>
+            )
+          })}
         </div>
       </div>
     </div>

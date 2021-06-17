@@ -1,5 +1,3 @@
-export type TPage = 0 | 1 | 2 | 3 | 4 | 5 | 6
-
 export type TPunishmentModal = 'mute' | 'voice_mute' | 'jail' | 'prison' |
   'kick ' | 'warn' | 'ban' | 'hardban' | 'silence_ban' | 'social_ban' | null
 
@@ -85,17 +83,8 @@ export interface IState {
   adminLogs: ILog[]
 
   punishmentsModalHistory: boolean
-  punishmentModal: TPunishmentModal | null
+  punishmentModal: string | null
 
   modalInputTerm: string
   modalInputReason: string
-
-  spawnCar: {
-    realCar: string | null
-    carName: string
-    carNum: string
-    playerId: string
-    mode: TSpawnCar | null
-    color: string
-  }
 }

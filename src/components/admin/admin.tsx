@@ -3,13 +3,15 @@ import { observer }         from 'mobx-react-lite'
 import './admin.scss'
 import { store }            from './admin-store'
 
-import { Console }   from './modules/console'
-import { Chat }      from './modules/chat'
-import { Player }    from './modules/player'
-import { Teleport }  from './modules/teleport'
-import { Transport } from './modules/transport'
-import { KillLog }   from './modules/kill-log'
-import { AdminLog }  from './modules/admin-log'
+import { Console }         from './modules/console'
+import { Chat }            from './modules/chat'
+import { Player }          from './modules/player'
+import { Teleport }        from './modules/teleport'
+import { Transport }       from './modules/transport'
+import { KillLog }         from './modules/kill-log'
+import { AdminLog }        from './modules/admin-log'
+import { ModalHistory }    from './modules/modal-history'
+import { PunishmentModal } from './modules/punishment-modal'
 
 const Pages = [
   'Консоль',
@@ -77,20 +79,24 @@ export const Admin = observer(() => {
   }
 
   return (
-    <div className='admin'>
-      <div className='pages'>{
-        Pages.map((v, id) => {
-          return (
-            <div className='page' key={id} onClick={() => store.setPage(id)}>
-              <div className={store.state.page ===
-              id ? 'activeText' : 'passiveText'}>{v}</div>
-              <div className={store.state.page === id ? 'activeLine' : ''} />
-            </div>
-          )
-        })}
+    <div className='admin-context'>
+      <PunishmentModal />
+      <ModalHistory />
+      <div className='admin'>
+        <div className='pages'>{
+          Pages.map((v, id) => {
+            return (
+              <div className='page' key={id} onClick={() => store.setPage(id)}>
+                <div className={store.state.page ===
+                id ? 'activeText' : 'passiveText'}>{v}</div>
+                <div className={store.state.page === id ? 'activeLine' : ''} />
+              </div>
+            )
+          })}
+        </div>
+        <div className='line' />
+        {currentPage()}
       </div>
-      <div className='line' />
-      {currentPage()}
     </div>
   )
 })
