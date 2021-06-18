@@ -15,8 +15,8 @@ class PlayerMenuStore {
     lvl: 0,
     playerStatus: null,
     name: '',
-    experience: [0, 0],
-    vipStatus: false,
+    exp: [0, 0],
+    hasVip: false,
     registerData: '',
     warn: 0,
     online: ['', ''],
@@ -38,8 +38,8 @@ class PlayerMenuStore {
       this.stats.registerData = data.registerData
     if (data.referralCode !== undefined)
       this.stats.referralCode = data.referralCode
-    if (data.experience !== undefined) this.stats.experience = data.experience
-    if (data.vipStatus !== undefined) this.stats.vipStatus = data.vipStatus
+    if (data.exp !== undefined) this.stats.exp = data.exp
+    if (data.hasVip !== undefined) this.stats.hasVip = data.hasVip
     if (data.properties !== undefined) this.stats.properties = data.properties
     if (data.fraction !== undefined) this.stats.fraction = data.fraction
     if (data.invites !== undefined) this.stats.invites = data.invites

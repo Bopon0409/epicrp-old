@@ -15,8 +15,8 @@ export interface IStats {
   lvl: number
   name: string
   playerStatus: TPlayerStatus
-  experience: [number, number]
-  vipStatus: boolean
+  exp: [number, number]
+  hasVip: boolean
   registerData: string
   warn: number
   online: [string, string]
@@ -44,8 +44,8 @@ export interface IStatsData {
   lvl?: number
   playerStatus?: TPlayerStatus
   name?: string
-  experience?: [number, number]
-  vipStatus?: boolean
+  exp?: [number, number]
+  hasVip?: boolean
   registerData?: string
   warn?: number
   online?: [string, string]

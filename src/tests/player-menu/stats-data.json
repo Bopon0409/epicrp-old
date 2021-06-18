@@ -2,10 +2,10 @@
   "lvl": 17,
   "name": "Ched Nocksfeel",
   "playerStatus": "Медиа - Партнёр",
-  "experience": [ 22, 130 ],
-  "vipStatus": true,
+  "exp": [ 22, 130 ],
+  "hasVip": true,
   "registerData": "16/03/2021",
-  "warn": 0,
+  "warnsCount": 0,
   "online": [ "16 часов 34 минуты", "1200 часов 34 минуты" ],
   "bank": {
     "cash": 135000000,
