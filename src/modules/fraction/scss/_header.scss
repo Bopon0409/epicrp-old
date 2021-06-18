@@ -1,0 +1,54 @@
+.fraction {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    background: #36393f;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0 15px 0 0;
+    position: relative;
+
+    .header__title {
+      display: flex;
+      align-items: center;
+
+      .header__text {
+        margin-left: 12px;
+        font-weight: 500;
+        font-size: 22px;
+        color: #c4c4c4;
+      }
+    }
+
+    .close {
+      cursor: pointer;
+    }
+
+    .header__search {
+      position: relative;
+      
+      .header__input {
+        outline: none;
+        border: none;
+        background: #202225;
+        border-radius: 5px;
+        width: 170px;
+        height: 30px;
+        font-size: 12px;
+        font-family: TTNorms, sans-serif;
+        font-weight: 600;
+        color: #72767d;
+        padding-left: 16px;
+        padding-right: 40px;
+        box-sizing: border-box;
+      }
+
+      svg {
+        position: absolute;
+        right: 15px;
+        top: 7px;
+      }
+    }
+  }
+}

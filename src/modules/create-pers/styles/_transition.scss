@@ -1,0 +1,59 @@
+.create-pers {
+  .transition {
+    position: absolute;
+    right: 70px;
+    bottom: 70px;
+    width: 440px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+
+    .transition__item {
+      padding: 16px 25px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #ffffff;
+
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+    }
+
+    .transition__prev {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 25px;
+      padding: 13px;
+      cursor: pointer;
+    }
+
+    .transition__prev_active {
+      background-color: white;
+    }
+
+    .transition__next {
+      box-sizing: border-box;
+      width: 100px;
+      height: 50px;
+      padding: 16px 25px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .transition__next_active {
+      color: black;
+      background: white;
+    }
+  }
+}

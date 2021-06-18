@@ -19,15 +19,8 @@ import './work/work.test'
 import './electrician/electrician.test'
 import './taxi-tablet/taxi-tablet.test'
 import './admin/admin.test'
+import './player-menu/player-menu.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.admin.testAdminLog()
-  window.test.admin.testCarLog()
-  window.test.admin.testKillLog()
-  window.test.admin.testMsgData()
-
-  window.test.admin.loadPlayerData()
-  window.test.admin.loadCars()
-  window.test.admin.setActive(true)
 }

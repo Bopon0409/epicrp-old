@@ -1,0 +1,81 @@
+.speedometer {
+  .radial-wrapper {
+    .badges {
+      z-index: 3;
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      right: 50px;
+      bottom: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      svg:nth-child(1) {
+        margin-right: 0;
+      }
+
+      svg:nth-child(2) {
+        margin-right: 12px;
+      }
+
+      svg:nth-child(3) {
+        margin-right: 24px;
+      }
+
+      svg:nth-child(4) {
+        margin-right: 48px;
+      }
+    }
+
+    .radial-fuel {
+      z-index: 3;
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      right: 35px;
+      bottom: 35px;
+    }
+
+    .radial-speedometer {
+      z-index: 3;
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      color: white;
+      right: 50px;
+      bottom: 50px;
+
+      .speed-view {
+        text-align: center;
+        font-weight: 800;
+        margin-top: 10px;
+        position: relative;
+
+        svg {
+          position: absolute;
+          top: -30px;
+          left: 50%;
+          margin-left: -10px;
+        }
+
+        .speed-flex {
+          display: flex;
+          font-size: 48px;
+          line-height: 80%;
+          justify-content: flex-end;
+
+          .speed-null {
+            color: rgba(0, 0, 0, 0.5);
+          }
+        }
+
+        .hint {
+          font-weight: 700;
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,124 @@
+.inventory-page {
+  .modal {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 380px;
+
+    .modal__info {
+      background: #413d3d;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+
+      .modal__icon {
+        width: 35px;
+        margin-left: 4px;
+      }
+
+      .modal__body {
+        width: 310px;
+
+        .modal__title {
+          margin-bottom: 8px;
+          font-weight: bold;
+          font-size: 18px;
+          text-transform: uppercase;
+          color: #ffffff;
+        }
+
+        .modal__text {
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.5);
+        }
+      }
+
+      .modal__weight {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 7px 9px;
+        background: rgba(255, 255, 255, 0.2);
+        font-weight: 600;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+    }
+  }
+
+  .modal__btn-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+
+  .modal__btn {
+    flex: 1;
+    padding: 5px 0;
+    text-align: center;
+    width: auto;
+    background: #413d3d;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.5);
+
+    &:hover {
+      background-color: #5f5c5c;
+      color: white;
+    }
+  }
+
+  .modal__btn_active {
+    color: white;
+    background: linear-gradient(
+      90deg,
+      rgb(230, 150, 30) 0.01%,
+      rgb(242, 201, 76) 100%
+    );
+  }
+
+  .modal__slider {
+    margin-top: 8px;
+    padding: 20px 20px 30px;
+    background: #413d3d;
+
+    .slider__title {
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .slider__text {
+      font-size: 14px;
+      line-height: 12px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 25px;
+    }
+
+    .input-range__slider {
+      background-color: white;
+      border: none;
+    }
+
+    .input-range__track--active {
+      background: linear-gradient(
+        80.65deg,
+        rgba(230, 150, 30, 0.9) 6.97%,
+        rgba(242, 201, 76, 0.9) 92.8%
+      );
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .input-range__track {
+      background-color: #545050;
+    }
+  }
+
+  .modal__confirm {
+    margin-top: 8px;
+  }
+}

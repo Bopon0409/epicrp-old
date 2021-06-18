@@ -1,0 +1,59 @@
+.atm {
+  .atm__body {
+    .menu__container {
+      display: flex;
+      justify-content: space-between;
+
+      .menu__col {
+        width: 48%;
+        height: 100%;
+
+        .menu__item {
+          cursor: pointer;
+          height: 72px;
+          filter: drop-shadow(0px 15px 20px rgba(242, 241, 254, 0.45));
+          background: #f5f5f5;
+          box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+          border-radius: 5px;
+          font-size: 13px;
+          font-weight: 700;
+          margin-bottom: 20px;
+          padding: 10px 30px 10px 12px;
+          box-sizing: border-box;
+          position: relative;
+
+          .item__title {
+            color: #000000;
+          }
+
+          .item__text {
+            color: #8f8f8f;
+          }
+
+          .item-logo {
+            position: absolute;
+            right: 12px;
+            top: 12px;
+          }
+
+          &:hover {
+            background: linear-gradient(
+                96.22deg,
+                #4271ff 10.19%,
+                #5165d7 101.15%
+              ),
+              #f5f5f5;
+
+            .item__title {
+              color: white;
+            }
+
+            .item__text {
+              color: #9ea8ff;
+            }
+          }
+        }
+      }
+    }
+  }
+}

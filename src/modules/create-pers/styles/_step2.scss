@@ -1,0 +1,117 @@
+.create-pers {
+  .step2 {
+    color: white;
+
+    .catalog {
+      position: absolute;
+      width: 400px;
+      top: 50%;
+      margin-top: -180px;
+
+      .catalog__list {
+        height: 320px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: space-between;
+        overflow-y: auto;
+        padding: 20px 30px 20px 20px;
+
+        .catalog__item {
+          cursor: pointer;
+          width: 75px;
+          height: 75px;
+          margin-bottom: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            max-width: 100%;
+            max-height: 100%;
+          }
+        }
+
+        .catalog__item_active {
+          filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.6));
+        }
+      }
+
+      .catalog__text {
+        margin-top: 50px;
+      }
+
+      .text {
+        font-size: 14px;
+        width: 100%;
+        text-align: center;
+
+        .text__hint {
+          text-transform: uppercase;
+          color: rgba(255, 255, 255, 0.5);
+        }
+
+        .text__name {
+          color: white;
+          font-size: 18px;
+          text-transform: capitalize;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .slider {
+      box-sizing: border-box;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 400px;
+      margin-left: -200px;
+      background: rgba(0, 0, 0, 0.9);
+      border: 20px solid rgba(0, 0, 0, 0.1);
+      border-bottom: none;
+      border-radius: 61px 61px 0 0;
+      padding: 0 20px 20px 20px;
+
+      .slider__label {
+        margin-bottom: 12px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 20px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .slider__hint-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8px;
+
+        .slider__hint-item {
+          font-size: 14px;
+          text-transform: uppercase;
+          color: white;
+        }
+      }
+
+      .input-range__label-container {
+        display: none;
+      }
+
+      .input-range__track {
+        height: 5px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 5px;
+      }
+
+      .input-range__track--active {
+        background: transparent;
+      }
+
+      .input-range__slider {
+        background-color: white;
+        border: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,98 @@
+.speedometer {
+  .simple-speedometer {
+    z-index: 3;
+    position: absolute;
+    display: flex;
+    height: 100px;
+    width: 160px;
+    justify-content: space-between;
+    color: white;
+    right: 45px;
+    bottom: 35px;
+
+    .main {
+      width: 130px;
+
+      .speed-view {
+        text-align: right;
+        font-weight: bold;
+        margin-top: 10px;
+
+        .speed-flex {
+          display: flex;
+          font-size: 54px;
+          line-height: 90%;
+          justify-content: flex-end;
+
+          .speed-null {
+            color: rgba(0, 0, 0, 0.5);
+          }
+        }
+
+        .hint {
+          font-size: 28px;
+        }
+      }
+
+      .fuel-view {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .progress {
+          width: 110px;
+          height: 10px;
+          border-radius: 5px;
+          position: relative;
+          background: linear-gradient(
+              0deg,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+          );
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25),
+          0 1px rgba(255, 255, 255, 0.08);
+
+          .progress-bar {
+            height: 10px;
+            border-radius: 5px 0 0 5px;
+            background: linear-gradient(90.01deg, #e6961e 0%, #f2c94c 100%), rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 10px rgba(242, 201, 76, 0.5);
+            transition: 0.4s linear;
+            transition-property: all;
+          }
+
+          .progress-moved .progress-bar {
+            background: linear-gradient(90.01deg, #e6961e 0%, #f2c94c 100%),
+            rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 10px rgba(242, 201, 76, 0.5);
+          }
+
+          .progress-bar-full {
+            border-radius: 5px;
+          }
+
+          .progress-stick {
+            position: absolute;
+            width: 3px;
+            height: 13px;
+            top: 0;
+            transition: 0.4s linear;
+            transition-property: all;
+
+            background: #ffffff;
+            border-radius: 0 0 1.5px 1.5px;
+          }
+        }
+      }
+    }
+
+    .badges {
+      width: 20px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}

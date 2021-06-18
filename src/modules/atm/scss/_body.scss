@@ -1,0 +1,44 @@
+.atm {
+  .atm__body {
+    .body__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;  
+      height: 40px;
+
+      .body__title {
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 25px;
+        color: #496bec;
+      }
+
+      .body__back-btn {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        background: #f5f5f5;
+        box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+        padding: 10px 20px;
+
+        .body__back-text {
+          font-weight: bold;
+          font-size: 13px;
+          line-height: 16px;
+          text-align: right;
+          color: #000000;
+          margin-left: 10px;
+        }
+      }
+    }
+
+    .body__header-line {
+      width: 35px;
+      height: 2px;
+      background: linear-gradient(96.22deg, #4271ff 10.19%, #5165d7 101.15%);
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+  }
+}

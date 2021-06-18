@@ -1,0 +1,149 @@
+.fraction {
+  .ads {
+    position: absolute;
+    z-index: 6;
+    padding: 30px 20px;
+
+    width: 850px;
+    height: 550px;
+    left: 50%;
+    top: 50%;
+    margin-left: -425px;
+    margin-top: -275px;
+    box-sizing: border-box;
+
+    background: #2d3342;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    display: flex;
+    justify-content: space-between;
+
+    .ads__close {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    .ads__content {
+      width: 550px;
+      padding-right: 10px;
+      overflow-x: hidden;
+
+      .content__item {
+        margin-bottom: 20px;
+
+        .ad__title {
+          font-weight: 500;
+          font-size: 14px;
+          color: #ffffff;
+          margin-bottom: 10px;
+        }
+
+        .ad__text {
+          display: flex;
+          justify-content: space-between;
+          background: #262b38;
+
+          .ad__text-line {
+            width: 4px;
+            background: #fff205;
+            box-shadow: 0 12px 17px rgba(157, 149, 0, 0.58);
+          }
+
+          .ad__text-content {
+            width: 500px;
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 156.5%;
+            color: #ffffff;
+            padding: 5px;
+            overflow-x: hidden;
+          }
+        }
+
+        .ad__footer {
+          display: flex;
+          justify-content: space-between;
+          color: white;
+          font-size: 12px;
+          margin-top: 10px;
+
+          .ad__author {
+            span {
+              color: #2c85d6;
+            }
+          }
+        }
+
+        .ad__btn-container {
+          display: flex;
+          justify-content: flex-end;
+          margin-top: 6px;
+
+          .ad__button {
+            border: 0.4px solid rgba(255, 255, 255, 0.2);
+            box-sizing: border-box;
+            border-radius: 1px;
+            margin-left: 10px;
+            width: 26px;
+            height: 26px;
+            display: flex;
+            cursor: pointer;
+
+            img {
+              margin: auto;
+            }
+
+            &:nth-child(1) {
+              background: rgba(196, 196, 196, 0.15);
+            }
+
+            &:nth-child(2) {
+              background: rgba(180, 56, 56, 0.4);
+            }
+          }
+        }
+      }
+    }
+
+    .ads__nav {
+      width: 300px;
+
+      .nav__container {
+        background-color: #1f232d;
+        height: 400px;
+        margin-left: 25px;
+
+        .nav__item {
+          padding: 10px;
+          font-size: 12px;
+          color: #ffffff;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #2d3342;
+          }
+        }
+      }
+
+      .nav__ad-btn {
+        width: 150px;
+        font-size: 12px;
+        color: #ffffff;
+        font-family: TT Norms, sans-serif;
+
+        background: rgba(196, 196, 196, 0.15);
+        border: 0.4px solid rgba(255, 255, 255, 0.2);
+        box-sizing: border-box;
+        border-radius: 1px;
+
+        padding: 10px 0;
+        text-align: center;
+        margin-left: 75px;
+        margin-top: 40px;
+        cursor: pointer;
+      }
+    }
+  }
+}

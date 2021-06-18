@@ -1,0 +1,70 @@
+.bank {
+  .main-page {
+    z-index: 12;
+    height: 100%;
+    width: 100%;
+
+    .main-page__welcome {
+      position: absolute;
+      z-index: 12;
+      width: 400px;
+      left: 50%;
+      margin-left: -200px;
+      top: 50px;
+      text-align: center;
+
+      .main-page__welcome_first {
+        font-weight: bold;
+        font-size: 18px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.3);
+        text-shadow: 0 0 81px rgba(255, 255, 255, 0.3);
+      }
+
+      .main-page__welcome_second {
+        text-align: center;
+        word-break: break-all;
+        width: 400px;
+        font-weight: bold;
+        font-size: 24px;
+        text-transform: uppercase;
+        color: #ffffff;
+        text-shadow: 0 0 81px rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    .control {
+      .control-actions {
+        position: absolute;
+        left: 50%;
+        top: 225px;
+        margin-left: -210px;
+      }
+    }
+
+    .transfer {
+      position: absolute;
+      z-index: 12;
+      top: 225px;
+      left: 50%;
+      margin-left: -210px;
+
+      .transfer__title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
+
+        .title__icon {
+          margin-right: 10px;
+        }
+
+        .title__text {
+          font-weight: 600;
+          font-size: 18px;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}

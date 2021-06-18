@@ -1,0 +1,60 @@
+.bank {
+  .main-page {
+    .sub-menu {
+      position: absolute;
+      z-index: 12;
+      width: 800px;
+      left: 50%;
+      bottom: 50px;
+      margin-left: -400px;
+
+      display: flex;
+      justify-content: space-between;
+
+      .sub-menu__item {
+        display: flex;
+        cursor: pointer;
+
+        .sub-menu__icon-wrapper {
+          border-radius: 50%;
+          height: 50px;
+          width: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .sub-menu__title {
+          box-sizing: border-box;
+          text-align: center;
+          width: 200px;
+          height: 50px;
+          background: url('../images/sub-menu_item-bg.png');
+          background-repeat: no-repeat;
+          padding-top: 15px;
+
+          font-weight: 600;
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.3);
+        }
+      }
+
+      .sub-menu__item_active {
+        .sub-menu__icon-wrapper {
+          background: linear-gradient(
+            96.22deg,
+            rgba(66, 113, 255, 0.5) 10.19%,
+            rgba(81, 101, 215, 0.5) 101.15%
+          );
+        }
+
+        .sub-menu__title {
+          background: url('../images/sub-menu_active-bg.png');
+          background-repeat: no-repeat;
+          color: white;
+        }
+      }
+    }
+  }
+}

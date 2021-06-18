@@ -1,0 +1,94 @@
+.inventory-page {
+  .right-weight-bar {
+    position: absolute;
+    top: 50%;
+    right: -150px;
+    margin-top: -150px;
+    width: 300px;
+    height: 300px;
+    z-index: 10;
+
+    .text-svg {
+      position: absolute;
+      left: -63px;
+      top: -63px;
+      transform: rotate(-1deg);
+    }
+
+    .panel-inner {
+      width: 50%;
+      height: 50%;
+      text-align: right;
+      background-image: url(../images/weight-bg-inventory.svg);
+      color: white;
+      background-size: 100% 100%;
+      margin-left: -50px;
+      text-transform: uppercase;
+
+      .text {
+        margin-top: 38px;
+        font-size: 26px;
+        font-weight: bold;
+        width: 65%;
+      }
+
+      .subtext {
+        width: 65%;
+        margin-top: 30px;
+        font-size: 14px;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+
+  .left-weight-bar {
+    position: absolute;
+    top: 50%;
+    left: -150px;
+    margin-top: -150px;
+    width: 300px;
+    height: 300px;
+    z-index: 10;
+
+    .text-svg {
+      position: absolute;
+      transform: rotate(86deg);
+      left: 145px;
+      top: -60px;
+    }
+
+    .trunk-weight {
+      background-image: url(../images/trunk-weight.svg);
+    }
+
+    .stock-weight {
+      background-image: url(../images/stock-weight.svg);
+    }
+
+    .panel-inner {
+      width: 50%;
+      height: 50%;
+      text-align: left;
+      color: white;
+      background-size: 100% 100%;
+      margin-left: 70px;
+      text-transform: uppercase;
+
+      .text {
+        margin-top: 38px;
+        font-size: 26px;
+        font-weight: bold;
+        margin-left: 44px;
+      }
+
+      .subtext {
+        margin-top: 10px;
+        margin-left: 44px;
+        font-size: 14px;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+}

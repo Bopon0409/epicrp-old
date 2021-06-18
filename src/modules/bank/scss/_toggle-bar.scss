@@ -1,0 +1,69 @@
+.bank {
+  .main-page {
+    .toggle-bar__title {
+      width: 420px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 18px;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .toggle-bar__container {
+      width: 420px;
+      height: 70px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 40px;
+
+      .toggle-bar__btn {
+        position: relative;
+        cursor: pointer;
+        z-index: 12;
+        width: 200px;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .toggle-bar__text {
+          font-weight: 600;
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.3);
+        }
+
+        svg {
+          margin-right: 10px;
+        }
+
+        .toggle-bar__line {
+          position: absolute;
+          bottom: 0;
+          left: 40px;
+          width: 120px;
+          height: 1px;
+        }
+      }
+
+      .toggle-bar__btn_active {
+        background: linear-gradient(
+          96.22deg,
+          rgba(66, 113, 255, 0.5) 10.19%,
+          rgba(81, 101, 215, 0.5) 101.15%
+        );
+        filter: drop-shadow(0px 0px 34px rgba(66, 113, 255, 0.3));
+
+        .toggle-bar__text {
+          color: white;
+        }
+
+        .toggle-bar__line {
+          background: #ffffff;
+          box-shadow: 0 0 7px rgba(66, 113, 255, 0.5);
+        }
+      }
+    }
+  }
+}
