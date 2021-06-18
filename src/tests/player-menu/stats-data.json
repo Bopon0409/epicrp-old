@@ -1,0 +1,51 @@
+{
+  "lvl": 17,
+  "name": "Ched Nocksfeel",
+  "experience": [ 22, 130 ],
+  "vipStatus": true,
+  "registerData": "16/03/2021",
+  "warn": 0,
+  "onlineToday": "16 часов 34 минуты",
+  "onlineAllTime": "1200 часов 34 минуты",
+  "bank": {
+    "cash": 135000000,
+    "card1": 135000000,
+    "card2": 0,
+    "insurance": "13/04/2021",
+    "credit": "14/04/2021"
+  },
+  "fraction": {
+    "fractionName": "Los Santos Police",
+    "rankName": "Chief Of Police",
+    "salary": 4000,
+    "lastRise": "19.03.2020",
+    "reprimands": 1
+  },
+  "properties": [
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" },
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" },
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" },
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" },
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" },
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" },
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" },
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" },
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" },
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" },
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" },
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" },
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" },
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" },
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" },
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" },
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" },
+    { "type": "Дом #133", "name": "Класс “Elite”", "date": "20/02/2020" }
+  ],
+  "referral code": "SAYONARABOY222",
+  "invitationsCount": 350,
+  "invitationsCountEarned": 400000,
+  "reportRatings": {
+    "reports": 2,
+    "questions": 3
+  }
+}
