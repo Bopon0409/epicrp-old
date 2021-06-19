@@ -1,6 +1,7 @@
 import React        from 'react'
 import { observer } from 'mobx-react-lite'
 import { store }    from '../player-menu-store'
+import smallStar    from '../img/small-star.svg'
 
 export const ReportAside = observer(() => {
   const { reportRatings } = store.stats
@@ -16,10 +17,10 @@ export const ReportAside = observer(() => {
         невозможно разобраться без участия администратора.
       </div>
       <div className='rating'>
-        <div className='rating__label'>Ваша оценка по репортам</div>
+        <div className='aside__text'>Ваша оценка по репортам</div>
         <div className='rating__value'>
-          <img src='' alt='' className='rating__icon' />
-          <div className='rating__num'>{reportRatings}</div>
+          <img src={smallStar} alt='' className='rating__icon' />
+          <div className='aside__text'>{reportRatings}</div>
         </div>
       </div>
       <div className='aside__question'>Что такое “Низкий приоритет”?</div>

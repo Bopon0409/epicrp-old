@@ -25,6 +25,12 @@ function trigger (eventName, ...args) {
   else handlers.forEach(handler => handler(...args.map(arg => JSON.parse(arg))))
 }
 
+function strTrigger (eventName, ...args) {
+  const handlers = EventManager.events[eventName]
+  if (!args) handlers.forEach(handler => handler())
+  else handlers.forEach(handler => handler(...args.map(arg => arg)))
+}
+
 function frontTrigger (triggerName, ...args) {
   if (window.mp) {
     if (args.length)
@@ -41,5 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
 window.EventManager = EventManager
 window.chatAPI = chatAPI
 window.trigger = trigger
+window.strTrigger = strTrigger
 window.frontTrigger = frontTrigger
 window.test = {}

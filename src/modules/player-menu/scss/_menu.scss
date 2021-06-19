@@ -1,5 +1,52 @@
 .player-menu {
   .menu {
+    position: absolute;
+    width: 880px;
+    top: 5%;
+    left: 50%;
+    margin-left: -440px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
+    .menu__button {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-sizing: border-box;
+      border-radius: 3px;
+      display: flex;
+
+      .text {
+        margin: auto;
+        font-weight: 600;
+        font-size: 24px;
+        color: #ffffff;
+      }
+    }
+
+    .menu__container {
+      display: flex;
+      justify-content: space-between;
+      width: 720px;
+
+      .menu__item {
+        cursor: pointer;
+        padding-bottom: 7px;
+        width: 120px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+        color: #ffffff;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+        &--active {
+          color: #f2c94c;
+          border-bottom: 3px solid #f2c94c;
+        }
+      }
+    }
   }
 }

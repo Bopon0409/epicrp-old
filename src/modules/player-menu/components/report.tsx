@@ -35,41 +35,45 @@ export const Report = observer(() => {
     }
   })
 
+  console.log(reportStatus)
+
   return (
     <div className='report'>
       <ReportAside />
-      <div className='report__container'>
-        {reportStatus === 'waiting' && <ReportEmptyLabel />}
-        {reportStatus !== 'waiting' && (
-          <>
-            <div className='messages'>{messages}</div>
-            <ReportAdminWaiting />
-            <ReportRatings />
-          </>
-        )}
-      </div>
-
-      <div className='report__input-container'>
-        {reportStatus !== 'closed' ? (
-          <>
-            <input className='report__input' type='text' value={reportInput}
-              onChange={e => setReportInput(e.target.value)} />
-
-            {reportStatus === 'process' && <img src={sendIcon} alt=''
-              className='send-icon' onClick={reportMsgSend} />}
-          </>
-        ) : <div className='disable'>Недоступно</div>}
-      </div>
-
-      <div className='report__buttons'>
-        <div className='report__button report__button--complaint'
-          onClick={() => reportInit('report')}>
-          <div className='text'>Отправить жалобу</div>
+      <div className='report__main'>
+        <div className='report__container'>
+          {reportStatus === 'waiting' && <ReportEmptyLabel />}
+          {reportStatus !== 'waiting' && (
+            <>
+              <div className='messages'>{messages}</div>
+              <ReportAdminWaiting />
+              <ReportRatings />
+            </>
+          )}
         </div>
 
-        <div className='report__button report__button--question'
-          onClick={() => reportInit('question')}>
-          <div className='text'>Задать вопрос</div>
+        <div className='report__input-container'>
+          {reportStatus !== 'closed' ? (
+            <>
+              <input className='report__input' type='text' value={reportInput}
+                onChange={e => setReportInput(e.target.value)} />
+
+              {reportStatus === 'process' && <img src={sendIcon} alt=''
+                className='send-icon' onClick={reportMsgSend} />}
+            </>
+          ) : <div className='disable'>Недоступно</div>}
+        </div>
+
+        <div className='report__buttons'>
+          <div className='report__button report__button--complaint'
+            onClick={() => reportInit('report')}>
+            <div className='text'>Отправить жалобу</div>
+          </div>
+
+          <div className='report__button report__button--question'
+            onClick={() => reportInit('question')}>
+            <div className='text'>Задать вопрос</div>
+          </div>
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ import {
   IStats,
   IStatsData
 }                             from './model'
+import React                  from 'react'
 
 class PlayerMenuStore {
   constructor () {
@@ -47,6 +48,13 @@ class PlayerMenuStore {
   setActive = (active: boolean) => this.state.active = active
 
   setMenuEl = (el: number) => this.state.currentMenuEl = el
+
+  keyUpHandler = (event: React.KeyboardEvent) => {
+    if (event.code === 'KeyQ' && this.state.currentMenuEl > 0)
+      this.state.currentMenuEl -= 1
+    if (event.code === 'KeyE' && this.state.currentMenuEl < 5)
+      this.state.currentMenuEl += 1
+  }
 
   //================================   Stats   =================================
 

@@ -98,8 +98,8 @@ export const Stats = observer(() => {
 
       <div className='stats__properties'>
         <div className='properties__list'>{
-          properties.map((el) => (
-            <div className='properties__item'>
+          properties.map((el, i) => (
+            <div className='properties__item' key={i}>
               <div className='properties__name'>{el.name}</div>
               <div className='properties__type'>{el.type}</div>
               <div className='properties__date'>Приобретено {el.date}</div>
