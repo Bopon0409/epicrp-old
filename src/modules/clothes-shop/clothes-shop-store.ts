@@ -1,5 +1,8 @@
 import { makeAutoObservable }          from 'mobx'
 import { IClothesItem, IData, IState } from './model'
+type TMethod = 'card' | 'cash'
+type TCardId = string | null
+
 
 class ClothesShopStore {
   constructor () {
@@ -46,6 +49,9 @@ class ClothesShopStore {
   }
 
   setActiveColor = (colorId: number | null) => this.state.activeColor = colorId
+
+  payAction = (method: TMethod, cardId: TCardId) => {
+  }
 }
 
 const store = new ClothesShopStore()
