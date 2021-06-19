@@ -1,6 +1,5 @@
 export type TPlayerStatus = 'Медиа - Партнёр' | 'Лидер' | 'Администратор' | null
 export type TReportStatus = 'waiting' | 'process' | 'closed'
-export type TMsg = 'player' | 'admin'
 
 export interface IState {
   active: boolean
@@ -8,14 +7,14 @@ export interface IState {
 }
 
 export interface IReportMsg {
-  type: TMsg
+  type: 'player_msg' | 'admin_msg'
   name: string
   time: string
   msg: string
 }
 
 export interface IReportConnected {
-  type: TMsg
+  type: 'player_connected' | 'admin_connected'
   name: string
 }
 

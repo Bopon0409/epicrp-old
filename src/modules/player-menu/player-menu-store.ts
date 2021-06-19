@@ -85,11 +85,13 @@ class PlayerMenuStore {
     if (value.length <= 600) this.reportState.reportInput = value
   }
 
+  setReportRatings = (rating: number) => this.reportState.reportRatings = rating
+
   // Игрок начинает диалог
   reportInit = (type: 'report' | 'question') => {
     const { reportState: { reportInput: msg }, stats: { name }, time } = this
-    const reportMsg: IReportMsg = { type: 'player', name, msg, time }
-    const reportConnected: IReportConnected = { type: 'player', name }
+    const reportMsg: IReportMsg = { type: 'player_msg', name, msg, time }
+    const reportConnected: IReportConnected = { type: 'player_connected', name }
     this.reportState.reportData.push(reportConnected, reportMsg)
 
     // @ts-ignore
@@ -100,7 +102,7 @@ class PlayerMenuStore {
   // Игрок отправляет сообщение
   reportMsgSend = () => {
     const { reportState: { reportInput: msg }, stats: { name }, time } = this
-    const reportMsg: IReportMsg = { type: 'player', name, msg, time }
+    const reportMsg: IReportMsg = { type: 'player_msg', name, msg, time }
     this.reportState.reportData.push(reportMsg)
 
     // @ts-ignore
@@ -110,14 +112,15 @@ class PlayerMenuStore {
 
   // Админ подключился к чату
   reportAdminConnected = (name: string) => {
-    this.reportState.reportData.push({ type: 'admin', name })
+    this.reportState.reportAdminName = name
+    this.reportState.reportData.push({ type: 'admin_connected', name })
   }
 
   // Админ прислал сообщение
   adminMsgSend = (msg: string) => {
     const { reportState: { reportAdminName: name }, time } = this
     if (name) {
-      const reportMsg: IReportMsg = { type: 'player', name, msg, time }
+      const reportMsg: IReportMsg = { type: 'admin_msg', name, msg, time }
       this.reportState.reportData.push(reportMsg)
     }
   }

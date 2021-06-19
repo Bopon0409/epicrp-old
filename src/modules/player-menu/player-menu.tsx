@@ -29,7 +29,7 @@ export const PlayerMenu = observer(() => {
     }
   }, [])
 
-  const currentPage = () => {
+  const CurrentPage = () => {
     switch (store.state.currentMenuEl) {
       case 1:
         return <Stats />
@@ -47,6 +47,7 @@ export const PlayerMenu = observer(() => {
   return (
     <div className='player-menu'>
       <Menu />
+      <CurrentPage />
     </div>
   )
 })
