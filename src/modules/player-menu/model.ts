@@ -1,4 +1,22 @@
 export type TPlayerStatus = 'Медиа - Партнёр' | 'Лидер' | 'Администратор' | null
+export type TReportStatus = 'waiting' | 'process' | 'closed'
+export type TMsg = 'player' | 'admin'
+
+export interface IState {
+  active: boolean
+}
+
+export interface IReportMsg {
+  type: TMsg
+  name: string
+  time: string
+  msg: string
+}
+
+export interface IReportConnected {
+  type: TMsg
+  name: string
+}
 
 export interface IProperty {
   type: string
@@ -6,9 +24,12 @@ export interface IProperty {
   date: string
 }
 
-export interface IState {
-  active: boolean
+export interface IReportState {
   reportInput: string
+  reportStatus: TReportStatus
+  reportAdminName: string | null
+  reportData: Array<IReportMsg | IReportConnected>
+  reportRatings: number
 }
 
 export interface IStats {
