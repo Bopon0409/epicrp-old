@@ -23,6 +23,7 @@ import { Electrician } from '../electrician/electrician'
 import { TaxiTablet }  from '../taxi-tablet/taxi-tablet'
 import { Admin }       from '../admin/admin'
 import { PlayerMenu }  from '../player-menu/player-menu'
+import { ClothesShop } from '../clothes-shop/clothes-shop'
 
 export default function App () {
   const devModules = (
@@ -56,6 +57,7 @@ export default function App () {
       <TaxiTablet />
       <Admin />
       <PlayerMenu />
+      <ClothesShop />
     </>
   )
 }
