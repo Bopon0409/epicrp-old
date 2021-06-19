@@ -1,11 +1,12 @@
-import { observer } from 'mobx-react-lite'
-import React from 'react'
+import { observer }                                     from 'mobx-react-lite'
+import React                                            from 'react'
 import {
   CircularProgressbar,
   CircularProgressbarWithChildren,
   buildStyles
-} from 'react-circular-progressbar'
-import store from '../speedometer-store'
+}                                                       from 'react-circular-progressbar'
+import store
+                                                        from '../speedometer-store'
 import { Engine, Lock, Lights, Electricity, HandBrake } from './speedometer-svg'
 
 export default observer(() => {
@@ -21,7 +22,7 @@ export default observer(() => {
           strokeWidth={8}
           styles={buildStyles({
             rotation: 1 / 2,
-            pathColor: 'rgb(187, 124, 28)',
+            pathColor: '#eeb93e',
             trailColor: 'rgba(0, 0, 0, 0.5)'
           })}
         >

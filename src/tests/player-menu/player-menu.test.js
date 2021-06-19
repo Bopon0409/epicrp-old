@@ -4,12 +4,12 @@ const jsonStatsData = JSON.stringify(statsData)
 const setActive = (active) => window.trigger('player-menu.active', active)
 const setStatsData = () => window.trigger('player-menu.stats', jsonStatsData)
 
-const sendAdminMsg = () => window.strTrigger(
+const sendAdminMsg = () => window.trigger(
   'player-menu.report.msg',
   'Здравствуйте! Для получения доступа, введите https://www.joicazino2.ru'
 )
 
-const adminConnected = () => window.strTrigger(
+const adminConnected = () => window.trigger(
   'player-menu.report.connected',
   'Ched Nocksfeel'
 )

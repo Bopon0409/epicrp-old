@@ -58,6 +58,78 @@
         height: 80%;
         display: flex;
         flex-direction: column;
+        padding: 50px;
+        box-sizing: border-box;
+
+        .report__ratings {
+          margin-top: 40px;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .label {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 22px;
+            color: #ffffff;
+          }
+
+          .stars__container {
+            margin: 40px 0;
+          }
+        }
+
+        .connected {
+          width: 100%;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 22px;
+          color: #ffffff;
+          margin-bottom: 20px;
+
+          &--admin {
+            text-align: right;
+          }
+        }
+
+        .msg {
+          color: #ffffff;
+          margin-bottom: 25px;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          &__name {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 22px;
+            margin-bottom: 5px;
+          }
+
+          &__text {
+            background: #5e7692;
+            border-radius: 5px;
+            max-width: 40%;
+            padding: 10px 10px;
+            margin-bottom: 5px;
+          }
+
+          &__time {
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 16px;
+          }
+
+          &--admin {
+            align-items: flex-end;
+
+            .msg__name {
+              color: #ef2a2a;
+            }
+          }
+        }
 
         .report__empty-label {
           margin: auto;
@@ -67,10 +139,25 @@
           text-align: center;
           color: #ffffff;
         }
+
+        .report__admin-waiting {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+
+          .text {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 22px;
+            color: #ffffff;
+            margin-right: 10px;
+          }
+        }
       }
 
       .report__input-container {
         width: 100%;
+        position: relative;
 
         .report__input {
           box-sizing: border-box;
@@ -86,6 +173,43 @@
           font-size: 22px;
           line-height: 35px;
           color: #ffffff;
+        }
+
+        .send-icon {
+          cursor: pointer;
+          position: absolute;
+          top: 23.5px;
+          right: 23.5px;
+        }
+      }
+
+      .report__buttons {
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .report__button {
+          width: 46%;
+          height: 50px;
+          border-radius: 5px;
+          display: flex;
+          cursor: pointer;
+
+          .text {
+            margin: auto;
+            font-weight: 600;
+            font-size: 20px;
+            color: #ffffff;
+          }
+
+          &--question {
+            background: rgba(242, 201, 76, 0.2);
+          }
+
+          &--complaint {
+            background: rgba(198, 75, 75, 0.2);
+          }
         }
       }
     }

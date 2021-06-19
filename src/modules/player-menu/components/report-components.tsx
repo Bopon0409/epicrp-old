@@ -22,10 +22,10 @@ export const ReportRatings = observer(() => {
 })
 
 export const ReportAdminWaiting = observer(() => {
-  return store.reportState.reportAdminName ? (
+  return !store.reportState.reportAdminName ? (
     <div className='report__admin-waiting'>
       <div className='text'>Ожидаем администратора</div>
-      <Loader type='Puff' color='#F2C94C' height={20} width={20} />
+      <Loader type='TailSpin' color='#F2C94C' height={20} width={20} />
     </div>
   ) : null
 })

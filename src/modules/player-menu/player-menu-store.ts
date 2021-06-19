@@ -15,7 +15,8 @@ class PlayerMenuStore {
 
   state: IState = {
     active: false,
-    currentMenuEl: 0
+    currentMenuEl: 0,
+    menuHandlerBlocked: false
   }
 
   stats: IStats = {
@@ -50,6 +51,7 @@ class PlayerMenuStore {
   setMenuEl = (el: number) => this.state.currentMenuEl = el
 
   keyUpHandler = (event: React.KeyboardEvent) => {
+    if (this.state.menuHandlerBlocked) return
     if (event.code === 'KeyQ' && this.state.currentMenuEl > 0)
       this.state.currentMenuEl -= 1
     if (event.code === 'KeyE' && this.state.currentMenuEl < 5)
@@ -89,6 +91,10 @@ class PlayerMenuStore {
     return new Date().toLocaleTimeString().slice(0, -3)
   }
 
+  setMenuBlock = (block: boolean) => {
+    this.state.menuHandlerBlocked = block
+  }
+
   setReportInput = (value: string) => {
     if (value.length <= 600) this.reportState.reportInput = value
   }
@@ -101,9 +107,10 @@ class PlayerMenuStore {
     const reportMsg: IReportMsg = { type: 'player_msg', name, msg, time }
     const reportConnected: IReportConnected = { type: 'player_connected', name }
     this.reportState.reportData.push(reportConnected, reportMsg)
+    this.reportState.reportStatus = 'process'
 
     // @ts-ignore
-    window.frontTrigger(`player-menu.report.init.${type}`, msg)
+    window.frontTrigger(`player-menu.${type}.create`, msg)
     this.reportState.reportInput = ''
   }
 

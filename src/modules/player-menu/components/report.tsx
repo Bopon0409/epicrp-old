@@ -6,36 +6,38 @@ import sendIcon        from '../img/send-icon.svg'
 import {
   ReportAdminWaiting, ReportEmptyLabel, ReportRatings
 }                      from './report-components'
+import classNames      from 'classnames'
 
 export const Report = observer(() => {
 
   const {
     reportState: { reportData, reportInput, reportStatus },
-    setReportInput, reportMsgSend, reportInit
+    setReportInput, reportMsgSend, reportInit, setMenuBlock
   } = store
 
   const messages = reportData.map((item, i) => {
+    const isAdmin = item.type === 'admin_connected' || item.type === 'admin_msg'
     switch (item.type) {
       case 'player_msg':
       case 'admin_msg':
-        const msgClasses = item.type === 'admin_msg' ?
-          'msg msg--admin' : 'msg msg--player'
+        const msgClasses = classNames('msg', isAdmin && 'msg--admin')
         return (
           <div className={msgClasses} key={i}>
             <div className='msg__name'>{item.name}</div>
             <div className='msg__text'>{item.msg}</div>
-            <div className='msg__time'>{item.time}</div>
+            <div className='msg__time'>Отправлено в {item.time}</div>
           </div>
         )
       case 'player_connected':
       case 'admin_connected':
-        const connectedClasses = item.type === 'admin_connected' ?
-          'connected connected--admin' : 'connected connected--player'
-        return <div className={connectedClasses} key={i}>{item.name}</div>
+        const connectedClasses = classNames('connected',
+          isAdmin && 'connected--admin'
+        )
+        return <div className={connectedClasses} key={i}>
+          {isAdmin ? 'Администратор' : 'Игрок'} {item.name} подключился к чату
+        </div>
     }
   })
-
-  console.log(reportStatus)
 
   return (
     <div className='report'>
@@ -56,7 +58,9 @@ export const Report = observer(() => {
           {reportStatus !== 'closed' ? (
             <>
               <input className='report__input' type='text' value={reportInput}
-                onChange={e => setReportInput(e.target.value)} />
+                onChange={e => setReportInput(e.target.value)}
+                onFocus={() => setMenuBlock(true)}
+                onBlur={() => setMenuBlock(false)} />
 
               {reportStatus === 'process' && <img src={sendIcon} alt=''
                 className='send-icon' onClick={reportMsgSend} />}
@@ -64,17 +68,21 @@ export const Report = observer(() => {
           ) : <div className='disable'>Недоступно</div>}
         </div>
 
-        <div className='report__buttons'>
-          <div className='report__button report__button--complaint'
-            onClick={() => reportInit('report')}>
-            <div className='text'>Отправить жалобу</div>
-          </div>
+        {reportStatus === 'waiting' ? (
+          <>
+            <div className='report__buttons'>
+              <div className='report__button report__button--complaint'
+                onClick={() => reportInit('report')}>
+                <div className='text'>Отправить жалобу</div>
+              </div>
 
-          <div className='report__button report__button--question'
-            onClick={() => reportInit('question')}>
-            <div className='text'>Задать вопрос</div>
-          </div>
-        </div>
+              <div className='report__button report__button--question'
+                onClick={() => reportInit('question')}>
+                <div className='text'>Задать вопрос</div>
+              </div>
+            </div>
+          </>
+        ) : null}
       </div>
     </div>
   )

@@ -4,6 +4,7 @@ export type TReportStatus = 'waiting' | 'process' | 'closed'
 export interface IState {
   active: boolean
   currentMenuEl: number
+  menuHandlerBlocked: boolean
 }
 
 export interface IReportMsg {
