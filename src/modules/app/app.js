@@ -22,6 +22,7 @@ import 'react-input-range/lib/css/index.css'
 import { Electrician } from '../electrician/electrician'
 import { TaxiTablet }  from '../taxi-tablet/taxi-tablet'
 import { Admin }       from '../admin/admin'
+import { PlayerMenu }  from '../player-menu/player-menu'
 
 export default function App () {
   const devModules = (
@@ -54,6 +55,7 @@ export default function App () {
       <Electrician />
       <TaxiTablet />
       <Admin />
+      <PlayerMenu />
     </>
   )
 }

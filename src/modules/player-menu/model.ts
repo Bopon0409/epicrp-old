@@ -40,7 +40,7 @@ export interface IStats {
   exp: [number, number]
   hasVip: boolean
   registerData: string
-  warn: number
+  warnsCount: number
   online: [string, string]
   bank: {
     cash: number,
@@ -69,7 +69,7 @@ export interface IStatsData {
   exp?: [number, number]
   hasVip?: boolean
   registerData?: string
-  warn?: number
+  warnsCount?: number
   online?: [string, string]
   bank?: {
     cash: number,

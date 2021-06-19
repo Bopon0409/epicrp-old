@@ -24,7 +24,7 @@ class PlayerMenuStore {
     exp: [0, 0],
     hasVip: false,
     registerData: '',
-    warn: 0,
+    warnsCount: 0,
     online: ['', ''],
     bank: { cash: 0, card1: 0, card2: 0, insurance: 0, credit: 0 },
     fraction: {
@@ -45,6 +45,8 @@ class PlayerMenuStore {
   }
 
   setActive = (active: boolean) => this.state.active = active
+
+  setMenuEl = (el: number) => this.state.currentMenuEl = el
 
   //================================   Stats   =================================
 
@@ -68,7 +70,7 @@ class PlayerMenuStore {
     if (data.invites !== undefined) this.stats.invites = data.invites
     if (data.online !== undefined) this.stats.online = data.online
     if (data.name !== undefined) this.stats.name = data.name
-    if (data.warn !== undefined) this.stats.warn = data.warn
+    if (data.warnsCount !== undefined) this.stats.warnsCount = data.warnsCount
     if (data.bank !== undefined) this.stats.bank = data.bank
     if (data.lvl !== undefined) this.stats.lvl = data.lvl
   }
@@ -91,7 +93,7 @@ class PlayerMenuStore {
     this.reportState.reportData.push(reportConnected, reportMsg)
 
     // @ts-ignore
-    window.frontTrigger(`report.init.${type}`, msg)
+    window.frontTrigger(`player-menu.report.init.${type}`, msg)
     this.reportState.reportInput = ''
   }
 
@@ -102,7 +104,7 @@ class PlayerMenuStore {
     this.reportState.reportData.push(reportMsg)
 
     // @ts-ignore
-    window.frontTrigger(`report.send`, msg)
+    window.frontTrigger(`player-menu.report.send`, msg)
     this.reportState.reportInput = ''
   }
 
@@ -129,7 +131,7 @@ class PlayerMenuStore {
   // Игрок поставил оценку
   playerSetRating = (rating: number) => {
     // @ts-ignore
-    window.frontTrigger(`report.rating`, rating)
+    window.frontTrigger(`player-menu.report.rating`, rating)
     this.reportState.reportData = []
     this.reportState.reportAdminName = ''
     this.reportState.reportStatus = 'waiting'

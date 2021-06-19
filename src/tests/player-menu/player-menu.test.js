@@ -1,7 +1,7 @@
-import data from './stats-data.json'
+import statsData from './stats-data.json'
 
-const jsonData = JSON.stringify(data)
+const jsonStatsData = JSON.stringify(statsData)
 const setActive = (active) => window.trigger('player-menu.active', active)
-const setData = () => window.trigger('player-menu.data', jsonData)
+const setStatsData = () => window.trigger('player-menu.stats', jsonStatsData)
 
-export { setActive, setData }
+window.test.playerMenu = { setActive, setStatsData }
