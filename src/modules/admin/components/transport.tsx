@@ -15,7 +15,8 @@ export const Transport = observer(() => {
   // изменение состояния при изменении input (vehicle name)
   const changeVehicleNameValue = useCallback((e: any) => {
     if (e.target.value.length <= 30) setVehicleName(e.target.value)
-  }, [vehicleName, setVehicleName])
+  }, [setVehicleName])
+
   // изменение состояния при нажатии на блок с irl автомобилями
   const changeVehicleNameValueOnIRLVehicle = useCallback((name: string) => {
     setVehicleName(name)
@@ -24,12 +25,12 @@ export const Transport = observer(() => {
   // изменение состояния при изменении input (vehicle num)
   const changeVehicleNumValue = useCallback((e: any) => {
     if (e.target.value.length <= 7) setVehicleNum(e.target.value)
-  }, [vehicleNum, setVehicleNum])
+  }, [setVehicleNum])
 
   // изменение состояния при изменении input (vehicle num)
   const changePlayerIdValue = useCallback((e: any) => {
     if (e.target.value.length <= 4) setPlayerId(e.target.value)
-  }, [playerId, setPlayerId])
+  }, [setPlayerId])
 
   // действия с машинами
   const vehicleMoves = (type: string, vehicle: number) => {

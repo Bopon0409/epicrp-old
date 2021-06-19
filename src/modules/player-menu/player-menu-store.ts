@@ -13,7 +13,8 @@ class PlayerMenuStore {
   }
 
   state: IState = {
-    active: false
+    active: false,
+    currentMenuEl: 0
   }
 
   stats: IStats = {
@@ -47,6 +48,7 @@ class PlayerMenuStore {
 
   //================================   Stats   =================================
 
+  // Игрок забирает награду за реферальные приглашения
   getReferralReward = () => {
     // @ts-ignore
     window.frontTrigger(`referral.reward`)
@@ -78,7 +80,7 @@ class PlayerMenuStore {
   }
 
   setReportInput = (value: string) => {
-    if (value.length <= 600) this.state.reportInput = value
+    if (value.length <= 600) this.reportState.reportInput = value
   }
 
   // Игрок начинает диалог

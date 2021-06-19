@@ -4,6 +4,7 @@ export type TMsg = 'player' | 'admin'
 
 export interface IState {
   active: boolean
+  currentMenuEl: number
 }
 
 export interface IReportMsg {

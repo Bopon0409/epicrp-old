@@ -15,7 +15,7 @@ export const Input = observer((props: InputProps) => {
   const inputHandler = useCallback((event: any) => {
     const { value } = event.target
     if (value.length <= 60) setValue(value)
-  }, [value, setValue])
+  }, [setValue])
 
   const submitHandler = () => {
     action(value)
