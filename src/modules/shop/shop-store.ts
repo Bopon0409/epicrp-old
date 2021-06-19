@@ -14,7 +14,8 @@ class ShopStore {
     sectionList: [],
     cartMode: false,
     shoppingCart: [],
-    payment: 'cash'
+    payment: 'cash',
+    modal: null
   }
 
   get cartSum (): { sum: number, quantity: number } {

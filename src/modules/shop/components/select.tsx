@@ -17,14 +17,14 @@ export const Select = observer((props: TSelectProp) => {
     setSelectActive(!selectActive)
   }
 
-  return active ? (
+  return (
     <div className='select'>
-      {money.cards.map((card, i) =>
+      {active ? money.cards.map((card, i) =>
         <div onClick={() => handler(i)} className='select-item' key={i}>
           <div className='select__name'>{card.cardName}</div>
           <div className='select__name'>{card.balance}$</div>
         </div>
-      )}
+      ) : null}
     </div>
-  ) : null
+  )
 })

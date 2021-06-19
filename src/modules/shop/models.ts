@@ -29,6 +29,7 @@ export interface IState {
   cartMode: boolean
   payment: TPayment
   active: boolean
+  modal: IItem | null
 }
 
 export interface IData {

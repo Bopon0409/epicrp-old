@@ -23,4 +23,6 @@ import './player-menu/player-menu.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
+  window.test.shop.setData()
+  window.test.shop.setActive(true)
 }
