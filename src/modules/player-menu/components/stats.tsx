@@ -1,11 +1,10 @@
-import React           from 'react'
-import { observer }    from 'mobx-react-lite'
-import { store }       from '../player-menu-store'
+import React        from 'react'
+import { observer } from 'mobx-react-lite'
+import { store }    from '../player-menu-store'
 import {
   buildStyles,
   CircularProgressbarWithChildren
-}                      from 'react-circular-progressbar'
-import progressBarImg1 from '../../inventory/images/progress-bar-img-1.svg'
+}                   from 'react-circular-progressbar'
 
 export const Stats = observer(() => {
   const {
@@ -61,7 +60,10 @@ export const Stats = observer(() => {
       </div>
 
       <div className='stats__code'>
-        <div className='code__label'>Ваш</div>
+        <div className='code__label'>Ваш уникальный реферальный код</div>
+        <div className='code__container'>
+          <div className='text'>{referralCode}</div>
+        </div>
       </div>
 
       <div className='stats__fraction'>
@@ -77,6 +79,39 @@ export const Stats = observer(() => {
           <div className='stats__field'>Выговоры</div>
           <div className='stats__value'>{reprimands}</div>
         </div>
+      </div>
+
+      <div className='stats__money'>
+        <div className='stats__grid'>
+          <div className='stats__field'>Наличные</div>
+          <div className='stats__value'>{cash}</div>
+          <div className='stats__field'>Банковская карта #1</div>
+          <div className='stats__value'>{card1}</div>
+          <div className='stats__field'>Банковская карта #2</div>
+          <div className='stats__value'>{card2}</div>
+          <div className='stats__field'>Страховка</div>
+          <div className='stats__value'>{insurance}</div>
+          <div className='stats__field'>Кредит</div>
+          <div className='stats__value'>{credit}</div>
+        </div>
+      </div>
+
+      <div className='stats__properties'>
+        <div className='properties__list'>{
+          properties.map((el) => (
+            <div className='properties__item'>
+              <div className='properties__name'>{el.name}</div>
+              <div className='properties__type'>{el.type}</div>
+              <div className='properties__date'>Приобретено {el.date}</div>
+            </div>
+          ))
+        }</div>
+      </div>
+
+      <div className='stats__hints'>
+        Игрок получивший ваш реферальный код должен указать его при регистрации
+        своего аккаунта чтобы получить бонус по вашему реферальному коду игрок
+        обязан прокачать одного из своих персонажей до 3-го игрового уровня
       </div>
     </div>
   )
