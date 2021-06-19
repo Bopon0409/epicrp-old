@@ -47,7 +47,10 @@ class CreatePersStore {
 
   // =================================   MAIN   ================================
   setStep = step => (this.state.step = step)
-  setActive = active => this.state.active = active
+  setActive = active => {
+    this.state.active = active
+    if (!active) this.clear()
+  }
   setData = data => this.state.serverData = data
   finishCreate = () => window.frontTrigger('character.created')
 
