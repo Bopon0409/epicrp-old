@@ -4,9 +4,7 @@ import { ReportAside } from './report-aside'
 import { store }       from '../player-menu-store'
 import sendIcon        from '../img/send-icon.svg'
 import {
-  ReportAdminWaiting,
-  ReportEmptyLabel,
-  ReportRatings
+  ReportAdminWaiting, ReportEmptyLabel, ReportRatings
 }                      from './report-components'
 
 export const Report = observer(() => {
@@ -34,7 +32,6 @@ export const Report = observer(() => {
         const connectedClasses = item.type === 'admin_connected' ?
           'connected connected--admin' : 'connected connected--player'
         return <div className={connectedClasses} key={i}>{item.name}</div>
-
     }
   })
 

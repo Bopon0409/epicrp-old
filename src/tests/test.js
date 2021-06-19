@@ -20,9 +20,10 @@ import './electrician/electrician.test'
 import './taxi-tablet/taxi-tablet.test'
 import './admin/admin.test'
 import './player-menu/player-menu.test'
+import './clothes-shop/clothes-shop.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.playerMenu.setStatsData()
-  window.test.playerMenu.setActive()
+  window.test.clothesShop.setData()
+  window.test.clothesShop.setActive(true)
 }

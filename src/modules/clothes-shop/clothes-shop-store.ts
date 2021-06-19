@@ -1,5 +1,5 @@
-import { makeAutoObservable }   from 'mobx'
-import { IClothesItem, IState } from './model'
+import { makeAutoObservable }          from 'mobx'
+import { IClothesItem, IData, IState } from './model'
 
 class ClothesShopStore {
   constructor () {
@@ -17,6 +17,12 @@ class ClothesShopStore {
   }
 
   setActive = (active: boolean) => this.state.active = active
+
+  setData = (data: IData) => {
+    if (data.money !== undefined) this.state.money = data.money
+    if (data.shopList !== undefined) this.state.shopList = data.shopList
+    if (data.businessId !== undefined) this.state.businessId = data.businessId
+  }
 
   setActiveSection = (sectionNum: number) => {
     this.setActiveItem(null)
