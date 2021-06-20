@@ -114,12 +114,14 @@ class AdminStore {
 
   playerUnPunishment = (name: string) => {
     const { player } = this.state
+    if (!player) return
     // @ts-ignore
     window.frontTrigger(`admin.un-punishment.${name}`, player?.id)
   }
 
   adminAction = (name: string) => {
     const { player } = this.state
+    if (!player) return
     // @ts-ignore
     window.frontTrigger(`admin.action.${name}`, player?.id)
   }

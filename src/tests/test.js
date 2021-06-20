@@ -24,6 +24,6 @@ import './clothes-shop/clothes-shop.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.playerMenu.setStatsData()
-  window.test.playerMenu.setActive(true)
+  // window.test.admin.loadPlayerData()
+  window.test.admin.setActive(true)
 }
