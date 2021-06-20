@@ -138,7 +138,8 @@ class AdminStore {
 
   consoleDispatch = (command: string) => {
     // @ts-ignore
-    window.frontTrigger(`admin.console`, command)
+    // window.frontTrigger(`admin.console`, command)
+    window.mp.invoke('command', command)
   }
 
   playerRequest = (value: string) => {

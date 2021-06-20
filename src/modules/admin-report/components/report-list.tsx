@@ -13,9 +13,11 @@ export const ReportList = observer(() => {
           return (
             <div className='report-list__item' key={report.id}>
               <div className='name'>{report.name}</div>
-              <div className='rating'>{report.rating}</div>
+              <div className='rating'>Рейтинг: {report.rating}</div>
               {!blockedList && (
-                <div className='button' onClick={handler}>Посмотреть</div>
+                <div className='button' onClick={handler}>
+                  <div className='text'>Посмотреть</div>
+                </div>
               )}
             </div>
           )

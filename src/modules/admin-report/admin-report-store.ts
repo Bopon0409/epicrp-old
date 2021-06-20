@@ -13,7 +13,8 @@ class AdminReportStore {
     currentReportId: null,
     input: '',
     blockedList: false,
-    status: 'list'
+    status: 'list',
+    rating: 0
   }
 
   setActive = (active: boolean) => this.state.active = active
@@ -22,6 +23,7 @@ class AdminReportStore {
   setInput = (value: string) => {
     if (value.length <= 600) this.state.input = value
   }
+  changeRating = (rating: number) => this.state.rating = rating
 
   get currentReport (): IReport | null {
     const { currentReportId: id } = this.state

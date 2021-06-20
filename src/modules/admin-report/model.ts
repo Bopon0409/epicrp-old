@@ -20,4 +20,5 @@ export interface IState {
   adminName: string
   blockedList: boolean
   status: 'list' | 'process' | 'closed'
+  rating: number
 }

@@ -3,7 +3,10 @@ import { observer } from 'mobx-react-lite'
 import { store }    from '../admin-report-store'
 
 export const Footer = observer(() => {
-  const { setInput, state: { input, status, currentReportId } } = store
+  const {
+    setInput, reportInit, reportClose,
+    state: { input, status, currentReportId }
+  } = store
   return currentReportId ? (
     <div className='footer'>
       {status === 'process' && (
@@ -25,13 +28,13 @@ export const Footer = observer(() => {
         </div>
 
         {status === 'list' && (
-          <div className='button button--active'>
+          <div className='button button--active' onClick={reportInit}>
             <div className='text'>Войти в чат</div>
           </div>
         )}
 
         {status === 'list' && (
-          <div className='button button--active'>
+          <div className='button button--active' onClick={reportClose}>
             <div className='text'>Закрыть репорт</div>
           </div>
         )}

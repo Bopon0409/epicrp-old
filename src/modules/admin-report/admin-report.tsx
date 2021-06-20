@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react'
-import { observer } from 'mobx-react-lite'
-import { store }    from './admin-report-store'
+import { observer }         from 'mobx-react-lite'
+import { store }            from './admin-report-store'
+import { MsgList }          from './components/msg-list'
+import { ReportList }       from './components/report-list'
+import { Footer }           from './components/footer'
+import './admin-report.scss'
 
 export const AdminReport = observer(() => {
   useEffect(() => {
@@ -27,11 +31,13 @@ export const AdminReport = observer(() => {
     }
   }, [])
 
-  console.log(store.state)
-
   return store.state.active ? (
     <div className='admin-report'>
-
+      <ReportList />
+      <div className='admin-report__main'>
+        <MsgList />
+        <Footer />
+      </div>
     </div>
   ) : null
 })
