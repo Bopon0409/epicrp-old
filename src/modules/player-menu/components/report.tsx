@@ -36,6 +36,8 @@ export const Report = observer(() => {
         return <div className={connectedClasses} key={i}>
           {isAdmin ? 'Администратор' : 'Игрок'} {item.name} подключился к чату
         </div>
+      default:
+        return null
     }
   })
 

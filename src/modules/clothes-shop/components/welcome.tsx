@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { observer } from 'mobx-react-lite'
-import { store } from '../clothes-shop-store'
+import React                            from 'react'
+import { observer }                     from 'mobx-react-lite'
 import { welcomeText, instructionText } from '../clothes-data'
 
 export const Welcome = observer(() => {

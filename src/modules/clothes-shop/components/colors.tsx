@@ -1,13 +1,11 @@
-import React from 'react'
+import React        from 'react'
 import { observer } from 'mobx-react-lite'
-import { store } from '../clothes-shop-store'
+import { store }    from '../clothes-shop-store'
 
 export const Colors = observer(() => {
   const {
-    state: { shopList, activeSection, activeItem, activeColor },
-    currentItem,
-    setActiveItem,
-    setActiveColor
+    state: { activeSection, activeItem, activeColor },
+    currentItem, setActiveColor
   } = store
   return (
     <div className='choose__block-color'>

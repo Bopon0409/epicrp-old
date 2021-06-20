@@ -1,13 +1,13 @@
 import { observer } from 'mobx-react-lite'
-import React from 'react'
+import React        from 'react'
 import { sections } from '../clothes-data'
-import { store } from '../clothes-shop-store'
+import { store }    from '../clothes-shop-store'
 
 export const Items = observer(() => {
   const {
-    state: { shopList, activeSection, activeItem },
-    setActiveItem
+    state: { shopList, activeSection, activeItem }, setActiveItem
   } = store
+
   return (
     <div className='choose__block-item'>
       <div className='choose__block-item_info'>Выбранная категория</div>
