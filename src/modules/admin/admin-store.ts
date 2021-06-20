@@ -112,27 +112,26 @@ class AdminStore {
     )
   }
 
-  playerUnPunishment = (name: string) => {
-    const { player } = this.state
-    if (!player) return
+  command = (command: string) => {
+    if (!this.state.player) return
     // @ts-ignore
-    window.frontTrigger(`admin.un-punishment.${name}`, player?.id)
+    if (window.mp)
+      // @ts-ignore
+      window.mp.invoke('command', command)
+  }
+
+  playerUnPunishment = (name: string) => {
+    this.command(`${name} ${this.state.player?.id}`)
   }
 
   adminAction = (name: string) => {
-    const { player } = this.state
-    if (!player) return
-    // window.frontTrigger(`admin.action.${name}`, player?.id)
-    // @ts-ignore
-    window.mp.invoke('command', `${name} ${player?.id}`)
+    this.command(`${name} ${this.state.player?.id}`)
   }
 
   adminTeleport = (teleport: string) => {
-    const { player } = this.state
-    if (!player) return
-    // @ts-ignore
-    // window.frontTrigger(`admin.teleport.${teleport}`)
-    window.mp.invoke('command', `${teleport} ${player?.id}`)
+    if (teleport === 'dimension 0')
+      this.command(`dimension ${this.state.player?.id} 0`)
+    else this.command(`${teleport} ${this.state.player?.id}`)
   }
 
   chatMsgDispatch = (msg: string) => {

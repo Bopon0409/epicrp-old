@@ -114,8 +114,7 @@ class AuthStore {
       return this.setErrorMsg(this.ERROR_MESSAGES[0])
     if (login.length < 4 || login.length > 20)
       return this.setErrorMsg(this.ERROR_MESSAGES[1])
-    if (/^.*(?=.{6,})(?=.*d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/i
-      .test(pass) === false)
+    if (/^[a-zA-Z1-9]{6,}$/i.test(pass) === false)
       return this.setErrorMsg(this.ERROR_MESSAGES[2])
     if (pass !== pass2) return this.setErrorMsg(this.ERROR_MESSAGES[3])
 

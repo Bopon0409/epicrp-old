@@ -26,11 +26,6 @@ import './admin-report/admin-report.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-
-  window.test.adminReport.loadReports()
-  window.test.adminReport.setName('Ched Nocksfeel')
-  window.test.adminReport.setActive(true)
-  window.test.adminReport.playerSendMsg(1)
-  window.test.adminReport.playerSendMsg(2)
-  window.test.adminReport.playerSendMsg(3)
+  // window.test.chat.setChatShow(true)
+  // window.test.chat.testChatPushMsg()
 }

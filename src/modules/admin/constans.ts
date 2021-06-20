@@ -3,7 +3,7 @@ export const MOVE_NAMES: string[] = [
 ]
 
 export const MOVES: string[][] = [
-  ['goto', 'gethere', 'sp', 'slap', 'dimension_0'],
+  ['goto', 'gethere', 'sp', 'slap', 'dimension 0'],
   ['kill', 'heal', 'freeze', 'unfreeze', 'ainvite', 'uninvite', 'makeleader'],
   [
     'mute', 'voice mute', 'jail', 'prison', 'kick',
