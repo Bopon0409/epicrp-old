@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { observer } from 'mobx-react-lite'
-import { store } from './clothes-shop-store'
-import { Payment } from '../payment/payment'
-import mouseHint from '../car-shop/img/mouse-hint.svg'
+import { observer }                   from 'mobx-react-lite'
+import { store }                      from './clothes-shop-store'
+import { Payment }                    from '../payment/payment'
+import mouseHint                      from '../car-shop/img/mouse-hint.svg'
 import './clothes-shop.scss'
 
 import { Sections } from './components/sections'
-import { Items } from './components/items'
-import { Colors } from './components/colors'
-import { Welcome } from './components/welcome'
+import { Items }    from './components/items'
+import { Colors }   from './components/colors'
+import { Welcome }  from './components/welcome'
 
 export const ClothesShop = observer(() => {
   const [update, setUpdate] = useState(0)
@@ -27,10 +27,8 @@ export const ClothesShop = observer(() => {
   const {
     state: {
       businessId, shopList, money,
-      activeSection, activeItem, activeColor, active
-    },
-    setActiveSection, setActiveColor, setActiveItem, payAction, currentItem, 
-    buyReady
+      activeSection, active
+    }, payAction, currentItem, buyReady
   } = store
   if (!money || !shopList) return null
 

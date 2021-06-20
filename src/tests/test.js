@@ -22,10 +22,15 @@ import './admin/admin.test'
 import './player-menu/player-menu.test'
 import './clothes-shop/clothes-shop.test'
 import './spawn-menu/spawn-menu'
+import './admin-report/admin-report.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.clothesShop.setActive(true);
-  window.test.clothesShop.setData(true);
-  window.test.spawnMenu.set(true, false, false)
+
+  window.test.adminReport.loadReports()
+  window.test.adminReport.setName('Ched Nocksfeel')
+  window.test.adminReport.setActive(true)
+  window.test.adminReport.playerSendMsg(1)
+  window.test.adminReport.playerSendMsg(2)
+  window.test.adminReport.playerSendMsg(3)
 }
