@@ -21,9 +21,9 @@ import './taxi-tablet/taxi-tablet.test'
 import './admin/admin.test'
 import './player-menu/player-menu.test'
 import './clothes-shop/clothes-shop.test'
+import './spawn-menu/spawn-menu'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.clothesShop.setData()
-  window.test.clothesShop.setActive(true)
+  window.test.spawnMenu.set(true, false, false)
 }

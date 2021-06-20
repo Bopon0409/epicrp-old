@@ -24,6 +24,7 @@ import { TaxiTablet }  from '../taxi-tablet/taxi-tablet'
 import { Admin }       from '../admin/admin'
 import { PlayerMenu }  from '../player-menu/player-menu'
 import { ClothesShop } from '../clothes-shop/clothes-shop'
+import { SpawnMenu }   from '../spwan-menu/spawn-menu'
 
 export default function App () {
   const devModules = (
@@ -58,6 +59,7 @@ export default function App () {
       <Admin />
       <PlayerMenu />
       <ClothesShop />
+      <SpawnMenu />
     </>
   )
 }
