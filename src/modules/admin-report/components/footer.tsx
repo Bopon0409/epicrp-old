@@ -57,5 +57,4 @@ export const Footer = observer(() => {
       )}
     </div>
   ) : null
-}
-)
+})
