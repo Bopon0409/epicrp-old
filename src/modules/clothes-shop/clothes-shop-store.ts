@@ -1,8 +1,8 @@
 import { makeAutoObservable }          from 'mobx'
 import { IClothesItem, IData, IState } from './model'
+
 type TMethod = 'card' | 'cash'
 type TCardId = string | null
-
 
 class ClothesShopStore {
   constructor () {
@@ -15,7 +15,10 @@ class ClothesShopStore {
     activeItem: null,
     activeColor: null,
     businessId: 0,
-    money: null,
+    money: {
+      cash: 0,
+      cards: []
+    },
     shopList: null
   }
 
@@ -30,27 +33,55 @@ class ClothesShopStore {
   setActiveSection = (sectionNum: number) => {
     this.setActiveItem(null)
     this.state.activeSection = sectionNum
+    if (sectionNum !== null)
+      // @ts-ignore
+      window.frontTrigger('clothes-shop.set.section', sectionNum)
   }
 
   setActiveItem = (itemNum: number | null) => {
-    this.setActiveColor(null)
     this.state.activeItem = itemNum
+    if (itemNum !== null) {// @ts-ignore
+      window.frontTrigger('clothes-shop.set.item', itemNum)
+      this.setActiveColor(0)
+    }
   }
 
-  get currentSection (): IClothesItem[] | null {
-    const { shopList, activeSection } = this.state
-    return shopList && activeSection ? shopList[activeSection] : null
+  setActiveColor = (colorId: number | null) => {
+    this.state.activeColor = colorId
+    if (colorId !== null)
+      // @ts-ignore
+      window.frontTrigger('clothes-shop.set.color', colorId)
+  }
+
+  get buyReady (): boolean {
+    const { activeItem, activeSection, activeColor } = this.state
+    return activeItem !== null && activeSection !== null &&
+      activeColor !== null
   }
 
   get currentItem (): IClothesItem | null {
     const { shopList, activeSection, activeItem } = this.state
-    return shopList && activeSection && activeItem ?
+    return shopList !== null && activeSection !== null && activeItem !== null ?
       shopList[activeSection][activeItem] : null
   }
 
-  setActiveColor = (colorId: number | null) => this.state.activeColor = colorId
+  getCurrentMoney = (method: TMethod, cardId: TCardId): number => {
+    const { cash, cards } = this.state.money
+    if (method === 'card') {
+      const card = cards.find((card) => card.accountId === cardId)
+      return card?.balance || 0
+    } else return cash
+  }
 
   payAction = (method: TMethod, cardId: TCardId) => {
+    const { currentItem, state: { activeColor } } = this
+    const curMoney = this.getCurrentMoney(method, cardId)
+    const moneyCheck = !!this.currentItem && this.currentItem.price <= curMoney
+    if (this.buyReady && moneyCheck && activeColor !== null)
+      // @ts-ignore
+      window.frontTrigger('clothes-shop.buy',
+        method, currentItem?.name, currentItem?.colors[activeColor]
+      )
   }
 }
 

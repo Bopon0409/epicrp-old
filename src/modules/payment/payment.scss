@@ -49,6 +49,13 @@
     box-shadow: 0 0 20px rgba(236, 192, 44, 0.15);
   }
 
+  .btn--blocked {
+    &:hover {
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow: none;
+    }
+  }
+
   .select {
     position: absolute;
     top: -50px;

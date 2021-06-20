@@ -13,7 +13,7 @@ export interface IState {
   activeItem: number | null
   activeColor: number | null
   businessId: number
-  money: IMoney | null
+  money: IMoney
   shopList: IClothesItem[][] | null
 }
 
