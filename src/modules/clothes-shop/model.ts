@@ -1,5 +1,6 @@
 import { IMoney } from '../payment/models'
 
+
 export interface IClothesItem {
   name: string
   price: number
