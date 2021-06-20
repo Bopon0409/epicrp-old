@@ -1,3 +1,7 @@
+@import './scss/sections';
+@import './scss/colors';
+@import './scss/items';
+
 .clothes-shop {
   position: absolute;
   width: 100%;
@@ -17,9 +21,9 @@
     width: 100%;
     height: 100%;
     background: radial-gradient(
-        50% 50% at 50% 50%,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.8) 100%
+      50% 50% at 50% 50%,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.8) 100%
     );
     z-index: -1;
   }
@@ -54,62 +58,6 @@
     flex-direction: row;
     // background-color: green;
 
-    .items-types {
-      width: 73px;
-      height: 559px;
-      margin: 141px 0 0 63px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      // background-color: red;
-
-      .type {
-        height: 73px;
-        width: 73px;
-        background-color: rgba(255, 255, 255, 0.45);
-        opacity: 0.45;
-        border-radius: 3px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all .07s ease-in;
-
-        &__image {
-          opacity: .5;
-          transition: opacity .1s ease-in;
-        }
-
-        &:hover {
-          & {
-            background-color: rgba(255, 255, 255, 1);
-            transition: all .07s ease-out;
-          }
-
-          .type__image {
-            opacity: 1;
-            transition: opacity .1s ease-out;
-          }
-        }
-      }
-
-      .type--active {
-        height: 73px;
-        width: 73px;
-        background-color: rgba(255, 255, 255, 1);
-        opacity: 0.45;
-        border-radius: 3px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all .07s ease-in;
-
-        .type__image {
-          opacity: 1;
-          transition: opacity .1s ease-out;
-        }
-      }
-    }
-
     .welcome {
       width: 678px;
       height: 130px;
@@ -143,174 +91,6 @@
       flex-direction: row;
       justify-content: space-between;
       // background-color: royalblue;
-
-      &-item {
-        width: 363px;
-        height: 536px;
-        margin-top: 54px;
-        // background-color: red;
-        display: flex;
-        flex-direction: column;
-
-        &_info {
-          font-size: 14px;
-          line-height: 19px;
-          opacity: 0.5;
-        }
-
-        &_name {
-          font-size: 48px;
-          line-height: 44px;
-          white-space: nowrap;
-          word-wrap: normal;
-        }
-
-        &_list {
-          width: 363px;
-          height: 461px;
-          margin-top: 11px;
-          overflow: scroll;
-          overflow-x: hidden;
-
-          .item {
-            height: 45px;
-            width: 333px;
-            background: rgba(255, 255, 255, 0.45);
-            border-radius: 3px;
-            margin-bottom: 7px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            word-wrap: normal;
-            white-space: nowrap;
-            transition: all .07s ease-in;
-
-            & > span:first-child {
-              margin-left: 11px;
-              font-weight: 600;
-              font-size: 20px;
-              line-height: 27px;
-              color: rgba(255, 255, 255, 0.45);
-              transition: all .07s ease-in;
-            }
-
-            & > span:last-child {
-              margin-right: 11px;
-              font-weight: 600;
-              font-size: 20px;
-              line-height: 27px;
-              color: rgba(255, 255, 255, 0.45);
-              transition: all .07s ease-in;
-            }
-
-            &:hover {
-              background-color: rgba(236, 192, 44, .8);
-              transition: all .07s ease-out;
-
-              & > span:nth-child(n) {
-                color: rgba(0, 0, 0, 1);
-                transition: all .07s ease-out;
-              }
-            }
-          }
-
-          .item-active {
-            height: 45px;
-            width: 333px;
-            background-color: rgb(236, 192, 44);
-            border-radius: 3px;
-            margin-bottom: 7px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            word-wrap: normal;
-            white-space: nowrap;
-            color: black;
-
-            & > span:first-child {
-              margin-left: 11px;
-              font-weight: 600;
-              font-size: 20px;
-              line-height: 27px;
-            }
-
-            & > span:last-child {
-              margin-right: 11px;
-              font-weight: 600;
-              font-size: 20px;
-              line-height: 27px;
-            }
-          }
-
-          &::-webkit-scrollbar {
-            width: 4px;
-            background-color: rgba(255, 255, 255, 0.25);
-            border-radius: 1px;
-            height: 461px;
-          }
-
-          &::-webkit-scrollbar-thumb {
-            width: 4px;
-            background: #f2c94c;
-            border-radius: 1px;
-          }
-        }
-      }
-
-      &-color {
-        height: 567px;
-        width: 284px;
-        overflow-x: hidden;
-
-        .color {
-          width: 254px;
-          height: 45px;
-          background-color: rgba(160, 160, 160, 0.45);
-          border-radius: 3px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-bottom: 7px;
-          font-size: 20px;
-          font-weight: 600;
-          transition: all .07s ease-in;
-
-          &:hover {
-            background-color: rgba(236, 192, 44, .8);
-            transition: all .07s ease-out;
-            color: rgba(0, 0, 0, 1)
-          }
-        }
-
-        .color-active {
-          width: 254px;
-          height: 45px;
-          background-color: rgb(236, 192, 44);
-          border-radius: 3px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-bottom: 7px;
-          font-size: 20px;
-          font-weight: 600;
-          color: black;
-        }
-
-        &::-webkit-scrollbar {
-          width: 4px;
-          background-color: rgba(255, 255, 255, 0.25);
-          border-radius: 1px;
-          height: 461px;
-        }
-
-        &::-webkit-scrollbar-thumb {
-          width: 4px;
-          background: #f2c94c;
-          border-radius: 1px;
-        }
-      }
     }
   }
 

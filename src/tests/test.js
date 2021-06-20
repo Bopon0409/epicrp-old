@@ -25,5 +25,7 @@ import './spawn-menu/spawn-menu'
 
 export default function curTest () {
   window.test.bg.setActive(true)
+  window.test.clothesShop.setActive(true);
+  window.test.clothesShop.setData(true);
   window.test.spawnMenu.set(true, false, false)
 }

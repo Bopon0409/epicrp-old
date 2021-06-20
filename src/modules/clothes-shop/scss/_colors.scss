@@ -1,0 +1,54 @@
+.choose__block {
+  &-color {
+    height: 567px;
+    width: 284px;
+    overflow-x: hidden;
+
+    .color {
+      width: 254px;
+      height: 45px;
+      background-color: rgba(160, 160, 160, 0.45);
+      border-radius: 3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 7px;
+      font-size: 20px;
+      font-weight: 600;
+      transition: all 0.07s ease-in;
+
+      &:hover {
+        background-color: rgba(236, 192, 44, 0.8);
+        transition: all 0.07s ease-out;
+        color: rgba(0, 0, 0, 1);
+      }
+    }
+
+    .color-active {
+      width: 254px;
+      height: 45px;
+      background-color: rgb(236, 192, 44);
+      border-radius: 3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 7px;
+      font-size: 20px;
+      font-weight: 600;
+      color: black;
+    }
+
+    &::-webkit-scrollbar {
+      width: 4px;
+      background-color: rgba(255, 255, 255, 0.25);
+      border-radius: 1px;
+      height: 461px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      width: 4px;
+      background: #f2c94c;
+      border-radius: 1px;
+    }
+  }
+}

@@ -1,33 +1,35 @@
-import React, { useEffect } from 'react'
-import { observer }         from 'mobx-react-lite'
-import { store }            from './clothes-shop-store'
-import { Payment }          from '../payment/payment'
-import mouseHint            from '../car-shop/img/mouse-hint.svg'
-import {
-  instructionText, sections, welcomeText
-}                           from './clothes-data'
+import React, { useEffect, useState } from 'react'
+import { observer } from 'mobx-react-lite'
+import { store } from './clothes-shop-store'
+import { Payment } from '../payment/payment'
+import mouseHint from '../car-shop/img/mouse-hint.svg'
 import './clothes-shop.scss'
 
+import { Sections } from './components/sections'
+import { Items } from './components/items'
+import { Colors } from './components/colors'
+import { Welcome } from './components/welcome'
+
 export const ClothesShop = observer(() => {
+  const [update, setUpdate] = useState(0)
   useEffect(() => {
     // @ts-ignore
     const { EventManager: em } = window
     const { setActive, setData } = store
-
     em.addHandler('clothes-shop.active', setActive)
     em.addHandler('clothes-shop.data', setData)
     return () => {
       em.removeHandler('clothes-shop.active', setActive)
       em.removeHandler('clothes-shop.data', setData)
     }
-  }, [])
+  }, [setUpdate, update])
 
   const {
     state: {
-      businessId, shopList, money, activeSection,
-      activeItem, activeColor, active
+      businessId, shopList, money,
+      activeSection, activeItem, activeColor, active
     },
-    setActiveSection, setActiveColor, setActiveItem, payAction, currentItem,
+    setActiveSection, setActiveColor, setActiveItem, payAction, currentItem, 
     buyReady
   } = store
   if (!money || !shopList) return null
@@ -40,62 +42,24 @@ export const ClothesShop = observer(() => {
         <div className='shop-name'>Магазин одежды</div>
       </div>
       <div className='clothes-shop__main-window'>
-        <div className='items-types'>
-          {shopList?.map((type, i) => (
-            <div
-              className={activeSection === i ? 'type--active' : 'type'}
-              key={i} onClick={() => setActiveSection(i)}>
-              <img src={sections[i].image} alt='' className='type__image' />
-            </div>
-          ))}
-        </div>
+        <Sections />
         {activeSection === null ? (
-          <div className='welcome'>
-            <span className='welcome__text'>{welcomeText}</span>
-            <span className='welcome__instruction'>{instructionText}</span>
-          </div>
+          <Welcome />
         ) : (
           <div className='choose__block'>
-            <div className='choose__block-item'>
-              <div className='choose__block-item_info'>Выбранная категория</div>
-              <div className='choose__block-item_name'>
-                {sections[activeSection].name}
-              </div>
-              <div className='choose__block-item_list'>
-                {activeSection != null ? (
-                  shopList[activeSection].map((item, i) => (
-                    <div
-                      className={activeItem === i ? 'item-active' : 'item'}
-                      key={i} onClick={() => setActiveItem(i)}>
-                      <span>{item.name}</span>
-                      <span>{item.price}$</span>
-                    </div>
-                  ))
-                ) : (
-                  <div />
-                )}
-              </div>
-            </div>
-            <div className='choose__block-color'>
-              {activeSection != null && activeItem != null ? (
-                currentItem?.colors.map((item, i) => (
-                  <div className={
-                    activeColor === i ? 'color-active' : 'color'
-                  } key={i} onClick={() => setActiveColor(i)}>
-                    <span>{item}</span>
-                  </div>
-                ))
-              ) : (
-                <div />
-              )}
-            </div>
-            <Payment money={money} price={currentItem?.price || 0}
-              payAction={payAction} blocked={!buyReady} />
+            <Items />
+            <Colors />
+            <Payment
+              money={money}
+              price={currentItem?.price || 0}
+              payAction={payAction}
+              blocked={!buyReady}
+            />
           </div>
         )}
       </div>
 
-      {activeSection !== null ?
+      {activeSection !== null ? (
         <div className='hints'>
           <div className='hint__container'>
             <div className='esc'>ESC</div>
@@ -107,7 +71,8 @@ export const ClothesShop = observer(() => {
               Для вращения зажмите ЛКМ и крутите мышкой
             </div>
           </div>
-        </div> : null}
+        </div>
+      ) : null}
     </div>
   ) : null
 })
