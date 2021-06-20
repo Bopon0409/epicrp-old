@@ -93,11 +93,11 @@ class AuthStore {
   authValidate = () => {
     const { login, pass, checkBox } = this.state
 
-    if (/^[a-zA-Z1-9]+$/.test(login) === false)
+    if (/^[a-zA-Z0-9]+$/.test(login) === false)
       return this.setErrorMsg(this.ERROR_MESSAGES[0])
     if (login.length < 4 || login.length > 20)
       return this.setErrorMsg(this.ERROR_MESSAGES[1])
-    if (/^[a-zA-Z1-9]{6,}$/i.test(pass) === false)
+    if (/^[a-zA-Z0-9]{6,}$/i.test(pass) === false)
       return this.setErrorMsg(this.ERROR_MESSAGES[2])
 
     this.clearInputs()
@@ -108,13 +108,13 @@ class AuthStore {
     const { email, login, pass, pass2 } = this.state
 
     const emailRegExp = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
-    if (emailRegExp.test(email) === false)
+    if (emailRegExp.test(email.toLowerCase()) === false)
       return this.setErrorMsg(this.ERROR_MESSAGES[5])
-    if (/^[a-zA-Z1-9]+$/.test(login) === false)
+    if (/^[a-zA-Z0-9]+$/.test(login) === false)
       return this.setErrorMsg(this.ERROR_MESSAGES[0])
     if (login.length < 4 || login.length > 20)
       return this.setErrorMsg(this.ERROR_MESSAGES[1])
-    if (/^[a-zA-Z1-9]{6,}$/i.test(pass) === false)
+    if (/^[a-zA-Z0-9]{6,}$/i.test(pass) === false)
       return this.setErrorMsg(this.ERROR_MESSAGES[2])
     if (pass !== pass2) return this.setErrorMsg(this.ERROR_MESSAGES[3])
 

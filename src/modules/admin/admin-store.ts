@@ -13,12 +13,7 @@ class AdminStore {
     page: 0,
     punishmentsModalActive: false,
     player: null,
-    console: [
-      'Здравствуйте Ched Nocksfeel!',
-      'Версия консоли 0.1 alpha',
-      'По любым проблемам с консолью - пишите в баг - трекер',
-      'Для информации о командах введите --help'
-    ],
+    console: [],
     chat: [],
     transport: [],
     realCars: [],
