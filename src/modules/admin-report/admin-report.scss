@@ -1,0 +1,46 @@
+@import 'scss/report-list';
+@import 'scss/msg-list';
+@import 'scss/footer';
+
+.admin-report {
+  position: absolute;
+  z-index: 5;
+  width: 1280px;
+  height: 800px;
+  left: 50%;
+  top: 50%;
+  margin-left: -640px;
+  margin-top: -400px;
+
+  background: #21252f;
+  border-radius: 25px;
+  padding: 40px;
+
+  box-sizing: border-box;
+  font-family: Nunito, sans-serif;
+  color: white;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (min-width: 2560px) {
+}
+
+@media (max-width: 1600px) {
+}
+
+@media (max-width: 1440px) {
+}
+
+@media (max-width: 1366px) {
+}
+
+@media (max-width: 1280px) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 800px) {
+}

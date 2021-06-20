@@ -13,12 +13,7 @@ class AdminStore {
     page: 0,
     punishmentsModalActive: false,
     player: null,
-    console: [
-      'Здравствуйте Ched Nocksfeel!',
-      'Версия консоли 0.1 alpha',
-      'По любым проблемам с консолью - пишите в баг - трекер',
-      'Для информации о командах введите --help'
-    ],
+    console: [],
     chat: [],
     transport: [],
     realCars: [],
@@ -54,10 +49,15 @@ class AdminStore {
     if (value.length <= 40) this.state.modalInputReason = value
   }
 
-  setPunishmentsModalHistory = (active: boolean) =>
-    this.state.punishmentsModalHistory = active
-  setPunishmentModal = (type: string | null) =>
-    this.state.punishmentModal = type
+  setPunishmentsModalHistory = (active: boolean) =>{
+    this.state.punishmentsModalHistory = active;
+    if(this.state.punishmentModal != null) this.state.punishmentModal = null;
+  }
+  setPunishmentModal = (type: string | null) =>{
+    this.state.punishmentModal = type;
+    if(this.state.punishmentsModalHistory) this.state.punishmentsModalHistory = 
+    false;
+  }
 
   adminActionSwitch = (action: string, id: number) => {
     if (id === 0 || id === 1 || id === 3) this.adminAction(action)
@@ -112,23 +112,26 @@ class AdminStore {
     )
   }
 
-  playerUnPunishment = (name: string) => {
-    const { player } = this.state
-    if (!player) return
+  command = (command: string) => {
+    if (!this.state.player) return
     // @ts-ignore
-    window.frontTrigger(`admin.un-punishment.${name}`, player?.id)
+    if (window.mp)
+      // @ts-ignore
+      window.mp.invoke('command', command)
+  }
+
+  playerUnPunishment = (name: string) => {
+    this.command(`${name} ${this.state.player?.id}`)
   }
 
   adminAction = (name: string) => {
-    const { player } = this.state
-    if (!player) return
-    // @ts-ignore
-    window.frontTrigger(`admin.action.${name}`, player?.id)
+    this.command(`${name} ${this.state.player?.id}`)
   }
 
   adminTeleport = (teleport: string) => {
-    // @ts-ignore
-    window.frontTrigger(`admin.teleport.${teleport}`)
+    if (teleport === 'dimension 0')
+      this.command(`dimension ${this.state.player?.id} 0`)
+    else this.command(`${teleport} ${this.state.player?.id}`)
   }
 
   chatMsgDispatch = (msg: string) => {
@@ -138,7 +141,8 @@ class AdminStore {
 
   consoleDispatch = (command: string) => {
     // @ts-ignore
-    window.frontTrigger(`admin.console`, command)
+    // window.frontTrigger(`admin.console`, command)
+    window.mp.invoke('command', command)
   }
 
   playerRequest = (value: string) => {

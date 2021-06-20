@@ -30,7 +30,7 @@ export const PunishmentModal = observer(() => {
 
       <div className='button__container'>
         <div className='button button--active' onClick={playerPunishment}>
-          <div className='text'>Забанить</div>
+          <div className='text'>Выдать наказание</div>
         </div>
 
         <div className='button button--inactive'

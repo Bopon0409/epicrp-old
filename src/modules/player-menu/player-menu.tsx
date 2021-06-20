@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { observer }         from 'mobx-react-lite'
 import { store }            from './player-menu-store'
 import { Menu }             from './components/menu'
-import { Stats }            from './components/stats'
 import { Report }           from './components/report'
 import './player-menu.scss'
 
@@ -35,7 +34,6 @@ export const PlayerMenu = observer(() => {
   const CurrentPage = () => {
     switch (currentMenuEl) {
       case 0:
-        return <Stats />
       case 1:
         return null
       case 2:
