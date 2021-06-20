@@ -1,4 +1,5 @@
-export type TPlayerStatus = 'Медиа - Партнёр' | 'Лидер' | 'Администратор' | null
+export type TPlayerStatus = 'Медиа - Партнёр' | 'Лидер' | 'Администратор' 
+| 'Игрок'
 export type TReportStatus = 'waiting' | 'process' | 'closed'
 
 export interface IState {

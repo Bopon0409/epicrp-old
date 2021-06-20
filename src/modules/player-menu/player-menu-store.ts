@@ -21,7 +21,7 @@ class PlayerMenuStore {
 
   stats: IStats = {
     lvl: 0,
-    playerStatus: null,
+    playerStatus: 'Игрок',
     name: '',
     exp: [0, 0],
     hasVip: false,
