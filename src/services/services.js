@@ -28,4 +28,14 @@ const clearFormatNum = (num, filler) => {
   return arr.filter(el => el !== filler).join('')
 }
 
-export { uData, formatNum, formatCardNumber, clearFormatNum }
+const priceFormat = (price) => {
+  let priceStr = price + "";
+
+  return priceStr
+    .split(/(?=(?:\d{3})+(?!\d))/)
+    .join(".");
+}
+
+
+
+export { uData, formatNum, formatCardNumber, clearFormatNum, priceFormat }
