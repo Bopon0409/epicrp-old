@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, useEffect, useRef } from 'react'
 import { observer }                     from 'mobx-react-lite'
 import SendMessageSVG                   from '../images/send.svg'
 
@@ -10,7 +10,8 @@ export interface InputProps {
 
 export const Input = observer((props: InputProps) => {
   const { action, placeholder } = props
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState('');
+  let inputRef = useRef<HTMLInputElement>(null);
 
   const inputHandler = useCallback((event: any) => {
     const { value } = event.target
@@ -22,6 +23,11 @@ export const Input = observer((props: InputProps) => {
     setValue('')
   }
 
+  useEffect(() => {
+    inputRef.current?.focus();
+}, []);
+
+
   const keyClick = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') submitHandler()
   }
@@ -29,7 +35,7 @@ export const Input = observer((props: InputProps) => {
   return (
     <div className='input' onKeyUp={keyClick} tabIndex={0}>
       <input className='input__field' type='text' placeholder={placeholder}
-        value={value} onChange={inputHandler} />
+        value={value} onChange={inputHandler} ref={inputRef} />
       <div className='input__button' onClick={submitHandler}>
         <img src={SendMessageSVG} alt='' />
       </div>

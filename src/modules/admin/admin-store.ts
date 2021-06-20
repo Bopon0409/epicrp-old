@@ -49,10 +49,15 @@ class AdminStore {
     if (value.length <= 40) this.state.modalInputReason = value
   }
 
-  setPunishmentsModalHistory = (active: boolean) =>
-    this.state.punishmentsModalHistory = active
-  setPunishmentModal = (type: string | null) =>
-    this.state.punishmentModal = type
+  setPunishmentsModalHistory = (active: boolean) =>{
+    this.state.punishmentsModalHistory = active;
+    if(this.state.punishmentModal != null) this.state.punishmentModal = null;
+  }
+  setPunishmentModal = (type: string | null) =>{
+    this.state.punishmentModal = type;
+    if(this.state.punishmentsModalHistory) this.state.punishmentsModalHistory = 
+    false;
+  }
 
   adminActionSwitch = (action: string, id: number) => {
     if (id === 0 || id === 1 || id === 3) this.adminAction(action)
