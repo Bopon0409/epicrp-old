@@ -86,10 +86,14 @@ export const Admin = observer(() => {
         <div className='pages'>{
           Pages.map((v, id) => {
             return (
-              <div className='page' key={id} onClick={() => store.setPage(id)}>
-                <div className={store.state.page ===
-                id ? 'activeText' : 'passiveText'}>{v}</div>
-                <div className={store.state.page === id ? 'activeLine' : ''} />
+              <div className='block'>
+                <div className='page' key={id} onClick={() => store.setPage(id)}>
+                  <div className={store.state.page ===
+                  id ? 'activeText' : 'passiveText'}>{v}</div>
+                  <div className={store.state.page === id ? 'activeLine' : ''}/>
+                </div>
+                <div className={store.state.page === id ? 'line--active' 
+                : 'line-passive'}></div>
               </div>
             )
           })}
