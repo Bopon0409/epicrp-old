@@ -23,6 +23,7 @@ export const Input = observer((props: InputProps) => {
     setValue('')
   }
 
+  
   useEffect(() => {
     inputRef.current?.focus();
 }, []);
