@@ -8,11 +8,11 @@ const setAuthActive = active => window.trigger('auth.toggle', authData(active))
 const autoLogin = () => window.trigger('auth.toggle', autoLoginData)
 
 const testAuthAnswer = (result = false, error = 'Ошибка') => {
-  window.trigger('auth.authAnswer', result, error)
+  window.trigger('auth.authAnswer', JSON.stringify({ result, error }))
 }
 
 const testRegisterAnswer = (result = false, error = 'Ошибка') => {
-  window.trigger('auth.registerAnswer', result, error)
+  window.trigger('auth.registerAnswer', JSON.stringify({ result, error }))
 }
 
 window.test.auth = {

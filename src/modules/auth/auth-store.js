@@ -69,12 +69,12 @@ class AuthStore {
     this.clearInputs()
   }
 
-  authServerAnswer = (result, error) => {
+  authServerAnswer = ({ result, error }) => {
     if (result) this.state.active = false
     else this.state.errorMsg = error
   }
 
-  regServerAnswer = (result, error) => {
+  regServerAnswer = ({ result, error }) => {
     if (result) {
       this.state.isLogin = true
       this.clearInputs()
