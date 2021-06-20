@@ -107,7 +107,7 @@ class AuthStore {
   registerValidate = () => {
     const { email, login, pass, pass2 } = this.state
 
-    const emailRegExp = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+    const emailRegExp = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
     if (emailRegExp.test(email) === false)
       return this.setErrorMsg(this.ERROR_MESSAGES[5])
     if (/^[a-zA-Z1-9]+$/.test(login) === false)
