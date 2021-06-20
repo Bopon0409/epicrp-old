@@ -43,7 +43,7 @@ class PlayerMenuStore {
     reportStatus: 'waiting',
     reportAdminName: null,
     reportData: [],
-    reportRatings: 0
+    reportRatings: 0,
   }
 
   setActive = (active: boolean) => this.state.active = active

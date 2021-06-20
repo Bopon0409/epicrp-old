@@ -50,8 +50,6 @@ export const PlayerMenu = observer(() => {
 
   const keyHandler = (event: React.KeyboardEvent) => keyUpHandler(event)
 
-  console.log()
-
   return active ? (
     <div className='player-menu' onKeyDown={keyHandler} tabIndex={0}>
       <Menu />

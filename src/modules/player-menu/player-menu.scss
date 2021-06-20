@@ -22,11 +22,14 @@
 }
 
 @media (min-width: 2560px) {
+  .player-menu {
+    zoom: 1.4;
+  }
 }
 
 @media (max-width: 1600px) {
   .player-menu {
-    zoom: 0.9;
+    zoom: 0.85;
   }
 }
 

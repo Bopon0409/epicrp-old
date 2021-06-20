@@ -44,14 +44,16 @@ export const Report = observer(() => {
       <ReportAside />
       <div className='report__main'>
         <div className='report__container'>
-          {reportStatus === 'waiting' && <ReportEmptyLabel />}
-          {reportStatus !== 'waiting' && (
-            <>
-              <div className='messages'>{messages}</div>
-              <ReportAdminWaiting />
-              <ReportRatings />
-            </>
-          )}
+          <div className='report__list'>
+            {reportStatus === 'waiting' && <ReportEmptyLabel />}
+            {reportStatus !== 'waiting' && (
+              <>
+                <div className='messages'>{messages}</div>
+                <ReportAdminWaiting />
+                <ReportRatings />
+              </>
+            )}
+          </div>
         </div>
 
         <div className='report__input-container'>

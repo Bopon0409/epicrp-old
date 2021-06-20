@@ -56,10 +56,26 @@
         background: #313a4b;
         border-radius: 15px 15px 0 0;
         height: 80%;
-        display: flex;
-        flex-direction: column;
         padding: 50px;
         box-sizing: border-box;
+
+        .report__list {
+          width: 100%;
+          height: 95%;
+          box-sizing: border-box;
+          overflow-y: auto;
+          display: flex;
+          flex-direction: column;
+
+          &::-webkit-scrollbar {
+            width: 4px;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: #f2c94c;
+          }
+        }
 
         .report__ratings {
           margin-top: 40px;
@@ -114,6 +130,7 @@
             max-width: 40%;
             padding: 10px 10px;
             margin-bottom: 5px;
+            word-break: break-all;
           }
 
           &__time {
