@@ -122,13 +122,17 @@ class AdminStore {
   adminAction = (name: string) => {
     const { player } = this.state
     if (!player) return
+    // window.frontTrigger(`admin.action.${name}`, player?.id)
     // @ts-ignore
-    window.frontTrigger(`admin.action.${name}`, player?.id)
+    window.mp.invoke('command', `${name} ${player?.id}`)
   }
 
   adminTeleport = (teleport: string) => {
+    const { player } = this.state
+    if (!player) return
     // @ts-ignore
-    window.frontTrigger(`admin.teleport.${teleport}`)
+    // window.frontTrigger(`admin.teleport.${teleport}`)
+    window.mp.invoke('command', `${teleport} ${player?.id}`)
   }
 
   chatMsgDispatch = (msg: string) => {
