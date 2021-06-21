@@ -72,9 +72,9 @@ const fatherNames = [
   'Louis',
   'Samuel',
   'Anthony',
+  'Claude',
   'John',
-  'Niko',
-  'Claude'
+  'Niko'
 ]
 
 const motherNames = [

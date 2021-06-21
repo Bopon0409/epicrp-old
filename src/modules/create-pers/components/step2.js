@@ -1,7 +1,7 @@
 import React                from 'react'
 import { observer }         from 'mobx-react-lite'
 import store                from '../create-pers-store/create-pers-store'
-import { mothers, fathers } from '../data'
+import { mothers, fathers } from '../create-pers-store/data'
 
 export default observer(() => {
   const {
