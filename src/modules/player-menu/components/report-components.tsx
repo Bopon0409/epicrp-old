@@ -6,11 +6,13 @@ import { RatingStar } from '../img/rating-star'
 
 export const ReportRatings = observer(() => {
   const stars = [1, 2, 3, 4, 5]
-  const { reportStatus, reportRatings } = store.reportState
+  const { reportStatus, reportRatings, reportAdminName } = store.reportState
 
   return reportStatus === 'closed' ? (
     <div className='report__ratings'>
-      <div className='label'>Администратор Ched Nocksfeel закрыл обращение</div>
+      <div className='label'>
+        Администратор {reportAdminName} закрыл обращение
+      </div>
       <div className='stars__container'>{
         stars.map((star, i) => (
           <RatingStar active={star <= reportRatings} num={star} key={i} />

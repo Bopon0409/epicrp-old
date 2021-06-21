@@ -46,7 +46,11 @@ class AdminReportStore {
   }
 
   removeReport = (id: number) => {
-    if (this.state.currentReportId === id) this.state.currentReportId = null
+    if (this.state.currentReportId === id) {
+      this.state.status = 'list'
+      this.state.blockedList = false
+      this.state.currentReportId = null
+    }
     this.state.reportList = this.state.reportList.filter((report) => {
       return report.id !== id
     })

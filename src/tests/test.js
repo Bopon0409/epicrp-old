@@ -23,9 +23,9 @@ import './player-menu/player-menu.test'
 import './clothes-shop/clothes-shop.test'
 import './spawn-menu/spawn-menu'
 import './admin-report/admin-report.test'
+import './death-menu/death-menu'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.chat.setChatShow(true)
-  window.test.chat.testChatPushMsg()
+  window.test.deathMenu.open()
 }
