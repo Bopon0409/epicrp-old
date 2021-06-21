@@ -29,7 +29,6 @@ class AdminReportStore {
     const { currentReportId: id } = this.state
     return this.state.reportList.find(report => report.id === id) || null
   }
-
   get time (): string {
     const time = new Date()
     return `${time.getHours()}:${time.getMinutes()}`
@@ -69,8 +68,7 @@ class AdminReportStore {
 
   adminSendMsg = () => {
     const { input: msg, currentReportId, adminName: name } = this.state
-    const report = this.state.reportList
-      .find(report => report.id === currentReportId)
+    const report = this.currentReport
     if (!report || !msg.length) return
     report.msgList.push({ name, msg, type: 'admin_msg', time: this.time })
     this.state.input = ''
