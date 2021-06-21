@@ -31,7 +31,8 @@ class AdminReportStore {
   }
 
   get time (): string {
-    return new Date().toLocaleTimeString().slice(0, -3)
+    const time = new Date()
+    return `${time.getHours()}:${time.getMinutes()}`
   }
 
   //=============================   Report Func   ==============================
