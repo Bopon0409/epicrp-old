@@ -2,7 +2,6 @@ import React        from 'react'
 import { observer } from 'mobx-react-lite'
 import classNames   from 'classnames'
 import hintImg      from '../img/hint.svg'
-import { hintText } from '../config'
 import { store }    from '../electrician-store'
 
 export const Hint = observer((props: { type: 'small' | 'big' }) => {
@@ -13,7 +12,13 @@ export const Hint = observer((props: { type: 'small' | 'big' }) => {
     <div className={classes}>
       <div className='hint__container'>
         <img className='hint__img' src={hintImg} alt='' />
-        <div className='hint__text'>{hintText}</div>
+        <div className='hint__text'>
+          В данной мини - игре Вам предстоит вращать фигуры при
+          помощи левой кнопки мыши так, чтобы все они были замкнуты между собой,
+          и ток прошёл из одного электрощита к другому. На выполнение этой
+          задачи у Вас будет {store.initTimer} секунд. Если Вы не сможете
+          справиться за {store.initTimer} секунд, игра будет окончена.
+        </div>
       </div>
 
       {!isSmall ? (
