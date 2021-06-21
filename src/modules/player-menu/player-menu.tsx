@@ -4,6 +4,7 @@ import { store }            from './player-menu-store'
 import { Menu }             from './components/menu'
 import { Report }           from './components/report'
 import './player-menu.scss'
+import { Stats }            from './components/stats'
 
 export const PlayerMenu = observer(() => {
   const { state: { active, currentMenuEl }, keyUpHandler } = store
@@ -34,6 +35,7 @@ export const PlayerMenu = observer(() => {
   const CurrentPage = () => {
     switch (currentMenuEl) {
       case 0:
+        return <Stats />
       case 1:
         return null
       case 2:
