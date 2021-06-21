@@ -26,8 +26,6 @@ import './admin-report/admin-report.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.createPers.setData()
-  window.test.createPers.setActive(true)
-  // window.test.chat.setChatShow(true)
-  // window.test.chat.testChatPushMsg()
+  window.test.bank.setData()
+  window.test.bank.setActive(true)
 }

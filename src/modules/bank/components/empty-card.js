@@ -6,6 +6,5 @@ import EmptyCardSvg from '../svg/empty-card'
 export default observer(() =>
   <div className='card-wrapper' onClick={store.createCardOpen}>
     <EmptyCardSvg />
-    <div className='card__empty-text'>Оформить новый счет</div>
   </div>
 )

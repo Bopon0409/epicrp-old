@@ -14,12 +14,6 @@
           "name": "Пополнение счёта", "change": 25000
         }
       ]
-    },
-    {
-      "balance": 0,
-      "cardName": "123",
-      "accountId": "000000006",
-      "operations": [ { "name": "Пополнение счёта", "change": 25000 } ]
     }
   ]
 }
