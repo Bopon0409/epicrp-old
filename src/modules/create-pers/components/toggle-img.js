@@ -21,8 +21,94 @@ export default observer(
     )
 
     const hairs = []
-    const max = step1.sex === 'male' ? 74 : 78
-    for (let i = 0; i <= max; i++) {
+    const hairsId = [
+      [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          72,
+          73
+      ], // male
+      [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          76,
+          77
+      ] // female
+    ];
+
+    const sex = step1.sex === 'male' ? 0 : 1;
+
+    hairsId[sex].map((hairId, i) => (
       hairs.push(
         <img
           key={i}
@@ -31,12 +117,12 @@ export default observer(
             ? 'toggle-img__item toggle-img__item_active'
             : 'toggle-img__item'
           }
-          onClick={() => onValueChange(i, valueName)}
-          src={`images/create-pers/${step1.sex}-hairs/id${i}.png`}
+          onClick={() => onValueChange(hairId, valueName)}
+          src={`images/create-pers/${step1.sex}-hairs/id${hairId}.png`}
           alt=''
         />
       )
-    }
+    ));
 
     const getList = () => {
       switch (type) {
