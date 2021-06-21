@@ -32,7 +32,7 @@ class HairStore {
 
   onValueChange = (value, valueName) => {
     this.state[valueName].value = value
-    window.frontTrigger('character.update', valueName, value)
+    window.frontTrigger('character.update', valueName, Number(value))
   }
 }
 

@@ -136,10 +136,10 @@ class CreatePersStore {
     const { value: range } = event.target
     if (type === 1) {
       this.setSliderValue1(range)
-      window.frontTrigger('character.update', 'parentsSimilarity', range)
+      window.frontTrigger('character.update', 'parentsSimilarity', Number(range))
     } else {
       this.setSliderValue2(range)
-      window.frontTrigger('character.update', 'skinColor', range)
+      window.frontTrigger('character.update', 'skinColor', Number(range))
     }
   }
 

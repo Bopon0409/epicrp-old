@@ -27,5 +27,6 @@ import './death-menu/death-menu'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.electrician.open(12, 1)
+  window.test.createPers.setData()
+  window.test.createPers.setActive(true)
 }

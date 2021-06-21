@@ -19,7 +19,8 @@ class ChatStore {
     storyMsg: [],
     storyPosition: -1,
     isOpacity: false,
-    messages: []
+    messages: [],
+    scrollRef: null
   }
 
   pushMessage = () => {
@@ -84,12 +85,12 @@ class ChatStore {
     else this.state.activeBtn = 'ic'
   }
 
-  keyPressHandler = (event, scrollRef) => {
+  keyPressHandler = (event) => {
     const { storyPosition, active, storyMsg } = this.state
     switch (event.keyCode) {
       case 13:
         if (active) {
-          scrollRef.current?.scrollIntoView()
+          this.state.scrollRef.current?.scrollIntoView()
           this.pushMessage()
           this.setChatActive(false)
         }

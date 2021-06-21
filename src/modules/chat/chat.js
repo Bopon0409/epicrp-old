@@ -15,8 +15,9 @@ export default observer(() => {
 
   useEffect(() => {
     const { EventManager: em } = window
-    const keyPressHandlerWithScroll = e => store.keyPressHandler(e, scrollRef)
+    const keyPressHandlerWithScroll = e => store.keyPressHandler(e)
 
+    store.state.scrollRef = scrollRef
     em.addHandler('chat.push', store.pushChatMsgFromClient)
     em.addHandler('chat.push', scrollingOnPushMsg)
     em.addHandler('chat.active', store.setChatActive)
@@ -25,6 +26,7 @@ export default observer(() => {
     document.addEventListener('keyup', keyPressHandlerWithScroll)
 
     return () => {
+      store.state.scrollRef = null
       em.removeHandler('chat.push', store.pushChatMsgFromClient)
       em.removeHandler('chat.push', scrollingOnPushMsg)
       em.removeHandler('chat.active', store.setChatActive)
@@ -32,7 +34,7 @@ export default observer(() => {
       em.removeHandler('chat.clear', store.clearChat)
       document.removeEventListener('keyup', keyPressHandlerWithScroll)
     }
-  })
+  }, [])
 
   const inputContainer = active && (
     <>
