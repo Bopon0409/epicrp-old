@@ -27,7 +27,6 @@ import './death-menu/death-menu'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.adminReport.setName('name')
-  window.test.adminReport.setActive(true)
-  window.test.adminReport.loadReports()
+  window.test.createPers.setData()
+  window.test.createPers.setActive(true)
 }

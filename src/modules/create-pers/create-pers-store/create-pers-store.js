@@ -133,13 +133,14 @@ class CreatePersStore {
   }
 
   sliderChangeHandler = (event, type) => {
-    const { value: range } = event.target
+    let { value: range } = event.target
+    range = isNaN(range) ? range : Number(range)
     if (type === 1) {
       this.setSliderValue1(range)
-      window.frontTrigger('character.update', 'parentsSimilarity', Number(range))
+      window.frontTrigger('character.update', 'parentsSimilarity', range)
     } else {
       this.setSliderValue2(range)
-      window.frontTrigger('character.update', 'skinColor', Number(range))
+      window.frontTrigger('character.update', 'skinColor', range)
     }
   }
 
