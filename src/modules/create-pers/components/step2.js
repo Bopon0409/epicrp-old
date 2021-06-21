@@ -88,8 +88,8 @@ export default observer(() => {
           onChange={range => sliderChangeHandler(range, 2)}
         />
         <div className='slider__hint-container'>
-          <span className='slider__hint-item'>т</span>
-          <span className='slider__hint-item'>с</span>
+          <span className='slider__hint-item'>м</span>
+          <span className='slider__hint-item'>о</span>
         </div>
       </div>
     </div>
