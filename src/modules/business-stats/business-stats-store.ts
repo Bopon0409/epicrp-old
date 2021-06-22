@@ -5,7 +5,6 @@ class BusinessStatsStore {
     constructor() {
         makeAutoObservable(this, {}, { deep: true })
     }
-
     state: IState = {
         active: false,
         activeBlock: 0,
@@ -13,7 +12,6 @@ class BusinessStatsStore {
         stats: null,
         warehouse: null
     }
-
 //============================   Client Trigger   ============================
 
     setActive = (active: boolean) => this.state.active = active

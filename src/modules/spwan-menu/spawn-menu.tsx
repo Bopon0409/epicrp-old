@@ -4,25 +4,19 @@ import './spawn-menu.scss'
 import { store } from './spawn-menu-store'
 import cn from 'classnames'
 
-const About = `При выборе спавна в личном 
-доме, вы потеряеете оружие, которое находится в руках.`
-
-const SPAWN_POINT_NAMES = ['МЕСТО ВЫХОДА', 'АЭРОПОРТ', 'ЛИЧНЫЙ ДОМ', 'ФРАКЦИЯ']
-const SPAWN_POINT_BLOCK_TEXT = [
-  'ВЫ НИГДЕ НЕ ВЫХОДИЛИ',
-  'НЕДОСТУПНО',
-  'У ВАС НЕТ ЛИЧНОГО ДОМА',
-  'ВЫ НЕ СОСТОИТЕ ВО ФРАКЦИИ'
-];
-
+import { 
+  About, 
+  SPAWN_POINT_NAMES, 
+  SPAWN_POINT_BLOCK_TEXT, 
+  BlockBackground } from './constants';
 
 export const SpawnMenu = observer(() => {
   useEffect(() => {
     // @ts-ignore
     const { EventManager: em } = window
     const { setActive, setPoints, setIsCrime } = store
-    em.addHandler('spawn-menu.active', setActive);
-    em.addHandler('spawn-menu.points', setPoints);
+    em.addHandler('spawn-menu.active', setActive)
+    em.addHandler('spawn-menu.points', setPoints)
     em.addHandler('spawn-menu.isCrime', setIsCrime)
     console.log(store.state.isCrime)
     return () => {
@@ -40,13 +34,13 @@ export const SpawnMenu = observer(() => {
   }
 
   const spawnPointAction = (pointId: number) => {
-    if(store.state.points[pointId]){ 
-      store.spawnPoint(pointId);
-      store.setActive(false);
+    if (store.state.points[pointId]) {
+      store.spawnPoint(pointId)
+      store.setActive(false)
     }
   }
   console.log('debug', store.state.isCrime)
-  const IMAGES_NUMBER = !store.state.isCrime ? [0,1,2,3] : [0,1,2,4];
+  const IMAGES_NUMBER = !store.state.isCrime ? [0, 1, 2, 3] : [0, 1, 2, 4]
   return store.state.active ? (
     <div className='spawn-menu'>
       <div className='spawn-menu__background'></div>
@@ -67,7 +61,9 @@ export const SpawnMenu = observer(() => {
               )}
               {checkpoint(i)}
               <div
-                className={`point_block-background point_block-background-${IMAGES_NUMBER[i]}`}
+                className={`
+                ${BlockBackground} ${BlockBackground}-${IMAGES_NUMBER[i]}
+                `}
               ></div>
               <div
                 className={cn('point_block-name', {
