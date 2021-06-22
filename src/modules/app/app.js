@@ -26,6 +26,7 @@ import { PlayerMenu }  from '../player-menu/player-menu'
 import { ClothesShop } from '../clothes-shop/clothes-shop'
 import { SpawnMenu }   from '../spwan-menu/spawn-menu'
 import { AdminReport } from '../admin-report/admin-report'
+import { BusinessStats } from '../business-stats/business-stats'
 
 export default function App () {
   const devModules = (
@@ -62,6 +63,7 @@ export default function App () {
       <ClothesShop />
       <SpawnMenu />
       <AdminReport />
+      <BusinessStats />
     </>
   )
 }

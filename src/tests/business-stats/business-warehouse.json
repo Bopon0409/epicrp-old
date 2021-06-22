@@ -1,0 +1,92 @@
+{
+    "ItemsInStock": [
+        {
+            "name": "Ананасовый сироп",
+            "amount": 200,
+            "purchasePrice": 200,
+            "priceChangesForToday": "20" 
+        },
+        {
+            "name": "Ананасовый сироп",
+            "amount": 30,
+            "purchasePrice": 200,
+            "priceChangesForToday": "5"  
+        },
+        {
+            "name": "Ананасовый сироп",
+            "amount": 0,
+            "purchasePrice": 200,
+            "priceChangesForToday": "6"  
+        },
+        {
+            "name": "Ананасовый сироп",
+            "amount": 15,
+            "purchasePrice": 200,
+            "priceChangesForToday": "-20"  
+        },
+        {
+            "name": "Ананасовый сироп",
+            "amount": 8,
+            "purchasePrice": 200,
+            "priceChangesForToday": "40" 
+        },
+        {
+            "name": "Ананасовый сироп",
+            "amount": 0,
+            "purchasePrice": 200,
+            "priceChangesForToday": "10"  
+        },
+        {
+            "name": "Ананасовый сироп",
+            "amount": 0,
+            "purchasePrice": 200,
+            "priceChangesForToday": "3" 
+        },
+        {
+            "name": "Ананасовый сироп",
+            "amount": 200,
+            "purchasePrice": 200,
+            "priceChangesForToday": "20" 
+        },
+        {
+            "name": "Ананасовый сироп",
+            "amount": 30,
+            "purchasePrice": 200,
+            "priceChangesForToday": "5"  
+        },
+        {
+            "name": "Ананасовый сироп",
+            "amount": 5,
+            "purchasePrice": 200,
+            "priceChangesForToday": "6"  
+        },
+        {
+            "name": "Ананасовый сироп",
+            "amount": 15,
+            "purchasePrice": 200,
+            "priceChangesForToday": "-20"  
+        },
+        {
+            "name": "Ананасовый сироп",
+            "amount": 8,
+            "purchasePrice": 200,
+            "priceChangesForToday": "40" 
+        },
+        {
+            "name": "Ананасовый сироп",
+            "amount": 108,
+            "purchasePrice": 200,
+            "priceChangesForToday": "10"  
+        },
+        {
+            "name": "Ананасовый сироп",
+            "amount": 104,
+            "purchasePrice": 200,
+            "priceChangesForToday": "3" 
+        }
+    ],
+    "stockWorkload": {
+        "now": 32222,
+        "max": 100000
+    }
+}

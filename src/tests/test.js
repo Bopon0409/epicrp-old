@@ -21,11 +21,20 @@ import './taxi-tablet/taxi-tablet.test'
 import './admin/admin.test'
 import './player-menu/player-menu.test'
 import './clothes-shop/clothes-shop.test'
-import './spawn-menu/spawn-menu'
+import './spawn-menu/spawn-menu.test'
 import './admin-report/admin-report.test'
 
+import './business-stats/business-stats.test'
+
 export default function curTest () {
-  window.test.bg.setActive(true)
+  window.test.bg.setActive(true);
+  // window.test.spawnMenu.setActive(true);
+  // window.test.spawnMenu.setPoints();
+  // window.test.spawnMenu.setIsCrime();
+  // window.test.spawnMenu.set(true, true, true);
+  // window.test.businessStats.setActive(true);
+  // window.test.businessStats.setStats();
+  // window.test.businessStats.setWarehouse();
   // window.test.chat.setChatShow(true)
   // window.test.chat.testChatPushMsg()
 }

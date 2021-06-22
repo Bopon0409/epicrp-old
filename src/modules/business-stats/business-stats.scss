@@ -1,0 +1,109 @@
+@import './scss/statistics';
+@import './scss/warehouse';
+
+
+
+.business-stats{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(31, 35, 45, 0.99);
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Nunito;
+    color: #FFFFFF;
+
+    .business-name{
+        position: absolute;
+        width: 300px;
+        height: 90px;
+        top: 50px;
+        left: 94px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        & > div:first-child{
+            font-weight: 600;
+            font-size: 46px;
+            line-height: 40px;
+        }
+
+        & > div:last-child{
+            font-weight: 600;
+            font-size: 26px;
+            line-height: 20px;
+        }
+    }
+
+    .menu{
+        height: 40px;
+        width: 792px;
+        margin-top: 79px;
+
+        display: flex;
+        flex-direction: row;
+
+        &_key{
+            height: 40px;
+            width: 40px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 33px;
+        }
+
+        &_blocks-line{
+            height: 100%;
+            width: 626px;
+            margin: 0 46px 0 46px;
+            // background-color: rgba(0,200, 0, .5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .block{
+                padding: 9px 18px 9px 18px;
+                display: flex;
+                flex-direction: column;
+
+                .content{
+                    // background-color: black;
+                }
+                .block__line{
+                    height: 3px;
+                    width: 120%;
+                    margin-left: -10%;
+                    margin-top: 9px;
+                    background-color: rgba(255,255,255,0);
+                    border-radius: 3px;
+                }
+                .block__line--active{
+                    background-color: #F2C94C;
+                    box-shadow: 0px 0px 10px rgba(242, 201, 76, 0.45);
+                    border-radius: 3px;
+                    z-index: 10;
+                }
+            }
+
+        }
+
+        .line{
+            position: absolute;
+            width: 616px;
+            margin: 35px 0 0 88px;
+            // margin-top: 30px;
+            height: 1px;
+            background: #FFFFFF;
+            opacity: 0.2;
+            z-index: -1;
+        }
+    }
+}
