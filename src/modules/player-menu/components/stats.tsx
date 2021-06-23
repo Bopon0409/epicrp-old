@@ -16,7 +16,7 @@ export const Stats = observer(() => {
   useEffect(() => {
     // @ts-ignore
     const { EventManager: em } = window
-    const { setActive, setStatsData } = store
+    const { setStatsData } = store
     em.addHandler('player-menu.active', true)
     em.addHandler('player-menu.stats', setStatsData)
     console.log(store)

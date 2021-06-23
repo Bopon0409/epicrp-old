@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import React from 'react'
+// import React from 'react'
 import cn from 'classnames';
 
 import { store } from '../business-stats-store'
@@ -14,8 +14,9 @@ export const Warehouse = observer(() => {
                 <div className='item'>
                     <div className='item-name'>{item.name}</div>
                     <div className={cn('item-amount',
-                    {['red']: item.amount === 0, ['yellow']: (item.amount < 50 && item.amount > 0),
-                    ['blue']: item.amount > 50})}>
+                    {'red': item.amount === 0, 
+                    'yellow': (item.amount < 50 && item.amount > 0),
+                    'blue': item.amount > 50})}>
                         {item.amount > 0 ? item.amount+" шт" : 'закончился'}
                     </div>
                 </div>

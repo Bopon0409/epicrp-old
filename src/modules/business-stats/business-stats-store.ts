@@ -1,5 +1,5 @@
 import { makeAutoObservable }  from 'mobx';
-import { IState, IStats, IWarehouse, blockType }                             from './model'
+import { IState, IStats, IWarehouse }                             from './model'
 
 class BusinessStatsStore {
     constructor() {
