@@ -18,9 +18,6 @@ export const PlayerMenu = observer(() => {
     const keyHandler = (event: any) => keyUpHandler(event)
 
     // @ts-ignore
-    if (window.mp) window.mp.invoke('focus', true)
-
-    // @ts-ignore
     const { EventManager: em } = window
     em.addHandler('player-menu.active', setActive)
     em.addHandler('player-menu.stats', setStatsData)

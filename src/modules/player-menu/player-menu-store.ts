@@ -44,7 +44,11 @@ class PlayerMenuStore {
     reportRatings: 0
   }
 
-  setActive = (active: boolean) => this.state.active = active
+  setActive = (active: boolean) => {
+    // @ts-ignore
+    if (window.mp && active) window.mp.invoke('focus', true)
+    this.state.active = active
+  }
 
   setMenuEl = (el: number) => this.state.currentMenuEl = el
 
