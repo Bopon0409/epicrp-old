@@ -70,6 +70,12 @@ export interface IPlayer {
   punishments: IPunishment[]
 }
 
+export interface IVehicleValue{
+  name: string
+  number: string
+  playerId: string
+}
+
 export interface IState {
   active: boolean
   page: number
@@ -85,12 +91,9 @@ export interface IState {
   chatValue: string
   consoleValue: string
   playerValue: string
-  vehicleValue: {
-    name: string
-    number: string
-    playerId: string
-  }
-
+  vehicleValue: IVehicleValue
+  localChatMessages: string[]
+  localConsoleCommands: string[]
   punishmentsModalHistory: boolean
   punishmentModal: string | null
 

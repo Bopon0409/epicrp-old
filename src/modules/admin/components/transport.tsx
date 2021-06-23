@@ -6,35 +6,47 @@ import { HexColorPicker }               from 'react-colorful'
 
 export const Transport = observer(() => {
   const REAL_VEHICLES = store.state.realCars
-  const [vehicleName, setVehicleName] = useState('')
-  const [vehicleNum, setVehicleNum] = useState('')
-  const [playerId, setPlayerId] = useState('')
+  const { name, number } = store.state.vehicleValue;
 
   const [color, setColor] = useState('#aabbcc')
 
-  // изменение состояния при изменении input (vehicle name)
-  const changeVehicleNameValue = useCallback((e: any) => {
-    if (e.target.value.length <= 30) 
-    store.state.vehicleValue.name = e.target.value;
-  }, [setVehicleName])
-
   // изменение состояния при нажатии на блок с irl автомобилями
   const changeVehicleNameValueOnIRLVehicle = useCallback((name: string) => {
-    setVehicleName(name)
-  }, [setVehicleName])
+    store.setVehicleValue({
+      ...store.state.vehicleValue,
+      name: name
+    })
+  }, [])
+
+    // изменение состояния при изменении input (vehicle name)
+    const changeVehicleNameValue = useCallback((e: any) => {
+      if (e.target.value.length <= 30) {
+        store.setVehicleValue({
+          ...store.state.vehicleValue,
+          name: e.target.value
+        })
+      }
+    }, [])
 
   // изменение состояния при изменении input (vehicle num)
   const changeVehicleNumValue = useCallback((e: any) => {
     if (e.target.value.length <= 7){
-      store.state.vehicleValue.number = e.target.value;
+      store.setVehicleValue({
+        ...store.state.vehicleValue,
+        number: e.target.value
+      })
     }
   }, [])
 
   // изменение состояния при изменении input (vehicle num)
   const changePlayerIdValue = useCallback((e: any) => {
-    if (e.target.value.length <= 4 && e.target.value >= 0)
-    store.state.vehicleValue.playerId = e.target.value;
-  }, [setPlayerId])
+    if (e.target.value.length <= 4 && e.target.value >= 0){
+      store.setVehicleValue({
+        ...store.state.vehicleValue,
+        playerId: e.target.value
+      })
+    }
+  }, [])
 
   // действия с машинами
   const vehicleMoves = (type: string, vehicle: number) => {
@@ -42,7 +54,7 @@ export const Transport = observer(() => {
   }
 
   const spawnAction = (type: number) => {
-    store.spawnCar(vehicleName, vehicleNum, color, type)
+    store.spawnCar(name, number, color, type)
   }
 
   return (

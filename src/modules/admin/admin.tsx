@@ -84,15 +84,15 @@ export const Admin = observer(() => {
       <ModalHistory />
       <div className='admin'>
         <div className='pages'>{
-          Pages.map((v, id) => {
+          Pages.map((v, i) => {
             return (
-              <div className='block'>
-                <div className='page' key={id} onClick={() => store.setPage(id)}>
+              <div className='block' key={i}>
+                <div className='page' key={i} onClick={() => store.setPage(i)}>
                   <div className={store.state.page ===
-                  id ? 'activeText' : 'passiveText'}>{v}</div>
-                  <div className={store.state.page === id ? 'activeLine' : ''}/>
+                  i ? 'activeText' : 'passiveText'}>{v}</div>
+                  <div className={store.state.page === i ? 'activeLine' : ''}/>
                 </div>
-                <div className={store.state.page === id ? 'line--active' 
+                <div className={store.state.page === i ? 'line--active' 
                 : 'line-passive'}></div>
               </div>
             )

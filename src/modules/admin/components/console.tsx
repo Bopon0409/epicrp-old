@@ -10,8 +10,8 @@ export const Console = observer(() => {
   return (
     <div className='console'>
       <div className='messages'>{
-        console.map((v, id) =>
-          <div className='message' key={id}>{v}</div>
+        console.map((v, i) =>
+          <div className='message' key={i}>{v}</div>
         )}
       </div>
       <Input placeholder='Введите команду' action={consoleDispatch}
@@ -21,4 +21,4 @@ export const Console = observer(() => {
   )
 })
 
-const changeValue = (command: string) => store.state.consoleValue = command; 
+const changeValue = (command: string) => store.setPlayerValue(command);

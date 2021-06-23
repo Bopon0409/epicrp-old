@@ -21,4 +21,4 @@ export const Player = observer(() => {
   )
 })
 
-const changeValue = (player: string) => store.state.playerValue = player; 
+const changeValue = (player: string) => store.setPlayerValue(player);

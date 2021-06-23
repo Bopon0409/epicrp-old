@@ -1,7 +1,6 @@
-import React, { useCallback, useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { observer }                     from 'mobx-react-lite'
 import SendMessageSVG                   from '../images/send.svg'
-import { store } from '../admin-store';
 
 export interface InputProps {
   placeholder: string
@@ -15,10 +14,10 @@ export const Input = observer((props: InputProps) => {
   const { action, placeholder, value, changeValue } = props
   let inputRef = useRef<HTMLInputElement>(null);
 
-  const inputHandler = useCallback((event: any) => {
+  const inputHandler = (event: any) => {
     const { value } = event.target
     if (value.length <= 60) changeValue(value);
-  }, [])
+  }
 
   const submitHandler = () => {
     action(value)
