@@ -36,12 +36,7 @@ class AdminReportStore {
 
   //=============================   Report Func   ==============================
 
-  addReport = (report: IReport) => {
-    const messagesAmount = report.msgList.length;
-    const lastMessage = report.msgList[messagesAmount-1].msg;
-    if(lastMessage.length > 0)
-    this.state.reportList.push(report)
-  }
+  addReport = (report: IReport) => this.state.reportList.push(report)
 
   editReport = (report: IReport) => {
     const { id } = report
@@ -61,12 +56,10 @@ class AdminReportStore {
 
   playerSendMsg = (id: number, msg: string) => {
     const report = this.state.reportList.find(report => report.id === id)
-    if(msg.length > 0){
-      if (!report) return
-      report.msgList.push({
-        name: report.name, msg, type: 'player_msg', time: this.time
-      })
-    }
+    if (!report) return
+    report.msgList.push({
+      name: report.name, msg, type: 'player_msg', time: this.time
+    })
   }
 
   adminSendMsg = () => {
