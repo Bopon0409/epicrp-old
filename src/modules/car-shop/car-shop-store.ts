@@ -46,16 +46,15 @@ class CarShopStore {
   }
 
   payAction = (method: TMethod, cardId: TCardId) => {
-    const curMoney = this.getCurrentMoney(method, cardId)
-    if (this.currentCar && this.currentCar.price <= curMoney) {
-      const { state: { colorMain, colorAdditional }, currentCar } = this
-      // @ts-ignore
-      window.frontTrigger('car-shop.buy', {
-        carId: currentCar.id, colorMain, colorAdditional,
-        method, cardId: cardId
-      })
-    }
+    const { state: { colorMain, colorAdditional }, currentCar } = this
+    if (!currentCar) return
+    // @ts-ignore
+    window.frontTrigger('car-shop.buy', {
+      carId: currentCar.id, colorMain, colorAdditional,
+      method, cardId: cardId
+    })
   }
+
 }
 
 const store = new CarShopStore()

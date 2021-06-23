@@ -28,8 +28,4 @@ import './business-stats/business-stats.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.createPers.setData()
-  window.test.createPers.setActive(true)
-  // window.test.chat.setChatShow(true)
-  // window.test.chat.testChatPushMsg()
 }
