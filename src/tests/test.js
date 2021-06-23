@@ -27,6 +27,6 @@ import './business-stats/business-stats.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.hud.setAllData()
-  window.test.hud.setActive(true)
+  window.test.playerMenu.setStatsData()
+  window.test.playerMenu.setActive(true)
 }
