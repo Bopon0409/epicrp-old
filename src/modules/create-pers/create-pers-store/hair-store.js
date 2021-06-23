@@ -1,4 +1,6 @@
 import { makeAutoObservable } from 'mobx'
+import mainStore              from './create-pers-store'
+import { randomInt }          from '../../../services/services'
 
 const initState = {
   eyebrows: { value: 0, valueName: 'eyebrows', title: 'Брови' },
@@ -30,6 +32,18 @@ class HairStore {
 
   clear = () => this.state = initState
 
+  random = () => {
+    const colors = mainStore.state.serverData.colorHair
+    const color1 = colors[randomInt(0, colors.length - 1)].color
+    const color2 = colors[randomInt(0, colors.length - 1)].color
+    const color3 = colors[randomInt(0, colors.length - 1)].color
+    this.onValueChange(color1, 'colorEyebrows')
+    this.onValueChange(color2, 'colorBeard')
+    this.onValueChange(color3, 'colorHairstyle')
+    this.onValueChange(randomInt(0, 33), 'eyebrows')
+    this.onValueChange(randomInt(0, 28), 'beard')
+  }
+
   onValueChange = (value, valueName) => {
     value = isNaN(value) ? value : Number(value)
     this.state[valueName].value = value
@@ -37,4 +51,6 @@ class HairStore {
   }
 }
 
-export default new HairStore()
+export default new
+
+HairStore()

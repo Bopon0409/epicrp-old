@@ -1,4 +1,6 @@
 import { makeAutoObservable } from 'mobx'
+import mainStore              from './create-pers-store'
+import { randomInt }          from '../../../services/services'
 
 const initState = {
   eyeSize: { value: 0, valueName: 'eyeSize', title: 'Размер глаз' },
@@ -13,6 +15,13 @@ class EyesStore {
   state = initState
 
   clear = () => this.state = initState
+
+  random = () => {
+    const colors = mainStore.state.serverData.colorEyes
+    const color = colors[randomInt(0, colors.length - 1)].color
+    this.onValueChange(randomInt(-100, 100) / 100, 'eyeSize')
+    this.onValueChange(color, 'colorEyes')
+  }
 
   onValueChange = (value, valueName) => {
     value = isNaN(value) ? value : Number(value)

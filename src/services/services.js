@@ -5,7 +5,9 @@ const uData = item => {
   const isArray = item => typeof item === 'object' && Array.isArray(item)
 
   if (isObject(item)) {
-    for (const prop in item) item[prop] = uData(item[prop])
+    for (const prop in item) { // noinspection JSUnfilteredForInLoop
+      item[prop] = uData(item[prop])
+    }
   } else if (isArray(item)) {
     item = item.map(i => (isObject(i) ? { ...uData(i), uid: uuid() } : i))
   }
@@ -29,13 +31,22 @@ const clearFormatNum = (num, filler) => {
 }
 
 const priceFormat = (price) => {
-  let priceStr = price + "";
+  let priceStr = price + ''
 
   return priceStr
     .split(/(?=(?:\d{3})+(?!\d))/)
-    .join(".");
+    .join('.')
 }
 
+const randomInt = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
 
-
-export { uData, formatNum, formatCardNumber, clearFormatNum, priceFormat }
+export {
+  uData,
+  formatNum,
+  formatCardNumber,
+  clearFormatNum,
+  priceFormat,
+  randomInt
+}

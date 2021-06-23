@@ -1,10 +1,12 @@
-import { makeAutoObservable }       from 'mobx'
-import { motherNames, fatherNames } from './data'
-import clothesStore                 from './clothes-store'
-import eyesStore                    from './eyes-store'
-import faceStore                    from './face-store'
-import hairStore                    from './hair-store'
-import leatherStore                 from './leather-store'
+import { makeAutoObservable } from 'mobx'
+import { randomInt }          from '../../../services/services'
+import clothesStore           from './clothes-store'
+import eyesStore              from './eyes-store'
+import faceStore              from './face-store'
+import hairStore              from './hair-store'
+import leatherStore           from './leather-store'
+import { motherNames, fatherNames, mothers, fathers }
+                              from './data'
 
 const initStep1 = {
   name: '', surname: '', nameErr: '', surnameErr: '',
@@ -30,6 +32,26 @@ class CreatePersStore {
     step2: initStep2,
     menuActive: 1,
     serverData: {}
+  }
+
+  random = () => {
+    leatherStore.random()
+    eyesStore.random()
+    faceStore.random()
+    hairStore.random()
+
+    const motherNum = randomInt(0, mothers.length - 1)
+    const fatherNum = randomInt(0, fathers.length - 1)
+
+
+    this.setMotherName(motherNames[motherNum])
+    this.setFatherName(fatherNames[fatherNum])
+    this.setActiveMother(motherNum)
+    this.setActiveFather(fatherNum)
+
+
+    this.sliderChangeHandler(randomInt(0, 100) / 100, 1)
+    this.sliderChangeHandler(randomInt(0, 100) / 100, 2)
   }
 
   clear = () => {

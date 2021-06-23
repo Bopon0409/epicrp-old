@@ -6,10 +6,9 @@ import prevImgActive       from '../images/prev-active.svg'
 
 export default observer(() => {
   const { step } = store.state
-  const { setStep, finishCreate } = store
+  const { setStep, finishCreate, random } = store
   const [prevActive, setPrevActive] = useState(false)
   const [nextActive, setNextActive] = useState(false)
-  const randomHandler = () => window.frontTrigger('character.random')
   const cancelHandler = () => {
     store.clear()
     window.frontTrigger('character.cancel')
@@ -28,7 +27,7 @@ export default observer(() => {
       <div className='transition__item' onClick={cancelHandler}>
         Отменить
       </div>
-      <div className='transition__item' onClick={randomHandler}>
+      <div className='transition__item' onClick={random}>
         Случайно
       </div>
       <div

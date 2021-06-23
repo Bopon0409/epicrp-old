@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx'
+import { randomInt }          from '../../../services/services'
 
 const initState = {
   noseWidth: { value: 0, valueName: 'noseWidth', title: 'Ширина носа' },
@@ -16,7 +17,7 @@ const initState = {
   brokenNose: {
     value: 0,
     valueName: 'brokenNose',
-    title: 'Поломоность носа'
+    title: 'Поломанность носа'
   },
   eyebrowHeight: {
     value: 0,
@@ -54,7 +55,7 @@ const initState = {
   chinIndent: {
     value: 0,
     valueName: 'chinIndent',
-    title: 'Отступ подборода'
+    title: 'Отступ подбородка'
   }
 }
 
@@ -66,6 +67,26 @@ class FaceStore {
   state = initState
 
   clear = () => this.state = initState
+
+  randomSlider = () => randomInt(-100, 100) / 100
+
+  random = () => {
+    this.onValueChange(this.randomSlider(), 'noseWidth')
+    this.onValueChange(this.randomSlider(), 'noseHeight')
+    this.onValueChange(this.randomSlider(), 'noseTipLength')
+    this.onValueChange(this.randomSlider(), 'depthOfTheBridgeOfTheNose')
+    this.onValueChange(this.randomSlider(), 'brokenNose')
+    this.onValueChange(this.randomSlider(), 'eyebrowHeight')
+    this.onValueChange(this.randomSlider(), 'heightOfCheekbones')
+    this.onValueChange(this.randomSlider(), 'cheekboneWidth')
+    this.onValueChange(this.randomSlider(), 'cheekDepth')
+    this.onValueChange(this.randomSlider(), 'lipThickness')
+    this.onValueChange(this.randomSlider(), 'jawWidth')
+    this.onValueChange(this.randomSlider(), 'jawShape')
+    this.onValueChange(this.randomSlider(), 'chinHeight')
+    this.onValueChange(this.randomSlider(), 'chinDepth')
+    this.onValueChange(this.randomSlider(), 'chinIndent')
+  }
 
   onValueChange = (value, valueName) => {
     value = isNaN(value) ? value : Number(value)

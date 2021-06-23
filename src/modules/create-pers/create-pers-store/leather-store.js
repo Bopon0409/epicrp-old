@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx'
+import { randomInt }          from '../../../services/services'
 
 const initState = {
   stains: { value: 0, valueName: 'stains', title: 'Пятна' },
@@ -15,6 +16,13 @@ class LeatherStore {
   state = initState
 
   clear = () => this.state = initState
+
+  random = () => {
+    this.onValueChange(randomInt(0, 6), 'stains')
+    this.onValueChange(randomInt(0, 6), 'leatherAge')
+    this.onValueChange(randomInt(0, 6), 'sunDamage')
+    this.onValueChange(randomInt(0, 6), 'freckles')
+  }
 
   onValueChange = (value, valueName) => {
     value = isNaN(value) ? value : Number(value)
