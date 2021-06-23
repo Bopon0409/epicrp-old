@@ -49,7 +49,9 @@ class HudStore {
     alerts: [],
     alertsCount: 0,
     turnAlerts: [],
-    dialogueTimer: null
+    dialogueTimer: null,
+    map: { width: 0, height: 0, bottom: 0, left: 0 },
+    mapBig: false
   }
 
   setHudActive = active => (this.state.active = active)
@@ -57,6 +59,12 @@ class HudStore {
     for (const key in data) {
       if (data.hasOwnProperty(key)) this.state[key] = data[key]
     }
+  }
+
+  get marginLeft () {
+    const { map, mapBig } = this.state
+    const margin = map.left + map.width + 20
+    return mapBig ? margin * 1.5 : margin + 20
   }
 
   addAlert = alert => {

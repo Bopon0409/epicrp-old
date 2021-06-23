@@ -43,12 +43,10 @@ class CreatePersStore {
     const motherNum = randomInt(0, mothers.length - 1)
     const fatherNum = randomInt(0, fathers.length - 1)
 
-
     this.setMotherName(motherNames[motherNum])
     this.setFatherName(fatherNames[fatherNum])
     this.setActiveMother(motherNum)
     this.setActiveFather(fatherNum)
-
 
     this.sliderChangeHandler(randomInt(0, 100) / 100, 1)
     this.sliderChangeHandler(randomInt(0, 100) / 100, 2)

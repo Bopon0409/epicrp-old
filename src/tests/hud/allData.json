@@ -4,16 +4,9 @@
   "time": "19:30",
   "date": "10.02.2021",
   "money": 150000,
-  "indicators": {
-    "1": true,
-    "2": true,
-    "3": false
-  },
+  "indicators": { "1": true, "2": true, "3": false },
   "geo": { "quarter": "Альта-Стрит", "street": "Хавик-Авеню" },
-  "microphone": {
-    "active": false,
-    "btn": "N"
-  },
+  "microphone": { "active": false, "btn": "N" },
   "mission": {
     "active": true,
     "title": "Миссия невыполнима",
@@ -31,8 +24,7 @@
       "electricity": true
     }
   },
-  "hint": {
-    "button": "",
-    "action": ""
-  }
+  "hint": { "button": "", "action": "" },
+  "map": { "width": 270, "height": 190.3, "bottom": 16.2, "left": 28.8 },
+  "mapBig": false
 }
