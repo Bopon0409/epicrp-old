@@ -15,7 +15,10 @@ export const Console = observer(() => {
         )}
       </div>
       <Input placeholder='Введите команду' action={consoleDispatch}
-        blockRef={inputCommand} />
+        blockRef={inputCommand} value={store.state.consoleValue} 
+        changeValue={changeValue} />
     </div>
   )
 })
+
+const changeValue = (command: string) => store.state.consoleValue = command; 

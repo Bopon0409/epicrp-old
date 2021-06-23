@@ -20,6 +20,10 @@ class AdminStore {
     killLogs: [],
     adminLogs: [],
 
+    chatValue: '',
+    consoleValue: '',
+    playerValue: '',
+
     punishmentsModalHistory: false,
     punishmentModal: null,
     modalInputTerm: '',

@@ -82,6 +82,10 @@ export interface IState {
   killLogs: ILog[]
   adminLogs: ILog[]
 
+  chatValue: string
+  consoleValue: string
+  playerValue: string
+
   punishmentsModalHistory: boolean
   punishmentModal: string | null
 
