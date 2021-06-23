@@ -14,7 +14,8 @@ export const Transport = observer(() => {
 
   // изменение состояния при изменении input (vehicle name)
   const changeVehicleNameValue = useCallback((e: any) => {
-    if (e.target.value.length <= 30) setVehicleName(e.target.value)
+    if (e.target.value.length <= 30) 
+    store.state.vehicleValue.name = e.target.value;
   }, [setVehicleName])
 
   // изменение состояния при нажатии на блок с irl автомобилями
@@ -24,12 +25,15 @@ export const Transport = observer(() => {
 
   // изменение состояния при изменении input (vehicle num)
   const changeVehicleNumValue = useCallback((e: any) => {
-    if (e.target.value.length <= 7) setVehicleNum(e.target.value)
-  }, [setVehicleNum])
+    if (e.target.value.length <= 7){
+      store.state.vehicleValue.number = e.target.value;
+    }
+  }, [])
 
   // изменение состояния при изменении input (vehicle num)
   const changePlayerIdValue = useCallback((e: any) => {
-    if (e.target.value.length <= 4) setPlayerId(e.target.value)
+    if (e.target.value.length <= 4 && e.target.value >= 0)
+    store.state.vehicleValue.playerId = e.target.value;
   }, [setPlayerId])
 
   // действия с машинами
@@ -83,7 +87,7 @@ export const Transport = observer(() => {
               type='text'
               className='input_block-inputBg_input'
               placeholder='Введите название автомобиля'
-              value={vehicleName}
+              value={store.state.vehicleValue.name}
               onChange={changeVehicleNameValue}
             />
             <div className='input_block-inputBg_icon'>
@@ -98,14 +102,14 @@ export const Transport = observer(() => {
               type='text'
               className='transport__create-property_type-input'
               placeholder='Введите номер'
-              value={vehicleNum}
+              value={store.state.vehicleValue.number}
               onChange={changeVehicleNumValue}
             />
             <input
-              type='text'
+              type='number'
               className='transport__create-property_type-input'
               placeholder='Введите ID игрока'
-              value={playerId}
+              value={store.state.vehicleValue.playerId}
               onChange={changePlayerIdValue}
             />
             <div onClick={() => spawnAction(0)}>Спавн всем</div>

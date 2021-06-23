@@ -14,8 +14,11 @@ export const Player = observer(() => {
       </div>
       <div className='player__input'>
         <Input placeholder='Введите данные игрока'
-          action={store.playerRequest} />
+          action={store.playerRequest} value={store.state.playerValue}
+          changeValue={changeValue} />
       </div>
     </div>
   )
 })
+
+const changeValue = (player: string) => store.state.playerValue = player; 

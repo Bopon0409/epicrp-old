@@ -20,6 +20,15 @@ class AdminStore {
     killLogs: [],
     adminLogs: [],
 
+    chatValue: '',
+    consoleValue: '',
+    playerValue: '',
+    vehicleValue: {
+      name: '',
+      number: '',
+      playerId: ''
+    },
+
     punishmentsModalHistory: false,
     punishmentModal: null,
     modalInputTerm: '',
@@ -51,7 +60,7 @@ class AdminStore {
 
   setPunishmentsModalHistory = (active: boolean) =>{
     this.state.punishmentsModalHistory = active;
-    if(this.state.punishmentModal != null) this.state.punishmentModal = null;
+    if(this.state.punishmentModal) this.state.punishmentModal = null;
   }
   setPunishmentModal = (type: string | null) =>{
     this.state.punishmentModal = type;

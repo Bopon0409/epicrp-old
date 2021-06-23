@@ -1,0 +1,194 @@
+{
+    "businessName": [
+        "24/7",
+        "Магазин товаров"
+    ],
+    "businessBalance": 250000,
+    "dailyConsumption": [
+        {
+            "reason": "ya ne ebu po4emy",
+            "price": 8000
+        },
+        {
+            "reason": "ya ne ebu po4emy",
+            "price": 5000
+        },
+        {
+            "reason": "ya ne ebu po4emy",
+            "price": 3000
+        },
+        {
+            "reason": "ya ne ebu po4emy",
+            "price": 1000
+        },
+        {
+            "reason": "ya ne ebu po4emy",
+            "price": 500
+        },
+        {
+            "reason": "ya ne ebu po4emy",
+            "price": 15000
+        },
+        {
+            "reason": "ya ne ebu po4emy",
+            "price": 25000
+        },
+        {
+            "reason": "ya ne ebu po4emy",
+            "price": 35000
+        },
+        {
+            "reason": "ya ne ebu po4emy",
+            "price": 5000
+        }
+    ],
+    "dailyIncome": [
+        {
+            "reason": "Просто пиздатый магазин",
+            "price": 5000
+        },
+        {
+            "reason": "Просто пиздатый магазин",
+            "price": 5000
+        },
+        {
+            "reason": "Просто пиздатый магазин",
+            "price": 1000000
+        },
+        {
+            "reason": "Просто пиздатый магазин",
+            "price": 7000
+        },
+        {
+            "reason": "Просто пиздатый магазин",
+            "price": 30000
+        },
+        {
+            "reason": "Просто пиздатый магазин",
+            "price": 3000
+        },
+        {
+            "reason": "Просто пиздатый магазин, вот и причина",
+            "price": 5000
+        },
+        {
+            "reason": "Просто пиздатый магазин, вот и причина",
+            "price": 5000
+        },
+        {
+            "reason": "Просто пиздатый магазин, вот и причина",
+            "price": 5000
+        }
+    ],
+    "oftenBuy": [
+        {
+            "name": "Апельсиновый сок",
+            "price": 200
+        },
+        {
+            "name": "Апельсиновый сок",
+            "price": 200
+        },
+        {
+            "name": "Апельсиновый сок",
+            "price": 200
+        },
+        {
+            "name": "Апельсиновый сок",
+            "price": 200
+        }
+    ],
+
+    "weeklyStatistics": {
+        "consumption": [
+            {
+                "dayName": "Понедельник",
+                "value": 70000
+            },
+            {
+                "dayName": "Вторник",
+                "value": 50000
+            },
+            {
+                "dayName": "Среда",
+                "value": 20000
+            },
+            {
+                "dayName": "Четверг",
+                "value": 170000
+            },
+            {
+                "dayName": "Пятница",
+                "value": 40000
+            },
+            {
+                "dayName": "Суббота",
+                "value": 60000
+            },
+            {
+                "dayName": "Воскресенье",
+                "value": 70000
+            }
+        ],
+        "income": [
+            {
+                "dayName": "Понедельник",
+                "value": 20000
+            },
+            {
+                "dayName": "Вторник",
+                "value": 40000
+            },
+            {
+                "dayName": "Среда",
+                "value": 80000
+            },
+            {
+                "dayName": "Четверг",
+                "value": 160000
+            },
+            {
+                "dayName": "Пятница",
+                "value": 320000
+            },
+            {
+                "dayName": "Суббота",
+                "value": 80000
+            },
+            {
+                "dayName": "Воскресенье",
+                "value": 180000
+            }
+        ],
+        "quantitySoldItems": [
+            {
+                "dayName": "Понедельник",
+                "value": 200
+            },
+            {
+                "dayName": "Вторник",
+                "value": 250
+            },
+            {
+                "dayName": "Среда",
+                "value": 333
+            },
+            {
+                "dayName": "Четверг",
+                "value": 442
+            },
+            {
+                "dayName": "Пятница",
+                "value": 111
+            },
+            {
+                "dayName": "Суббота",
+                "value": 222
+            },
+            {
+                "dayName": "Воскресенье",
+                "value": 123
+            }
+        ]
+    }
+}

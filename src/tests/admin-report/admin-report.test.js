@@ -33,7 +33,7 @@ const setName = (name) =>
   window.strTrigger('admin-report.name', name)
 
 const playerSendMsg = (id) => window.strTrigger('admin-report.msg',
-  id, 'У меня сломался дед, подскажите, что делать??!?'
+  id, '123'
 )
 
 const loadReports = () =>
