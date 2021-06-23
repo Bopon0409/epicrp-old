@@ -49,7 +49,7 @@ class AdminStore {
   pushAdminLog = (log: ILog) => this.state.adminLogs.push(log)
   pushCarLog = (car: ITransport) => this.state.transport.push(car)
   pushMsg = (msg: IChatMessage) => {
-    this.state.chat.push(msg)
+    this.state.chat.push(msg);
   }
 
   pushRealCars = (cars: string[]) => this.state.realCars = cars
@@ -171,8 +171,8 @@ class AdminStore {
   }
 
   consoleDispatch = (command: string) => {
-    // @ts-ignore
     // window.frontTrigger(`admin.console`, command)
+    // @ts-ignore
     window.mp.invoke('command', command)
     store.state.localConsoleCommandsStorage.push(command);
   }

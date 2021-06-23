@@ -16,7 +16,7 @@ export interface InputProps {
 }
 
 export const Input = observer((props: InputProps) => {
-  const { action, placeholder, value, changeValue, type } = props;
+  const { action, placeholder, value, changeValue, type, blockRef } = props;
   const { localChatMessagesStorage, 
     localConsoleCommandsStorage,
     localPlayersStorage
@@ -37,12 +37,19 @@ export const Input = observer((props: InputProps) => {
       case 'player': store.setPlayerNumber(0); break;
       default: break;
     }
+
+    if(blockRef.current){
+      setTimeout(() => {
+        blockRef.current.scrollTo({ top: 1000, behavior: 'smooth' })
+      }, 1);
+    }
   }
 
 
   
   useEffect(() => {
     inputRef.current?.focus();
+    // blockRef.current.scrollTo(0, 1000);
 }, []);
 
 
