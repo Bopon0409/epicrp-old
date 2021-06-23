@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react'
-import { observer } from 'mobx-react-lite'
-import store         from './chat-store'
-import MsgList       from './components/msg-list'
-import ButtonView    from './components/button-view'
-import chatInputIcon from './images/chat-input-icon.svg'
+import { observer }                 from 'mobx-react-lite'
+import store                        from './chat-store'
+import MsgList                      from './components/msg-list'
+import ButtonView                   from './components/button-view'
+import chatInputIcon                from './images/chat-input-icon.svg'
 
 export default observer(() => {
   const { active, isShow } = store.state
@@ -11,7 +11,6 @@ export default observer(() => {
 
   const scrollRef = useRef()
   const inputRef = useRef()
-  const scrollingOnPushMsg = () => scrollRef.current?.scrollIntoView()
 
   useEffect(() => {
     const { EventManager: em } = window
@@ -19,7 +18,6 @@ export default observer(() => {
 
     store.state.scrollRef = scrollRef
     em.addHandler('chat.push', store.pushChatMsgFromClient)
-    em.addHandler('chat.push', scrollingOnPushMsg)
     em.addHandler('chat.active', store.setChatActive)
     em.addHandler('chat.show', store.setChatShow)
     em.addHandler('chat.clear', store.clearChat)
@@ -28,7 +26,6 @@ export default observer(() => {
     return () => {
       store.state.scrollRef = null
       em.removeHandler('chat.push', store.pushChatMsgFromClient)
-      em.removeHandler('chat.push', scrollingOnPushMsg)
       em.removeHandler('chat.active', store.setChatActive)
       em.removeHandler('chat.show', store.setChatShow)
       em.removeHandler('chat.clear', store.clearChat)
@@ -60,7 +57,6 @@ export default observer(() => {
           alt=''
           className='chat-input-icon'
           onClick={() => {
-            scrollingOnPushMsg()
             pushMessage()
             setChatActive(false)
           }}
@@ -72,10 +68,10 @@ export default observer(() => {
   return isShow ? (
     <>
       <div className='chat'>
-        <MsgList scrollRef={scrollRef} />
+        <MsgList />
         {inputContainer}
       </div>
-      {isShow && <div className='background-chat'/>}
+      {isShow && <div className='background-chat' />}
     </>
   ) : null
 })

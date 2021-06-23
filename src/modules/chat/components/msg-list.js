@@ -1,6 +1,7 @@
-import React from 'react'
-import { observer } from 'mobx-react-lite'
-import store from '../chat-store'
+import React          from 'react'
+import { observer }   from 'mobx-react-lite'
+import store          from '../chat-store'
+
 const className = require('classnames')
 
 export default observer(({ scrollRef }) => {
@@ -49,7 +50,7 @@ export default observer(({ scrollRef }) => {
   )
 
   return (
-    <div className={chatClass}>
+    <div className={chatClass} id='main-chat'>
       {messages.map((msg, i, arr) => {
         switch (msg.type) {
           case 'try':

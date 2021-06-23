@@ -46,11 +46,11 @@ export const Report = observer(() => {
       <ReportAside />
       <div className='report__main'>
         <div className='report__container'>
-          <div className='report__list'>
+          <div className='report__list' id='player-report-chat'>
             {reportStatus === 'waiting' && <ReportEmptyLabel />}
             {reportStatus !== 'waiting' && (
               <>
-                <div className='messages'>{messages}</div>
+                {messages}
                 <ReportAdminWaiting />
                 <ReportRatings />
               </>
@@ -64,12 +64,14 @@ export const Report = observer(() => {
               <input className='report__input' type='text' value={reportInput}
                 onChange={e => setReportInput(e.target.value)}
                 onFocus={() => setMenuBlock(true)}
-                onBlur={() => setMenuBlock(false)} />
+                onBlur={() => setMenuBlock(false)}
+                onKeyPress={store.inputKeyPressHandler}
+              />
 
               {reportStatus === 'process' && <img src={sendIcon} alt=''
                 className='send-icon' onClick={reportMsgSend} />}
             </>
-          ) : <div className='disable'>Недоступно</div>}
+          ) : null}
         </div>
 
         {reportStatus === 'waiting' ? (

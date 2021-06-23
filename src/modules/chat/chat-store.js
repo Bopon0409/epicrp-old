@@ -1,5 +1,4 @@
-// noinspection JSIgnoredPromiseFromCall
-
+import { scrollList } from '../../services/services'
 import { makeAutoObservable } from 'mobx'
 
 class ChatStore {
@@ -59,6 +58,7 @@ class ChatStore {
   }
 
   pushChatMsgFromClient = msg => {
+    scrollList('main-chat')
     const { messages } = this.state
     if (msg.type) {
       messages.push(msg)
@@ -90,7 +90,7 @@ class ChatStore {
     switch (event.keyCode) {
       case 13:
         if (active) {
-          this.state.scrollRef.current?.scrollIntoView()
+          scrollList('main-chat')
           this.pushMessage()
           this.setChatActive(false)
         }

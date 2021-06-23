@@ -3,8 +3,8 @@ import { observer }         from 'mobx-react-lite'
 import { store }            from './player-menu-store'
 import { Menu }             from './components/menu'
 import { Report }           from './components/report'
-import './player-menu.scss'
 import { Stats }            from './components/stats'
+import './player-menu.scss'
 
 export const PlayerMenu = observer(() => {
   const { state: { active, currentMenuEl }, keyUpHandler } = store

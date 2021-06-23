@@ -32,21 +32,19 @@ const clearFormatNum = (num, filler) => {
 
 const priceFormat = (price) => {
   let priceStr = price + ''
-
-  return priceStr
-    .split(/(?=(?:\d{3})+(?!\d))/)
-    .join('.')
+  return priceStr.split(/(?=(?:\d{3})+(?!\d))/).join('.')
 }
 
 const randomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
+const scrollList = id => {
+  const el = document.querySelector(`#${id}`)
+  setTimeout(() => el.scrollTo(0, 99999), 10)
+}
+
 export {
-  uData,
-  formatNum,
-  formatCardNumber,
-  clearFormatNum,
-  priceFormat,
-  randomInt
+  uData, formatNum, formatCardNumber, clearFormatNum,
+  priceFormat, randomInt, scrollList
 }

@@ -1,26 +1,25 @@
 import React, { useEffect } from 'react'
-import { observer } from 'mobx-react-lite'
-import { store } from './business-stats-store'
-import { MenuBlockNames } from './constants'
+import { observer }         from 'mobx-react-lite'
+import { store }            from './business-stats-store'
+import { MenuBlockNames }   from './constants'
+import { Statistics }       from './components/Statistics'
+import { Warehouse }        from './components/Warehouse'
+import cn                   from 'classnames'
 import './business-stats.scss'
-import cn from 'classnames'
-
-import { Statistics } from './components/Statistics';
-import { Warehouse } from './components/Warehouse';
 
 export const BusinessStats = observer(() => {
   useEffect(() => {
     // @ts-ignore
     const { EventManager: em } = window
     const { setActive, setStats, setWarehouse } = store
-    console.log(store)
-    em.addHandler('business-stats.active', setActive);
-    em.addHandler('business-stats.stats', setStats);
-    em.addHandler('business-stats.warehouse', setWarehouse);
+
+    em.addHandler('business-stats.active', setActive)
+    em.addHandler('business-stats.stats', setStats)
+    em.addHandler('business-stats.warehouse', setWarehouse)
     return () => {
-      em.removeHandler('business-stats.active', setActive);
-      em.removeHandler('business-stats.stats', setStats);
-      em.addHandler('business-stats.warehouse', setWarehouse);
+      em.removeHandler('business-stats.active', setActive)
+      em.removeHandler('business-stats.stats', setStats)
+      em.addHandler('business-stats.warehouse', setWarehouse)
     }
   }, [])
 
@@ -36,41 +35,48 @@ export const BusinessStats = observer(() => {
   }
 
   const keyClick = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    const KeyToLowwerCase = e.key.toLocaleLowerCase()
-    switch (KeyToLowwerCase) {
-    case 'q':
-        makePreviousBlockActive();
-        break;
-    case 'й':
-        makePreviousBlockActive();
-        break;
-    case 'e':
-        makeNextBlockActive();
-        break;
-    case 'у':
-        makeNextBlockActive();
-        break;
-    default:
-        break;
+    const KeyToLowerCase = e.key.toLocaleLowerCase()
+    switch (KeyToLowerCase) {
+      case 'q':
+        makePreviousBlockActive()
+        break
+      case 'й':
+        makePreviousBlockActive()
+        break
+      case 'e':
+        makeNextBlockActive()
+        break
+      case 'у':
+        makeNextBlockActive()
+        break
+      default:
+        break
     }
   }
 
   const currentPage = () => {
-      switch(store.state.activeBlock){
-        case 0: return <Statistics />;
-        case 1: return <Warehouse />;
-        case 2: return;
-        case 3: return;
-        case 4: return;
-      }
+    switch (store.state.activeBlock) {
+      case 0:
+        return <Statistics />
+      case 1:
+        return <Warehouse />
+      case 2:
+        return
+      case 3:
+        return
+      case 4:
+        return
+    }
   }
+
+  const { activeBlock } = store.state
 
   return store.state.active ? (
     <div className='business-stats' onKeyUp={keyClick} tabIndex={0}>
-        <div className='business-name'>
-            <div>{store.state.stats?.businessName[0]}</div>
-            <div>{store.state.stats?.businessName[1]}</div>
-        </div>
+      <div className='business-name'>
+        <div>{store.state.stats?.businessName[0]}</div>
+        <div>{store.state.stats?.businessName[1]}</div>
+      </div>
       <div className='menu'>
         <div className='menu_key' onClick={() => makePreviousBlockActive()}>Q
         </div>
@@ -78,10 +84,10 @@ export const BusinessStats = observer(() => {
           {MenuBlockNames.map((block, i) => (
             <div className='block' key={i}>
               <div
-                className='content'key={i}
+                className='content' key={i}
                 onClick={() => store.setActiveBlock(i)}> {block} </div>
-              <div className={cn('block__line', 
-              {['block__line--active']: store.state.activeBlock === i}
+              <div className={cn('block__line',
+                activeBlock === i && 'block__line--active'
               )} />
             </div>
           ))}

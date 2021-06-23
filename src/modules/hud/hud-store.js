@@ -20,19 +20,9 @@ class HudStore {
     date: '',
     money: 0,
     geo: { quarter: '', street: '' },
-    microphone: {
-      active: false,
-      btn: 'N'
-    },
-    hint: {
-      button: '',
-      action: ''
-    },
-    mission: {
-      active: false,
-      title: '',
-      text: ''
-    },
+    microphone: { active: false, btn: 'N' },
+    hint: { button: '', action: '' },
+    mission: { active: false, title: '', text: '' },
     indicators: {},
     speedometer: {
       active: false,

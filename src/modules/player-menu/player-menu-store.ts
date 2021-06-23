@@ -1,12 +1,10 @@
+import React                  from 'react'
 import { makeAutoObservable } from 'mobx'
 import {
-  IReportConnected,
-  IReportMsg, IReportState,
-  IState,
-  IStats,
-  IStatsData
+  IReportConnected, IReportMsg, IReportState,
+  IState, IStats, IStatsData
 }                             from './model'
-import React                  from 'react'
+import { scrollList }         from '../../services/services'
 
 class PlayerMenuStore {
   constructor () {
@@ -43,7 +41,7 @@ class PlayerMenuStore {
     reportStatus: 'waiting',
     reportAdminName: null,
     reportData: [],
-    reportRatings: 0,
+    reportRatings: 0
   }
 
   setActive = (active: boolean) => this.state.active = active
@@ -76,11 +74,11 @@ class PlayerMenuStore {
     if (data.exp !== undefined) this.stats.exp = data.exp
     if (data.hasVip !== undefined) this.stats.hasVip = data.hasVip
     if (data.properties !== undefined) this.stats.properties = data.properties
+    if (data.warnsCount !== undefined) this.stats.warnsCount = data.warnsCount
     if (data.fraction !== undefined) this.stats.fraction = data.fraction
     if (data.invites !== undefined) this.stats.invites = data.invites
     if (data.online !== undefined) this.stats.online = data.online
     if (data.name !== undefined) this.stats.name = data.name
-    if (data.warnsCount !== undefined) this.stats.warnsCount = data.warnsCount
     if (data.bank !== undefined) this.stats.bank = data.bank
     if (data.lvl !== undefined) this.stats.lvl = data.lvl
   }
@@ -118,7 +116,10 @@ class PlayerMenuStore {
   reportMsgSend = () => {
     const { reportState: { reportInput: msg }, stats: { name }, time } = this
     const reportMsg: IReportMsg = { type: 'player_msg', name, msg, time }
+    if (!/^(|[a-zA-Zа-яА-Я0-9][a-zA-Zа-яА-Я0-9\s]*)$/.test(msg)) return
+    if (!msg.length) return
     this.reportState.reportData.push(reportMsg)
+    scrollList('player-report-chat')
 
     // @ts-ignore
     window.frontTrigger(`player-menu.report.send`, msg)
@@ -129,6 +130,7 @@ class PlayerMenuStore {
   reportAdminConnected = (name: string) => {
     this.reportState.reportAdminName = name
     this.reportState.reportData.push({ type: 'admin_connected', name })
+    scrollList('player-report-chat')
   }
 
   // Админ прислал сообщение
@@ -137,6 +139,7 @@ class PlayerMenuStore {
     if (name) {
       const reportMsg: IReportMsg = { type: 'admin_msg', name, msg, time }
       this.reportState.reportData.push(reportMsg)
+      scrollList('player-report-chat')
     }
   }
 
@@ -144,6 +147,7 @@ class PlayerMenuStore {
   adminCloseReport = () => {
     this.reportState.reportInput = ''
     this.reportState.reportStatus = 'closed'
+    scrollList('player-report-chat')
   }
 
   // Игрок поставил оценку
@@ -153,6 +157,11 @@ class PlayerMenuStore {
     this.reportState.reportData = []
     this.reportState.reportAdminName = ''
     this.reportState.reportStatus = 'waiting'
+  }
+
+  inputKeyPressHandler = (event: any) => {
+    const { reportStatus: status } = this.reportState
+    if (event.code === 'Enter' && status === 'process') this.reportMsgSend()
   }
 }
 

@@ -1,11 +1,11 @@
-import React, {useEffect}        from 'react'
-import { observer } from 'mobx-react-lite'
-import { store }    from '../player-menu-store'
+import React, { useEffect } from 'react'
+import { observer }         from 'mobx-react-lite'
+import { store }            from '../player-menu-store'
 import {
   buildStyles,
   CircularProgressbarWithChildren
-}                   from 'react-circular-progressbar'
-import { priceFormat } from '../../../services/services'
+}                           from 'react-circular-progressbar'
+import { priceFormat }      from '../../../services/services'
 
 const ReferralText = `ИГРОК ПОЛУЧИВШИЙ ВАШ РЕФЕРАЛЬНЫЙ КОД
 ДОЛЖЕН УКАЗАТЬ ЕГО ПРИ РЕГИСТРАЦИИ СВОЕГО АККАУНТА
@@ -19,7 +19,7 @@ export const Stats = observer(() => {
     const { setStatsData } = store
     em.addHandler('player-menu.active', true)
     em.addHandler('player-menu.stats', setStatsData)
-    console.log(store)
+
     return () => {
       em.removeHandler('player-menu.active', true)
       em.removeHandler('player-menu.stats', setStatsData)
@@ -36,7 +36,7 @@ export const Stats = observer(() => {
 
   const circularStyles = buildStyles({
     pathColor: '#F2C94C',
-    trailColor: 'transparent',
+    trailColor: 'transparent'
   })
 
   return (
@@ -58,22 +58,22 @@ export const Stats = observer(() => {
         <div className='info_about_account'>
           <div className='vip_status line'>
             <span className='white'>VIP - статус</span>
-            { hasVip ? <span className='yellow'>Премиум</span> : 
-            <span className='white'>Отсутсвует</span>}
+            {hasVip ? <span className='yellow'>Премиум</span> :
+              <span className='white'>Отсутсвует</span>}
           </div>
-          <div className="reg-date line">
+          <div className='reg-date line'>
             <span className='white'>Дата регистрации</span>
             <span className='white'>{registerData}</span>
           </div>
-          <div className="warns line">
+          <div className='warns line'>
             <span className='white'>Предупреждений</span>
             <span className='white'>{warnsCount}</span>
           </div>
-          <div className="online-today line">
+          <div className='online-today line'>
             <span className='white'>Онлайн сегодня</span>
             <span className='white'>{online[0]}</span>
           </div>
-          <div className="sum-online line">
+          <div className='sum-online line'>
             <span className='white'>Общий онлайн</span>
             <span className='white'>{online[1]}</span>
           </div>
@@ -88,7 +88,7 @@ export const Stats = observer(() => {
             <span className='text yellow'>ЗАРАБОТАНО С ПРИГЛАШЕНИЙ</span>
           </div>
         </div>
-        <div className="get_money_of_invites">ЗАБРАТЬ НАГРАДУ</div>
+        <div className='get_money_of_invites'>ЗАБРАТЬ НАГРАДУ</div>
 
       </div>
       <div className='stats__center'>
@@ -146,14 +146,14 @@ export const Stats = observer(() => {
           </div>
         </div>
         <div className='code'>
-            <div className='text'>ВАШ УНИКАЛЬНЫЙ РЕФЕРАЛЬНЫЙ КОД</div>
-            <div className='referral_code'>{referralCode}</div>
+          <div className='text'>ВАШ УНИКАЛЬНЫЙ РЕФЕРАЛЬНЫЙ КОД</div>
+          <div className='referral_code'>{referralCode}</div>
         </div>
       </div>
       <div className='stats__right'>
         <div className='stats__right-name'>Имущество</div>
         <div className='stats__right-list'>
-          { properties.map((property, i) => (
+          {properties.map((property, i) => (
               <div className='property' key={i}>
                 <span>{property.name}</span>
                 <span>{property.type}</span>
@@ -162,8 +162,8 @@ export const Stats = observer(() => {
             )
           )}
         </div>
-        <div className='stats__right-info_about_referral' 
-        onClick={() => getReferralReward()}>
+        <div className='stats__right-info_about_referral'
+          onClick={() => getReferralReward()}>
           {ReferralText}</div>
       </div>
     </div>

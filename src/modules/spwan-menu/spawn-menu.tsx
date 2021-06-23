@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
-import { observer } from 'mobx-react-lite'
+import { observer }         from 'mobx-react-lite'
 import './spawn-menu.scss'
-import { store } from './spawn-menu-store'
-import cn from 'classnames'
-
-import { 
-  About, 
-  SPAWN_POINT_NAMES, 
-  SPAWN_POINT_BLOCK_TEXT, 
-  BlockBackground } from './constants';
+import { store }            from './spawn-menu-store'
+import cn                   from 'classnames'
+import {
+  About,
+  SPAWN_POINT_NAMES,
+  SPAWN_POINT_BLOCK_TEXT,
+  BlockBackground
+}                           from './constants'
 
 export const SpawnMenu = observer(() => {
   useEffect(() => {
@@ -18,7 +18,7 @@ export const SpawnMenu = observer(() => {
     em.addHandler('spawn-menu.active', setActive)
     em.addHandler('spawn-menu.points', setPoints)
     em.addHandler('spawn-menu.isCrime', setIsCrime)
-    console.log(store.state.isCrime)
+
     return () => {
       em.removeHandler('spawn-menu.active', setActive)
       em.removeHandler('spawn-menu.points', setPoints)
@@ -39,11 +39,12 @@ export const SpawnMenu = observer(() => {
       store.setActive(false)
     }
   }
-  console.log('debug', store.state.isCrime)
   const IMAGES_NUMBER = !store.state.isCrime ? [0, 1, 2, 3] : [0, 1, 2, 4]
   return store.state.active ? (
     <div className='spawn-menu'>
-      <div className='spawn-menu__background'></div>
+      <div className='spawn-menu__background'>
+
+      </div>
       <div className='spawn-menu__content'>
         <div className='spawn-menu__content-name'>Выбор спавна</div>
         <div className='spawn-menu__content-about'>{About}</div>
@@ -62,9 +63,11 @@ export const SpawnMenu = observer(() => {
               {checkpoint(i)}
               <div
                 className={`
-                ${BlockBackground} ${BlockBackground}-${IMAGES_NUMBER[i]}
+                  ${BlockBackground} ${BlockBackground}-${IMAGES_NUMBER[i]}
                 `}
-              ></div>
+              >
+
+              </div>
               <div
                 className={cn('point_block-name', {
                   'point_block-name--active': store.state.activeBlock === i
