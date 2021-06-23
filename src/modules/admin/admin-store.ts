@@ -29,8 +29,13 @@ class AdminStore {
       playerId: ''
     },
 
-    localChatMessages: [],
-    localConsoleCommands: [],
+    msgNumber: 0,
+    cmdNumber: 0,
+    playerNumber: 0,
+
+    localChatMessagesStorage: [],
+    localConsoleCommandsStorage: [],
+    localPlayersStorage: [],
 
     punishmentsModalHistory: false,
     punishmentModal: null,
@@ -45,11 +50,12 @@ class AdminStore {
   pushCarLog = (car: ITransport) => this.state.transport.push(car)
   pushMsg = (msg: IChatMessage) => {
     this.state.chat.push(msg)
-    this.state.localChatMessages.push(msg.msg);
   }
 
   pushRealCars = (cars: string[]) => this.state.realCars = cars
-  pushPlayer = (player: IPlayer) => this.state.player = player
+  pushPlayer = (player: IPlayer) => {
+    this.state.player = player;
+  }
 
   setActive = (active: boolean) => this.state.active = active
   setPage = (page: number) => this.state.page = page
@@ -58,6 +64,10 @@ class AdminStore {
   setConsoleValue = (value: string) => this.state.consoleValue = value;
   setPlayerValue = (value: string) => this.state.playerValue = value;
   setVehicleValue = (value: IVehicleValue) => this.state.vehicleValue = value;
+
+  setMsgNumber = (number: number) => this.state.msgNumber = number;
+  setCmdNumber = (number: number) => this.state.cmdNumber = number;
+  setPlayerNumber = (number: number) => this.state.playerNumber = number;
 
   //==============================   Admin Logic   =============================
 
@@ -156,7 +166,8 @@ class AdminStore {
 
   chatMsgDispatch = (msg: string) => {
     // @ts-ignore
-    window.frontTrigger(`admin.msg`, msg)
+    window.frontTrigger(`admin.msg`, msg);
+    this.state.localChatMessagesStorage.push(msg);
   }
 
   consoleDispatch = (command: string) => {
@@ -167,7 +178,8 @@ class AdminStore {
 
   playerRequest = (value: string) => {
     // @ts-ignore
-    window.frontTrigger(`admin.player`, value)
+    window.frontTrigger(`admin.player`, value);
+    store.state.localPlayersStorage.push(value);
   }
 
   transportActions = (carId: number, action: string) => {

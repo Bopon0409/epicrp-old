@@ -20,7 +20,7 @@ export const Chat = observer(() => {
       </div>
       <Input placeholder='Введите текст' action={chatMsgDispatch}
         blockRef={messagesEnd} value={store.state.chatValue}
-        changeValue={changeValue} />
+        changeValue={changeValue} type='chat' />
     </div>
   )
 })
