@@ -174,6 +174,7 @@ class AdminStore {
     // @ts-ignore
     // window.frontTrigger(`admin.console`, command)
     window.mp.invoke('command', command)
+    store.state.localConsoleCommandsStorage.push(command);
   }
 
   playerRequest = (value: string) => {
