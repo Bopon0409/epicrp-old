@@ -125,6 +125,44 @@
     position: absolute;
     font-weight: bold;
 
+    .money-add {
+      position: relative;
+      left: 10px;
+      top: 0;
+      transition: all 1s linear;
+      color: #05bb65;
+      filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.7));
+      font-weight: bold;
+
+      &--bottom {
+        opacity: 0;
+        top: 40px;
+      }
+
+      &--top {
+        opacity: 0;
+        top: -40px;
+      }
+
+      &--center {
+        opacity: 1;
+        top: 0;
+      }
+
+      &--disable {
+        opacity: 0;
+        top: 0;
+      }
+
+      &--green {
+        color: #05bb65;
+      }
+
+      &--red {
+        color: #f51616;
+      }
+    }
+
     .block {
       display: flex;
       margin-bottom: 13px;

@@ -41,20 +41,48 @@ class HudStore {
     turnAlerts: [],
     dialogueTimer: null,
     map: { width: 0, height: 0, bottom: 0, left: 0 },
-    isMapLarge: false
+    isMapLarge: false,
+    moneyAdd: { status: 'top', sum: 0 },
+    moneyAddTimer1: null,
+    moneyAddTimer2: null
   }
 
   setHudActive = active => (this.state.active = active)
   setHudData = data => {
     for (const key in data) {
+      if (key === 'money') this.addMoney(data.money - this.state.money)
       if (data.hasOwnProperty(key)) this.state[key] = data[key]
+    }
+  }
+
+  setMoneyAdd = (status, sum) => this.state.moneyAdd = { status, sum }
+
+  addMoney = sum => {
+    clearInterval(this.state.moneyAddTimer1)
+    clearInterval(this.state.moneyAddTimer2)
+    if (sum > 0) {
+      this.setMoneyAdd('center', sum)
+      this.state.moneyAddTimer1 = setTimeout(
+        () => this.setMoneyAdd('bottom', sum), 6000
+      )
+      this.state.moneyAddTimer2 = setTimeout(
+        () => this.setMoneyAdd('disable', 0), 7000
+      )
+    } else if (sum < 0) {
+      this.setMoneyAdd('center', sum)
+      this.state.moneyAddTimer1 = setTimeout(
+        () => this.setMoneyAdd('top', sum), 6000
+      )
+      this.state.moneyAddTimer2 = setTimeout(
+        () => this.setMoneyAdd('disable', 0), 7000
+      )
     }
   }
 
   get marginLeft () {
     const { map, isMapLarge } = this.state
     const margin = map.left + map.width + 20
-    return isMapLarge ? margin * 1.5 : margin + 20
+    return isMapLarge ? margin * 1.5 : margin
   }
 
   addAlert = alert => {
