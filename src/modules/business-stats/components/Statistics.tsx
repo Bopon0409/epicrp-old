@@ -3,8 +3,7 @@ import { observer } from 'mobx-react-lite'
 import { store } from '../business-stats-store'
 import { priceFormat } from '../../../services/services'
 import { IDaily } from '../model'
-import { LineChart, Line, XAxis, YAxis } from 'recharts'
-import cn from 'classnames'
+
 
 import { Graphics } from './Graphics';
 
@@ -17,8 +16,6 @@ const GraphicsTypes = [
 
 
 export const Statistics = observer(() => {
-  const width = window.innerWidth / 2 < 960 ? window.innerWidth / 2 : 960
-  const height = window.innerHeight / 3 < 360 ? window.innerHeight / 3 : 360
   return (
     <div className='statistics'>
       <div className='statistics-left_block'>
@@ -117,9 +114,12 @@ export const Statistics = observer(() => {
 
 const CountSum = (arr: IDaily[] | undefined) => {
   let sum = 0
-  arr?.map(v => {
-    console.log(v)
-    sum += v.price
-  })
+  if(arr){
+    arr.map(v => {
+      console.log(v)
+      sum += v.price
+      return sum;
+    })
+  }
   return `$ ${priceFormat(sum)}`
 }

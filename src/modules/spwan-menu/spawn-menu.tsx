@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
 import './spawn-menu.scss'
 import { store } from './spawn-menu-store'
@@ -67,7 +67,7 @@ export const SpawnMenu = observer(() => {
               ></div>
               <div
                 className={cn('point_block-name', {
-                  ['point_block-name--active']: store.state.activeBlock === i
+                  'point_block-name--active': store.state.activeBlock === i
                 })}
               >
                 <span>{point}</span>
