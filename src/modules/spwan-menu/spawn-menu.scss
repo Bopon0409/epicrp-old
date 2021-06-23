@@ -93,9 +93,12 @@
           font-weight: 600;
           font-size: 20px;
           line-height: 35px;
-          color: rgba(255, 255, 255, 1);
+          
+          
           & > span {
             margin-left: 18px;
+            color: rgba(255, 255, 255, .45);
+            z-index: 10;
           }
         }
 
