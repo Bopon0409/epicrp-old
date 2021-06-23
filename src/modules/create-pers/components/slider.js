@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React        from 'react'
+import InputRange   from 'react-input-range'
 
 export default observer(props => {
   const { onValueChange, min, max, step } = props
@@ -9,13 +10,12 @@ export default observer(props => {
   return (
     <div className='slider'>
       <div className='slider__label'>{title}</div>
-      <input
-        className='slider__input'
-        type='range'
-        min={min === undefined ? -1 : min}
-        max={min === undefined ? 1 : max}
-        step={step || 0.01} value={value}
-        onChange={event => onValueChange(event.target.value, valueName)}
+      <InputRange
+        minValue={min === undefined ? -1 : min}
+        maxValue={min === undefined ? 1 : max}
+        step={step || 0.01}
+        value={value}
+        onChange={value => onValueChange(value, valueName)}
       />
       <div className='slider__hint-container_color'>
         <span className='slider__hint-item'>{valueStr}</span>
