@@ -27,7 +27,7 @@ class CreatePersStore {
 
   state = {
     active: false,
-    step: 2,
+    step: 1,
     step1: initStep1,
     step2: initStep2,
     menuActive: 1,
