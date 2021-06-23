@@ -26,5 +26,5 @@
   },
   "hint": { "button": "", "action": "" },
   "map": { "width": 270, "height": 190.3, "bottom": 16.2, "left": 28.8 },
-  "mapBig": false
+  "isMapLarge": false
 }
