@@ -27,6 +27,8 @@ import './admin-report/admin-report.test'
 import './business-stats/business-stats.test'
 
 export default function curTest () {
+  // window.test.playerMenu.setActive(true);
+  // window.test.playerMenu.setStatsData();
   // window.test.bg.setActive(true)
   // window.test.createPers.setData()
   // window.test.createPers.setActive(true)

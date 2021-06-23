@@ -40,8 +40,8 @@ export const Input = observer((props: InputProps) => {
 
     if(blockRef.current){
       setTimeout(() => {
-        blockRef.current.scrollTo({ top: 1000, behavior: 'smooth' })
-      }, 1);
+        blockRef.current.scrollTo({ top: 10000, behavior: 'smooth' })
+      }, 50);
     }
   }
 
