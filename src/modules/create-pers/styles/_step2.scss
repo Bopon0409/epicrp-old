@@ -94,23 +94,24 @@
         }
       }
 
-      .slider__input {
-        -webkit-appearance: none;
-        width: 100%;
-        height: 6px;
-        margin-bottom: 10px;
+      .input-range__label-container {
+        display: none;
+      }
+
+      .input-range__track {
+        height: 5px;
         background: rgba(255, 255, 255, 0.3);
         border-radius: 5px;
         outline: none;
       }
 
-      .slider__input::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        height: 18px;
-        width: 18px;
-        border-radius: 50%;
-        background: white;
-        cursor: pointer;
+      .input-range__track--active {
+        background: transparent;
+      }
+
+      .input-range__slider {
+        background-color: white;
+        border: none;
       }
     }
   }

@@ -132,9 +132,8 @@ class CreatePersStore {
     window.frontTrigger('character.update', 'father', fatherId)
   }
 
-  sliderChangeHandler = (event, type) => {
-    let { value: range } = event.target
-    range = isNaN(range) ? range : Number(range)
+  sliderChangeHandler = (range, type) => {
+    range = (range ^ 0) === range ? range : Number(range.toFixed(2))
     if (type === 1) {
       this.setSliderValue1(range)
       window.frontTrigger('character.update', 'parentsSimilarity', range)

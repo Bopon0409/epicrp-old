@@ -1,6 +1,7 @@
-import React                from 'react'
-import { observer }         from 'mobx-react-lite'
-import store                from '../create-pers-store/create-pers-store'
+import React from 'react'
+import { observer } from 'mobx-react-lite'
+import store from '../create-pers-store/create-pers-store'
+import InputRange from 'react-input-range'
 import { mothers, fathers } from '../create-pers-store/data'
 
 export default observer(() => {
@@ -66,18 +67,26 @@ export default observer(() => {
 
       <div className='slider'>
         <div className='slider__label'>Схожесть</div>
-        <input className='slider__input' type='range' min={0} max={1}
-          step={0.01} value={sliderValue1}
-          onChange={event => sliderChangeHandler(event, 1)} />
+        <InputRange
+          minValue={0}
+          maxValue={1}
+          step={0.01}
+          value={sliderValue1}
+          onChange={range => sliderChangeHandler(range, 1)}
+        />
         <div className='slider__hint-container'>
           <span className='slider__hint-item'>м</span>
           <span className='slider__hint-item'>о</span>
         </div>
 
         <div className='slider__label'>Цвет кожи</div>
-        <input className='slider__input' type='range' min={0} max={1}
-          step={0.01} value={sliderValue2}
-          onChange={event => sliderChangeHandler(event, 2)} />
+        <InputRange
+          minValue={0}
+          maxValue={1}
+          step={0.01}
+          value={sliderValue2}
+          onChange={range => sliderChangeHandler(range, 2)}
+        />
         <div className='slider__hint-container'>
           <span className='slider__hint-item'>т</span>
           <span className='slider__hint-item'>с</span>
