@@ -23,6 +23,11 @@ class AdminStore {
     chatValue: '',
     consoleValue: '',
     playerValue: '',
+    vehicleValue: {
+      name: '',
+      number: '',
+      playerId: ''
+    },
 
     punishmentsModalHistory: false,
     punishmentModal: null,

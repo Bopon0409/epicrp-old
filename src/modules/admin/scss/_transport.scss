@@ -222,6 +222,8 @@
               line-height: 16px;
               color: #ffffff;
             }
+
+            
           }
 
           & > div:hover {
@@ -313,4 +315,10 @@
 
 .orange {
   color: #f2c94c;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
