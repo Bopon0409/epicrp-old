@@ -39,7 +39,6 @@ class AdminReportStore {
   addReport = (report: IReport) => {
     const messagesAmount = report.msgList.length;
     const lastMessage = report.msgList[messagesAmount-1].msg;
-    console.log(lastMessage)
     if(lastMessage.length > 0)
     this.state.reportList.push(report)
   }
