@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 import {
-  IChatMessage, ILog, IPlayer, IPunishmentModal, IState, ITransport
-}                             from './model'
+  IChatMessage, ILog, IPlayer, IPunishmentModal, IState, ITransport,
+  IVehicleValue }                             from './model'
 
 class AdminStore {
   constructor () {
@@ -29,6 +29,9 @@ class AdminStore {
       playerId: ''
     },
 
+    localChatMessages: [],
+    localConsoleCommands: [],
+
     punishmentsModalHistory: false,
     punishmentModal: null,
     modalInputTerm: '',
@@ -40,13 +43,21 @@ class AdminStore {
   pushKillLog = (log: ILog) => this.state.killLogs.push(log)
   pushAdminLog = (log: ILog) => this.state.adminLogs.push(log)
   pushCarLog = (car: ITransport) => this.state.transport.push(car)
-  pushMsg = (msg: IChatMessage) => this.state.chat.push(msg)
+  pushMsg = (msg: IChatMessage) => {
+    this.state.chat.push(msg)
+    this.state.localChatMessages.push(msg.msg);
+  }
 
   pushRealCars = (cars: string[]) => this.state.realCars = cars
   pushPlayer = (player: IPlayer) => this.state.player = player
 
   setActive = (active: boolean) => this.state.active = active
   setPage = (page: number) => this.state.page = page
+
+  setChatValue = (value: string) => this.state.chatValue = value;
+  setConsoleValue = (value: string) => this.state.consoleValue = value;
+  setPlayerValue = (value: string) => this.state.playerValue = value;
+  setVehicleValue = (value: IVehicleValue) => this.state.vehicleValue = value;
 
   //==============================   Admin Logic   =============================
 

@@ -10,8 +10,8 @@ export const Chat = observer(() => {
   return (
     <div className='chat_block'>
       <div className='messages' ref={messagesEnd}>{
-        chat.map((v, id) =>
-          <div className='message' key={id}>
+        chat.map((v, i) =>
+          <div className='message' key={i}>
             <span className='message-lvl'>{v.lvl} lvl </span>
             <span className='message-name'>{v.name}: </span>
             <span className='message-msg'>{v.msg}</span>
@@ -26,4 +26,4 @@ export const Chat = observer(() => {
 })
 
 
-const changeValue = (chat: string) => store.state.chatValue = chat; 
+const changeValue = (chat: string) => store.setChatValue(chat);
