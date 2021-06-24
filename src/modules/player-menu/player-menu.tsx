@@ -15,8 +15,6 @@ export const PlayerMenu = observer(() => {
       reportAdminConnected, adminCloseReport
     } = store
 
-    const keyHandler = (event: any) => keyUpHandler(event)
-
     // @ts-ignore
     const { EventManager: em } = window
     em.addHandler('player-menu.active', setActive)
@@ -24,7 +22,7 @@ export const PlayerMenu = observer(() => {
     em.addHandler('player-menu.report.msg', adminMsgSend)
     em.addHandler('player-menu.report.close', adminCloseReport)
     em.addHandler('player-menu.report.connected', reportAdminConnected)
-    document.addEventListener('keydown', keyHandler)
+    document.addEventListener('keyup', keyUpHandler)
 
     return () => {
       em.removeHandler('player-menu.active', setActive)
@@ -32,7 +30,7 @@ export const PlayerMenu = observer(() => {
       em.removeHandler('player-menu.report.msg', adminMsgSend)
       em.removeHandler('player-menu.report.close', adminCloseReport)
       em.removeHandler('player-menu.report.connected', reportAdminConnected)
-      document.removeEventListener('keydown', keyHandler)
+      document.removeEventListener('keyup', keyUpHandler)
     }
   }, [])
 

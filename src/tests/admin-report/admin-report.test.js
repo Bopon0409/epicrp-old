@@ -2,19 +2,19 @@ const reportData = id => JSON.stringify({
   id, name: 'Alex Pidorasov', rating: 5, msgList: [
     {
       type: 'player_msg',
-      name: 'Alex Pidorasov',
+      name: 'Alex Pidorasov 2',
       msg: 'Здравствуйте! У меня проблема с подключением к JoyCazino. Что мне делать? Помогите!',
       time: '23:11'
     },
     {
       type: 'player_msg',
-      name: 'Alex Pidorasov',
+      name: 'Alex Pidorasov 2',
       msg: 'Здравствуйте! У меня проблема с подключением к JoyCazino. Что мне делать? Помогите!',
       time: '23:11'
     },
     {
       type: 'player_msg',
-      name: 'Alex Pidorasov',
+      name: 'Alex Pidorasov 2',
       msg: 'Здравствуйте! У меня проблема с подключением к JoyCazino. Что мне делать? Помогите!',
       time: '23:11'
     }

@@ -1,4 +1,3 @@
-import React                  from 'react'
 import { makeAutoObservable } from 'mobx'
 import {
   IReportConnected, IReportMsg, IReportState,
@@ -52,7 +51,7 @@ class PlayerMenuStore {
 
   setMenuEl = (el: number) => this.state.currentMenuEl = el
 
-  keyUpHandler = (event: React.KeyboardEvent) => {
+  keyUpHandler = (event: any) => {
     if (this.state.menuHandlerBlocked) return
     if (event.code === 'KeyQ' && this.state.currentMenuEl > 0)
       this.state.currentMenuEl -= 1
