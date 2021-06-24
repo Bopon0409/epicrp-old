@@ -1,19 +1,16 @@
-import React from 'react'
-import { observer } from 'mobx-react-lite'
-import { store } from '../business-stats-store'
+import React           from 'react'
+import { observer }    from 'mobx-react-lite'
+import { store }       from '../business-stats-store'
 import { priceFormat } from '../../../services/services'
-import { IDaily } from '../model'
+import { IDaily }      from '../model'
 
-
-import { Graphics } from './Graphics';
+import { Graphics } from './Graphics'
 
 const GraphicsTypes = [
   'Выручка за товар',
   'Продано единиц товара',
   'Потрачено за покупку'
-];
-
-
+]
 
 export const Statistics = observer(() => {
   return (
@@ -37,7 +34,7 @@ export const Statistics = observer(() => {
             </span>
           </div>
           <div className='consumption_list'>
-            {store.state.stats?.dailyConsumption.map((consumption, i) => (
+            {store.state.stats?.dailyConsumption.map((consumption) => (
               <div className='consumption'>
                 <span>{consumption.reason}</span>
                 <span className='red'>-$ {priceFormat(consumption.price)}</span>
@@ -53,7 +50,7 @@ export const Statistics = observer(() => {
             </span>
           </div>
           <div className='dailyIncome_list'>
-            {store.state.stats?.dailyIncome.map((income, i) => (
+            {store.state.stats?.dailyIncome.map((income) => (
               <div className='dailyIncome'>
                 <span>{income.reason}</span>
                 <span className='green'>+$ {priceFormat(income.price)}</span>
@@ -75,24 +72,25 @@ export const Statistics = observer(() => {
                   <div className='block__content'>{type}</div>
                   <div
                     className={
-                      store.state?.activeTypeGraphics === i ? 
-                      'block__line--active' : 'block__line'}
-                  ></div>
+                      store.state?.activeTypeGraphics === i ?
+                        'block__line--active' : 'block__line'}
+                  >
+
+                  </div>
                 </div>
               ))}
               <div className='graphics_block-line' />
             </div>
           </div>
-                <Graphics />
+          <Graphics />
         </div>
         <div className='other'>
           <div className='often_buy statistics-block'>
             <div className='block_name'>
               <span>ЧАСТО ПОКУПАЮТ</span>
-              <span></span>
             </div>
             <div className='oftenBuy_List'>
-              {store.state.stats?.oftenBuy.map((oftenBuy, i) => (
+              {store.state.stats?.oftenBuy.map((oftenBuy) => (
                 <div className='oftenBuy'>
                   <span>{oftenBuy.name}</span>
                   <span className='blue'>$ {priceFormat(oftenBuy.price)}</span>
@@ -114,11 +112,10 @@ export const Statistics = observer(() => {
 
 const CountSum = (arr: IDaily[] | undefined) => {
   let sum = 0
-  if(arr){
+  if (arr) {
     arr.map(v => {
-      console.log(v)
       sum += v.price
-      return sum;
+      return sum
     })
   }
   return `$ ${priceFormat(sum)}`

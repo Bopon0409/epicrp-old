@@ -1,5 +1,138 @@
 .gas-station {
   .main {
+    width: 50%;
+    border-left: 1px dashed rgba(196, 196, 196, 0.35);
+    border-right: 1px dashed rgba(196, 196, 196, 0.35);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+    &__title {
+      font-size: 18px;
+      line-height: 67.5%;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 30px;
+    }
+
+    .fuel {
+      width: 630px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 120px;
+      margin-bottom: 60px;
+
+      &__item {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: rgba(196, 196, 196, 0.2);
+        border-radius: 5px;
+        cursor: pointer;
+        color: rgba(255, 255, 255, 0.2);
+        transition: all .2s;
+        font-weight: bold;
+
+        &--active {
+          background: #f2c94c;
+          box-shadow: 0 0 15px rgba(242, 201, 76, 0.45);
+          color: black;
+          transform: scale(1.2);
+        }
+
+        .fuel__num {
+          font-size: 26px;
+          line-height: 67.5%;
+          margin-bottom: 15px;
+        }
+
+        .fuel__name {
+          font-size: 20px;
+          line-height: 67.5%;
+          margin-bottom: 10px;
+        }
+
+        .fuel__blocked {
+          font-size: 12px;
+          line-height: 67.5%;
+          color: rgba(255, 255, 255, 0.4);
+        }
+      }
+    }
+
+    .refueling {
+      width: 360px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 60px;
+
+      &__item {
+        width: 100px;
+        height: 40px;
+        background: rgba(196, 196, 196, 0.2);
+        border-radius: 3px;
+        display: flex;
+        cursor: pointer;
+        color: rgba(255, 255, 255, 0.2);
+
+        &:hover {
+          background: #f2c94c;
+          box-shadow: 0 0 15px #f2c94c;
+          color: black;
+        }
+
+        .text {
+          margin: auto;
+          text-transform: uppercase;
+          font-size: 22px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .range-container {
+      width: 60%;
+      margin-top: 50px;
+
+      .input-range__label--max, .input-range__label--min {
+        display: none;
+      }
+
+      .input-range__track--background {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .input-range__track--active {
+        background: #f2c94c;
+      }
+
+      .input-range__slider {
+        background: #f2c94c;
+        outline: none;
+        border: none;
+        transform: scale(1.4);
+      }
+
+      .input-range__label--value {
+        .input-range__label-container {
+          display: flex;
+          top: -35px;
+          width: 34px;
+          height: 40px;
+          background: url('../img/slider_bg.svg');
+          font-family: Nunito, sans-serif;
+
+          font-size: 14px;
+          font-weight: bold;
+          line-height: 67.5%;
+          align-items: center;
+          justify-content: center;
+          color: #000000;
+        }
+      }
+    }
   }
 }

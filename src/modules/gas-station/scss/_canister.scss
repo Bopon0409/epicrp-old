@@ -1,5 +1,45 @@
 .gas-station {
   .canister {
+    width: 30%;
+    padding: 60px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+    &__title {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 67.5%;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 40px;
+    }
+
+    &__text {
+      margin-top: 20px;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 100%;
+      color: #ffffff;
+      opacity: 0.65;
+    }
+
+    &__button {
+      background: #ecc02c;
+      box-shadow: 0 0 15px rgba(236, 192, 44, 0.15);
+      width: 220px;
+      height: 50px;
+      border-radius: 10px;
+      display: flex;
+      margin-top: 60px;
+      cursor: pointer;
+
+      .text {
+        margin: auto;
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+    }
   }
 }

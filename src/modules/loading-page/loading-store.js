@@ -19,7 +19,6 @@ class LoadingStore {
   }
 
   closePage = () => {
-    console.log('close')
     this.state.hint = ''
     this.state.opacity = false
     setTimeout(this.close, 500)

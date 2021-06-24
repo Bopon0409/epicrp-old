@@ -33,12 +33,12 @@ export const Payment = observer((props: PaymentProps) => {
         <img src={selectCaret} alt='' className='caret' />
         <div className='text'>Картой</div>
       </div>
-      <div className={classNames('btn', blocked && 'btn--blocked')}
-        onClick={payHandler}>
-        <div className='text'>{
-          blocked ? 'Выберете предмет' : `Оплатить ${price || 0}$`
-        }</div>
-      </div>
+      {!blocked && (
+        <div className={classNames('btn btn--pay', blocked && 'btn--blocked')}
+          onClick={payHandler}>
+          <div className='text'>Оплатить {price || 0}$</div>
+        </div>
+      )}
     </div>
   )
 })

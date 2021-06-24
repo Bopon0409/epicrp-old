@@ -32,7 +32,7 @@ export const PlayerMenu = observer(() => {
       em.removeHandler('player-menu.report.connected', reportAdminConnected)
       document.removeEventListener('keyup', keyUpHandler)
     }
-  }, [])
+  }, [keyUpHandler])
 
   const CurrentPage = () => {
     switch (currentMenuEl) {

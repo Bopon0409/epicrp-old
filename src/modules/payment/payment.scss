@@ -1,7 +1,6 @@
 .payment-bar {
   position: absolute;
   width: 450px;
-  height: 160px;
   bottom: 40px;
   right: 40px;
   display: flex;
@@ -23,7 +22,8 @@
       box-shadow: 0 0 20px rgba(236, 192, 44, 0.15);
     }
 
-    &:last-child {
+    &--pay {
+      margin-top: 20px;
       width: 100%;
     }
 
@@ -88,5 +88,41 @@
         color: #ffffff;
       }
     }
+  }
+}
+
+@media (min-width: 2560px) {
+  .payment-bar {
+    zoom: 1.4;
+  }
+}
+
+@media (max-width: 1600px) {
+  .payment-bar {
+    zoom: 0.9;
+  }
+}
+
+@media (max-width: 1440px) {
+  .payment-bar {
+    zoom: 0.8;
+  }
+}
+
+@media (max-width: 1366px) {
+  .payment-bar {
+    zoom: 0.75;
+  }
+}
+
+@media (max-width: 1280px) {
+  .payment-bar {
+    zoom: 0.7;
+  }
+}
+
+@media (max-width: 800px) {
+  .payment-bar {
+    zoom: 0.52;
   }
 }

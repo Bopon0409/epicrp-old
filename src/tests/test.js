@@ -24,9 +24,10 @@ import './clothes-shop/clothes-shop.test'
 import './spawn-menu/spawn-menu.test'
 import './admin-report/admin-report.test'
 import './business-stats/business-stats.test'
+import './gas-station/gas-station.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.playerMenu.setStatsData()
-  window.test.playerMenu.setActive(true)
+  window.test.gasStation.setData()
+  window.test.gasStation.setActive(true)
 }

@@ -9,13 +9,13 @@ export interface SelectProps {
 }
 
 export const Select = observer((props: SelectProps) => {
-  const selectList = props.money.cards?.map((card) => {
+  const selectList = props.money.cards?.map((card, i) => {
     const handler = () => store.selectItemHandler(card, props.money)
     const active = store.state.currentCard === card.accountId
     const classes = classNames('item', active && 'item--active')
 
     return (
-      <div className={classes} onClick={handler} key={card.accountId}>
+      <div className={classes} onClick={handler} key={i}>
         <div className='select__value'>{card.cardName}</div>
         <div className='select__value'>{card.balance}</div>
       </div>

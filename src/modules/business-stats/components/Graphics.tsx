@@ -7,7 +7,6 @@ import { LineChart, Line, XAxis, YAxis } from 'recharts';
 
 export const Graphics = observer(() => {
     // const Data = store.state.stats?.weeklyStatistics;
-    console.log(store.state.stats?.weeklyStatistics?.consumption)
     switch (store.state?.activeTypeGraphics) {
         case 0:
             return (<LineChart

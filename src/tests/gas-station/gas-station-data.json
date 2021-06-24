@@ -1,5 +1,9 @@
 {
+  "businessNum": 1,
   "gasTank": 70,
+  "gasTankFullness" : 20,
+  "canisterAvailability": true,
+  "canisterPrice": 500,
   "money": {
     "cash": 8000,
     "cards": [
@@ -17,29 +21,29 @@
   },
   "fuel": [
     {
-      "fuelType": "Бензин",
-      "fuelNum": "92",
-      "fuelQuantity": 2000
+      "id": 0,
+      "quantity": 0,
+      "price": 50
     },
     {
-      "fuelType": "Бензин",
-      "fuelNum": "95",
-      "fuelQuantity": 2000
+      "id": 1,
+      "quantity": 40,
+      "price": 50
     },
     {
-      "fuelType": "Бензин",
-      "fuelNum": "98",
-      "fuelQuantity": 2000
+      "id": 2,
+      "quantity": 2000,
+      "price": 50
     },
     {
-      "fuelType": "Бензин",
-      "fuelNum": "100",
-      "fuelQuantity": 2000
+      "id": 3,
+      "quantity": 2000,
+      "price": 50
     },
     {
-      "fuelType": "Дизель",
-      "fuelNum": "D",
-      "fuelQuantity": 2000
+      "id": 4,
+      "quantity": 2000,
+      "price": 50
     }
   ]
 }
