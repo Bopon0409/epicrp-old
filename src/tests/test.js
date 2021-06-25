@@ -28,6 +28,4 @@ import './gas-station/gas-station.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.gasStation.setData()
-  window.test.gasStation.setActive(true)
 }
