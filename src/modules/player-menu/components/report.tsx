@@ -65,7 +65,7 @@ export const Report = observer(() => {
                 onChange={e => setReportInput(e.target.value)}
                 onFocus={() => setMenuBlock(true)}
                 onBlur={() => setMenuBlock(false)}
-                onKeyPress={store.inputKeyPressHandler}
+                onKeyDown={store.inputKeyPressHandler}
               />
 
               {reportStatus === 'process' && <img src={sendIcon} alt=''

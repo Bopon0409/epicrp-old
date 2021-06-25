@@ -52,10 +52,11 @@ class PlayerMenuStore {
   setMenuEl = (el: number) => this.state.currentMenuEl = el
 
   keyUpHandler = (event: any) => {
+    console.log(event.keyCode)
     if (this.state.menuHandlerBlocked) return
-    if (event.code === 'KeyQ' && this.state.currentMenuEl > 0)
+    if (event.keyCode === 81 && this.state.currentMenuEl > 0)
       this.state.currentMenuEl -= 1
-    if (event.code === 'KeyE' && this.state.currentMenuEl < 5)
+    if (event.keyCode === 69 && this.state.currentMenuEl < 5)
       this.state.currentMenuEl += 1
   }
 
@@ -164,7 +165,8 @@ class PlayerMenuStore {
 
   inputKeyPressHandler = (event: any) => {
     const { reportStatus: status } = this.reportState
-    if (event.code === 'Enter' && status === 'process') this.reportMsgSend()
+    console.log(event.keyCode, status)
+    if (event.keyCode === 13 && status === 'process') this.reportMsgSend()
   }
 }
 
