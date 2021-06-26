@@ -7,12 +7,15 @@ class TestModalStore {
 
   state = {
     active: false,
-    curTest: 'bg',
+    curTest: localStorage.getItem('test-modal') || 'bg',
     checkbox: false
   }
 
   setActive = active => (this.state.active = active)
-  setCurTest = test => (this.state.curTest = test)
+  setCurTest = test => {
+    this.state.curTest = test
+    localStorage.setItem('test-modal', test)
+  }
   setCheckbox = () => (this.state.checkbox = !this.state.checkbox)
   pressKeyHandler = event => {
     event.keyCode === 120 && this.setActive(!this.state.active)

@@ -32,9 +32,7 @@ const removeReport = (id) =>
 const setName = (name) =>
   window.strTrigger('admin-report.name', name)
 
-const playerSendMsg = (id) => window.strTrigger('admin-report.msg',
-  id, '123'
-)
+const playerSendMsg = () => window.strTrigger('admin-report.msg', 1, '123')
 
 const loadReports = () =>
   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => addReport(num))

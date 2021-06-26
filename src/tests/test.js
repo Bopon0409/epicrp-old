@@ -28,6 +28,9 @@ import './gas-station/gas-station.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.playerMenu.setStatsData()
-  window.test.playerMenu.setActive(true)
+  window.test.hud.setActive(true)
+  window.test.hud.setAllData()
+  window.test.adminReport.setName('admin name')
+  window.test.adminReport.setActive(true)
+  window.test.adminReport.loadReports()
 }

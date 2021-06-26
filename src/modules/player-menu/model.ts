@@ -32,6 +32,7 @@ export interface IReportState {
   reportAdminName: string | null
   reportData: Array<IReportMsg | IReportConnected>
   reportRatings: number
+  sendMsgBlocked: boolean
 }
 
 export interface IStats {

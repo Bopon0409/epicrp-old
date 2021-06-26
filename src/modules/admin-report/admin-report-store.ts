@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx'
 import { IReport, IState }    from './model'
+import { scrollList }         from '../../services/services'
 
 class AdminReportStore {
   constructor () {
@@ -29,6 +30,7 @@ class AdminReportStore {
     const { currentReportId: id } = this.state
     return this.state.reportList.find(report => report.id === id) || null
   }
+
   get time (): string {
     const time = new Date()
     return `${time.getHours()}:${time.getMinutes()}`
@@ -64,6 +66,7 @@ class AdminReportStore {
     report.msgList.push({
       name: report.name, msg, type: 'player_msg', time: this.time
     })
+    scrollList('admin-report-list')
   }
 
   adminSendMsg = () => {
@@ -75,6 +78,7 @@ class AdminReportStore {
 
     // @ts-ignore
     window.frontTrigger('admin-report.msg', currentReportId, msg)
+    scrollList('admin-report-list')
   }
 
   adminAction = (action: string) => {
@@ -93,6 +97,7 @@ class AdminReportStore {
     // @ts-ignore
     window.frontTrigger(`admin-report.close`, this.state.currentReportId)
     this.state.status = 'closed'
+    scrollList('admin-report-list')
   }
 
   reportExit = () => {
@@ -112,6 +117,11 @@ class AdminReportStore {
     this.state.status = 'list'
     this.state.blockedList = false
     this.state.currentReportId = null
+  }
+
+  inputKeyPressHandler = (event: any) => {
+    const { status } = this.state
+    if (event.keyCode === 13 && status === 'process') this.adminSendMsg()
   }
 }
 

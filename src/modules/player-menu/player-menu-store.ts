@@ -40,7 +40,8 @@ class PlayerMenuStore {
     reportStatus: 'waiting',
     reportAdminName: null,
     reportData: [],
-    reportRatings: 0
+    reportRatings: 0,
+    sendMsgBlocked: false
   }
 
   setActive = (active: boolean) => {
@@ -52,12 +53,10 @@ class PlayerMenuStore {
   setMenuEl = (el: number) => this.state.currentMenuEl = el
 
   keyUpHandler = (event: any) => {
-    console.log(event.keyCode)
-    if (this.state.menuHandlerBlocked) return
-    if (event.keyCode === 81 && this.state.currentMenuEl > 0)
-      this.state.currentMenuEl -= 1
-    if (event.keyCode === 69 && this.state.currentMenuEl < 5)
-      this.state.currentMenuEl += 1
+    const { active, menuHandlerBlocked, currentMenuEl } = this.state
+    if (!active || menuHandlerBlocked) return
+    if (event.keyCode === 81 && currentMenuEl > 0) this.state.currentMenuEl -= 1
+    if (event.keyCode === 69 && currentMenuEl < 5) this.state.currentMenuEl += 1
   }
 
   //================================   Stats   =================================
@@ -88,6 +87,8 @@ class PlayerMenuStore {
   }
 
   //===============================   Reports   ================================
+
+  setReportBlock = (block: boolean) => this.reportState.sendMsgBlocked = block
 
   get time (): string {
     return new Date().toLocaleTimeString().slice(0, -3)
@@ -120,14 +121,26 @@ class PlayerMenuStore {
   reportMsgSend = () => {
     const { reportState: { reportInput: msg }, stats: { name }, time } = this
     const reportMsg: IReportMsg = { type: 'player_msg', name, msg, time }
+
     if (!/^(|[a-zA-Zа-яА-Я0-9][a-zA-Zа-яА-Я0-9\s]*)$/.test(msg)) return
+    if (this.reportState.sendMsgBlocked) {
+      this.reportState.reportInput = ''
+      // @ts-ignore
+      return window.trigger('hud.notify', JSON.stringify({
+        type: 'error', text: 'Отправка сообщений доступна раз в 15 секунд'
+      }))
+    }
     if (!msg.length) return
+
     this.reportState.reportData.push(reportMsg)
     scrollList('player-report-chat')
 
     // @ts-ignore
     window.frontTrigger(`player-menu.report.send`, msg)
     this.reportState.reportInput = ''
+
+    this.setReportBlock(true)
+    setTimeout(() => this.setReportBlock(false), 15000)
   }
 
   // Админ подключился к чату
@@ -141,6 +154,7 @@ class PlayerMenuStore {
   adminMsgSend = (msg: string) => {
     const { reportState: { reportAdminName: name }, time } = this
     if (name) {
+      this.setReportBlock(false)
       const reportMsg: IReportMsg = { type: 'admin_msg', name, msg, time }
       this.reportState.reportData.push(reportMsg)
       scrollList('player-report-chat')
@@ -165,7 +179,6 @@ class PlayerMenuStore {
 
   inputKeyPressHandler = (event: any) => {
     const { reportStatus: status } = this.reportState
-    console.log(event.keyCode, status)
     if (event.keyCode === 13 && status === 'process') this.reportMsgSend()
   }
 }

@@ -13,7 +13,8 @@ export const Footer = observer(() => {
       {status === 'process' && (
         <div className='input__container'>
           <input type='text' className='input' value={input}
-            onChange={e => setInput(e.target.value)} />
+            onChange={e => setInput(e.target.value)}
+            onKeyDown={store.inputKeyPressHandler} />
           <img src={sendIcon} alt='' className='input__icon'
             onClick={adminSendMsg} />
         </div>

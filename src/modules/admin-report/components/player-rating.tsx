@@ -15,7 +15,7 @@ export const PlayerRatings = observer(() => {
           <RatingStar active={star <= rating} num={star} key={i} />
         ))
       }</div>
-      <div className='label'>Пожалуйста оцените работу администратора</div>
+      <div className='label'>Пожалуйста оцените обращение игрока</div>
     </div>
   ) : null
 })

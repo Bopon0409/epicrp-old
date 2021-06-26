@@ -8,7 +8,7 @@ export const MsgList = observer(() => {
   const { currentReport } = store
   return (
     <div className='msg-list'>
-      <div className='report__list'>
+      <div className='report__list' id='admin-report-list'>
         {currentReport?.msgList.map((item, i) => {
           const isAdmin = item.type === 'admin_msg'
           switch (item.type) {
