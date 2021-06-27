@@ -5,13 +5,15 @@ import { Menu }             from './components/menu'
 import { Report }           from './components/report'
 import { Stats }            from './components/stats'
 import './player-menu.scss'
+import { Settings }         from './components/settings'
+import { Faq }              from './components/faq'
 
 export const PlayerMenu = observer(() => {
   const { state: { active, currentMenuEl }, keyUpHandler } = store
 
   useEffect(() => {
     const {
-      setActive, setStatsData, adminMsgSend,
+      setActive, setStatsData, adminMsgSend, setSettingsData,
       reportAdminConnected, adminCloseReport
     } = store
 
@@ -19,6 +21,7 @@ export const PlayerMenu = observer(() => {
     const { EventManager: em } = window
     em.addHandler('player-menu.active', setActive)
     em.addHandler('player-menu.stats', setStatsData)
+    em.addHandler('player-menu.settings', setSettingsData)
     em.addHandler('player-menu.report.msg', adminMsgSend)
     em.addHandler('player-menu.report.close', adminCloseReport)
     em.addHandler('player-menu.report.connected', reportAdminConnected)
@@ -27,6 +30,7 @@ export const PlayerMenu = observer(() => {
     return () => {
       em.removeHandler('player-menu.active', setActive)
       em.removeHandler('player-menu.stats', setStatsData)
+      em.removeHandler('player-menu.settings', setSettingsData)
       em.removeHandler('player-menu.report.msg', adminMsgSend)
       em.removeHandler('player-menu.report.close', adminCloseReport)
       em.removeHandler('player-menu.report.connected', reportAdminConnected)
@@ -39,12 +43,11 @@ export const PlayerMenu = observer(() => {
       case 0:
         return <Stats />
       case 1:
-        return null
+        return <Faq />
       case 2:
         return <Report />
-      case 3:
-      case 4:
       case 5:
+        return <Settings />
       default:
         return null
     }

@@ -1,0 +1,27 @@
+{
+  "control": [
+    { "id": 1, "name": "Рация", "keyCode": 49 },
+    { "id": 2, "name": "Микрофон", "keyCode": 50 },
+    { "id": 3, "name": "Двигатель", "keyCode": 51 },
+    { "id": 4, "name": "Меню персонажа", "keyCode": 52 },
+    { "id": 5, "name": "Инвентарь", "keyCode": 53 },
+    { "id": 6, "name": "Телефон", "keyCode": 54 },
+    { "id": 7, "name": "Взаимодействие", "keyCode": 55 },
+    { "id": 8, "name": "Действие “Принять”", "keyCode": 56 },
+    { "id": 9, "name": "Действие “Отклонить”", "keyCode": 57 }
+  ],
+  "settings": [
+    { "id": 1, "name": "Показывать подсказки", "status": false },
+    { "id": 2, "name": "Показывать уведомления", "status": false },
+    { "id": 3, "name": "Показывать объявления", "status": false },
+    { "id": 4, "name": "Показывать HUD", "status": false },
+    { "id": 5, "name": "Nick Name игроков", "status": false },
+    { "id": 6, "name": "Уведомления о наказаниях игроков", "status": false },
+    { "id": 7, "name": "Прозрачный чат при не активности", "status": false }
+  ],
+  "sizes": {
+    "chatSize": 50,
+    "rowSize": 50,
+    "fontSize": 50
+  }
+}

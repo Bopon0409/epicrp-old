@@ -1,9 +1,11 @@
 import { makeAutoObservable } from 'mobx'
-import {
-  IReportConnected, IReportMsg, IReportState,
-  IState, IStats, IStatsData
-}                             from './model'
 import { scrollList }         from '../../services/services'
+import {
+  IControlItem,
+  IReportConnected, IReportMsg, IReportState, ISettingItem, ISettingsData,
+  ISettingsState, IState, IStats, IStatsData
+}                             from './model'
+import keyCodes               from '../../services/keyCodes.json'
 
 class PlayerMenuStore {
   constructor () {
@@ -44,6 +46,13 @@ class PlayerMenuStore {
     sendMsgBlocked: false
   }
 
+  settingsState: ISettingsState = {
+    sizes: { chatSize: 0, fontSize: 0, rowSize: 0 },
+    keyWaiting: false,
+    control: [],
+    settings: []
+  }
+
   setActive = (active: boolean) => {
     // @ts-ignore
     if (window.mp && active) window.mp.invoke('focus', true)
@@ -54,9 +63,84 @@ class PlayerMenuStore {
 
   keyUpHandler = (event: any) => {
     const { active, menuHandlerBlocked, currentMenuEl } = this.state
-    if (!active || menuHandlerBlocked) return
-    if (event.keyCode === 81 && currentMenuEl > 0) this.state.currentMenuEl -= 1
-    if (event.keyCode === 69 && currentMenuEl < 5) this.state.currentMenuEl += 1
+    const { keyWaiting } = this.settingsState
+    if (!active) return
+
+    if (event.keyCode === 81 && currentMenuEl > 0 && !menuHandlerBlocked)
+      this.state.currentMenuEl -= 1
+    if (event.keyCode === 69 && currentMenuEl < 5 && !menuHandlerBlocked)
+      this.state.currentMenuEl += 1
+    if (keyWaiting && currentMenuEl === 5) {
+      this.setKey(event.keyCode, event.location)
+    }
+  }
+
+  //==============================   Settings   ================================
+
+  // @ts-ignore
+  getKeyName = (code: number) => keyCodes[code]
+
+  setSettingsData = (data: ISettingsData) => {
+    if (data.settings !== undefined) this.settingsState.settings = data.settings
+    if (data.control !== undefined) this.settingsState.control = data.control
+    if (data.sizes !== undefined) this.settingsState.sizes = data.sizes
+  }
+
+  setFontSize = (size: any) => {
+    // @ts-ignore
+    window.frontTrigger('player-menu.settings.font-size', size)
+    this.settingsState.sizes.fontSize = size
+  }
+
+  setRowSize = (size: any) => {
+    // @ts-ignore
+    window.frontTrigger('player-menu.settings.row-size', size)
+    this.settingsState.sizes.rowSize = size
+  }
+
+  setChatSize = (size: any) => {
+    // @ts-ignore
+    window.frontTrigger('player-menu.settings.chat-size', size)
+    this.settingsState.sizes.chatSize = size
+  }
+
+  setKeyWaiting = (name: string) => {
+    this.settingsState.keyWaiting = name
+    this.state.menuHandlerBlocked = true
+  }
+
+  getKeyItem = (name: string): IControlItem | null => {
+    return this.settingsState.control.find(item => item.name === name) || null
+  }
+
+  setKeyCheck = (keyCode: number): boolean => {
+    for (const key in keyCodes) {
+      // noinspection JSUnfilteredForInLoop
+      if (Number(key) === keyCode) return true
+    }
+    return keyCode === 162 || keyCode === 163
+  }
+
+  setKey = (keyCode: number, location: 1 | 2) => {
+    if (keyCode === 17 && location === 1) keyCode = 162
+    if (keyCode === 17 && location === 2) keyCode = 163
+
+    const { control, keyWaiting } = this.settingsState
+    const item = control.find((item) => item.name === keyWaiting)
+
+    if (item && this.setKeyCheck(keyCode)) {
+      item.keyCode = keyCode
+      // @ts-ignore
+      window.frontTrigger('player-menu.control', item.id, item.keyCode)
+      this.settingsState.keyWaiting = false
+      this.state.menuHandlerBlocked = false
+    }
+  }
+
+  setSetting = (item: ISettingItem, value: boolean) => {
+    item.status = value
+    // @ts-ignore
+    window.frontTrigger('player-menu.setting', item.id, value)
   }
 
   //================================   Stats   =================================

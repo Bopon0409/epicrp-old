@@ -5,10 +5,10 @@
     // background-color: sienna;
     display: flex;
     flex-direction: row;
-    font-family: Nunito;
-    color: #FFFFFF;
+    font-family: Nunito, sans-serif;
+    color: #ffffff;
 
-    &__left{
+    &__left {
       height: 100%;
       width: 31.8%;
       // background-color: skyblue;
@@ -16,29 +16,29 @@
       flex-direction: column;
       align-items: center;
 
-      .player_name{
+      .player_name {
         height: 76px;
         margin-top: 71px;
         // width: 298px;
         display: flex;
         flex-direction: column;
         text-align: end;
-        
-        .name{
+
+        .name {
           font-weight: 600;
           font-size: 34px;
           line-height: 46px;
         }
 
-        .status{
+        .status {
           font-weight: 600;
           font-size: 22px;
           line-height: 30px;
-          color: #4C84F2;
+          color: #4c84f2;
         }
       }
 
-      .lvl{
+      .lvl {
         width: 336px;
         height: 173px;
         margin-top: 18px;
@@ -47,46 +47,46 @@
         justify-content: space-between;
         align-items: center;
 
-        &__label{
+        &__label {
           font-weight: 600;
           font-size: 28px;
           line-height: 38px;
         }
-        
-        &__value{
+
+        &__value {
           font-weight: 600;
           font-size: 60px;
           line-height: 60px;
         }
 
-        &__exp{
+        &__exp {
           font-weight: 600;
           font-size: 20px;
           opacity: 0.45;
         }
 
-        .progress-bar{
+        .progress-bar {
           width: 173px;
           height: 173px;
         }
       }
 
-      .info_about_account-text{
+      .info_about_account-text {
         margin-top: 32px;
         font-weight: bold;
         font-size: 20px;
         line-height: 27px;
-        color: #F2C94C;
+        color: #f2c94c;
       }
 
-      .info_about_account{
+      .info_about_account {
         height: 186px;
         width: 419px;
         margin-top: 30px;
         flex-direction: column;
         justify-content: space-between;
 
-        .line{
+        .line {
           width: 100%;
           font-weight: 600;
           font-size: 20px;
@@ -97,7 +97,7 @@
         }
       }
 
-      .referrals{
+      .referrals {
         height: 124px;
         width: 350px;
         margin-top: 84px;
@@ -105,12 +105,13 @@
         flex-direction: column;
         justify-content: space-between;
 
-        .line{
+        .line {
           display: flex;
           justify-content: space-between;
           align-items: center;
         }
-        .amount{
+
+        .amount {
           white-space: nowrap;
           width: 205px;
           text-align: end;
@@ -118,14 +119,16 @@
           font-size: 46px;
           line-height: 63px;
         }
-        .text{
+
+        .text {
           width: 132px;
           font-weight: 600;
           font-size: 16px;
           line-height: 22px;
         }
       }
-      .get_money_of_invites{
+
+      .get_money_of_invites {
         width: 251px;
         height: 47px;
         margin-top: 14px;
@@ -137,68 +140,69 @@
         color: white;
         transition: all .1s ease-in;
 
-        &:hover{
-          background-color: #F2C94C;
+        &:hover {
+          background-color: #f2c94c;
           color: black;
-          box-shadow: 0px 0px 4px rgba(242, 201, 76, 0.45);
+          box-shadow: 0 0 4px rgba(242, 201, 76, 0.45);
           transition: all .1s ease-out;
         }
-        &:active{
+
+        &:active {
           transform: scale(1.02);
           transition: all .1s ease-out;
         }
       }
     }
 
-    &__center{
+    &__center {
       height: 100%;
       width: 34.4%;
       // background-color: blue;
       display: flex;
       flex-direction: column;
       align-items: center;
-      border: 1px solid rgba(255,255,255,0);
+      border: 1px solid rgba(255, 255, 255, 0);
       border-top: none;
       border-bottom: none;
 
-      .fraction_and_money{
+      .fraction_and_money {
         height: 597px;
         width: 99.8%;
         margin-top: 71px;
-        border-left: 1px dashed #FFFFFF;
-        border-right: 1px dashed #FFFFFF;
+        border-left: 1px dashed #ffffff;
+        border-right: 1px dashed #ffffff;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
 
-        &__line{
+        &__line {
           width: 597px;
-          border: 1px dashed #FFFFFF;
+          border: 1px dashed #ffffff;
         }
 
-        &__block{
+        &__block {
           height: 264px;
           width: 467px;
           display: flex;
           flex-direction: column;
           align-items: center;
 
-          .block_name{
+          .block_name {
             font-weight: 600;
             font-size: 20px;
             line-height: 27px;
           }
 
-          .block_info{
+          .block_info {
             height: 205px;
             width: 467px;
             margin-top: 34px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            
-            .line{
+
+            .line {
               width: 100%;
               display: flex;
               justify-content: space-between;
@@ -206,27 +210,28 @@
           }
         }
       }
-      .code{
+
+      .code {
         width: 567px;
         height: 90px;
         margin-top: 61px;
         display: flex;
-        border: 1px dashed rgba(255,255,255,0);
+        border: 1px dashed rgba(255, 255, 255, 0);
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
 
-        .text{
+        .text {
           font-weight: 600;
           font-size: 16px;
           line-height: 22px;
           opacity: 0.45;
         }
 
-        .referral_code{
+        .referral_code {
           width: 567px;
           height: 58px;
-          border: 1px dashed #FFFFFF;
+          border: 1px dashed #ffffff;
           border-radius: 3px;
           display: flex;
           justify-content: center;
@@ -234,20 +239,20 @@
           font-weight: 600;
           font-size: 24px;
           line-height: 33px;
-          color: #F2C94C;
+          color: #f2c94c;
           user-select: text;
         }
       }
     }
 
-    &__right{
+    &__right {
       height: 100%;
       width: 33.75%;
       // background-color: violet;
       display: flex;
       flex-direction: column;
 
-      &-name{
+      &-name {
         margin-top: 71px;
         margin-left: 56px;
         width: 540px;
@@ -257,7 +262,7 @@
         text-align: center;
       }
 
-      &-list{
+      &-list {
         margin: 44px 0 0 56px;
         height: 529px;
         width: 550px;
@@ -270,14 +275,14 @@
           border-radius: 1px;
           height: 204px;
         }
-  
+
         &::-webkit-scrollbar-thumb {
           width: 2px;
           background: #f2c94c;
           border-radius: 1px;
         }
 
-        .property{
+        .property {
           width: 540px;
           height: 39px;
           display: flex;
@@ -287,25 +292,26 @@
           border-radius: 3px;
           margin-bottom: 10px;
 
-          & > span:nth-child(n){
+          & > span:nth-child(n) {
             font-weight: 600;
             font-size: 14px;
             line-height: 19px;
-            color: #F2C94C;
+            color: #f2c94c;
           }
 
-          & > span:first-child{
+          & > span:first-child {
             margin-left: 15px;
             color: rgba(255, 255, 255, 0.45);
           }
-          & > span:last-child{
+
+          & > span:last-child {
             margin-right: 15px;
             color: rgba(255, 255, 255, 0.75);
           }
         }
       }
-      
-      &-info_about_referral{
+
+      &-info_about_referral {
         height: 107px;
         width: 525px;
         margin: 56px 0 0 86px;
@@ -320,12 +326,12 @@
   }
 }
 
-
-.white{
-  color: #FFFFFF;
+.white {
+  color: #ffffff;
 }
-.yellow{
-  color: #F2C94C;
+
+.yellow {
+  color: #f2c94c;
 }
 
 

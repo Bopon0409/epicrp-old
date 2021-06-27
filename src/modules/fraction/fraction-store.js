@@ -82,19 +82,19 @@ class FractionStore {
   }
 
   setData = data => {
-    if (data.fractionName) this.state.fractionName = data.fractionName
-    if (data.capabilities) this.state.capabilities = data.capabilities
-    if (data.description) this.state.description = data.description
-    if (data.ads) this.state.ads = data.ads
-    if (data.ranks) this.state.ranks = data.ranks
-    if (data.ranksSettings) this.state.ranksSettings = data.ranksSettings
-    if (data.groups) this.state.groups = data.groups
-    if (data.cars) this.state.cars = data.cars
-    if (data.open) this.state.storage.open = data.open
-    if (data.members) this.state.members = data.members
-    if (data.activityList) this.state.activityList = data.activityList
-    if (data.userId) this.state.userId = data.userId
-    if (data.defaultRankSettings)
+    if (data.fractionName !== undefined) this.state.fractionName = data.fractionName
+    if (data.capabilities !== undefined) this.state.capabilities = data.capabilities
+    if (data.description !== undefined) this.state.description = data.description
+    if (data.ads !== undefined) this.state.ads = data.ads
+    if (data.ranks !== undefined) this.state.ranks = data.ranks
+    if (data.ranksSettings !== undefined) this.state.ranksSettings = data.ranksSettings
+    if (data.groups !== undefined) this.state.groups = data.groups
+    if (data.cars !== undefined) this.state.cars = data.cars
+    if (data.open !== undefined) this.state.storage.open = data.open
+    if (data.members !== undefined) this.state.members = data.members
+    if (data.activityList !== undefined) this.state.activityList = data.activityList
+    if (data.userId !== undefined) this.state.userId = data.userId
+    if (data.defaultRankSettings !== undefined)
       this.state.defaultRankSettings = data.defaultRankSettings
   }
 

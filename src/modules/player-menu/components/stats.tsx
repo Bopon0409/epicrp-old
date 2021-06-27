@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
-import { observer }         from 'mobx-react-lite'
-import { store }            from '../player-menu-store'
+import React           from 'react'
+import { observer }    from 'mobx-react-lite'
+import { store }       from '../player-menu-store'
 import {
   buildStyles,
   CircularProgressbarWithChildren
-}                           from 'react-circular-progressbar'
-import { priceFormat }      from '../../../services/services'
+}                      from 'react-circular-progressbar'
+import { priceFormat } from '../../../services/services'
 
 const ReferralText = `ИГРОК ПОЛУЧИВШИЙ ВАШ РЕФЕРАЛЬНЫЙ КОД
 ДОЛЖЕН УКАЗАТЬ ЕГО ПРИ РЕГИСТРАЦИИ СВОЕГО АККАУНТА
@@ -13,18 +13,6 @@ const ReferralText = `ИГРОК ПОЛУЧИВШИЙ ВАШ РЕФЕРАЛЬН�
 ИГРОК ОБЯЗАН ПРОКАЧАТЬ ОДНОГО ИЗ СВОИХ ПЕРСОНАЖЕЙ ДО 3-ГО ИГРОВОГО УРОВНЯ`
 
 export const Stats = observer(() => {
-  useEffect(() => {
-    // @ts-ignore
-    const { EventManager: em } = window
-    const { setStatsData } = store
-    em.addHandler('player-menu.active', true)
-    em.addHandler('player-menu.stats', setStatsData)
-
-    return () => {
-      em.removeHandler('player-menu.active', true)
-      em.removeHandler('player-menu.stats', setStatsData)
-    }
-  }, [])
   const {
     stats: {
       name, lvl, exp, hasVip, invites, online, playerStatus,
