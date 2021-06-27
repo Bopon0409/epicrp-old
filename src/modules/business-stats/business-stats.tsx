@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { observer } from 'mobx-react-lite'
 import { store } from './business-stats-store'
 // import { MenuBlocks } from './constants'
@@ -13,24 +13,28 @@ import { Advance } from './components/advance';
 import { Staff } from './components/staff'
 
 export const BusinessStats = observer(() => {
+  let main = useRef<HTMLInputElement>(null);
   const MenuBlocks = store.state.stats?.businessName[0] === "АВТОСАЛОН" ? [
     'Статистика', 'Склад', 'Товары', 'Сотрудники', 'Улучшения'
   ] : ['Статистика', 'Склад', 'Товары', 'Улучшения']
   useEffect(() => {
+    main.current?.focus();
     // @ts-ignore
     const { EventManager: em } = window
     const { setActive, setStats, setWarehouse, 
     setProductsItems, setAdvance, setProductsIrlItems, warehouseClearData,
-   setStaff} = store
+   setStaff, setBusinessStatus, staffHoof } = store
     em.addHandler('business-stats.active', setActive);
     em.addHandler('business-stats.stats', setStats);
     em.addHandler('business-stats.warehouse', setWarehouse);
     em.addHandler('business-stats.products-items', setProductsItems);
     em.addHandler('business-stats.products-irl-items', setProductsIrlItems);
     em.addHandler('business-stats.advance', setAdvance);
-    em.addHandler('business-stats.warehouse-clearData', warehouseClearData);
     em.addHandler('business-stats.staff', setStaff);
-    console.log(store.state.products)
+
+    em.addHandler('business-stats.staff-hoof', staffHoof);
+    em.addHandler('business-stats.warehouse-clearData', warehouseClearData);
+    em.addHandler('business-stats.stats-setBusinessStatus', setBusinessStatus);
     
     return () => {
       em.removeHandler('business-stats.active', setActive);
@@ -39,9 +43,12 @@ export const BusinessStats = observer(() => {
       em.removeHandler('business-stats.products-items', setProductsItems);
       em.removeHandler('business-stats.advance', setAdvance);
       em.removeHandler('business-stats.products-irl-items', setProductsIrlItems);
+      em.removeHandler('business-stats.staff', setStaff);
     
+      em.removeHandler('business-stats.staff-hoof', staffHoof);
       em.removeHandler('business-stats.warehouse-clearData', warehouseClearData);
-      em.removeHandler('business-stats.staff', setStaff);}
+      em.removeHandler('business-stats.stats-setBusinessStatus', setBusinessStatus);
+    }
   }, [])
 
   // Смена блока по нажатию
@@ -97,7 +104,7 @@ export const BusinessStats = observer(() => {
   }
 
   return store.state.active ? (
-    <div className='business-stats' onKeyUp={keyClick} tabIndex={0}>
+    <div className='business-stats' onKeyUp={keyClick} tabIndex={0} ref={main}>
         <div className='business-name'>
             <div>{store.state.stats?.businessName[0]}</div>
             <div>{store.state.stats?.businessName[1]}</div>

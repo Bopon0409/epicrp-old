@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
 import './spawn-menu.scss'
 import { store } from './spawn-menu-store'
@@ -18,7 +18,6 @@ export const SpawnMenu = observer(() => {
     em.addHandler('spawn-menu.active', setActive)
     em.addHandler('spawn-menu.points', setPoints)
     em.addHandler('spawn-menu.isCrime', setIsCrime)
-    console.log(store.state.isCrime)
     return () => {
       em.removeHandler('spawn-menu.active', setActive)
       em.removeHandler('spawn-menu.points', setPoints)
@@ -39,7 +38,6 @@ export const SpawnMenu = observer(() => {
       store.setActive(false)
     }
   }
-  console.log('debug', store.state.isCrime)
   const IMAGES_NUMBER = !store.state.isCrime ? [0, 1, 2, 3] : [0, 1, 2, 4]
   return store.state.active ? (
     <div className='spawn-menu'>

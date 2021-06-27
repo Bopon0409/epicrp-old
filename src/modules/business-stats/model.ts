@@ -53,6 +53,7 @@ export interface IWeeklyStatisticsType{
 
 export interface IStats{
     businessName: string[]
+    businessStatus: boolean
     businessBalance: number
     dailyConsumption: IDaily[],
     dailyIncome: IDaily[]

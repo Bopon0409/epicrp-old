@@ -18,7 +18,7 @@ export const ProductsItemsEdit = observer(() => {
       if(!Timer.status){
         Timer.status = !Timer.status;
         setTimeout(() => {
-          store.saveProductData(products.activeBlock);
+          store.saveProductData();
           Timer.status = !Timer.status;
         }, Timer.time);
       }
@@ -40,14 +40,14 @@ export const ProductsItemsEdit = observer(() => {
         {products.activeBlock >= 0 && (
         <div className="state--active">
           <div className="name">{items[products.activeBlock].name}</div>
-          <div className="price">{items[products.activeBlock].price}</div>
+          <div className="price">Цена</div>
           <div className='inputBlock'>
             <input type="number" 
             placeholder='Введите новую цену на товар...'  
             onChange={inputHandler}
             value={products.type === 0 ? 
-              products.items[products.activeBlock].price :
-              products.irlItems[products.activeBlock].price
+              products.irlItems[products.activeBlock].price :
+              products.items[products.activeBlock].price
             }
             />
           </div>

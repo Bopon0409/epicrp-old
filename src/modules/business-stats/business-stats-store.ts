@@ -50,6 +50,10 @@ class BusinessStatsStore {
     setActiveTypeGraphics = (num: number) => {
         this.state.activeTypeGraphics = num;
     }
+    setBusinessStatus = (status: boolean) => {
+        if(this.state.stats) this.state.stats.businessStatus = status;
+    }
+
 // WAREHOUSE
     setWarehouseOrderAmount = (amount: number) => {
         this.state.orderAmount = amount;
@@ -92,8 +96,8 @@ class BusinessStatsStore {
         this.state.products.irlItems[id].status = status
     }
     setProductPrice = (type: number, id: number, price: number) => {
-        if(type === 0) this.state.products.items[id].price = price;
-        if(type === 1) this.state.products.irlItems[id].price = price;
+        if(type === 0) this.state.products.irlItems[id].price = price;
+        if(type === 1) this.state.products.items[id].price = price;
     }
     setProductsType = (type: number) => {
         this.state.products.type = type;
@@ -126,24 +130,38 @@ class BusinessStatsStore {
     }
 
 //============================   Front Trigger   =============================
-    //PRODUCTS
-    saveProductData = (id: number) => {
+// STATS
+    changeBusinessStatus = () => {
+        const status = this.state?.stats?.businessStatus;
+        // @ts-ignore
+        window.frontTrigger(`business-stats.advance-buy`, status );
+    }   
+// WAREHOUSE
+    buyProducts = () => {
+        const amount = this.state.orderAmount;
+        const ids = this.state.oredersId;
+        // @ts-ignore
+        window.frontTrigger(`business-stats.warehouse-buy_items`, ids, amount );
+    }
+//PRODUCTS
+    saveProductData = () => {
+        const id = this.state.products.activeBlock;
         const { type } = this.state.products;
         const changes = type === 0 ? this.state.products.items[id] : 
         this.state.products.irlItems[id];   
         // @ts-ignore
         window.frontTrigger(`business-stats.products-changes`, id, type, changes );
-        // отправляет ID изменнёного предмета, и его новые параметры
     }
     kickStaff = (id: number) => { // уволить сотрудника
         // @ts-ignore
         window.frontTrigger(`business-stats.staff-kick`, id);
     }
-    // ADVANCE
+// ADVANCE
     buyAdvance = (advanceId: number) => { // купить улучшение
         // @ts-ignore
         window.frontTrigger(`business-stats.advance-buy`, advanceId );
     }
+
 }
 const store = new BusinessStatsStore()
 

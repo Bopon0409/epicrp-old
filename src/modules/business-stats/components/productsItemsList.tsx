@@ -11,7 +11,7 @@ import hoverEffect from "../img/hoverEffect.svg";
 
 export const ProductsItemsList = observer(() => {
     const { products } = store.state;
-    const items = products.type === 0 ? products.items : products.irlItems;
+    const items = products.type === 0 ? products.irlItems : products.items;
     return(
         <div className="items-list">
           {items?.map((item, i) => {

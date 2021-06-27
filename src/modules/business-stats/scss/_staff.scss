@@ -301,7 +301,7 @@
       overflow: scroll;
       overflow-y: auto;
       overflow-x: hidden;
-    //   background-color: rgba(0, 0, 0, 0.2);
+      //   background-color: rgba(0, 0, 0, 0.2);
 
       .employee {
         height: 48px;
@@ -340,32 +340,32 @@
           }
         }
 
-        .buttons{
-            height: 30px;
-            width: 148px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: normal;
-            font-size: 12px;
-            line-height: 150%;
-            // background-color: rgba(0, 0, 0, 0.2);
+        .buttons {
+          height: 30px;
+          width: 148px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-weight: normal;
+          font-size: 12px;
+          line-height: 150%;
+          // background-color: rgba(0, 0, 0, 0.2);
 
-            .btn-prize{
-                height: 30px;
-                width: 112px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background: #444444;
-            }
-            .btn-hoof{
-                height: 12px;
-                width: 42px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
+          .btn-prize {
+            height: 30px;
+            width: 112px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #444444;
+          }
+          .btn-hoof {
+            height: 12px;
+            width: 42px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
         }
       }
 

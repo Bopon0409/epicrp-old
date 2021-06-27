@@ -8,12 +8,10 @@ import staff from './business-staff.json'
 const jsonStats = JSON.stringify(stats);
 const jsonWarehouse = JSON.stringify(warehouse);
 const jsonProducts = JSON.stringify(products);
-const jsonAdvance = JSON.stringify(advance);
 const jsonIrlItems = JSON.stringify(irlItems);
+const jsonAdvance = JSON.stringify(advance);
 const jsonStaff = JSON.stringify(staff);
 
-console.log('jsonStats', jsonStats)
-console.log('jsonWarehouse', JSON.parse(jsonWarehouse)   )
 const setActive = active => window.trigger('business-stats.active', active);
 const setStats = () => window.trigger('business-stats.stats', jsonStats);
 const setWarehouse = () => window.trigger('business-stats.warehouse', jsonWarehouse);
