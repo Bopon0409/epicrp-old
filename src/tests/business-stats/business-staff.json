@@ -1,0 +1,208 @@
+{
+    "staffList":[
+        [
+            {
+                "name": "Sergey Selistrovskiy 1",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 3200
+            },
+            {
+                "name": "Sergey Selistrovskiy 2",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 3200
+            },
+            {
+                "name": "Sergey Selistrovskiy 3",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 3200
+            },
+            {
+                "name": "Sergey Selistrovskiy 4",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 3200
+            },
+            {
+                "name": "Sergey Selistrovskiy 5",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 3200
+            },
+            {
+                "name": "Sergey Selistrovskiy 6",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 3200
+            },
+            {
+                "name": "Sergey Selistrovskiy 7",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 3200
+            },
+            {
+                "name": "Sergey Selistrovskiy 8",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 3200
+            },
+            {
+                "name": "Sergey Selistrovskiy 9",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 3200
+            },
+            {
+                "name": "Sergey Selistrovskiy 10",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 3200
+            },
+
+            {
+                "name": "Sergey Selistrovskiy 11",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 3200
+            },
+
+            {
+                "name": "Sergey Selistrovskiy 12",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 3200
+            },
+            {
+                "name": "Sergey Selistrovskiy 13",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 3200
+            },
+
+            {
+                "name": "Sergey Selistrovskiy 14",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 3200
+            },
+            {
+                "name": "Sergey Selistrovskiy 15",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 3200
+            },
+            {
+                "name": "Sergey Selistrovskiy 16",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 3200
+            }
+        ],
+
+        [
+            {
+                "name": "Sergey Selistrovskiy 1",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 32000
+            },
+            {
+                "name": "Sergey Selistrovskiy 2 ",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 32000
+            },
+            {
+                "name": "Sergey Selistrovskiy 3",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 32000
+            },
+            {
+                "name": "Sergey Selistrovskiy 4",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 32000
+            },
+            {
+                "name": "Sergey Selistrovskiy 5",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 32000
+            },
+            {
+                "name": "Sergey Selistrovskiy 6",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 32000
+            },
+            {
+                "name": "Sergey Selistrovskiy 7",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 32000
+            },
+            {
+                "name": "Sergey Selistrovskiy 8",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 32000
+            },
+            {
+                "name": "Sergey Selistrovskiy 9",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 32000
+            },
+            {
+                "name": "Sergey Selistrovskiy 10",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 32000
+            },
+
+            {
+                "name": "Sergey Selistrovskiy 11",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 32000
+            },
+
+            {
+                "name": "Sergey Selistrovskiy 12",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 32000
+            },
+            {
+                "name": "Sergey Selistrovskiy 13",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 32000
+            },
+
+            {
+                "name": "Sergey Selistrovskiy 14",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 32000
+            },
+            {
+                "name": "Sergey Selistrovskiy 15",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 32000
+            },
+            {
+                "name": "Sergey Selistrovskiy 16",
+                "repairsAmount": 200,
+                "evacuationsAmount": 150,
+                "profit": 32000
+            }
+        ]
+    ],
+    "earnedTypes" : [[20000, 180000], [2200000, 8500000]]
+}

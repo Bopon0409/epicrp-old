@@ -31,8 +31,7 @@ const clearFormatNum = (num, filler) => {
 }
 
 const priceFormat = (price) => {
-  let priceStr = price + ''
-
+  let priceStr = price + '';
   return priceStr
     .split(/(?=(?:\d{3})+(?!\d))/)
     .join('.')

@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Apple",
+        "id": 2,
+        "amount": 100,
+        "price": 333,
+        "status": false
+    },
+    {
+        "name": "Apple",
+        "id": 2,
+        "amount": 100,
+        "price": 4444,
+        "status": false
+    },
+    {
+        "name": "Apple",
+        "id": 2,
+        "amount": 100,
+        "price": 5125,
+        "status": true
+    },
+    {
+        "name": "Apple",
+        "id": 2,
+        "amount": 100,
+        "price": 1625,
+        "status": false
+    }
+]

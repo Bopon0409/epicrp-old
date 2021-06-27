@@ -1,0 +1,394 @@
+.staff {
+  margin-top: 61px;
+  height: 793px;
+  width: 1706px;
+  display: flex;
+  justify-content: space-between;
+
+  &-left_block {
+    width: 555px;
+
+    .stats {
+      margin-top: 51px;
+      height: 27px;
+      width: 433px;
+      display: flex;
+      justify-content: space-between;
+
+      &-name {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 27px;
+      }
+
+      &-time {
+        height: 100%;
+        width: 136px;
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 19px;
+
+        & > div:nth-child(1) {
+          height: 100%;
+          width: 60px;
+          & > div:first-child {
+            height: 24px;
+            width: 100%;
+            text-align: center;
+          }
+          & > div:last-child {
+            width: 60px;
+            height: 3px;
+            border-radius: 2px;
+          }
+        }
+
+        & > div:nth-child(2) {
+          height: 100%;
+          width: 60px;
+          & > div:first-child {
+            height: 24px;
+            width: 100%;
+            text-align: center;
+          }
+          & > div:last-child {
+            width: 60px;
+            height: 3px;
+            background-color: none;
+            border-radius: 2px;
+          }
+        }
+        .active-line {
+          width: 60px;
+          height: 3px;
+          background-color: #f2c94c;
+          box-shadow: 0px 0px 5px #f2c94c;
+          border-radius: 2px;
+        }
+
+        .line {
+          position: absolute;
+          margin-top: 25px;
+          height: 1px;
+          width: 136px;
+          background-color: rgba(255, 255, 255, 0.25);
+          z-index: -1;
+        }
+      }
+    }
+
+    .employees {
+      margin-top: 69px;
+      height: 22px;
+      width: 420px;
+      display: flex;
+      justify-content: space-between;
+
+      & > span:first-child {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 22px;
+      }
+
+      & > span:last-child {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 22px;
+        color: #f2c94c;
+      }
+    }
+
+    .employeesProfit {
+      margin-top: 74px;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    .profit {
+      margin-top: 38px;
+      height: 190px;
+      width: 434px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .diagram-data {
+      height: 108px;
+      width: 195px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      & > div:first-child {
+        margin-top: -15px;
+        font-weight: bold;
+        font-size: 30px;
+        line-height: 41px;
+      }
+
+      .types {
+        margin: 0 0 25px 12px;
+        height: 45px;
+        width: 116px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        & > div:nth-child(n) {
+          width: 80px;
+          height: 19px;
+        }
+        .type-1 {
+          &::before {
+            position: absolute;
+            content: "";
+            margin: 5px 0 0 -45px;
+            height: 10px;
+            width: 10px;
+            background: #f2c94c;
+            box-shadow: 0px 0px 4px #f2c94c;
+          }
+        }
+        .type-2 {
+          &::before {
+            position: absolute;
+            content: "";
+            margin: 5px 0 0 -45px;
+            height: 10px;
+            width: 10px;
+            background: #5165d7;
+            box-shadow: 0px 0px 4px #5165d7;
+          }
+        }
+      }
+    }
+    .text {
+      width: 390px;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 27px;
+      display: flex;
+      justify-content: space-between;
+
+      & > span:nth-child(2) {
+        white-space: nowrap;
+        width: 90px;
+        text-align: start;
+      }
+    }
+    .evacuations {
+      margin-top: 113px;
+    }
+    .repair {
+      margin-top: 16px;
+    }
+  }
+
+  &-right_block {
+    width: 1064px;
+
+    .employees {
+      margin-top: 51px;
+      height: 27px;
+      width: 899px;
+      display: flex;
+      justify-content: space-between;
+
+      &-name {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 27px;
+      }
+
+      &-time {
+        height: 100%;
+        width: 136px;
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 19px;
+
+        & > div:nth-child(1) {
+          height: 100%;
+          width: 60px;
+          & > div:first-child {
+            height: 24px;
+            width: 100%;
+            text-align: center;
+          }
+          & > div:last-child {
+            width: 60px;
+            height: 3px;
+            border-radius: 2px;
+          }
+        }
+
+        & > div:nth-child(2) {
+          height: 100%;
+          width: 60px;
+          & > div:first-child {
+            height: 24px;
+            width: 100%;
+            text-align: center;
+          }
+          & > div:last-child {
+            width: 60px;
+            height: 3px;
+            background-color: none;
+            border-radius: 2px;
+          }
+        }
+        .active-line {
+          width: 60px;
+          height: 3px;
+          background-color: #f2c94c;
+          box-shadow: 0px 0px 5px #f2c94c;
+          border-radius: 2px;
+        }
+
+        .line {
+          position: absolute;
+          margin-top: 25px;
+          height: 1px;
+          width: 136px;
+          background-color: rgba(255, 255, 255, 0.25);
+          z-index: -1;
+        }
+      }
+    }
+
+    .employees-info-text {
+      margin: 26px 0 19px 0;
+      height: 19px;
+      width: 950px;
+      display: flex;
+      justify-content: space-between;
+      white-space: nowrap;
+
+      & > span:nth-child(n) {
+        text-align: center;
+        height: 100%;
+      }
+
+      & > span:nth-child(1) {
+        width: 200px;
+      }
+
+      & > span:nth-child(2) {
+        width: 132px;
+      }
+      & > span:nth-child(3) {
+        width: 137px;
+      }
+      & > span:nth-child(4) {
+        width: 100px;
+      }
+      & > span:nth-child(5) {
+        width: 160px;
+      }
+    }
+
+    .employees-list {
+      height: 631px;
+      width: 977px;
+
+      overflow: scroll;
+      overflow-y: auto;
+      overflow-x: hidden;
+    //   background-color: rgba(0, 0, 0, 0.2);
+
+      .employee {
+        height: 48px;
+        width: 950px;
+        margin-bottom: 5px;
+        background-color: rgba(255, 255, 255, 0.1);
+        display: flex;
+        flex-direction: row;
+
+        &-data {
+          height: 100%;
+          width: 950px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          & > span:nth-child(n) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+          }
+
+          & > span:nth-child(1) {
+            width: 200px;
+          }
+
+          & > span:nth-child(2) {
+            width: 132px;
+          }
+          & > span:nth-child(3) {
+            width: 137px;
+          }
+          & > span:nth-child(4) {
+            width: 100px;
+          }
+        }
+
+        .buttons{
+            height: 30px;
+            width: 148px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 150%;
+            // background-color: rgba(0, 0, 0, 0.2);
+
+            .btn-prize{
+                height: 30px;
+                width: 112px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #444444;
+            }
+            .btn-hoof{
+                height: 12px;
+                width: 42px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+      }
+
+      &::-webkit-scrollbar {
+        width: 4px;
+        background-color: rgba(255, 255, 255, 0.25);
+        border-radius: 1px;
+        height: 461px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        width: 4px;
+        background: #f2c94c;
+        border-radius: 1px;
+      }
+    }
+  }
+
+  .main-blocks {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

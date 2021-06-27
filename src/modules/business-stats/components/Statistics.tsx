@@ -5,7 +5,7 @@ import { priceFormat } from '../../../services/services'
 import { IDaily } from '../model'
 
 
-import { Graphics } from './Graphics';
+import { Graphics } from './graphics';
 
 const GraphicsTypes = [
   'Выручка за товар',
@@ -38,7 +38,7 @@ export const Statistics = observer(() => {
           </div>
           <div className='consumption_list'>
             {store.state.stats?.dailyConsumption.map((consumption, i) => (
-              <div className='consumption'>
+              <div className='consumption' key = {i}>
                 <span>{consumption.reason}</span>
                 <span className='red'>-$ {priceFormat(consumption.price)}</span>
               </div>
@@ -54,7 +54,7 @@ export const Statistics = observer(() => {
           </div>
           <div className='dailyIncome_list'>
             {store.state.stats?.dailyIncome.map((income, i) => (
-              <div className='dailyIncome'>
+              <div className='dailyIncome' key={i}>
                 <span>{income.reason}</span>
                 <span className='green'>+$ {priceFormat(income.price)}</span>
               </div>
@@ -70,6 +70,7 @@ export const Statistics = observer(() => {
               {GraphicsTypes.map((type, i) => (
                 <div
                   className='block'
+                  key = {i}
                   onClick={() => store.setActiveTypeGraphics(i)}
                 >
                   <div className='block__content'>{type}</div>
@@ -93,7 +94,7 @@ export const Statistics = observer(() => {
             </div>
             <div className='oftenBuy_List'>
               {store.state.stats?.oftenBuy.map((oftenBuy, i) => (
-                <div className='oftenBuy'>
+                <div className='oftenBuy' key={i}>
                   <span>{oftenBuy.name}</span>
                   <span className='blue'>$ {priceFormat(oftenBuy.price)}</span>
                 </div>
@@ -116,7 +117,6 @@ const CountSum = (arr: IDaily[] | undefined) => {
   let sum = 0
   if(arr){
     arr.map(v => {
-      console.log(v)
       sum += v.price
       return sum;
     })

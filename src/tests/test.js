@@ -27,6 +27,14 @@ import './admin-report/admin-report.test'
 import './business-stats/business-stats.test'
 
 export default function curTest () {
+  window.test.businessStats.setActive(true);
+  window.test.businessStats.setStats();
+  window.test.businessStats.setProductsItems();
+  window.test.businessStats.setProductsIrlItems();
+  window.test.businessStats.setAdvance();
+  window.test.businessStats.setWarehouse();
+  window.test.businessStats.setStaff();
+  // window.test.electrician.open();
   // window.test.playerMenu.setActive(true);
   // window.test.playerMenu.setStatsData();
   // window.test.bg.setActive(true)
