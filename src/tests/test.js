@@ -25,9 +25,10 @@ import './spawn-menu/spawn-menu.test'
 import './admin-report/admin-report.test'
 import './business-stats/business-stats.test'
 import './gas-station/gas-station.test'
+import './death-menu/death-menu'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.adminReport.loadReports()
-  window.test.adminReport.setActive(true)
+  window.test.admin.setActive(true)
+  window.test.admin.loadCars()
 }

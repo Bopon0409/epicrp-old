@@ -63,3 +63,33 @@
     text-align: right;
   }
 }
+
+@media (min-width: 2560px) {
+  .death-menu {
+    zoom: 1.4;
+  }
+}
+
+@media (max-width: 1600px) {
+  .death-menu {
+    zoom: 0.9;
+  }
+}
+
+@media (max-width: 1440px) {
+  .death-menu {
+    zoom: 0.8;
+  }
+}
+
+@media (max-width: 1024px) {
+  .death-menu {
+    zoom: 0.7;
+  }
+}
+
+@media (max-width: 800px) {
+  .death-menu {
+    zoom: 0.6;
+  }
+}

@@ -18,7 +18,6 @@ import { Shop }          from '../shop'
 import { CarShop }       from '../car-shop/car-shop'
 import { ListMenu }      from '../list-menu/list-menu'
 import { Work }          from '../work/work'
-import 'react-input-range/lib/css/index.css'
 import { Electrician }   from '../electrician/electrician'
 import { TaxiTablet }    from '../taxi-tablet/taxi-tablet'
 import { Admin }         from '../admin/admin'
@@ -29,6 +28,7 @@ import { AdminReport }   from '../admin-report/admin-report'
 import { DeathMenu }     from '../death-menu/death-menu'
 import { BusinessStats } from '../business-stats/business-stats'
 import { GasStation }    from '../gas-station/gas-station'
+import 'react-input-range/lib/css/index.css'
 
 export default function App () {
   const devModules = (

@@ -23,6 +23,8 @@ const Pages = [
   'Admin log'
 ]
 
+// TODO Fix dnd adaptive
+
 export const Admin = observer(() => {
 
   useEffect(() => {
@@ -90,10 +92,10 @@ export const Admin = observer(() => {
                 <div className='page' key={i} onClick={() => store.setPage(i)}>
                   <div className={store.state.page ===
                   i ? 'activeText' : 'passiveText'}>{v}</div>
-                  <div className={store.state.page === i ? 'activeLine' : ''}/>
+                  <div className={store.state.page === i ? 'activeLine' : ''} />
                 </div>
-                <div className={store.state.page === i ? 'line--active' 
-                : 'line-passive'}></div>
+                <div className={store.state.page === i ?
+                  'line--active' : 'line-passive'} />
               </div>
             )
           })}
