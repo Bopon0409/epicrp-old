@@ -35,6 +35,32 @@
     .report {
       zoom: 1.4;
     }
+
+    .settings {
+      .col {
+        &__title {
+          zoom: 1.4;
+        }
+
+        &__hint {
+          zoom: 1.4;
+        }
+
+        .toggle, .control {
+          zoom: 1.4;
+        }
+
+        .range-list {
+          .range-label {
+            zoom: 1.4;
+          }
+
+          .input-range__label-container {
+            zoom: 1.4;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -50,6 +76,32 @@
 
     .report {
       zoom: 0.9;
+    }
+
+    .settings {
+      .col {
+        &__title {
+          zoom: 0.9;
+        }
+
+        &__hint {
+          zoom: 0.9;
+        }
+
+        .toggle, .control {
+          zoom: 0.9;
+        }
+
+        .range-list {
+          .range-label {
+            zoom: 0.9;
+          }
+
+          .input-range__label-container {
+            zoom: 0.9;
+          }
+        }
+      }
     }
   }
 }
@@ -67,6 +119,32 @@
     .report {
       zoom: 0.8;
     }
+
+    .settings {
+      .col {
+        &__title {
+          zoom: 0.8;
+        }
+
+        &__hint {
+          zoom: 0.8;
+        }
+
+        .toggle, .control {
+          zoom: 0.8;
+        }
+
+        .range-list {
+          .range-label {
+            zoom: 0.8;
+          }
+
+          .input-range__label-container {
+            zoom: 0.8;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -82,6 +160,32 @@
 
     .report {
       zoom: 0.7;
+    }
+
+    .settings {
+      .col {
+        &__title {
+          zoom: 0.7;
+        }
+
+        &__hint {
+          zoom: 0.7;
+        }
+
+        .toggle, .control {
+          zoom: 0.7;
+        }
+
+        .range-list {
+          .range-label {
+            zoom: 0.7;
+          }
+
+          .input-range__label-container {
+            zoom: 0.7;
+          }
+        }
+      }
     }
   }
 }
@@ -99,6 +203,32 @@
     .report {
       zoom: 0.6;
     }
+
+    .settings {
+      .col {
+        &__title {
+          zoom: 0.6;
+        }
+
+        &__hint {
+          zoom: 0.6;
+        }
+
+        .toggle, .control {
+          zoom: 0.6;
+        }
+
+        .range-list {
+          .range-label {
+            zoom: 0.6;
+          }
+
+          .input-range__label-container {
+            zoom: 0.6;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -115,6 +245,54 @@
     .report {
       zoom: 0.5;
     }
+
+    .settings {
+      .col {
+        &__title {
+          zoom: 0.5;
+        }
+
+        &__hint {
+          zoom: 0.5;
+        }
+
+        .toggle, .control {
+          zoom: 0.5;
+        }
+
+        .range-list {
+          .range-label {
+            zoom: 0.5;
+          }
+
+          .input-range__label-container {
+            zoom: 0.5;
+          }
+
+          .input-range__track {
+            height: 3px;
+          }
+
+          .input-range__slider {
+            width: 10px;
+            height: 10px;
+            top: 3px;
+            left: 3px;
+          }
+
+          .input-range__label--min .input-range__label-container {
+            top: 0;
+          }
+
+          .input-range__label--max .input-range__label-container {
+            top: 0;
+          }
+
+          .input-range__label--value .input-range__label-container {
+            top: 0;
+          }
+        }
+      }
+    }
   }
 }
-  
