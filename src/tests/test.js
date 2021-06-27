@@ -28,6 +28,6 @@ import './gas-station/gas-station.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.inventory.setData()
-  window.test.inventory.setActive(true)
+  window.test.adminReport.loadReports()
+  window.test.adminReport.setActive(true)
 }
