@@ -5,13 +5,12 @@ import store           from '../inventory-store'
 
 export default observer(() => {
   const { dragId } = store.state
-  const idItem = store.getItem(dragId)?.idItem
+  const imgPath = `./images/items/id${store.getItem(dragId)?.idItem}.png`
+  const classes = 'item__img item__img--overlay'
+
   return (
     <DragOverlay dropAnimation={null}>
-      {dragId !== 0 && (
-        <img style={{ position: 'relative', left: '18px', top: '19px' }}
-          src={`./images/items/id${idItem}.png`} alt='' />
-      )}
+      {dragId !== 0 && (<img className={classes} src={imgPath} alt='' />)}
     </DragOverlay>
   )
 })

@@ -28,7 +28,6 @@ import './gas-station/gas-station.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.playerMenu.setStatsData()
-  window.test.playerMenu.setSettingsData()
-  window.test.playerMenu.setActive(true)
+  window.test.inventory.setData()
+  window.test.inventory.setActive(true)
 }

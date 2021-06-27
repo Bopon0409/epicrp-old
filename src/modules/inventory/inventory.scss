@@ -44,6 +44,16 @@
     margin-left: -560px;
     margin-top: -350px;
   }
+
+  .item__img {
+    width: 50px;
+
+    &--overlay {
+      position: relative;
+      left: 16px;
+      top: 16px;
+    }
+  }
 }
 
 @media (min-width: 2560px) {
