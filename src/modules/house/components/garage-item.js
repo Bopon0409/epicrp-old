@@ -35,7 +35,7 @@ export default observer(({ car }) => {
             <div className='info'>
               {carOwner !== userName && store.isOwner && (
                 <img src={carRemove} alt='' className='remove-icon'
-                  onClick={() => store.carRemove(car)} />
+                  onClick={() => store.carRemove(car, placeId)} />
               )}
               <div className='title1'>{carName}</div>
               <div className='title2'>{carOwner}</div>

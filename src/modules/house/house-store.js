@@ -236,16 +236,16 @@ class HouseStore {
     car.placeId = slotTo
     this.state.garage.push(car)
     roommate.cars.shift()
-    window.frontTrigger('garage.roommate.set', roommate.name, car.carId, slotTo)
+    window.frontTrigger('garage.roommate.set', roommate.id, car.carId, slotTo)
   }
 
-  carRemove = car => {
+  carRemove = (car, slotId) => {
     const roommate = this.state.roommates
       .find(({ name }) => car.carOwner === name)
     roommate.cars.push(car)
     this.state.garage = this.state.garage
       .filter(item => item.carId !== car.carId)
-    window.frontTrigger('garage.roommate.remove', roommate.id, car.carId)
+    window.frontTrigger('garage.roommate.remove', slotId)
   }
 
   get roommatesGarageList () {
