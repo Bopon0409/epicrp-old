@@ -245,7 +245,7 @@ class HouseStore {
     roommate.cars.push(car)
     this.state.garage = this.state.garage
       .filter(item => item.carId !== car.carId)
-    window.frontTrigger('garage.roommate.remove', slotId)
+    window.frontTrigger('garage.remove', slotId)
   }
 
   get roommatesGarageList () {
