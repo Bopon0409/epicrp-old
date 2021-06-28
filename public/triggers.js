@@ -13,7 +13,7 @@ var EventManager = {
 }
 
 var chatAPI = {
-  'chat:push': msg => trigger('chat.push', msg),
+  'chat:push': msg => strTrigger('chat.push', msg),
   'chat:clear': () => trigger('chat.clear'),
   'chat:activate': active => trigger('chat.active', active),
   'chat:show': show => trigger('chat.show', show)

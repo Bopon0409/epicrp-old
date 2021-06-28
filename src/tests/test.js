@@ -29,6 +29,6 @@ import './death-menu/death-menu'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.admin.loadCars()
-  window.test.admin.setActive(true)
+  window.test.chat.setChatShow(true)
+  window.test.chat.testChatPushMsg()
 }

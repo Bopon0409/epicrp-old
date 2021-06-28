@@ -1,4 +1,4 @@
-import { scrollList } from '../../services/services'
+import { scrollList }         from '../../services/services'
 import { makeAutoObservable } from 'mobx'
 
 class ChatStore {
@@ -60,11 +60,9 @@ class ChatStore {
   pushChatMsgFromClient = msg => {
     scrollList('main-chat')
     const { messages } = this.state
-    if (msg.type) {
-      messages.push(msg)
-      if (messages.length > this.MAX_CHAT_MESSAGES) messages.shift()
-      this.dropOpacity(true)
-    }
+    messages.push(msg)
+    if (messages.length > this.MAX_CHAT_MESSAGES) messages.shift()
+    this.dropOpacity(true)
   }
 
   onInputChange = event => {
