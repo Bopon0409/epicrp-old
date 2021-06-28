@@ -255,6 +255,28 @@
 
 - `mp.trigger('house.lock.cupboard', houseNumber: number, open: bool)`
 
+--------------------------------------------------------------------------------
+
+Передвижение авто в гараже
+
+- `window.frontTrigger('garage.move', slotFrom: number, slotTo: number)`
+
+Добавление авто (своего) в гараж
+
+- `window.frontTrigger('garage.add', carId: number, slotTo: number)`
+
+Удаление авто (своего) из гаража
+
+- `window.frontTrigger('garage.remove', slotFrom: number)`
+
+Добавление авто (сожителя) в гараж
+
+- `window.frontTrigger('garage.roommate.set', roommateName: string, carId: number, slotTo: number)`
+
+Удаление авто (сожителя) из гаража
+
+- `window.frontTrigger('garage.roommate.set', roommateName: string, carId:  number)`
+
 ## Электрики
 
 - `mp.trigger('electrician.win')`

@@ -139,7 +139,7 @@ class HouseStore {
   get overlayRoommateName () {
     const { dragId } = this.state
     return this.state.roommates
-        .find(roommate => roommate.id === dragId - 300)?.name || ''
+      .find(roommate => roommate.id === dragId - 300)?.name || ''
   }
 
   get overlayRotate () {
@@ -202,17 +202,18 @@ class HouseStore {
 
     if (item1) item1.placeId = slotTo
     if (item2) item2.placeId = slotFrom
+
+    this.swapTrigger(slotFrom, slotTo, item1.carId)
   }
 
-  swapTrigger = (slotFrom, slotTo) => {
-    const { houseNumber } = this.state
+  swapTrigger = (slotFrom, slotTo, carId) => {
     switch (true) {
       case slotFrom < 100 && slotTo < 100:
-        return window.frontTrigger('garage.move', houseNumber, slotFrom, slotTo)
+        return window.frontTrigger('garage.move', slotFrom, slotTo)
       case slotFrom > 100 && slotTo < 100:
-        return window.frontTrigger('garage.add', houseNumber, slotFrom, slotTo)
+        return window.frontTrigger('garage.add', carId, slotTo)
       case slotFrom < 100 && slotTo > 100:
-        return window.frontTrigger('garage.move', houseNumber, slotFrom, slotTo)
+        return window.frontTrigger('garage.remove', slotFrom)
       default:
         return
     }
@@ -235,6 +236,7 @@ class HouseStore {
     car.placeId = slotTo
     this.state.garage.push(car)
     roommate.cars.shift()
+    window.frontTrigger('garage.roommate.set', roommate.name, car.carId, slotTo)
   }
 
   carRemove = car => {
@@ -243,6 +245,7 @@ class HouseStore {
     roommate.cars.push(car)
     this.state.garage = this.state.garage
       .filter(item => item.carId !== car.carId)
+    window.frontTrigger('garage.roommate.set', roommate.name, car.carId)
   }
 
   get roommatesGarageList () {

@@ -71,7 +71,7 @@
         width: 100%;
         height: 3px;
         background-color: #F2C94C;
-        box-shadow: 0px 0px 10px rgba(242, 201, 76, 0.45);
+        box-shadow: 0 0 10px rgba(242, 201, 76, 0.45);
         border-radius: 3px;
         opacity: 1;
         transition: all .12s ease-out;
@@ -107,12 +107,6 @@
 @media (max-width: 2220px) {
   .admin {
     zoom: 1.4;
-  }
-}
-
-@media (max-width: 1920px) {
-  .admin {
-    zoom: 1;
   }
 }
 
