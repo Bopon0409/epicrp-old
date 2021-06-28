@@ -1,7 +1,8 @@
 import { makeAutoObservable } from 'mobx'
 import {
   IChatMessage, ILog, IPlayer, IPunishmentModal, IState, ITransport,
-  IVehicleValue }                             from './model'
+  IVehicleValue
+}                             from './model'
 
 class AdminStore {
   constructor () {
@@ -45,7 +46,7 @@ class AdminStore {
   pushCarLog = (car: ITransport) => this.state.transport.push(car)
   pushMsg = (msg: IChatMessage) => {
     this.state.chat.push(msg)
-    this.state.localChatMessages.push(msg.msg);
+    this.state.localChatMessages.push(msg.msg)
   }
 
   pushRealCars = (cars: string[]) => this.state.realCars = cars
@@ -54,10 +55,10 @@ class AdminStore {
   setActive = (active: boolean) => this.state.active = active
   setPage = (page: number) => this.state.page = page
 
-  setChatValue = (value: string) => this.state.chatValue = value;
-  setConsoleValue = (value: string) => this.state.consoleValue = value;
-  setPlayerValue = (value: string) => this.state.playerValue = value;
-  setVehicleValue = (value: IVehicleValue) => this.state.vehicleValue = value;
+  setChatValue = (value: string) => this.state.chatValue = value
+  setConsoleValue = (value: string) => this.state.consoleValue = value
+  setPlayerValue = (value: string) => this.state.playerValue = value
+  setVehicleValue = (value: IVehicleValue) => this.state.vehicleValue = value
 
   //==============================   Admin Logic   =============================
 
@@ -69,14 +70,15 @@ class AdminStore {
     if (value.length <= 40) this.state.modalInputReason = value
   }
 
-  setPunishmentsModalHistory = (active: boolean) =>{
-    this.state.punishmentsModalHistory = active;
-    if(this.state.punishmentModal) this.state.punishmentModal = null;
+  setPunishmentsModalHistory = (active: boolean) => {
+    this.state.punishmentsModalHistory = active
+    if (this.state.punishmentModal) this.state.punishmentModal = null
   }
-  setPunishmentModal = (type: string | null) =>{
-    this.state.punishmentModal = type;
-    if(this.state.punishmentsModalHistory) this.state.punishmentsModalHistory = 
-    false;
+
+  setPunishmentModal = (type: string | null) => {
+    this.state.punishmentModal = type
+    if (this.state.punishmentsModalHistory) this.state.punishmentsModalHistory =
+      false
   }
 
   adminActionSwitch = (action: string, id: number) => {

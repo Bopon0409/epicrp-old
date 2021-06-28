@@ -29,6 +29,6 @@ import './death-menu/death-menu'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.house.setData()
-  window.test.house.openHouseGarage()
+  window.test.admin.loadCars()
+  window.test.admin.setActive(true)
 }

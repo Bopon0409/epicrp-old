@@ -55,8 +55,7 @@ export interface IPlayer {
   lvl: number
   phoneNumber: string
   cash: number
-  card1: number | null
-  card2: number | null
+  cards: [number | null, number | null],
   family: string
   warn: number
   ban: string | null
@@ -70,7 +69,7 @@ export interface IPlayer {
   punishments: IPunishment[]
 }
 
-export interface IVehicleValue{
+export interface IVehicleValue {
   name: string
   number: string
   playerId: string

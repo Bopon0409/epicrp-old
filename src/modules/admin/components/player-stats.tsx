@@ -50,12 +50,12 @@ export const PlayerStats = observer(() => {
 
           <div className='info__line'>
             <span>Счёт #1:</span>
-            <span>{player.card1}</span>
+            <span>{player.cards[0] || 'Нет'}</span>
           </div>
 
           <div className='info__line'>
             <span>Счёт #2:</span>
-            <span>{player.card2 ? player.card2 : 'Нет'}</span>
+            <span>{player.cards[1] || 'Нет'}</span>
           </div>
 
           <div className='info__line'>
