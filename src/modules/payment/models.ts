@@ -1,4 +1,5 @@
 export type TMethod = 'cash' | 'card'
+export type TCardId = string | null
 
 export interface IState {
   selectActive: boolean,

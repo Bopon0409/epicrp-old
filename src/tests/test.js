@@ -26,9 +26,10 @@ import './admin-report/admin-report.test'
 import './business-stats/business-stats.test'
 import './gas-station/gas-station.test'
 import './death-menu/death-menu'
+import './gun-shop/gun-shop.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.chat.setChatShow(true)
-  window.test.chat.testChatPushMsg()
+  window.test.gunShop.setData()
+  window.test.gunShop.setActive(true)
 }

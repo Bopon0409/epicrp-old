@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { observer }         from 'mobx-react-lite'
-import { store }    from './car-shop-store'
-import { CarList }  from './components/car-list'
-import { CarProps } from './components/car-props'
-import { ColorBar } from './components/color-bar'
-import { Hints }    from './components/hints'
-import { Title }    from './components/title'
-import { Payment }  from '../payment/payment'
+import { ShopHints }        from '../shop-hints/shop-hints'
+import { store }            from './car-shop-store'
+import { CarList }          from './components/car-list'
+import { CarProps }         from './components/car-props'
+import { ColorBar }         from './components/color-bar'
+import { Title }            from './components/title'
+import { Payment }          from '../payment/payment'
 import colors               from './colors.json'
 import './car-shop.scss'
 
@@ -29,7 +29,7 @@ export const CarShop = observer(() => {
   return active ? (
     <div className='car-shop'>
       <CarList />
-      <Hints />
+      <ShopHints />
       <Title />
 
       {currentCar ? (<>

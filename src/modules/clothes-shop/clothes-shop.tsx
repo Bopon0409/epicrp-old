@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { observer }                   from 'mobx-react-lite'
 import { store }                      from './clothes-shop-store'
-import { Payment }                    from '../payment/payment'
-import mouseHint                      from '../car-shop/img/mouse-hint.svg'
+import { Payment } from '../payment/payment'
+import mouseHint   from '../shop-hints/mouse-hint.svg'
 import './clothes-shop.scss'
 
 import { Sections } from './components/sections'

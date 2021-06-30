@@ -1,5 +1,38 @@
 .gun-shop {
   .menu {
+    position: absolute;
+    left: 50%;
+    margin-left: -800px;
+    top: 160px;
+    width: 1600px;
+    display: flex;
+    justify-content: space-between;
 
+    .menu__item {
+      width: 250px;
+      height: 45px;
+      background: rgba(26, 26, 26, 0.6);
+      border-radius: 5px;
+      display: flex;
+      cursor: pointer;
+
+      .menu__title {
+        margin: auto;
+        font-weight: bold;
+        font-size: 17px;
+        line-height: 93.02%;
+        text-transform: uppercase;
+        color: rgb(255, 255, 255, 0.3);
+      }
+
+      &--active {
+        background: rgba(242, 201, 76, 0.8);
+        box-shadow: 0 0 10px rgba(242, 201, 76, 0.3);
+
+        .menu__title {
+          color: white;
+        }
+      }
+    }
   }
 }

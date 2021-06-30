@@ -1,5 +1,11 @@
 import { IMoney } from '../payment/models'
 
+export interface ICartGun {
+  id: number
+  price: number
+  modifications: IGunModification[]
+}
+
 export interface IGunProps {
   damage: { relativelyValue: number, absoluteValue: number }
   rateOfFire: { relativelyValue: number, absoluteValue: number }
@@ -7,11 +13,10 @@ export interface IGunProps {
   rangeOfDefeat: { relativelyValue: number, absoluteValue: number }
 }
 
-export interface IGunModifications {
+export interface IGunModification {
   id: number
   name: string
   price: number
-  isBought: boolean
 }
 
 export interface IGun {
@@ -19,7 +24,7 @@ export interface IGun {
   name: string
   price: number
   props: IGunProps
-  modifications: IGunModifications[]
+  modifications: IGunModification[]
 }
 
 export interface ICategory {
@@ -35,10 +40,13 @@ export interface IData {
 
 export interface IState {
   active: boolean
+  modalActive: boolean
   businessNum: number
   money: IMoney
   categories: ICategory[]
   menuItem: number | null
-  currentGunId: number
-  currentModId: number
+  currentGunId: number | null
+  currentModId: number | null
+  cart: ICartGun[]
+  cartMods: IGunModification[]
 }
