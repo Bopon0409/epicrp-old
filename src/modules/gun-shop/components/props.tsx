@@ -10,9 +10,12 @@ export const Props = observer(() => {
 
   return (
     <div className='props'>
+
+      <div className='props__title'>Параметры</div>
+
       <div className='prop'>
         <div className='prop__text'>
-          <div className='prop__name'>Максимальная скорость</div>
+          <div className='prop__name'>Урон</div>
           <div className='prop__value'>{damage.absoluteValue} км/ч</div>
         </div>
         <PropBar value={damage.relativelyValue} />
@@ -20,7 +23,7 @@ export const Props = observer(() => {
 
       <div className='prop'>
         <div className='prop__text'>
-          <div className='prop__name'>Объем бака</div>
+          <div className='prop__name'>Скорострельность</div>
           <div className='prop__value'>{rateOfFire.absoluteValue} литров</div>
         </div>
         <PropBar value={rateOfFire.relativelyValue} />
@@ -28,7 +31,7 @@ export const Props = observer(() => {
 
       <div className='prop'>
         <div className='prop__text'>
-          <div className='prop__name'>Объем багажника</div>
+          <div className='prop__name'>Точность</div>
           <div className='prop__value'>{accuracy.absoluteValue} кг</div>
         </div>
         <PropBar value={accuracy.relativelyValue} />
@@ -36,7 +39,7 @@ export const Props = observer(() => {
 
       <div className='prop'>
         <div className='prop__text'>
-          <div className='prop__name'>Сцепление с дорогой</div>
+          <div className='prop__name'>Дальность поражения</div>
           <div className='prop__value'>{rangeOfDefeat.absoluteValue} %</div>
         </div>
         <PropBar value={rangeOfDefeat.relativelyValue} />

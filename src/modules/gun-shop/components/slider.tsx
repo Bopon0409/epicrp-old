@@ -4,7 +4,7 @@ import { store }      from '../gun-shop-store'
 import { SliderIcon } from './slider-icon'
 
 export const Slider = observer(() => {
-  const { currentGun } = store
+  const { currentGun, cartAddGun } = store
   if (!currentGun) return null
 
   return (
@@ -14,8 +14,8 @@ export const Slider = observer(() => {
         <div className='slider__name'>{currentGun.name}</div>
         <SliderIcon type={'right'} active={true} />
       </div>
-      <div className='slider__price'>{currentGun.price}</div>
-      <div className='slider__button'>
+      <div className='slider__price'>Стоимость: ${currentGun.price}</div>
+      <div className='slider__button' onClick={() => cartAddGun()}>
         <div className='text'>Добавить в корзину</div>
       </div>
     </div>

@@ -8,33 +8,32 @@ export const Modifications = observer(() => {
     state: { currentModId }, currentGun,
     setCurrentModId, isModInCart, cartAddMod, cartRemoveMod
   } = store
-
   if (!currentGun) return null
-  const { modifications } = currentGun
 
   return (
     <div className='modifications'>
+      <div className='modifications__title'>Модификации</div>
       <div className='modifications__list'>{
-        modifications.map((mod) => {
-          const classes = cn('modification__item',
-            mod.id === currentModId && 'modification__item--active'
+        currentGun.modifications.map((mod, i) => {
+          const classes = cn('modifications__item',
+            mod.id === currentModId && 'modifications__item--active'
           )
           const handler = () => setCurrentModId(mod.id)
 
           return (
-            <div className={classes} onClick={handler}>
-              <div className='modification__name'>{mod.name}</div>
+            <div className={classes} onClick={handler} key={i}>
+              <div className='modifications__name'>{mod.name}</div>
               {isModInCart(mod.id) ? (
-                <div className='modification__bought'>Установлено</div>
+                <div className='modifications__bought'>Установлено</div>
               ) : (
-                <div className='modification__price'>{mod.price}</div>
+                <div className='modifications__price'>+{mod.price}</div>
               )}
             </div>
           )
         })
       }</div>
 
-      {currentModId ? isModInCart(currentModId) ? (
+      {currentModId !== null ? !isModInCart(currentModId) ? (
         <div className='modifications__install' onClick={cartAddMod}>
           <div className='text'>Установить модификацию</div>
         </div>

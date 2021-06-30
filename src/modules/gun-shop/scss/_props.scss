@@ -1,5 +1,28 @@
 .gun-shop {
   .props {
+    position: absolute;
+    width: 310px;
+    height: 280px;
+    top: 50%;
+    margin-top: -140px;
+    right: 110px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
+    &__title {
+      font-weight: bold;
+      font-size: 30px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .prop {
+      &__text {
+        display: flex;
+      }
+    }
   }
 }

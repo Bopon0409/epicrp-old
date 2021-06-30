@@ -16,7 +16,7 @@ export const Menu = observer(() => {
         const active = id === menuItem
         const classes = cn('menu__item', active && 'menu__item--active')
         return (
-          <div className={classes} onClick={() => setMenuItem(id)}>
+          <div className={classes} onClick={() => setMenuItem(id)} key={id}>
             <div className='menu__title'>{items[id]}</div>
           </div>
         )

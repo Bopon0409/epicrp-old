@@ -5,6 +5,8 @@ import { store }            from './gun-shop-store'
 import { Menu }             from './components/menu'
 import { Props }            from './components/props'
 import { Payment }          from '../payment/payment'
+import { Slider }           from './components/slider'
+import { Modifications }    from './components/modifications'
 import './gun-shop.scss'
 
 export const GunShop = observer(() => {
@@ -21,12 +23,16 @@ export const GunShop = observer(() => {
     }
   })
 
-  const { currentPrice, state: { money, businessNum }, payAction } = store
+  const {
+    state: { active, money, businessNum }, payAction, currentPrice
+  } = store
 
-  return (
+  return active ? (
     <div className='gun-shop'>
       <Menu />
       <Props />
+      <Slider />
+      <Modifications />
       <Payment money={money} price={currentPrice}
         payAction={payAction} blocked={currentPrice === 0} />
       <div className='title'>
@@ -35,5 +41,5 @@ export const GunShop = observer(() => {
       </div>
       <ShopHints />
     </div>
-  )
+  ) : null
 })

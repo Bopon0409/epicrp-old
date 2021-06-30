@@ -41,6 +41,7 @@ class GunShopStore {
     this.state.currentGunId = value
     // @ts-ignore
     window.frontTrigger('gun-shop.view.gun', this.currentGun?.id)
+    this.setCurrentModId(null)
   }
 
   setCurrentModId = (value: number | null) => {
@@ -55,7 +56,7 @@ class GunShopStore {
     if (this.state.currentGunId === null || !category) return
 
     if (this.state.currentGunId < category.guns.length - 1)
-      this.state.currentGunId += 1
+      this.setCurrentGunId(this.state.currentGunId + 1)
   }
 
   sliderDecrement = () => {
@@ -63,26 +64,27 @@ class GunShopStore {
     const category = categories.find(cat => cat.id === menuItem)
     if (this.state.currentGunId === null || !category) return
 
-    if (this.state.currentGunId > 0) this.state.currentGunId -= 1
+    if (this.state.currentGunId > 0)
+      this.setCurrentGunId(this.state.currentGunId - 1)
   }
 
   get currentGun (): IGun | null {
     const { currentGunId, menuItem, categories } = this.state
-    if (!currentGunId) return null
+    if (currentGunId === null) return null
     return categories.find(cat => cat.id === menuItem)
       ?.guns[currentGunId] || null
   }
 
   cartAddGun = () => {
     const { currentGun, state: { cartMods } } = this
-    if (!currentGun) return
+    if (currentGun === null) return
     const { id, price } = currentGun
     this.state.cart.push({ id, price, modifications: cartMods })
     this.state.cartMods = []
   }
 
   cartAddMod = () => {
-    if (!this.currentGun || !this.state.currentModId) return
+    if (this.currentGun === null || this.state.currentModId === null) return
     const modification = this.currentGun.modifications
       .find((mod) => mod.id === this.state.currentModId)
     if (modification) this.state.cartMods.push(modification)
@@ -93,7 +95,7 @@ class GunShopStore {
   }
 
   cartRemoveMod = () => {
-    if (!this.currentGun || !this.state.currentModId) return
+    if (this.currentGun === null || this.state.currentModId === null) return
     this.state.cartMods = this.state.cartMods
       .filter((mod) => mod.id !== this.state.currentModId)
   }
@@ -113,6 +115,7 @@ class GunShopStore {
     const { state: { cart }, currentPrice: sum } = this
     // @ts-ignore
     window.frontTrigger('gun-shop.buy', { method, cardId, cart, sum })
+    this.state.cart = []
   }
 }
 

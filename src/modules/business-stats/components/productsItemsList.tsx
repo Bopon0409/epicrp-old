@@ -1,8 +1,8 @@
 import { observer } from "mobx-react-lite";
 import cn from 'classnames';
-import { store } from "../business-stats-store";
+import { store }         from "../business-stats-store";
 import { rgtMouseClick } from "./products";
-import { priceFormat } from "../../../services/services";
+import { priceFormat }   from "../../../services/services";
 
 import water from "../img/water.svg";
 import hoverEffect from "../img/hoverEffect.svg";

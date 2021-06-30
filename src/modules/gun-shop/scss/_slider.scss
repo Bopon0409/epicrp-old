@@ -1,5 +1,53 @@
 .gun-shop {
   .slider {
+    position: absolute;
+    width: 600px;
+    height: 140px;
+    left: 50%;
+    margin-left: -300px;
+    bottom: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: uppercase;
 
+    &__container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__name {
+      font-weight: bold;
+      font-size: 25px;
+      line-height: 93.02%;
+      color: #ffffff;
+    }
+
+    &__price {
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 93.02%;
+      color: #f2c94c;
+    }
+
+    &__button {
+      width: 300px;
+      height: 50px;
+      background: #ecc02c;
+      box-shadow: 0 0 20px rgba(236, 192, 44, 0.15);
+      border-radius: 6px;
+      display: flex;
+      cursor: pointer;
+
+      .text {
+        margin: auto;
+        font-weight: 600;
+        font-size: 20px;
+        color: #2b2b2b;
+      }
+    }
   }
 }

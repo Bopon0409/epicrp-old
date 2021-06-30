@@ -21,7 +21,7 @@
       "guns": [
         {
           "id": 0,
-          "name": "assault riffle mk II",
+          "name": "assault riffle mk II [0]",
           "price": 3000,
           "props": {
             "damage": { "relativelyValue": 70, "absoluteValue": 135 },
@@ -39,7 +39,7 @@
         },
         {
           "id": 1,
-          "name": "assault riffle mk II",
+          "name": "assault riffle mk II [1]",
           "price": 3000,
           "props": {
             "damage": { "relativelyValue": 70, "absoluteValue": 135 },
@@ -57,7 +57,7 @@
         },
         {
           "id": 2,
-          "name": "assault riffle mk II",
+          "name": "assault riffle mk II [2]",
           "price": 3000,
           "props": {
             "damage": { "relativelyValue": 70, "absoluteValue": 135 },
