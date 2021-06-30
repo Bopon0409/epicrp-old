@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { observer }         from 'mobx-react-lite'
-import './spawn-menu.scss'
 import { store }            from './spawn-menu-store'
 import cn                   from 'classnames'
 import {
@@ -9,6 +8,7 @@ import {
   SPAWN_POINT_BLOCK_TEXT,
   BlockBackground
 }                           from './constants'
+import './spawn-menu.scss'
 
 export const SpawnMenu = observer(() => {
   useEffect(() => {
@@ -40,11 +40,10 @@ export const SpawnMenu = observer(() => {
     }
   }
   const IMAGES_NUMBER = !store.state.isCrime ? [0, 1, 2, 3] : [0, 1, 2, 4]
+
   return store.state.active ? (
     <div className='spawn-menu'>
-      <div className='spawn-menu__background'>
-
-      </div>
+      <div className='spawn-menu__background' />
       <div className='spawn-menu__content'>
         <div className='spawn-menu__content-name'>Выбор спавна</div>
         <div className='spawn-menu__content-about'>{About}</div>
@@ -61,18 +60,12 @@ export const SpawnMenu = observer(() => {
                 <div className='point_block-passive_state' />
               )}
               {checkpoint(i)}
-              <div
-                className={`
+              <div className={`
                   ${BlockBackground} ${BlockBackground}-${IMAGES_NUMBER[i]}
-                `}
-              >
-
-              </div>
-              <div
-                className={cn('point_block-name', {
-                  'point_block-name--active': store.state.activeBlock === i
-                })}
-              >
+                `} />
+              <div className={cn('point_block-name', {
+                'point_block-name--active': store.state.activeBlock === i
+              })}>
                 <span>{point}</span>
               </div>
             </div>

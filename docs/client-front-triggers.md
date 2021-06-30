@@ -119,6 +119,27 @@
 - `window.trigger('house.data', data: json string)` - Загрузить данные планшета
   фракции
 
+
+### Бизнес меню (для владельца)
+# примеры json файлов находятся в json, папка business-stats
+- `window.trigger('business-stats.active', active: boolean)` - 
+Отобразить/скрыть окно "меню бизнеса".
+- `window.trigger('business-stats.stats', data: json strong)` - 
+Загрузить данные для вкладки "статистика" в "меню бизнеса".
+- `window.trigger('business-stats.warehouse', data: json strong)` - 
+Загрузить данные для вкладки "склад" в "меню бизнеса".
+- `window.trigger('business-stats.products-items', data: json strong)` - 
+Загрузить данные для вкладки "товары gta items" в "меню бизнеса".
+- `window.trigger('business-stats.products-irl-items', data: json strong)` - Загрузить данные для вкладки "товары gta irl items" в "меню бизнеса".
+- `window.trigger('business-stats.advance', data: json strong)` - 
+Загрузить данные для вкладки "улучшения" в "меню бизнеса".
+  ## Склад
+  - `window.trigger('business-stats.warehouse-clearOrdersList')` - очистить
+список выбранных предметов.
+  - `window.trigger('business-stats.warehouse-clearData')` - очистить данные
+(выбранные items, кол-во, итоговой суммы) после сохранения.
+
+
 ##### Примеры json 'speedometer.badge' в speedometer-badges.json
 
 # chatAPI

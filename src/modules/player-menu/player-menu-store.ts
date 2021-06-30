@@ -27,7 +27,7 @@ class PlayerMenuStore {
     registerData: '',
     warnsCount: 0,
     online: ['', ''],
-    bank: { cash: 0, card1: 0, card2: 0, insurance: 0, credit: 0 },
+    bank: { cash: 0, cards:[0, 0], insurance: 0, credit: 0 },
     fraction: {
       fractionName: '', rankName: '', salary: 0, lastRise: '', reprimands: 0
     },

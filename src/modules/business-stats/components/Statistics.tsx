@@ -1,31 +1,27 @@
-import React           from 'react'
-import { observer }    from 'mobx-react-lite'
-import { store }       from '../business-stats-store'
+import React from 'react'
+import { observer } from 'mobx-react-lite'
+import { store } from '../business-stats-store'
 import { priceFormat } from '../../../services/services'
-import { IDaily }      from '../model'
+import { IDaily } from '../model'
 
-import { Graphics } from './Graphics'
+import { StatiticsDeafult } from './statistics-default';
+import { StatisticsWithdraw } from './statistics-withdraw';
+import { StatisticsDeposit } from './statistics-deposit';
+import { Graphics } from './graphics';
 
 const GraphicsTypes = [
   'Выручка за товар',
   'Продано единиц товара',
   'Потрачено за покупку'
-]
+];
+
+
 
 export const Statistics = observer(() => {
   return (
     <div className='statistics'>
       <div className='statistics-left_block'>
-        <div className='business_balance statistics-block'>
-          <div className='block_name'>БАЛАНС БИЗНЕСА</div>
-          <div className='balance'>
-            $ {priceFormat(store.state.stats?.businessBalance)}
-          </div>
-          <div className='buttons'>
-            <div className='withdraw'>ВЫВЕСТИ</div>
-            <div className='deposit'>ПОПОЛНИТЬ</div>
-          </div>
-        </div>
+        {changeStatsOperationBlock() }
         <div className='daily_сonsumption statistics-block'>
           <div className='block_name'>
             <span>СУТОЧНЫЕ РАСХОДЫ</span>
@@ -34,8 +30,8 @@ export const Statistics = observer(() => {
             </span>
           </div>
           <div className='consumption_list'>
-            {store.state.stats?.dailyConsumption.map((consumption) => (
-              <div className='consumption'>
+            {store.state.stats?.dailyConsumption.map((consumption, i) => (
+              <div className='consumption' key = {i}>
                 <span>{consumption.reason}</span>
                 <span className='red'>-$ {priceFormat(consumption.price)}</span>
               </div>
@@ -50,8 +46,8 @@ export const Statistics = observer(() => {
             </span>
           </div>
           <div className='dailyIncome_list'>
-            {store.state.stats?.dailyIncome.map((income) => (
-              <div className='dailyIncome'>
+            {store.state.stats?.dailyIncome.map((income, i) => (
+              <div className='dailyIncome' key={i}>
                 <span>{income.reason}</span>
                 <span className='green'>+$ {priceFormat(income.price)}</span>
               </div>
@@ -67,31 +63,31 @@ export const Statistics = observer(() => {
               {GraphicsTypes.map((type, i) => (
                 <div
                   className='block'
+                  key = {i}
                   onClick={() => store.setActiveTypeGraphics(i)}
                 >
                   <div className='block__content'>{type}</div>
                   <div
                     className={
-                      store.state?.activeTypeGraphics === i ?
-                        'block__line--active' : 'block__line'}
-                  >
-
-                  </div>
+                      store.state?.activeTypeGraphics === i ? 
+                      'block__line--active' : 'block__line'}
+                  ></div>
                 </div>
               ))}
               <div className='graphics_block-line' />
             </div>
           </div>
-          <Graphics />
+                <Graphics />
         </div>
         <div className='other'>
           <div className='often_buy statistics-block'>
             <div className='block_name'>
               <span>ЧАСТО ПОКУПАЮТ</span>
+              <span></span>
             </div>
             <div className='oftenBuy_List'>
-              {store.state.stats?.oftenBuy.map((oftenBuy) => (
-                <div className='oftenBuy'>
+              {store.state.stats?.oftenBuy.map((oftenBuy, i) => (
+                <div className='oftenBuy' key={i}>
                   <span>{oftenBuy.name}</span>
                   <span className='blue'>$ {priceFormat(oftenBuy.price)}</span>
                 </div>
@@ -102,7 +98,10 @@ export const Statistics = observer(() => {
             <div className='sell_business_in_nation btn'>
               ПРОДАТЬ БИЗНЕС ГОСУДАРСТВУ
             </div>
-            <div className='open_business btn'>ОТКРЫТЬ БИЗНЕС</div>
+            <div className='open_business btn'
+            onClick={() => store.changeBusinessStatus() }>
+              {store.state.stats?.businessStatus ? "ЗАКРЫТЬ БИЗНС" :
+            "ОТКРЫТЬ БИЗНЕС"}</div>
           </div>
         </div>
       </div>
@@ -112,11 +111,24 @@ export const Statistics = observer(() => {
 
 const CountSum = (arr: IDaily[] | undefined) => {
   let sum = 0
-  if (arr) {
+  if(arr){
     arr.map(v => {
       sum += v.price
-      return sum
+      return sum;
     })
   }
   return `$ ${priceFormat(sum)}`
 }
+
+
+
+const changeStatsOperationBlock = () => {
+  switch(store.state.statsOperationType){
+    case 0: return <StatiticsDeafult />;
+    case 1: return <StatisticsWithdraw />;
+    case 2: return <StatisticsDeposit />;
+
+    default: break;
+  }
+}
+

@@ -1,0 +1,68 @@
+[
+    {
+        "name": "Склад 2 уровень",
+        "id": 50,
+        "price": 125000,
+        "status": true
+    },
+    {
+        "name": "Склад 2 уровень",
+        "id": 50,
+        "price": 125000,
+        "status": false
+    },
+    {
+        "name": "Склад 2 уровень",
+        "id": 50,
+        "price": 125000,
+        "status": true
+    },
+    {
+        "name": "Склад 3 уровень",
+        "id": 50,
+        "price": 125000,
+        "status": false
+    },
+    {
+        "name": "Склад 1 уровень",
+        "id": 50,
+        "price": 125000,
+        "status": true
+    },
+    {
+        "name": "Склад 2 уровень",
+        "id": 50,
+        "price": 125000,
+        "status": false
+    },
+    {
+        "name": "Склад 2 уровень",
+        "id": 50,
+        "price": 125000,
+        "status": true
+    },
+    {
+        "name": "Склад 2 уровень",
+        "id": 50,
+        "price": 125000,
+        "status": true
+    },
+    {
+        "name": "Склад 2 уровень",
+        "id": 50,
+        "price": 125000,
+        "status": true
+    },
+    {
+        "name": "Склад 2 уровень",
+        "id": 50,
+        "price": 125000,
+        "status": true
+    },
+    {
+        "name": "Склад 2 уровень",
+        "id": 50,
+        "price": 125000,
+        "status": true
+    }
+]

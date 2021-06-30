@@ -26,8 +26,7 @@ export interface IStats {
   online: [string, string]
   bank: {
     cash: number,
-    card1: number,
-    card2: number,
+    cards: number[],
     insurance: number,
     credit: number
   },
@@ -55,8 +54,7 @@ export interface IStatsData {
   online?: [string, string]
   bank?: {
     cash: number,
-    card1: number,
-    card2: number,
+    cards: [],
     insurance: number,
     credit: number
   },

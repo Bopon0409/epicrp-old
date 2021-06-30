@@ -30,8 +30,13 @@ class AdminStore {
       playerId: ''
     },
 
-    localChatMessages: [],
-    localConsoleCommands: [],
+    msgNumber: 0,
+    cmdNumber: 0,
+    playerNumber: 0,
+
+    localChatMessagesStorage: [],
+    localConsoleCommandsStorage: [],
+    localPlayersStorage: [],
 
     punishmentsModalHistory: false,
     punishmentModal: null,
@@ -45,8 +50,7 @@ class AdminStore {
   pushAdminLog = (log: ILog) => this.state.adminLogs.push(log)
   pushCarLog = (car: ITransport) => this.state.transport.push(car)
   pushMsg = (msg: IChatMessage) => {
-    this.state.chat.push(msg)
-    this.state.localChatMessages.push(msg.msg)
+    this.state.chat.push(msg);
   }
 
   pushRealCars = (cars: string[]) => this.state.realCars = cars
@@ -59,6 +63,10 @@ class AdminStore {
   setConsoleValue = (value: string) => this.state.consoleValue = value
   setPlayerValue = (value: string) => this.state.playerValue = value
   setVehicleValue = (value: IVehicleValue) => this.state.vehicleValue = value
+
+  setMsgNumber = (number: number) => this.state.msgNumber = number;
+  setCmdNumber = (number: number) => this.state.cmdNumber = number;
+  setPlayerNumber = (number: number) => this.state.playerNumber = number;
 
   //==============================   Admin Logic   =============================
 
@@ -77,8 +85,8 @@ class AdminStore {
 
   setPunishmentModal = (type: string | null) => {
     this.state.punishmentModal = type
-    if (this.state.punishmentsModalHistory) this.state.punishmentsModalHistory =
-      false
+    if (this.state.punishmentsModalHistory)
+      this.state.punishmentsModalHistory = false
   }
 
   adminActionSwitch = (action: string, id: number) => {
@@ -158,18 +166,21 @@ class AdminStore {
 
   chatMsgDispatch = (msg: string) => {
     // @ts-ignore
-    window.frontTrigger(`admin.msg`, msg)
+    window.frontTrigger(`admin.msg`, msg);
+    this.state.localChatMessagesStorage.push(msg);
   }
 
   consoleDispatch = (command: string) => {
-    // @ts-ignore
     // window.frontTrigger(`admin.console`, command)
+    // @ts-ignore
     window.mp.invoke('command', command)
+    store.state.localConsoleCommandsStorage.push(command);
   }
 
   playerRequest = (value: string) => {
     // @ts-ignore
-    window.frontTrigger(`admin.player`, value)
+    window.frontTrigger(`admin.player`, value);
+    store.state.localPlayersStorage.push(value);
   }
 
   transportActions = (carId: number, action: string) => {

@@ -18,7 +18,7 @@ export const Stats = observer(() => {
       name, lvl, exp, hasVip, invites, online, playerStatus,
       properties, referralCode, registerData, warnsCount,
       fraction: { fractionName, rankName, lastRise, reprimands, salary },
-      bank: { cash, card1, card2, credit, insurance }
+      bank: { cash, cards, credit, insurance }
     }, getReferralReward
   } = store
 
@@ -116,11 +116,11 @@ export const Stats = observer(() => {
               </div>
               <div className='line'>
                 <span>Банковская карта #1</span>
-                <span>${priceFormat(card1)}</span>
+                <span>${priceFormat(!cards[0] ? 0 : cards[0])}</span>
               </div>
               <div className='line'>
                 <span>Банковская карта #2</span>
-                <span>${priceFormat(card2)}</span>
+                <span>${priceFormat(!cards[1] ? 0 : cards[1])}</span>
               </div>
               <div className='line'>
                 <span>Страховка</span>

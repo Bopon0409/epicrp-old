@@ -1,398 +1,472 @@
-.statistics{
-    width: 100%;
-    height: 830px;
-    margin-top: 58px;
-    // background-color: rgba(255,0,0,.05);
+.statistics {
+  width: 100%;
+  height: 830px;
+  margin-top: 58px;
+  // background-color: rgba(255,0,0,.05);
+  display: flex;
+  flex-direction: row;
+
+  &-left_block {
+    height: 100%;
+    margin-left: 99px;
+    width: 561px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    // background-color: greenyellow;
 
-    &-left_block{
-        height: 100%;
-        margin-left: 99px;
-        width: 561px;
+    .business_balance {
+      margin-bottom: 25px;
+
+      .balance {
+        width: 100%;
+        margin-top: 23px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 40px;
+        line-height: 55px;
+        color: #f2c94c;
+      }
+
+      .buttons {
+        width: 100%;
+        margin-top: 22px;
         display: flex;
-        flex-direction: column;
-        // background-color: greenyellow;
+        flex-direction: row;
+        justify-content: center;
 
-        .business_balance{
-            margin-bottom: 25px;
-
-            .balance{
-                width: 100%;
-                margin-top: 23px;
-                text-align: center;
-                font-weight: bold;
-                font-size: 40px;
-                line-height: 55px;
-                color: #F2C94C;
-            }
-
-            .buttons{
-                width: 100%;
-                margin-top: 22px;
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-
-                &>div{
-                    height: 44px;
-                    width: 185px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    font-size: 16px;
-                    line-height: 22px;
-                    color: #FFFFFF;
-                    border-radius: 5px;
-                    margin-left: 15px;
-                    margin-right: 15px;
-                }
-
-                .withdraw{
-                    border: 1px solid #F2C94C;
-                    &:hover{
-                        transition: all .1s ease-in;
-                        background-color: #F2C94C;
-                    }
-                }
-
-                .deposit{
-                    border: 1px solid #2BB466;
-                    &:hover{
-                        transition: all .1s ease-out;
-                        background-color: #2BB466;
-                    }
-                }
-            }
+        & > div {
+          height: 44px;
+          width: 185px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 16px;
+          line-height: 22px;
+          color: #ffffff;
+          border-radius: 5px;
+          margin-left: 15px;
+          margin-right: 15px;
         }
 
-        .daily_сonsumption{
-            margin-bottom: 25px;
-
-            .consumption_list{
-                height: 162px;
-                width: 498px;
-                margin: 15px 0 0 40px;
-                overflow: scroll;
-                overflow-x: hidden;
-
-                .consumption{
-                    height: 33px;
-                    width: 468px;
-                    margin-bottom: 10px;
-                    display: flex;
-                    align-items: center;
-                    background-color: rgba(255, 255, 255, 0.1);
-
-                    &>span:first-child{
-                        margin-left: 27px;
-                        font-weight: 600;
-                        font-size: 12px;
-                        height: 16px;
-                        width: 300px;
-                        overflow: hidden;
-                    }
-
-                    &>span:last-child{
-                        width: 100px;
-                        margin-left: 20px;
-                        font-weight: bold;
-                        font-size: 16px;
-                        line-height: 22px;
-                        text-align: end;
-                    }
-
-                    &:last-child{
-                        margin-bottom: 0px;
-                    }
-                }
-
-                &::-webkit-scrollbar {
-                    width: 4px;
-                    background-color: rgba(255, 255, 255, 0.25);
-                    border-radius: 1px;
-                    height: 461px;
-                  }
-              
-                  &::-webkit-scrollbar-thumb {
-                    width: 4px;
-                    background: #f2c94c;
-                    border-radius: 1px;
-                  }
-            }
+        .withdraw {
+          border: 1px solid #f2c94c;
+          &:hover {
+            transition: all 0.1s ease-in;
+            background-color: #f2c94c;
+          }
         }
-        
-        .daily_income{
-            .dailyIncome_list{
-                height: 162px;
-                width: 498px;
-                margin: 15px 0 0 40px;
-                overflow: scroll;
-                overflow-x: hidden;
 
-                .dailyIncome{
-                    height: 33px;
-                    width: 468px;
-                    margin-bottom: 10px;
-                    display: flex;
-                    align-items: center;
-                    background-color: rgba(255, 255, 255, 0.1);
-    
-                    &>span:first-child{
-                        margin-left: 27px;
-                        font-weight: 600;
-                        font-size: 12px;
-                        height: 16px;
-                        width: 300px;
-                        overflow: hidden;
-                    }
-    
-                    &>span:last-child{
-                        width: 100px;
-                        margin-left: 20px;
-                        font-weight: bold;
-                        font-size: 16px;
-                        line-height: 22px;
-                        text-align: end;
-                    }
-    
-                    &:last-child{
-                        margin-bottom: 0px;
-                        
-                    }
-                }
-            &::-webkit-scrollbar {
-                width: 4px;
-                background-color: rgba(255, 255, 255, 0.25);
-                border-radius: 1px;
-                height: 461px;
-              }
-          
-              &::-webkit-scrollbar-thumb {
-                width: 4px;
-                background: #f2c94c;
-                border-radius: 1px;
-              }
-            }
+        .deposit {
+          border: 1px solid #2bb466;
+          &:hover {
+            transition: all 0.1s ease-out;
+            background-color: #2bb466;
+          }
         }
+      }
     }
-    
-    &-right_block{
-        height: 100%;
-        width: 963px;
-        margin-left: 111px;
-        display: flex;
-        flex-direction: column;
-        // background-color: green;
 
-        .graphics{
-            width: 100%;
-            height: 545px;
-            background-color: rgba(0,0,0,.3);
+    .daily_сonsumption {
+      margin-bottom: 25px;
+
+      .consumption_list {
+        height: 162px;
+        width: 498px;
+        margin: 15px 0 0 40px;
+        overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        .consumption {
+          height: 33px;
+          width: 468px;
+          margin-bottom: 10px;
+          display: flex;
+          align-items: center;
+          background-color: rgba(255, 255, 255, 0.1);
+
+          & > span:first-child {
+            margin-left: 27px;
+            font-weight: 600;
+            font-size: 12px;
+            height: 16px;
+            width: 300px;
+            overflow: hidden;
+          }
+
+          & > span:last-child {
+            width: 100px;
+            margin-left: 20px;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 22px;
+            text-align: end;
+          }
+
+          &:last-child {
+            margin-bottom: 0px;
+          }
+        }
+
+        &::-webkit-scrollbar {
+          width: 4px;
+          background-color: rgba(255, 255, 255, 0.25);
+          border-radius: 1px;
+          height: 461px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          width: 4px;
+          background: #f2c94c;
+          border-radius: 1px;
+        }
+      }
+    }
+
+    .daily_income {
+      .dailyIncome_list {
+        height: 162px;
+        width: 498px;
+        margin: 15px 0 0 40px;
+        overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        .dailyIncome {
+          height: 33px;
+          width: 468px;
+          margin-bottom: 10px;
+          display: flex;
+          align-items: center;
+          background-color: rgba(255, 255, 255, 0.1);
+
+          & > span:first-child {
+            margin-left: 27px;
+            font-weight: 600;
+            font-size: 12px;
+            height: 16px;
+            width: 300px;
+            overflow: hidden;
+          }
+
+          & > span:last-child {
+            width: 100px;
+            margin-left: 20px;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 22px;
+            text-align: end;
+          }
+
+          &:last-child {
+            margin-bottom: 0px;
+          }
+        }
+        &::-webkit-scrollbar {
+          width: 4px;
+          background-color: rgba(255, 255, 255, 0.25);
+          border-radius: 1px;
+          height: 461px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          width: 4px;
+          background: #f2c94c;
+          border-radius: 1px;
+        }
+      }
+    }
+
+
+
+    .business-operations{
+      margin-bottom: 25px;
+      width: 100%;
+      height: 260px;
+      background-color: rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .text{
+        margin-top: 29px;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 27px;
+      }
+      
+      .money{
+        margin-top: 28px;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 22px;
+      }
+
+      & > input{
+        margin-top: 10px;
+        height: 35px;
+        width: 387px;
+        text-align: center;
+        outline: none;
+        border: none;
+        background-color: #21252F;
+        border-radius: 5px;
+        color: white;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 27px;
+
+        &::placeholder{
+          color: white;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 27px;
+        }
+      }
+
+      .buttons{
+        margin-top: 29px;
+        height: 44px;
+        width: 401px;
+        display: flex;
+        justify-content: space-between;
+
+        & > div:nth-child(n){
+          width: 185px;
+          height: 44px;
+          border-radius: 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 22px;
+        }
+
+        .cancel{
+          background: #EF2A2A;
+        }
+        .operation{
+          background: #2BB466;
+        }
+      }
+    }
+  }
+
+  &-right_block {
+    height: 100%;
+    width: 963px;
+    margin-left: 111px;
+    display: flex;
+    flex-direction: column;
+    // background-color: green;
+
+    .graphics {
+      width: 100%;
+      height: 545px;
+      background-color: rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &__upper-block {
+        height: 27px;
+        width: 100%;
+        margin: 29px 0 50px 0;
+        display: flex;
+        align-items: center;
+        // background-color: red;
+
+        .name {
+          margin-left: 85px;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 27px;
+          color: #ffffff;
+        }
+
+        .graphics_block {
+          height: 24px;
+          width: 345px;
+          margin-left: 182px;
+          display: flex;
+
+          .block {
+            padding: 0;
+            height: 24px;
             display: flex;
             flex-direction: column;
-            align-items: center;
 
-            &__upper-block{
-                height: 27px;
-                width: 100%;
-                margin: 29px 0 50px 0;
-                display: flex;
-                align-items: center;
-                // background-color: red;
-
-                .name{
-                    margin-left: 85px;
-                    font-weight: 600;
-                    font-size: 20px;
-                    line-height: 27px;
-                    color: #FFFFFF;
-                }
-
-                .graphics_block{
-                    height: 24px;
-                    width: 345px;
-                    margin-left: 182px;
-                    display: flex;
-
-                    .block{
-                        padding: 0;
-                        height: 24px;
-                        display: flex;
-                        flex-direction: column;
-
-                        &__content{
-                            padding: 0 5px 0 5px;
-                            height: 23px;
-                            font-weight: 600;
-                            font-size: 10px;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                        }
-                        &__line{
-                            height: 3px;
-                            width: 100%;
-                            background: rgba(242, 201, 76, 0);
-                            border-radius: 3px;
-                            z-index: 2;
-                        }
-                        &__line--active{
-                            height: 3px;
-                            width: 100%;
-                            background: #F2C94C;
-                            box-shadow: 0px 0px 4px rgba(242, 201, 76, 0.45);
-                            border-radius: 3px;
-                            z-index: 2;
-                        }
-                    }
-                    
-                    &-line{
-                        position: absolute;
-                        margin-top: 22px;
-                        margin-left: -10px;
-                        height: 1px;
-                        width: 356px;
-                        z-index: 0;
-                        background-color: rgba(255, 255, 255, 0.25);
-                    }
-                }
+            &__content {
+              padding: 0 5px 0 5px;
+              height: 23px;
+              font-weight: 600;
+              font-size: 10px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
             }
+            &__line {
+              height: 3px;
+              width: 100%;
+              background: rgba(242, 201, 76, 0);
+              border-radius: 3px;
+              z-index: 2;
+            }
+            &__line--active {
+              height: 3px;
+              width: 100%;
+              background: #f2c94c;
+              box-shadow: 0px 0px 4px rgba(242, 201, 76, 0.45);
+              border-radius: 3px;
+              z-index: 2;
+            }
+          }
+
+          &-line {
+            position: absolute;
+            margin-top: 22px;
+            margin-left: -10px;
+            height: 1px;
+            width: 356px;
+            z-index: 0;
+            background-color: rgba(255, 255, 255, 0.25);
+          }
         }
-        
-        .other{
-            width: 100%;
-            height: 285px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            .often_buy{
-                margin-top: 25px;
-
-                .oftenBuy_List{
-                    height: 162px;
-                    width: 498px;
-                    margin: 15px 0 0 40px;
-                    overflow: scroll;
-                    overflow-x: hidden;
-    
-                    .oftenBuy{
-                        height: 33px;
-                        width: 468px;
-                        margin-bottom: 10px;
-                        display: flex;
-                        align-items: center;
-                        background-color: rgba(255, 255, 255, 0.1);
-        
-                        &>span:first-child{
-                            margin-left: 27px;
-                            font-weight: 600;
-                            font-size: 12px;
-                            height: 16px;
-                            width: 300px;
-                            overflow: hidden;
-                        }
-        
-                        &>span:last-child{
-                            width: 100px;
-                            margin-left: 20px;
-                            font-weight: bold;
-                            font-size: 16px;
-                            line-height: 22px;
-                            text-align: end;
-                        }
-        
-                        &:last-child{
-                            margin-bottom: 0px;
-                            
-                        }
-                    }
-                &::-webkit-scrollbar {
-                    width: 4px;
-                    background-color: rgba(255, 255, 255, 0.25);
-                    border-radius: 1px;
-                    height: 461px;
-                  }
-              
-                  &::-webkit-scrollbar-thumb {
-                    width: 4px;
-                    background: #f2c94c;
-                    border-radius: 1px;
-                  }
-                }
-            }
-
-            .buttons{
-                height: 155px;
-                width: 310px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-items: center;
-
-                .btn{
-                    height: 69px;
-                    width: 309px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    border-radius: 5px;
-                    font-weight: 600;
-                    font-size: 16px;
-                    line-height: 22px;
-                    transition: all .1s ease-in;
-                }
-
-                .sell_business_in_nation{
-                    background-color: #5165D7;
-                    &:hover{
-                        box-shadow: 0px 0px 15px rgba(81, 101, 215, 0.45);
-                        transition: all .1s ease-out;
-                    }
-                }
-
-                .open_business{
-                    background-color: #2BB466;
-                    &:hover{
-                        box-shadow: 0px 0px 15px rgba(43, 180, 102, 0.45);
-                        transition: all .1s ease-out;
-                    }
-                }
-            }
-        }
+      }
     }
 
+    .other {
+      width: 100%;
+      height: 285px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-    .statistics-block{
-        width: 561px;
-        height: 260px;
-        background-color: rgba(0, 0, 0, 0.2);
+      .often_buy {
+        margin-top: 25px;
+
+        .oftenBuy_List {
+          height: 162px;
+          width: 498px;
+          margin: 15px 0 0 40px;
+          overflow: scroll;
+          overflow-x: hidden;
+          overflow-y: auto;
+
+          .oftenBuy {
+            height: 33px;
+            width: 468px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+
+            & > span:first-child {
+              margin-left: 27px;
+              font-weight: 600;
+              font-size: 12px;
+              height: 16px;
+              width: 300px;
+              overflow: hidden;
+            }
+
+            & > span:last-child {
+              width: 100px;
+              margin-left: 20px;
+              font-weight: bold;
+              font-size: 16px;
+              line-height: 22px;
+              text-align: end;
+            }
+
+            &:last-child {
+              margin-bottom: 0px;
+            }
+          }
+          &::-webkit-scrollbar {
+            width: 4px;
+            background-color: rgba(255, 255, 255, 0.25);
+            border-radius: 1px;
+            height: 461px;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            width: 4px;
+            background: #f2c94c;
+            border-radius: 1px;
+          }
+        }
+      }
+
+      .buttons {
+        height: 155px;
+        width: 310px;
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
 
-        .block_name{
-            width: 471px;
-            margin: 29px 0 0 37px;
-            display: flex;
-            justify-content: space-between;
-            font-weight: 600;
-            font-size: 20px;
-            line-height: 27px;
-            white-space: nowrap;
+        .btn {
+          height: 69px;
+          width: 309px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 5px;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 22px;
+          transition: all 0.1s ease-in;
         }
+
+        .sell_business_in_nation {
+          background-color: #5165d7;
+          &:hover {
+            box-shadow: 0px 0px 15px rgba(81, 101, 215, 0.45);
+            transition: all 0.1s ease-out;
+          }
+        }
+
+        .open_business {
+          background-color: #2bb466;
+          &:hover {
+            box-shadow: 0px 0px 15px rgba(43, 180, 102, 0.45);
+            transition: all 0.1s ease-out;
+          }
+        }
+      }
     }
+  }
+
+  .statistics-block {
+    width: 561px;
+    height: 260px;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+
+    .block_name {
+      width: 471px;
+      margin: 29px 0 0 37px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 27px;
+      white-space: nowrap;
+    }
+  }
 }
 
+.red {
+  color: rgba(239, 42, 42, 1);
+}
+.green {
+  color: rgba(43, 180, 102, 1);
+}
+.blue {
+  color: rgba(81, 101, 215, 1);
+}
 
-.red{
-    color: rgba(239, 42, 42, 1);
-}
-.green{
-    color: rgba(43, 180, 102, 1);
-}
-.blue{
-    color: rgba(81, 101, 215, 1);
-}
-
-$yellow: #F2C94C;
+$yellow: #f2c94c;

@@ -91,8 +91,15 @@ export interface IState {
   consoleValue: string
   playerValue: string
   vehicleValue: IVehicleValue
-  localChatMessages: string[]
-  localConsoleCommands: string[]
+
+  msgNumber: number
+  cmdNumber: number
+  playerNumber: number
+
+  localChatMessagesStorage: string[]
+  localConsoleCommandsStorage: string[]
+  localPlayersStorage: string[]
+
   punishmentsModalHistory: boolean
   punishmentModal: string | null
 
