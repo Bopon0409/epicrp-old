@@ -1,5 +1,5 @@
 import { makeAutoObservable }  from 'mobx';
-import { IState, IStats, IWarehouse, IItem, IAdvanceItem, IStaff }                             from './model'
+import { IState, IStats, IWarehouse, IItem, IAdvanceItem, IStaff}                             from './model'
 
 class BusinessStatsStore {
     constructor() {
@@ -7,9 +7,10 @@ class BusinessStatsStore {
     }
     state: IState = {
         active: false,
-        activeBlock: 2,
+        activeBlock: 0,
         activeTypeGraphics: 0,
         stats: null,
+        statsOperationType: 0,
         warehouse: {
             itemsInStock: [],
             stockWorkload: {
@@ -37,7 +38,10 @@ class BusinessStatsStore {
             earnedTypes: [[0, 0], [0, 0]]
         },
         staffStatsDate: 0,
-        staffEmployeesDate: 0
+        staffEmployeesDate: 0,
+        staffModalWindow: false,
+        staffPrizeId: -1,
+        staffPrizeAmount: 0
     }
 //============================   Client Trigger   ============================
 
@@ -53,7 +57,19 @@ class BusinessStatsStore {
     setBusinessStatus = (status: boolean) => {
         if(this.state.stats) this.state.stats.businessStatus = status;
     }
-
+    setStatsOperationType = (type: number) => {
+        this.state.statsOperationType = type;
+    }
+    changePlayerMoney = (money: number) => {
+        if(this.state.stats){
+            this.state.stats.playerMoney = money;
+        }
+    }
+    changeBusinessMoney = (money: number) => {
+        if(this.state.stats){
+            this.state.stats.businessBalance = money;
+        }
+    }
 // WAREHOUSE
     setWarehouseOrderAmount = (amount: number) => {
         this.state.orderAmount = amount;
@@ -121,12 +137,17 @@ class BusinessStatsStore {
     setStaffEmployeesDate = (type: number) => {
         this.state.staffEmployeesDate = type;
     }
-    staffPrize = (id: number) => {
-        // выдать премнию, нужно модальное окно
+    changeStaffModalWindow = (id: number) => {
+        this.state.staffModalWindow = !this.state.staffModalWindow;
+        this.state.staffPrizeId = id;
+        this.changePrizeAmount(0);
     }
     staffHoof = (id: number) => {
         this.state.staff.staffList[0].splice(id, 1);
         this.state.staff.staffList[1].splice(id, 1);
+    }
+    changePrizeAmount = (prize: number) => {
+        this.state.staffPrizeAmount = prize;
     }
 
 //============================   Front Trigger   =============================
@@ -136,6 +157,14 @@ class BusinessStatsStore {
         // @ts-ignore
         window.frontTrigger(`business-stats.advance-buy`, status );
     }   
+    statsWithdrawMoney = (money: number) => {
+        // @ts-ignore
+        window.frontTrigger(`business-stats.stats-withdraw`, money );
+    }
+    statsDepositMoney = (money: number) => {
+        // @ts-ignore
+        window.frontTrigger(`business-stats.stats-deposit`, money );
+    }
 // WAREHOUSE
     buyProducts = () => {
         const amount = this.state.orderAmount;
@@ -161,7 +190,13 @@ class BusinessStatsStore {
         // @ts-ignore
         window.frontTrigger(`business-stats.advance-buy`, advanceId );
     }
-
+// STAFF
+    staffPrize = (id: number, prize: number) => {
+        // @ts-ignore
+        window.frontTrigger(`business-stats.staff-prize`, 
+        id, 
+        this.state.staffPrizeAmount);
+    }
 }
 const store = new BusinessStatsStore()
 

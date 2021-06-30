@@ -5,6 +5,7 @@
     ],
     "businessStatus": true,
     "businessBalance": 250000,
+    "playerMoney": 100000,
     "dailyConsumption": [
         {
             "reason": "ya ne ebu po4emy",

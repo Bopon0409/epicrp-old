@@ -176,6 +176,81 @@
         }
       }
     }
+
+
+
+    .business-operations{
+      margin-bottom: 25px;
+      width: 100%;
+      height: 260px;
+      background-color: rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .text{
+        margin-top: 29px;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 27px;
+      }
+      
+      .money{
+        margin-top: 28px;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 22px;
+      }
+
+      & > input{
+        margin-top: 10px;
+        height: 35px;
+        width: 387px;
+        text-align: center;
+        outline: none;
+        border: none;
+        background-color: #21252F;
+        border-radius: 5px;
+        color: white;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 27px;
+
+        &::placeholder{
+          color: white;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 27px;
+        }
+      }
+
+      .buttons{
+        margin-top: 29px;
+        height: 44px;
+        width: 401px;
+        display: flex;
+        justify-content: space-between;
+
+        & > div:nth-child(n){
+          width: 185px;
+          height: 44px;
+          border-radius: 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 22px;
+        }
+
+        .cancel{
+          background: #EF2A2A;
+        }
+        .operation{
+          background: #2BB466;
+        }
+      }
+    }
   }
 
   &-right_block {

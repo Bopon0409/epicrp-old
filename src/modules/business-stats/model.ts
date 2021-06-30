@@ -55,6 +55,7 @@ export interface IStats{
     businessName: string[]
     businessStatus: boolean
     businessBalance: number
+    playerMoney: number
     dailyConsumption: IDaily[],
     dailyIncome: IDaily[]
     oftenBuy: IOftenBuy[]
@@ -104,6 +105,7 @@ export interface IState {
     activeBlock: number
     activeTypeGraphics: number
     stats: IStats | null
+    statsOperationType: number
     warehouse: IWarehouse 
     orderAmount: number
     oredersId: number[]
@@ -113,5 +115,8 @@ export interface IState {
     staff: IStaff
     staffStatsDate: number
     staffEmployeesDate: number
+    staffModalWindow: boolean
+    staffPrizeId: number
+    staffPrizeAmount: number
 }
 

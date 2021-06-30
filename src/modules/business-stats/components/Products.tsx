@@ -39,7 +39,6 @@ export const Products = observer(() => {
         Перечень товаров
         </div>)}
           <ProductsItemsList />
-          {/* { products.type === 1 && <ProductsItemsList /> } */}
        </div>
 
           <ProductsItemsEdit />

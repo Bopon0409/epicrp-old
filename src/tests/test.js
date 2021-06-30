@@ -27,17 +27,22 @@ import './admin-report/admin-report.test'
 import './business-stats/business-stats.test'
 
 export default function curTest () {
-  window.test.businessStats.setActive(true);
-  window.test.businessStats.setStats();
-  window.test.businessStats.setProductsItems();
-  window.test.businessStats.setProductsIrlItems();
-  window.test.businessStats.setAdvance();
-  window.test.businessStats.setWarehouse();
-  window.test.businessStats.setStaff();
+  // window.test.atm.setActive(true)
+  // window.test.atm.setActive();
+  // window.test.atm.setData();
+  // window.test.businessStats.setActive(true);
+  // window.test.businessStats.setStats();
+  // window.test.businessStats.setProductsItems();
+  // window.test.businessStats.setProductsIrlItems();
+  // window.test.businessStats.setAdvance();
+  // window.test.businessStats.setWarehouse();
+  // window.test.businessStats.setStaff();
   // window.test.electrician.open();
   // window.test.playerMenu.setActive(true);
   // window.test.playerMenu.setStatsData();
-  // window.test.bg.setActive(true)
+  window.test.bg.setActive(true);
+  window.test.clothesShop.setActive(true);
+  window.test.clothesShop.setData();
   // window.test.createPers.setData()
   // window.test.createPers.setActive(true)
   // window.test.admin.setActive(true);

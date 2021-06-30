@@ -9,7 +9,7 @@ import Plus from "../img/plus.svg";
 import Minus from "../img/minus.svg";
 
 export const Warehouse = observer(() => {
-  const { setWarehouseOrderAmount, setOrdersList } = store;
+  const { setWarehouseOrderAmount, setOrdersList, buyProducts } = store;
   const { warehouse, resultPrice, stats } = store.state;
   const { purchaseItems } = warehouse;
 
@@ -201,7 +201,7 @@ export const Warehouse = observer(() => {
               <span className="yellow">${resultPrice}</span>
             </div>
             <div className="btnBuy"
-            // onClick = {() => clearOrdersList()}
+            onClick = {() => buyProducts()}
             >Оплатить</div>
           </div>
         </div>

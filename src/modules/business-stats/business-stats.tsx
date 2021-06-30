@@ -23,7 +23,8 @@ export const BusinessStats = observer(() => {
     const { EventManager: em } = window
     const { setActive, setStats, setWarehouse, 
     setProductsItems, setAdvance, setProductsIrlItems, warehouseClearData,
-   setStaff, setBusinessStatus, staffHoof } = store
+   setStaff, setBusinessStatus, staffHoof, changePlayerMoney,
+  changeBusinessMoney } = store
     em.addHandler('business-stats.active', setActive);
     em.addHandler('business-stats.stats', setStats);
     em.addHandler('business-stats.warehouse', setWarehouse);
@@ -31,6 +32,8 @@ export const BusinessStats = observer(() => {
     em.addHandler('business-stats.products-irl-items', setProductsIrlItems);
     em.addHandler('business-stats.advance', setAdvance);
     em.addHandler('business-stats.staff', setStaff);
+    em.addHandler('business-stats.change-player-money', changePlayerMoney);
+    em.addHandler('business-stats.change-business-money', changeBusinessMoney);
 
     em.addHandler('business-stats.staff-hoof', staffHoof);
     em.addHandler('business-stats.warehouse-clearData', warehouseClearData);
@@ -48,6 +51,8 @@ export const BusinessStats = observer(() => {
       em.removeHandler('business-stats.staff-hoof', staffHoof);
       em.removeHandler('business-stats.warehouse-clearData', warehouseClearData);
       em.removeHandler('business-stats.stats-setBusinessStatus', setBusinessStatus);
+      em.removeHandler('business-stats.change-player-money', changePlayerMoney);
+      em.removeHandler('business-stats.change-business-money', changeBusinessMoney);
     }
   }, [])
 

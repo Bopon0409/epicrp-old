@@ -4,7 +4,9 @@ import { store } from '../business-stats-store'
 import { priceFormat } from '../../../services/services'
 import { IDaily } from '../model'
 
-
+import { StatiticsDeafult } from './statistics-default';
+import { StatisticsWithdraw } from './statistics-withdraw';
+import { StatisticsDeposit } from './statistics-deposit';
 import { Graphics } from './graphics';
 
 const GraphicsTypes = [
@@ -19,16 +21,7 @@ export const Statistics = observer(() => {
   return (
     <div className='statistics'>
       <div className='statistics-left_block'>
-        <div className='business_balance statistics-block'>
-          <div className='block_name'>БАЛАНС БИЗНЕСА</div>
-          <div className='balance'>
-            $ {priceFormat(store.state.stats?.businessBalance)}
-          </div>
-          <div className='buttons'>
-            <div className='withdraw'>ВЫВЕСТИ</div>
-            <div className='deposit'>ПОПОЛНИТЬ</div>
-          </div>
-        </div>
+        {changeStatsOperationBlock() }
         <div className='daily_сonsumption statistics-block'>
           <div className='block_name'>
             <span>СУТОЧНЫЕ РАСХОДЫ</span>
@@ -105,7 +98,10 @@ export const Statistics = observer(() => {
             <div className='sell_business_in_nation btn'>
               ПРОДАТЬ БИЗНЕС ГОСУДАРСТВУ
             </div>
-            <div className='open_business btn'>ОТКРЫТЬ БИЗНЕС</div>
+            <div className='open_business btn'
+            onClick={() => store.changeBusinessStatus() }>
+              {store.state.stats?.businessStatus ? "ЗАКРЫТЬ БИЗНС" :
+            "ОТКРЫТЬ БИЗНЕС"}</div>
           </div>
         </div>
       </div>
@@ -123,3 +119,16 @@ const CountSum = (arr: IDaily[] | undefined) => {
   }
   return `$ ${priceFormat(sum)}`
 }
+
+
+
+const changeStatsOperationBlock = () => {
+  switch(store.state.statsOperationType){
+    case 0: return <StatiticsDeafult />;
+    case 1: return <StatisticsWithdraw />;
+    case 2: return <StatisticsDeposit />;
+
+    default: break;
+  }
+}
+
