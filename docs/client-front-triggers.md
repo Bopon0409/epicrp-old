@@ -121,7 +121,7 @@
 
 
 ### Бизнес меню (для владельца)
-# примеры json файлов находятся в json, папка business-stats
+##### примеры json файлов находятся в json, папка business-stats
 - `window.trigger('business-stats.active', active: boolean)` - 
 Отобразить/скрыть окно "меню бизнеса".
 - `window.trigger('business-stats.stats', data: json string)` - 
@@ -146,6 +146,12 @@
 список выбранных предметов.
   - `window.trigger('business-stats.warehouse-clearData')` - очистить данные
 (выбранные items, кол-во, итоговой суммы) после сохранения.
+
+
+### Паспорт
+  - `window.trigger('passport.active', status: boolean)` - отобразить/скрыть
+  - `window.trigger('passport.data', data: json string)` - загрузить данные,
+пример данных находится в папке json/passport
 
 
 ##### Примеры json 'speedometer.badge' в speedometer-badges.json

@@ -16,7 +16,7 @@ export const Passport = observer(() => {
 
     return () => {
       em.removeHandler("passport.active", setActive);
-      em.removeHandler("passport.name", setData);
+      em.removeHandler("passport.data", setData);
     };
   }, []);
   const AVATAR = { background: store.state.passportInfo.photo };
