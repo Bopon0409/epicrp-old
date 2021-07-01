@@ -1,11 +1,5 @@
 import { IMoney } from '../payment/models'
 
-export interface ICartGun {
-  id: number
-  price: number
-  modifications: IGunModification[]
-}
-
 export interface IGunProps {
   damage: { relativelyValue: number, absoluteValue: number }
   rateOfFire: { relativelyValue: number, absoluteValue: number }
@@ -47,6 +41,6 @@ export interface IState {
   menuItem: number | null
   currentGunId: number | null
   currentModId: number | null
-  cart: ICartGun[]
+  cart: IGun[]
   cartMods: IGunModification[]
 }

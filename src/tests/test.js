@@ -30,13 +30,6 @@ import './gun-shop/gun-shop.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  // window.test.gunShop.setData()
-  // window.test.gunShop.setActive(true)
-  window.test.businessStats.setStats()
-  window.test.businessStats.setAdvance()
-  window.test.businessStats.setStaff()
-  window.test.businessStats.setWarehouse()
-  window.test.businessStats.setProductsItems()
-  window.test.businessStats.setProductsIrlItems()
-  window.test.businessStats.setActive(true)
+  window.test.gunShop.setData()
+  window.test.gunShop.setActive(true)
 }

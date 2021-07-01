@@ -2,6 +2,7 @@
 @import 'scss/slider';
 @import 'scss/props';
 @import 'scss/menu';
+@import 'scss/cart';
 
 .gun-shop {
   position: absolute;
@@ -33,25 +34,61 @@
       line-height: 93.02%;
     }
   }
+
+  .cart-btn {
+    position: absolute;
+    bottom: 200px;
+    right: 40px;
+    width: 220px;
+    height: 50px;
+    background: #ecc02c;
+    box-shadow: 0 0 20px rgba(236, 192, 44, 0.15);
+    border-radius: 6px;
+    display: flex;
+    cursor: pointer;
+
+    .text {
+      margin: auto;
+      font-weight: 600;
+      font-size: 20px;
+      text-transform: uppercase;
+      color: #2b2b2b;
+    }
+  }
 }
 
 @media (min-width: 2560px) {
 }
 
 @media (max-width: 1600px) {
+  .gun-shop {
+    zoom: 0.85;
+  }
 }
 
 @media (max-width: 1440px) {
+  .gun-shop {
+    zoom: 0.75;
+  }
 }
 
 @media (max-width: 1366px) {
 }
 
 @media (max-width: 1280px) {
+  .gun-shop {
+    zoom: 0.7;
+  }
 }
 
 @media (max-width: 1024px) {
+  .gun-shop {
+    zoom: 0.6;
+  }
 }
 
 @media (max-width: 800px) {
+  .gun-shop {
+    zoom: 0.45;
+  }
 }

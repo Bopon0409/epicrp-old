@@ -22,6 +22,8 @@
     .prop {
       &__text {
         display: flex;
+        justify-content: space-between;
+        margin-bottom: 7px;
       }
     }
   }

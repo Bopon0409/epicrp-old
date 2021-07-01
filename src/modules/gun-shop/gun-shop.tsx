@@ -8,6 +8,7 @@ import { Payment }          from '../payment/payment'
 import { Slider }           from './components/slider'
 import { Modifications }    from './components/modifications'
 import './gun-shop.scss'
+import { Cart }             from './components/cart'
 
 export const GunShop = observer(() => {
   useEffect(() => {
@@ -24,7 +25,7 @@ export const GunShop = observer(() => {
   })
 
   const {
-    state: { active, money, businessNum }, payAction, currentPrice
+    state: { active, money, businessNum }, payAction, currentPrice, setModal
   } = store
 
   return active ? (
@@ -39,6 +40,10 @@ export const GunShop = observer(() => {
         <div className='title__num'>#{businessNum}</div>
         <div className='title__name'>Магазин оружия</div>
       </div>
+      <div className='cart-btn' onClick={() => setModal(true)}>
+        <div className='text'>Корзина</div>
+      </div>
+      <Cart />
       <ShopHints />
     </div>
   ) : null
