@@ -40,48 +40,7 @@
     transition-property: opacity;
     transition-duration: 0.5s;
     filter: drop-shadow(5px 5px 120px white);
-
-    .msg-ic {
-      color: white;
-    }
-
-    .msg-b {
-      color: #8f8f8f;
-    }
-
-    .msg-me {
-      color: #956cb5;
-
-      .success {
-        font-weight: bold;
-        color: #5b9965;
-      }
-
-      .fail {
-        font-weight: bold;
-        color: #ab3f3f;
-      }
-
-      .todo {
-        color: white;
-      }
-    }
-
-    .msg-do {
-      color: #956cb5;
-    }
-
-    .msg-f {
-      color: #5663d1;
-    }
-
-    .msg-a {
-      color: red;
-    }
-
-    .msg-d {
-      color: #a48447;
-    }
+    color: white;
   }
 
   .chat-input {
