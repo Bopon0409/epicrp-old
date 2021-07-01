@@ -27,16 +27,20 @@ import './business-stats/business-stats.test'
 import './gas-station/gas-station.test'
 import './death-menu/death-menu'
 import './gun-shop/gun-shop.test'
+import './passport/passport.test'
 
 export default function curTest () {
-  window.test.bg.setActive(true)
+  window.test.bg.setActive(true);
+  window.test.passport.setActive(true);
+  window.test.passport.setData();
+  window.test.playerMenu.setActive(false);
   // window.test.gunShop.setData()
   // window.test.gunShop.setActive(true)
-  window.test.businessStats.setStats()
-  window.test.businessStats.setAdvance()
-  window.test.businessStats.setStaff()
-  window.test.businessStats.setWarehouse()
-  window.test.businessStats.setProductsItems()
-  window.test.businessStats.setProductsIrlItems()
-  window.test.businessStats.setActive(true)
+  // window.test.businessStats.setStats()
+  // window.test.businessStats.setAdvance()
+  // window.test.businessStats.setStaff()
+  // window.test.businessStats.setWarehouse()
+  // window.test.businessStats.setProductsItems()
+  // window.test.businessStats.setProductsIrlItems()
+  // window.test.businessStats.setActive(true)
 }

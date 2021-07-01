@@ -30,6 +30,7 @@ import { BusinessStats } from '../business-stats/business-stats'
 import { GasStation }    from '../gas-station/gas-station'
 import 'react-input-range/lib/css/index.css'
 import { GunShop }       from '../gun-shop/gun-shop'
+import { Passport } from '../passport/passport'
 
 export default function App () {
   const devModules = (
@@ -70,6 +71,7 @@ export default function App () {
       <DeathMenu />
       <GasStation />
       <GunShop />
+      <Passport />
     </>
   )
 }
