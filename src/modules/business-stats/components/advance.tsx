@@ -7,25 +7,13 @@ import hoverEffect from "../img/hoverEffect.svg";
 import Warehouse_3lvl from '../img/warehouse_3lvl.svg';
 
 export const Advance = observer(() => {
+    const { buyAdvance } = store;
     const { advance } = store.state;
     const rgtMouseClick = (e:any) => {
         if(e.button === 2 && advance.activeBlock >= 0){
           store.setAdvanceActiveBlock(-1)
         }
       }
-
-    const Timer = {
-    status: false,
-    time: 2000
-    }
-    const buyAdvance = () => {
-    if(!Timer.status){
-        Timer.status = !Timer.status;
-        setTimeout(() => {
-        store.buyAdvance(advance.activeBlock)
-        }, Timer.time);
-    }
-    }
     return(
         <div className="advance">
       <div className="advance__items_list">
@@ -98,7 +86,7 @@ export const Advance = observer(() => {
               </span>
           </div>
           <div className='btnBuy'
-          onClick={() => buyAdvance()}>ПРИОБРЕСТИ</div>
+          onClick={() => buyAdvance(advance.activeBlock)}>ПРИОБРЕСТИ</div>
         </div>
         )}
       </div>

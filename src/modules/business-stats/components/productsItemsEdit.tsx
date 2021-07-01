@@ -5,24 +5,10 @@ import { PConst } from "../constants";
 
 
 export const ProductsItemsEdit = observer(() => {
+    const { saveProductData } = store;
     const { products } = store.state;
 
     const items = products.type === 0 ? products.items : products.irlItems;
-    const Timer = {
-      status: false,
-      time: 2000
-    }
-
-    // сохранение изменённых данных с задержкой
-    const saveData = () => {
-      if(!Timer.status){
-        Timer.status = !Timer.status;
-        setTimeout(() => {
-          store.saveProductData();
-          Timer.status = !Timer.status;
-        }, Timer.time);
-      }
-    }
 
     const inputHandler = (event: any) => {
         const { value } = event.target;
@@ -64,7 +50,7 @@ export const ProductsItemsEdit = observer(() => {
             >Не доступен для покупки</div>
           </div>
           <div className='save-changes'
-          onClick={ () => saveData() }
+          onClick={ () => saveProductData() }
           >Сохранить</div>
         </div>
         )}
