@@ -12,11 +12,11 @@ export const Menu = observer(() => {
 
   return (
     <div className='menu'>{
-      categories.map(({ id }) => {
+      categories.map(({ id }, i) => {
         const active = id === menuItem
         const classes = cn('menu__item', active && 'menu__item--active')
         return (
-          <div className={classes} onClick={() => setMenuItem(id)} key={id}>
+          <div className={classes} onClick={() => setMenuItem(id)} key={i}>
             <div className='menu__title'>{items[id]}</div>
           </div>
         )

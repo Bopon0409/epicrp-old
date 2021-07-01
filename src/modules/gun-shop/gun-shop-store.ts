@@ -29,25 +29,32 @@ class GunShopStore {
     if (data.money !== undefined) this.state.money = data.money
   }
 
+  updateView = () => {
+    const { currentGunId, currentModId, menuItem } = this.state
+    // @ts-ignore
+    window.frontTrigger('gun-shop.view', menuItem, currentGunId, currentModId)
+  }
+
   setMenuItem = (value: number) => {
     this.state.menuItem = value
+    this.state.cartMods = []
     // @ts-ignore
-    window.frontTrigger('gun-shop.view.category', value)
-    this.state.currentGunId = 0
-    this.state.currentModId = null
+    window.frontTrigger('gun-shop.category', value)
+    this.setCurrentGunId(0)
   }
 
   setCurrentGunId = (value: number) => {
     this.state.currentGunId = value
+    this.state.cartMods = []
     // @ts-ignore
-    window.frontTrigger('gun-shop.view.gun', this.currentGun?.id)
+    window.frontTrigger('gun-shop.gun', value)
     this.setCurrentModId(null)
   }
 
   setCurrentModId = (value: number | null) => {
-    this.state.currentModId = value
+    this.state.currentModId = this.state.currentModId === value ? null : value
     // @ts-ignore
-    window.frontTrigger('gun-shop.view.modification', value)
+    window.frontTrigger('gun-shop.mod', this.state.currentModId)
   }
 
   sliderIncrement = () => {
@@ -78,9 +85,10 @@ class GunShopStore {
   cartAddGun = () => {
     const { currentGun, state: { cartMods } } = this
     if (currentGun === null) return
-    const { id, price } = currentGun
-    this.state.cart.push({ id, price, modifications: cartMods })
+    const { id, price, name, props } = currentGun
+    this.state.cart.push({ id, price, name, props, modifications: cartMods })
     this.state.cartMods = []
+    this.setCurrentModId(null)
   }
 
   cartAddMod = () => {
@@ -94,7 +102,14 @@ class GunShopStore {
     this.state.cart = this.state.cart.filter((gun) => gun.id !== gunId)
   }
 
-  cartRemoveMod = () => {
+  cartRemoveMod = (gunId: number, modId: number) => {
+    const gun = this.state.cart.find((gun) => gun.id === gunId)
+    if (!gun) return
+    gun.modifications = gun.modifications
+      .filter((mod) => mod.id !== modId)
+  }
+
+  removeCurrentCartMod = () => {
     if (this.currentGun === null || this.state.currentModId === null) return
     this.state.cartMods = this.state.cartMods
       .filter((mod) => mod.id !== this.state.currentModId)
@@ -117,6 +132,8 @@ class GunShopStore {
     window.frontTrigger('gun-shop.buy', { method, cardId, cart, sum })
     this.state.cart = []
   }
+
+  setModal = (active: boolean) => this.state.modalActive = active
 }
 
 const store = new GunShopStore()

@@ -6,7 +6,7 @@ import cn           from 'classnames'
 export const Modifications = observer(() => {
   const {
     state: { currentModId }, currentGun,
-    setCurrentModId, isModInCart, cartAddMod, cartRemoveMod
+    setCurrentModId, isModInCart, cartAddMod, removeCurrentCartMod
   } = store
   if (!currentGun) return null
 
@@ -38,7 +38,7 @@ export const Modifications = observer(() => {
           <div className='text'>Установить модификацию</div>
         </div>
       ) : (
-        <div className='modifications__install' onClick={cartRemoveMod}>
+        <div className='modifications__install' onClick={removeCurrentCartMod}>
           <div className='text'>Снять модификацию</div>
         </div>
       ) : null}
