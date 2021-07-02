@@ -1,8 +1,6 @@
 export interface IState{
     active: boolean,
-
-    progressInfo: IProgress,
-    progress: number
+    progressInfo: IProgress
 }
 
 export interface IProgress{
