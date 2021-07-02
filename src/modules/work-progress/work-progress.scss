@@ -1,0 +1,77 @@
+.progress-bar-window{
+    position: absolute;
+    top: 241px;
+    right: 14px;
+    height: 140px;
+    width: 342px;
+    background-color: rgba(255, 255, 255, .05);
+    font-family: Nunito;
+    font-style: normal;
+    color: #FFFFFF;
+    z-index: 10;
+
+    .content{
+        margin: 20px 0 0 22px;
+        height: 100%;
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+
+        .name{
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 20px;
+        }
+
+        .about{
+            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 12px;
+        }
+
+        .progress-block{
+            margin-top: 20px;
+            height: 23px;
+            width: 300px;
+            // background-color: chartreuse;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .bar{
+                height: 4px;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 11px;
+
+                .progress{
+                    height: 100%;
+                    background-color: chartreuse;
+                    border-radius: 11px;
+                }
+            }
+
+            .amount{
+                height: 12px;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+}
+
+
+
+@keyframes ProgressBarAnim {
+    from {
+      width:0%;
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }

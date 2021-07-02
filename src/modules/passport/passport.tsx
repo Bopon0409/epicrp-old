@@ -42,7 +42,7 @@ export const Passport = observer(() => {
   }
   // const marriedStatus = gender ? ( married ? 'Женат' : 'Холост' )
   console.log(store);
-  return (
+  return store.state.active ? (
     <div className="window">
       <div className="passport">
         <div className="passport-text_1">UNITED STATES OF AMERICA</div>
@@ -101,5 +101,5 @@ export const Passport = observer(() => {
         <div className='gov-ls-text'>GOVERNMENT OF LOS SANTOS</div>
       </div>
     </div>
-  );
+  ) : null;
 });
