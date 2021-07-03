@@ -31,5 +31,7 @@ import './insurance-contract/insurance-contract.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.insuranceContract.openClient()
+  window.test.inventory.setData()
+  window.test.inventory.setActive(true)
+  window.test.inventory.setMode(4)
 }

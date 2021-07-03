@@ -4,7 +4,7 @@ import store                from '../inventory-store'
 import InputRange           from 'react-input-range'
 import icon                 from '../images/modal-icon.svg'
 
-export default observer(() => {
+export default observer(({ mode }) => {
   const { item, xCord, yCord, action, sliderValue } = store.state.modal
   const { toggleModalAction, setModalSliderValue } = store
   const { modalAction, setModal, useLabel } = store
@@ -41,29 +41,34 @@ export default observer(() => {
           </div>
         </div>
 
-        {!isDisabled && <div className='modal__btn-container'>
-          {useBtnRender ? <div className={
-            action === 'use' ? 'modal__btn modal__btn_active' : 'modal__btn'
-          } onClick={() => toggleModalAction('use')}>
-            {useLabel}
-          </div> : null}
+        {!isDisabled && (
+          <div className='modal__btn-container'>
+            {useBtnRender && mode === 0 && (
+              <div className={
+                action === 'use' ? 'modal__btn modal__btn_active' : 'modal__btn'
+              } onClick={() => toggleModalAction('use')}>
+                {useLabel}
+              </div>
+            )}
 
-          {separateBtnRender && <div className={action === 'separate'
-            ? 'modal__btn modal__btn_active'
-            : 'modal__btn'}
-            onClick={() => toggleModalAction('separate')}>
-            Разделить
+            {separateBtnRender && (
+              <div className={action === 'separate'
+                ? 'modal__btn modal__btn_active'
+                : 'modal__btn'}
+                onClick={() => toggleModalAction('separate')}>
+                Разделить
+              </div>
+            )}
+
+            {mode === 0 && (
+              <div className={action === 'drop' ?
+                'modal__btn modal__btn_active' : 'modal__btn'
+              } onClick={() => toggleModalAction('drop')}>
+                Выбросить
+              </div>
+            )}
           </div>
-          }
-          <div
-            className={
-              action === 'drop' ? 'modal__btn modal__btn_active' : 'modal__btn'
-            }
-            onClick={() => toggleModalAction('drop')}
-          >
-            Выбросить
-          </div>
-        </div>}
+        )}
 
         {action === 'separate' || (action === 'drop' && item.quantity > 1) ? (
           <div className='modal__slider'>

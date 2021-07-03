@@ -41,7 +41,7 @@ export default observer(() => {
       <RightWeightBar />
       <LeftWeightBar mode={mode} />
       <Indicators />
-      {store.state.modal.isActive && <Modal />}
+      {store.state.modal.isActive && <Modal mode={mode} />}
     </div>
   )
 })
