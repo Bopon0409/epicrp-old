@@ -31,7 +31,5 @@ import './insurance-contract/insurance-contract.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.hud.setAllData()
-  window.test.hud.setActive(true)
-  // window.test.insuranceContract.openClient()
+  window.test.insuranceContract.openClient()
 }
