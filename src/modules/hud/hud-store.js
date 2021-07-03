@@ -14,6 +14,7 @@ class HudStore {
 
   state = {
     active: false,
+    hidden: true,
     online: 0,
     id: 0,
     time: '',
@@ -48,6 +49,7 @@ class HudStore {
   }
 
   setHudActive = active => (this.state.active = active)
+  setHidden = hidden => this.state.hidden = hidden
   setHudData = data => {
     for (const key in data) {
       if (key === 'money') this.addMoney(data.money - this.state.money)

@@ -1,12 +1,12 @@
-import React from 'react'
+import React        from 'react'
 import { observer } from 'mobx-react-lite'
-import store from '../hud-store'
-import logoImg from '../images/logo.svg'
-import idImg from '../images/idIcon.svg'
-import onlineImg from '../images/onlineIcon.svg'
+import store        from '../hud-store'
+import logoImg      from '../images/logo.svg'
+import idImg        from '../images/idIcon.svg'
+import onlineImg    from '../images/onlineIcon.svg'
 
 export default observer(() => {
-  const { id, online, mission } = store.state
+  const { id, online, mission, hidden } = store.state
 
   const missionView = mission.active ? (
     <div className='mission'>
@@ -15,7 +15,7 @@ export default observer(() => {
     </div>
   ) : null
 
-  return (
+  return !hidden ? (
     <div className='top-right-panel'>
       <img src={logoImg} alt='' className='logo' />
       <div className='num-block'>
@@ -29,6 +29,10 @@ export default observer(() => {
         </div>
       </div>
       {missionView}
+    </div>
+  ) : (
+    <div className='top-right-panel'>
+      <img src={logoImg} alt='' className='logo' />
     </div>
   )
 })

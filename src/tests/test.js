@@ -27,9 +27,11 @@ import './business-stats/business-stats.test'
 import './gas-station/gas-station.test'
 import './death-menu/death-menu'
 import './gun-shop/gun-shop.test'
+import './insurance-contract/insurance-contract.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.gunShop.setData()
-  window.test.gunShop.setActive(true)
+  window.test.hud.setAllData()
+  window.test.hud.setActive(true)
+  // window.test.insuranceContract.openClient()
 }

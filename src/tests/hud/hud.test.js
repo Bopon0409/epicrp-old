@@ -8,6 +8,7 @@ import geoData     from './geoData.json'
 import allData     from './allData.json'
 
 const setActive = (active = true) => window.trigger('hud.toggle', active)
+const setHidden = hidden => window.trigger('hud.hidden', hidden)
 const setMission = () => window.trigger('hud.data', JSON.stringify(missionData))
 const setAllData = () => window.trigger('hud.data', JSON.stringify(allData))
 const setMicro = () => window.trigger('hud.data', JSON.stringify(microData))
@@ -32,5 +33,6 @@ window.test.hud = {
   setMicro,
   setTime,
   setData,
-  setGeo
+  setGeo,
+  setHidden
 }
