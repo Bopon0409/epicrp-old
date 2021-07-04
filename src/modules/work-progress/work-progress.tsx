@@ -20,7 +20,7 @@ export const WorkProgress = observer(() => {
     };
   }, []);
 
-  return (
+  return store.state.active ? (
     <div className="progress-bar-window">
       <div className="content">
         <div className="name">{name}</div>
@@ -36,5 +36,5 @@ export const WorkProgress = observer(() => {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 });

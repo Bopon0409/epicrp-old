@@ -32,6 +32,7 @@ import 'react-input-range/lib/css/index.css'
 import { GunShop }       from '../gun-shop/gun-shop'
 import { Passport } from '../passport/passport'
 import { WorkProgress } from '../work-progress/work-progress'
+import { WorkStats } from '../work-stats/work-stats';
 
 export default function App () {
   const devModules = (
@@ -74,6 +75,7 @@ export default function App () {
       <GunShop />
       <Passport />
       <WorkProgress />
+      <WorkStats />
     </>
   )
 }

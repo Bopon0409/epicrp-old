@@ -29,14 +29,17 @@ import './death-menu/death-menu'
 import './gun-shop/gun-shop.test'
 import './passport/passport.test'
 import './work-progress/work-progress.test'
+import './work-stats/work-stats.test'
 
 export default function curTest () {
   window.test.bg.setActive(true);
-  // window.test.passport.setActive(false);
+  // window.test.passport.setActive(true);
   // window.test.passport.setData();
   // window.test.playerMenu.setActive(false);
-  window.test.workProgress.setActive(true);
-  window.test.workProgress.setData();
+  // window.test.workProgress.setActive(true);
+  // window.test.workProgress.setData();
+  window.test.workStats.setActive(true);
+  window.test.workStats.setData();
   // window.test.gunShop.setData()
   // window.test.gunShop.setActive(true)
   // window.test.businessStats.setStats()

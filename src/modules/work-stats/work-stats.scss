@@ -1,0 +1,180 @@
+.wrapper{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  overflow: hidden;
+  font-family: Nunito;
+  font-style: normal;
+  color: white;
+
+  .stats-window{
+    z-index: 10;
+    position: absolute;
+    height: 488px;
+    width: 443px;
+    right: -528px;
+    top: 296px;
+    display: flex;
+    flex-direction: column;
+    transition: all 1.5s;
+
+    .job-name{
+      height: 137px;
+      width: 100%;
+      background: #313A4B;
+      display: flex;
+      align-items: center;
+      border-radius: 15px 15px 0 0;
+
+      .job-avatar{
+        margin-left: 23px;
+        height: 115px;
+        width: 115px;
+        background-image: url('../work/img/title_electrician.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+
+      .job-profession{
+        margin-left: 15px;
+        height: 45px;
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+
+        & > span:nth-child(1){
+          font-weight: bold;
+          font-size: 20px;
+          line-height: 93.5%;
+        }
+        & > span:nth-child(2){
+          font-weight: bold;
+          font-size: 32px;
+          line-height: 93.5%;
+        }
+      }
+
+      .hidden--btn{
+        margin-left: 46px;
+        height: 25px;
+        width: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: url('./imgs/leftArrow.png');
+      }
+    }
+
+    .job-stats{
+      height: 351px;
+      width: 100%;
+      background: #1F232D;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      border-radius: 0 0 15px 15px;
+
+      .your-stats--text{
+        margin-top: 32px;
+        height: 21px;
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+        font-size: 22px;
+      }
+
+      .your-lvl{
+        margin-top: 28px;
+        height: 57px;
+        width: 383px;
+        font-weight: 600;
+        font-size: 18px;
+
+        &__circle{
+          height: 57px;
+          width: 57px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      .your-next-lvl{
+        margin-top: 20px;
+        height: 17px;
+        width: 383px;
+        font-weight: 600;
+        font-size: 18px;
+      }
+
+      .your-now{
+        margin-top: 28px;
+        height: 17px;
+        width: 383px;
+        font-weight: 600;
+        font-size: 18px;
+      }
+
+      .your-price-for-one{
+        margin-top: 28px;
+        height: 17px;
+        width: 383px;
+        font-weight: 600;
+        font-size: 18px;
+      }
+
+      .salary{
+        margin-top: 32px;
+        height: 17px;
+        width: 285px;
+        font-weight: bold;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .show-btn{
+    position: absolute;
+    right: 0;
+    top: 373px;
+    height: 351px;
+    width: 59px;
+    background: #1F232D;
+    border-radius: 15px 0 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .left-arrow{
+      margin-top: 17px;
+      height: 25px;
+      width: 25px;
+      background: url('./imgs/leftArrow.png');
+      transform: rotate(180deg);
+    }
+    .your-stats{
+      margin-top: 130px;
+      font-weight: bold;
+      font-size: 24px;
+      transform: rotate(-90deg);
+      white-space: nowrap;
+    }
+  }
+
+
+  .space-between{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hide{
+    display: none;
+  }
+  .show{
+    right: 28px;
+    transition: all 1.5s;
+  }
+}
+
