@@ -31,7 +31,6 @@ import './insurance-contract/insurance-contract.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.inventory.setData()
-  window.test.inventory.setActive(true)
-  window.test.inventory.setMode(4)
+  window.test.chat.setChatShow(true)
+  window.test.chat.testChatPushMsg()
 }
