@@ -14,7 +14,7 @@ class HudStore {
 
   state = {
     active: false,
-    hidden: true,
+    hidden: false,
     online: 0,
     id: 0,
     time: '',
