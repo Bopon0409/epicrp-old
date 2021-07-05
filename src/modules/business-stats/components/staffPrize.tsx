@@ -27,7 +27,7 @@ export const StaffPrize = observer(() => {
                         Отмена</div>
                     <div className='give-prize' 
                     onClick={() => 
-                    store.staffPrize(store.state.staffPrizeId, staffPrizeAmount)}>
+                    store.staffPrize(store.state.staffPrizeId)}>
                         Выдать премию</div>
                 </div>
             </div>

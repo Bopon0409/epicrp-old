@@ -28,8 +28,12 @@ import './gas-station/gas-station.test'
 import './death-menu/death-menu'
 import './gun-shop/gun-shop.test'
 import './contract/insurance-contract.test'
+import './passport/passport.test'
+import './work-progress/work-progress.test'
+import './work-stats/work-stats.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.insuranceContract.openClient()
+  window.test.workStats.setData()
+  window.test.workStats.setActive(true)
 }

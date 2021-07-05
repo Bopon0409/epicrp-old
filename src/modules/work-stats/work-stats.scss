@@ -1,14 +1,14 @@
-.wrapper{
+.wrapper {
   position: absolute;
   width: 100vw;
   height: 100vh;
   z-index: 1;
   overflow: hidden;
-  font-family: Nunito;
+  font-family: Nunito, sans-serif;
   font-style: normal;
   color: white;
 
-  .stats-window{
+  .stats-window {
     z-index: 10;
     position: absolute;
     height: 488px;
@@ -19,15 +19,15 @@
     flex-direction: column;
     transition: all 1.5s;
 
-    .job-name{
+    .job-name {
       height: 137px;
       width: 100%;
-      background: #313A4B;
+      background: #313a4b;
       display: flex;
       align-items: center;
       border-radius: 15px 15px 0 0;
 
-      .job-avatar{
+      .job-avatar {
         margin-left: 23px;
         height: 115px;
         width: 115px;
@@ -36,26 +36,27 @@
         background-repeat: no-repeat;
       }
 
-      .job-profession{
+      .job-profession {
         margin-left: 15px;
         height: 45px;
         width: 200px;
         display: flex;
         flex-direction: column;
 
-        & > span:nth-child(1){
+        & > span:nth-child(1) {
           font-weight: bold;
           font-size: 20px;
           line-height: 93.5%;
         }
-        & > span:nth-child(2){
+
+        & > span:nth-child(2) {
           font-weight: bold;
           font-size: 32px;
           line-height: 93.5%;
         }
       }
 
-      .hidden--btn{
+      .hidden--btn {
         margin-left: 46px;
         height: 25px;
         width: 25px;
@@ -66,16 +67,16 @@
       }
     }
 
-    .job-stats{
+    .job-stats {
       height: 351px;
       width: 100%;
-      background: #1F232D;
+      background: #1f232d;
       display: flex;
       align-items: center;
       flex-direction: column;
       border-radius: 0 0 15px 15px;
 
-      .your-stats--text{
+      .your-stats--text {
         margin-top: 32px;
         height: 21px;
         width: 100%;
@@ -84,14 +85,14 @@
         font-size: 22px;
       }
 
-      .your-lvl{
+      .your-lvl {
         margin-top: 28px;
         height: 57px;
         width: 383px;
         font-weight: 600;
         font-size: 18px;
 
-        &__circle{
+        &__circle {
           height: 57px;
           width: 57px;
           display: flex;
@@ -100,7 +101,7 @@
         }
       }
 
-      .your-next-lvl{
+      .your-next-lvl {
         margin-top: 20px;
         height: 17px;
         width: 383px;
@@ -108,7 +109,7 @@
         font-size: 18px;
       }
 
-      .your-now{
+      .your-now {
         margin-top: 28px;
         height: 17px;
         width: 383px;
@@ -116,7 +117,7 @@
         font-size: 18px;
       }
 
-      .your-price-for-one{
+      .your-price-for-one {
         margin-top: 28px;
         height: 17px;
         width: 383px;
@@ -124,7 +125,7 @@
         font-size: 18px;
       }
 
-      .salary{
+      .salary {
         margin-top: 32px;
         height: 17px;
         width: 285px;
@@ -134,26 +135,27 @@
     }
   }
 
-  .show-btn{
+  .show-btn {
     position: absolute;
     right: 0;
     top: 373px;
     height: 351px;
     width: 59px;
-    background: #1F232D;
+    background: #1f232d;
     border-radius: 15px 0 0 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    .left-arrow{
+
+    .left-arrow {
       margin-top: 17px;
       height: 25px;
       width: 25px;
       background: url('./imgs/leftArrow.png');
       transform: rotate(180deg);
     }
-    .your-stats{
+
+    .your-stats {
       margin-top: 130px;
       font-weight: bold;
       font-size: 24px;
@@ -162,17 +164,17 @@
     }
   }
 
-
-  .space-between{
+  .space-between {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .hide{
+  .hide {
     display: none;
   }
-  .show{
+
+  .show {
     right: 28px;
     transition: all 1.5s;
   }
