@@ -1,21 +1,19 @@
 .insurance-contract {
   position: absolute;
   z-index: 5;
-  height: 80%;
-  width: 30%;
-  top: 10%;
-  left: 35%;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   font-family: Nunito, sans-serif;
 
   .tablet {
+    position: relative;
+    width: 30%;
+    margin: auto;
     background-image: url('img/tablet_bg.png');
     background-size: 100% 100%;
-    height: 92%;
-    padding: 50px 40px;
+    padding: 50px 35px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -126,6 +124,8 @@
   }
 
   .buttons {
+    position: absolute;
+    bottom: -50px;
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -44,7 +44,7 @@ class AdminStore {
     modalInputReason: ''
   }
 
-  //============================   Client Trigger   ============================
+  //============================   InsuranceClient Trigger   ============================
 
   pushKillLog = (log: ILog) => this.state.killLogs.push(log)
   pushAdminLog = (log: ILog) => this.state.adminLogs.push(log)

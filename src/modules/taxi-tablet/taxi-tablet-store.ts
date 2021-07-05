@@ -34,7 +34,7 @@ class TaxiTabletStore {
     orders: []
   }
 
-  //============================   Client Trigger   ============================
+  //============================   InsuranceClient Trigger   ============================
 
   setActive = (active: boolean) => this.state.active = active
 

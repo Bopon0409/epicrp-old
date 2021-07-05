@@ -43,7 +43,7 @@ class BusinessStatsStore {
         staffPrizeId: -1,
         staffPrizeAmount: 0
     }
-//============================   Client Trigger   ============================
+//============================   InsuranceClient Trigger   ============================
 
     setActive = (active: boolean) => this.state.active = active
     setWarehouse = (warehouse: IWarehouse) => this.state.warehouse = warehouse;
@@ -76,7 +76,7 @@ class BusinessStatsStore {
     } // кол-во товара на заказ
     setWarehouseResultPrice = () => {
         let sum = 0;
-        this.state.oredersId.map((order, i) => {
+        this.state.oredersId.map((order) => {
             const { price } = this.state.warehouse.purchaseItems[order];
             const { orderAmount } = this.state;
             return sum += price * orderAmount;
@@ -191,7 +191,7 @@ class BusinessStatsStore {
         window.frontTrigger(`business-stats.advance-buy`, advanceId );
     }
 // STAFF
-    staffPrize = (id: number, prize: number) => {
+    staffPrize = (id: number) => {
         // @ts-ignore
         window.frontTrigger(`business-stats.staff-prize`, 
         id, 

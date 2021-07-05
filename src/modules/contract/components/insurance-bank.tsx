@@ -1,13 +1,20 @@
-import React        from 'react'
+import React from 'react'
 import { observer } from 'mobx-react-lite'
-import { store }    from '../insurance-contract-store'
-import logoIcon     from '../img/bank-logo.svg'
-import sealIcon     from '../img/seal.svg'
+import { store }    from '../contract-store'
+import { Select }   from 'react-responsive-select'
+import logoIcon from '../img/bank-logo.svg'
+import sealIcon from '../img/seal.svg'
 // @ts-ignore
 import SignaturePad from 'react-signature-pad-wrapper'
 
-export const Client = observer(() => {
-  const { state: { tariff, names, date, signature } } = store
+export const InsuranceBank = observer(() => {
+  const {
+    state: { names, date, tariffs }, setCurrentTariff, clear, submit
+  } = store
+  const selectOptions = tariffs.map((item, i) => (
+    { value: `${i}`, text: item }
+  ))
+
   return (
     <div className='tablet'>
       <img src={logoIcon} alt='' className='tablet__logo' />
@@ -20,8 +27,10 @@ export const Client = observer(() => {
       <div className='tablet__title'>Предмет договора</div>
       <div className='tablet__text'>
         1.1 Страховщик обязуется предоставить выгодоприобретателю страхование с
-        тарифом {tariff} которые используются выгодоприобретателем на условиях
-        данного договора.
+        тарифом
+        <Select name='tariff' options={selectOptions}
+          onSelect={setCurrentTariff} />
+        которые используются выгодоприобретателем на условиях данного договора.
         1.2 Выгодоприобретатель оформляет страхование на условиях действующего
         договора.
         1.3 Страхование предоставляется на срок один(1) календарный месяц со дня
@@ -50,15 +59,20 @@ export const Client = observer(() => {
         </div>
         <div className='footer__signature'>
           <div className='signature-container'>
-            <img src={signature} alt='' />
+            <SignaturePad className='signature' options={{
+              minWidth: 0.8, maxWidth: 1, penColor: '#000000'
+            }} ref={(ref: any) => store.setRef(ref)} />
             <div className='footer__name'>{names[0]}</div>
           </div>
-          <div className='signature-container'>
-            <SignaturePad ref={(ref: any) => store.setRef(ref)} options={{
-              minWidth: 0.8, maxWidth: 1, penColor: '#000000'
-            }} />
-            <div className='footer__name'>{names[1]}</div>
-          </div>
+        </div>
+      </div>
+
+      <div className='buttons'>
+        <div className='button' onClick={clear}>
+          <div className='text'>Очистить поле</div>
+        </div>
+        <div className='button' onClick={submit}>
+          <div className='text'>Продолжить</div>
         </div>
       </div>
     </div>

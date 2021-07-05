@@ -1,5 +1,5 @@
 {
-  "type": "bank",
+  "type": "bank-insurance",
   "names": [ "Ched", "NeChed" ],
   "tariffs": [ "25%", "50%", "100%" ]
 }

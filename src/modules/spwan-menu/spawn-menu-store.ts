@@ -13,7 +13,7 @@ class SpawnMenuStore {
         isCrime: false
     }
 
-  //============================   Client Trigger   ============================
+  //============================   InsuranceClient Trigger   ============================
 
     setActive = (active: boolean) => this.state.active = active;
     setActiveBlock = (num: number | null) => this.state.activeBlock = num;
