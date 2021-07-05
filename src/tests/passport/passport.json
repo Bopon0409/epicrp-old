@@ -1,0 +1,11 @@
+{
+    "name": "Ched Nocksfeel",
+    "nationality": "США",
+    "gender": true,
+    "married": 2,
+    "date": "29.03.2021",
+    "id": 244,
+    "uuid": 3099939,
+    "photo": "url(https://picsum.photos/196/196/?random&t=1)",
+    "sealPhoto": "url(https://picsum.photos/162/268/?random&t=2)"
+}
