@@ -1,4 +1,4 @@
-.insurance-contract {
+.contract {
   position: absolute;
   z-index: 5;
   width: 100%;
@@ -6,6 +6,15 @@
   display: flex;
   align-items: center;
   font-family: Nunito, sans-serif;
+
+  .sum-input {
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 1px solid black;
+    width: 100px;
+    text-align: center;
+  }
 
   .tablet {
     position: relative;

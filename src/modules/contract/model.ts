@@ -56,6 +56,9 @@ export interface IState {
   properties: IProperty[]
   property: IProperty | null
   duration: number
+  currentDuration: string | undefined
+  currentProperty: IProperty | null
+  currentSum: number
   rate: number
   sum: number
 }

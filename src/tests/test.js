@@ -27,13 +27,12 @@ import './business-stats/business-stats.test'
 import './gas-station/gas-station.test'
 import './death-menu/death-menu'
 import './gun-shop/gun-shop.test'
-import './contract/insurance-contract.test'
 import './passport/passport.test'
 import './work-progress/work-progress.test'
 import './work-stats/work-stats.test'
+import './contract/contract.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.workStats.setData()
-  window.test.workStats.setActive(true)
+  window.test.contract.openCreditClient()
 }

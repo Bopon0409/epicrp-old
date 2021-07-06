@@ -22,7 +22,10 @@ const initState: IState = {
   property: null,
   duration: 0,
   rate: 0,
-  sum: 0
+  sum: 0,
+  currentDuration: '7',
+  currentProperty: null,
+  currentSum: 0
 }
 
 class ContractStore {
@@ -54,6 +57,7 @@ class ContractStore {
     this.state.names = data.names
     this.state.rate = data.rate
     this.state.properties = data.properties
+    if (data.properties.length) this.state.currentProperty = data.properties[0]
   }
 
   openClientCredit = (data: IClientCreditData) => {
@@ -74,6 +78,57 @@ class ContractStore {
     this.state.currentTariff = option.value
   }
 
+  setCurrentDate = (option: IOption) => {
+    this.state.currentDuration = option.value
+  }
+
+  setCurrentProp = (option: IOption) => {
+    this.state.currentProperty = this.state.properties
+      .find((prop) => prop.id === Number(option.value)) || null
+  }
+
+  setCurrentSum = (event: any) => {
+    const value = Number(event.target.value)
+    if (!isNaN(value) && value <= 10000000000) this.state.currentSum = value
+  }
+
+  get creditSumBank () {
+    const { currentSum, rate, currentDuration } = this.state
+    return (currentSum + currentSum * rate * Number(currentDuration))
+      .toFixed(0)
+  }
+
+  get dailyPaymentBank () {
+    const { state: { currentDuration }, creditSumBank } = this
+    return (Number(creditSumBank) / Number(currentDuration))
+      .toFixed(0)
+  }
+
+  get creditSumClient () {
+    const { sum, rate, duration } = this.state
+    return (sum + sum * rate * duration).toFixed(0)
+  }
+
+  get dailyPaymentClient () {
+    const { state: { duration }, creditSumClient } = this
+    return (Number(creditSumClient) / Number(duration)).toFixed(0)
+  }
+
+  get dateSelectOptions () {
+    const { date: now } = this.state
+    if (now === null) return []
+    return [7, 8, 9, 10, 11, 12, 13, 14].map((days) => {
+      const date = new Date(now)
+      date.setDate(now.getDate() + days)
+      return { value: String(days), text: date.toLocaleDateString() }
+    })
+  }
+
+  get propertiesOptions () {
+    return this.state.properties
+      .map((prop) => ({ text: prop.name, value: String(prop.id) }))
+  }
+
   submit = () => {
     const { type, currentTariff, ref } = this.state
     const signature = ref?.toDataURL()
@@ -87,7 +142,7 @@ class ContractStore {
         this.submitBankInsurance(signature, tariff)
         break
       case 'client-credit':
-        this.submitClientCredit()
+        this.submitClientCredit(signature)
         break
       case 'bank-credit':
         this.submitBankCredit()
@@ -109,14 +164,22 @@ class ContractStore {
     )
   }
 
-  submitClientCredit = () => {
+  submitClientCredit = (signature: string) => {
     // @ts-ignore
-    window.frontTrigger(`insurance-contract.client-credit`)
+    window.frontTrigger(`insurance-contract.client-credit`, { signature })
   }
 
   submitBankCredit = () => {
+    const {
+      state: { currentDuration, currentSum, currentProperty },
+      creditSumBank, dailyPaymentBank
+    } = this
     // @ts-ignore
-    window.frontTrigger(`insurance-contract.bank-credit`)
+    window.frontTrigger(`insurance-contract.bank-credit`, {
+      duration: Number(currentDuration), propertyId: currentProperty?.id,
+      sum: currentSum, creditSum: Number(creditSumBank),
+      dailyPayment: Number(dailyPaymentBank)
+    })
   }
 }
 

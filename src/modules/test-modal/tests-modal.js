@@ -14,8 +14,8 @@ export default observer(() => {
     return () => document.removeEventListener('keydown', pressKeyHandler)
   }, [])
 
-  const testList = Object.getOwnPropertyNames(tests)
-  const selectOptions = testList.map(el => ({ value: el, label: el }))
+  const selectOptions = Object.getOwnPropertyNames(tests)
+    .map(el => ({ value: el, label: el }))
 
   const testButtons = Object.getOwnPropertyNames(tests[curTest]).map(
     (el, i) => {

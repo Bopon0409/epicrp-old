@@ -1,5 +1,5 @@
 {
-  "type": "bank-insurance",
+  "type": "client-credit",
   "names": [ "Ched", "NeChed" ],
   "rate": 0.02,
   "duration": 10,

@@ -34,7 +34,7 @@ export const Contract = observer(() => {
   const { type } = store.state
 
   return type !== null ? (
-    <div className='insurance-contract'>
+    <div className='contract'>
       {type === 'client-insurance' && <InsuranceClient />}
       {type === 'bank-insurance' && <InsuranceBank />}
       {type === 'client-credit' && <CreditClient />}
