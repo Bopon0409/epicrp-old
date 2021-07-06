@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx';
-import { IState, IMedCard } from './models'
+import { IState, IMedCard, IHistory } from './models'
 
 class MedCardStore {
     constructor() {
@@ -16,7 +16,7 @@ class MedCardStore {
             photo: "",
             medicalHistory: []
         },
-        medicalHistoryLeft:[],
+        medicalHistoryLeft: [],
         medicalHistoryRight: [],
         page: 0
     }
@@ -24,22 +24,22 @@ class MedCardStore {
     setActive = (state: boolean) => this.state.active = state;
     setData = (data: IMedCard) => {
         this.state.medCard = data;
-        // const EmptyArrEl:IHistory = {
-        //     patientComment: '-',
-        //     doctorComment:'-',
-        //     doctor: 'Noname',
-        //     date: '22.22.2022'
-        // };
-        // this.state.medCard.medicalHistory.unshift(EmptyArrEl);
+        const EmptyArrEl:IHistory = {
+            patientComment: '-',
+            doctorComment:'-',
+            doctor: 'Noname',
+            date: '22.22.2022'
+        };
+        this.state.medCard.medicalHistory.unshift(EmptyArrEl);
         this.state.medCard.medicalHistory.map((history, i) => {
-            if(i % 2 === 0) return this.state.medicalHistoryRight.push(history);
+            if (i % 2 === 0) return this.state.medicalHistoryRight.push(history);
             else return this.state.medicalHistoryLeft.push(history);
         })
     }
     setPage = (type: string) => {
         console.log(type);
-        switch(type){
-            case 'start':{
+        switch (type) {
+            case 'start': {
                 this.state.page = 0;
                 break;
             }

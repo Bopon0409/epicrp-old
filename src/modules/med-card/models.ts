@@ -1,4 +1,4 @@
-export interface IState{
+export interface IState {
     active: boolean,
     medCard: IMedCard,
     page: number,
@@ -6,7 +6,7 @@ export interface IState{
     medicalHistoryRight: IHistory[]
 }
 
-export interface IMedCard{
+export interface IMedCard {
     firstName: string,
     secondName: string,
     age: number,
@@ -15,7 +15,7 @@ export interface IMedCard{
     medicalHistory: IHistory[]
 }
 
-export interface IHistory{
+export interface IHistory {
     patientComment: string,
     doctorComment: string,
     doctor: string,
