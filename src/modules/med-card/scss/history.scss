@@ -1,0 +1,81 @@
+.history{
+    margin: 26px 0 0 36px;
+    height: 515px;
+    width: 455px;
+    display: flex;
+    flex-direction: column;
+
+    .history_text{
+      width: 100%;
+      text-align: center;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 33px;
+    }
+
+    .disease_number{
+        margin-top: 25px;
+        height: 25px;
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 25px;
+    }
+
+    .patient_comment{
+        margin-top: 23px;
+        height: 155px;
+        width: 455px;
+        display: flex;
+        flex-direction: column;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+
+        & > span:nth-child(2){
+            font-weight: normal;
+            margin-top: 5px;
+            font-size: 16px;
+            line-height: 22px;
+        }
+    }
+
+    .doctor_comment{
+        margin-top: 8px;
+        height: 157px;
+        width: 455px;
+        display: flex;
+        flex-direction: column;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+
+        & > span:nth-child(2){
+            font-weight: normal;
+            margin-top: 5px;
+            font-size: 16px;
+            line-height: 22px;
+        }
+    }
+
+    .doctor_and_date{
+        margin-top: 54px;
+        height: 44px;
+        width: 434px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        & > div:nth-child(n){
+            display: flex;
+            flex-direction: column;
+
+            & > span:first-child{
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 22px;
+            }
+        }
+    }
+  }

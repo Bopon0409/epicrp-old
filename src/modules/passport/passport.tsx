@@ -19,7 +19,7 @@ export const Passport = observer(() => {
       em.removeHandler("passport.data", setData);
     };
   }, []);
-  const AVATAR = { background: store.state.passportInfo.photo };
+  // const AVATAR = { background: store.state.passportInfo.photo };
   const ChooseGender = () => {
     return gender ? "Мужской" : "Женский";
   };

@@ -33,6 +33,7 @@ import { GunShop }       from '../gun-shop/gun-shop'
 import { Passport } from '../passport/passport'
 import { WorkProgress } from '../work-progress/work-progress'
 import { WorkStats } from '../work-stats/work-stats';
+import { MedCard } from '../med-card/med-card'
 
 export default function App () {
   const devModules = (
@@ -76,6 +77,7 @@ export default function App () {
       <Passport />
       <WorkProgress />
       <WorkStats />
+      <MedCard />
     </>
   )
 }

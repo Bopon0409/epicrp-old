@@ -30,6 +30,7 @@ import './gun-shop/gun-shop.test'
 import './passport/passport.test'
 import './work-progress/work-progress.test'
 import './work-stats/work-stats.test'
+import './med-card/med-card.test'
 
 export default function curTest () {
   window.test.bg.setActive(true);
@@ -38,8 +39,10 @@ export default function curTest () {
   // window.test.playerMenu.setActive(false);
   // window.test.workProgress.setActive(true);
   // window.test.workProgress.setData();
-  window.test.workStats.setActive(true);
-  window.test.workStats.setData();
+  // window.test.workStats.setActive(true);
+  // window.test.workStats.setData();
+  window.test.medCard.setActive(true);
+  window.test.medCard.setData();
   // window.test.gunShop.setData()
   // window.test.gunShop.setActive(true)
   // window.test.businessStats.setStats()

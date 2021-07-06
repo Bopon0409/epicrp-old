@@ -10,7 +10,7 @@ import cn from 'classnames'
 
 
 export const WorkStats = observer(() => {
-  const { work, lvl, need, now, priceForOne, salary } = store.state.workStats;
+  const { lvl, need, now, priceForOne, salary } = store.state.workStats;
   const { show } = store.state;
   useEffect(() => {
     // @ts-ignore
