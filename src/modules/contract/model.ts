@@ -1,4 +1,14 @@
-export type TContract = 'bank-insurance' | 'client-insurance' | null
+export type TContract =
+  'bank-insurance'
+  | 'client-insurance'
+  | 'bank-credit'
+  | 'client-credit'
+
+export interface IProperty {
+  id: number
+  name: string
+  price: number
+}
 
 export interface IBankInsuranceData {
   type: 'bank-insurance'
@@ -13,13 +23,39 @@ export interface IClientInsuranceData {
   signature: string
 }
 
+export interface IBankCreditData {
+  type: 'bank-credit'
+  names: [string, string]
+  properties: IProperty[]
+  rate: number
+}
+
+export interface IClientCreditData {
+  type: 'client-credit'
+  names: [string, string]
+  sum: number
+  duration: number
+  rate: number
+  property: IProperty
+  signature: string
+}
+
 export interface IState {
+  type: TContract | null
   date: Date | null
   names: [string, string]
-  type: 'bank-insurance' | 'client-insurance' | null
-  tariffs: string[]
   signature: string
+  ref: any
+
+  // insurance
+  tariffs: string[]
   currentTariff: string | undefined
   tariff: string
-  ref: any
+
+  // credit
+  properties: IProperty[]
+  property: IProperty | null
+  duration: number
+  rate: number
+  sum: number
 }

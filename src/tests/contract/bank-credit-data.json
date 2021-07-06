@@ -1,0 +1,22 @@
+{
+  "type": "bank-insurance",
+  "names": [ "Ched", "NeChed" ],
+  "rate": 0.02,
+  "properties": [
+    {
+      "id": 1,
+      "name": "Дом #1",
+      "price": 150000
+    },
+    {
+      "id": 2,
+      "name": "Дом #2",
+      "price": 150000
+    },
+    {
+      "id": 3,
+      "name": "Дом #3",
+      "price": 150000
+    }
+  ]
+}
