@@ -38,6 +38,7 @@ import { MedCard } from '../med-card/med-card'
 //FRACTIONS
 import { Inspection } from '../fractions/ems/inspection/inspection'
 import { IssueMedSertificate } from '../fractions/ems/issueMedSertificate/issueMedSertificate'
+import { MedSertificate } from '../fractions/ems/medSertificate/medSertificate'
 
 
 export default function App () {
@@ -85,6 +86,7 @@ export default function App () {
       <MedCard />
       <Inspection />
       <IssueMedSertificate />
+      <MedSertificate />
     </>
   )
 }

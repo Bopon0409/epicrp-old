@@ -3,15 +3,8 @@ import { observer } from 'mobx-react-lite';
 import { store } from './issueMedSertificate-store';
 import './issueMedSertificate.scss';
 import cn from 'classnames';
+import { MedSrtTypes } from '../constants';
 
-const MedSrtTypes = [
-  'Для трудоустройства',
-  'Для лицензии на оружие',
-  'Для водительской комиссии',
-  'Для призывной комиссии',
-  'Еще для чего - то',
-  'Еще для чего - то'
-]
 const IssueMedSrtText = 'Форма выдачи медицинской справки';
 
 export const IssueMedSertificate = observer(() => {
