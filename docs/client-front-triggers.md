@@ -153,6 +153,11 @@
   - `window.trigger('passport.data', data: json string)` - загрузить данные,
 пример данных находится в папке json/passport
 
+### EMS - Inspection (добавление новой записи в мед. карту)
+  - `window.trigger('ems-inspection.active', state: boolean)` - отобразить/скрыть
+  - `window.trigger('ems-inspection.data', data: json string)` - загрузить данные,
+пример данных находится в папке json/fractions/ems/inspection
+
 
 ##### Примеры json 'speedometer.badge' в speedometer-badges.json
 
