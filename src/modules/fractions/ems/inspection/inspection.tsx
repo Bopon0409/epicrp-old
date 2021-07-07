@@ -18,8 +18,6 @@ export const Inspection = observer(() => {
     setDoctorComment(e.target.value);
   }, [setDoctorComment]);
   const AddBtnClick = () => {
-    console.log('playerComment', playerComment);
-    console.log('doctorComment', doctorComment);
     if(playerComment && doctorComment){
       const Data = {
         name: store.state.data.name,

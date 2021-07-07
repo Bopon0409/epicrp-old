@@ -40,8 +40,6 @@ export const Passport = observer(() => {
           }
       }
   }
-  // const marriedStatus = gender ? ( married ? 'Женат' : 'Холост' )
-  console.log(store);
   return store.state.active ? (
     <div className="window">
       <div className="passport">

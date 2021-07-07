@@ -31,13 +31,15 @@ import './passport/passport.test'
 import './work-progress/work-progress.test'
 import './work-stats/work-stats.test'
 import './med-card/med-card.test'
-import './fractions/ems/inspection.test'
+import './fractions/ems/inspections/inspection.test'
+import './fractions/ems/issue-med-sertificate/issue-med-sertificate'
 
 
 export default function curTest () {
   window.test.bg.setActive(true);
-  window.test.EMSInspection.setActive(true);
-  window.test.EMSInspection.setData();
+  // window.test.EMSInspection.setActive(true);
+  // window.test.EMSInspection.setData();
+  window.test.EMSIssueMedSertificate.setActive(true);
   // window.test.passport.setActive(true);
   // window.test.passport.setData();
   // window.test.playerMenu.setActive(false);
