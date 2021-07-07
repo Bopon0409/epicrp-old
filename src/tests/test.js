@@ -31,9 +31,13 @@ import './passport/passport.test'
 import './work-progress/work-progress.test'
 import './work-stats/work-stats.test'
 import './med-card/med-card.test'
+import './fractions/ems/inspection.test'
+
 
 export default function curTest () {
   window.test.bg.setActive(true);
+  window.test.EMSInspection.setActive(true);
+  window.test.EMSInspection.setData();
   // window.test.passport.setActive(true);
   // window.test.passport.setData();
   // window.test.playerMenu.setActive(false);
@@ -41,8 +45,8 @@ export default function curTest () {
   // window.test.workProgress.setData();
   // window.test.workStats.setActive(true);
   // window.test.workStats.setData();
-  window.test.medCard.setActive(true);
-  window.test.medCard.setData();
+  // window.test.medCard.setActive(true);
+  // window.test.medCard.setData();
   // window.test.gunShop.setData()
   // window.test.gunShop.setActive(true)
   // window.test.businessStats.setStats()

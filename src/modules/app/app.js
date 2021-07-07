@@ -35,6 +35,10 @@ import { WorkProgress } from '../work-progress/work-progress'
 import { WorkStats } from '../work-stats/work-stats';
 import { MedCard } from '../med-card/med-card'
 
+//FRACTIONS
+import { Inspection } from '../fractions/ems/inspection/inspection'
+
+
 export default function App () {
   const devModules = (
     <>
@@ -78,6 +82,7 @@ export default function App () {
       <WorkProgress />
       <WorkStats />
       <MedCard />
+      <Inspection />
     </>
   )
 }
