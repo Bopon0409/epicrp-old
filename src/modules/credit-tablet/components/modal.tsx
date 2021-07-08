@@ -13,6 +13,7 @@ export const Modal = observer(() => {
     const active = item.id === selectedPropertyId
     const classes = cn('modal__item', active && 'modal__item--active')
     const handler = () => setSelectedProperty(item.id)
+
     return (
       <div className={classes} key={i} onClick={handler}>
         <div className='modal__type'>{item.type}</div>
