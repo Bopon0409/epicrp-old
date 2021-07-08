@@ -31,8 +31,9 @@ import './passport/passport.test'
 import './work-progress/work-progress.test'
 import './work-stats/work-stats.test'
 import './contract/contract.test'
+import './credit-tablet/credit-tablet.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.contract.openCreditClient()
+  window.test.creditTablet.open()
 }

@@ -4,15 +4,33 @@
   "phone": { "number": 123123, "remind": 500 },
   "hasHouse": false,
   "house": { "number": 65, "tax": 50, "remind": 2 },
+  "insurance": {
+    "tariffs": [
+      { "name": "Экономный", "percent": 25, "price": 25 },
+      { "name": "Экономный", "percent": 50, "price": 25 },
+      { "name": "Экономный", "percent": 75, "price": 25 }
+    ],
+    "current": {
+      "name": "Максимальный",
+      "percent": 100,
+      "med": 100,
+      "veh": 100
+    },
+    "operations": [
+      { "name": "Окончание страховки", "date": "09.05.2021" },
+      { "name": "Продление страховки", "date": "09.05.2021" },
+      { "name": "Продление страховки", "date": "09.05.2021" },
+      { "name": "Продление страховки", "date": "09.05.2021" },
+      { "name": "Оформление страховки", "date": "09.05.2021" }
+    ]
+  },
   "accountsData": [
     {
       "balance": 0,
       "cardName": "test",
       "accountId": "000000005",
       "operations": [
-        {
-          "name": "Пополнение счёта", "change": 25000
-        }
+        { "name": "Пополнение счёта", "change": 25000 }
       ]
     }
   ]

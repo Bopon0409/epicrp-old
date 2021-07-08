@@ -1,0 +1,160 @@
+.bank-context {
+  .insurance {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -500px;
+    margin-top: -300px;
+    width: 1000px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-between;
+    z-index: 12;
+
+    .titles {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .title {
+        width: 400px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 25px;
+        color: #ffffff;
+        text-transform: uppercase;
+      }
+    }
+
+    .tariffs {
+      width: 400px;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &__item {
+        border-radius: 16px;
+        display: flex;
+        height: 128px;
+      }
+
+      &__percent {
+        width: 128px;
+        height: 128px;
+        display: flex;
+        background-image: url('../images/insurance-bg2.png');
+
+        .text {
+          margin: auto;
+          font-size: 36px;
+          line-height: 20px;
+          color: #ffffff;
+        }
+      }
+
+      &__info {
+        background-image: url('../images/insurance-bg.png');
+        background-position: 50% 50%;
+        width: 272px;
+        border-radius: 0 16px 16px 0;
+        padding: 25px;
+        box-sizing: border-box;
+      }
+
+      &__price {
+        font-size: 11px;
+        line-height: 15px;
+        text-align: right;
+        color: #6e798c;
+      }
+
+      &__label {
+        font-weight: 600;
+        font-size: 11px;
+        line-height: 15px;
+        color: #6E798C;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+      }
+
+      &__name {
+        font-size: 20px;
+        line-height: 25px;
+        color: #081f32;
+        margin-bottom: 15px;
+      }
+    }
+
+    .current {
+      width: 400px;
+      height: 500px;
+      background-image: url('../images/insurance-bg.png');
+      background-size: 100% 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      box-sizing: border-box;
+      border-radius: 12px;
+      align-items: center;
+
+      &__label {
+        align-self: flex-end;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 25px;
+        letter-spacing: 2px;
+        color: #ffffff;
+
+        background: #4271ff;
+        border-radius: 4px;
+        padding: 0 9px;
+        margin-bottom: 50px;
+      }
+
+      &__name {
+        font-weight: 600;
+        font-size: 17px;
+        line-height: 25px;
+        letter-spacing: 0.2em;
+        color: #081f32;
+        text-transform: uppercase;
+      }
+
+      &__percent {
+        font-weight: 600;
+        font-size: 72px;
+        letter-spacing: 0.04em;
+        color: #081f32;
+        margin-bottom: 40px;
+      }
+
+      .info {
+        width: 280px;
+
+        &__item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        &__percent {
+          font-weight: bold;
+          font-size: 16px;
+          line-height: 20px;
+          color: #000000;
+        }
+
+        &__text {
+          font-size: 12px;
+          line-height: 20px;
+          text-transform: uppercase;
+          color: #676767;
+        }
+      }
+    }
+  }
+}

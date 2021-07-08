@@ -1,0 +1,19 @@
+{
+  "rating": 73,
+  "money": 4123123123,
+  "property": [
+    { "id": 0, "type": "Автомобиль", "name": "BMW m5 e60", "price": 1000000 },
+    { "id": 1, "type": "Автомобиль", "name": "BMW m5 e60", "price": 1000000 },
+    { "id": 2, "type": "Автомобиль", "name": "BMW m5 e60", "price": 1000000 },
+    { "id": 3, "type": "Дом", "name": "#444", "price": 1000000 },
+    { "id": 4, "type": "Дом", "name": "#444", "price": 1000000 },
+    { "id": 5, "type": "Дом", "name": "#444", "price": 1000000 }
+  ],
+  "credits": [
+    { "name": "Кредит 25.05.2021", "status": "active" },
+    { "name": "Кредит 25.05.2021", "status": "finished" },
+    { "name": "Кредит 25.05.2021", "status": "finished" },
+    { "name": "Кредит 25.05.2021", "status": "finished" },
+    { "name": "Кредит 25.05.2021", "status": "failed" }
+  ]
+}

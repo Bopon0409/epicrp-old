@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react'
 import { observer }         from 'mobx-react-lite'
-import store            from './bank-store'
-import Menu             from './components/menu'
-import MainPage         from './components/main-page'
-import bankLogo         from './images/bank-logo.svg'
-import { MyAccount }    from './components/my-account'
-import { CardSettings } from './components/card-settings'
-import { Modal }        from './components/modal'
-import closeIcon        from './images/close-icon.svg'
-import { CreateCard }   from './components/create-card'
-import classNames       from 'classnames'
+import store                from './bank-store'
+import Menu                 from './components/menu'
+import MainPage             from './components/main-page'
+import bankLogo             from './images/bank-logo.svg'
+import { MyAccount }        from './components/my-account'
+import { CardSettings }     from './components/card-settings'
+import { Modal }            from './components/modal'
+import closeIcon            from './images/close-icon.svg'
+import { CreateCard }       from './components/create-card'
+import classNames           from 'classnames'
+import { Insurance }        from './components/insurance'
 
 export default observer(() => {
   const { active, currentMainMenuEl, modal } = store.state
@@ -44,6 +45,7 @@ export default observer(() => {
         <div className='bank-wrapper1' />
         <div className='bank-wrapper2' />
         {currentMainMenuEl === 0 && <MainPage />}
+        {currentMainMenuEl === 1 && <Insurance />}
         {currentMainMenuEl === 3 && <MyAccount />}
       </div>
 

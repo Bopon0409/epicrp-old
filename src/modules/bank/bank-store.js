@@ -14,6 +14,7 @@ class BankStore {
     house: { number: 0, tax: 0, reminder: 0 },
     hasPhone: false,
     phone: { number: 0, remainder: 0 },
+    insurance: null,
     cardSettings: {
       active: false,
       accountId: 0,
@@ -65,15 +66,17 @@ class BankStore {
   }
 
   setData = data => {
-    if (data.userName) this.state.userName = data.userName
-    if (data.hasPhone) this.state.hasPhone = data.hasPhone
-    if (data.phone) this.state.phone = data.phone
-    if (data.hasHouse) this.state.hasHouse = data.hasHouse
-    if (data.house) this.state.house = data.house
-    if (data.accountsData) {
+    if (data.insurance !== undefined) this.state.insurance = data.insurance
+    if (data.userName !== undefined) this.state.userName = data.userName
+    if (data.hasPhone !== undefined) this.state.hasPhone = data.hasPhone
+    if (data.hasHouse !== undefined) this.state.hasHouse = data.hasHouse
+    if (data.phone !== undefined) this.state.phone = data.phone
+    if (data.house !== undefined) this.state.house = data.house
+    if (data.accountsData !== undefined) {
       this.state.accountsData = data.accountsData
-      if (data.accountsData.length)
+      if (data.accountsData.length) {
         this.state.currentAccount = data.accountsData[0].accountId
+      }
     }
   }
 
