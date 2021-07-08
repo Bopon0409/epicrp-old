@@ -34,6 +34,7 @@ import { Passport } from '../passport/passport'
 import { WorkProgress } from '../work-progress/work-progress'
 import { WorkStats } from '../work-stats/work-stats';
 import { MedCard } from '../med-card/med-card'
+import { TattooParlor } from '../tattoo-parlor/tattoo-parlor'
 
 //FRACTIONS
 import { Inspection } from '../fractions/ems/inspection/inspection'
@@ -51,6 +52,7 @@ export default function App () {
 
   return (
     <>
+      { console.log(TattooParlor)}
       {process.env.NODE_ENV === 'development' && devModules}
       <Bank />
       <Inventory />
@@ -87,6 +89,7 @@ export default function App () {
       <Inspection />
       <IssueMedSertificate />
       <MedSertificate />
+      <TattooParlor />
     </>
   )
 }
