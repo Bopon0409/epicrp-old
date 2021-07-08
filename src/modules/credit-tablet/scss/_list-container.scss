@@ -1,0 +1,116 @@
+.credit-tablet {
+  .lists-container {
+    display: grid;
+    grid-template: 20px 220px / 300px 300px;
+    justify-content: space-between;
+    align-content: space-between;
+    width: 650px;
+    height: 260px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+
+    &__title {
+      font-size: 12px;
+      line-height: 20px;
+      letter-spacing: 3px;
+      text-align: center;
+    }
+
+    .property {
+      &__list {
+        max-height: 180px;
+        margin-bottom: 20px;
+      }
+
+      &__item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      &__type {
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 20px;
+      }
+
+      &__info {
+        width: 50%;
+        text-align: center;
+      }
+
+      &__name {
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 20px;
+      }
+
+      &__price {
+        font-weight: 600;
+        font-size: 8px;
+        color: #898989;
+      }
+
+      &__bank {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      &__money {
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 20px;
+        color: #48de72;
+      }
+    }
+
+    .credit {
+      &__item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+
+      &__name {
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 20px;
+        color: #ffffff;
+      }
+
+      &__status {
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 20px;
+      }
+
+      &__status--active {
+        color: #F2C94C;
+      }
+
+      &__status--finished {
+        color: #70C263;
+      }
+
+      &__status--failed {
+        color: #F44336;
+      }
+    }
+
+    .scroll {
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: #5165d7;
+      }
+    }
+  }
+}

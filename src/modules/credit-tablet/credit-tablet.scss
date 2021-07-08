@@ -1,3 +1,54 @@
-.credit-tablet {
+@import 'scss/list-container';
+@import 'scss/actions';
+@import 'scss/button';
+@import 'scss/rating';
+@import 'scss/modal';
+@import 'scss/title';
 
+.credit-tablet {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  width: 1000px;
+  height: 650px;
+  margin-left: -500px;
+  margin-top: -325px;
+  background-image: url('img/tablet.png');
+  background-size: 100% 100%;
+
+  font-family: Nunito, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+
+  .logo {
+    position: absolute;
+    width: 100px;
+    top: 50px;
+    left: 50px;
+  }
+}
+
+@media (min-width: 2560px) {
+}
+
+@media (max-width: 1600px) {
+}
+
+@media (max-width: 1440px) {
+}
+
+@media (max-width: 1366px) {
+}
+
+@media (max-width: 1280px) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 800px) {
 }

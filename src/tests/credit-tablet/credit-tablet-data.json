@@ -1,6 +1,7 @@
 {
   "rating": 73,
   "money": 4123123123,
+  "name": "Ched nocksfeel",
   "property": [
     { "id": 0, "type": "Автомобиль", "name": "BMW m5 e60", "price": 1000000 },
     { "id": 1, "type": "Автомобиль", "name": "BMW m5 e60", "price": 1000000 },

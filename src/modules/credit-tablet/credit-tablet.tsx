@@ -1,11 +1,12 @@
-import React, { useEffect }                 from 'react'
-import { observer }                         from 'mobx-react-lite'
-import { store }                            from './credit-tablet-store'
-import { ListContainer }                    from './components/list-container'
-import { Rating }                           from './components/rating'
-import { Title }                            from './components/title'
-import { Actions }                          from './components/actions'
-import logo                                 from './img/logo.svg'
+import React, { useEffect } from 'react'
+import { observer }         from 'mobx-react-lite'
+import { store }            from './credit-tablet-store'
+import { ListContainer }    from './components/list-container'
+import { Rating }           from './components/rating'
+import { Title }            from './components/title'
+import { Actions }          from './components/actions'
+import logo                 from './img/logo.svg'
+import './credit-tablet.scss'
 
 export const CreditTablet = observer(() => {
   useEffect(() => {

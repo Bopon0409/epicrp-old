@@ -1,0 +1,24 @@
+.credit-tablet {
+  .title {
+    width: 300px;
+    text-align: center;
+    margin-bottom: 35px;
+
+    &__label {
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 20px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #5165d7;
+      margin-bottom: 5px;
+    }
+
+    &__name {
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+  }
+}

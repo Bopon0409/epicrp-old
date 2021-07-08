@@ -6,7 +6,7 @@ class AtmStore {
     makeAutoObservable(this, {}, { deep: true })
   }
 
-  state = {
+  initState = {
     active: false,
     access: false,
     pin: '',
@@ -27,7 +27,12 @@ class AtmStore {
     }
   }
 
-  setActive = active => (this.state.active = active)
+  state = this.initState
+
+  setActive = active => {
+    this.state.active = active
+    if (!active) this.state = this.initState
+  }
 
   setData = data => {
     if (data.cards) this.state.cards = data.cards
@@ -63,34 +68,35 @@ class AtmStore {
   }
 
   enterPin = () => {
-    const { currentCard, pin } = this.state
-    window.frontTrigger('atm.enter.pin', currentCard, pin)
+    const { currentCard, pin, cards } = this.state
+    window.frontTrigger('atm.enter.pin', cards[currentCard].cardNumber, pin)
   }
 
   pinEnterSuccess = () => this.state.access = true
   pinEnterError = ({ error }) => this.state.pin = error
 
   submitHandler = () => {
-    const { currentCard, currentHouse, currentBusiness } = this.state
+    const { currentCard, currentHouse, currentBusiness, cards } = this.state
+    const cardNumber = cards[currentCard].cardNumber
     const { receiverAccount, cash } = this.state.inputData
     switch (this.state.currentPage) {
       case 'Снятие наличных':
-        return window.frontTrigger('atm.take', currentCard, cash)
+        return window.frontTrigger('atm.take', cardNumber, cash)
       case 'Пополнить счёт':
-        return window.frontTrigger('atm.put', currentCard, cash)
+        return window.frontTrigger('atm.put', cardNumber, cash)
       case 'Оплатить счёта телефона':
-        return window.frontTrigger('atm.pay.phone', currentCard, cash)
+        return window.frontTrigger('atm.pay.phone', cardNumber, cash)
       case 'Оплата бизнеса':
         return window.frontTrigger('atm.pay.business',
-          currentCard, currentBusiness, cash
+          cardNumber, currentBusiness, cash
         )
       case 'Оплата жилья':
         return window.frontTrigger('atm.pay.house',
-          currentCard, currentHouse, cash
+          cardNumber, currentHouse, cash
         )
       case 'Перевод средств':
         return window.frontTrigger('atm.transfer',
-          currentCard, receiverAccount, cash
+          cardNumber, receiverAccount, cash
         )
       default:
         return null

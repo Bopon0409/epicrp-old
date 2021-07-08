@@ -1,7 +1,6 @@
 import React                from 'react'
 import { observer }         from 'mobx-react-lite'
 import store                from '../atm-store'
-import { formatCardNumber } from '../../../services/services'
 
 export const CardChoice = observer(() => {
   const { cards } = store.state
@@ -20,7 +19,9 @@ export const CardChoice = observer(() => {
               <div className='car__item' key={id} onClick={() => setCard(id)}>
                 <div className='card__name'>Карта №{i + 1}</div>
                 <div
-                  className='card__number'>{formatCardNumber(cardNumber)}</div>
+                  className='card__number'>
+                  **** **** **** {cardNumber.substr(cardNumber.length - 4)}
+                </div>
               </div>
             )}
           </div>

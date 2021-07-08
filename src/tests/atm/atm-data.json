@@ -1,7 +1,7 @@
 {
   "cards": [
-    { "id": 0, "cardNumber": "5573682012345678", "balance": 100000 },
-    { "id": 1, "cardNumber": "5573682012345678", "balance": 200000 }
+    { "id": 0, "cardNumber": "000000005", "balance": 100000 },
+    { "id": 1, "cardNumber": "000000005", "balance": 200000 }
   ],
   "houses": [ 0, 1, 2, 3, 4 ],
   "businesses": [
