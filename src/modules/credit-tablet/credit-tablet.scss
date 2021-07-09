@@ -30,6 +30,17 @@
     top: 50px;
     left: 50px;
   }
+
+  .footer {
+    width: 650px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &--blur {
+    filter: blur(4px);
+  }
 }
 
 @media (min-width: 2560px) {

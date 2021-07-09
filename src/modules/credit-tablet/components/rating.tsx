@@ -8,18 +8,24 @@ export const Rating = observer(() => {
   return (
     <div className='rating'>
       <div className='rating__title'>Рейтинг надёжности заёмщика</div>
-      <div className='rating__name'>
-        {rating > 60 ? 'Надежный' : 'Не надежный'}
+      <div className='rating__container'>
+        <div className='rating__name'>
+          {rating >= 80 ? 'Надежный' : 'Не надежный'}
+        </div>
+        <div className='rating__progress-bar'>
+          <CircularProgressbar
+            value={rating}
+            text={`${rating}%`}
+            strokeWidth={5}
+            styles={buildStyles({
+              pathColor: '#EDCC22',
+              trailColor: 'transparent',
+              textColor: '#ffffff',
+              textSize: '20px'
+            })}
+          />
+        </div>
       </div>
-      <CircularProgressbar
-        value={rating}
-        text={`${rating}%`}
-        strokeWidth={5}
-        styles={buildStyles({
-          pathColor: '#1884D2',
-          trailColor: 'transparent'
-        })}
-      />
     </div>
   )
 })

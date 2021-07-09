@@ -7,17 +7,19 @@ export const Actions = observer(() => {
 
   return (
     <div className='actions'>
-      <div className='actions__title'>Действия</div>
+      <div className='actions__title'>Заявка на кредит</div>
+      <label htmlFor='input' className='actions__label'>Сумма кредита</label>
       <input type='number' className='actions__input' value={input.toString()}
-        onChange={setInput} placeholder='Введите сумму кредита' />
-      <div className='buttons'>
-        <div className='button' onClick={() => setModal(true)}>
-          <div className='button__text'>Выбор имущества</div>
-          <div className='button__line' />
+        onChange={setInput} placeholder='Введите сумму кредита' id='input' />
+      <div className='actions__buttons'>
+        <div className='credit-tablet-button' onClick={() => setModal(true)}>
+          <div className='credit-tablet-button__text'>Выбор имущества</div>
+          <div className='credit-tablet-button__line' />
         </div>
-        <div className='button' onClick={request}>
-          <div className='button__text'>Отправить заявку</div>
-          <div className='button__line' />
+        <div className='credit-tablet-button credit-tablet-button--green'
+          onClick={request}>
+          <div className='credit-tablet-button__text'>Отправить заявку</div>
+          <div className='credit-tablet-button__line' />
         </div>
       </div>
     </div>

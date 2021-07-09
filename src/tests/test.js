@@ -35,6 +35,5 @@ import './credit-tablet/credit-tablet.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.atm.setData()
-  window.test.atm.setActive(true)
+  window.test.creditTablet.open()
 }

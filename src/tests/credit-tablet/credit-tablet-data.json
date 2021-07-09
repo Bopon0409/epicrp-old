@@ -1,5 +1,5 @@
 {
-  "rating": 73,
+  "rating": 40,
   "money": 4123123123,
   "name": "Ched nocksfeel",
   "property": [
@@ -8,9 +8,20 @@
     { "id": 2, "type": "Автомобиль", "name": "BMW m5 e60", "price": 1000000 },
     { "id": 3, "type": "Дом", "name": "#444", "price": 1000000 },
     { "id": 4, "type": "Дом", "name": "#444", "price": 1000000 },
-    { "id": 5, "type": "Дом", "name": "#444", "price": 1000000 }
+    { "id": 5, "type": "Дом", "name": "#444", "price": 1000000 },
+    { "id": 6, "type": "Автомобиль", "name": "BMW m5 e60", "price": 1000000 },
+    { "id": 7, "type": "Автомобиль", "name": "BMW m5 e60", "price": 1000000 },
+    { "id": 8, "type": "Автомобиль", "name": "BMW m5 e60", "price": 1000000 },
+    { "id": 9, "type": "Дом", "name": "#444", "price": 1000000 },
+    { "id": 10, "type": "Дом", "name": "#444", "price": 1000000 },
+    { "id": 11, "type": "Дом", "name": "#444", "price": 1000000 }
   ],
   "credits": [
+    { "name": "Кредит 25.05.2021", "status": "active" },
+    { "name": "Кредит 25.05.2021", "status": "finished" },
+    { "name": "Кредит 25.05.2021", "status": "finished" },
+    { "name": "Кредит 25.05.2021", "status": "finished" },
+    { "name": "Кредит 25.05.2021", "status": "failed" },
     { "name": "Кредит 25.05.2021", "status": "active" },
     { "name": "Кредит 25.05.2021", "status": "finished" },
     { "name": "Кредит 25.05.2021", "status": "finished" },

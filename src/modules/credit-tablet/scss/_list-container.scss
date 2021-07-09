@@ -59,6 +59,8 @@
       }
 
       &__money {
+        width: 50%;
+        text-align: center;
         font-weight: 600;
         font-size: 10px;
         line-height: 20px;
@@ -67,6 +69,8 @@
     }
 
     .credit {
+      padding-right: 10px;
+
       &__item {
         display: flex;
         justify-content: space-between;

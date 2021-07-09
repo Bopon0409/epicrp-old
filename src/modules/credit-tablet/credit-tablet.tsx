@@ -6,7 +6,9 @@ import { Rating }           from './components/rating'
 import { Title }            from './components/title'
 import { Actions }          from './components/actions'
 import logo                 from './img/logo.svg'
+import cn                   from 'classnames'
 import './credit-tablet.scss'
+import { Modal }            from './components/modal'
 
 export const CreditTablet = observer(() => {
   useEffect(() => {
@@ -23,15 +25,21 @@ export const CreditTablet = observer(() => {
     }
   }, [])
 
-  const { active } = store.state
+  const { active, modalActive } = store.state
+  const classes = cn('credit-tablet', modalActive && 'credit-tablet--blur')
 
   return active ? (
-    <div className='credit-tablet'>
-      <img src={logo} alt='' className='logo' />
-      <Title />
-      <ListContainer />
-      <Rating />
-      <Actions />
-    </div>
+    <>
+      <Modal />
+      <div className={classes}>
+        <img src={logo} alt='' className='logo' />
+        <Title />
+        <ListContainer />
+        <div className='footer'>
+          <Rating />
+          <Actions />
+        </div>
+      </div>
+    </>
   ) : null
 })

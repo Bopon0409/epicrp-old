@@ -1,5 +1,39 @@
-.credit-tablet {
-  .button {
+.credit-tablet-button {
+  background: linear-gradient(96.22deg,
+    rgba(66, 113, 255, 0.5) 10.19%,
+    rgba(81, 101, 215, 0.5) 101.15%
+  );
+  border-radius: 2px;
+  height: 32px;
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  filter: drop-shadow(0px 0px 34px rgba(66, 113, 255, 0.3));
 
+  &__text {
+    margin: auto;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 11px;
+    color: #ffffff;
+  }
+
+  &__line {
+    position: absolute;
+    left: 20%;
+    bottom: 0;
+    width: 60%;
+    height: 1px;
+
+    background: #ffffff;
+    box-shadow: 0 0 7px rgba(66, 113, 255, 0.5);
+  }
+
+  &--green {
+    filter: drop-shadow(0px 0px 34px rgba(138, 255, 66, 0.3));
+    background: linear-gradient(96.22deg,
+      rgba(81, 255, 66, 0.5) 10.19%,
+      rgba(81, 215, 119, 0.5) 101.15%
+    );
   }
 }
