@@ -162,6 +162,13 @@
   - `window.trigger('ems-issue-med-sertificate.active', state: boolean)` - 
   отобразить/скрыть
 
+### Shops-and-parlors (магазины одежды и тату салон)
+- `window.trigger('shops-and-parlors.show', status: boolean)` - отобразить/скрыть
+- `window.trigger('shops-and-parlors.money', money: json)` - загрузить деньги
+- `window.trigger('shops-and-parlors.data', data: json)` - загрузить данные
+- `window.trigger('shops-and-parlors.clear-actives')` - снять выделения с блоков
+##### примеры json ./json/shops-and-parlors/
+
 
 ##### Примеры json 'speedometer.badge' в speedometer-badges.json
 
