@@ -1,0 +1,162 @@
+@import "./scss/history.scss";
+
+.wrapper {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+
+  .med-card {
+    height: 616px;
+    width: 1042px;
+    font-family: Nunito;
+    font-style: normal;
+    color: black;
+    background: url("./img/bg.png");
+    display: flex;
+
+    .left-block {
+      // background-color: rgba(210, 105, 30, .3);
+
+      .info {
+        margin: 26px 0 0 50px;
+        height: 534px;
+        width: 449px;
+        display: flex;
+        flex-direction: column;
+
+        &__med-book {
+          width: 100%;
+          text-align: center;
+          font-weight: bold;
+          font-size: 24px;
+          line-height: 33px;
+        }
+
+        &__block {
+          margin-top: 27px;
+          height: 165px;
+          width: 100%;
+          display: flex;
+          align-items: center;
+
+          .picture {
+            height: 165px;
+            width: 155px;
+            background-color: crimson;
+            border-radius: 10px;
+          }
+
+          .text-info {
+            margin-left: 18px;
+            height: 139px;
+            width: 276px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            & > div:nth-child(n) {
+              height: 22px;
+              width: 276px;
+              display: flex;
+              justify-content: space-between;
+
+              & > span:nth-child(n) {
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 22px;
+              }
+            }
+          }
+        }
+
+        .information--text {
+          margin-top: 67px;
+          width: 100%;
+          text-align: center;
+          font-weight: bold;
+          font-size: 22px;
+          line-height: 30px;
+        }
+
+        .information--content {
+          margin: 34px 0 0 10px;
+          height: 178px;
+          width: 420px;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
+
+      .buttons {
+        position: absolute;
+        margin: 558px 0 0 21px;
+        height: 25px;
+        width: 60px;
+        display: flex;
+        flex-direction: row;
+
+        .one-arrow {
+          height: 25px;
+          width: 25px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transform: rotate(180deg);
+          background: url("./img/arrow.png");
+        }
+
+        .two-arrow {
+          width: 37px;
+          height: 25px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transform: rotate(180deg);
+          background: url("./img/two-arrow.png");
+        }
+      }
+    }
+
+    .right-block {
+      .buttons {
+        margin: 20px 0 0 440px;
+        height: 25px;
+        width: 60px;
+        display: flex;
+        flex-direction: row;
+
+        .one-arrow {
+          height: 25px;
+          width: 25px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: url("./img/arrow.png");
+        }
+
+        .two-arrow {
+          width: 37px;
+          height: 25px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: url("./img/two-arrow.png");
+        }
+      }
+    }
+
+    & > div:nth-child(n) {
+      height: 616px;
+      width: 521px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

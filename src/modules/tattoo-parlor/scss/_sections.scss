@@ -1,0 +1,57 @@
+.clothes-shop__main-window {
+  .items-types {
+    width: 73px;
+    height: 559px;
+    margin: 141px 0 0 63px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // background-color: red;
+
+    .type {
+      height: 73px;
+      width: 73px;
+      background-color: rgba(255, 255, 255, 0.45);
+      opacity: 0.45;
+      border-radius: 3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.07s ease-in;
+
+      &__image {
+        opacity: 0.5;
+        transition: opacity 0.1s ease-in;
+      }
+
+      &:hover {
+        & {
+          background-color: rgba(255, 255, 255, 1);
+          transition: all 0.07s ease-out;
+        }
+
+        .type__image {
+          opacity: 1;
+          transition: opacity 0.1s ease-out;
+        }
+      }
+    }
+
+    .type--active {
+      height: 73px;
+      width: 73px;
+      background-color: rgba(255, 255, 255, 1);
+      opacity: 0.45;
+      border-radius: 3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.07s ease-in;
+
+      .type__image {
+        opacity: 1;
+        transition: opacity 0.1s ease-out;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+&__main-window {
+  .welcome {
+    width: 678px;
+    height: 130px;
+    margin: 320px 0 0 485px;
+    // background-color: rosybrown;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__text {
+      width: 100%;
+      font-weight: 600;
+      font-size: 38px;
+      line-height: 52px;
+      color: #f2c94c;
+      white-space: nowrap;
+      word-wrap: normal;
+    }
+
+    &__instruction {
+      font-size: 22px;
+      line-height: 30px;
+    }
+  }
+}

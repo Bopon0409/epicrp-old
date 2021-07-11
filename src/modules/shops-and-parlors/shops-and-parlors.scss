@@ -1,0 +1,118 @@
+@import './scss/colors.scss';
+@import './scss/items.scss';
+@import './scss/sections.scss';
+
+.shops-wrapper{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    font-family: Nunito, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    color: #ffffff;
+    overflow: hidden;
+
+    .business-info{
+        margin: 39px 0 0 41px;
+        height: 81px;
+        width: 380px;
+        white-space: nowrap;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &__id{
+            font-size: 24px;
+            line-height: 24px;
+        }
+
+        &__name{
+            font-weight: 600;
+            font-size: 48px;
+            line-height: 48px;
+        }
+    }
+
+    .business-items{
+        margin: 87px 0 0 63px;
+        height: 652px;
+        width: 1805px;
+        display: flex;
+
+        .welcome{
+            margin: 190px 0 0 485px;
+            height: 180px;
+            width: 678px;
+            display: flex;
+            flex-direction: column;
+
+            & > span:first-child{
+                font-weight: 600;
+                font-size: 38px;
+                line-height: 52px;
+                white-space: nowrap;
+                color: #f2c94c;
+            }
+
+            & > span:last-child{
+                font-size: 22px;
+                line-height: 30px;
+            }
+        }
+
+        .items-and-colors{
+            margin-left: 34px;
+            height: 100%;
+            width: 1697px;
+            display: flex;
+            flex-direction: row;
+        }
+    }
+}
+
+
+@media (min-width: 2560px) {
+    .shops-wrapper{
+        zoom: 1.3;
+    }
+}
+
+@media (max-width: 1600px) {
+    .shops-wrapper{
+        zoom: .9;
+    }
+}
+
+@media (max-width: 1440px) {
+    .shops-wrapper{
+        zoom: .85;
+    }
+}
+
+@media (max-width: 1366px) {
+    .shops-wrapper{
+        zoom: .8;
+    }
+}
+
+@media (max-width: 1280px) {
+    .shops-wrapper{
+        zoom: .75;
+    }
+}
+
+@media (max-width: 1024px) {
+    .shops-wrapper{
+        zoom: .6;
+    }
+}
+
+@media (max-width: 800px) {
+    .shops-wrapper{
+    }
+}

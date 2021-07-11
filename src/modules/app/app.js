@@ -35,6 +35,17 @@ import { WorkStats }     from '../work-stats/work-stats'
 import 'react-input-range/lib/css/index.css'
 import { Contract }      from '../contract/contract'
 import { CreditTablet }  from '../credit-tablet/credit-tablet'
+import { Passport } from '../passport/passport'
+import { WorkProgress } from '../work-progress/work-progress'
+import { WorkStats } from '../work-stats/work-stats';
+import { MedCard } from '../med-card/med-card'
+import { ShopsAndParlors } from '../shops-and-parlors/shops-and-parlors';
+
+//FRACTIONS
+import { Inspection } from '../fractions/ems/inspection/inspection'
+import { IssueMedSertificate } from '../fractions/ems/issueMedSertificate/issueMedSertificate'
+import { MedSertificate } from '../fractions/ems/medSertificate/medSertificate'
+
 
 export default function App () {
   const devModules = (
@@ -78,6 +89,11 @@ export default function App () {
       <Passport />
       <WorkProgress />
       <WorkStats />
+      <MedCard />
+      <Inspection />
+      <IssueMedSertificate />
+      <MedSertificate />
+      <ShopsAndParlors />
       <Contract />
       <CreditTablet />
     </>

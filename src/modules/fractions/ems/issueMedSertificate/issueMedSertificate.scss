@@ -1,0 +1,143 @@
+.wrapper {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Nunito;
+    font-style: normal;
+    z-index: 10;
+    
+    .ems-issue_med_sertificate{
+        height: 630px;
+        width: 900px;
+        background: url('../img/med-sertificate.png');
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .issue_med_sertificate--text{
+            color: black;
+            margin-top: 45px;
+            font-weight: bold;
+            font-size: 26px;
+            line-height: 35px;
+        }
+
+        .issue_med_sertificate--other{
+            margin-top: 36px;
+            height: 437px;
+            width: 843px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+
+            .med-srt-type{
+                height: 100%;
+                width: 231px;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                & > div:nth-child(1){
+                    margin-bottom: 17px;
+                    color: black;
+                    font-size: 20px;
+                    line-height: 27px;
+                }
+
+                .med-srt-type{
+                    height: 41px;
+                    width: 231px;
+                    border-radius: 5px;
+                    margin-bottom: 17px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: rgba(39, 214, 203, 0.25);
+
+                    color: rgba(0, 0, 0, 0.25);
+                    font-size: 16px;
+                    line-height: 22px;
+                    transition: all .12s ease-out;
+
+                    &:hover{
+                        background-color: #27D6CB;
+                        color: rgba(0, 0, 0, 1);
+                        transition: all .12s ease-in;
+                    }
+                }
+
+                .med-srt-type--active{
+                    background-color: rgba(39, 214, 203, 1);
+                    color: rgba(0, 0, 0, 1);
+                }
+            }
+
+            .border{
+                margin-left: 21px;
+                height: 424px;
+                border: 1px dashed #000000;
+            }
+
+            .med-srt-info{
+                margin-left: 31px;
+                height: 100%;
+                width: 558px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: black;
+                
+                .info--text{
+                    font-size: 20px;
+                    line-height: 27px;
+                }
+
+                .other-info--text{
+                    margin-top: 6px;
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 19px;
+                }
+
+                .tarea{
+                    margin-top: 17px;
+                    padding: 10px;
+                    height: 255px;
+                    width: 538px;
+                    outline: none;
+                    border: none;
+                    background: #4B4B4B;
+                    border-radius: 15px;
+
+                    color: white;
+                    font-size: 12px;
+                    line-height: 14px;
+                    resize: none;
+                }
+
+                .issue-sertificate{
+                    margin: 108px 0 0 420px;
+                    height: 39px;
+                    width: 131px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: #27D6CB;
+                    box-shadow: 0px 0px 4px rgba(39, 214, 203, 0.45);
+                    border-radius: 5px;
+                    color: black;
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 19px;
+                }
+            }
+        }
+    }
+}

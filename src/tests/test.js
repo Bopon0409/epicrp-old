@@ -32,6 +32,14 @@ import './work-progress/work-progress.test'
 import './work-stats/work-stats.test'
 import './contract/contract.test'
 import './credit-tablet/credit-tablet.test'
+import './med-card/med-card.test'
+// import './tattoo-parlor/tattoo-parlor.test'
+import './shops-and-parlors/shops-and-parlors.test'
+
+import './fractions/ems/inspections/inspection.test'
+import './fractions/ems/issue-med-sertificate/issue-med-sertificate.test'
+import './fractions/ems/med-sertificate/med-sertificate.test'
+
 
 export default function curTest () {
   window.test.bg.setActive(true)
