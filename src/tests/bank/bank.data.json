@@ -10,12 +10,7 @@
       { "name": "Экономный", "percent": 50, "price": 25 },
       { "name": "Экономный", "percent": 75, "price": 25 }
     ],
-    "current": {
-      "name": "Максимальный",
-      "percent": 100,
-      "med": 100,
-      "veh": 100
-    },
+    "current": null,
     "operations": [
       { "name": "Окончание страховки", "date": "09.05.2021" },
       { "name": "Продление страховки", "date": "09.05.2021" },
@@ -24,6 +19,7 @@
       { "name": "Оформление страховки", "date": "09.05.2021" }
     ]
   },
+  "credit": null,
   "accountsData": [
     {
       "balance": 0,

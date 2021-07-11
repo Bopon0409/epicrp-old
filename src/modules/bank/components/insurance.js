@@ -3,7 +3,6 @@ import { observer } from 'mobx-react-lite'
 import store        from '../bank-store'
 
 export const Insurance = observer(() => {
-  if (!store.state.insurance) return null
   const { tariffs, current } = store.state.insurance
 
   return (
@@ -13,8 +12,8 @@ export const Insurance = observer(() => {
         <div className='title'>Мой тарифный план</div>
       </div>
       <div className='tariffs'>{
-        tariffs.map(item => (
-          <div className='tariffs__item'>
+        tariffs.map((item, i) => (
+          <div className='tariffs__item' key={i}>
             <div className='tariffs__percent'>
               <div className='text'>{item.percent}%</div>
             </div>

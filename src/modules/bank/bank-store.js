@@ -15,6 +15,7 @@ class BankStore {
     hasPhone: false,
     phone: { number: 0, remainder: 0 },
     insurance: null,
+    credit: null,
     cardSettings: {
       active: false,
       accountId: 0,
@@ -58,6 +59,10 @@ class BankStore {
     this.state.currentSubMenuEl = 0
   }
 
+  getCreditPayment = (rate, time, sum) => {
+    return Math.ceil((sum * rate * time + sum) / time)
+  }
+
   closeClick = () => {
     const { create, cardSettings } = this.state
     if (create.active) this.createCardClose()
@@ -70,6 +75,7 @@ class BankStore {
     if (data.userName !== undefined) this.state.userName = data.userName
     if (data.hasPhone !== undefined) this.state.hasPhone = data.hasPhone
     if (data.hasHouse !== undefined) this.state.hasHouse = data.hasHouse
+    if (data.credit !== undefined) this.state.credit = data.credit
     if (data.phone !== undefined) this.state.phone = data.phone
     if (data.house !== undefined) this.state.house = data.house
     if (data.accountsData !== undefined) {

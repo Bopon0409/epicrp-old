@@ -9,11 +9,13 @@ import { CardSettings }     from './components/card-settings'
 import { Modal }            from './components/modal'
 import closeIcon            from './images/close-icon.svg'
 import { CreateCard }       from './components/create-card'
-import classNames           from 'classnames'
 import { Insurance }        from './components/insurance'
+import { Credit }           from './components/credit'
+import { CreditEmpty }      from './components/credit-empty'
+import classNames           from 'classnames'
 
 export default observer(() => {
-  const { active, currentMainMenuEl, modal } = store.state
+  const { active, currentMainMenuEl, modal, credit } = store.state
   const bankClasses = classNames('bank', store.isBlur && 'bank-blur')
 
   useEffect(() => {
@@ -31,6 +33,8 @@ export default observer(() => {
     }
   }, [])
 
+  console.log(credit)
+
   return active ? (
     <div className='bank-context'>
       {!modal.active && (
@@ -46,6 +50,8 @@ export default observer(() => {
         <div className='bank-wrapper2' />
         {currentMainMenuEl === 0 && <MainPage />}
         {currentMainMenuEl === 1 && <Insurance />}
+        {currentMainMenuEl === 2 && credit !== null && <Credit />}
+        {currentMainMenuEl === 2 && credit === null && <CreditEmpty />}
         {currentMainMenuEl === 3 && <MyAccount />}
       </div>
 

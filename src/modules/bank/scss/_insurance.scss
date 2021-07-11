@@ -76,7 +76,7 @@
         font-weight: 600;
         font-size: 11px;
         line-height: 15px;
-        color: #6E798C;
+        color: #6e798c;
         text-transform: uppercase;
         margin-bottom: 5px;
       }
@@ -153,6 +153,37 @@
           line-height: 20px;
           text-transform: uppercase;
           color: #676767;
+        }
+      }
+
+      &--empty {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .empty-title {
+          font-weight: 600;
+          font-size: 24px;
+          color: rgba(255, 255, 255, 0.55);
+          margin-bottom: 40px;
+        }
+
+        .empty-btn {
+          font-weight: bold;
+          font-size: 12px;
+          line-height: 150%;
+          letter-spacing: 0.05em;
+          color: #e0e0e0;
+          padding: 16px;
+          text-transform: uppercase;
+
+          cursor: pointer;
+          background: rgba(81, 101, 215, 0.5);
+          border-radius: 8px;
+
+          box-shadow: 0 1px 2px rgba(97, 97, 97, 0.2),
+          0 2px 4px rgba(97, 97, 97, 0.2);
         }
       }
     }
