@@ -32,6 +32,7 @@ import './work-progress/work-progress.test'
 import './work-stats/work-stats.test'
 import './med-card/med-card.test'
 // import './tattoo-parlor/tattoo-parlor.test'
+import './dowload-confirmation-screen/dowload-confirmation-screen.test'
 import './shops-and-parlors/shops-and-parlors.test'
 
 import './fractions/ems/inspections/inspection.test'
@@ -41,6 +42,7 @@ import './fractions/ems/med-sertificate/med-sertificate.test'
 
 export default function curTest () {
   window.test.bg.setActive(true);
+  // window.test.admin.setActive(true);
   // window.test.EMSInspection.setActive(true);
   // window.test.EMSInspection.setData();
   // window.test.EMSIssueMedSertificate.setActive(true);
@@ -49,24 +51,4 @@ export default function curTest () {
   window.test.shopsAndParlors.setShow(true);
   window.test.shopsAndParlors.setMoney();
   window.test.shopsAndParlors.setData();
-  // window.test.tattooParlor.setActive(true);
-  // window.test.tattooParlor.setData();
-  // window.test.passport.setActive(true);
-  // window.test.passport.setData();
-  // window.test.playerMenu.setActive(false);
-  // window.test.workProgress.setActive(true);
-  // window.test.workProgress.setData();
-  // window.test.workStats.setActive(true);
-  // window.test.workStats.setData();
-  // window.test.medCard.setActive(true);
-  // window.test.medCard.setData();
-  // window.test.gunShop.setData()
-  // window.test.gunShop.setActive(true)
-  // window.test.businessStats.setStats()
-  // window.test.businessStats.setAdvance()
-  // window.test.businessStats.setStaff()
-  // window.test.businessStats.setWarehouse()
-  // window.test.businessStats.setProductsItems()
-  // window.test.businessStats.setProductsIrlItems()
-  // window.test.businessStats.setActive(true)
 }
