@@ -16,12 +16,14 @@ export interface PaymentProps {
 
 export const Payment = observer((props: PaymentProps) => {
   const { money, price, payAction, blocked } = props
-  const { state: { method, currentCard }, selectToggle, cashHandler } = store
+  const { state: { method, currentCard, selectActive }, 
+  selectToggle, cashHandler } = store
   const payHandler = () => {
     if (!blocked) payAction(method, currentCard)
   }
   const cashClasses = classNames('btn', method === 'cash' && 'btn--active')
   const cardClasses = classNames('btn', method === 'card' && 'btn--active')
+  const caretClasses = classNames('caret', {'rotate': selectActive})
 
   return (
     <div className='payment-bar'>
@@ -30,7 +32,7 @@ export const Payment = observer((props: PaymentProps) => {
         <div className='text'>Наличкой</div>
       </div>
       <div className={cardClasses} onClick={() => selectToggle(money)}>
-        <img src={selectCaret} alt='' className='caret' />
+        <img src={selectCaret} alt='' className={caretClasses} />
         <div className='text'>Картой</div>
       </div>
       {!blocked && (

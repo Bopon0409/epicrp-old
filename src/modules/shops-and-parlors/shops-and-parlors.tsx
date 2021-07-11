@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 import { store } from "./shops-and-parlors-store";
 import "./shops-and-parlors.scss";
 import { ShopName } from './constants';
+import mouseHint   from '../shop-hints/mouse-hint.svg'
 
 import { Payment } from '../payment/payment';
 import { Items } from "./components/items";
@@ -59,6 +60,20 @@ export const ShopsAndParlors = observer(() => {
         }
       </div>
       <div className='business-other'>
+        {section !== null ? (
+        <div className='hints'>
+          <div className='hint__container'>
+            <div className='esc'>ESC</div>
+            <div className='hint__text'>Нажмите для выхода из магазина</div>
+          </div>
+          <div className='hint__container'>
+            <img src={mouseHint} alt='' />
+            <div className='hint__text'>
+              Для вращения зажмите ЛКМ и крутите мышкой
+            </div>
+          </div>
+        </div>
+      ) : null}
         {
           ShowPaymentWindow() &&
           <Payment
