@@ -36,6 +36,8 @@ import { WorkProgress } from '../work-progress/work-progress'
 import { WorkStats } from '../work-stats/work-stats';
 import { MedCard } from '../med-card/med-card'
 import { ShopsAndParlors } from '../shops-and-parlors/shops-and-parlors';
+import { DownloadConfirmationScreen } from '../jobs/truckers/download-confirmation-screen/download-confirmation-screen'
+import { Dialogs } from '../dialogs/dialogs'
 
 //FRACTIONS
 import { Inspection } from '../fractions/ems/inspection/inspection'
@@ -94,6 +96,8 @@ export default function App () {
       <ShopsAndParlors />
       <Contract />
       <CreditTablet />
+      <DownloadConfirmationScreen />
+      <Dialogs />
     </>
   )
 }

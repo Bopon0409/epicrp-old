@@ -17,7 +17,7 @@ export const Colors = observer(() => {
                         'color', 
                         {'color--active' : color === id})}
                         key={id}
-                        onClick={() => setActiveColor(id)}
+                        onClick={() => store.setActiveColor(id)}
                         >
                             <span>Вариант {id+1}</span>
                         </div>
