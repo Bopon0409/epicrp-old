@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import { IMoney } from '../payment/models';
-import { IState, IData, IItemList, IActives } from './models';
+import { IState, IData } from './models';
 
 type TMethod = 'card' | 'cash';
 type TCardId = string | null;

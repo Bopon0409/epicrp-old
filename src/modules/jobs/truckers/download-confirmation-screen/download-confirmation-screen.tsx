@@ -3,7 +3,6 @@ import { observer } from "mobx-react-lite";
 import { store } from "./download-confirmation-screen-store";
 import "./download-confirmation-screen.scss";
 import { CargoInfo } from "./constants";
-import Oil from "./img/oil.svg";
 
 export const DownloadConfirmationScreen = observer(() => {
   useEffect(() => {

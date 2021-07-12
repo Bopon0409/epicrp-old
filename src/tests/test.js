@@ -34,21 +34,19 @@ import './med-card/med-card.test'
 // import './tattoo-parlor/tattoo-parlor.test'
 import './dowload-confirmation-screen/dowload-confirmation-screen.test'
 import './shops-and-parlors/shops-and-parlors.test'
+import './dialogs/dialogs.test'
 
 import './fractions/ems/inspections/inspection.test'
 import './fractions/ems/issue-med-sertificate/issue-med-sertificate.test'
 import './fractions/ems/med-sertificate/med-sertificate.test'
 
 
+
 export default function curTest () {
   window.test.bg.setActive(true);
-  // window.test.admin.setActive(true);
-  // window.test.EMSInspection.setActive(true);
-  // window.test.EMSInspection.setData();
-  // window.test.EMSIssueMedSertificate.setActive(true);
-  // window.test.EMSMedSertificate.setActive(true);
-  // window.test.EMSMedSertificate.setData();
-  window.test.shopsAndParlors.setShow(true);
-  window.test.shopsAndParlors.setMoney();
-  window.test.shopsAndParlors.setData();
+  window.test.dialogs.setShow(true);
+  window.test.dialogs.setData();
+  // window.test.shopsAndParlors.setShow(true);
+  // window.test.shopsAndParlors.setMoney();
+  // window.test.shopsAndParlors.setData();
 }

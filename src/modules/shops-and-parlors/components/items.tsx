@@ -9,7 +9,7 @@ import TwoPalms from '../img/two-palms.png';
 
 export const Items = observer(() => {
   const { businessType, itemsList } = store.state.data;
-  const { section, item, hand } = store.state.actives;
+  const { section, hand } = store.state.actives;
   const { actives } = store.state;
   const { setActiveHand } = store;
 

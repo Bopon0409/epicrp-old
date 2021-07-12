@@ -1,0 +1,73 @@
+.dialogs-window{
+ position: absolute;
+ width: 100vw;
+ height: 569px;
+ bottom: 0;
+ z-index: 4;
+ display: flex;
+ justify-content: center;
+ font-family: Nunito;
+ font-style: normal;
+ font-weight: normal;
+ color: white;
+
+ &__bg{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(20, 24, 34, 0) 0%, rgba(20, 24, 34, 0.97) 76.37%);
+  z-index: -1;
+}
+
+ .dialogs{
+  margin-top: 284px;
+  height: 253px;
+  width: 1167px;
+  display: flex;
+  flex-direction: column;
+
+  .npc-name{
+   font-size: 18px;
+   line-height: 20px;
+  }
+
+  .npc-job{
+   font-size: 12px;
+   line-height: 20px;
+   opacity: .6;
+  }
+
+  .text-box{
+   height: 151px;
+   width: 100%;
+   overflow: hidden;
+  }
+
+  .buttons{
+   height: 41px;
+   width: 100%;
+   display: flex;
+   justify-content: flex-end;
+   
+   & > div:nth-child(n){
+    margin-right: 7px;
+    height: 41px;
+   }
+
+   .btn-styles{
+    background-color: rgba(60, 66, 82, 1);
+    opacity: .1;
+    border: 1px solid rgba(82, 88, 104, 0.7);
+    border-radius: 3px;
+    transition: all .2s ease-out;
+
+    &:hover{
+     background-color: rgba(242, 201, 76, .7);
+     opacity: 1;
+     border: 1px solid rgba(242, 201, 76, 0.7);
+     transition: all .2s ease-in;
+    }
+   }
+  }
+ }
+}
