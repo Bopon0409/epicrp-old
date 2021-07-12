@@ -1,0 +1,15 @@
+{
+    "cash": 8000,
+    "cards": [
+        {
+            "balance": 10000,
+            "cardName": "Карта №1",
+            "accountId": "147832575"
+        },
+        {
+            "balance": 5000,
+            "cardName": "Карта №2",
+            "accountId": "147832571"
+        }
+    ]
+}

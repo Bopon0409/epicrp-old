@@ -1,0 +1,305 @@
+.window{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .passport{
+        font-family: Nunito;
+        font-style: normal;
+        height: 517px;
+        width: 846px;
+        border-radius: 20px;
+        background: url('./images/passport-bg.png');
+
+        &-text_1{
+            margin-top: 34px;
+            width: 100%;
+            text-align: center;
+            font-size: 40px;
+            line-height: 47px;
+            font-weight: bold;
+            -webkit-text-fill-color: rgba(255,255,255,0);
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color:#001486;
+        }
+        &-text_2{
+            margin-top: 5px;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 28px;
+        }
+
+        &-info-block{
+            height: 268px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            .left{
+                z-index: 12;
+                margin-top: 36px;
+                height: 219px;
+                width: 450px;
+                // background: chartreuse;
+                display: flex;
+
+                .avatar{
+                    height: 196px;
+                    width: 196px;
+                    display: flex;
+                    // justify-content: center;
+                    
+                    &-img{
+                        position: absolute;
+                        margin-left: 6px;
+                        z-index: 10;
+                        height: 196px;
+                        width: 184px;
+                        background: rgba(220, 20, 60, .1);
+                    }
+                    &-uuid{
+                        margin: 13px 0 0 1px;
+                        z-index: 11;
+                        height: 168px;
+                        width: 15px;
+                        word-wrap: break-word;
+                        color: #001486;
+                        font-weight: bold;
+                        font-size: 20px;
+                        line-height: 24px;
+                    }
+                    &-usa{
+                        margin: 2px 0 0 165px;
+                        z-index: 12;
+                        height: 187px;
+                        width: 16px;
+                        word-wrap: break-word;
+                        color: #001486;
+                        font-weight: bold;
+                        font-size: 24px;
+                        line-height: 28px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                    }
+                }
+                .player-info{
+                    margin-left: 26px;
+                    height: 232px;
+                    width: 227px;
+                    display: flex;
+                    flex-direction: column;
+
+
+                    .info-block{
+                        display: flex;
+                        flex-direction: column;
+                        height: 44px;
+                        justify-content: space-between;
+
+                        & > div:nth-child(1){
+                            font-weight: bold;
+                            font-size: 14px;
+                            line-height: 17px;
+                            color: #001486;
+                        }
+                        & > div:nth-child(2){
+                            font-weight: bold;
+                            font-size: 20px;
+                            line-height: 24px;
+                            color: #001486;
+                        }
+                    }
+                    .nationality{
+                        margin-top: 23px;
+                    }
+                    
+                    .other-info{
+                        margin-top: 17px;
+                        height: 105px;
+                        width: 227px;
+                        display: flex;
+
+                        .USA-TEXT{
+                            margin: 17px 0 0 -25px;
+                            height: 50px;
+                            font-weight: bold;
+                            font-size: 40px;
+                            line-height: 47px;
+                            color: rgba(0, 20, 134, 0.5);
+                            transform: rotate(-90deg);
+                        }
+                        .text-block{
+                            height: 104px;
+                            width: 160px;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            
+                        }
+                    }
+                }
+            }
+
+            .right{
+                z-index: 11;
+                height: 302px;
+                width: 293px;
+                
+                .seal{
+                    height: 162px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    &-img{
+                        height: 101px;
+                        width: 250px;
+                        transform: rotate(-15deg);
+                        border: 2px solid rgba(0, 20, 134, 0.25);
+                        background: rgba(220, 20, 60, .1);
+                    }
+                }
+                
+                .get-date{
+                    margin: 23px 0 0 -30px;
+                    height: 116px;
+                    width: 323px;
+                    display: flex;
+                    align-items: center;
+
+                    .water-symbol{
+                        height: 116px;
+                        width: 109px;
+                        border-radius: 10px;
+                        background: rgba(220, 20, 60, .1);
+                    }
+
+                    .date{
+                        height: 43px;
+                        display: flex;
+                        flex-direction: column;
+                        color: #001486;
+
+                        & > div:nth-child(1){
+                            font-weight: bold;
+                            font-size: 14px;
+                            line-height: 17px;
+                        }
+
+                        & > div:nth-child(2){
+                            font-weight: bold;
+                            font-size: 20px;
+                            line-height: 24px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .passport-id-block{
+            margin-left: 75px;
+            height: 73px;
+            width: 179px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .id-text{
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 19px;
+                color: #001486;
+            }
+
+            .id{
+                font-weight: bold;
+                font-size: 40px;
+                line-height: 47px;
+                color: #001486;
+            }
+        }
+
+        .gov-ls-text{
+            margin-top: 11px;
+            width: 100%;
+            text-align: center;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 28px;
+            color: rgba(0, 20, 134, 0.25);
+        }
+    }
+}
+
+
+
+
+@media (min-width: 2560px) {
+    .passport {
+      zoom: 1.3;
+    }
+  }
+  
+  @media (max-width: 2220px) {
+    .passport {
+      zoom: 1;
+    }
+  }
+  
+  // @media (max-width: 1920px) {
+  //   .passport {
+  //     zoom: 1;
+  //   }
+  // }
+  
+  @media (max-width: 1780px) {
+    .passport {
+      zoom: 0.9;
+    }
+  }
+  
+  @media (max-width: 1600px) {
+    .passport {
+      zoom: 0.77;
+    }
+  }
+  
+  @media (max-width: 1440px) {
+    .passport {
+      zoom: 0.68;
+    }
+  }
+  
+  @media (max-width: 1280px) {
+    .passport {
+      zoom: 0.6;
+    }
+  }
+  
+  @media (max-width: 1100px) {
+    .passport {
+      zoom: 0.56;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .passport {
+      zoom: 0.5;
+    }
+  }
+  
+  @media (max-width: 800px) {
+    .passport {
+      zoom: 0.44;
+    }
+  }
+    

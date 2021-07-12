@@ -42,6 +42,10 @@
       top: 19px;
       right: 19px;
     }
+
+    .rotate{
+      transform: rotate(180deg);
+    }
   }
 
   .btn--active {
@@ -61,7 +65,7 @@
     top: -50px;
     right: 0;
     width: 220px;
-    height: 60px;
+    height: 46px;
     background: rgba(42, 42, 42, 0.7);
     border-radius: 6px;
     padding-top: 5px;

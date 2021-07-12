@@ -30,6 +30,19 @@ import { BusinessStats } from '../business-stats/business-stats'
 import { GasStation }    from '../gas-station/gas-station'
 import 'react-input-range/lib/css/index.css'
 import { GunShop }       from '../gun-shop/gun-shop'
+import { Passport } from '../passport/passport'
+import { WorkProgress } from '../work-progress/work-progress'
+import { WorkStats } from '../work-stats/work-stats';
+import { MedCard } from '../med-card/med-card'
+import { ShopsAndParlors } from '../shops-and-parlors/shops-and-parlors';
+import { DownloadConfirmationScreen } from '../jobs/truckers/download-confirmation-screen/download-confirmation-screen'
+import { Dialogs } from '../dialogs/dialogs'
+
+//FRACTIONS
+import { Inspection } from '../fractions/ems/inspection/inspection'
+import { IssueMedSertificate } from '../fractions/ems/issueMedSertificate/issueMedSertificate'
+import { MedSertificate } from '../fractions/ems/medSertificate/medSertificate'
+
 
 export default function App () {
   const devModules = (
@@ -70,6 +83,16 @@ export default function App () {
       <DeathMenu />
       <GasStation />
       <GunShop />
+      <Passport />
+      <WorkProgress />
+      <WorkStats />
+      <MedCard />
+      <Inspection />
+      <IssueMedSertificate />
+      <MedSertificate />
+      <ShopsAndParlors />
+      <DownloadConfirmationScreen />
+      <Dialogs />
     </>
   )
 }

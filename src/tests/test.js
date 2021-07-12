@@ -27,16 +27,26 @@ import './business-stats/business-stats.test'
 import './gas-station/gas-station.test'
 import './death-menu/death-menu'
 import './gun-shop/gun-shop.test'
+import './passport/passport.test'
+import './work-progress/work-progress.test'
+import './work-stats/work-stats.test'
+import './med-card/med-card.test'
+// import './tattoo-parlor/tattoo-parlor.test'
+import './dowload-confirmation-screen/dowload-confirmation-screen.test'
+import './shops-and-parlors/shops-and-parlors.test'
+import './dialogs/dialogs.test'
+
+import './fractions/ems/inspections/inspection.test'
+import './fractions/ems/issue-med-sertificate/issue-med-sertificate.test'
+import './fractions/ems/med-sertificate/med-sertificate.test'
+
+
 
 export default function curTest () {
-  window.test.bg.setActive(true)
-  // window.test.gunShop.setData()
-  // window.test.gunShop.setActive(true)
-  window.test.businessStats.setStats()
-  window.test.businessStats.setAdvance()
-  window.test.businessStats.setStaff()
-  window.test.businessStats.setWarehouse()
-  window.test.businessStats.setProductsItems()
-  window.test.businessStats.setProductsIrlItems()
-  window.test.businessStats.setActive(true)
+  window.test.bg.setActive(true);
+  window.test.dialogs.setShow(true);
+  window.test.dialogs.setData();
+  // window.test.shopsAndParlors.setShow(true);
+  // window.test.shopsAndParlors.setMoney();
+  // window.test.shopsAndParlors.setData();
 }

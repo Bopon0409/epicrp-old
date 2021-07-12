@@ -1,0 +1,38 @@
+.sections {
+  margin-top: 42px;
+  height: 559px;
+  width: 73px;
+  display: flex;
+  flex-direction: column;
+
+  & > div:nth-child(n) {
+    margin-bottom: 8px;
+  }
+
+  & > div:last-child {
+    margin: 0;
+  }
+
+  .sections-block {
+    height: 73px;
+    width: 73px;
+    background-color: rgba(255, 255, 255, 0.45);
+    opacity: 0.45;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.1s ease-out;
+
+    &:hover {
+      opacity: 1;
+      transition: all 0.1s ease-in;
+    }
+  }
+
+  .sections-block--active {
+    background-color: #f2c94c;
+    opacity: 1;
+    transition: all 0.1s ease-in;
+  }
+}
