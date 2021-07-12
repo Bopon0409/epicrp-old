@@ -15,7 +15,7 @@ class TattooParlorStore {
     actives: {
         section: -1,
         item: -1,
-        color: -1,
+        color: 0,
         hand: -1
     },
     money: {
@@ -44,6 +44,7 @@ class TattooParlorStore {
     this.state.actives.section = id;
     this.state.actives.item = -1;
     this.state.actives.hand = -1;
+    this.state.actives.color = 0;
     // @ts-ignore
     window.frontTrigger('clothes-shop.set.section', this.state.actives.section);
   }
@@ -68,7 +69,7 @@ class TattooParlorStore {
   clearActives = () => {
     this.state.actives.section = -1;
     this.state.actives.item = -1;
-    this.state.actives.color = -1;
+    this.state.actives.color = 0;
     this.state.actives.hand = -1;
   }
 
