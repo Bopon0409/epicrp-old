@@ -29,7 +29,7 @@ import { DeathMenu }     from '../death-menu/death-menu'
 import { BusinessStats } from '../business-stats/business-stats'
 import { GasStation }    from '../gas-station/gas-station'
 import { GunShop }       from '../gun-shop/gun-shop'
-import { Contract }      from '../contract/contract'
+// import { Contract }      from '../contract/contract'
 import { CreditTablet }  from '../credit-tablet/credit-tablet'
 import { Passport } from '../passport/passport'
 import { WorkProgress } from '../work-progress/work-progress'
@@ -94,7 +94,7 @@ export default function App () {
       <IssueMedSertificate />
       <MedSertificate />
       <ShopsAndParlors />
-      <Contract />
+      {/* <Contract /> */}
       <CreditTablet />
       <DownloadConfirmationScreen />
       <Dialogs />
