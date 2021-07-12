@@ -15,6 +15,11 @@ export const Items = observer(() => {
 
   const SectionName = SectionImages[businessType][section].name.toUpperCase();
 
+  const onClickItem = (id: number) => {
+    store.setActiveColor(0);
+    store.setActiveItem(id)
+  }
+
   return (
     <div className="items">
       <div>Выбранная категория</div>
@@ -24,7 +29,7 @@ export const Items = observer(() => {
           return (
             <div className={cn("item", {"item--active": actives.item === id})}
             key={id}
-            onClick={() => store.setActiveItem(id)}
+            onClick={() => onClickItem(id)}
             >
               <span>{item.name}</span>
               <span>$ {item.price}</span>

@@ -44,9 +44,9 @@ import './fractions/ems/med-sertificate/med-sertificate.test'
 
 export default function curTest () {
   window.test.bg.setActive(true);
-  window.test.dialogs.setShow(true);
-  window.test.dialogs.setData();
-  // window.test.shopsAndParlors.setShow(true);
-  // window.test.shopsAndParlors.setMoney();
-  // window.test.shopsAndParlors.setData();
+  // window.test.dialogs.setShow(true);
+  // window.test.dialogs.setData();
+  window.test.shopsAndParlors.setShow(true);
+  window.test.shopsAndParlors.setMoney();
+  window.test.shopsAndParlors.setData();
 }
