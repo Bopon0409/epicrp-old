@@ -29,10 +29,6 @@ import { DeathMenu }     from '../death-menu/death-menu'
 import { BusinessStats } from '../business-stats/business-stats'
 import { GasStation }    from '../gas-station/gas-station'
 import { GunShop }       from '../gun-shop/gun-shop'
-import { Passport }      from '../passport/passport'
-import { WorkProgress }  from '../work-progress/work-progress'
-import { WorkStats }     from '../work-stats/work-stats'
-import 'react-input-range/lib/css/index.css'
 import { Contract }      from '../contract/contract'
 import { CreditTablet }  from '../credit-tablet/credit-tablet'
 import { Passport } from '../passport/passport'
@@ -45,6 +41,8 @@ import { ShopsAndParlors } from '../shops-and-parlors/shops-and-parlors';
 import { Inspection } from '../fractions/ems/inspection/inspection'
 import { IssueMedSertificate } from '../fractions/ems/issueMedSertificate/issueMedSertificate'
 import { MedSertificate } from '../fractions/ems/medSertificate/medSertificate'
+
+import 'react-input-range/lib/css/index.css'
 
 
 export default function App () {

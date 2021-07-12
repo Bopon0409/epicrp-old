@@ -33,8 +33,6 @@ export default observer(() => {
     }
   }, [])
 
-  console.log(credit)
-
   return active ? (
     <div className='bank-context'>
       {!modal.active && (
