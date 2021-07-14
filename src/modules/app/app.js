@@ -40,9 +40,7 @@ import { DownloadConfirmationScreen } from '../jobs/truckers/download-confirmati
 import { Dialogs } from '../dialogs/dialogs'
 
 //FRACTIONS
-import { Inspection } from '../fractions/ems/inspection/inspection'
-import { IssueMedSertificate } from '../fractions/ems/issueMedSertificate/issueMedSertificate'
-import { MedSertificate } from '../fractions/ems/medSertificate/medSertificate'
+import { Fractions } from '../fractions/Fractions'
 
 import 'react-input-range/lib/css/index.css'
 
@@ -90,9 +88,7 @@ export default function App () {
       <WorkProgress />
       <WorkStats />
       <MedCard />
-      <Inspection />
-      <IssueMedSertificate />
-      <MedSertificate />
+      <Fractions />
       <ShopsAndParlors />
       {/* <Contract /> */}
       <CreditTablet />

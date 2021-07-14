@@ -70,4 +70,86 @@
    }
   }
  }
+
+ .esc-line{
+   position: absolute;
+   left: 2%;
+   bottom: 39px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 210px;
+   height: 30px;
+
+   & > div:first-child{
+     height: 100%;
+     width: 53px;
+     font-size: 14px;
+     line-height: 17px;
+     border-radius: 5px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     opacity: 0.5;
+     border: 1px solid #D2D2D2;
+   }
+
+   & > div:last-child{
+    font-size: 14px;
+    line-height: 17px;
+    opacity: 0.5;
+   }
+ }
+}
+
+
+@media (min-width: 2560px) {
+}
+
+@media (max-width: 1600px) {
+  .dialogs{
+    transform: scale(.9);
+  }
+  .esc-line{
+    transform: scale(.9);
+  }
+}
+
+@media (max-width: 1440px) {
+  .dialogs{
+    transform: scale(.8);
+  }
+  .esc-line{
+    transform: scale(.8);
+  }
+}
+
+@media (max-width: 1366px) {
+  .dialogs{
+    transform: scale(.76);
+  }
+  .esc-line{
+    transform: scale(.76);
+  }
+}
+
+@media (max-width: 1280px) {
+  .dialogs{
+    transform: scale(.8);
+  }
+  .esc-line{
+    transform: scale(.8);
+  }
+}
+
+@media (max-width: 1024px) {
+  .dialogs{
+    transform: scale(.7);
+  }
+  .esc-line{
+    transform: scale(.7);
+  }
+}
+
+@media (max-width: 800px) {
 }
