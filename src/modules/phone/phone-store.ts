@@ -38,7 +38,7 @@ class PhoneStore {
     callDuration: 0,
     callTimer: null,
 
-    // Contacts
+    // ContactList
     currentContact: 0,
     contactNumInput: '',
     contactNameInput: ''
@@ -165,7 +165,7 @@ class PhoneStore {
     window.frontTrigger('phone.sms.send', contact, smsInput)
   }
 
-  //===============================   Contacts   ===============================
+  //==============================   Contacts   ================================
 
   setCurrentContact = (type: 'inc' | 'dec') => {
     const { contacts: { length } } = this.state
@@ -278,8 +278,7 @@ class PhoneStore {
     }
   }
 
-  //========================   Arrow Buttons Handlers
-  // ========================
+  //========================   Arrow Buttons Handlers   ========================
 
   arrowBtnHandler = (event: any) => {
     switch (event.keyCode) {
@@ -314,8 +313,7 @@ class PhoneStore {
 
   arrowRight = () => this.state.curPage === 'index' && this.setMenuItem('inc')
 
-  //============================   Button Labels
-  // =============================
+  //============================   Button Labels   =============================
 
   get buttonLabels ()
     :
@@ -345,8 +343,7 @@ class PhoneStore {
     }
   }
 
-  //=============================   Header Name
-  // ==============================
+  //=============================   Header Name   ==============================
 
   get curSmsName ()
     :
@@ -375,6 +372,5 @@ class PhoneStore {
   }
 }
 
-const
-  store = new PhoneStore()
+const store = new PhoneStore()
 export { store }

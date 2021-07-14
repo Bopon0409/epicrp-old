@@ -69,7 +69,7 @@ export interface IState {
   callDuration: number
   callTimer: NodeJS.Timer | null
 
-  // Contacts
+  // ContactList
   currentContact: number
   contactNumInput: string
   contactNameInput: string
