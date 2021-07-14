@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx'
 import {
-  IContact, ISms, IState, TCallView,
+  IContact, ICorrespondence, ISms, IState, TCallView,
   TContactsView, TPage, TSmsView
 }                             from './model'
 
@@ -29,9 +29,9 @@ class PhoneStore {
     dialingNumber: '',
 
     // Sms
-    newSms: 0,
-    currentListSms: null,
-    currentSms: null,
+    newSmsContact: '',
+    currentSms: 0,
+    smsInput: '',
 
     // Calls
     callNum: '',
@@ -39,8 +39,7 @@ class PhoneStore {
     callTimer: null,
 
     // Contacts
-    currentListContact: null,
-    currentContact: null,
+    currentContact: 0,
     contactNumInput: '',
     contactNameInput: ''
   }
@@ -83,9 +82,12 @@ class PhoneStore {
 
   callDurationIncrease = () => this.state.callDuration += 1
 
-  outgoingCallRequest = () => {
+  outgoingCallRequest = (type: 'dialing' | 'contact') => {
+    const { contacts, currentContact, dialingNumber } = this.state
     // @ts-ignore
-    window.frontTrigger('phone.call.outgoing.request', this.state.dialingNumber)
+    window.frontTrigger('phone.call.outgoing.request',
+      type === 'dialing' ? dialingNumber : contacts[currentContact].number
+    )
     this.state.dialingNumber = ''
   }
 
@@ -112,6 +114,112 @@ class PhoneStore {
     this.state.callTimer = null
   }
 
+  //=================================   SMS   ==================================
+
+  setSmsInput = (event: any) => {
+    if (event.target.value <= 150) this.state.smsInput = event.target.value
+  }
+
+  get correspondence (): ICorrespondence[] {
+    const { sms } = this.state
+    const contacts: string[] = []
+
+    // get sms contacts collection
+    sms.forEach((sms) => {
+      const item = contacts.find((contact) => contact === sms.contact)
+      if (item === undefined) contacts.push(sms.contact)
+    })
+
+    return contacts.map((name, id) => {
+      const smsList = sms.filter((sms) => sms.contact === name)
+      return { id, name, smsList }
+    })
+  }
+
+  smsListEnter = () => {
+    if (this.state.currentSms === -1)
+      this.state.curSms = 'sms-set-new'
+    else if (this.correspondence.length)
+      this.state.curSms = 'sms-correspondence'
+  }
+
+  setCurrentSms = (type: 'inc' | 'dec') => {
+    const { correspondence: { length } } = this
+    switch (true) {
+      case type === 'dec' && this.state.currentSms > 0:
+        return this.state.currentSms -= 1
+      case type === 'dec' && this.state.currentSms === 0:
+        return this.state.currentSms = -1
+      case type === 'inc' && this.state.currentSms < length - 1:
+        return this.state.currentSms += 1
+      case type === 'inc' && this.state.currentSms === -1:
+        return this.state.currentSms = 0
+    }
+  }
+
+  smsSubmit = () => {
+    const { newSmsContact, currentSms, curSms, smsInput, sms } = this.state
+    const contact = curSms === 'sms-set' ?
+      sms[currentSms].contact : newSmsContact
+    // @ts-ignore
+    window.frontTrigger('phone.sms.send', contact, smsInput)
+  }
+
+  //===============================   Contacts   ===============================
+
+  setCurrentContact = (type: 'inc' | 'dec') => {
+    const { contacts: { length } } = this.state
+    switch (true) {
+      case type === 'dec' && this.state.currentContact > 0:
+        return this.state.currentContact -= 1
+      case type === 'dec' && this.state.currentContact === 0:
+        return this.state.currentContact = -1
+      case type === 'inc' && this.state.currentContact < length - 1:
+        return this.state.currentContact += 1
+      case type === 'inc' && this.state.currentContact === -1:
+        return this.state.currentContact = 0
+    }
+  }
+
+  contactFunctionBtnHandler = () => {
+    const { currentContact } = this.state
+    if (currentContact === -1) this.state.curContacts = 'contacts-create'
+    else this.state.curContacts = 'contacts-edit'
+  }
+
+  removeContact = (id: number) => {
+    this.state.contacts = this.state.contacts
+      .filter((contact) => contact.id !== id)
+  }
+
+  createContact = () => {
+    const { contactNameInput: name, contactNumInput: number } = this.state
+    // @ts-ignore
+    window.frontTrigger('phone.contact.add', name, number)
+    this.clearContactInputs()
+  }
+
+  clearContactInputs = () => {
+    this.state.contactNameInput = ''
+    this.state.contactNumInput = ''
+    this.state.curContacts = 'contacts-list'
+  }
+
+  editContact = () => {
+    const { contactNameInput, contactNumInput, currentContact } = this.state
+
+    const contact = this.state.contacts[currentContact]
+    contact.name = contactNameInput
+    contact.number = contactNumInput
+
+    // @ts-ignore
+    window.frontTrigger('phone.contact.edit',
+      contact.id, contact.name, contact.number
+    )
+
+    this.clearContactInputs()
+  }
+
   //===========================   Buttons Handlers   ===========================
 
   numeralBtnHandler = (btn: string) => {
@@ -125,35 +233,53 @@ class PhoneStore {
   }
 
   funcButtonLeft = () => {
-    const { state: { curPage, curCall }, callStart } = this
-    switch (curPage) {
-      case 'dialing':
-        return this.outgoingCallRequest()
-      case 'call':
-        if (curCall === 'incoming-wait') callStart('incoming-process')
-        break
+    const { state: { curPage, curCall, curContacts }, callStart } = this
+    switch (true) {
+      case curPage === 'dialing':
+        return this.outgoingCallRequest('dialing')
+      case curPage === 'call' && curCall === 'incoming-wait':
+        return callStart('incoming-process')
+      case curPage === 'contacts' && curContacts === 'contacts-list':
+        return this.outgoingCallRequest('contact')
     }
   }
 
   funcButtonCenter = () => {
-    switch (this.state.curPage) {
-      case 'dialing':
+    const { curPage, curSms } = this.state
+    switch (true) {
+      case curPage === 'dialing':
         return this.numeralBtnHandler('clear')
+      case curPage === 'sms' && curSms === 'sms-list':
+        return this.smsListEnter()
+      case curPage === 'sms' && curSms === 'sms-correspondence':
+        return this.state.curSms = 'sms-set'
+      case curPage === 'sms' && curSms === 'sms-set':
+      case curPage === 'sms' && curSms === 'sms-set-new':
+        return this.smsSubmit()
     }
   }
 
   funcButtonRight = () => {
-    switch (this.state.curPage) {
-      case 'dialing':
+    const { curPage, curSms } = this.state
+    switch (true) {
+      case curPage === 'dialing':
         this.setCurPage('index')
-        this.state.dialingNumber = ''
-        break
-      case 'call':
+        return this.state.dialingNumber = ''
+      case curPage === 'call':
         return this.callDrop()
+      case curPage === 'sms' && curSms === 'sms-list':
+        return this.setCurPage('index')
+      case curPage === 'sms' && curSms === 'sms-correspondence':
+        return this.state.curSms = 'sms-list'
+      case curPage === 'sms' && curSms === 'sms-set':
+        return this.state.curSms = 'sms-correspondence'
+      case curPage === 'sms' && curSms === 'sms-set-new':
+        return this.state.curSms = 'sms-list'
     }
   }
 
-  //========================   Arrow Buttons Handlers   ========================
+  //========================   Arrow Buttons Handlers
+  // ========================
 
   arrowBtnHandler = (event: any) => {
     switch (event.keyCode) {
@@ -169,36 +295,31 @@ class PhoneStore {
   }
 
   arrowTop = () => {
-    switch (this.state.curPage) {
-      case 'index':
-        return this.setMenuItem('dec')
+    const { curPage, curSms } = this.state
+    switch (true) {
+      case curPage === 'sms' && curSms === 'sms-list':
+        return this.setCurrentSms('dec')
     }
   }
 
   arrowBottom = () => {
-    switch (this.state.curPage) {
-      case 'index':
-        return this.setMenuItem('inc')
+    const { curPage, curSms } = this.state
+    switch (true) {
+      case curPage === 'sms' && curSms === 'sms-list':
+        return this.setCurrentSms('inc')
     }
   }
 
-  arrowLeft = () => {
-    switch (this.state.curPage) {
-      case 'index':
-        return this.setMenuItem('dec')
-    }
-  }
+  arrowLeft = () => this.state.curPage === 'index' && this.setMenuItem('dec')
 
-  arrowRight = () => {
-    switch (this.state.curPage) {
-      case 'index':
-        return this.setMenuItem('inc')
-    }
-  }
+  arrowRight = () => this.state.curPage === 'index' && this.setMenuItem('inc')
 
-  //============================   Button Labels   =============================
+  //============================   Button Labels
+  // =============================
 
-  get buttonLabels (): [string, string, string] {
+  get buttonLabels ()
+    :
+    [string, string, string] {
     const { curPage, curCall, curContacts, curSms } = this.state
     switch (true) {
       case curPage === 'dialing':
@@ -211,23 +332,49 @@ class PhoneStore {
         return ['', 'Выбор', 'Назад']
       case curPage === 'sms' && curSms === 'sms-correspondence':
         return ['', 'Ввод сообщения', 'Назад']
+      case curPage === 'sms' && curSms === 'sms-set-new':
       case curPage === 'sms' && curSms === 'sms-set':
         return ['', 'Отправить', 'Назад']
       case curPage === 'contacts' && curContacts === 'contacts-list':
-        return ['Позвонить', 'Функции', 'Назад']
+        return ['Позвонить', 'Редактировать', 'Назад']
       case curPage === 'contacts' && curContacts === 'contacts-create':
-        return ['', 'Сохранить', 'Назад']
       case curPage === 'contacts' && curContacts === 'contacts-edit':
         return ['', 'Сохранить', 'Назад']
-      case curPage === 'contacts' && curContacts === 'contacts-func':
-        return ['', 'Выбор', 'Назад']
       default:
         return ['', '', '']
     }
   }
 
-  //=============================   Header Name   ==============================
+  //=============================   Header Name
+  // ==============================
+
+  get curSmsName ()
+    :
+    string {
+    const { currentSms, curSms, newSmsContact } = this.state
+    return curSms === 'sms-set-new' ?
+      newSmsContact : this.correspondence[currentSms].name
+  }
+
+  get headerName ()
+    :
+    string {
+    const { curPage, curSms } = this.state
+    switch (true) {
+      case curPage === 'sms' && curSms === 'sms-list':
+        return 'Сообщения'
+      case curPage === 'sms' && curSms === 'sms-correspondence':
+      case curPage === 'sms' && curSms === 'sms-set-new':
+      case curPage === 'sms' && curSms === 'sms-set':
+        return this.curSmsName
+      case curPage === 'contacts':
+        return 'Контакты'
+      default:
+        return ''
+    }
+  }
 }
 
-const store = new PhoneStore()
+const
+  store = new PhoneStore()
 export { store }

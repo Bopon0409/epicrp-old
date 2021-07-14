@@ -1,12 +1,16 @@
 export type TPage = 'index' | 'dialing' | 'call' | 'sms' | 'contacts'
 
-export type TSmsView = 'sms-list' | 'sms-correspondence' | 'sms-set'
+export type TSmsView =
+  'sms-list'
+  | 'sms-contact-set'
+  | 'sms-correspondence'
+  | 'sms-set-new'
+  | 'sms-set'
 
 export type TContactsView =
   'contacts-list'
   | 'contacts-edit'
   | 'contacts-create'
-  | 'contacts-func'
 
 export type TCallView =
   'incoming-wait'
@@ -24,6 +28,7 @@ export interface IContact {
 export interface ISms {
   id: number
   read: boolean
+  type: 'user' | 'interlocutor'
   contact: string
   text: string
   date: string
@@ -32,8 +37,7 @@ export interface ISms {
 export interface ICorrespondence {
   id: number
   name: string
-  lastSmsText: string
-  lastSmsTime: string
+  smsList: ISms[]
 }
 
 export interface IState {
@@ -56,9 +60,9 @@ export interface IState {
   dialingNumber: string
 
   // Sms
-  newSms: number
-  currentListSms: number | null
-  currentSms: number | null
+  newSmsContact: string
+  currentSms: number
+  smsInput: string
 
   // Calls
   callNum: string
@@ -66,8 +70,7 @@ export interface IState {
   callTimer: NodeJS.Timer | null
 
   // Contacts
-  currentListContact: number | null
-  currentContact: number | null
+  currentContact: number
   contactNumInput: string
   contactNameInput: string
 }
