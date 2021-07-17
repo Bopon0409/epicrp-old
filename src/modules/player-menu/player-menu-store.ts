@@ -3,7 +3,8 @@ import { scrollList }         from '../../services/services'
 import {
   IControlItem,
   IReportConnected, IReportMsg, IReportState, ISettingItem, ISettingsData,
-  ISettingsState, IState, IStats, IStatsData
+  ISettingsState, IState, IStats, IStatsData, IQuests, IQuestsData, IQuestData,
+  IFAQ
 }                             from './model'
 import keyCodes               from '../../services/keyCodes.json'
 
@@ -14,7 +15,7 @@ class PlayerMenuStore {
 
   state: IState = {
     active: false,
-    currentMenuEl: 0,
+    currentMenuEl: 1,
     menuHandlerBlocked: false
   }
 
@@ -51,6 +52,18 @@ class PlayerMenuStore {
     keyWaiting: false,
     control: [],
     settings: []
+  }
+
+  quests: IQuests = {
+    activeQuest: -1,
+    data: {
+      playerActiveQuest: 0,
+      quests: []
+    }
+  }
+
+  faq: IFAQ = {
+    activeBlock: 0
   }
 
   setActive = (active: boolean) => {
@@ -265,7 +278,29 @@ class PlayerMenuStore {
     const { reportStatus: status } = this.reportState
     if (event.keyCode === 13 && status === 'process') this.reportMsgSend()
   }
+
+//=================================   QUESTS   =================================
+  setQuests = (data: IQuestData) => this.quests.data = data;
+
+  setActiveQuest = (id: number) => this.quests.activeQuest = id;
+
+  setActivePlayerQuest = (id: number) => {
+    this.quests.data.playerActiveQuest = id;
+    // @ts-ignore
+    window.frontTrigger('player-menu.player-active-quest', id);
+  }
+
+//=================================   FAQ   ====================================
+  setActiveFAQ = (id: number) => {
+    this.faq.activeBlock = id;
+    console.log(this.faq.activeBlock)
+  }
+
 }
+
+
+
+  
 
 const store = new PlayerMenuStore()
 export { store }

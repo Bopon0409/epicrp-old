@@ -40,7 +40,7 @@ const keyClick = (e: React.KeyboardEvent<HTMLDivElement>) => {
  }
 }
 
- return(
+ return store.state.show ? (
   <div className='government-passport-camera-wrapper' onKeyUp={keyClick} tabIndex={0}>
    <div className="government-passport-camera">
    <div className='esc-line'>
@@ -77,5 +77,5 @@ const keyClick = (e: React.KeyboardEvent<HTMLDivElement>) => {
     </div>
     </div>
   </div>
- )
+ ) : null
 })

@@ -50,8 +50,11 @@ export default function curTest () {
 
   // window.test.carShop.setActive(true);
   // window.test.carShop.setData();
-
-  window.test.GovPassportCamera.setShow(true);
+  // window.test.GovPassportCamera.setShow(true);
   // window.test.dialogs.setShow(true);
   // window.test.dialogs.setData();
+
+  window.test.playerMenu.setActive(true);
+  window.test.playerMenu.setStatsData();
+  window.test.playerMenu.setQuestsData();
 }

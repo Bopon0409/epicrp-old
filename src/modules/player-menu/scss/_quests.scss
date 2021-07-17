@@ -1,0 +1,142 @@
+.quests-window{
+ height: 782px;
+ width: 100%;
+ display: flex;
+justify-content: center;
+ color: white;
+
+ .active-quest{
+  margin: 21px 0 0 120px;
+  height: 657px;
+  width: 471px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__text{
+   font-weight: 600;
+   font-size: 22px;
+   line-height: 30px;
+  }
+
+  &__name{
+   margin-top: 43px;
+   font-weight: bold;
+   font-size: 22px;
+   line-height: 30px;
+   color: #F2C94C;
+  }
+
+  &__comment{
+   margin-top: 29px;
+   font-weight: 600;
+   font-size: 18px;
+   line-height: 25px;
+  }
+
+  &__target{
+   margin-top: 75px;
+   width: 100%;
+   height: 30px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   font-weight: 600;
+   font-size: 18px;
+   line-height: 25px;
+  }
+
+  &__reward{
+   margin-top: 23px;
+   width: 100%;
+   height: 30px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   font-weight: 600;
+   font-size: 18px;
+   line-height: 25px;
+  }
+
+  &__progress{
+   margin-top: 102px;
+   width: 100%;
+   height: 30px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   font-weight: 600;
+   font-size: 18px;
+   line-height: 25px;
+  }
+
+  &__strted{
+   margin-top: 35px;
+   width: 100%;
+   height: 30px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   font-weight: 600;
+   font-size: 18px;
+   line-height: 25px;
+  }
+
+  .btn-quest-move{
+   margin-top: 59px;
+   width: 256px;
+   height: 58px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 3px;
+   transition: all .1 ease;
+  }
+ }
+
+ .line{
+  margin-left: 42px;
+  height: 782px;
+  border: 1px dashed #FFFFFF;
+ }
+
+ .quests-list{
+  margin: 21px 0 0 49px;
+  height: 708px;
+  width: 1196px;
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > div:first-child{
+   margin-bottom: 31px;
+   font-weight: 600;
+   font-size: 22px;
+   line-height: 30px;
+  }
+
+  .quest{
+   margin-bottom: 11px;
+   height: 83px;
+   width: 100%;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   background: rgba(255, 255, 255, 0.25);
+   transition: all .1s ease-out;
+
+   & > :last-child{
+    margin-bottom: 0;
+   }
+  }
+
+  .quest--active{
+   background-color: #F2C94C;
+   transition: all .1s ease-in;
+  }
+ }
+}

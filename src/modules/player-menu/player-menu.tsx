@@ -7,6 +7,7 @@ import { Stats }            from './components/stats'
 import './player-menu.scss'
 import { Settings }         from './components/settings'
 import { Faq }              from './components/faq'
+import { Quests } from './components/quests'
 
 export const PlayerMenu = observer(() => {
   const { state: { active, currentMenuEl }, keyUpHandler } = store
@@ -14,7 +15,7 @@ export const PlayerMenu = observer(() => {
   useEffect(() => {
     const {
       setActive, setStatsData, adminMsgSend, setSettingsData,
-      reportAdminConnected, adminCloseReport
+      reportAdminConnected, adminCloseReport, setQuests
     } = store
 
     // @ts-ignore
@@ -25,6 +26,7 @@ export const PlayerMenu = observer(() => {
     em.addHandler('player-menu.report.msg', adminMsgSend)
     em.addHandler('player-menu.report.close', adminCloseReport)
     em.addHandler('player-menu.report.connected', reportAdminConnected)
+    em.addHandler('player-menu.quests', setQuests)
     document.addEventListener('keyup', keyUpHandler)
 
     return () => {
@@ -46,6 +48,8 @@ export const PlayerMenu = observer(() => {
         return <Faq />
       case 2:
         return <Report />
+      case 4: 
+        return <Quests />
       case 5:
         return <Settings />
       default:
