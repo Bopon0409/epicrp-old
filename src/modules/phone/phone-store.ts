@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx'
+import hudStore from '../hud/hud-store'
 import {
   IContact, ICorrespondence, ISms, IState, TCallView,
   TContactsView, TPage, TSmsView
@@ -11,6 +12,8 @@ class PhoneStore {
 
   state: IState = {
     active: false,
+    time: hudStore.state.time,
+    date: hudStore.state.date,
 
     // Current View
     curPage: 'index',
@@ -315,9 +318,7 @@ class PhoneStore {
 
   //============================   Button Labels   =============================
 
-  get buttonLabels ()
-    :
-    [string, string, string] {
+  get buttonLabels (): [string, string, string] {
     const { curPage, curCall, curContacts, curSms } = this.state
     switch (true) {
       case curPage === 'dialing':
@@ -345,17 +346,13 @@ class PhoneStore {
 
   //=============================   Header Name   ==============================
 
-  get curSmsName ()
-    :
-    string {
+  get curSmsName (): string {
     const { currentSms, curSms, newSmsContact } = this.state
     return curSms === 'sms-set-new' ?
       newSmsContact : this.correspondence[currentSms].name
   }
 
-  get headerName ()
-    :
-    string {
+  get headerName (): string {
     const { curPage, curSms } = this.state
     switch (true) {
       case curPage === 'sms' && curSms === 'sms-list':

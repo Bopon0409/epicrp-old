@@ -1,4 +1,6 @@
 export type TPage = 'index' | 'dialing' | 'call' | 'sms' | 'contacts'
+export type TNumeralButton = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' |
+  '8' | '9' | 'lattice' | 'star'
 
 export type TSmsView =
   'sms-list'
@@ -42,6 +44,8 @@ export interface ICorrespondence {
 
 export interface IState {
   active: boolean
+  time: string
+  date: string
 
   // Current View
   curPage: TPage
