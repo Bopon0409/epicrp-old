@@ -128,3 +128,28 @@ export interface ISettingsData {
   settings?: ISettingItem[]
   sizes?: ISizes
 }
+
+//===============================   QUESTS   ===================================
+export interface IQuestData{
+  playerActiveQuest: number,
+  quests: IQuestsData[]
+}
+
+export interface IQuestsData{
+  name: string
+  target: string
+  reward: string
+  questComment: string
+  progress: string
+  questStarted: string
+}
+
+export interface IQuests{
+  activeQuest: number
+  data: IQuestData
+}
+
+//=================================   FAQ   ====================================
+export interface IFAQ {
+  activeBlock: number
+}

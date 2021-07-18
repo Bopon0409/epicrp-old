@@ -1,5 +1,65 @@
 .player-menu {
   .faq {
+    height: 839px;
+    width: 100%;
+    background-color: rgba(255,0,0,.1);
+    display: flex;
+    align-items: flex-end;
+    color: white;
 
+    .questions{
+      margin-left: 80px;
+      height: 100%;
+      width: 488px;
+      display: flex;
+      flex-direction: column;
+
+      & > span:first-child{
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 25px;
+      }
+
+      .questions-list{
+        margin-top: 23px;
+        height: 791px;
+        display: flex;
+        flex-direction: column;
+
+        & > div:nth-child(n){
+          margin-bottom: 14px;
+        }
+        & > div:last-child{
+          margin-bottom: 0;
+        }
+
+        .question{
+          height: 101px;
+          width: 488px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: rgba(255, 255, 255, 0.25);
+          border-radius: 3px;
+
+          font-weight: 600;
+          font-size: 30px;
+          line-height: 41px;
+        }
+      }
+    }
+
+    .line{
+      margin: 0 100px 0 44px;
+      height: 782px;
+      border: 1px dashed #FFFFFF;
+    }
+
+    .answers{
+      height: 761px;
+      width: 1139px;
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

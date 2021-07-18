@@ -3,7 +3,6 @@ import { store } from '../shops-and-parlors-store';
 import cn from 'classnames';
 
 export const Colors = observer(() => {
-    const { setActiveColor } = store;
     const { businessType, itemsList } = store.state.data;
     const { section, item, color } = store.state.actives;
     return (businessType !== 3 && item !== -1) ? (

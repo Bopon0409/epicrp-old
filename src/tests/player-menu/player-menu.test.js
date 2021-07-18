@@ -1,13 +1,19 @@
 import statsData    from './stats-data.json'
 import settingsData from './settings-data.json'
+import questsData from './quests-data.json';
 
 const jsonStatsData = JSON.stringify(statsData)
 const jsonSettingsData = JSON.stringify(settingsData)
+const jsonQuestsData = JSON.stringify(questsData)
 
 const setActive = (active) => window.trigger('player-menu.active', active)
 const setStatsData = () => window.trigger('player-menu.stats', jsonStatsData)
-const setSettingsData = () =>
+const setSettingsData = () => {
   window.trigger('player-menu.settings', jsonSettingsData)
+}
+const setQuestsData = () => {
+  window.trigger('player-menu.quests', jsonQuestsData);
+}
 
 const sendAdminMsg = () => window.strTrigger(
   'player-menu.report.msg',
@@ -23,5 +29,5 @@ const reportClose = () => window.trigger('player-menu.report.close')
 
 window.test.playerMenu = {
   setActive, setStatsData, sendAdminMsg, adminConnected,
-  reportClose, setSettingsData
+  reportClose, setSettingsData, setQuestsData
 }

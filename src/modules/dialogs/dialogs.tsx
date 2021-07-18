@@ -64,6 +64,10 @@ export const Dialogs = observer(() => {
         }
       </div>
     </div>
+    <div className='esc-line'>
+      <div>ESC</div>
+      <div>Нажмите чтобы выйти</div>
+    </div>
   </div>
  ) : null
 })

@@ -40,6 +40,7 @@ import { DownloadConfirmationScreen } from '../jobs/truckers/download-confirmati
 import { Dialogs }                    from '../dialogs/dialogs'
 
 //FRACTIONS
+import { Fractions } from '../fractions/Fractions'
 import { Inspection }          from '../fractions/ems/inspection/inspection'
 import { IssueMedSertificate } from '../fractions/ems/issueMedSertificate/issueMedSertificate'
 import { MedSertificate }      from '../fractions/ems/medSertificate/medSertificate'
@@ -90,9 +91,7 @@ export default function App () {
       <WorkProgress />
       <WorkStats />
       <MedCard />
-      <Inspection />
-      <IssueMedSertificate />
-      <MedSertificate />
+      <Fractions />
       <ShopsAndParlors />
       <Contract />
       <CreditTablet />

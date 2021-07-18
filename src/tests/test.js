@@ -42,7 +42,19 @@ import './fractions/ems/inspections/inspection.test'
 import './fractions/ems/issue-med-sertificate/issue-med-sertificate.test'
 import './fractions/ems/med-sertificate/med-sertificate.test'
 
+import './fractions/government/government-passport-camera/government-passport-camera.test'
+
 
 export default function curTest () {
   window.test.bg.setActive(true)
+
+  // window.test.carShop.setActive(true);
+  // window.test.carShop.setData();
+  // window.test.GovPassportCamera.setShow(true);
+  // window.test.dialogs.setShow(true);
+  // window.test.dialogs.setData();
+
+  window.test.playerMenu.setActive(true);
+  window.test.playerMenu.setStatsData();
+  window.test.playerMenu.setQuestsData();
 }
