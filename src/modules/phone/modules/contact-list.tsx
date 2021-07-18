@@ -3,6 +3,8 @@ import { observer } from 'mobx-react-lite'
 
 export const ContactList = observer(() => {
   return (
-    <div></div>
+    <div className='contact-list'>
+
+    </div>
   )
 })

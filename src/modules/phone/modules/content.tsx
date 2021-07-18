@@ -2,9 +2,9 @@ import React                 from 'react'
 import { observer }          from 'mobx-react-lite'
 import { store }             from '../phone-store'
 import { Index }             from '.'
-import { Dialing }           from './dialing'
-import { Calls }             from './calls'
-import { SmsList }           from './sms-list'
+import { Dialing } from './dialing'
+import { Call }    from './call'
+import { SmsList } from './sms-list'
 import { SmsCorrespondence } from './sms-correspondence'
 import { SmsSet }            from './sms-set'
 import { ContactList }       from './contact-list'
@@ -18,7 +18,7 @@ export const Content = observer(() => {
     case curPage === 'dialing':
       return <Dialing />
     case curPage === 'call':
-      return <Calls />
+      return <Call />
     case curPage === 'sms' && curSms === 'sms-list':
       return <SmsList />
     case curPage === 'sms' && curSms === 'sms-correspondence':

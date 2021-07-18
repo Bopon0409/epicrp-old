@@ -33,7 +33,7 @@ export interface ISms {
   type: 'user' | 'interlocutor'
   contact: string
   text: string
-  date: string
+  time: string
 }
 
 export interface ICorrespondence {
@@ -68,7 +68,7 @@ export interface IState {
   currentSms: number
   smsInput: string
 
-  // Calls
+  // Call
   callNum: string
   callDuration: number
   callTimer: NodeJS.Timer | null

@@ -36,7 +36,7 @@ class PhoneStore {
     currentSms: 0,
     smsInput: '',
 
-    // Calls
+    // Call
     callNum: '',
     callDuration: 0,
     callTimer: null,
@@ -81,7 +81,7 @@ class PhoneStore {
       this.state.currentMenuItem -= 1
   }
 
-  //================================   Calls   =================================
+  //================================   Call   =================================
 
   callDurationIncrease = () => this.state.callDuration += 1
 
