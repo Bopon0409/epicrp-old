@@ -10,8 +10,8 @@ export const Header = observer(() => {
     <div className='header'>
       <div className='header__title'>{headerName}</div>
       <div className='header__container'>
-        {unreadSms > 0 && <img src={smsIcon} alt='' />}
-        <img src={connectionIcon} alt='' />
+        {unreadSms > 0 && <img src={smsIcon} className='icon-sms' alt='' />}
+        <img src={connectionIcon} className='icon-connect' alt='' />
         <div className='header__time'>{time}</div>
       </div>
     </div>

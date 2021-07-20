@@ -1,6 +1,7 @@
 import React        from 'react'
 import { observer } from 'mobx-react-lite'
 import { store }    from '../phone-store'
+import moment       from 'moment'
 
 export const Call = observer(() => {
   const { curCall, callNum, callDuration } = store.state
@@ -10,13 +11,13 @@ export const Call = observer(() => {
     'outgoing-process'
 
   const title = isIncoming ? 'Входящий вызов' : 'Исходящий вызов'
-  const timer = isProcess ? callDuration : null
+  const timer = moment(callDuration * 1000).format('mm:ss')
 
   return (
     <div className='call'>
       <div className='call__title'>{title}</div>
       <div className='call__num'>{callNum}</div>
-      <div className='call__timer'>{timer}</div>
+      <div className='call__timer'>{isProcess && timer}</div>
     </div>
   )
 })

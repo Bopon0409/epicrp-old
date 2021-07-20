@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx'
-import hudStore from '../hud/hud-store'
+import hudStore               from '../hud/hud-store'
 import {
   IContact, ICorrespondence, ISms, IState, TCallView,
   TContactsView, TPage, TSmsView
@@ -14,6 +14,7 @@ class PhoneStore {
     active: false,
     time: hudStore.state.time,
     date: hudStore.state.date,
+    timeUpdateTimer: null,
 
     // Current View
     curPage: 'index',
@@ -57,6 +58,19 @@ class PhoneStore {
 
   //==========================   Set current View   ============================
 
+  setActive = (active: boolean) => {
+    const { updateTime } = this
+    this.state.active = active
+    this.updateTime()
+    if (active) this.state.timeUpdateTimer = setInterval(updateTime, 1000)
+    else this.state.timeUpdateTimer = null
+  }
+
+  updateTime = () => {
+    this.state.time = hudStore.state.time
+    this.state.date = hudStore.state.date
+  }
+
   setCurPage = (page: TPage) => this.state.curPage = page
 
   setCurSms = (sms: TSmsView) => this.state.curSms = sms
@@ -81,6 +95,40 @@ class PhoneStore {
       this.state.currentMenuItem -= 1
   }
 
+  openMenuItem = () => {
+    switch (this.state.currentMenuItem) {
+      case 0:
+        this.state.curPage = 'sms'
+        this.state.curSms = 'sms-list'
+        break
+      case 1:
+        this.state.curPage = 'contacts'
+        this.state.curContacts = 'contacts-list'
+        break
+      default:
+        return
+    }
+  }
+
+  //===============================   Dialing   ================================
+
+  dialingClear = (dialingNumber: string) => {
+    if (dialingNumber.length) {
+      const newLength = dialingNumber.length - 1
+      return this.state.dialingNumber = dialingNumber.substr(0, newLength)
+    }
+  }
+
+  dialingInput = (btn: string) => {
+    const { curPage } = this.state
+    if (this.state.dialingNumber.length === 9) return
+    if (curPage === 'dialing') this.state.dialingNumber += btn
+    else if (curPage === 'index') {
+      this.state.dialingNumber = btn
+      this.state.curPage = 'dialing'
+    }
+  }
+
   //================================   Call   =================================
 
   callDurationIncrease = () => this.state.callDuration += 1
@@ -97,6 +145,14 @@ class PhoneStore {
   outgoingCallInit = (contact: string) => {
     this.state.curPage = 'call'
     this.state.curCall = 'outgoing-wait'
+    this.state.callNum = contact
+  }
+
+  outgoingCallAccept = () => this.callStart('outgoing-process')
+
+  incomingCallInit = (contact: string) => {
+    this.state.curPage = 'call'
+    this.state.curCall = 'incoming-wait'
     this.state.callNum = contact
   }
 
@@ -147,15 +203,17 @@ class PhoneStore {
   }
 
   setCurrentSms = (type: 'inc' | 'dec') => {
-    const { correspondence: { length } } = this
+    const { correspondence: { length }, state: { currentSms } } = this
+    const container = document.getElementById('phone-sms-list')
+    currentSms > 0 ? container?.focus() : container?.blur()
     switch (true) {
-      case type === 'dec' && this.state.currentSms > 0:
+      case type === 'dec' && currentSms > 0:
         return this.state.currentSms -= 1
-      case type === 'dec' && this.state.currentSms === 0:
+      case type === 'dec' && currentSms === 0:
         return this.state.currentSms = -1
-      case type === 'inc' && this.state.currentSms < length - 1:
+      case type === 'inc' && currentSms < length - 1:
         return this.state.currentSms += 1
-      case type === 'inc' && this.state.currentSms === -1:
+      case type === 'inc' && currentSms === -1:
         return this.state.currentSms = 0
     }
   }
@@ -226,13 +284,8 @@ class PhoneStore {
   //===========================   Buttons Handlers   ===========================
 
   numeralBtnHandler = (btn: string) => {
-    const { curPage } = this.state
-    if (btn === 'clear') return this.state.dialingNumber = ''
-    else if (curPage === 'dialing') this.state.dialingNumber += btn
-    else if (curPage === 'index') {
-      this.state.dialingNumber = btn
-      this.state.curPage = 'dialing'
-    }
+    if (btn === 'clear') this.dialingClear(this.state.dialingNumber)
+    else this.dialingInput(btn)
   }
 
   funcButtonLeft = () => {
@@ -250,6 +303,8 @@ class PhoneStore {
   funcButtonCenter = () => {
     const { curPage, curSms } = this.state
     switch (true) {
+      case curPage === 'index':
+        return this.openMenuItem()
       case curPage === 'dialing':
         return this.numeralBtnHandler('clear')
       case curPage === 'sms' && curSms === 'sms-list':
@@ -263,7 +318,7 @@ class PhoneStore {
   }
 
   funcButtonRight = () => {
-    const { curPage, curSms } = this.state
+    const { curPage, curSms, curContacts } = this.state
     switch (true) {
       case curPage === 'dialing':
         this.setCurPage('index')
@@ -278,6 +333,8 @@ class PhoneStore {
         return this.state.curSms = 'sms-correspondence'
       case curPage === 'sms' && curSms === 'sms-set-new':
         return this.state.curSms = 'sms-list'
+      case curPage === 'contacts' && curContacts === 'contacts-list':
+        return this.setCurPage('index')
     }
   }
 
@@ -321,11 +378,15 @@ class PhoneStore {
   get buttonLabels (): [string, string, string] {
     const { curPage, curCall, curContacts, curSms } = this.state
     switch (true) {
+      case curPage === 'index':
+        return ['', 'Выбор', '']
       case curPage === 'dialing':
         return ['Вызов', 'Стереть', 'Назад']
-      case curPage === 'call' ?? curCall === 'incoming-process':
+      case curPage === 'call' && curCall === 'incoming-wait':
         return ['Ответить', '', 'Завершить']
-      case curPage === 'call' ?? curCall !== 'incoming-process':
+      case curPage === 'call' && curCall !== 'outgoing-process':
+      case curPage === 'call' && curCall !== 'incoming-process':
+      case curPage === 'call' && curCall !== 'outgoing-wait':
         return ['', '', 'Завершить']
       case curPage === 'sms' && curSms === 'sms-list':
         return ['', 'Выбор', 'Назад']

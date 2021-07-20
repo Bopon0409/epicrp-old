@@ -12,10 +12,10 @@ const callDrop = () => window.trigger('phone.call.drop')
 const outgoingCallAccept = () => window.trigger('phone.call.outgoing.accept')
 const outgoingCallInit = () =>
   window.trigger('phone.call.outgoing.init', '333888333')
-const incomingCall = () =>
-  window.trigger('phone.call.incoming.request', '333888333')
+const incomingCallInit = () =>
+  window.trigger('phone.call.incoming.init', '333888333')
 
 window.test.phone = {
-  setActive, setContacts, incomingCall, outgoingCallInit,
-  outgoingCallAccept, setSms, addSms, callDrop
+  setActive, setContacts, setSms, addSms, callDrop,
+  incomingCallInit, outgoingCallInit, outgoingCallAccept
 }

@@ -7,8 +7,8 @@ export const SmsCorrespondence = observer(() => {
   return (
     <div className='sms-correspondence'>
       <div className='sms-correspondence__container'>{
-        correspondence[currentSms].smsList.map((item) => (
-          <div className='item'>
+        correspondence[currentSms].smsList.map((item, i) => (
+          <div className='item' key={i}>
             <div className='item__text'>{item.text}</div>
             <div className='item__time'>{item.time}</div>
           </div>

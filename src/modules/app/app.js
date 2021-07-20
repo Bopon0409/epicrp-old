@@ -38,15 +38,9 @@ import { MedCard }                    from '../med-card/med-card'
 import { ShopsAndParlors }            from '../shops-and-parlors/shops-and-parlors'
 import { DownloadConfirmationScreen } from '../jobs/truckers/download-confirmation-screen/download-confirmation-screen'
 import { Dialogs }                    from '../dialogs/dialogs'
-
-//FRACTIONS
-import { Fractions } from '../fractions/Fractions'
-import { Inspection }          from '../fractions/ems/inspection/inspection'
-import { IssueMedSertificate } from '../fractions/ems/issueMedSertificate/issueMedSertificate'
-import { MedSertificate }      from '../fractions/ems/medSertificate/medSertificate'
-
+import { Fractions }                  from '../fractions/Fractions'
+import { Phone }                      from '../phone/phone'
 import 'react-input-range/lib/css/index.css'
-import { Phone }               from '../phone/phone'
 
 export default function App () {
   const devModules = (

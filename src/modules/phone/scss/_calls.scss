@@ -1,0 +1,23 @@
+.phone {
+  .call {
+    width: 100%;
+    height: 200px;
+    background: #b7badb;
+    border-radius: 2px;
+    box-sizing: border-box;
+    padding: 25px 10px 10px;
+
+    font-size: 16px;
+    line-height: 22px;
+    color: #000000;
+    text-align: center;
+
+    &__title {
+
+    }
+
+    &__num {
+
+    }
+  }
+}

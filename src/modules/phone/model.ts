@@ -46,6 +46,7 @@ export interface IState {
   active: boolean
   time: string
   date: string
+  timeUpdateTimer: NodeJS.Timer | null
 
   // Current View
   curPage: TPage

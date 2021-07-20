@@ -1,10 +1,9 @@
 import { makeAutoObservable } from 'mobx'
 import { scrollList }         from '../../services/services'
 import {
-  IControlItem,
-  IReportConnected, IReportMsg, IReportState, ISettingItem, ISettingsData,
-  ISettingsState, IState, IStats, IStatsData, IQuests, IQuestsData, IQuestData,
-  IFAQ
+  IControlItem, IReportConnected, IReportMsg, IReportState, ISettingItem,
+  ISettingsData, ISettingsState, IState, IStats, IStatsData, IQuests,
+  IQuestData, IFAQ
 }                             from './model'
 import keyCodes               from '../../services/keyCodes.json'
 
@@ -28,7 +27,7 @@ class PlayerMenuStore {
     registerData: '',
     warnsCount: 0,
     online: ['', ''],
-    bank: { cash: 0, cards:[0, 0], insurance: 0, credit: 0 },
+    bank: { cash: 0, cards: [0, 0], insurance: 0, credit: 0 },
     fraction: {
       fractionName: '', rankName: '', salary: 0, lastRise: '', reprimands: 0
     },
@@ -280,27 +279,23 @@ class PlayerMenuStore {
   }
 
 //=================================   QUESTS   =================================
-  setQuests = (data: IQuestData) => this.quests.data = data;
+  setQuests = (data: IQuestData) => this.quests.data = data
 
-  setActiveQuest = (id: number) => this.quests.activeQuest = id;
+  setActiveQuest = (id: number) => this.quests.activeQuest = id
 
   setActivePlayerQuest = (id: number) => {
-    this.quests.data.playerActiveQuest = id;
+    this.quests.data.playerActiveQuest = id
     // @ts-ignore
-    window.frontTrigger('player-menu.player-active-quest', id);
+    window.frontTrigger('player-menu.player-active-quest', id)
   }
 
 //=================================   FAQ   ====================================
   setActiveFAQ = (id: number) => {
-    this.faq.activeBlock = id;
+    this.faq.activeBlock = id
     console.log(this.faq.activeBlock)
   }
 
 }
-
-
-
-  
 
 const store = new PlayerMenuStore()
 export { store }
