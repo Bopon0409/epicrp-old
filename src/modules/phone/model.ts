@@ -19,6 +19,7 @@ export type TCallView =
   | 'incoming-process'
   | 'outgoing-wait'
   | 'outgoing-process'
+  | 'call-error'
 
 export interface IContact {
   id: number
@@ -70,6 +71,7 @@ export interface IState {
   smsInput: string
 
   // Call
+  callError: string | null
   callNum: string
   callDuration: number
   callTimer: NodeJS.Timer | null

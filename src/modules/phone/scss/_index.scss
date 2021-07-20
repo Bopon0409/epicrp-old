@@ -22,13 +22,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-sizing: border-box;
 
       .index__menu-item {
         padding: 6px;
       }
 
       .index__menu-item--active {
-        border: 1px dashed white;
+        border-bottom: 3px solid white;
       }
     }
   }

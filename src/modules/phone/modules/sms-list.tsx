@@ -17,7 +17,8 @@ export const SmsList = observer(() => {
           className='sms-new__icon' />
         <div className='sms-new__text'>Новое сообщение</div>
       </div>
-      <div className='sms-list__container' tabIndex={0} id='phone-sms-list'>{
+      <div className='sms-list__container scroll'
+        tabIndex={0} id='phone-sms-list'>{
         correspondence.map((item, i) => {
           const classes = cn('item', currentSms === i && 'item--active')
           const lastItem = item.smsList[item.smsList.length - 1]

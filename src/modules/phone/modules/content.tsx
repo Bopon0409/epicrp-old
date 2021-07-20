@@ -24,6 +24,7 @@ export const Content = observer(() => {
     case curPage === 'sms' && curSms === 'sms-correspondence':
       return <SmsCorrespondence />
     case curPage === 'sms' && curSms === 'sms-set':
+    case curPage === 'sms' && curSms === 'sms-set-new':
       return <SmsSet />
     case curPage === 'contacts' && curContacts === 'contacts-list':
       return <ContactList />

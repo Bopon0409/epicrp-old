@@ -13,7 +13,7 @@ export const Phone = observer(() => {
     const { EventManager: em } = window
     const {
       setActive, setContacts, setSms, addSms, callDrop, outgoingCallInit,
-      incomingCallInit, outgoingCallAccept, arrowBtnHandler
+      incomingCallInit, outgoingCallAccept, arrowBtnHandler, callSetInfo
     } = store
 
     em.addHandler('phone.active', setActive)
@@ -21,6 +21,7 @@ export const Phone = observer(() => {
     em.addHandler('phone.sms.set', setSms)
     em.addHandler('phone.sms.add', addSms)
     em.addHandler('phone.call.drop', callDrop)
+    em.addHandler('phone.call.error', callSetInfo)
     em.addHandler('phone.call.outgoing.init', outgoingCallInit)
     em.addHandler('phone.call.incoming.init', incomingCallInit)
     em.addHandler('phone.call.outgoing.accept', outgoingCallAccept)
@@ -32,6 +33,7 @@ export const Phone = observer(() => {
       em.removeHandler('phone.sms.set', setSms)
       em.removeHandler('phone.sms.add', addSms)
       em.removeHandler('phone.call.drop', callDrop)
+      em.removeHandler('phone.call.error', callSetInfo)
       em.removeHandler('phone.call.outgoing.init', outgoingCallInit)
       em.removeHandler('phone.call.incoming.init', incomingCallInit)
       em.removeHandler('phone.call.outgoing.accept', outgoingCallAccept)

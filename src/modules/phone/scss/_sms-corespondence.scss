@@ -1,3 +1,68 @@
 .phone {
+  .sms-correspondence {
+    width: 100%;
+    height: 200px;
+    background: #B7BADB;
+    border-radius: 2px;
 
+    &__container {
+      height: 175px;
+      overflow-y: auto;
+      padding: 6px;
+      box-sizing: border-box;
+
+      .item {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+
+        &--user {
+          align-items: flex-start;
+        }
+
+        &--interlocutor {
+          align-items: flex-end;
+        }
+
+        &__text {
+          width: 90%;
+          background: #4271FF;
+          border-radius: 3px;
+          padding: 4px 6px;
+          font-size: 10px;
+          line-height: 14px;
+          color: #FFFFFF;
+          box-sizing: border-box;
+        }
+
+        &__time {
+          width: 90%;
+          text-align: right;
+          font-size: 8px;
+          line-height: 8px;
+          color: #000000;
+          margin-top: 4px;
+        }
+      }
+    }
+
+    &__input {
+      width: 100%;
+      height: 25px;
+      display: flex;
+      background: #5F5F5F;
+
+      .text {
+        width: 140px;
+        margin: auto;
+        font-size: 8px;
+        line-height: 11px;
+        color: #FFFFFF;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 11px;
+      }
+    }
+  }
 }

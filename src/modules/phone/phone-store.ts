@@ -38,6 +38,7 @@ class PhoneStore {
     smsInput: '',
 
     // Call
+    callError: null,
     callNum: '',
     callDuration: 0,
     callTimer: null,
@@ -170,13 +171,28 @@ class PhoneStore {
     this.state.curCall = null
     this.state.callNum = ''
     this.state.callDuration = 0
+    this.state.callError = null
+    if (this.state.callTimer) clearInterval(this.state.callTimer)
     this.state.callTimer = null
+  }
+
+  callSetInfo = (msg: string) => {
+    this.state.curPage = 'call'
+    this.state.curCall = 'call-error'
+    this.state.callError = msg
+    setTimeout(this.callDrop, 3000)
   }
 
   //=================================   SMS   ==================================
 
   setSmsInput = (event: any) => {
-    if (event.target.value <= 150) this.state.smsInput = event.target.value
+    if (event.target.value.length <= 150)
+      this.state.smsInput = event.target.value
+  }
+
+  setSmsContact = (event: any) => {
+    if (event.target.value.length <= 9)
+      this.state.newSmsContact = event.target.value
   }
 
   get correspondence (): ICorrespondence[] {
@@ -224,6 +240,7 @@ class PhoneStore {
       sms[currentSms].contact : newSmsContact
     // @ts-ignore
     window.frontTrigger('phone.sms.send', contact, smsInput)
+    this.state.curSms = curSms === 'sms-set' ? 'sms-correspondence' : 'sms-list'
   }
 
   //==============================   Contacts   ================================
@@ -342,6 +359,8 @@ class PhoneStore {
 
   arrowBtnHandler = (event: any) => {
     switch (event.keyCode) {
+      case 13:
+        return this.funcButtonCenter()
       case 37:
         return this.arrowLeft()
       case 38:
@@ -391,7 +410,7 @@ class PhoneStore {
       case curPage === 'sms' && curSms === 'sms-list':
         return ['', 'Выбор', 'Назад']
       case curPage === 'sms' && curSms === 'sms-correspondence':
-        return ['', 'Ввод сообщения', 'Назад']
+        return ['', 'Ввод', 'Назад']
       case curPage === 'sms' && curSms === 'sms-set-new':
       case curPage === 'sms' && curSms === 'sms-set':
         return ['', 'Отправить', 'Назад']
@@ -408,9 +427,9 @@ class PhoneStore {
   //=============================   Header Name   ==============================
 
   get curSmsName (): string {
-    const { currentSms, curSms, newSmsContact } = this.state
+    const { currentSms, curSms } = this.state
     return curSms === 'sms-set-new' ?
-      newSmsContact : this.correspondence[currentSms].name
+      'Отправка sms' : this.correspondence[currentSms].name
   }
 
   get headerName (): string {

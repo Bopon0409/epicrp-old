@@ -30,18 +30,7 @@
     }
 
     .sms-list__container {
-      overflow-y: scroll;
       height: 170px;
-      outline: none;
-
-      &::-webkit-scrollbar {
-        width: 2px;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-        background: #5d62af;
-      }
 
       .item {
         height: 36px;
