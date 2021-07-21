@@ -30,22 +30,37 @@
 }
 
 @media (min-width: 2560px) {
+  .phone {
+    zoom: 1.4;
+  }
 }
 
 @media (max-width: 1600px) {
+  .phone {
+    zoom: 0.9;
+  }
 }
 
 @media (max-width: 1440px) {
-}
-
-@media (max-width: 1366px) {
+  .phone {
+    zoom: 0.8;
+  }
 }
 
 @media (max-width: 1280px) {
+  .phone {
+    zoom: 0.75;
+  }
 }
 
 @media (max-width: 1024px) {
+  .phone {
+    zoom: 0.65;
+  }
 }
 
 @media (max-width: 800px) {
+  .phone {
+    zoom: 0.55;
+  }
 }
