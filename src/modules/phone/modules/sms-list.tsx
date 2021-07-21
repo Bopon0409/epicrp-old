@@ -1,8 +1,8 @@
 import React         from 'react'
 import { observer }  from 'mobx-react-lite'
 import { store }     from '../phone-store'
-import newIcon       from '../img/sms-list-new.svg'
-import newIconActive from '../img/sms-list-new-active.svg'
+import newIcon       from '../img/list-new.svg'
+import newIconActive from '../img/list-new-active.svg'
 import cn            from 'classnames'
 import moment        from 'moment'
 

@@ -3,6 +3,7 @@
     display: flex;
     justify-content: space-between;
     width: 190px;
+    height: 65px;
 
     .func-button:nth-child(1), .func-button:nth-child(3) {
       position: relative;
@@ -15,6 +16,11 @@
     justify-content: space-between;
     flex-wrap: wrap;
     width: 190px;
+
+    .numeral-btn {
+      width: 50px;
+      height: 35px;
+    }
 
     .numeral-btn:nth-child(2),
     .numeral-btn:nth-child(5),

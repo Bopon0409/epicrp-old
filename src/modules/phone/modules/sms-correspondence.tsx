@@ -11,7 +11,8 @@ export const SmsCorrespondence = observer(() => {
     document.getElementById('sms-correspondence-list')?.focus()
   }, 10)
   document.addEventListener('click', () =>
-    document.getElementById('sms-correspondence-list')?.focus())
+    document.getElementById('sms-correspondence-list')?.focus()
+  )
 
   return (
     <div className='sms-correspondence'>

@@ -46,7 +46,8 @@ class PhoneStore {
     // ContactList
     currentContact: 0,
     contactNumInput: '',
-    contactNameInput: ''
+    contactNameInput: '',
+    contactEditButton: null
   }
 
   //=======================   Load data from backend   =========================
@@ -56,6 +57,14 @@ class PhoneStore {
   setSms = (sms: ISms[]) => this.state.sms = sms
 
   addSms = (sms: ISms) => this.state.sms.push(sms)
+
+  addContact = (contact: IContact) => this.state.contacts.push(contact)
+
+  swapContact = (contact: IContact) => {
+    this.state.contacts = this.state.contacts.map(item =>
+      contact.id === item.id ? contact : item
+    )
+  }
 
   //==========================   Set current View   ============================
 
@@ -72,13 +81,33 @@ class PhoneStore {
     this.state.date = hudStore.state.date
   }
 
-  setCurPage = (page: TPage) => this.state.curPage = page
+  setCurPage = (page: TPage) => {
+    this.state.curPage = page
+    this.clearData()
+  }
 
-  setCurSms = (sms: TSmsView) => this.state.curSms = sms
+  clearData = () => {
+    this.state.smsInput = ''
+    this.state.contactNameInput = ''
+    this.state.contactNumInput = ''
+    this.state.dialingNumber = ''
+    this.state.newSmsContact = ''
+  }
 
-  setCurCall = (call: TCallView) => this.state.curCall = call
+  setCurSms = (sms: TSmsView) => {
+    this.state.curSms = sms
+    this.clearData()
+  }
 
-  setCurContacts = (contacts: TContactsView) => this.state.curContacts = contacts
+  setCurCall = (call: TCallView) => {
+    this.state.curCall = call
+    this.clearData()
+  }
+
+  setCurContacts = (contacts: TContactsView) => {
+    this.state.curContacts = contacts
+    this.clearData()
+  }
 
   //================================   Index   =================================
 
@@ -99,12 +128,12 @@ class PhoneStore {
   openMenuItem = () => {
     switch (this.state.currentMenuItem) {
       case 0:
-        this.state.curPage = 'sms'
-        this.state.curSms = 'sms-list'
+        this.setCurPage('sms')
+        this.setCurSms('sms-list')
         break
       case 1:
-        this.state.curPage = 'contacts'
-        this.state.curContacts = 'contacts-list'
+        this.setCurPage('contacts')
+        this.setCurContacts('contacts-list')
         break
       default:
         return
@@ -212,16 +241,15 @@ class PhoneStore {
   }
 
   smsListEnter = () => {
-    if (this.state.currentSms === -1)
-      this.state.curSms = 'sms-set-new'
-    else if (this.correspondence.length)
-      this.state.curSms = 'sms-correspondence'
+    if (this.state.currentSms === -1) this.setCurSms('sms-set-new')
+    else if (this.correspondence.length) this.setCurSms('sms-correspondence')
   }
 
   setCurrentSms = (type: 'inc' | 'dec') => {
     const { correspondence: { length }, state: { currentSms } } = this
     const container = document.getElementById('phone-sms-list')
     currentSms > 0 ? container?.focus() : container?.blur()
+
     switch (true) {
       case type === 'dec' && currentSms > 0:
         return this.state.currentSms -= 1
@@ -240,7 +268,7 @@ class PhoneStore {
       sms[currentSms].contact : newSmsContact
     // @ts-ignore
     window.frontTrigger('phone.sms.send', contact, smsInput)
-    this.state.curSms = curSms === 'sms-set' ? 'sms-correspondence' : 'sms-list'
+    this.setCurSms(curSms === 'sms-set' ? 'sms-correspondence' : 'sms-list')
   }
 
   //==============================   Contacts   ================================
@@ -259,43 +287,73 @@ class PhoneStore {
     }
   }
 
-  contactFunctionBtnHandler = () => {
-    const { currentContact } = this.state
-    if (currentContact === -1) this.state.curContacts = 'contacts-create'
-    else this.state.curContacts = 'contacts-edit'
+  setCurrentContactButton = (type: 'inc' | 'dec') => {
+    switch (type) {
+      case 'inc':
+        return this.state.contactEditButton = 'remove'
+      case 'dec':
+        return this.state.contactEditButton = 'save'
+      default:
+        return
+    }
   }
 
-  removeContact = (id: number) => {
-    this.state.contacts = this.state.contacts
-      .filter((contact) => contact.id !== id)
+  contactFunctionBtnHandler = () => {
+    const { currentContact } = this.state
+    if (currentContact === -1) this.setCurContacts('contacts-create')
+    else this.setCurContacts('contacts-edit')
+  }
+
+  setEditContactName = (event: any) => {
+    if (event.target.value.length <= 20)
+      this.state.contactNameInput = event.target.value
+  }
+
+  setEditContactNum = (event: any) => {
+    if (event.target.value.length <= 9)
+      this.state.contactNumInput = event.target.value
+  }
+
+  editContact = () => {
+    const { contactNameInput, contactNumInput, currentContact } = this.state
+    const contact = this.state.contacts[currentContact]
+    const triggerData = [contact.id, contactNameInput, contactNumInput]
+    // @ts-ignore
+    window.frontTrigger('phone.contact.edit', ...triggerData)
+    this.setCurContacts('contacts-list')
   }
 
   createContact = () => {
     const { contactNameInput: name, contactNumInput: number } = this.state
     // @ts-ignore
     window.frontTrigger('phone.contact.add', name, number)
-    this.clearContactInputs()
+    this.setCurContacts('contacts-list')
   }
 
-  clearContactInputs = () => {
-    this.state.contactNameInput = ''
-    this.state.contactNumInput = ''
-    this.state.curContacts = 'contacts-list'
-  }
-
-  editContact = () => {
-    const { contactNameInput, contactNumInput, currentContact } = this.state
-
-    const contact = this.state.contacts[currentContact]
-    contact.name = contactNameInput
-    contact.number = contactNumInput
-
+  removeContact = () => {
+    const { currentContact, contacts } = this.state
+    const id = contacts[currentContact].id
+    this.state.contacts = contacts.filter(contact => contact.id !== id)
     // @ts-ignore
-    window.frontTrigger('phone.contact.edit',
-      contact.id, contact.name, contact.number
-    )
+    window.frontTrigger('phone.contact.remove', id)
+    this.setCurContacts('contacts-list')
+  }
 
-    this.clearContactInputs()
+  openContactEdit = () => {
+    const { contacts, currentContact } = this.state
+    const isCreate = currentContact === -1
+    this.setCurContacts(isCreate ? 'contacts-create' : 'contacts-edit')
+    if (isCreate) this.setCurrentContactButton('dec')
+    else {
+      const contact = contacts[currentContact]
+      this.state.contactNameInput = contact.name
+      this.state.contactNumInput = contact.number
+    }
+  }
+
+  editContactHandler = () => {
+    this.state.contactEditButton === 'remove' ?
+      this.removeContact() : this.editContact()
   }
 
   //===========================   Buttons Handlers   ===========================
@@ -318,7 +376,7 @@ class PhoneStore {
   }
 
   funcButtonCenter = () => {
-    const { curPage, curSms } = this.state
+    const { curPage, curSms, curContacts } = this.state
     switch (true) {
       case curPage === 'index':
         return this.openMenuItem()
@@ -327,10 +385,16 @@ class PhoneStore {
       case curPage === 'sms' && curSms === 'sms-list':
         return this.smsListEnter()
       case curPage === 'sms' && curSms === 'sms-correspondence':
-        return this.state.curSms = 'sms-set'
+        return this.setCurSms('sms-set')
       case curPage === 'sms' && curSms === 'sms-set':
       case curPage === 'sms' && curSms === 'sms-set-new':
         return this.smsSubmit()
+      case curPage === 'contacts' && curContacts === 'contacts-list':
+        return this.openContactEdit()
+      case  curPage === 'contacts' && curContacts === 'contacts-create':
+        return this.createContact()
+      case  curPage === 'contacts' && curContacts === 'contacts-edit':
+        return this.editContactHandler()
     }
   }
 
@@ -352,39 +416,88 @@ class PhoneStore {
         return this.state.curSms = 'sms-list'
       case curPage === 'contacts' && curContacts === 'contacts-list':
         return this.setCurPage('index')
+      case curPage === 'contacts' && curContacts === 'contacts-edit':
+        return this.setCurContacts('contacts-list')
+      case curPage === 'contacts' && curContacts === 'contacts-create':
+        return this.setCurContacts('contacts-list')
     }
   }
 
-  //========================   Arrow Buttons Handlers   ========================
+  //============================   Key Handlers   =============================
 
-  arrowBtnHandler = (event: any) => {
-    switch (event.keyCode) {
-      case 13:
+  keyHandler = (event: any) => {
+    const { keyCode, location } = event
+
+    switch (true) {
+      // enter
+      case keyCode === 13:
         return this.funcButtonCenter()
-      case 37:
+      // backspace
+      case keyCode === 8:
+        return this.backspaceHandler()
+
+      // arrows
+      case keyCode === 37 && location === 0:
         return this.arrowLeft()
-      case 38:
+      case keyCode === 38 && location === 0:
         return this.arrowTop()
-      case 39:
+      case keyCode === 39 && location === 0:
         return this.arrowRight()
-      case 40:
+      case keyCode === 40 && location === 0:
         return this.arrowBottom()
+
+      // nums
+      case keyCode === 49 || (keyCode === 35 && location === 3):
+        return this.numeralBtnHandler('1')
+      case keyCode === 50 || (keyCode === 40 && location === 3):
+        return this.numeralBtnHandler('2')
+      case keyCode === 51 || (keyCode === 34 && location === 3):
+        return this.numeralBtnHandler('3')
+      case keyCode === 52 || (keyCode === 37 && location === 3):
+        return this.numeralBtnHandler('4')
+      case keyCode === 53 || (keyCode === 12 && location === 3):
+        return this.numeralBtnHandler('5')
+      case keyCode === 54 || (keyCode === 39 && location === 3):
+        return this.numeralBtnHandler('6')
+      case keyCode === 55 || (keyCode === 36 && location === 3):
+        return this.numeralBtnHandler('7')
+      case keyCode === 56 || (keyCode === 38 && location === 3):
+        return this.numeralBtnHandler('8')
+      case keyCode === 57 || (keyCode === 33 && location === 3):
+        return this.numeralBtnHandler('9')
+      case keyCode === 48 || (keyCode === 45 && location === 3):
+        return this.numeralBtnHandler('0')
     }
+  }
+
+  backspaceHandler = () => {
+    const node = document.activeElement?.nodeName
+    const isDialing = this.state.curPage === 'dialing'
+    const isInput = node === 'INPUT' || node === 'TEXTAREA'
+    if (!isInput) isDialing ? this.funcButtonCenter() : this.funcButtonRight()
   }
 
   arrowTop = () => {
-    const { curPage, curSms } = this.state
+    const { curPage, curSms, curContacts } = this.state
     switch (true) {
       case curPage === 'sms' && curSms === 'sms-list':
         return this.setCurrentSms('dec')
+      case curPage === 'contacts' && curContacts === 'contacts-list':
+        return this.setCurrentContact('dec')
+      case curPage === 'contacts' && curContacts === 'contacts-edit':
+        return this.setCurrentContactButton('dec')
     }
   }
 
   arrowBottom = () => {
-    const { curPage, curSms } = this.state
+    const { curPage, curSms, curContacts } = this.state
     switch (true) {
       case curPage === 'sms' && curSms === 'sms-list':
         return this.setCurrentSms('inc')
+      case curPage === 'contacts' && curContacts === 'contacts-list':
+        return this.setCurrentContact('inc')
+      case curPage === 'contacts' && curContacts === 'contacts-edit':
+        return this.setCurrentContactButton('inc')
     }
   }
 
@@ -395,7 +508,12 @@ class PhoneStore {
   //============================   Button Labels   =============================
 
   get buttonLabels (): [string, string, string] {
-    const { curPage, curCall, curContacts, curSms } = this.state
+    const {
+      curPage, curCall, curContacts, curSms, contactEditButton
+    } = this.state
+
+    const editButton = contactEditButton === 'remove' ? 'Удалить' : 'Сохранить'
+
     switch (true) {
       case curPage === 'index':
         return ['', 'Выбор', '']
@@ -417,8 +535,9 @@ class PhoneStore {
       case curPage === 'contacts' && curContacts === 'contacts-list':
         return ['Позвонить', 'Редактировать', 'Назад']
       case curPage === 'contacts' && curContacts === 'contacts-create':
+        return ['', 'Создать', 'Назад']
       case curPage === 'contacts' && curContacts === 'contacts-edit':
-        return ['', 'Сохранить', 'Назад']
+        return ['', editButton, 'Назад']
       default:
         return ['', '', '']
     }

@@ -80,4 +80,5 @@ export interface IState {
   currentContact: number
   contactNumInput: string
   contactNameInput: string
+  contactEditButton: 'save' | 'remove' | null
 }

@@ -13,11 +13,14 @@ export const Phone = observer(() => {
     const { EventManager: em } = window
     const {
       setActive, setContacts, setSms, addSms, callDrop, outgoingCallInit,
-      incomingCallInit, outgoingCallAccept, arrowBtnHandler, callSetInfo
+      incomingCallInit, outgoingCallAccept, keyHandler, callSetInfo,
+      addContact, swapContact
     } = store
 
     em.addHandler('phone.active', setActive)
-    em.addHandler('phone.contacts', setContacts)
+    em.addHandler('phone.contacts.set', setContacts)
+    em.addHandler('phone.contacts.add', addContact)
+    em.addHandler('phone.contacts.edit', swapContact)
     em.addHandler('phone.sms.set', setSms)
     em.addHandler('phone.sms.add', addSms)
     em.addHandler('phone.call.drop', callDrop)
@@ -25,11 +28,13 @@ export const Phone = observer(() => {
     em.addHandler('phone.call.outgoing.init', outgoingCallInit)
     em.addHandler('phone.call.incoming.init', incomingCallInit)
     em.addHandler('phone.call.outgoing.accept', outgoingCallAccept)
-    document.addEventListener('keyup', arrowBtnHandler)
+    document.addEventListener('keyup', keyHandler)
 
     return () => {
       em.removeHandler('phone.active', setActive)
       em.removeHandler('phone.contacts', setContacts)
+      em.removeHandler('phone.contacts.add', addContact)
+      em.removeHandler('phone.contacts.edit', swapContact)
       em.removeHandler('phone.sms.set', setSms)
       em.removeHandler('phone.sms.add', addSms)
       em.removeHandler('phone.call.drop', callDrop)
@@ -37,7 +42,7 @@ export const Phone = observer(() => {
       em.removeHandler('phone.call.outgoing.init', outgoingCallInit)
       em.removeHandler('phone.call.incoming.init', incomingCallInit)
       em.removeHandler('phone.call.outgoing.accept', outgoingCallAccept)
-      document.removeEventListener('keyup', arrowBtnHandler)
+      document.removeEventListener('keyup', keyHandler)
     }
   }, [])
 
