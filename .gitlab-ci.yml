@@ -1,0 +1,13 @@
+stages:
+  - build
+  - build-zip
+
+build:
+  stage: build
+  script:
+    - npm run build
+    
+build-zip:
+  stage: build-zip
+  script:
+    - npm run zip
