@@ -1,13 +1,4 @@
-stages:
-  - build
-  - build-zip
-
 build:
-  stage: build
+  image: node:15
   script:
     - npm run build
-    
-build-zip:
-  stage: build-zip
-  script:
-    - npm run zip
