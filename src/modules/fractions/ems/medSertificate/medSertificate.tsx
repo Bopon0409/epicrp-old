@@ -6,7 +6,6 @@ import { MedSrtTypes, MedSrtResults } from '../constants'
 
 export const MedSertificate = observer(() => {
   useEffect(() => {
-    // @ts-ignore
     const { EventManager: em } = window
     const { setActive, setData } = store
     em.addHandler('ems-med-sertificate.active', setActive)

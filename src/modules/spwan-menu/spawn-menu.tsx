@@ -12,7 +12,6 @@ import './spawn-menu.scss'
 
 export const SpawnMenu = observer(() => {
   useEffect(() => {
-    // @ts-ignore
     const { EventManager: em } = window
     const { setActive, setPoints, setIsCrime } = store
     em.addHandler('spawn-menu.active', setActive)

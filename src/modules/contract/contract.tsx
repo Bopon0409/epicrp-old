@@ -9,7 +9,6 @@ import { CreditBank }       from './components/credit-bank'
 
 export const Contract = observer(() => {
   useEffect(() => {
-    // @ts-ignore
     const { EventManager: em } = window
     const {
       openBankInsurance, openClientInsurance,

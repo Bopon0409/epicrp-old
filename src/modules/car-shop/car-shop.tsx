@@ -14,7 +14,6 @@ export const CarShop = observer(() => {
   const { state: { money, active }, currentCar, payAction } = store
 
   useEffect(() => {
-    // @ts-ignore
     const { EventManager: em } = window
     const { setActive, setData } = store
 

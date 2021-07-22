@@ -89,7 +89,6 @@ class GasStationStore {
 
   buy = (method: 'card' | 'cash', currentCard: string | null) => {
     const { currentFuelId, slider, canisterInCart } = this.state
-    // @ts-ignore
     window.frontTrigger('gas-station.buy', {
       method, card: currentCard, quantity: slider,
       id: currentFuelId, canister: canisterInCart

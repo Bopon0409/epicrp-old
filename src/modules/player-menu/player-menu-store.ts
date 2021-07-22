@@ -66,7 +66,6 @@ class PlayerMenuStore {
   }
 
   setActive = (active: boolean) => {
-    // @ts-ignore
     if (window.mp && active) window.mp.invoke('focus', true)
     this.state.active = active
   }
@@ -99,19 +98,16 @@ class PlayerMenuStore {
   }
 
   setFontSize = (size: any) => {
-    // @ts-ignore
     window.frontTrigger('player-menu.settings.font-size', size)
     this.settingsState.sizes.fontSize = size
   }
 
   setRowSize = (size: any) => {
-    // @ts-ignore
     window.frontTrigger('player-menu.settings.row-size', size)
     this.settingsState.sizes.rowSize = size
   }
 
   setChatSize = (size: any) => {
-    // @ts-ignore
     window.frontTrigger('player-menu.settings.chat-size', size)
     this.settingsState.sizes.chatSize = size
   }
@@ -142,7 +138,6 @@ class PlayerMenuStore {
 
     if (item && this.setKeyCheck(keyCode)) {
       item.keyCode = keyCode
-      // @ts-ignore
       window.frontTrigger('player-menu.control', item.id, item.keyCode)
       this.settingsState.keyWaiting = false
       this.state.menuHandlerBlocked = false
@@ -151,7 +146,6 @@ class PlayerMenuStore {
 
   setSetting = (item: ISettingItem, value: boolean) => {
     item.status = value
-    // @ts-ignore
     window.frontTrigger('player-menu.setting', item.id, value)
   }
 
@@ -159,7 +153,6 @@ class PlayerMenuStore {
 
   // Игрок забирает награду за реферальные приглашения
   getReferralReward = () => {
-    // @ts-ignore
     window.frontTrigger(`referral.reward`)
   }
 
@@ -208,7 +201,6 @@ class PlayerMenuStore {
     this.reportState.reportData.push(reportConnected, reportMsg)
     this.reportState.reportStatus = 'process'
 
-    // @ts-ignore
     window.frontTrigger(`player-menu.${type}.create`, msg)
     this.reportState.reportInput = ''
   }
@@ -221,7 +213,6 @@ class PlayerMenuStore {
     if (!/^(|[a-zA-Zа-яА-Я0-9][a-zA-Zа-яА-Я0-9\s]*)$/.test(msg)) return
     if (this.reportState.sendMsgBlocked) {
       this.reportState.reportInput = ''
-      // @ts-ignore
       return window.trigger('hud.notify', JSON.stringify({
         type: 'error', text: 'Отправка сообщений доступна раз в 15 секунд'
       }))
@@ -231,7 +222,6 @@ class PlayerMenuStore {
     this.reportState.reportData.push(reportMsg)
     scrollList('player-report-chat')
 
-    // @ts-ignore
     window.frontTrigger(`player-menu.report.send`, msg)
     this.reportState.reportInput = ''
 
@@ -266,7 +256,6 @@ class PlayerMenuStore {
 
   // Игрок поставил оценку
   playerSetRating = (rating: number) => {
-    // @ts-ignore
     window.frontTrigger(`player-menu.report.rating`, rating)
     this.reportState.reportData = []
     this.reportState.reportAdminName = ''
@@ -285,7 +274,6 @@ class PlayerMenuStore {
 
   setActivePlayerQuest = (id: number) => {
     this.quests.data.playerActiveQuest = id
-    // @ts-ignore
     window.frontTrigger('player-menu.player-active-quest', id)
   }
 

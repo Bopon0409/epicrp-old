@@ -125,7 +125,6 @@ class AdminStore {
   //============================   Front Trigger   =============================
 
   spawnCar = (carName: string, carNum: string, color: string, type: number) => {
-    // @ts-ignore
     window.frontTrigger(`admin.car.spawn`, { carName, carNum, color, type })
   }
 
@@ -133,21 +132,15 @@ class AdminStore {
     const {
       modalInputReason, modalInputTerm, punishmentModal, player
     } = this.state
-    // @ts-ignore
     window.frontTrigger(
       `admin.punishment.${punishmentModal}`,
-      player?.id,
-      modalInputTerm,
-      modalInputReason
+      player?.id, modalInputTerm, modalInputReason
     )
   }
 
   command = (command: string) => {
     if (!this.state.player) return
-    // @ts-ignore
-    if (window.mp)
-      // @ts-ignore
-      window.mp.invoke('command', command)
+    if (window.mp) window.mp.invoke('command', command)
   }
 
   playerUnPunishment = (name: string) => {
@@ -165,26 +158,22 @@ class AdminStore {
   }
 
   chatMsgDispatch = (msg: string) => {
-    // @ts-ignore
     window.frontTrigger(`admin.msg`, msg);
     this.state.localChatMessagesStorage.push(msg);
   }
 
   consoleDispatch = (command: string) => {
     // window.frontTrigger(`admin.console`, command)
-    // @ts-ignore
     window.mp.invoke('command', command)
     store.state.localConsoleCommandsStorage.push(command);
   }
 
   playerRequest = (value: string) => {
-    // @ts-ignore
     window.frontTrigger(`admin.player`, value);
     store.state.localPlayersStorage.push(value);
   }
 
   transportActions = (carId: number, action: string) => {
-    // @ts-ignore
     window.frontTrigger(`admin.transport.${action}`, carId)
   }
 }

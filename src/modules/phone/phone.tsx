@@ -9,7 +9,6 @@ import { store }            from './phone-store'
 
 export const Phone = observer(() => {
   useEffect(() => {
-    // @ts-ignore
     const { EventManager: em } = window
     const {
       setActive, setContacts, setSms, addSms, callDrop, outgoingCallInit,

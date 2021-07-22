@@ -33,14 +33,12 @@ class TattooParlorStore {
     this.setActiveItem(null);
     this.state.activeSection = sectionNum;
     if (sectionNum !== null)
-      // @ts-ignore
       window.frontTrigger('clothes-shop.set.section', sectionNum);
   };
 
   setActiveItem = (itemNum: number | null) => {
     this.state.activeItem = itemNum;
     if (itemNum !== null) {
-      // @ts-ignore
       window.frontTrigger('clothes-shop.set.item', itemNum);
     }
   };
@@ -74,7 +72,6 @@ class TattooParlorStore {
     const curMoney = this.getCurrentMoney(method, cardId);
     const moneyCheck = !!this.currentItem && this.currentItem.price <= curMoney;
     if (this.buyReady && moneyCheck)
-      // @ts-ignore
       window.frontTrigger(
         'clothes-shop.buy',
         method,

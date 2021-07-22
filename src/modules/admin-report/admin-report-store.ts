@@ -76,32 +76,27 @@ class AdminReportStore {
     report.msgList.push({ name, msg, type: 'admin_msg', time: this.time })
     this.state.input = ''
 
-    // @ts-ignore
     window.frontTrigger('admin-report.msg', currentReportId, msg)
     scrollList('admin-report-list')
   }
 
   adminAction = (action: string) => {
-    // @ts-ignore
     window.frontTrigger(`admin-report.${action}`, this.currentReport?.name)
   }
 
   reportInit = () => {
-    // @ts-ignore
     window.frontTrigger(`admin-report.join`, this.state.currentReportId)
     this.state.status = 'process'
     this.state.blockedList = true
   }
 
   reportClose = () => {
-    // @ts-ignore
     window.frontTrigger(`admin-report.close`, this.state.currentReportId)
     this.state.status = 'closed'
     scrollList('admin-report-list')
   }
 
   reportExit = () => {
-    // @ts-ignore
     window.frontTrigger(`admin-report.exit`, this.state.currentReportId)
     this.state.currentReportId = null
     this.state.status = 'list'
@@ -111,7 +106,6 @@ class AdminReportStore {
   setRating = (rating: number) => {
     const { currentReportId } = this.state
     if (!currentReportId) return
-    // @ts-ignore
     window.frontTrigger(`admin-report.rating`, currentReportId, rating)
     this.removeReport(currentReportId)
     this.state.status = 'list'

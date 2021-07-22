@@ -6,7 +6,6 @@ import './download-confirmation-screen.scss'
 
 export const DownloadConfirmationScreen = observer(() => {
   useEffect(() => {
-    // @ts-ignore
     const { EventManager: em } = window
     const { setShow, setData } = store
     em.addHandler('download-confirmation-screen.data', setData)

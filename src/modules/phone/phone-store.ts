@@ -165,7 +165,6 @@ class PhoneStore {
 
   outgoingCallRequest = (type: 'dialing' | 'contact') => {
     const { contacts, currentContact, dialingNumber } = this.state
-    // @ts-ignore
     window.frontTrigger('phone.call.outgoing.request',
       type === 'dialing' ? dialingNumber : contacts[currentContact].number
     )
@@ -194,7 +193,6 @@ class PhoneStore {
   }
 
   callDrop = () => {
-    // @ts-ignore
     window.frontTrigger('phone.call.drop')
     this.state.curPage = 'index'
     this.state.curCall = null
@@ -266,7 +264,6 @@ class PhoneStore {
     const { newSmsContact, currentSms, curSms, smsInput, sms } = this.state
     const contact = curSms === 'sms-set' ?
       sms[currentSms].contact : newSmsContact
-    // @ts-ignore
     window.frontTrigger('phone.sms.send', contact, smsInput)
     this.setCurSms(curSms === 'sms-set' ? 'sms-correspondence' : 'sms-list')
   }
@@ -318,14 +315,12 @@ class PhoneStore {
     const { contactNameInput, contactNumInput, currentContact } = this.state
     const contact = this.state.contacts[currentContact]
     const triggerData = [contact.id, contactNameInput, contactNumInput]
-    // @ts-ignore
     window.frontTrigger('phone.contact.edit', ...triggerData)
     this.setCurContacts('contacts-list')
   }
 
   createContact = () => {
     const { contactNameInput: name, contactNumInput: number } = this.state
-    // @ts-ignore
     window.frontTrigger('phone.contact.add', name, number)
     this.setCurContacts('contacts-list')
   }
@@ -334,7 +329,6 @@ class PhoneStore {
     const { currentContact, contacts } = this.state
     const id = contacts[currentContact].id
     this.state.contacts = contacts.filter(contact => contact.id !== id)
-    // @ts-ignore
     window.frontTrigger('phone.contact.remove', id)
     this.setCurContacts('contacts-list')
   }

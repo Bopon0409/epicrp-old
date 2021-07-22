@@ -18,7 +18,6 @@ export const PlayerMenu = observer(() => {
       reportAdminConnected, adminCloseReport, setQuests
     } = store
 
-    // @ts-ignore
     const { EventManager: em } = window
     em.addHandler('player-menu.active', setActive)
     em.addHandler('player-menu.stats', setStatsData)

@@ -45,24 +45,20 @@ class TattooParlorStore {
     this.state.actives.item = -1;
     this.state.actives.hand = -1;
     this.state.actives.color = 0;
-    // @ts-ignore
     window.frontTrigger('clothes-shop.set.section', this.state.actives.section);
   }
 
   setActiveItem = (id: number) => {
     this.state.actives.item = id;
-    // @ts-ignore
     window.frontTrigger('clothes-shop.set.item', this.state.actives.item);
   }
   setActiveHand = (id: number) => {
     this.state.actives.hand = id;
-    // @ts-ignore
     window.frontTrigger('clothes-shop.set.hand', this.state.actives.hand);
   }
 
   setActiveColor = (id: number) => {
     this.state.actives.color = id;
-    // @ts-ignore
     window.frontTrigger('clothes-shop.set.color', this.state.actives.color);
   }
 
@@ -74,7 +70,6 @@ class TattooParlorStore {
   }
 
   payAction = (method: TMethod, cardId: TCardId) => {
-      // @ts-ignore
       window.frontTrigger(
         'clothes-shop.buy',{
         cardId,

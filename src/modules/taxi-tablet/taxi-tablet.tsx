@@ -12,7 +12,6 @@ export const TaxiTablet = observer(() => {
   const { active, tabletStatus } = store.state
 
   useEffect(() => {
-    // @ts-ignore
     const { EventManager: em } = window
     const { setActive, setData, setActiveOrder, adOrder, removeOrder } = store
 

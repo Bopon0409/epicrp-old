@@ -13,7 +13,6 @@ export const GasStation = observer(() => {
   } = store
 
   useEffect(() => {
-    // @ts-ignore
     const { EventManager: em } = window
     const { setActive, setData } = store
 

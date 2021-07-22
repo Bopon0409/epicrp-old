@@ -8,7 +8,6 @@ import './shop.scss'
 
 export const Shop = observer(() => {
   useEffect(() => {
-    // @ts-ignore
     const { EventManager: em } = window
     const { setActive, setData } = store
 

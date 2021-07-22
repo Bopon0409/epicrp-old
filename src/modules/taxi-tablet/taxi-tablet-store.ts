@@ -70,12 +70,10 @@ class TaxiTabletStore {
   //=============================   Front Trigger   ============================
 
   takeOrder = (id: number) => {
-    // @ts-ignore
     window.frontTrigger('taxi.order.take', id)
   }
 
   changeStatus = () => {
-    // @ts-ignore
     window.frontTrigger('taxi.status', !this.state.workStatus)
     this.state.workStatus = !this.state.workStatus
   }
@@ -83,7 +81,6 @@ class TaxiTabletStore {
   rejectOrder = () => this.state.tabletStatus = 'reject'
 
   rejectConfirm = () => {
-    // @ts-ignore
     window.frontTrigger('taxi.order.reject', this.state.rejectReason)
     this.state.tabletStatus = 'reject-next'
     this.state.activeOrder = null

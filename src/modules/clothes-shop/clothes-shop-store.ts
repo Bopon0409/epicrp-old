@@ -34,14 +34,12 @@ class ClothesShopStore {
     this.setActiveItem(null);
     this.state.activeSection = sectionNum;
     if (sectionNum !== null)
-      // @ts-ignore
       window.frontTrigger('clothes-shop.set.section', sectionNum);
   };
 
   setActiveItem = (itemNum: number | null) => {
     this.state.activeItem = itemNum;
     if (itemNum !== null) {
-      // @ts-ignore
       window.frontTrigger('clothes-shop.set.item', itemNum);
       this.setActiveColor(0);
     }
@@ -50,7 +48,6 @@ class ClothesShopStore {
   setActiveColor = (colorId: number | null) => {
     this.state.activeColor = colorId;
     if (colorId !== null)
-      // @ts-ignore
       window.frontTrigger('clothes-shop.set.color', colorId);
   };
 
@@ -84,12 +81,9 @@ class ClothesShopStore {
     const curMoney = this.getCurrentMoney(method, cardId);
     const moneyCheck = !!this.currentItem && this.currentItem.price <= curMoney;
     if (this.buyReady && moneyCheck && activeColor !== null)
-      // @ts-ignore
       window.frontTrigger(
         'clothes-shop.buy',
-        method,
-        currentItem?.name,
-        currentItem?.colors[activeColor]
+        method, currentItem?.name, currentItem?.colors[activeColor]
       );
   };
 }

@@ -8,7 +8,6 @@ import './admin-report.scss'
 
 export const AdminReport = observer(() => {
   useEffect(() => {
-    // @ts-ignore
     const { EventManager: em } = window
     const {
       setActive, setName, addReport, removeReport, editReport, playerSendMsg

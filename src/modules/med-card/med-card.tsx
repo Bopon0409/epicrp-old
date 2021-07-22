@@ -18,7 +18,6 @@ export const MedCard = observer(() => {
   const { firstName, secondName, age, nationality, medicalHistory } =
     store.state.medCard;
   useEffect(() => {
-    // @ts-ignore
     const { EventManager: em } = window;
     const { setActive, setData } = store;
     em.addHandler("med-card.active", setActive);

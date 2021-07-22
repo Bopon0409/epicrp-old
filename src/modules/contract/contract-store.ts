@@ -153,19 +153,16 @@ class ContractStore {
   }
 
   submitClientInsurance = (signature: string) => {
-    // @ts-ignore
     window.frontTrigger(`insurance-contract.client-insurance`, { signature })
   }
 
   submitBankInsurance = (signature: string, tariff: number) => {
-    // @ts-ignore
     window.frontTrigger(`insurance-contract.bank-insurance`,
       { signature, tariff }
     )
   }
 
   submitClientCredit = (signature: string) => {
-    // @ts-ignore
     window.frontTrigger(`insurance-contract.client-credit`, { signature })
   }
 
@@ -174,7 +171,6 @@ class ContractStore {
       state: { currentDuration, currentSum, currentProperty },
       creditSumBank, dailyPaymentBank
     } = this
-    // @ts-ignore
     window.frontTrigger(`insurance-contract.bank-credit`, {
       duration: Number(currentDuration), propertyId: currentProperty?.id,
       sum: currentSum, creditSum: Number(creditSumBank),

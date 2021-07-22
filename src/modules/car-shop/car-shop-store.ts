@@ -22,17 +22,14 @@ class CarShopStore {
 
   setActive = (active: boolean) => this.state.active = active
   setActiveCar = (currentCar: number) => {
-    // @ts-ignore
     window.frontTrigger('car-shop.setActiveCar', currentCar);
     this.state.currentCar = currentCar
   }
   setMainColor = (color: string) => {
-    // @ts-ignore
     window.frontTrigger('car-shop.setMainColor', color);
     this.state.colorMain = color;
   }
   setAdditionalColor = (color: string) => {
-    // @ts-ignore
     window.frontTrigger('car-shop.setAdditionalColor', color);
     this.state.colorAdditional = color;
   }
@@ -60,7 +57,6 @@ class CarShopStore {
   payAction = (method: TMethod, cardId: TCardId) => {
     const { state: { colorMain, colorAdditional }, currentCar } = this
     if (!currentCar) return
-    // @ts-ignore
     window.frontTrigger('car-shop.buy', {
       carId: currentCar.id, colorMain, colorAdditional,
       method, cardId: cardId

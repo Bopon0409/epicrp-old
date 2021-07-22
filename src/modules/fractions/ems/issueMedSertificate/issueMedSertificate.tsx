@@ -10,7 +10,6 @@ const IssueMedSrtText = 'Форма выдачи медицинской спра
 export const IssueMedSertificate = observer(() => {
   const [doctorResult, setDoctorResult] = useState('');
   useEffect(() => {
-      // @ts-ignore
       const { EventManager: em } = window;
       const { setActive } = store;
       em.addHandler("ems-issue-med-sertificate.active", setActive);

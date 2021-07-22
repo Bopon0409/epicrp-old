@@ -13,7 +13,6 @@ import { Welcome }  from './components/welcome'
 export const ClothesShop = observer(() => {
   const [update, setUpdate] = useState(0)
   useEffect(() => {
-    // @ts-ignore
     const { EventManager: em } = window
     const { setActive, setData } = store
     em.addHandler('clothes-shop.active', setActive)

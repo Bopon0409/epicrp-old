@@ -5,7 +5,6 @@ import './dialogs.scss'
 
 export const Dialogs = observer(() => {
   useEffect(() => {
-    // @ts-ignore
     const { EventManager: em } = window;
     const { setShow, setData } = store;
     em.addHandler("dialogs.show", setShow);
