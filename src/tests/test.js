@@ -45,8 +45,4 @@ import './phone/phone.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.hud.setTime()
-  window.test.phone.setActive(true)
-  window.test.phone.setSms()
-  window.test.phone.setContacts()
 }

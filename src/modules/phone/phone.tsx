@@ -45,7 +45,7 @@ export const Phone = observer(() => {
     }
   }, [])
 
-  return (
+  return store.state.active ? (
     <div className='phone'>
       <div className='display'>
         <Header />
@@ -54,5 +54,5 @@ export const Phone = observer(() => {
       </div>
       <ButtonContainer />
     </div>
-  )
+  ) : null
 })
