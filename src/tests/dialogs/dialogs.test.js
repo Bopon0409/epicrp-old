@@ -1,9 +1,9 @@
-import Data from './data.json';
+import Data from './data.json'
 
-const DataJSON = JSON.stringify(Data);
+const DataJSON = JSON.stringify(Data)
 
-const setShow = (isShow) => window.trigger('dialogs.show', isShow);
+const setShow = (isShow) => window.trigger('dialogs.show', isShow)
 
-const setData = () => window.trigger('dialogs.data', DataJSON);
+const setData = () => window.trigger('dialogs.data', DataJSON)
 
 window.test.dialogs = { setShow, setData }
