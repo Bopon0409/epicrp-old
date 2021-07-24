@@ -1,0 +1,145 @@
+.donat-prize-page{
+  height: 910px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  line-height: 33px;
+
+  &-content{
+    height: 100%;
+    width: 1682px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .upper-block {
+      height: 46px;
+      width: 1682px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      .donat_and_warehouse {
+        height: 33px;
+        width: 526px;
+        display: flex;
+        justify-content: space-between;
+  
+        .donat__balance {
+          height: 100%;
+          width: 298px;
+          display: flex;
+          justify-content: space-between;
+  
+          & > div:last-child {
+            display: flex;
+  
+            & > span:first-child {
+              font-weight: 600;
+              font-size: 40px;
+              color: #f2c94c;
+              margin-right: 12px;
+            }
+          }
+        }
+      }
+    }
+
+    .donat-prize_compliment{
+      margin-top: 41px;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 41px;
+    }
+
+    .donat-prize_item{
+      margin-top: 72px;
+      position: relative;
+      height: 367px;
+      width: 367px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &-about{
+        position: absolute;
+        margin-left: 980px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__your-prize{
+          font-size: 26px;
+          line-height: 35px;
+        }
+
+        &__item-name{
+          margin-top: 60px;
+          height: 70px;
+          width: 225px;
+          text-align: center;
+          word-wrap: break-word;
+          font-weight: 600;
+          font-size: 26px;
+          line-height: 35px;
+        }
+
+        &__item-comment{
+          margin-top: 21px;
+          width: 320px;
+          font-size: 16px;
+          line-height: 22px;
+          text-align: center;
+          color: rgba(255, 255, 255, 0.5);
+        }
+      }
+    }
+
+    .donat-prize_buttons{
+      margin-top: 141px;
+      height: 87px;
+      width: 819px;
+      display: flex;
+      justify-content: space-between;
+
+      & > div:nth-child(n){
+        height: 100%;
+        width: 372px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        line-height: 41px;
+      }
+
+      &__sell{
+        box-shadow: 0px 0px 15px rgba(239, 42, 42, 0);
+        background-color: #EF2A2A;
+        color: white;
+        transition: all .12s ease-in;
+
+        &:hover{
+          box-shadow: 0px 0px 15px rgba(239, 42, 42, 0.45);
+          transition: all .12s ease-out;
+          color: black;
+        }
+      }
+
+      &__openAgain{
+        box-shadow: 0px 0px 15px rgba(242, 201, 76, 0);
+        background-color: #F2C94C;
+        color: white;
+        transition: all .12s ease-in;
+
+        &:hover{
+          box-shadow: 0px 0px 15px rgba(242, 201, 76, 0.45);
+          color: black;
+          transition: all .12s ease-out;
+        }
+      }
+    }
+  }
+}

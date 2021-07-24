@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { observer }         from 'mobx-react-lite'
 import { store }            from './player-menu-store'
+import { donatStore } from './components/donat/donat-store';
 import { Menu }             from './components/menu'
 import { Report }           from './components/report'
 import { Stats }            from './components/stats'
@@ -8,6 +9,7 @@ import './player-menu.scss'
 import { Settings }         from './components/settings'
 import { Faq }              from './components/faq'
 import { Quests } from './components/quests'
+import { Donat } from './components/donat/donat'
 
 export const PlayerMenu = observer(() => {
   const { state: { active, currentMenuEl }, keyUpHandler } = store
@@ -17,6 +19,7 @@ export const PlayerMenu = observer(() => {
       setActive, setStatsData, adminMsgSend, setSettingsData,
       reportAdminConnected, adminCloseReport, setQuests
     } = store
+    const { setDonat } = donatStore;
 
     const { EventManager: em } = window
     em.addHandler('player-menu.active', setActive)
@@ -26,6 +29,7 @@ export const PlayerMenu = observer(() => {
     em.addHandler('player-menu.report.close', adminCloseReport)
     em.addHandler('player-menu.report.connected', reportAdminConnected)
     em.addHandler('player-menu.quests', setQuests)
+    em.addHandler('player-menu.donat', setDonat)
     document.addEventListener('keyup', keyUpHandler)
 
     return () => {
@@ -35,6 +39,7 @@ export const PlayerMenu = observer(() => {
       em.removeHandler('player-menu.report.msg', adminMsgSend)
       em.removeHandler('player-menu.report.close', adminCloseReport)
       em.removeHandler('player-menu.report.connected', reportAdminConnected)
+      em.removeHandler('player-menu.donat', setDonat)
       document.removeEventListener('keyup', keyUpHandler)
     }
   }, [keyUpHandler])
@@ -47,6 +52,8 @@ export const PlayerMenu = observer(() => {
         return <Faq />
       case 2:
         return <Report />
+      case 3: 
+        return <Donat />
       case 4: 
         return <Quests />
       case 5:

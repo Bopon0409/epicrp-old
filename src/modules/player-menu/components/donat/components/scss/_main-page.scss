@@ -1,0 +1,425 @@
+.main-page {
+  width: 100%;
+  height: 848px;
+  display: flex;
+  align-items: flex-end;
+  font-family: Nunito;
+  font-style: normal;
+  color: #ffffff;
+
+  .donat-profile {
+    margin: 0 108px 0 114px;
+    height: 100%;
+    width: 390px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .player_name {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      font-size: 34px;
+      line-height: 46px;
+      white-space: nowrap;
+    }
+
+    .player_balance {
+      margin-top: 43px;
+      height: 55px;
+      min-width: 298px;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+
+      & > span:first-child {
+        margin-right: 37px;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 33px;
+      }
+
+      & > div:last-child {
+        font-weight: 600;
+        font-size: 40px;
+        line-height: 55px;
+        color: #f2c94c;
+
+        & > span:first-child {
+          margin-right: 12px;
+        }
+      }
+    }
+
+    .top_up-btn {
+      margin-top: 29px;
+      width: 196px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 27px;
+      color: #000000;
+      border-radius: 5px;
+      background-color: #f2c94c;
+      box-shadow: 0px 0px 15px rgba(242, 201, 76, 0);
+      transition: all 0.14s ease-out;
+
+      &:hover {
+        box-shadow: 0px 0px 15px rgba(242, 201, 76, 0.45);
+        transition: all 0.14s ease-in;
+      }
+    }
+
+    .coins-history-block {
+      margin-top: 71px;
+      height: 325px;
+      width: 390px;
+      display: flex;
+      flex-direction: column;
+
+      & > span:first-child {
+        width: 100%;
+        text-align: center;
+      }
+
+      .coins-history {
+        margin-top: 46px;
+        height: 246px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        .history-el {
+          height: 22px;
+          margin-bottom: 10px;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+
+          &__type {
+            width: 135px;
+          }
+
+          &__amount {
+            width: 50px;
+          }
+
+          &__date {
+            margin-right: 5px;
+            width: 95px;
+            text-align: end;
+          }
+        }
+
+        &::-webkit-scrollbar {
+          width: 4px;
+          background-color: rgba(255, 255, 255, 0.25);
+          border-radius: 1px;
+          height: 100%;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          width: 4px;
+          background: #f2c94c;
+          border-radius: 1px;
+        }
+      }
+    }
+
+    .about-coins {
+      margin-top: 142px;
+      height: 75px;
+      width: 100%;
+      display: flex;
+
+      &__logo {
+        height: 67px;
+        width: 47px;
+        background-image: url("../../../../img/MediumEpicLogo.png");
+        background-size: 100% 100%;
+        margin-right: 12px;
+      }
+
+      &__text {
+        height: 100%;
+        width: 299px;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 25px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+
+  .line {
+    height: 782px;
+    border: 1px dashed #ffffff;
+  }
+
+  .donat-operations {
+    margin-left: 105px;
+    height: 100%;
+    width: 1090px;
+    display: flex;
+    flex-direction: column;
+
+    .operation-name {
+      margin-top: 27px;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 33px;
+    }
+
+    .convert-and-btn {
+      margin-top: 44px;
+      height: 111px;
+      width: 1090px;
+      display: flex;
+      justify-content: space-between;
+
+      .convert-block {
+        margin-top: 21px;
+        height: 100%;
+        width: 630px;
+        display: flex;
+        justify-content: space-between;
+
+        .convert {
+          height: 100%;
+          width: 343px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          &__input {
+            height: 56px;
+            width: 100%;
+            background: none;
+            border: none;
+            border-bottom: 1px solid rgba(158, 158, 158, 0.25);
+            outline: none;
+            color: #c4c4c4;
+            font-size: 16px;
+
+            &::placeholder {
+              color: #c4c4c4;
+            }
+          }
+
+          &__rate {
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 19px;
+            color: rgba(255, 255, 255, 0.5);
+          }
+        }
+
+        .convert-btn {
+          height: 47px;
+          width: 227px;
+          background-color: #f2c94c;
+          border-radius: 5px;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 150%;
+          color: black;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: all 0.13s ease-out;
+
+          &:hover {
+            box-shadow: 0px 0px 15px rgba(242, 201, 76, 0.45);
+            transition: all 0.13s ease-in;
+          }
+        }
+      }
+
+      .moves-block {
+        margin-left: 233px;
+        height: 100%;
+        width: 227px;
+        display: flex;
+        flex-direction: column;
+
+        & > div:nth-child(n) {
+          margin-bottom: 13px;
+          height: 47px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #5165d7;
+          transition: all 0.13s ease-out;
+
+          &:hover {
+            box-shadow: 0px 0px 15px #5165d7;
+            transition: all 0.13s ease-in;
+          }
+        }
+        & > div:last-child {
+          margin-bottom: 0px;
+        }
+      }
+    }
+
+    .other-services {
+      height: 587px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .services-list {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 34px;
+        height: 520px;
+        width: 100%;
+        overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        .product {
+          margin: 0 40px 15px 0;
+          height: 235px;
+          width: 235px;
+          border-radius: 5px;
+          background: rgba(255, 255, 255, 0.1);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          & > span:first-child {
+            margin-top: 23px;
+            width: 100%;
+            text-align: center;
+          }
+
+          &__img {
+            position: relative;
+            height: 150px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .product__img-bg {
+              position: absolute;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 87px;
+              width: 87px;
+              border-radius: 50%;
+              display: flex;
+              background-size: auto;
+              z-index: 11;
+            }
+
+            .product__img-img {
+              position: absolute;
+              height: 100px;
+              width: 100px;
+              background-image: url("../../../../img/silver.png");
+              background-size: 100% 100%;
+              background-repeat: no-repeat;
+              z-index: 12;
+            }
+          }
+
+          &__price-and-buy {
+            height: 36px;
+            width: 203px;
+            display: flex;
+            justify-content: space-between;
+
+            .product__price {
+              height: 100%;
+              width: 50px;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              align-items: center;
+
+              &-text {
+                font-weight: 600;
+                font-size: 10px;
+                line-height: 14px;
+              }
+
+              &-coinsPrice {
+                width: 100%;
+                display: flex;
+                align-items: center;
+
+                & > span:first-child {
+                  width: 95%;
+                  text-align: end;
+                  font-weight: 600;
+                  font-size: 14px;
+                  line-height: 19px;
+                  color: #f2c94c;
+                  margin-right: 7px;
+                }
+
+                & > img:last-child {
+                  height: 11px;
+                  width: 8px;
+                }
+              }
+            }
+
+            .product__buy {
+              margin-top: 13px;
+              height: 20px;
+              width: 76px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-weight: 600;
+              font-size: 10px;
+              line-height: 14px;
+              color: #000000;
+              background-color: #f2c94c;
+              border-radius: 3px;
+              transition: all 0.13s ease-out;
+
+              &:hover {
+                box-shadow: 0px 0px 15px rgba(242, 201, 76, 0.45);
+                transition: all 0.13s ease-in;
+              }
+            }
+          }
+        }
+
+        .product:nth-child(4n + 4) {
+          margin-right: 0;
+        }
+
+        &::-webkit-scrollbar {
+          width: 4px;
+          background-color: rgba(255, 255, 255, 0.25);
+          border-radius: 1px;
+          height: 100%;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          width: 4px;
+          background: #f2c94c;
+          border-radius: 1px;
+        }
+      }
+    }
+  }
+}

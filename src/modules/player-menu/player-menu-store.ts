@@ -268,7 +268,10 @@ class PlayerMenuStore {
   }
 
 //=================================   QUESTS   =================================
-  setQuests = (data: IQuestData) => this.quests.data = data
+  setQuests = (data: IQuestData) => {
+    this.quests.data = data
+    this.quests.activeQuest = data.playerActiveQuest
+  }
 
   setActiveQuest = (id: number) => this.quests.activeQuest = id
 
