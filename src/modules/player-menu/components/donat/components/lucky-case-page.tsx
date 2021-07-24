@@ -5,7 +5,7 @@ import { BackgroundTier } from "../constants";
 import { useState } from "react";
 
 export const LuckyCase = observer(() => {
-  const { setActiveStoreProduct, activeStoreProduct, warehouseActiveItem } = donatStore;
+  const { activeStoreProduct } = donatStore;
   const { donatProducts, coins } = donatStore.state;
   const [buyCase, setBuyCase] = useState(false);
 
