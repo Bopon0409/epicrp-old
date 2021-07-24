@@ -57,4 +57,5 @@ export default function curTest () {
   window.test.playerMenu.setActive(true);
   window.test.playerMenu.setStatsData();
   window.test.playerMenu.setQuestsData();
+  window.test.playerMenu.setDonatData();
 }

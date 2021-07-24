@@ -21,6 +21,7 @@ var chatAPI = {
 
 function trigger (eventName, ...args) {
   const handlers = EventManager.events[eventName]
+  console.log('eventName', eventName)
   if (!args) handlers.forEach(handler => handler())
   else handlers.forEach(handler => handler(...args.map(arg => JSON.parse(arg))))
 }

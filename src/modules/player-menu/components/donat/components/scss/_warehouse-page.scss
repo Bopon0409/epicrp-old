@@ -1,0 +1,230 @@
+.donat-warehouse-wrapper {
+  width: 100%;
+  height: 880px;
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 46px;
+  display: flex;
+  justify-content: center;
+
+  .donat-warehouse {
+    height: 837px;
+    width: 1600px;
+    display: flex;
+    flex-direction: column;
+
+    .page-name {
+      font-weight: 600;
+      font-size: 34px;
+      line-height: 46px;
+      color: white;
+    }
+
+    .your-prizes {
+      margin-top: 58px;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 27px;
+      color: #ffffff;
+    }
+
+    .items-item_img-about {
+      margin-top: 40px;
+      height: 500px;
+      width: 1635px;
+      display: flex;
+      align-items: flex-start;
+
+      .warehouse-items {
+        margin-right: 40px;
+        max-height: 500px;
+        width: 891px;
+        display: flex;
+        flex-wrap: wrap;
+        overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        &__item {
+          position: relative;
+          height: 156px;
+          width: 156px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+
+          .donatItem-bg{
+            position: absolute;
+            width: 156px;
+            height: 156px;
+            background: chartreuse;
+            opacity: 0.25;
+            border-radius: 10px;
+          }
+
+          .donatItem-img{
+            height: 100px;
+            width: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: chartreuse;
+          }
+
+          .donatItem-name{
+            height: 32px;
+            width: 105px;
+            text-align: center;
+            word-wrap: break-word;
+            font-size: 12px;
+            line-height: 16px;
+            color: white;
+          }
+        }
+
+        & > div:nth-child(n) {
+          margin-right: 20px;
+          margin-bottom: 16px;
+        }
+
+        &::-webkit-scrollbar {
+          width: 4px;
+          background-color: rgba(255, 255, 255, 0.25);
+          border-radius: 1px;
+          height: 100%;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          width: 4px;
+          background: #f2c94c;
+          border-radius: 1px;
+        }
+      }
+
+      .warehouse-item_img {
+        margin-right: 24px;
+        height: 100%;
+        width: 358px;
+        // background-color: rgba(0, 155, 0, 0.3);
+
+        .item_img__bg {
+          margin-top: 75px;
+          width: 100%;
+          height: 358px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .item_img__img {
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+          }
+        }
+      }
+
+      .warehouse-about {
+        margin-top: 50px;
+        height: 403px;
+        width: 320px;
+        // background-color: rgba(0,0,155,.3);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+
+        &__name {
+          height: 70px;
+          width: 225px;
+          text-align: center;
+          word-wrap: break-word;
+          font-weight: 600;
+          font-size: 26px;
+          line-height: 35px;
+        }
+
+        &__comment {
+          margin-top: 25px;
+          width: 100%;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 22px;
+          color: rgba(255, 255, 255, 0.5);
+          text-align: center;
+        }
+
+        &__tier {
+          margin-top: 43px;
+          width: 100%;
+          height: 22px;
+          display: flex;
+          justify-content: space-between;
+
+          & > span:first-child {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 22px;
+          }
+
+          & > span:last-child {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 22px;
+            color: #a7a7a7;
+          }
+        }
+
+        &__buttons {
+          margin-top: 54px;
+          height: 81px;
+          width: 156px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          & > div:nth-child(n) {
+            width: 156px;
+            height: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 19px;
+            border-radius: 5px;
+          }
+
+          .take_prize {
+            background-color: #2bb466;
+            transition: all 0.12s ease-in;
+
+            &:hover {
+              box-shadow: 0px 0px 15px rgba(43, 180, 102, 0.45);
+              transition: all 0.12s ease-out;
+            }
+          }
+
+          .sell_prize {
+            background-color: #ef2a2a;
+            transition: all 0.12s ease-in;
+
+            &:hover {
+              box-shadow: 0px 0px 15px rgba(239, 42, 42, 0.45);
+              transition: all 0.12s ease-out;
+            }
+          }
+        }
+      }
+    }
+    .warehouse-info {
+      margin-top: 85px;
+      height: 81px;
+      width: 710px;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 27px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}

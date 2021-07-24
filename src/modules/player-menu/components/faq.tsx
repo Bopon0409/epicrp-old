@@ -3,6 +3,8 @@ import { observer } from 'mobx-react-lite';
 import { store } from '../player-menu-store';
 import { Questions } from '../constants';
 
+import { HowToStart } from './faq-components/pages/howToStart';
+
 export const Faq = observer(() => {
   const { setActiveFAQ } = store;
   return (
@@ -21,7 +23,7 @@ export const Faq = observer(() => {
       <div className="line" />
 
       <div className='answers'>
-
+          <HowToStart />
       </div>
     </div>
   )

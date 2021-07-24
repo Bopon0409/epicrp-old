@@ -1,0 +1,175 @@
+.lucky-case {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  line-height: 33px;
+
+  .upper-block {
+    height: 46px;
+    width: 1682px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .donat_and_warehouse {
+      height: 33px;
+      width: 526px;
+      display: flex;
+      justify-content: space-between;
+
+      .donat__balance {
+        height: 100%;
+        width: 298px;
+        display: flex;
+        justify-content: space-between;
+
+        & > div:last-child {
+          display: flex;
+
+          & > span:first-child {
+            font-weight: 600;
+            font-size: 40px;
+            color: #f2c94c;
+            margin-right: 12px;
+          }
+        }
+      }
+    }
+  }
+
+  .open-lucky-case {
+    margin-top: 12px;
+    height: 263px;
+    width: 1049px;
+    display: flex;
+    justify-content: center;
+
+    .buy-case {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &--btn {
+        margin: 80px 0 32px 0;
+        height: 87px;
+        width: 372px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        background-color: #f2c94c;
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 41px;
+        color: #000000;
+        box-shadow: 0px 0px 15px rgba(242, 201, 76, 0);
+        transition: all 0.12s ease-in;
+
+        &:hover {
+          box-shadow: 0px 0px 15px rgba(242, 201, 76, 0.45);
+          transition: all 0.12s ease-out;
+        }
+      }
+    }
+
+    .donat-roulette {
+      height: 212px;
+      width: 100%;
+      background: #181e29;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .lucky-case-content {
+    margin-top: 26px;
+    height: 560px;
+    width: 1600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    &--text {
+      height: 41px;
+      width: 100%;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 41px;
+      text-align: center;
+    }
+
+    .items-list {
+      height: 500px;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      overflow: scroll;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      // background-color: lightcoral;
+
+      &__item {
+        position: relative; 
+        height: 156px;
+        width: 156px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .donatItem-bg {
+          position: absolute;
+          width: 156px;
+          height: 156px;
+          background: chartreuse;
+          opacity: 0.25;
+          border-radius: 10px;
+        }
+
+        .donatItem-img{
+          height: 100px;
+          width: 100px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: rgba(0, 120, 0, .2);
+        }
+
+        .donatItem-name{
+          height: 32px;
+          width: 105px;
+          text-align: center;
+          word-wrap: break-word;
+          font-size: 12px;
+          line-height: 16px;
+          color: white;
+        }
+      }
+
+      & > div:nth-child(n) {
+        margin-right: 20px;
+        margin-bottom: 16px;
+      }
+
+      &::-webkit-scrollbar {
+        width: 4px;
+        background-color: rgba(255, 255, 255, 0.25);
+        border-radius: 1px;
+        height: 100%;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        width: 4px;
+        background: #f2c94c;
+        border-radius: 1px;
+      }
+    }
+  }
+}
