@@ -1,11 +1,15 @@
 const setActive = (active = true) =>
   window.trigger('speedometer.active', active)
+
+// Установка значения максимальной скорости
 const setMaxSpeed = max => window.trigger('speedometer.maxSpeed', max)
+// Установка типа спидометра
 const setType = (type = 1) => window.trigger('speedometer.type', type)
 
 const testFuel = () => {
   let fuel = 0
   const interval = setInterval(() => {
+    // Установка значения топлива
     window.trigger('speedometer.fuel', fuel++)
     if (fuel > 100) clearInterval(interval)
   }, 50)
@@ -14,6 +18,7 @@ const testFuel = () => {
 const testSpeed = () => {
   let speed = 0
   const interval = setInterval(() => {
+    // Установка значения скорости
     window.trigger('speedometer.speed', speed++)
     if (speed > 400) clearInterval(interval)
   }, 20)
@@ -37,6 +42,7 @@ const testBadges = () => {
 
   let counter = 0
   const interval = setInterval(() => {
+    // Переключение значков спидометра
     window.trigger('speedometer.badge', JSON.stringify(data[counter++]))
     if (counter === 12) clearInterval(interval)
   }, 500)

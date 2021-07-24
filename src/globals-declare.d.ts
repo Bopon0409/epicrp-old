@@ -15,7 +15,7 @@ interface TEventManager {
 }
 
 interface Window {
-  EventManager: { events: any, addHandler: Function, removeHandler: Function }
+  EventManager: TEventManager
   frontTrigger: TTrigger
   strTrigger: TTrigger
   trigger: TTrigger
@@ -28,3 +28,6 @@ declare var EventManager: TEventManager
 declare var frontTrigger: TTrigger
 declare var strTrigger: TTrigger
 declare var trigger: TTrigger
+declare var chatAPI: TChatAPI
+declare var test: any
+declare var mp: any
