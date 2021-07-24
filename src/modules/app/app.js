@@ -52,7 +52,7 @@ export default function App () {
 
   return (
     <>
-      {process.env.NODE_ENV === 'development' && devModules}
+      {devModules}
       <Bank />
       <Inventory />
       <Auth />

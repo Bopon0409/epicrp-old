@@ -1,37 +1,29 @@
+import msgList from './msg-list-data.json'
+
 const reportData = id => JSON.stringify({
-  id, name: 'Alex Pidorasov', rating: 5, msgList: [
-    {
-      type: 'player_msg',
-      name: 'Alex Pidorasov 2',
-      msg: 'Здравствуйте! У меня проблема с подключением к JoyCazino. Что мне делать? Помогите!',
-      time: '23:11'
-    },
-    {
-      type: 'player_msg',
-      name: 'Alex Pidorasov 2',
-      msg: 'Здравствуйте! У меня проблема с подключением к JoyCazino. Что мне делать? Помогите!',
-      time: '23:11'
-    },
-    {
-      type: 'player_msg',
-      name: 'Alex Pidorasov 2',
-      msg: 'Здравствуйте! У меня проблема с подключением к JoyCazino. Что мне делать? Помогите!',
-      time: '23:11'
-    }
-  ]
+  id, name: 'Alex Pidorasov', rating: 5, msgList
 })
 
 const setActive = (active) =>
   window.trigger('admin-report.active', active)
+
+// Добавление репорта
 const addReport = (id) =>
   window.trigger('admin-report.report.add', reportData(id))
+
+// Изменение репорта
 const editReport = (id) =>
   window.trigger('admin-report.report.edit', reportData(id))
+
+// Удаление репорта
 const removeReport = (id) =>
   window.trigger('admin-report.report.remove', id)
+
+// Установка имени администратора
 const setName = (name) =>
   window.strTrigger('admin-report.name', name)
 
+// Игрок отправил сообщение (id репорта, сообщение)
 const playerSendMsg = () => window.strTrigger('admin-report.msg', 1, '123')
 
 const loadReports = () =>

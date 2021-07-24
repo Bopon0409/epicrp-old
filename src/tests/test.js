@@ -42,7 +42,6 @@ import './fractions/ems/med-sertificate/med-sertificate.test'
 import './fractions/government/government-passport-camera/government-passport-camera.test'
 import './phone/phone.test'
 
-
 export default function curTest () {
   window.test.bg.setActive(true)
 }

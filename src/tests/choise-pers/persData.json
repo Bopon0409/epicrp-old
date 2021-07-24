@@ -8,14 +8,6 @@
     "regDate": "01.01.2021",
     "playTime": "12 ч. 46 м."
   },
-  {
-    "name": "name2",
-    "surname": "surname2",
-    "lvl": 5,
-    "fraction": "Без фракции",
-    "money": 150000,
-    "regDate": "01.01.2021",
-    "playTime": "12 ч. 46 м."
-  },
-  { "empty": true }
+  { "empty": true },
+  { "purchase": true }
 ]
