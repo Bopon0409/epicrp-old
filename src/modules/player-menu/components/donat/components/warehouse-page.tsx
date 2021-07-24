@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { donatStore } from "../donat-store";
-import { WarehouseItems, ItemTiers } from "../constants";
+import { ItemTiers } from "../constants";
 import { BackgroundTier } from "../constants";
 
 export const DonateWarehouse = observer(() => {

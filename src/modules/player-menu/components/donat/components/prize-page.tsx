@@ -3,9 +3,8 @@ import { donatStore } from "../donat-store";
 import EpicLogoSVG from "../../../img/EpicLogo.svg";
 
 export const PrizePage = observer(() => {
-  const { setActiveStoreProduct, activeStoreProduct, warehouseActiveItem, 
-    PrizeMove } = donatStore;
-  const { donatProducts, coins } = donatStore.state;
+  const { PrizeMove } = donatStore;
+  const { coins } = donatStore.state;
   
   return(
     <div className='donat-prize-page'>

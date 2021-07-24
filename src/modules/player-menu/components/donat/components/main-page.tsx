@@ -2,17 +2,14 @@ import { useState } from 'react';
 import { observer } from "mobx-react-lite";
 import { donatStore } from "../donat-store";
 import EpicLogoSVG from "../../../img/EpicLogo.svg";
-import MediumEpicLogoIMG from "../../../img/MediumEpicLogo.png";
 import { TypesOfShadow } from "../constants";
 import cn from 'classnames';
 
 export const MainPage = observer(() => {
   const [convertInput, setConvertInput] = useState('');
-  const { coins, playerName, operationsHistry, donatProducts } =
-    donatStore.state;
+  const { playerName, operationsHistry, donatProducts } = donatStore.state;
   const {
     setPage,
-    setWarehouseActiveItem,
     setActiveStoreProduct,
     checkPlayerDonatMoney,
     convertDonatToMoney,

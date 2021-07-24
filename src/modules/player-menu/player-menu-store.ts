@@ -3,7 +3,7 @@ import { scrollList }         from '../../services/services'
 import {
   IControlItem,
   IReportConnected, IReportMsg, IReportState, ISettingItem, ISettingsData,
-  ISettingsState, IState, IStats, IStatsData, IQuests, IQuestsData, IQuestData,
+  ISettingsState, IState, IStats, IStatsData, IQuests, IQuestData,
   IFAQ
 }                             from './model'
 import keyCodes               from '../../services/keyCodes.json'
