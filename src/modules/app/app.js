@@ -22,7 +22,6 @@ import { Electrician }                from '../electrician/electrician'
 import { TaxiTablet }                 from '../taxi-tablet/taxi-tablet'
 import { Admin }                      from '../admin/admin'
 import { PlayerMenu }                 from '../player-menu/player-menu'
-import { ClothesShop }                from '../clothes-shop/clothes-shop'
 import { SpawnMenu }                  from '../spwan-menu/spawn-menu'
 import { AdminReport }                from '../admin-report/admin-report'
 import { DeathMenu }                  from '../death-menu/death-menu'
@@ -74,7 +73,6 @@ export default function App () {
       <TaxiTablet />
       <Admin />
       <PlayerMenu />
-      <ClothesShop />
       <SpawnMenu />
       <AdminReport />
       <BusinessStats />
