@@ -43,6 +43,6 @@ import './phone/phone.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.chat.setChatShow(true)
-  window.test.chat.testChatPushMsg()
+  window.test.createPers.setData()
+  window.test.createPers.setActive(true)
 }
