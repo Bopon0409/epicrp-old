@@ -8,7 +8,6 @@ import { Services } from './services'
 
 export default observer(() => {
   const { currentPage } = store.state
-  const { setCurrentPage } = store
 
   const isMenu = currentPage === 'Главное меню'
   const isServices = currentPage === 'Оплата услуг'
@@ -27,7 +26,7 @@ export default observer(() => {
         {currentPage !== 'Главное меню' && (
           <div
             className='body__back-btn'
-            onClick={() => setCurrentPage('Главное меню')}
+            onClick={store.backButtonHandler}
           >
             <img src={backArrow} alt='' className='body__back-arrow' />
             <div className='body__back-text'>Назад</div>

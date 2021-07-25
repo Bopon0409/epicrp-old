@@ -30,7 +30,7 @@ export const Modal = observer(() => {
                 Вы собираетесь положить наличные средства в банковский счет
               </div>
             </div>
-            <input type='number' className='modal__input'
+            <input type='number' className='modal__input' autoFocus
               value={sumInput.toString()} onChange={modalSumChange}
               placeholder='Введите сумму' />
           </div>
@@ -43,7 +43,7 @@ export const Modal = observer(() => {
                 Комиссия за обналичивание не взимается
               </div>
             </div>
-            <input type='number' className='modal__input'
+            <input type='number' className='modal__input' autoFocus
               value={sumInput.toString()} onChange={modalSumChange}
               placeholder='Введите сумму' />
           </div>
@@ -65,7 +65,7 @@ export const Modal = observer(() => {
                 <div className='modal__cell bold'>{houseRemind}</div>
               </div>
             </div>
-            <input type='number' className='modal__input'
+            <input type='number' className='modal__input' autoFocus
               value={sumInput.toString()} onChange={modalSumChange}
               placeholder='Введите сумму' />
           </div>
@@ -83,7 +83,7 @@ export const Modal = observer(() => {
                 <div className='modal__cell bold'>{phoneRemind}</div>
               </div>
             </div>
-            <input type='number' className='modal__input'
+            <input type='number' className='modal__input' autoFocus
               value={sumInput.toString()} onChange={modalSumChange}
               placeholder='Введите сумму' />
           </div>
@@ -103,7 +103,7 @@ export const Modal = observer(() => {
             </div>
             <input type='text' className='modal__input' value={accountInput}
               onChange={e => modalAccountChange(e.target.value)}
-              placeholder='Введите номер счета' />
+              placeholder='Введите номер счета' autoFocus />
             <input type='number' className='modal__input'
               value={sumInput.toString()} onChange={modalSumChange}
               placeholder='Введите сумму перевода' />
@@ -124,7 +124,7 @@ export const Modal = observer(() => {
             </div>
             <input type='text' className='modal__input' value={accountInput}
               onChange={e => modalAccountChange(e.target.value)}
-              placeholder='Введите номер счета' />
+              placeholder='Введите номер счета' autoFocus />
             <input type='number' className='modal__input'
               value={sumInput.toString()} onChange={modalSumChange}
               placeholder='Введите сумму перевода' />

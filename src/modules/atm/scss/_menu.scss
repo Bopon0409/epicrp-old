@@ -35,22 +35,22 @@
             right: 12px;
             top: 12px;
           }
+        }
 
-          &:hover {
-            background: linear-gradient(
-                96.22deg,
-                #4271ff 10.19%,
-                #5165d7 101.15%
-              ),
-              #f5f5f5;
+        .menu__item--active:hover {
+          background: linear-gradient(
+              96.22deg,
+              #4271ff 10.19%,
+              #5165d7 101.15%
+          ),
+          #f5f5f5;
 
-            .item__title {
-              color: white;
-            }
+          .item__title {
+            color: white;
+          }
 
-            .item__text {
-              color: #9ea8ff;
-            }
+          .item__text {
+            color: #9ea8ff;
           }
         }
       }

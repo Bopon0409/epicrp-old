@@ -43,6 +43,7 @@ import './phone/phone.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.bank.setData()
-  window.test.bank.setActive(true)
+  window.test.atm.setData()
+  window.test.atm.setActive(true)
+  window.test.atm.setEnterSuccess()
 }

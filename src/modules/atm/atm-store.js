@@ -144,6 +144,13 @@ class AtmStore {
     if (!isNaN(value) && value.length <= 16)
       this.state.inputData.receiverAccount = value
   }
+
+  backButtonHandler = () => {
+    const { currentPage } = this.state
+    const isServices = currentPage === 'Оплатить счёта телефона' ||
+      currentPage === 'Оплата жилья' || currentPage === 'Оплата бизнеса'
+    this.setCurrentPage(isServices ? 'Оплата услуг' : 'Главное меню')
+  }
 }
 
 export default new AtmStore()
