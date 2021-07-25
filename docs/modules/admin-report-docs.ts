@@ -1,4 +1,4 @@
-export interface AdminReport {
+export interface AdminReportDocs {
   // Админ отправил сообщение
   'admin-report.msg': [reportId: number | null, msg: string]
   // ТП к игроку

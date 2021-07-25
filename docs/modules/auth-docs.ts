@@ -1,4 +1,4 @@
-export interface Auth {
+export interface AuthDocs {
   // Авторизация
   'auth.signIn': [login: string, pass: string, checkBox: boolean]
   // Регистрация

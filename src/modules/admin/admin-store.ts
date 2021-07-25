@@ -44,13 +44,14 @@ class AdminStore {
     modalInputReason: ''
   }
 
-  //============================   InsuranceClient Trigger   ============================
+  //============================   InsuranceClient Trigger
+  // ============================
 
   pushKillLog = (log: ILog) => this.state.killLogs.push(log)
   pushAdminLog = (log: ILog) => this.state.adminLogs.push(log)
   pushCarLog = (car: ITransport) => this.state.transport.push(car)
   pushMsg = (msg: IChatMessage) => {
-    this.state.chat.push(msg);
+    this.state.chat.push(msg)
   }
 
   pushRealCars = (cars: string[]) => this.state.realCars = cars
@@ -64,9 +65,9 @@ class AdminStore {
   setPlayerValue = (value: string) => this.state.playerValue = value
   setVehicleValue = (value: IVehicleValue) => this.state.vehicleValue = value
 
-  setMsgNumber = (number: number) => this.state.msgNumber = number;
-  setCmdNumber = (number: number) => this.state.cmdNumber = number;
-  setPlayerNumber = (number: number) => this.state.playerNumber = number;
+  setMsgNumber = (number: number) => this.state.msgNumber = number
+  setCmdNumber = (number: number) => this.state.cmdNumber = number
+  setPlayerNumber = (number: number) => this.state.playerNumber = number
 
   //==============================   Admin Logic   =============================
 
@@ -140,7 +141,7 @@ class AdminStore {
 
   command = (command: string) => {
     if (!this.state.player) return
-    if (window.mp) window.mp.invoke('command', command)
+    window.frontTrigger('command', command)
   }
 
   playerUnPunishment = (name: string) => {
@@ -158,19 +159,18 @@ class AdminStore {
   }
 
   chatMsgDispatch = (msg: string) => {
-    window.frontTrigger(`admin.msg`, msg);
-    this.state.localChatMessagesStorage.push(msg);
+    window.frontTrigger('admin.msg', msg)
+    this.state.localChatMessagesStorage.push(msg)
   }
 
   consoleDispatch = (command: string) => {
-    // window.frontTrigger(`admin.console`, command)
-    window.mp.invoke('command', command)
-    store.state.localConsoleCommandsStorage.push(command);
+    window.frontTrigger('admin.console', command)
+    store.state.localConsoleCommandsStorage.push(command)
   }
 
   playerRequest = (value: string) => {
-    window.frontTrigger(`admin.player`, value);
-    store.state.localPlayersStorage.push(value);
+    window.frontTrigger(`admin.player`, value)
+    store.state.localPlayersStorage.push(value)
   }
 
   transportActions = (carId: number, action: string) => {

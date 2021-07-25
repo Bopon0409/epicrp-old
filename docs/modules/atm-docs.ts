@@ -1,4 +1,4 @@
-export interface Atm {
+export interface AtmDocs {
   // Ввод пин-кода
   'atm.enter.pin': [cardNumber: string, pin: string]
   // Снятие наличных

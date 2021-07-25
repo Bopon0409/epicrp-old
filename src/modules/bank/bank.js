@@ -39,8 +39,7 @@ export default observer(() => {
         <div className='bank__close-btn' onClick={store.closeClick}>
           <img src={closeIcon} alt='' />
         </div>
-      )
-      }
+      )}
       <div className={bankClasses}>
         <img src={bankLogo} alt='' className='bank__logo' />
         <Menu />

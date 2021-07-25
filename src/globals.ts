@@ -1,11 +1,11 @@
 import './globals-declare.d.ts'
 
 window.frontTrigger = (triggerName: string, ...args: any) => {
-  if (window.mp) {
+  if (window.alt) {
     if (args.length) args = args.map((el: any) => {
       return typeof el === 'object' ? JSON.stringify(el) : el
     })
-    window.mp.trigger(triggerName, ...args)
+    window.alt.emit(triggerName, ...args)
   } else console.log(triggerName, ...args)
 }
 
@@ -25,22 +25,18 @@ window.strTrigger = (eventName: string, ...args: any) => {
   })
 }
 
-window.chatAPI = {
-  'chat:push': msg => strTrigger('chat.push', msg),
-  'chat:clear': () => trigger('chat.clear'),
-  'chat:activate': active => trigger('chat.active', active),
-  'chat:show': show => trigger('chat.show', show)
-}
-
 window.EventManager = {
   events: {},
-  addHandler (eventName: string, handler: Function) {
+  addHandler (eventName: string, handler: (...args: any[]) => void) {
     if (eventName in this.events) this.events[eventName].push(handler)
     else this.events[eventName] = [handler]
+    if (window.alt) window.alt.on(eventName, handler)
   },
-  removeHandler (eventName: string, handler: Function) {
-    if (eventName in this.events)
+  removeHandler (eventName: string, handler: (...args: any[]) => void) {
+    if (eventName in this.events) {
       this.events[eventName].splice(this.events[eventName].indexOf(handler), 1)
+      if (window.alt) window.alt.off(eventName, handler)
+    }
   }
 }
 

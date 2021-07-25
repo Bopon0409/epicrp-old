@@ -123,8 +123,11 @@ class BankStore {
   }
 
   closeCardSettings = () => {
-    this.state.cardSettings.active = false
-    this.state.cardSettings.accountId = 0
+    this.state.cardSettings = {
+      active: false, accountId: 0, nameInput: '', pinInput: '',
+      pinActive: false, nameActive: false, recoveryActive: false,
+      removeActive: false
+    }
   }
 
   cardSettingsNameChange = name => this.state.cardSettings.nameInput = name

@@ -65,10 +65,7 @@ class PlayerMenuStore {
     activeBlock: 0
   }
 
-  setActive = (active: boolean) => {
-    if (window.mp && active) window.mp.invoke('focus', true)
-    this.state.active = active
-  }
+  setActive = (active: boolean) => this.state.active = active
 
   setMenuEl = (el: number) => this.state.currentMenuEl = el
 

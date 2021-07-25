@@ -25,14 +25,12 @@ class ChatStore {
   pushMessage = () => {
     const { activeBtn, inputValue } = this.state
     if (inputValue.length > 0 && inputValue.length < 100) {
-      if (window.mp) {
-        const msg = `${activeBtn} ${inputValue}`
-        const command = inputValue.substr(1)
+      const msg = `${activeBtn} ${inputValue}`
+      const command = inputValue.substr(1)
 
-        if (inputValue[0] === '/') window.mp.invoke('command', command)
-        else if (activeBtn !== 'ic') window.mp.invoke('command', msg)
-        else window.mp.invoke('chatMessage', inputValue)
-      }
+      if (inputValue[0] === '/') window.frontTrigger('chat.command', command)
+      else if (activeBtn !== 'ic') window.frontTrigger('chat.command', msg)
+      else window.frontTrigger('chat.message', inputValue)
 
       this.state.storyMsg.unshift({ inputValue, activeBtn })
       this.state.storyMsg = this.state.storyMsg.slice(0, this.MAX_STORY_MESSAGE)
@@ -132,11 +130,8 @@ class ChatStore {
 
   setChatActive = active => {
     if (this.state.isShow) {
-      if (window.mp) {
-        window.mp.invoke('focus', active)
-        window.mp.trigger('chat.toggle', active)
-      }
       this.state.active = active
+      window.frontTrigger('chat.active', active)
       this.chatDischarge()
 
       if (active) this.dropOpacity(false)

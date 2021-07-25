@@ -1,4 +1,4 @@
-export interface Bank {
+export interface BankDocs {
   // Выход из банка
   'bank.exit': []
 
