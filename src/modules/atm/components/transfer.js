@@ -19,12 +19,8 @@ export default observer(() => {
         {currentPage === 'Перевод средств' && (
           <div className='transfer__input-container'>
             <div className='transfer__input-hint'>Введите счет получателя</div>
-            <input
-              type='text'
-              className='transfer__input'
-              value={receiverAccount}
-              onChange={e => setReceiverAccount(e.target.value)}
-            />
+            <input type='number' className='transfer__input'
+              value={receiverAccount} onChange={setReceiverAccount} />
           </div>
         )}
 
@@ -34,7 +30,7 @@ export default observer(() => {
             type='text'
             className='transfer__input'
             value={formatNum(value, ' ')}
-            onChange={e => setValue(e.target.value)}
+            onChange={setValue}
           />
         </div>
 

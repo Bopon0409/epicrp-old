@@ -81,23 +81,31 @@ class AdminReportStore {
   }
 
   adminAction = (action: string) => {
-    window.frontTrigger(`admin-report.${action}`, this.currentReport?.name)
+    const { currentReport } = this
+    if (!currentReport) return
+    window.frontTrigger(`admin-report.${action}`, currentReport.name)
   }
 
   reportInit = () => {
-    window.frontTrigger(`admin-report.join`, this.state.currentReportId)
+    const { currentReportId } = this.state
+    if (currentReportId === null) return
+    window.frontTrigger('admin-report.join', currentReportId)
     this.state.status = 'process'
     this.state.blockedList = true
   }
 
   reportClose = () => {
-    window.frontTrigger(`admin-report.close`, this.state.currentReportId)
+    const { currentReportId } = this.state
+    if (currentReportId === null) return
+    window.frontTrigger('admin-report.close', currentReportId)
     this.state.status = 'closed'
     scrollList('admin-report-list')
   }
 
   reportExit = () => {
-    window.frontTrigger(`admin-report.exit`, this.state.currentReportId)
+    const { currentReportId } = this.state
+    if (currentReportId === null) return
+    window.frontTrigger('admin-report.exit', currentReportId)
     this.state.currentReportId = null
     this.state.status = 'list'
     this.state.blockedList = false

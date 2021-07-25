@@ -67,7 +67,7 @@ class BankStore {
     const { create, cardSettings } = this.state
     if (create.active) this.createCardClose()
     else if (cardSettings.active) this.closeCardSettings()
-    else window.frontTrigger('bank.toggle.menu', false)
+    else window.frontTrigger('bank.exit')
   }
 
   setData = data => {
@@ -243,7 +243,10 @@ class BankStore {
     this.state.modal.type = type
   }
 
-  modalSumChange = value => this.state.modal.sumInput = value
+  modalSumChange = event => {
+    const value = Number(event.target.value)
+    if (!isNaN(value) && value <= 10000000000) this.state.modal.sumInput = value
+  }
 
   modalAccountChange = value => {
     if (value.length <= 9 && !isNaN(value))
@@ -259,25 +262,26 @@ class BankStore {
   modalSubmit = () => {
     const { type, sumInput, accountInput } = this.state.modal
     const { accountId } = this.currentAccountData
+    const sum = Number(sumInput)
     this.modalClose()
     switch (type) {
       case 'modal_top_up':
-        return window.frontTrigger('bank.modal_top_up', accountId, sumInput)
+        return window.frontTrigger('bank.top_up', accountId, sum)
       case 'modal_cash_out':
-        return window.frontTrigger('bank.modal_cash_out', accountId, sumInput)
+        return window.frontTrigger('bank.cash_out', accountId, sum)
       case 'payment_for_property':
         return window.frontTrigger('bank.payment_for_property',
-          accountId, sumInput
+          accountId, sum
         )
       case 'payment_phone':
-        return window.frontTrigger('bank.payment_phone', accountId, sumInput)
+        return window.frontTrigger('bank.payment_phone', accountId, sum)
       case 'transfer_private':
         return window.frontTrigger('bank.transfer_private',
-          accountId, accountInput, sumInput
+          accountId, accountInput, sum
         )
       case 'transfer_organization':
         return window.frontTrigger('bank.transfer_organization',
-          accountId, accountInput, sumInput
+          accountId, accountInput, sum
         )
       default:
         return null

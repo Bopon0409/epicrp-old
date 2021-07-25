@@ -108,7 +108,7 @@ class AtmStore {
       case 'Пополнить счёт':
         return {
           value: this.state.inputData.cash,
-          setValue: this.setTopUpSum
+          setValue: this.setInputData
         }
       default:
         return {
@@ -133,22 +133,16 @@ class AtmStore {
     this.state.inputData = { receiverAccount: '', cash: '' }
   }
 
-  setInputData = val => {
-    val = clearFormatNum(val, ' ')
-    if (!isNaN(val) && Number(val) <= this.balance)
-      this.state.inputData.cash = val
+  setInputData = event => {
+    const value = Number(clearFormatNum(event.target.value, ' '))
+    const check = !isNaN(value) && value <= this.balance
+    if (check) this.state.inputData.cash = value
   }
 
-  setTopUpSum = val => {
-    val = clearFormatNum(val, ' ')
-    if (!isNaN(val) && val.length <= 14)
-      this.state.inputData.cash = val
-  }
-
-  setReceiverAccount = val => {
-    val = clearFormatNum(val, ' ')
-    if (!isNaN(val) && val.length <= 16)
-      this.state.inputData.receiverAccount = val
+  setReceiverAccount = event => {
+    const value = clearFormatNum(event.target.value, ' ')
+    if (!isNaN(value) && value.length <= 16)
+      this.state.inputData.receiverAccount = value
   }
 }
 

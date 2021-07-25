@@ -1,7 +1,7 @@
-import React        from 'react'
-import { observer } from 'mobx-react-lite'
-import store        from '../bank-store'
-import closeIcon    from '../images/close-icon.svg'
+import React          from 'react'
+import { observer }   from 'mobx-react-lite'
+import store          from '../bank-store'
+import closeIcon      from '../images/close-icon.svg'
 
 export const Modal = observer(() => {
   const { type, active, accountInput, sumInput } = store.state.modal
@@ -30,8 +30,8 @@ export const Modal = observer(() => {
                 Вы собираетесь положить наличные средства в банковский счет
               </div>
             </div>
-            <input type='number' className='modal__input' value={sumInput}
-              onChange={e => modalSumChange(e.target.value)}
+            <input type='number' className='modal__input'
+              value={sumInput.toString()} onChange={modalSumChange}
               placeholder='Введите сумму' />
           </div>
         )}
@@ -43,8 +43,8 @@ export const Modal = observer(() => {
                 Комиссия за обналичивание не взимается
               </div>
             </div>
-            <input type='number' className='modal__input' value={sumInput}
-              onChange={e => modalSumChange(e.target.value)}
+            <input type='number' className='modal__input'
+              value={sumInput.toString()} onChange={modalSumChange}
               placeholder='Введите сумму' />
           </div>
         )}
@@ -65,8 +65,8 @@ export const Modal = observer(() => {
                 <div className='modal__cell bold'>{houseRemind}</div>
               </div>
             </div>
-            <input type='number' className='modal__input' value={sumInput}
-              onChange={e => modalSumChange(e.target.value)}
+            <input type='number' className='modal__input'
+              value={sumInput.toString()} onChange={modalSumChange}
               placeholder='Введите сумму' />
           </div>
         )}
@@ -83,8 +83,8 @@ export const Modal = observer(() => {
                 <div className='modal__cell bold'>{phoneRemind}</div>
               </div>
             </div>
-            <input type='number' className='modal__input' value={sumInput}
-              onChange={e => modalSumChange(e.target.value)}
+            <input type='number' className='modal__input'
+              value={sumInput.toString()} onChange={modalSumChange}
               placeholder='Введите сумму' />
           </div>
         )}
@@ -104,8 +104,8 @@ export const Modal = observer(() => {
             <input type='text' className='modal__input' value={accountInput}
               onChange={e => modalAccountChange(e.target.value)}
               placeholder='Введите номер счета' />
-            <input type='number' className='modal__input' value={sumInput}
-              onChange={e => modalSumChange(e.target.value)}
+            <input type='number' className='modal__input'
+              value={sumInput.toString()} onChange={modalSumChange}
               placeholder='Введите сумму перевода' />
           </div>
         )}
@@ -125,8 +125,8 @@ export const Modal = observer(() => {
             <input type='text' className='modal__input' value={accountInput}
               onChange={e => modalAccountChange(e.target.value)}
               placeholder='Введите номер счета' />
-            <input type='number' className='modal__input' value={sumInput}
-              onChange={e => modalSumChange(e.target.value)}
+            <input type='number' className='modal__input'
+              value={sumInput.toString()} onChange={modalSumChange}
               placeholder='Введите сумму перевода' />
           </div>
         )}
