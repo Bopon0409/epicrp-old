@@ -1,0 +1,8 @@
+build:
+  image: node:15
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+    - ./build
