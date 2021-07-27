@@ -31,8 +31,7 @@ class GasStationStore {
   canisterToggle = () => this.state.canisterInCart = !this.state.canisterInCart
 
   setSlider = (value: number) => {
-    if (value <= this.sliderMaxValue && value >= this.state.minValue)
-      this.state.slider = value
+    if (value >= this.state.minValue) this.state.slider = value
   }
 
   setCurrentFuel = (id: number) => {

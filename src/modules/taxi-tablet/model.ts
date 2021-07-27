@@ -1,6 +1,7 @@
 import Timeout = NodeJS.Timeout
 
-export type TTabletStatus = 'list' | 'order' | 'reject' | 'reject-next'
+export type TTabletStatus = 'list' | 'order' | 'reject' |
+  'reject-next' | 'finish-next'
 
 export interface IActiveOrder {
   id: number

@@ -67,6 +67,11 @@ class TaxiTabletStore {
 
   incOrderTime = () => this.state.orderTime += 1
 
+  orderFinish = () => {
+    this.state.tabletStatus = 'finish-next'
+    this.state.activeOrder = null
+  }
+
   //=============================   Front Trigger   ============================
 
   takeOrder = (id: number) => {

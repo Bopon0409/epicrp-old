@@ -43,6 +43,6 @@ import './phone/phone.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.work.setData()
-  window.test.work.setActive(true)
+  window.test.gunShop.setData()
+  window.test.gunShop.setActive(true)
 }

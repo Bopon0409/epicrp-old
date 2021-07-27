@@ -53,6 +53,15 @@ class GunShopStore {
     window.frontTrigger('gun-shop.mod', this.state.currentModId)
   }
 
+  get sliderStatus (): [boolean, boolean] {
+    const { currentGunId, categories, menuItem } = this.state
+    const category = categories.find(cat => cat.id === menuItem)
+    if (currentGunId === null || category === undefined || category === null)
+      return [false, false]
+    console.log(currentGunId, category.guns.length)
+    return [currentGunId > 0, currentGunId < category.guns.length - 1]
+  }
+
   sliderIncrement = () => {
     const { categories, menuItem } = this.state
     const category = categories.find(cat => cat.id === menuItem)

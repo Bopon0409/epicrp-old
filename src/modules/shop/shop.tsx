@@ -9,13 +9,15 @@ import './shop.scss'
 export const Shop = observer(() => {
   useEffect(() => {
     const { EventManager: em } = window
-    const { setActive, setData } = store
+    const { setActive, setData, clearCart } = store
 
     em.addHandler('shop.active', setActive)
     em.addHandler('shop.data', setData)
+    em.addHandler('shop.cart.clear', clearCart)
     return () => {
       em.removeHandler('shop.active', setActive)
       em.removeHandler('shop.data', setData)
+      em.removeHandler('shop.cart.clear', clearCart)
     }
   }, [])
 

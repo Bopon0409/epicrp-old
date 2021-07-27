@@ -21,7 +21,7 @@ export const GunShop = observer(() => {
       em.removeHandler('gun-shop.active', setActive)
       em.removeHandler('gun-shop.data', setData)
     }
-  })
+  }, [])
 
   const {
     state: { active, money, businessNum }, payAction, currentPrice, setModal

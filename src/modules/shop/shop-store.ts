@@ -69,14 +69,8 @@ class ShopStore {
   setPayment = (value: TPayment) => this.state.payment = value
 
   setCartMode = () => {
-    const active = !this.state.cartMode
-    if (active) {
-      this.state.cartMode = true
-      this.state.sectionCurrent = null
-    } else {
-      this.state.cartMode = false
-      this.menuInit()
-    }
+    this.state.cartMode = !this.state.cartMode
+    if (this.state.cartMode) this.state.sectionCurrent = null
   }
 
   get funds (): number {
@@ -103,25 +97,22 @@ class ShopStore {
   }
 
   setSection = (sectionId: number) => {
-    if (!this.state.cartMode) this.state.sectionCurrent = sectionId
+    this.state.sectionCurrent = sectionId
+    console.log(sectionId, this.state.sectionCurrent)
+    if (this.state.cartMode) this.setCartMode()
   }
 
   cartAddItem = (item: IItem) => {
     const cartItem = this.state.shoppingCart
       .find(({ itemId }: IItem) => item.itemId === itemId)
     const shopItem = this.getItem(item.itemId)
-    const { funds, cartSum: { sum } } = this
 
     if (cartItem && shopItem) {
-      const moneyCheck = (sum + shopItem.price) <= funds
-      if (cartItem.quantity < shopItem.quantity && moneyCheck)
-        cartItem.quantity += 1
+      if (cartItem.quantity < shopItem.quantity) cartItem.quantity += 1
     } else {
-      if (sum < funds) {
-        const itemCopy = JSON.parse(JSON.stringify(item))
-        itemCopy.quantity = 1
-        this.state.shoppingCart.push(itemCopy)
-      }
+      const itemCopy = JSON.parse(JSON.stringify(item))
+      itemCopy.quantity = 1
+      this.state.shoppingCart.push(itemCopy)
     }
   }
 
@@ -138,11 +129,12 @@ class ShopStore {
     }
   }
 
+  clearCart = () => this.state.shoppingCart = []
+
   buy = () => {
     const data = this.state.shoppingCart.map((item) =>
       ({ itemId: item.itemId, quantity: item.quantity, name: item.name }))
     window.frontTrigger('shop.buy', this.state.payment, data)
-    this.state.shoppingCart = []
   }
 }
 

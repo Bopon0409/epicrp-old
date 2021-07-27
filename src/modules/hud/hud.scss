@@ -83,14 +83,18 @@
     }
 
     .mission {
+      width: 340px;
+      height: 100px;
       background: linear-gradient(
           90deg,
           rgba(0, 0, 0, 0) 0.01%,
           rgba(0, 0, 0, 0.7) 100%
       );
       margin-top: 25px;
-      padding: 19px 40px 19px 19px;
       text-align: right;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
       .title {
         font-weight: bold;
@@ -99,6 +103,16 @@
 
       .text {
         font-size: 14px;
+      }
+
+      .line {
+        width: 4px;
+        height: 72px;
+        margin-left: 36px;
+
+        background: linear-gradient(0deg, #E6961E 0%, #F2C94C 100%);
+        box-shadow: 0 0 13px 2px rgba(242, 201, 76, 0.37);
+        border-radius: 15px;
       }
     }
   }

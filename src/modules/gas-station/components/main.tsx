@@ -36,7 +36,7 @@ export const Main = observer(() => {
               onChange={(range) => setSlider(Number(range))}
               value={slider}
               minValue={0}
-              maxValue={sliderMaxValue}
+              maxValue={gasTank}
             />
           </div>
         </>

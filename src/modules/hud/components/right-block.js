@@ -10,8 +10,11 @@ export default observer(() => {
 
   const missionView = mission.active ? (
     <div className='mission'>
-      <div className='title'>{mission.title}</div>
-      <div className='text'>{mission.text}</div>
+      <div className='content'>
+        <div className='title'>{mission.title}</div>
+        <div className='text'>{mission.text}</div>
+      </div>
+      <div className='line'/>
     </div>
   ) : null
 
