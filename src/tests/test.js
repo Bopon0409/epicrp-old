@@ -43,4 +43,6 @@ import './phone/phone.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
+  window.test.createPers.setActive(true)
+  window.test.createPers.setData()
 }
