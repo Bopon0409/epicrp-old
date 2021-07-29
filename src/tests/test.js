@@ -43,6 +43,4 @@ import './phone/phone.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.gunShop.setData()
-  window.test.gunShop.setActive(true)
 }

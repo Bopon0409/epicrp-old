@@ -9,7 +9,7 @@ export default observer(() => {
   const classes = 'item__img item__img--overlay'
 
   return (
-    <DragOverlay dropAnimation={null}>
+    <DragOverlay dropAnimation={null} className='inventory-overlay' adjustScale={false}>
       {dragId !== 0 && (<img className={classes} src={imgPath} alt='' />)}
     </DragOverlay>
   )

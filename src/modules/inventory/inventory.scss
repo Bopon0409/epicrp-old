@@ -45,52 +45,74 @@
     margin-top: -350px;
   }
 
+  .inventory-overlay {
+    transform-origin: 0 0 !important;
+    display: flex;
+  }
+
   .item__img {
     width: 50px;
-
-    &--overlay {
-      position: relative;
-      left: 16px;
-      top: 16px;
-    }
+    margin: auto;
   }
 }
 
-@media (min-width: 2560px) {
-  .inventory-page {
-    zoom: 1.4;
-  }
-}
-
-@media (max-width: 1600px) {
-  .inventory-page {
-    zoom: 0.9;
-  }
-}
-
-@media (max-width: 1440px) {
-}
-
-@media (max-width: 1366px) {
-  .inventory-page {
-    zoom: 0.8;
-  }
-}
-
-@media (max-width: 1280px) {
-  .inventory-page {
-    zoom: 0.7;
-  }
-}
-
-@media (max-width: 1024px) {
-  .inventory-page {
-    zoom: 0.6;
-  }
-}
-
-@media (max-width: 800px) {
-  .inventory-page {
-    zoom: 0.5;
-  }
-}
+//@media (min-width: 2560px) {
+//  .inventory-page {
+//    zoom: 1.4;
+//  }
+//}
+//
+//@media (max-width: 1600px) {
+//  .inventory-page {
+//    .container {
+//      transform: scale(0.9);
+//    }
+//
+//    .close, .right-weight-bar, .left-weight-bar, .bottom-panel {
+//      zoom: 0.9;
+//    }
+//  }
+//}
+//
+//@media (max-width: 1440px) {
+//}
+//
+//@media (max-width: 1366px) {
+//  .inventory-page {
+//    .container {
+//      transform: scale(0.8);
+//    }
+//
+//    .close, .right-weight-bar, .left-weight-bar, .bottom-panel {
+//      zoom: 0.8;
+//    }
+//  }
+//}
+//
+//@media (max-width: 1280px) {
+//  .inventory-page {
+//    .container {
+//      transform: scale(0.7);
+//    }
+//
+//    .inventory-overlay {
+//      //transform: scaleX(0.7) !important;
+//    }
+//
+//    .close, .right-weight-bar, .left-weight-bar, .bottom-panel {
+//      zoom: 0.7;
+//    }
+//  }
+//}
+//
+//@media (max-width: 1024px) {
+//  .inventory-page {
+//    zoom: 0.6;
+//  }
+//}
+//
+//@media (max-width: 800px) {
+//  .inventory-page {
+//    zoom: 0.5;
+//  }
+//}
