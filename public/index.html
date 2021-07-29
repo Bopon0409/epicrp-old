@@ -9,6 +9,10 @@
 <div id='root'></div>
 </body>
 <script>
-  document.addEventListener('DOMContentLoaded', () => window.alt = alt)
+  document.addEventListener('DOMContentLoaded', () => {
+    window.alt = alt
+    console.log("window.alt: ", window.alt)
+    console.log("alt: ", alt)
+  })
 </script>
 </html>
