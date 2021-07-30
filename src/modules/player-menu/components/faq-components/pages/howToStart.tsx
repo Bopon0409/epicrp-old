@@ -1,6 +1,6 @@
 import List from "../list/list";
-import Heading from "../heading/heading";
-import Text from "../text/text";
+// import Heading from "../heading/heading";
+// import Text from "../text/text";
 import Variant from "../variant/variant";
 
 export const HowToStart = () => {

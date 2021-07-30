@@ -1,4 +1,6 @@
 .player-menu {
+  user-select: none;
+
   .stats {
     width: 100%;
     height: 100%;
@@ -98,12 +100,12 @@
       }
 
       .referrals {
-        height: 124px;
+        height: 63px;
         width: 350px;
         margin-top: 84px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-end;
 
         .line {
           display: flex;
@@ -234,13 +236,45 @@
           border: 1px dashed #ffffff;
           border-radius: 3px;
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
           align-items: center;
           font-weight: 600;
           font-size: 24px;
           line-height: 33px;
           color: #f2c94c;
           user-select: text;
+
+          &_content{
+            height: 100%;
+            width: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          &_copy{
+            margin-right: 5px;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255,255,255,.3);
+            font-size: 18px;
+            line-height: 24px;
+            transition: all 0.1s ease-out;
+
+            &:hover{
+              color: black;
+              background-color: #f2c94c;
+              transition: all 0.1s ease-in;
+            }
+
+            &:active{
+              transform: scale(1.02);
+              box-shadow: 0 0 4px rgba(242, 201, 76, 0.45);
+              transition: all 0.1s ease-in;
+            }
+          }
         }
       }
     }

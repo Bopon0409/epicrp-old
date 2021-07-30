@@ -1,6 +1,6 @@
 export interface IState{
     active: boolean,
     activeBlock: number | null,
-    points: [],
+    points: boolean[],
     isCrime: boolean
 }

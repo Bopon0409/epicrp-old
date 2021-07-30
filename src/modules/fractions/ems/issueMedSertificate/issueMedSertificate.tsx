@@ -31,6 +31,7 @@ export const IssueMedSertificate = observer(() => {
   }
   }
   return store.state.active ? (
+    <div className='issue_med_sertificate'>
       <div className='wrapper'>
         <div className="ems-issue_med_sertificate">
           <div className='issue_med_sertificate--text'>{IssueMedSrtText}</div>
@@ -69,5 +70,6 @@ export const IssueMedSertificate = observer(() => {
           </div>
         </div>
       </div>
+    </div>
   ) : null
 })

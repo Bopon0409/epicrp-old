@@ -30,8 +30,9 @@ export const Dialogs = observer(() => {
     alignItems: "center"
   }
 
-  const onClickEvent = () => {
-    store.setActiveTextId("next");
+  const onClickEvent = (move: number) => {
+    if(move === -1) store.setActiveTextId("next");
+    else store.setActiveTextId(move);
   }
 
   const BtnStyle = data.texts.length ? (texts[activeTextId].answers.length > 5 ? SmallBtn : BigBtn) : {};
@@ -50,7 +51,7 @@ export const Dialogs = observer(() => {
             { texts[activeTextId].answers.map((answer, id) => {
               return (
                 <div style = {BtnStyle} className='btn-styles' key = {id} 
-                onClick = {() => onClickEvent()}
+                onClick = {() => onClickEvent(id)}
                 >{answer}</div> 
               )
             })
@@ -58,7 +59,7 @@ export const Dialogs = observer(() => {
           </>:
           <>
             <div style={BigBtn} className='btn-styles'
-            onClick = {() => onClickEvent()}>Далее</div>
+            onClick = {() => onClickEvent(-1)}>Далее</div>
           </>
         }
       </div>

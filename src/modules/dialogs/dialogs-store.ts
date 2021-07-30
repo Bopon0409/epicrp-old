@@ -20,7 +20,7 @@ class TattooParlorStore {
 
   setData = (data: IData) => this.state.data = data;
 
-  setActiveTextId = (move: "next" | "past") => {
+  setActiveTextId = (move: "next" | "past" | number) => {
     if(move === 'next'){
       if(this.state.activeTextId < this.state.data.texts.length - 1){
         this.state.activeTextId++;
@@ -34,6 +34,9 @@ class TattooParlorStore {
       if(this.state.activeTextId > 0){
         this.state.activeTextId--;
       }
+    }
+    else{
+      window.frontTrigger(`dialogs.answer`, move)
     }
   }
 }

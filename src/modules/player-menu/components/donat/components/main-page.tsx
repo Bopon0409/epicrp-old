@@ -2,45 +2,46 @@ import { useState } from 'react';
 import { observer } from "mobx-react-lite";
 import { donatStore } from "../donat-store";
 import EpicLogoSVG from "../../../img/EpicLogo.svg";
-import MediumEpicLogoIMG from "../../../img/MediumEpicLogo.png";
 import { TypesOfShadow } from "../constants";
 import cn from 'classnames';
 
 export const MainPage = observer(() => {
   const [convertInput, setConvertInput] = useState('');
-  const { coins, playerName, operationsHistry, donatProducts } =
-    donatStore.state;
+  const { playerName, operationsHistry, donatProducts } = donatStore.state;
   const {
     setPage,
-    setWarehouseActiveItem,
     setActiveStoreProduct,
     checkPlayerDonatMoney,
     convertDonatToMoney,
-    coinCourse
-  } = donatStore;
+    callCaseContent,
+    coinCourse  } = donatStore;
 
+  // покупка продукта, если это кейс, то перебросит на 1-ую страницу
   const BuyProduct = (itemId: number) => {
     setActiveStoreProduct(itemId);
     if (donatProducts[itemId].content) {
       setPage(1);
+      callCaseContent(itemId);
     } else {
       checkPlayerDonatMoney(itemId);
     }
   };
-
+  // попытка ковертации денег
   const tryConvertMoney = () => {
     if(+convertInput > 0)
       convertDonatToMoney(+convertInput)
-    // затычка, можно буть выводить сообщение о том, что недостаточно средств
   }
-
+  // возвращает +money, 0, или -money
   const transformMoneyToString = (money: number) => {
     let newMoney = '0';
     if(money > 0) newMoney = `+${money}`;
     else if(money < 0) newMoney = `${money}`;
     return newMoney;
-  } 
-
+  }
+  // депозит
+  const deposit = () => {
+    console.log('deposit-btn');
+  }
 
   return (
     <div className="main-page">
@@ -53,7 +54,7 @@ export const MainPage = observer(() => {
             <img src={EpicLogoSVG} alt="" />
           </div>
         </div>
-        <div className="top_up-btn">Пополнить</div>
+        <div className="top_up-btn" onClick={() => deposit()}>Пополнить</div>
         <div className="coins-history-block">
           <span>История ECoin</span>
           <div className="coins-history">
@@ -61,9 +62,10 @@ export const MainPage = observer(() => {
               return (
                 <div className="history-el" key={id}>
                   <span className="history-el__type">{operation.type}</span>
-                  <span className={cn('history-el__amount', {'red': operation.amount < 0}, {'green': operation.amount > 0})}>
-                    {transformMoneyToString(operation.amount)}
-                    </span>
+                  <span className={cn('history-el__amount', 
+                  {'red': operation.amount < 0}, 
+                  {'green': operation.amount > 0})}
+                  > {transformMoneyToString(operation.amount)} </span>
                   <span className="history-el__date">{operation.date}</span>
                 </div>
               );

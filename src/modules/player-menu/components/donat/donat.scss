@@ -2,3 +2,26 @@
 @import "./components/scss/warehouse-page";
 @import "./components/scss/lucky-case-page";
 @import "./components/scss/prize-page";
+
+.player-menu_btn-back{
+  position: absolute;
+  right: 98px;
+  top: -76px;
+  width: 117px;
+  height: 24px;
+  border-radius: 5px;
+  border: 0.5px solid #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  line-height: 16px;
+  opacity: .3;
+  transition: all .12s ease-out;
+  color: white;
+
+  &:hover{
+    opacity: 1;
+    transition: all .12s ease-in;
+  }
+}
