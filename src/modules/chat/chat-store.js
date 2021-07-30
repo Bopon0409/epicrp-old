@@ -2,7 +2,7 @@ import { scrollList }         from '../../services/services'
 import { makeAutoObservable } from 'mobx'
 
 class ChatStore {
-  OPACITY_DELAY = 20000000
+  OPACITY_DELAY = 30000
   MAX_CHAT_MESSAGES = 700
   MAX_STORY_MESSAGE = 60
 
@@ -19,7 +19,12 @@ class ChatStore {
     storyPosition: -1,
     isOpacity: false,
     messages: [],
-    scrollRef: null
+    scrollRef: null,
+    params: {
+      height: 300,
+      lineHeight: 18,
+      fontSize: 14
+    }
   }
 
   pushMessage = () => {
@@ -36,6 +41,8 @@ class ChatStore {
       this.state.storyMsg = this.state.storyMsg.slice(0, this.MAX_STORY_MESSAGE)
     }
   }
+
+  setChatParams = params => this.state.params = params
 
   chatDischarge = () => {
     this.state.activeBtn = 'ic'

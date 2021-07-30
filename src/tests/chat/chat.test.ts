@@ -15,6 +15,14 @@ const clearChat = () => window.trigger('chat.clear')
 // Отправка сообщения в чат
 const sendMsg = () => window.strTrigger('chat.push', msg)
 
+// Высота чата 200px - 600px
+// Высота строк в чате 14px - 30px
+// Размер шрифта 11px - 18px
+const setChatParams = (height = 300, lineHeight = 18, fontSize = 14) =>
+  window.trigger('chat.params',
+    JSON.stringify({ height, lineHeight, fontSize })
+  )
+
 const testChatPushMsg = () => {
   let counter = 0
   const interval = setInterval(() => {
@@ -24,4 +32,6 @@ const testChatPushMsg = () => {
   }, 50)
 }
 
-window.test.chat = { setChatActive, setChatShow, clearChat, testChatPushMsg }
+window.test.chat = {
+  setChatActive, setChatShow, clearChat, testChatPushMsg, setChatParams
+}

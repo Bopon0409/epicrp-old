@@ -21,6 +21,7 @@ export default observer(() => {
     em.addHandler('chat.active', store.setChatActive)
     em.addHandler('chat.show', store.setChatShow)
     em.addHandler('chat.clear', store.clearChat)
+    em.addHandler('chat.params', store.setChatParams)
     document.addEventListener('keyup', keyPressHandlerWithScroll)
 
     return () => {
@@ -29,6 +30,7 @@ export default observer(() => {
       em.removeHandler('chat.active', store.setChatActive)
       em.removeHandler('chat.show', store.setChatShow)
       em.removeHandler('chat.clear', store.clearChat)
+      em.removeHandler('chat.params', store.setChatParams)
       document.removeEventListener('keyup', keyPressHandlerWithScroll)
     }
   }, [])

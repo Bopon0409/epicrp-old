@@ -43,7 +43,9 @@ import './phone/phone.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-
+  window.test.chat.setChatShow(true)
+  window.test.chat.testChatPushMsg()
+  window.test.chat.setChatParams(200, 14, 11)
 
   // window.test.playerMenu.setActive(true)
   // window.test.playerMenu.setQuestsData()
