@@ -43,6 +43,12 @@ import './phone/phone.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.createPers.setActive(true)
-  window.test.createPers.setData()
+
+
+  // window.test.playerMenu.setActive(true)
+  // window.test.playerMenu.setQuestsData()
+  // window.test.playerMenu.setSettingsData()
+  // window.test.playerMenu.setDonatData()
+  // window.test.playerMenu.setStatsData()
+  // window.test.playerMenu.setActive(true)
 }

@@ -68,8 +68,8 @@
         zoom: 1.4;
       }
 
-      .input-range__label-container {
-        zoom: 1.4;
+      .range-container {
+        transform: scale(1.4);
       }
     }
   }
@@ -102,8 +102,8 @@
         zoom: 0.85;
       }
 
-      .input-range__label-container {
-        zoom: 0.85;
+      .range-container {
+        transform: scale(0.85);
       }
     }
   }
@@ -136,8 +136,8 @@
         zoom: 0.75;
       }
 
-      .input-range__label-container {
-        zoom: 0.75;
+      .range-container {
+        transform: scale(0.75);
       }
     }
   }
@@ -152,32 +152,32 @@
 @media (max-width: 1024px) {
   .gas-station {
     .title {
-      zoom: 0.65;
+      zoom: 0.6;
     }
 
     .canister {
-      zoom: 0.65;
+      zoom: 0.6;
     }
 
     .info {
-      zoom: 0.65;
+      zoom: 0.6;
     }
 
     .main {
       .main__title {
-        zoom: 0.65;
+        zoom: 0.6;
       }
 
       .fuel {
-        zoom: 0.65;
+        zoom: 0.6;
       }
 
       .refueling {
-        zoom: 0.65;
+        zoom: 0.6;
       }
 
-      .input-range__label-container {
-        zoom: 0.65;
+      .range-container {
+        transform: scale(0.65);
       }
     }
   }
@@ -210,8 +210,8 @@
         zoom: 0.5;
       }
 
-      .input-range__label-container {
-        zoom: 0.5;
+      .range-container {
+        transform: scale(0.5);
       }
     }
   }

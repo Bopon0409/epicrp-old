@@ -28,37 +28,39 @@ export default observer(() => {
     }
   }, [])
 
-  return active ? (
+  return (
     <>
-      <div className='hud'>
-        {!hidden ? (
-          <div className='right-panel'>
-            <IndicatorSvg1 />
-            <IndicatorSvg2 />
-            <IndicatorSvg3 />
-          </div>
-        ) : null}
+      {active ? (
+        <div className='hud'>
+          {!hidden ? (
+            <div className='right-panel'>
+              <IndicatorSvg1 />
+              <IndicatorSvg2 />
+              <IndicatorSvg3 />
+            </div>
+          ) : null}
 
-        {!hidden ? (
-          <div className='time-block'>
-            <img src={timeIcon} alt='' className='icon' />
-            <div className='time'>{time}</div>
-            <div className='date'>{date}</div>
-          </div>
-        ) : null}
+          {!hidden ? (
+            <div className='time-block'>
+              <img src={timeIcon} alt='' className='icon' />
+              <div className='time'>{time}</div>
+              <div className='date'>{date}</div>
+            </div>
+          ) : null}
 
-        {hint.action && !hidden ? (
-          <div className='hint'>
-            <div className='text'>Нажмите клавишу</div>
-            <div className='button'>{hint.button}</div>
-            <div className='text'>{hint.action}</div>
-          </div>
-        ) : null}
+          {hint.action && !hidden ? (
+            <div className='hint'>
+              <div className='text'>Нажмите клавишу</div>
+              <div className='button'>{hint.button}</div>
+              <div className='text'>{hint.action}</div>
+            </div>
+          ) : null}
 
-        {!hidden ? <LeftBlock /> : null}
-        <RightBlock />
-      </div>
+          {!hidden ? <LeftBlock /> : null}
+          <RightBlock />
+        </div>
+      ) : null}
       <Alerts />
     </>
-  ) : null
+  )
 })
