@@ -9,7 +9,6 @@ export default observer(({ data }) => {
   const [isHover, setHover] = useState(false)
   const { setCurrentPage } = store
   const active = title !== 'Функция недоступна'
-  console.log(title, active)
 
   return (
     <div

@@ -47,7 +47,7 @@ class PlayerMenuStore {
   }
 
   settingsState: ISettingsState = {
-    sizes: { chatSize: 0, fontSize: 0, rowSize: 0 },
+    sizes: { chatSize: 10, fontSize: 10, rowSize: 10 },
     keyWaiting: false,
     control: [],
     settings: []
@@ -280,9 +280,7 @@ class PlayerMenuStore {
 //=================================   FAQ   ====================================
   setActiveFAQ = (id: number) => {
     this.faq.activeBlock = id
-    console.log(this.faq.activeBlock)
   }
-
 }
 
 const store = new PlayerMenuStore()

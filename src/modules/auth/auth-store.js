@@ -109,7 +109,7 @@ class AuthStore {
 
     const emailRegExp = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
     if (emailRegExp.test(email.toLowerCase()) === false)
-      return this.setErrorMsg(this.ERROR_MESSAGES[5])
+      return this.setErrorMsg(this.ERROR_MESSAGES[4])
     if (/^[a-zA-Z0-9]+$/.test(login) === false)
       return this.setErrorMsg(this.ERROR_MESSAGES[0])
     if (login.length < 4 || login.length > 20)

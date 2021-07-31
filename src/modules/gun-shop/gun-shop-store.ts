@@ -58,7 +58,6 @@ class GunShopStore {
     const category = categories.find(cat => cat.id === menuItem)
     if (currentGunId === null || category === undefined || category === null)
       return [false, false]
-    console.log(currentGunId, category.guns.length)
     return [currentGunId > 0, currentGunId < category.guns.length - 1]
   }
 

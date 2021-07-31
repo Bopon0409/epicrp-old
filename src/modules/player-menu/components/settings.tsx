@@ -15,8 +15,7 @@ export const Settings = observer(() => {
   const wait = '< Нажмите желаемую кнопку >'
 
   const controlList = control.map(({ name, keyCode }, i) => (
-    <div className='control__item' onClick={() => setKeyWaiting(name)}
-      key={i}>
+    <div className='control__item' onClick={() => setKeyWaiting(name)} key={i}>
       <div>{name}</div>
       <div>{keyWaiting === name ? wait : getKeyName(keyCode)}</div>
     </div>
@@ -47,13 +46,13 @@ export const Settings = observer(() => {
           <div className='range-list'>
             <div className='range-label'>Высота чата</div>
             <InputRange onChange={range => setChatSize(range)} value={chatSize}
-              minValue={10} maxValue={200} />
+              minValue={200} maxValue={600} />
             <div className='range-label'>Высота строк в чате</div>
             <InputRange onChange={range => setRowSize(range)} value={rowSize}
-              minValue={10} maxValue={200} />
+              minValue={14} maxValue={30} />
             <div className='range-label'>Размер шрифта чата</div>
             <InputRange onChange={range => setFontSize(range)} value={fontSize}
-              minValue={10} maxValue={200} />
+              minValue={11} maxValue={18} />
           </div>
         </div>
       </div>

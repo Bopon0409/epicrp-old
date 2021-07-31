@@ -37,7 +37,6 @@ class MedCardStore {
         })
     }
     setPage = (type: string) => {
-        console.log(type);
         switch (type) {
             case 'start': {
                 this.state.page = 0;

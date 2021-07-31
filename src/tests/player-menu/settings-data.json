@@ -20,8 +20,8 @@
     { "id": 7, "name": "Прозрачный чат при не активности", "status": false }
   ],
   "sizes": {
-    "chatSize": 50,
-    "rowSize": 50,
-    "fontSize": 50
+    "chatSize": 300,
+    "rowSize": 18,
+    "fontSize": 14
   }
 }

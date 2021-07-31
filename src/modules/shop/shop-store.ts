@@ -98,7 +98,6 @@ class ShopStore {
 
   setSection = (sectionId: number) => {
     this.state.sectionCurrent = sectionId
-    console.log(sectionId, this.state.sectionCurrent)
     if (this.state.cartMode) this.setCartMode()
   }
 
