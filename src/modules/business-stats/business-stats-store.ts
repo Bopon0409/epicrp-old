@@ -155,7 +155,7 @@ class BusinessStatsStore {
     changeBusinessStatus = () => {
         const status = this.state?.stats?.businessStatus;
         // @ts-ignore
-        window.frontTrigger(`business-stats.advance-buy`, status );
+        window.frontTrigger(`business-stats.advance-change_status`, status );
     }   
     statsWithdrawMoney = (money: number) => {
         // @ts-ignore

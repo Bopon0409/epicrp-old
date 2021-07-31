@@ -71,12 +71,12 @@ export const Stats = observer(() => {
             <span className='amount'>{invites[0]}</span>
             <span className='text yellow'>ПРИГЛАШЕНО ИГРОКОВ</span>
           </div>
-          <div className='referrals__profit line'>
+          {/* <div className='referrals__profit line'>
             <span className='amount'>${invites[1]}</span>
             <span className='text yellow'>ЗАРАБОТАНО С ПРИГЛАШЕНИЙ</span>
-          </div>
+          </div> */}
         </div>
-        <div className='get_money_of_invites'>ЗАБРАТЬ НАГРАДУ</div>
+        <div className='get_money_of_invites'>НАГРАДЫ</div>
 
       </div>
       <div className='stats__center'>
@@ -135,7 +135,11 @@ export const Stats = observer(() => {
         </div>
         <div className='code'>
           <div className='text'>ВАШ УНИКАЛЬНЫЙ РЕФЕРАЛЬНЫЙ КОД</div>
-          <div className='referral_code'>{referralCode}</div>
+          <div className='referral_code'>
+            <div className='referral_code_content'>{referralCode}</div>
+            <div className="referral_code_copy"
+            onClick={() => navigator.clipboard.writeText(referralCode)}>Копировать</div>  
+          </div>
         </div>
       </div>
       <div className='stats__right'>

@@ -33,45 +33,45 @@ export const Dialogs = observer(() => {
     alignItems: 'center'
   }
 
-  const onClickEvent = () => {
-    store.setActiveTextId('next')
+  const onClickEvent = (move: number) => {
+    if(move === -1) store.setActiveTextId("next");
+    else store.setActiveTextId(move);
   }
 
   const BtnStyle = data.texts.length ? (texts[activeTextId].answers.length >
   5 ? SmallBtn : BigBtn) : {}
 
-  return (show && data.texts.length) ? (
-    <div className='dialogs-window'>
-      <div className='dialogs-window__bg' />
-      <div className='dialogs'>
-        <div className='npc-name'>{name}</div>
-        <div className='npc-job'>{job}</div>
-        <div className='text-box'>{texts[activeTextId].text}</div>
-        <div className='buttons'>
-          {
-            texts[activeTextId].answers.length ?
-              <>
-                {texts[activeTextId].answers.map((answer, id) => {
-                  return (
-                    <div style={BtnStyle} className='btn-styles' key={id}
-                      onClick={() => onClickEvent()}
-                    >{answer}</div>
-                  )
-                })
-                }
-              </> :
-              <>
-                <div style={BigBtn} className='btn-styles'
-                  onClick={() => onClickEvent()}>Далее
-                </div>
-              </>
+ return (show && data.texts.length) ? (
+  <div className='dialogs-window'>
+    <div className='dialogs-window__bg' />
+    <div className='dialogs'>
+      <div className='npc-name'>{name}</div>
+      <div className='npc-job'>{job}</div>
+      <div className='text-box'>{texts[activeTextId].text}</div>
+      <div className='buttons'>
+        {
+          texts[activeTextId].answers.length ? 
+          <>
+            { texts[activeTextId].answers.map((answer, id) => {
+              return (
+                <div style = {BtnStyle} className='btn-styles' key = {id} 
+                onClick = {() => onClickEvent(id)}
+                >{answer}</div>
+              )
+            })
           }
-        </div>
-      </div>
-      <div className='esc-line'>
-        <div>ESC</div>
-        <div>Нажмите чтобы выйти</div>
+          </>:
+          <>
+            <div style={BigBtn} className='btn-styles'
+            onClick = {() => onClickEvent(-1)}>Далее</div>
+          </>
+        }
       </div>
     </div>
-  ) : null
+    <div className='esc-line'>
+      <div>ESC</div>
+      <div>Нажмите чтобы выйти</div>
+    </div>
+  </div>
+ ) : null
 })

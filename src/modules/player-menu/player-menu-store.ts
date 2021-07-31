@@ -14,7 +14,7 @@ class PlayerMenuStore {
 
   state: IState = {
     active: false,
-    currentMenuEl: 1,
+    currentMenuEl: 3,
     menuHandlerBlocked: false
   }
 
@@ -265,19 +265,23 @@ class PlayerMenuStore {
   }
 
 //=================================   QUESTS   =================================
+  // назначить
   setQuests = (data: IQuestData) => {
     this.quests.data = data
     this.quests.activeQuest = data.playerActiveQuest
   }
 
+  // выделить квест (по нажатию на него)
   setActiveQuest = (id: number) => this.quests.activeQuest = id
 
+  // сделать квест активным
   setActivePlayerQuest = (id: number) => {
     this.quests.data.playerActiveQuest = id
     window.frontTrigger('player-menu.player-active-quest', id)
   }
 
 //=================================   FAQ   ====================================
+  // выделить вопрос в FAQ (по нажатию на него)
   setActiveFAQ = (id: number) => {
     this.faq.activeBlock = id
   }

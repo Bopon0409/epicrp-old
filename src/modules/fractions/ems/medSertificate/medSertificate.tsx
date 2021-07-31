@@ -18,6 +18,7 @@ export const MedSertificate = observer(() => {
   const { type, name, doctor, date } = store.state.data
 
   return store.state.active ? (
+    <div className="med-sertificate">
     <div className='wrapper'>
       <div className='med-sertificate'>
         <div className='name'>Медицинская справка</div>
@@ -47,5 +48,6 @@ export const MedSertificate = observer(() => {
         <span>ESC</span> - закрыть
       </div>
     </div>
+  </div>
   ) : null
 })

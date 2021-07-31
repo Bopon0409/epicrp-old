@@ -1,88 +1,90 @@
-.wrapper{
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: Nunito;
-    font-style: normal;
-    z-index: 10;
-
-    .med-sertificate{
-        height: 630px;
-        width: 900px;
+.med-sertificate{
+    .wrapper{
+        position: absolute;
+        height: 100vh;
+        width: 100vw;
+        top: 0;
+        left: 0;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        background: url('../img/med-sertificate.png');
-        color: black;
+        flex-direction: column;
+        font-family: Nunito;
+        font-style: normal;
+        z-index: 10;
 
-        .name{
-            margin-top: 45px;
-            font-weight: bold;
-            font-size: 26px;
-            line-height: 35px;
-        }
-
-        .reason{
-            font-weight: 600;
-            font-size: 20px;
-            line-height: 27px;
-        }
-
-        .doctorResult{
-            margin-top: 32px;
-            width: 760px;
-            height: 110px;
-            font-size: 20px;
-            line-height: 27px;
-        }
-
-        .result{
-            width: 760px;
-            height: 180px;
+        .med-sertificate{
+            height: 630px;
+            width: 900px;
             display: flex;
             flex-direction: column;
-            font-size: 20px;
-            line-height: 27px;
-        }
+            align-items: center;
+            background: url('../img/med-sertificate.png');
+            color: black;
 
-        .med-sertificate-doctor_and_date{
-            position: absolute;
-            margin-top: 537px;
-            width: 760px;
-            height: 44px;
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            font-size: 16px;
-            line-height: 22px;
+            .name{
+                margin-top: 45px;
+                font-weight: bold;
+                font-size: 26px;
+                line-height: 35px;
+            }
 
-            & > div:nth-child(n){
-                height: 100%;
+            .reason{
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 27px;
+            }
+
+            .doctorResult{
+                margin-top: 32px;
+                width: 760px;
+                height: 110px;
+                font-size: 20px;
+                line-height: 27px;
+            }
+
+            .result{
+                width: 760px;
+                height: 180px;
                 display: flex;
                 flex-direction: column;
+                font-size: 20px;
+                line-height: 27px;
             }
-            & > div:nth-child(1){
-                align-items: flex-start;
-            }
-            & > div:nth-child(2){
-                align-items: flex-end;
+
+            .med-sertificate-doctor_and_date{
+                position: absolute;
+                margin-top: 537px;
+                width: 760px;
+                height: 44px;
+                display: flex;
+                justify-content: space-between;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 22px;
+
+                & > div:nth-child(n){
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                }
+                & > div:nth-child(1){
+                    align-items: flex-start;
+                }
+                & > div:nth-child(2){
+                    align-items: flex-end;
+                }
             }
         }
-    }
-    .ESC-close{
-        margin-top: 32px;
-        font-family: TT Norms;
-        font-size: 24px;
-        line-height: 28px;
+        .ESC-close{
+            margin-top: 32px;
+            font-family: TT Norms;
+            font-size: 24px;
+            line-height: 28px;
 
-        & > span:nth-child(1){
-            font-weight: bold;
+            & > span:nth-child(1){
+                font-weight: bold;
+            }
         }
     }
 }
