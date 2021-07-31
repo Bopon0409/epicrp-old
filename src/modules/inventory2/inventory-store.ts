@@ -51,6 +51,26 @@ class InventoryStore {
     this.state.data[idInventory] = this.state.data[idInventory]
       .filter((item) => item.idSlot !== idSlot)
   }
+
+  //===============================   GETTERS   ================================
+
+  getWeight (idInventory: TInventoryId): number {
+    return this.state.data[idInventory].reduce((sum, item) => {
+      return sum + item.quantity * item.weight
+    }, 0)
+  }
+
+  getSlotItem = (idSlot: number, idInventory: TInventoryId): IItem | null => {
+    return this.state.data[idInventory].find((item) => {
+      return item.idSlot === idSlot
+    }) || null
+  }
+
+  //================================   MODAL   =================================
+
+  openModal = (x: number, y: number, position: IItemPosition) => {
+
+  }
 }
 
 const store = new InventoryStore()

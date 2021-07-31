@@ -19,7 +19,7 @@ export const WarehouseItems = [
 
 export const ItemTiers = [
   'Серое',
-  'Берюзовое',
+  'Бирюзовое',
   'Синее',
   'Фиолетовое',
   'Красное'

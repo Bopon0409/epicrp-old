@@ -1,9 +1,9 @@
 import { makeAutoObservable } from 'mobx';
-import { 
-  IState, 
-  IDonatProduct, 
-  IOperation, 
-  IDonatItem 
+import {
+  IState,
+  IDonatProduct,
+  IOperation,
+  IDonatItem
 } from './models';
 
 class DonatStore {
@@ -32,7 +32,7 @@ class DonatStore {
     tier: 0, // редкость предмета
     comment: "I dont know", // описание предмета
     sellPrice: 0 // цена продажи предмета
-  } 
+  }
 
   // задаём начальные данные страницы доната (ФИО, кол-во коинов, донат услуги, 
   // историю донат операций, содержимое склада)
@@ -50,12 +50,12 @@ class DonatStore {
   // задать новые данные для массива продуктов (главная страница доната)
   setDonatProducts = (data: IDonatProduct[]) => {
     this.state.donatProducts = data;
-  } 
+  }
   // задать новые данные для массива операций (главная страница доната)
   setOperationsHistory = (operationsHistry: IOperation[]) => {
     this.state.operationsHistry = operationsHistry;
   }
-  // ддобавить новые данные в уже существующий массив (главная страница доната)
+  // добавить новые данные в уже существующий массив (главная страница доната)
   addOperationHistory = (operationHistory: IOperation) => {
     this.state.operationsHistry.push(operationHistory);
   }
@@ -63,7 +63,7 @@ class DonatStore {
   setPrizeWarehouse = (prizeWarehouse: IDonatItem[]) => {
     this.state.prizeWarehouse = prizeWarehouse;
   }
- 
+
   // результат проверки транзакции
   setTransactionResult = (status: boolean) => {
     this.transactionResult = status;
@@ -139,7 +139,7 @@ class DonatStore {
     }
   }
 
-  // дбавить предмет в список
+  // добавить предмет в список
   addPrizeInWarehouse = (item: IDonatItem) => {
     this.state.prizeWarehouse.push(item)
   }

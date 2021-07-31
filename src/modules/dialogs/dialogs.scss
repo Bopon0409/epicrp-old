@@ -1,152 +1,151 @@
-.dialogs-window{
- position: absolute;
- width: 100vw;
- height: 569px;
- bottom: 0;
- z-index: 4;
- display: flex;
- justify-content: center;
- font-family: Nunito;
- font-style: normal;
- font-weight: normal;
- color: white;
-
- &__bg{
+.dialogs-window {
   position: absolute;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(180deg, rgba(20, 24, 34, 0) 0%, rgba(20, 24, 34, 0.97) 76.37%);
-  z-index: -1;
-}
-
- .dialogs{
-  margin-top: 284px;
-  height: 253px;
-  width: 1167px;
+  width: 100vw;
+  height: 569px;
+  bottom: 0;
+  z-index: 4;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  font-family: Nunito, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: white;
 
-  .npc-name{
-   font-size: 18px;
-   line-height: 20px;
+  &__bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(20, 24, 34, 0) 0%, rgba(20, 24, 34, 0.97) 76.37%);
+    z-index: -1;
   }
 
-  .npc-job{
-   font-size: 12px;
-   line-height: 20px;
-   opacity: .6;
-  }
+  .dialogs {
+    margin-top: 284px;
+    height: 253px;
+    width: 1167px;
+    display: flex;
+    flex-direction: column;
 
-  .text-box{
-   height: 151px;
-   width: 100%;
-   overflow: hidden;
-  }
-
-  .buttons{
-   height: 41px;
-   width: 100%;
-   display: flex;
-   justify-content: flex-end;
-   
-   & > div:nth-child(n){
-    margin-right: 7px;
-    height: 41px;
-   }
-
-   .btn-styles{
-    background-color: rgba(60, 66, 82, 1);
-    opacity: .1;
-    border: 1px solid rgba(82, 88, 104, 0.7);
-    border-radius: 3px;
-    transition: all .2s ease-out;
-
-    &:hover{
-     background-color: rgba(242, 201, 76, .7);
-     opacity: 1;
-     border: 1px solid rgba(242, 201, 76, 0.7);
-     transition: all .2s ease-in;
+    .npc-name {
+      font-size: 18px;
+      line-height: 20px;
     }
-   }
+
+    .npc-job {
+      font-size: 12px;
+      line-height: 20px;
+      opacity: .6;
+    }
+
+    .text-box {
+      height: 151px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .buttons {
+      height: 41px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+
+      & > div:nth-child(n) {
+        margin-right: 7px;
+        height: 41px;
+      }
+
+      .btn-styles {
+        background-color: rgba(60, 66, 82, 1);
+        opacity: .1;
+        border: 1px solid rgba(82, 88, 104, 0.7);
+        border-radius: 3px;
+        transition: all .2s ease-out;
+
+        &:hover {
+          background-color: rgba(242, 201, 76, .7);
+          opacity: 1;
+          border: 1px solid rgba(242, 201, 76, 0.7);
+          transition: all .2s ease-in;
+        }
+      }
+    }
   }
- }
 
- .esc-line{
-   position: absolute;
-   left: 2%;
-   bottom: 39px;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   width: 210px;
-   height: 30px;
+  .esc-line {
+    position: absolute;
+    left: 2%;
+    bottom: 39px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 210px;
+    height: 30px;
 
-   & > div:first-child{
-     height: 100%;
-     width: 53px;
-     font-size: 14px;
-     line-height: 17px;
-     border-radius: 5px;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     opacity: 0.5;
-     border: 1px solid #D2D2D2;
-   }
+    & > div:first-child {
+      height: 100%;
+      width: 53px;
+      font-size: 14px;
+      line-height: 17px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0.5;
+      border: 1px solid #d2d2d2;
+    }
 
-   & > div:last-child{
-    font-size: 14px;
-    line-height: 17px;
-    opacity: 0.5;
-   }
- }
+    & > div:last-child {
+      font-size: 14px;
+      line-height: 17px;
+      opacity: 0.5;
+    }
+  }
 }
-
 
 @media (min-width: 2560px) {
 }
 
 @media (max-width: 1600px) {
-  .dialogs{
+  .dialogs {
     transform: scale(.9);
   }
-  .esc-line{
+  .esc-line {
     transform: scale(.9);
   }
 }
 
 @media (max-width: 1440px) {
-  .dialogs{
+  .dialogs {
     transform: scale(.8);
   }
-  .esc-line{
+  .esc-line {
     transform: scale(.8);
   }
 }
 
 @media (max-width: 1366px) {
-  .dialogs{
+  .dialogs {
     transform: scale(.76);
   }
-  .esc-line{
+  .esc-line {
     transform: scale(.76);
   }
 }
 
 @media (max-width: 1280px) {
-  .dialogs{
+  .dialogs {
     transform: scale(.8);
   }
-  .esc-line{
+  .esc-line {
     transform: scale(.8);
   }
 }
 
 @media (max-width: 1024px) {
-  .dialogs{
+  .dialogs {
     transform: scale(.7);
   }
-  .esc-line{
+  .esc-line {
     transform: scale(.7);
   }
 }

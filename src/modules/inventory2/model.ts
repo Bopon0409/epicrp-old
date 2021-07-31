@@ -1,5 +1,12 @@
 export type TEquipmentSlot = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
 export type TInventoryId = 0 | 1 | 2 | 3 | 4 | 5 | 6
+// 0 - инвентарь
+// 1 - обмен мой
+// 2 - обмен чужой
+// 3 - склад
+// 4 - багажник
+// 5 - шкаф
+// 6 - админ
 export type TInventoryPage =
   'equipment'
   | 'swap'
@@ -16,7 +23,7 @@ export interface IItemPosition {
 export interface TModal {
   x: number
   y: number
-  itemPosition: IItemPosition
+  itemPosition: IItem
 }
 
 export interface IItem {

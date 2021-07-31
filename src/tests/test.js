@@ -43,4 +43,9 @@ import './phone/phone.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
+  window.test.playerMenu.setSettingsData()
+  window.test.playerMenu.setQuestsData()
+  window.test.playerMenu.setStatsData()
+  window.test.playerMenu.setDonatData()
+  window.test.playerMenu.setActive(true)
 }

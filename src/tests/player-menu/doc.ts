@@ -105,9 +105,11 @@ export interface ISettingsData {
   control?: IControlItem[]
   settings?: ISettingItem[]
   sizes?: ISizes
+}
 // =================================== QUEST ===================================
 
 // интерфейс квестов
+
 export interface IQuestData{
   playerActiveQuest: number, // активный квест
   quests: IQuestsData[] // массив всех квестов
