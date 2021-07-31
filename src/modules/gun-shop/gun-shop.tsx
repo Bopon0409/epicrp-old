@@ -12,7 +12,6 @@ import { Cart }             from './components/cart'
 
 export const GunShop = observer(() => {
   useEffect(() => {
-    // @ts-ignore
     const { EventManager: em } = window
     const { setActive, setData } = store
 

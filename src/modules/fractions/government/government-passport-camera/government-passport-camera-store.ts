@@ -14,21 +14,18 @@ class GovPassportCameraStore {
 
     makePreviousEmotion = () => {
         this.changeActiveKey(0);
-        // @ts-ignore
         window.frontTrigger(`government-passport-camera-emotion.past`);
         this.setActiveKeyNull();
     }
 
     makeNextEmotion = () => {
         this.changeActiveKey(2);
-        // @ts-ignore
         window.frontTrigger(`government-passport-camera-emotion.next`);
         this.setActiveKeyNull();
     }
 
     makeScreenShot = () => {
         this.changeActiveKey(1);
-        // @ts-ignore
         window.frontTrigger(`government-passport-camera-emotion.screen`);
         this.setActiveKeyNull();
     }

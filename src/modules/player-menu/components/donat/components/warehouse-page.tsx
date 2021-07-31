@@ -1,14 +1,19 @@
 import { observer } from "mobx-react-lite";
 import { donatStore } from "../donat-store";
-import { ItemTiers } from "../constants";
+import { ItemTiers, WarehouseItems } from "../constants";
 import { BackgroundTier } from "../constants";
+import cn from 'classnames';
 
 export const DonateWarehouse = observer(() => {
   const { prizeWarehouse } = donatStore.state;
-  const { setWarehouseActiveItem, warehouseActiveItem, PrizeMove } = donatStore;
+  const { setWarehouseActiveItem, warehouseActiveItem, prizeMove,
+  setPage } = donatStore;
 
+  console.log(prizeWarehouse)
   return (
     <div className="donat-warehouse-wrapper">
+      <div className="player-menu_btn-back"
+      onClick={() => setPage(0)}>Вернуться в меню </div>
       <div className="donat-warehouse">
         <span className="page-name">Склад выйгрыша</span>
         <span className="your-prizes">Ваши выйгранные призы</span>
@@ -17,7 +22,9 @@ export const DonateWarehouse = observer(() => {
             {prizeWarehouse.map((item, id) => {
               return (
                 <div
-                  className="warehouse-items__item"
+                  className={cn(
+                    "warehouse-items__item", 
+                    {'warehouse-item--active': id === warehouseActiveItem})}
                   key={id}
                   onClick={() => setWarehouseActiveItem(id)}
                 >
@@ -59,10 +66,10 @@ export const DonateWarehouse = observer(() => {
                   </span>
                 </div>
                 <div className="warehouse-about__buttons">
-                  <div className="take_prize" onClick={() => PrizeMove('take')}>
+                  <div className="take_prize" onClick={() => prizeMove('take')}>
                     Забарть приз
                   </div>
-                  <div className="sell_prize" onClick={() => PrizeMove('sell')}>
+                  <div className="sell_prize" onClick={() => prizeMove('sell')}>
                     Продать приз
                   </div>
                 </div>

@@ -38,7 +38,7 @@
       .warehouse-items {
         margin-right: 40px;
         max-height: 500px;
-        width: 891px;
+        width: 898px;
         display: flex;
         flex-wrap: wrap;
         overflow: scroll;
@@ -54,6 +54,7 @@
           align-items: center;
           justify-content: center;
           flex-direction: column;
+          border: 1px solid rgba(255,255,255,0);
 
           .donatItem-bg{
             position: absolute;
@@ -82,6 +83,10 @@
             line-height: 16px;
             color: white;
           }
+        }
+
+        .warehouse-item--active{
+            border: 1px solid #f2c94c;
         }
 
         & > div:nth-child(n) {

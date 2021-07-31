@@ -1,18 +1,25 @@
 export type TPage = 'index' | 'dialing' | 'call' | 'sms' | 'contacts'
+export type TNumeralButton = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' |
+  '8' | '9' | 'lattice' | 'star'
 
-export type TSmsView = 'sms-list' | 'sms-correspondence' | 'sms-set'
+export type TSmsView =
+  'sms-list'
+  | 'sms-contact-set'
+  | 'sms-correspondence'
+  | 'sms-set-new'
+  | 'sms-set'
 
 export type TContactsView =
   'contacts-list'
   | 'contacts-edit'
   | 'contacts-create'
-  | 'contacts-func'
 
 export type TCallView =
   'incoming-wait'
   | 'incoming-process'
   | 'outgoing-wait'
   | 'outgoing-process'
+  | 'call-error'
 
 export interface IContact {
   id: number
@@ -24,20 +31,23 @@ export interface IContact {
 export interface ISms {
   id: number
   read: boolean
+  type: 'user' | 'interlocutor'
   contact: string
   text: string
-  date: string
+  time: string
 }
 
 export interface ICorrespondence {
   id: number
   name: string
-  lastSmsText: string
-  lastSmsTime: string
+  smsList: ISms[]
 }
 
 export interface IState {
   active: boolean
+  time: string
+  date: string
+  timeUpdateTimer: NodeJS.Timer | null
 
   // Current View
   curPage: TPage
@@ -56,18 +66,19 @@ export interface IState {
   dialingNumber: string
 
   // Sms
-  newSms: number
-  currentListSms: number | null
-  currentSms: number | null
+  newSmsContact: string
+  currentSms: number
+  smsInput: string
 
-  // Calls
+  // Call
+  callError: string | null
   callNum: string
   callDuration: number
   callTimer: NodeJS.Timer | null
 
-  // Contacts
-  currentListContact: number | null
-  currentContact: number | null
+  // ContactList
+  currentContact: number
   contactNumInput: string
   contactNameInput: string
+  contactEditButton: 'save' | 'remove' | null
 }

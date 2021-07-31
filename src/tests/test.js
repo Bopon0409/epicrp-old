@@ -20,7 +20,6 @@ import './electrician/electrician.test'
 import './taxi-tablet/taxi-tablet.test'
 import './admin/admin.test'
 import './player-menu/player-menu.test'
-import './clothes-shop/clothes-shop.test'
 import './spawn-menu/spawn-menu.test'
 import './admin-report/admin-report.test'
 import './business-stats/business-stats.test'
@@ -33,29 +32,32 @@ import './work-stats/work-stats.test'
 import './contract/contract.test'
 import './credit-tablet/credit-tablet.test'
 import './med-card/med-card.test'
-// import './tattoo-parlor/tattoo-parlor.test'
 import './dowload-confirmation-screen/dowload-confirmation-screen.test'
 import './shops-and-parlors/shops-and-parlors.test'
 import './dialogs/dialogs.test'
-
 import './fractions/ems/inspections/inspection.test'
 import './fractions/ems/issue-med-sertificate/issue-med-sertificate.test'
 import './fractions/ems/med-sertificate/med-sertificate.test'
-
 import './fractions/government/government-passport-camera/government-passport-camera.test'
-
+import './phone/phone.test'
 
 export default function curTest () {
-  window.test.bg.setActive(true)
-
-  // window.test.carShop.setActive(true);
-  // window.test.carShop.setData();
-  // window.test.GovPassportCamera.setShow(true);
-  // window.test.dialogs.setShow(true);
-  // window.test.dialogs.setData();
-
+  window.test.bg.setActive(true);
   window.test.playerMenu.setActive(true);
-  window.test.playerMenu.setStatsData();
-  window.test.playerMenu.setQuestsData();
   window.test.playerMenu.setDonatData();
+  window.test.playerMenu.setStatsData();
+  window.test.playerMenu.setSettingsData()
+  window.test.playerMenu.setQuestsData()
+
+  // window.test.shopsAndParlors.setShow(true);
+  // window.test.shopsAndParlors.setData();
+  // window.test.shopsAndParlors.setMoney();
+
+  // window.test.businessStats.setActive(true);
+  // window.test.businessStats.setStats();
+  // window.test.businessStats.setWarehouse();
+  // window.test.businessStats.setProductsItems();
+  // window.test.businessStats.setProductsIrlItems();
+  // window.test.businessStats.setStaff();
+  // window.test.businessStats.setAdvance();
 }

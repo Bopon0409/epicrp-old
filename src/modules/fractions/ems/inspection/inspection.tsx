@@ -28,7 +28,6 @@ export const Inspection = observer(() => {
     }
   }
   useEffect(() => {
-      // @ts-ignore
       const { EventManager: em } = window;
       const { setActive, setData } = store;
       em.addHandler("ems-inspection.active", setActive);
@@ -39,6 +38,7 @@ export const Inspection = observer(() => {
       };
     }, []);
   return store.state.active ? (
+    <div className='inspection'>
       <div className='wrapper'>
           <div className="ems-inspection">
             <div className="block-name">{BlockName}</div>
@@ -68,5 +68,6 @@ export const Inspection = observer(() => {
             <span>ESC</span> - закрыть
           </div>
       </div>
+    </div>
   ) : null
 })

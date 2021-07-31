@@ -24,7 +24,6 @@ class DownloadConfirmationScreenStore {
 
   downloadConfirm = () => {
     this.state.show = false;
-    // @ts-ignore
     window.frontTrigger(`download-confirmation-screen.accept`);
 }
 }

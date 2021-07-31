@@ -28,7 +28,6 @@ const Pages = [
 export const Admin = observer(() => {
 
   useEffect(() => {
-    // @ts-ignore
     const { EventManager: em } = window
     const {
       setActive, pushRealCars, pushAdminLog,

@@ -31,14 +31,12 @@ class GunShopStore {
 
   updateView = () => {
     const { currentGunId, currentModId, menuItem } = this.state
-    // @ts-ignore
     window.frontTrigger('gun-shop.view', menuItem, currentGunId, currentModId)
   }
 
   setMenuItem = (value: number) => {
     this.state.menuItem = value
     this.state.cartMods = []
-    // @ts-ignore
     window.frontTrigger('gun-shop.category', value)
     this.setCurrentGunId(0)
   }
@@ -46,14 +44,12 @@ class GunShopStore {
   setCurrentGunId = (value: number) => {
     this.state.currentGunId = value
     this.state.cartMods = []
-    // @ts-ignore
     window.frontTrigger('gun-shop.gun', value)
     this.setCurrentModId(null)
   }
 
   setCurrentModId = (value: number | null) => {
     this.state.currentModId = this.state.currentModId === value ? null : value
-    // @ts-ignore
     window.frontTrigger('gun-shop.mod', this.state.currentModId)
   }
 
@@ -128,7 +124,6 @@ class GunShopStore {
 
   payAction = (method: TMethod, cardId: TCardId) => {
     const { state: { cart }, currentPrice: sum } = this
-    // @ts-ignore
     window.frontTrigger('gun-shop.buy', { method, cardId, cart, sum })
     this.state.cart = []
   }

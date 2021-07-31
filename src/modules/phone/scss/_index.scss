@@ -1,0 +1,36 @@
+.phone {
+  .index {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    height: 200px;
+
+    &__time {
+      font-size: 40px;
+      line-height: 55px;
+    }
+
+    &__date {
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    &__menu {
+      margin-top: 45px;
+      width: 140px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+
+      .index__menu-item {
+        padding: 6px;
+      }
+
+      .index__menu-item--active {
+        border-bottom: 3px solid white;
+      }
+    }
+  }
+}

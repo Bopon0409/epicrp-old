@@ -5,7 +5,6 @@ export interface IState {
   coins: number,
   donatProducts: IDonatProduct[],
   operationsHistry: IOperation[],
-  luckCases: number,
   prizeWarehouse: IDonatItem[]
 }
 

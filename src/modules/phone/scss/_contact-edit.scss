@@ -1,0 +1,46 @@
+.phone {
+  .contact-edit {
+    width: 100%;
+    height: 200px;
+    margin-top: 20px;
+    color: white;
+
+    .name, .num {
+      width: 100%;
+      height: 22px;
+      margin-bottom: 8px;
+      box-sizing: border-box;
+      outline: none;
+      border: none;
+      background: #b7badb;
+      border-radius: 2px;
+      text-align: center;
+      font-size: 11px;
+
+      &::placeholder {
+        color: black;
+        text-align: center;
+        font-size: 11px;
+      }
+    }
+
+    .button {
+      width: 100%;
+      height: 22px;
+      background: #808080;
+      display: flex;
+
+      &--active {
+        background: #F2C94C;
+        color: white;
+      }
+
+      .text {
+        margin: auto;
+        font-size: 12px;
+        line-height: 16px;
+        color: #FFFFFF;
+      }
+    }
+  }
+}

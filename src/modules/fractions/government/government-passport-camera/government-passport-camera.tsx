@@ -10,7 +10,6 @@ import CameraBattery from './img/CameraBattery.svg';
 export const GovernmentPassportCamera = observer(() => {
 // gov-passport-camera
 useEffect(() => {
- // @ts-ignore
  const { EventManager: em } = window
  const { setShow } = store
 
@@ -72,7 +71,7 @@ const keyClick = (e: React.KeyboardEvent<HTMLDivElement>) => {
         ))
        }
       </div>
-      <div className='lowwer-right line-block'></div>
+      <div className='lowwer-right line-block'/>
      </div>
     </div>
     </div>

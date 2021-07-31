@@ -1,0 +1,15 @@
+.phone {
+  .scroll {
+    overflow-y: scroll;
+    outline: none;
+
+    &::-webkit-scrollbar {
+      width: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background: #5d62af;
+    }
+  }
+}

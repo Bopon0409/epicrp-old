@@ -43,7 +43,6 @@ class CreditTabletStore {
 
   request = () => {
     const { selectedPropertyId, input } = this.state
-    // @ts-ignore
     window.frontTrigger('credit-tablet.request', selectedPropertyId, input)
     this.close()
   }

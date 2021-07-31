@@ -41,7 +41,7 @@ const randomInt = (min, max) => {
 
 const scrollList = id => {
   const el = document.querySelector(`#${id}`)
-  setTimeout(() => el.scrollTo(0, 99999), 10)
+  setTimeout(() => el?.scrollTo(0, 99999), 10)
 }
 
 export {

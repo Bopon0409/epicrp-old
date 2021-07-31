@@ -1,10 +1,9 @@
 import { makeAutoObservable } from 'mobx'
 import { scrollList }         from '../../services/services'
 import {
-  IControlItem,
-  IReportConnected, IReportMsg, IReportState, ISettingItem, ISettingsData,
-  ISettingsState, IState, IStats, IStatsData, IQuests, IQuestData,
-  IFAQ
+  IControlItem, IReportConnected, IReportMsg, IReportState, ISettingItem,
+  ISettingsData, ISettingsState, IState, IStats, IStatsData, IQuests,
+  IQuestData, IFAQ
 }                             from './model'
 import keyCodes               from '../../services/keyCodes.json'
 
@@ -28,7 +27,7 @@ class PlayerMenuStore {
     registerData: '',
     warnsCount: 0,
     online: ['', ''],
-    bank: { cash: 0, cards:[0, 0], insurance: 0, credit: 0 },
+    bank: { cash: 0, cards: [0, 0], insurance: 0, credit: 0 },
     fraction: {
       fractionName: '', rankName: '', salary: 0, lastRise: '', reprimands: 0
     },
@@ -67,7 +66,6 @@ class PlayerMenuStore {
   }
 
   setActive = (active: boolean) => {
-    // @ts-ignore
     if (window.mp && active) window.mp.invoke('focus', true)
     this.state.active = active
   }
@@ -100,19 +98,16 @@ class PlayerMenuStore {
   }
 
   setFontSize = (size: any) => {
-    // @ts-ignore
     window.frontTrigger('player-menu.settings.font-size', size)
     this.settingsState.sizes.fontSize = size
   }
 
   setRowSize = (size: any) => {
-    // @ts-ignore
     window.frontTrigger('player-menu.settings.row-size', size)
     this.settingsState.sizes.rowSize = size
   }
 
   setChatSize = (size: any) => {
-    // @ts-ignore
     window.frontTrigger('player-menu.settings.chat-size', size)
     this.settingsState.sizes.chatSize = size
   }
@@ -143,7 +138,6 @@ class PlayerMenuStore {
 
     if (item && this.setKeyCheck(keyCode)) {
       item.keyCode = keyCode
-      // @ts-ignore
       window.frontTrigger('player-menu.control', item.id, item.keyCode)
       this.settingsState.keyWaiting = false
       this.state.menuHandlerBlocked = false
@@ -152,7 +146,6 @@ class PlayerMenuStore {
 
   setSetting = (item: ISettingItem, value: boolean) => {
     item.status = value
-    // @ts-ignore
     window.frontTrigger('player-menu.setting', item.id, value)
   }
 
@@ -160,7 +153,6 @@ class PlayerMenuStore {
 
   // Игрок забирает награду за реферальные приглашения
   getReferralReward = () => {
-    // @ts-ignore
     window.frontTrigger(`referral.reward`)
   }
 
@@ -209,7 +201,6 @@ class PlayerMenuStore {
     this.reportState.reportData.push(reportConnected, reportMsg)
     this.reportState.reportStatus = 'process'
 
-    // @ts-ignore
     window.frontTrigger(`player-menu.${type}.create`, msg)
     this.reportState.reportInput = ''
   }
@@ -222,7 +213,6 @@ class PlayerMenuStore {
     if (!/^(|[a-zA-Zа-яА-Я0-9][a-zA-Zа-яА-Я0-9\s]*)$/.test(msg)) return
     if (this.reportState.sendMsgBlocked) {
       this.reportState.reportInput = ''
-      // @ts-ignore
       return window.trigger('hud.notify', JSON.stringify({
         type: 'error', text: 'Отправка сообщений доступна раз в 15 секунд'
       }))
@@ -232,7 +222,6 @@ class PlayerMenuStore {
     this.reportState.reportData.push(reportMsg)
     scrollList('player-report-chat')
 
-    // @ts-ignore
     window.frontTrigger(`player-menu.report.send`, msg)
     this.reportState.reportInput = ''
 
@@ -267,7 +256,6 @@ class PlayerMenuStore {
 
   // Игрок поставил оценку
   playerSetRating = (rating: number) => {
-    // @ts-ignore
     window.frontTrigger(`player-menu.report.rating`, rating)
     this.reportState.reportData = []
     this.reportState.reportAdminName = ''
@@ -280,30 +268,29 @@ class PlayerMenuStore {
   }
 
 //=================================   QUESTS   =================================
+  // назначить
   setQuests = (data: IQuestData) => {
-    this.quests.data = data;
-    this.quests.activeQuest = data.playerActiveQuest;
+    this.quests.data = data
+    this.quests.activeQuest = data.playerActiveQuest
   }
 
-  setActiveQuest = (id: number) => this.quests.activeQuest = id;
+  // выделить квест (по нажатию на него)
+  setActiveQuest = (id: number) => this.quests.activeQuest = id
 
+  // сделать квест активным
   setActivePlayerQuest = (id: number) => {
-    this.quests.data.playerActiveQuest = id;
-    // @ts-ignore
-    window.frontTrigger('player-menu.player-active-quest', id);
+    this.quests.data.playerActiveQuest = id
+    window.frontTrigger('player-menu.player-active-quest', id)
   }
 
 //=================================   FAQ   ====================================
+  // выделить вопрос в FAQ (по нажатию на него)
   setActiveFAQ = (id: number) => {
-    this.faq.activeBlock = id;
+    this.faq.activeBlock = id
     console.log(this.faq.activeBlock)
   }
 
 }
-
-
-
-  
 
 const store = new PlayerMenuStore()
 export { store }

@@ -18,7 +18,6 @@ export const MedCard = observer(() => {
   const { firstName, secondName, age, nationality, medicalHistory } =
     store.state.medCard;
   useEffect(() => {
-    // @ts-ignore
     const { EventManager: em } = window;
     const { setActive, setData } = store;
     em.addHandler("med-card.active", setActive);
@@ -29,8 +28,9 @@ export const MedCard = observer(() => {
     };
   }, []);
   return store.state.active ? (
+    <div className="med-card">
     <div className="wrapper">
-      <div className="med-card">
+      <div className="med-card-window">
         <div className="left-block">
           {page === 0 ? (
             <div className="info">
@@ -94,5 +94,6 @@ export const MedCard = observer(() => {
         </div>
       </div>
     </div>
+  </div>
   ) : null;
 });

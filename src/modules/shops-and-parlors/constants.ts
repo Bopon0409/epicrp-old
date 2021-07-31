@@ -89,7 +89,7 @@ export const SectionImages = [
             image: Earrings
         },
         {
-            name: "Хуйня на шею",
+            name: "Ожерелье",
             image: Neck
         },
 

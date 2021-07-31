@@ -8,7 +8,7 @@ export const ProductsItemsEdit = observer(() => {
     const { saveProductData } = store;
     const { products } = store.state;
 
-    const items = products.type === 0 ? products.items : products.irlItems;
+    const items = products.type === 0 ? products.irlItems : products.items;
 
     const inputHandler = (event: any) => {
         const { value } = event.target;
@@ -16,7 +16,6 @@ export const ProductsItemsEdit = observer(() => {
         store.setProductPrice(products.type, products.activeBlock, +value);
       }
 
-      
     return(
         <div className="products__item_edit">
         <div className="block-name">{PConst.RightBlock.blockName}</div>

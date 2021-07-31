@@ -1,3 +1,4 @@
+// включить/отключить показ интерфейса
 const setActive = (active) => 
     window.trigger('ems-issue-med-sertificate.active', active);
 

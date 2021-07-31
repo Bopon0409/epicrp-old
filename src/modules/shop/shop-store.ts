@@ -141,7 +141,6 @@ class ShopStore {
   buy = () => {
     const data = this.state.shoppingCart.map((item) =>
       ({ itemId: item.itemId, quantity: item.quantity, name: item.name }))
-    // @ts-ignore
     window.frontTrigger('shop.buy', this.state.payment, JSON.stringify(data))
     this.state.shoppingCart = []
   }

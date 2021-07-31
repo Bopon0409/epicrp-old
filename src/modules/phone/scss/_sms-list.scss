@@ -1,0 +1,79 @@
+.phone {
+  .sms-list {
+    width: 100%;
+    height: 200px;
+    background: #b7badb;
+    border-radius: 2px;
+
+    .sms-new {
+      height: 30px;
+      background: #5d62af;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      color: #ffffff;
+
+      &__icon {
+        margin-left: 20px;
+        margin-right: 8px;
+      }
+
+      &__text {
+        font-size: 10px;
+        line-height: 14px;
+      }
+
+      &--active {
+        background: #f2c94c;
+        color: black;
+      }
+    }
+
+    .sms-list__container {
+      height: 170px;
+
+      .item {
+        height: 36px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: space-between;
+        padding: 4px 8px;
+        box-sizing: border-box;
+
+        &--active {
+          background: #f2c94c;
+        }
+
+        &__name {
+          width: 110px;
+          height: 14px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          font-weight: 600;
+          font-size: 10px;
+          line-height: 14px;
+          color: #000000;
+        }
+
+        &__time {
+          font-weight: 600;
+          font-size: 8px;
+          line-height: 11px;
+          color: #5d62af;
+        }
+
+        &__text {
+          font-size: 8px;
+          width: 120px;
+          height: 11px;
+          line-height: 11px;
+          color: #000000;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}

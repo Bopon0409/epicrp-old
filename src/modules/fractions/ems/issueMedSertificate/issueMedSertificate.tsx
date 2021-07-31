@@ -10,7 +10,6 @@ const IssueMedSrtText = 'Форма выдачи медицинской спра
 export const IssueMedSertificate = observer(() => {
   const [doctorResult, setDoctorResult] = useState('');
   useEffect(() => {
-      // @ts-ignore
       const { EventManager: em } = window;
       const { setActive } = store;
       em.addHandler("ems-issue-med-sertificate.active", setActive);
@@ -32,6 +31,7 @@ export const IssueMedSertificate = observer(() => {
   }
   }
   return store.state.active ? (
+    <div className='issue_med_sertificate'>
       <div className='wrapper'>
         <div className="ems-issue_med_sertificate">
           <div className='issue_med_sertificate--text'>{IssueMedSrtText}</div>
@@ -70,5 +70,6 @@ export const IssueMedSertificate = observer(() => {
           </div>
         </div>
       </div>
+    </div>
   ) : null
 })
