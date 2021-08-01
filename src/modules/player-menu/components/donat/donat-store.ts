@@ -75,10 +75,6 @@ class DonatStore {
     this.caseContent = caseContent;
   }
 
-  callCaseContent = (id: number) => {
-    window.frontTrigger('player-menu.donat.get-case-content');
-  }
-
   // при нажатии на item на складе делать его активным
   setWarehouseActiveItem = (id: number) => {
     this.warehouseActiveItem = id;
@@ -94,7 +90,7 @@ class DonatStore {
 
   // запрос на получение winning index 
   setWinningIndex = () => {
-    window.frontTrigger('player-menu.donat-winner_index');
+    window.frontTrigger('player-menu.donat.winner_index');
   }
 
   // получаем winning index с сервера
@@ -112,7 +108,7 @@ class DonatStore {
   // конвертировать донат валюту в игровую
   convertDonatToMoney = (amount: number) => {
     // @ts-ignore
-    window.frontTrigger('player-menu.convert-money', amount);
+    window.frontTrigger('player-menu.donat.convert-money', amount);
   }
 
 //warehouse-page

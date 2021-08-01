@@ -13,7 +13,6 @@ export const MainPage = observer(() => {
     setActiveStoreProduct,
     checkPlayerDonatMoney,
     convertDonatToMoney,
-    callCaseContent,
     coinCourse,
   } = donatStore;
 
@@ -22,7 +21,6 @@ export const MainPage = observer(() => {
     setActiveStoreProduct(itemId);
     if (donatProducts[itemId].content) {
       setPage(1);
-      callCaseContent(itemId);
     } else {
       checkPlayerDonatMoney(itemId);
     }
