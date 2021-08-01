@@ -1,8 +1,8 @@
-import { makeAutoObservable }      from 'mobx'
+import { makeAutoObservable } from 'mobx'
 import { IState, IData, SendData } from './models'
 
 class EMSInspectionStore {
-  constructor () {
+  constructor() {
     makeAutoObservable(this, {}, { deep: true })
   }
 

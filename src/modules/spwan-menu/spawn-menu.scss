@@ -36,7 +36,7 @@
 
       &::before {
         position: absolute;
-        content: '';
+        content: "";
         height: 64px;
         width: 64px;
         margin: -10px 0 0 -40px;
@@ -93,11 +93,10 @@
           font-weight: 600;
           font-size: 20px;
           line-height: 35px;
-          
-          
+
           & > span {
             margin-left: 18px;
-            color: rgba(255, 255, 255, .45);
+            color: rgba(255, 255, 255, 0.45);
             z-index: 10;
           }
         }

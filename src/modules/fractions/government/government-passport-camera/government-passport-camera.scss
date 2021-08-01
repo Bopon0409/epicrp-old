@@ -1,185 +1,185 @@
-.government-passport-camera-wrapper{
- position: absolute;
- inset: 0;
- width: 100vw;
- height: 100vh;
- display: flex;
- justify-content: center;
- align-items: center;
- z-index: 4;
- color: white;
- font-family: Nunito;
- font-style: normal;
- .government-passport-camera{
-  .esc-line{
-    position: absolute;
-    right: 5%;
-    top: 39px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 210px;
-    height: 30px;
-
-    & > div:last-child{
-      height: 100%;
-      width: 53px;
-      font-size: 14px;
-      line-height: 17px;
-      border-radius: 5px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0.5;
-      border: 1px solid #D2D2D2;
-    }
-
-    & > div:first-child{
-    font-size: 14px;
-    line-height: 17px;
-    opacity: 0.5;
-    }
-  }
-
-  .main-window{
-    height: 898px;
-    width: 1667px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-
-    .camera-line{
-    height: 186px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-
-    .line-block{
-      height: 186px;
-      width: 186px;
-      font-size: 25px;
-      line-height: 34px;
-      display: flex;
-    }
-
-    .upper-left{
-      border-top: 2px solid #FFFFFF;
-      border-left: 2px solid #FFFFFF;
-
-      & > span:first-child{
-      margin: 19px 0 0 19px;
-      white-space: nowrap;
-      }
-    }
-
-    .upper-right{
-      border-top: 2px solid #FFFFFF;
-      border-right: 2px solid #FFFFFF;
-      display: flex;
-      justify-content: flex-end;
-
-      .content{
-      height: 34px;
-      width: 115px;
-      margin: 19px 19px 0 0;
+.government-passport-camera-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+  color: white;
+  font-family: Nunito;
+  font-style: normal;
+  .government-passport-camera {
+    .esc-line {
+      position: absolute;
+      right: 5%;
+      top: 39px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      
-      .camera-battery{
-        height: 22.4px;
-        width: 50px;
-      }
-      }
-    }
-
-    .lowwer-left{
-      border-bottom: 2px solid #FFFFFF;
-      border-left: 2px solid #FFFFFF;
-      display: flex;
-      align-items: flex-end;
-
-      & > span:first-child{
-      margin: 0 0 19px 19px;
-      }
-    }
-
-    .lowwer-right{
-      border-bottom: 2px solid #FFFFFF;
-      border-right: 2px solid #FFFFFF;
-    }
-
-    &__buttons{
-      margin-top: 176px;
-      width: 1067px;
+      width: 210px;
       height: 30px;
+
+      & > div:last-child {
+        height: 100%;
+        width: 53px;
+        font-size: 14px;
+        line-height: 17px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0.5;
+        border: 1px solid #d2d2d2;
+      }
+
+      & > div:first-child {
+        font-size: 14px;
+        line-height: 17px;
+        opacity: 0.5;
+      }
+    }
+
+    .main-window {
+      height: 898px;
+      width: 1667px;
       display: flex;
+      flex-direction: column;
+      align-items: center;
       justify-content: space-between;
 
-      .btn_block{
-      height: 100%;
-      display: flex;
-      align-items: center;
-      opacity: .5;
-      transition: all .1s ease-out;
+      .camera-line {
+        height: 186px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
 
-      .btn{
-        padding: 5px 10px;
-        border: 1px solid #D2D2D2;
-        border-radius: 5px;
-        margin-right: 14px;
-      }
-      }
+        .line-block {
+          height: 186px;
+          width: 186px;
+          font-size: 25px;
+          line-height: 34px;
+          display: flex;
+        }
 
-      .btn_block--active{
-      opacity: 1;
-      transition: all .1s ease-in;
+        .upper-left {
+          border-top: 2px solid #ffffff;
+          border-left: 2px solid #ffffff;
+
+          & > span:first-child {
+            margin: 19px 0 0 19px;
+            white-space: nowrap;
+          }
+        }
+
+        .upper-right {
+          border-top: 2px solid #ffffff;
+          border-right: 2px solid #ffffff;
+          display: flex;
+          justify-content: flex-end;
+
+          .content {
+            height: 34px;
+            width: 115px;
+            margin: 19px 19px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .camera-battery {
+              height: 22.4px;
+              width: 50px;
+            }
+          }
+        }
+
+        .lowwer-left {
+          border-bottom: 2px solid #ffffff;
+          border-left: 2px solid #ffffff;
+          display: flex;
+          align-items: flex-end;
+
+          & > span:first-child {
+            margin: 0 0 19px 19px;
+          }
+        }
+
+        .lowwer-right {
+          border-bottom: 2px solid #ffffff;
+          border-right: 2px solid #ffffff;
+        }
+
+        &__buttons {
+          margin-top: 176px;
+          width: 1067px;
+          height: 30px;
+          display: flex;
+          justify-content: space-between;
+
+          .btn_block {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            opacity: 0.5;
+            transition: all 0.1s ease-out;
+
+            .btn {
+              padding: 5px 10px;
+              border: 1px solid #d2d2d2;
+              border-radius: 5px;
+              margin-right: 14px;
+            }
+          }
+
+          .btn_block--active {
+            opacity: 1;
+            transition: all 0.1s ease-in;
+          }
+        }
       }
     }
-    }
-  }
   }
 }
 
 @media (min-width: 2560px) {
-  .government-passport-camera{
-      zoom: 1.1;
+  .government-passport-camera {
+    zoom: 1.1;
   }
 }
 
 @media (max-width: 1600px) {
-  .government-passport-camera{
-      zoom: .8;
+  .government-passport-camera {
+    zoom: 0.8;
   }
 }
 
 @media (max-width: 1440px) {
-  .government-passport-camera{
-      zoom: .75;
+  .government-passport-camera {
+    zoom: 0.75;
   }
 }
 
 @media (max-width: 1366px) {
-  .government-passport-camera{
-      zoom: .69;
+  .government-passport-camera {
+    zoom: 0.69;
   }
 }
 
 @media (max-width: 1280px) {
-  .government-passport-camera{
-      zoom: .75;
+  .government-passport-camera {
+    zoom: 0.75;
   }
 }
 
 @media (max-width: 1024px) {
-  .government-passport-camera{
-      zoom: .51;
+  .government-passport-camera {
+    zoom: 0.51;
   }
 }
 
 @media (max-width: 800px) {
-  .government-passport-camera{
-      zoom: .4
+  .government-passport-camera {
+    zoom: 0.4;
   }
 }

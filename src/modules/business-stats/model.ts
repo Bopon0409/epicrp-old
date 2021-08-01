@@ -2,28 +2,28 @@ export type blockType = 0 | 1 | 2 | 3 | 4
 
 
 
-export interface IItemsInStock{
+export interface IItemsInStock {
     name: string,
     amount: number,
     purchasePrice: number,
     priceChangesForToday: string
 }
-export interface IStockWorkload{
+export interface IStockWorkload {
     now: number,
     max: number
 }
-export interface IPurchaseItems{
+export interface IPurchaseItems {
     name: string
     price: number
     priceChanges: number
 }
 
-export interface IFuelEquivalent{
+export interface IFuelEquivalent {
     name: string
     equivalent: string
 }
 
-export interface IWarehouse{
+export interface IWarehouse {
     itemsInStock: IItemsInStock[]
     stockWorkload: IStockWorkload
     purchaseItems: IPurchaseItems[]
@@ -31,27 +31,27 @@ export interface IWarehouse{
 }
 
 
-export interface IOftenBuy{
+export interface IOftenBuy {
     name: string
     price: number
 }
-export interface IDaily{
+export interface IDaily {
     reason: string,
     price: number
 }
 
-export interface IWeeklyStatistics{
+export interface IWeeklyStatistics {
     dayName: string,
     value: number
 }
 
-export interface IWeeklyStatisticsType{
+export interface IWeeklyStatisticsType {
     consumption: IWeeklyStatistics[],
     income: IWeeklyStatistics[],
     quantitySoldItems: IWeeklyStatistics[]
 }
 
-export interface IStats{
+export interface IStats {
     businessName: string[]
     businessStatus: boolean
     businessBalance: number
@@ -62,7 +62,7 @@ export interface IStats{
     weeklyStatistics: IWeeklyStatisticsType
 }
 
-export interface IItem{
+export interface IItem {
     name: string
     id: number
     amount: number
@@ -70,32 +70,32 @@ export interface IItem{
     status: boolean
 }
 
-export interface IProducts{
+export interface IProducts {
     items: IItem[]
     irlItems: IItem[]
     activeBlock: number
     type: number
 }
 
-export interface IAdvanceItem{
+export interface IAdvanceItem {
     name: string
     id: number
     price: number
     status: boolean
 }
 
-export interface IAdvance{
+export interface IAdvance {
     items: IAdvanceItem[]
     activeBlock: number
 }
-export interface IStaffList{
+export interface IStaffList {
     name: string
     repairsAmount: number
     evacuationsAmount: number
     profit: number
 }
 
-export interface IStaff{
+export interface IStaff {
     staffList: [IStaffList[], IStaffList[]]
     earnedTypes: [number[], number[]]
 }
@@ -106,7 +106,7 @@ export interface IState {
     activeTypeGraphics: number
     stats: IStats | null
     statsOperationType: number
-    warehouse: IWarehouse 
+    warehouse: IWarehouse
     orderAmount: number
     oredersId: number[]
     resultPrice: number

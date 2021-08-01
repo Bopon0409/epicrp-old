@@ -1,5 +1,5 @@
-import { makeAutoObservable }  from 'mobx';
-import { IState, IStats, IWarehouse, IItem, IAdvanceItem, IStaff}                             from './model'
+import { makeAutoObservable } from 'mobx';
+import { IState, IStats, IWarehouse, IItem, IAdvanceItem, IStaff } from './model'
 
 class BusinessStatsStore {
     constructor() {
@@ -43,34 +43,34 @@ class BusinessStatsStore {
         staffPrizeId: -1,
         staffPrizeAmount: 0
     }
-//============================   InsuranceClient Trigger   ============================
+    //============================   InsuranceClient Trigger   ============================
 
     setActive = (active: boolean) => this.state.active = active
     setWarehouse = (warehouse: IWarehouse) => this.state.warehouse = warehouse;
 
-// STATS
+    // STATS
     setStats = (stats: IStats) => this.state.stats = stats;
     setActiveBlock = (num: number) => this.state.activeBlock = num;
     setActiveTypeGraphics = (num: number) => {
         this.state.activeTypeGraphics = num;
     }
     setBusinessStatus = (status: boolean) => {
-        if(this.state.stats) this.state.stats.businessStatus = status;
+        if (this.state.stats) this.state.stats.businessStatus = status;
     }
     setStatsOperationType = (type: number) => {
         this.state.statsOperationType = type;
     }
     changePlayerMoney = (money: number) => {
-        if(this.state.stats){
+        if (this.state.stats) {
             this.state.stats.playerMoney = money;
         }
     }
     changeBusinessMoney = (money: number) => {
-        if(this.state.stats){
+        if (this.state.stats) {
             this.state.stats.businessBalance = money;
         }
     }
-// WAREHOUSE
+    // WAREHOUSE
     setWarehouseOrderAmount = (amount: number) => {
         this.state.orderAmount = amount;
     } // кол-во товара на заказ
@@ -88,8 +88,8 @@ class BusinessStatsStore {
     } // обновить кол-во товара на складе
     setOrdersList = (id: number) => {
         const CHECK = this.state.oredersId.indexOf(id);
-        CHECK === -1 ? this.state.oredersId.push(id) : 
-        store.state.oredersId.splice(CHECK, 1);
+        CHECK === -1 ? this.state.oredersId.push(id) :
+            store.state.oredersId.splice(CHECK, 1);
         this.setWarehouseResultPrice();
     } // добавить/удалить выбранный номер товара из массива
 
@@ -99,29 +99,29 @@ class BusinessStatsStore {
         this.state.resultPrice = 0;
     }
 
-// PRODUCTS
-    setProductsItems = (products: IItem[]) => 
-    this.state.products.items = products;
-    setProductsIrlItems = (products: IItem[]) => 
-    this.state.products.irlItems = products;
+    // PRODUCTS
+    setProductsItems = (products: IItem[]) =>
+        this.state.products.items = products;
+    setProductsIrlItems = (products: IItem[]) =>
+        this.state.products.irlItems = products;
     setProductsActiveBlock = (num: number) => // смена блока по нажатию
-    this.state.products.activeBlock = num;
+        this.state.products.activeBlock = num;
     setProductStatus = (id: number, status: boolean) => {
         this.state.products.type === 0 ?
-        this.state.products.items[id].status = status :
-        this.state.products.irlItems[id].status = status
+            this.state.products.items[id].status = status :
+            this.state.products.irlItems[id].status = status
     }
     setProductPrice = (type: number, id: number, price: number) => {
-        if(type === 0) this.state.products.irlItems[id].price = price;
-        if(type === 1) this.state.products.items[id].price = price;
+        if (type === 0) this.state.products.irlItems[id].price = price;
+        if (type === 1) this.state.products.items[id].price = price;
     }
     setProductsType = (type: number) => {
         this.state.products.type = type;
         this.state.products.activeBlock = -1;
     }
 
-// ADVANCE 
-    setAdvance = (advance: IAdvanceItem[]) => this.state.advance.items = advance; 
+    // ADVANCE 
+    setAdvance = (advance: IAdvanceItem[]) => this.state.advance.items = advance;
     // смена блока по нажатию
     setAdvanceActiveBlock = (num: number) => {
         this.state.advance.activeBlock = num;
@@ -129,7 +129,7 @@ class BusinessStatsStore {
     setAdvanceStatus = (id: number, status: boolean) => {
         this.state.advance.items[id].status = status;
     }
-// STAFF
+    // STAFF
     setStaff = (staff: IStaff) => this.state.staff = staff;
     setStaffStatsDate = (type: number) => {
         this.state.staffStatsDate = type;
@@ -150,52 +150,52 @@ class BusinessStatsStore {
         this.state.staffPrizeAmount = prize;
     }
 
-//============================   Front Trigger   =============================
-// STATS
+    //============================   Front Trigger   =============================
+    // STATS
     changeBusinessStatus = () => {
         const status = this.state?.stats?.businessStatus;
         // @ts-ignore
-        window.frontTrigger(`business-stats.advance-change_status`, status );
-    }   
+        window.frontTrigger(`business-stats.advance-change_status`, status);
+    }
     statsWithdrawMoney = (money: number) => {
         // @ts-ignore
-        window.frontTrigger(`business-stats.stats-withdraw`, money );
+        window.frontTrigger(`business-stats.stats-withdraw`, money);
     }
     statsDepositMoney = (money: number) => {
         // @ts-ignore
-        window.frontTrigger(`business-stats.stats-deposit`, money );
+        window.frontTrigger(`business-stats.stats-deposit`, money);
     }
-// WAREHOUSE
+    // WAREHOUSE
     buyProducts = () => {
         const amount = this.state.orderAmount;
         const ids = this.state.oredersId;
         // @ts-ignore
-        window.frontTrigger(`business-stats.warehouse-buy_items`, ids, amount );
+        window.frontTrigger(`business-stats.warehouse-buy_items`, ids, amount);
     }
-//PRODUCTS
+    //PRODUCTS
     saveProductData = () => {
         const id = this.state.products.activeBlock;
         const { type } = this.state.products;
-        const changes = type === 0 ? this.state.products.items[id] : 
-        this.state.products.irlItems[id];   
+        const changes = type === 0 ? this.state.products.items[id] :
+            this.state.products.irlItems[id];
         // @ts-ignore
-        window.frontTrigger(`business-stats.products-changes`, id, type, changes );
+        window.frontTrigger(`business-stats.products-changes`, id, type, changes);
     }
     kickStaff = (id: number) => { // уволить сотрудника
         // @ts-ignore
         window.frontTrigger(`business-stats.staff-kick`, id);
     }
-// ADVANCE
+    // ADVANCE
     buyAdvance = (advanceId: number) => { // купить улучшение
         // @ts-ignore
-        window.frontTrigger(`business-stats.advance-buy`, advanceId );
+        window.frontTrigger(`business-stats.advance-buy`, advanceId);
     }
-// STAFF
+    // STAFF
     staffPrize = (id: number) => {
         // @ts-ignore
-        window.frontTrigger(`business-stats.staff-prize`, 
-        id, 
-        this.state.staffPrizeAmount);
+        window.frontTrigger(`business-stats.staff-prize`,
+            id,
+            this.state.staffPrizeAmount);
     }
 }
 const store = new BusinessStatsStore()

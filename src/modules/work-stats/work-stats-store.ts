@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx'
 import { IState, IWorkStats } from './models'
 
 class WorkStatsStore {
-  constructor () {
+  constructor() {
     makeAutoObservable(this, {}, { deep: true })
   }
 

@@ -1,7 +1,7 @@
-import List from "../list/list";
+import List from "../list";
 // import Heading from "../heading/heading";
 // import Text from "../text/text";
-import Variant from "../variant/variant";
+import Variant from "../variant";
 
 export const HowToStart = () => {
   const array:string[] = ['eeeeee', 'rttete', 'fasfasf', 'sadarq', 'wqerqwr'];

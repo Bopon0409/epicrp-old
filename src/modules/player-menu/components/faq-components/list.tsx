@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import '../faq-components.scss';
+import './faq-components.scss';
 const LETTERS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 
 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 

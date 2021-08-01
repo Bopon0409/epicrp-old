@@ -7,8 +7,8 @@ class GovPassportCameraStore {
     }
 
     state: IState = {
-     show: false,
-     activeKey: null
+        show: false,
+        activeKey: null
     }
     setShow = (state: boolean) => this.state.show = state;
 
@@ -37,8 +37,8 @@ class GovPassportCameraStore {
         }, 100);
     }
 
-    changeActiveKey = ( key: KeyCodes | null) => this.state.activeKey = key;
-//============================   Front Trigger   =============================
+    changeActiveKey = (key: KeyCodes | null) => this.state.activeKey = key;
+    //============================   Front Trigger   =============================
 }
 
 const store = new GovPassportCameraStore();

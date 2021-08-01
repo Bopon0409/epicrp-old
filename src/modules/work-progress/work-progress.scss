@@ -48,7 +48,11 @@
 
         .progress {
           height: 100%;
-          background: linear-gradient(80.65deg, rgba(230, 150, 30, 0.9) 6.97%, rgba(242, 201, 76, 0.9) 92.8%);
+          background: linear-gradient(
+            80.65deg,
+            rgba(230, 150, 30, 0.9) 6.97%,
+            rgba(242, 201, 76, 0.9) 92.8%
+          );
           box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
           border-radius: 13px;
         }

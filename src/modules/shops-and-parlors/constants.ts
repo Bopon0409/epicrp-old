@@ -96,28 +96,28 @@ export const SectionImages = [
     ],
     [
         {
-        name: 'Левая рука',
-        image: RightPalm,
+            name: 'Левая рука',
+            image: RightPalm,
         },
         {
-        name: 'Правая рука',
-        image: LeftPalm,
+            name: 'Правая рука',
+            image: LeftPalm,
         },
         {
-        name: 'Торс',
-        image: Body,
+            name: 'Торс',
+            image: Body,
         },
         {
-        name: 'Спина',
-        image: Back,
+            name: 'Спина',
+            image: Back,
         },
         {
-        name: 'Голова',
-        image: Head,
+            name: 'Голова',
+            image: Head,
         },
         {
-        name: 'Ноги',
-        image: Legs,
+            name: 'Ноги',
+            image: Legs,
         }
     ]
 ]

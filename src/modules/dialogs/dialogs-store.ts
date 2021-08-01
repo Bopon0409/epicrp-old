@@ -1,8 +1,8 @@
 import { makeAutoObservable } from 'mobx'
-import { IState, IData }      from './models'
+import { IState, IData } from './models'
 
 class TattooParlorStore {
-  constructor () {
+  constructor() {
     makeAutoObservable(this, {}, { deep: true })
   }
 

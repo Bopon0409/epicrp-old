@@ -5,9 +5,9 @@ import { BackgroundTier }                   from '../constants'
 import { useState, useEffect } from 'react'
 
 const STEP = -194 // шаг, задаётся в px
-const SCROLL_START_TIME = 1000 // время до начала скролла
-const SCROLL_TIME = 2 * 1000 // время самолго скролла
-const TIME_FOR_WAIT_AFTER_OPEN = 1000 // время ожидания, после прокрутки
+const SCROLL_START_TIME = 3 * 1000 // время до начала скролла
+const SCROLL_TIME = 10 * 1000 // время самолго скролла
+const TIME_FOR_WAIT_AFTER_OPEN = 4 * 1000 // время ожидания, после прокрутки
 
 export const LuckyCase = observer(() => {
   const {

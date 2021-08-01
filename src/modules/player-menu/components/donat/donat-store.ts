@@ -107,7 +107,6 @@ class DonatStore {
   checkPlayerDonatMoney = (itemId: number) => {
     // @ts-ignore
     window.frontTrigger('player-menu.donat.tryBuy', itemId);
-
   }
 
   // конвертировать донат валюту в игровую

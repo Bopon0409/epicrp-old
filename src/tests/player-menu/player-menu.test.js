@@ -45,11 +45,11 @@ const setDonatData = () => window.trigger('player-menu.donat', jsonDonatData);
 
 // загрузить массив с предметами в кейс
 const setCaseData = () => 
-  window.trigger('player-menu.case-content', jsonCaseData);
+  window.trigger('player-menu.donat.case-content', jsonCaseData);
 
 // задать выигышный номер (индекс)
 const setWinnerIndex = () => 
-  window.trigger('player-menu.winner-index', 15);
+  window.trigger('player-menu.donat.winner-index', 15);
 
 // проверка на наличие донат валюты (хватает ли её)
 const checkDonatCoins = () => 
@@ -63,5 +63,6 @@ const setQuestsData = () => window.trigger('player-menu.quests', jsonQuestsData)
 
 window.test.playerMenu = {
   setActive, setStatsData, sendAdminMsg, adminConnected,
-  reportClose, setSettingsData, setQuestsData, setDonatData, setCaseData
+  reportClose, setSettingsData, setQuestsData, setDonatData, setCaseData,
+  setWinnerIndex, checkDonatCoins
 }

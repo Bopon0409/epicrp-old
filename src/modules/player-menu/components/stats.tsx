@@ -116,11 +116,11 @@ export const Stats = observer(() => {
               </div>
               <div className='line'>
                 <span>Банковская карта #1</span>
-                <span>${priceFormat(!cards[0] ? 0 : cards[0])}</span>
+                <span>${cards.length >= 1 ? priceFormat(cards[0]) : 0}</span>
               </div>
               <div className='line'>
                 <span>Банковская карта #2</span>
-                <span>${priceFormat(!cards[1] ? 0 : cards[1])}</span>
+                <span>${cards.length >= 2 ? priceFormat(cards[1]) : 0}</span>
               </div>
               <div className='line'>
                 <span>Страховка</span>
