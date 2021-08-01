@@ -10,7 +10,7 @@ const List = observer(( props: { textArray: string[] } ) => {
         props.textArray ? props.textArray.map((variant, id) => {
           const str = `${LETTERS[id]}. ${variant}`
           return(
-            <div className='faq-list_variant'>
+            <div className='faq-list_variant' key={id}>
               {str}
             </div>
           )

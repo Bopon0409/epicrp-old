@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { observer } from "mobx-react-lite";
 import { donatStore } from "../donat-store";
 import EpicLogoSVG from "../../../img/EpicLogo.svg";
 import { TypesOfShadow } from "../constants";
-import cn from 'classnames';
+import cn from "classnames";
 
 export const MainPage = observer(() => {
-  const [convertInput, setConvertInput] = useState('');
+  const [convertInput, setConvertInput] = useState("");
   const { playerName, operationsHistry, donatProducts } = donatStore.state;
   const {
     setPage,
@@ -14,7 +14,8 @@ export const MainPage = observer(() => {
     checkPlayerDonatMoney,
     convertDonatToMoney,
     callCaseContent,
-    coinCourse  } = donatStore;
+    coinCourse,
+  } = donatStore;
 
   // покупка продукта, если это кейс, то перебросит на 1-ую страницу
   const BuyProduct = (itemId: number) => {
@@ -28,20 +29,19 @@ export const MainPage = observer(() => {
   };
   // попытка ковертации денег
   const tryConvertMoney = () => {
-    if(+convertInput > 0)
-      convertDonatToMoney(+convertInput)
-  }
+    if (+convertInput > 0) convertDonatToMoney(+convertInput);
+  };
   // возвращает +money, 0, или -money
   const transformMoneyToString = (money: number) => {
-    let newMoney = '0';
-    if(money > 0) newMoney = `+${money}`;
-    else if(money < 0) newMoney = `${money}`;
+    let newMoney = "0";
+    if (money > 0) newMoney = `+${money}`;
+    else if (money < 0) newMoney = `${money}`;
     return newMoney;
-  }
+  };
   // депозит
   const deposit = () => {
-    console.log('deposit-btn');
-  }
+    console.log("deposit-btn");
+  };
 
   return (
     <div className="main-page">
@@ -54,7 +54,9 @@ export const MainPage = observer(() => {
             <img src={EpicLogoSVG} alt="" />
           </div>
         </div>
-        <div className="top_up-btn" onClick={() => deposit()}>Пополнить</div>
+        <div className="top_up-btn" onClick={() => deposit()}>
+          Пополнить
+        </div>
         <div className="coins-history-block">
           <span>История ECoin</span>
           <div className="coins-history">
@@ -62,10 +64,16 @@ export const MainPage = observer(() => {
               return (
                 <div className="history-el" key={id}>
                   <span className="history-el__type">{operation.type}</span>
-                  <span className={cn('history-el__amount', 
-                  {'red': operation.amount < 0}, 
-                  {'green': operation.amount > 0})}
-                  > {transformMoneyToString(operation.amount)} </span>
+                  <span
+                    className={cn(
+                      "history-el__amount",
+                      { red: operation.amount < 0 },
+                      { green: operation.amount > 0 }
+                    )}
+                  >
+                    {" "}
+                    {transformMoneyToString(operation.amount)}{" "}
+                  </span>
                   <span className="history-el__date">{operation.date}</span>
                 </div>
               );
@@ -101,7 +109,9 @@ export const MainPage = observer(() => {
                 Курс обмена: 1ECoin = ${coinCourse}
               </span>
             </div>
-            <div className="convert-btn" onClick={() => tryConvertMoney()}>Конвертировать</div>
+            <div className="convert-btn" onClick={() => tryConvertMoney()}>
+              Конвертировать
+            </div>
           </div>
           <div className="moves-block">
             <div className="donat-warehouse-btn" onClick={() => setPage(4)}>

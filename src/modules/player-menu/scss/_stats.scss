@@ -263,6 +263,11 @@
             line-height: 24px;
             transition: all 0.1s ease-out;
 
+            & > img{
+              height: 32px;
+              width: 32px;
+            }
+
             &:hover{
               color: black;
               background-color: #f2c94c;

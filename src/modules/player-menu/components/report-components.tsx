@@ -1,4 +1,3 @@
-import React          from 'react'
 import { observer }   from 'mobx-react-lite'
 import Loader         from 'react-loader-spinner'
 import { store }      from '../player-menu-store'

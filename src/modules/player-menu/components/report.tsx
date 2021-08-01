@@ -1,4 +1,3 @@
-import React           from 'react'
 import { observer }    from 'mobx-react-lite'
 import { ReportAside } from './report-aside'
 import { store }       from '../player-menu-store'

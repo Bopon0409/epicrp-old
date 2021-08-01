@@ -5,21 +5,21 @@ import EpicLogoSVG from "../../../img/EpicLogo.svg";
 export const PrizePage = observer(() => {
   const { prizeMove, setPage, prize } = donatStore;
   const { coins } = donatStore.state;
-  
+
   const OpenAgain = () => {
     setPage(1);
-  }
+  };
   const OpenMainMenu = () => {
-    prizeMove('sell')
+    prizeMove("sell");
     setPage(0);
-  }
+  };
 
-  return(
-    <div className='donat-prize-page'>
-      <div className="player-menu_btn-back"
-      onClick={() => setPage(0)}
-      >Вернуться в меню </div>
-      <div className='donat-prize-page-content'>
+  return (
+    <div className="donat-prize-page">
+      <div className="player-menu_btn-back" onClick={() => setPage(0)}>
+        Вернуться в меню{" "}
+      </div>
+      <div className="donat-prize-page-content">
         <div className="upper-block">
           <span>Кейс "Удачи"</span>
           <div className="donat_and_warehouse">
@@ -34,29 +34,40 @@ export const PrizePage = observer(() => {
           </div>
         </div>
 
-        <span className='donat-prize_compliment'>Поздравляем!</span>
+        <span className="donat-prize_compliment">Поздравляем!</span>
 
-        <div className='donat-prize_item'>
-          <div className='donat-prize_item-bg' />
-          <div className="donat-prize_item-img">
-            {/* [here will img] */}
-          </div>
+        <div className="donat-prize_item">
+          <div className="donat-prize_item-bg" />
+          <div className="donat-prize_item-img">{/* [here will img] */}</div>
 
-          <div className='donat-prize_item-about'>
-            <div className='donat-prize_item-about__your-prize'>Ваш выйгрыш</div>
-            <span className="donat-prize_item-about__item-name">{prize.name}</span>
-            <span className="donat-prize_item-about__item-comment">{prize.comment}</span>
+          <div className="donat-prize_item-about">
+            <div className="donat-prize_item-about__your-prize">
+              Ваш выйгрыш
+            </div>
+            <span className="donat-prize_item-about__item-name">
+              {prize.name}
+            </span>
+            <span className="donat-prize_item-about__item-comment">
+              {prize.comment}
+            </span>
           </div>
         </div>
 
         <div className="donat-prize_buttons">
-          <div className='donat-prize_buttons__sell'
-          onClick={() => OpenMainMenu()}>Продать</div>
-          <div className="donat-prize_buttons__openAgain"
-          onClick={() => OpenAgain()}
-          >Открыть ещё</div>
+          <div
+            className="donat-prize_buttons__sell"
+            onClick={() => OpenMainMenu()}
+          >
+            Продать
+          </div>
+          <div
+            className="donat-prize_buttons__openAgain"
+            onClick={() => OpenAgain()}
+          >
+            Открыть ещё
+          </div>
         </div>
       </div>
     </div>
-  )
-})
+  );
+});

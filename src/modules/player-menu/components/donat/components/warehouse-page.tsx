@@ -1,19 +1,20 @@
 import { observer } from "mobx-react-lite";
 import { donatStore } from "../donat-store";
-import { ItemTiers, WarehouseItems } from "../constants";
+import { ItemTiers } from "../constants";
 import { BackgroundTier } from "../constants";
-import cn from 'classnames';
+import cn from "classnames";
 
 export const DonateWarehouse = observer(() => {
   const { prizeWarehouse } = donatStore.state;
-  const { setWarehouseActiveItem, warehouseActiveItem, prizeMove,
-  setPage } = donatStore;
+  const { setWarehouseActiveItem, warehouseActiveItem, prizeMove, setPage } =
+    donatStore;
 
-  console.log(prizeWarehouse)
+  console.log(prizeWarehouse);
   return (
     <div className="donat-warehouse-wrapper">
-      <div className="player-menu_btn-back"
-      onClick={() => setPage(0)}>Вернуться в меню </div>
+      <div className="player-menu_btn-back" onClick={() => setPage(0)}>
+        Вернуться в меню{" "}
+      </div>
       <div className="donat-warehouse">
         <span className="page-name">Склад выйгрыша</span>
         <span className="your-prizes">Ваши выйгранные призы</span>
@@ -22,21 +23,21 @@ export const DonateWarehouse = observer(() => {
             {prizeWarehouse.map((item, id) => {
               return (
                 <div
-                  className={cn(
-                    "warehouse-items__item", 
-                    {'warehouse-item--active': id === warehouseActiveItem})}
+                  className={cn("warehouse-items__item", {
+                    "warehouse-item--active": id === warehouseActiveItem,
+                  })}
                   key={id}
                   onClick={() => setWarehouseActiveItem(id)}
                 >
-                    <div
-                      className="donatItem-bg"
-                      style={BackgroundTier[item.tier]}
-                    />
-                    <div className="donatItem-img"></div>
-                    <span className='donatItem-name'>
-                      Элемент одежды “Майка LGBT”
-                    </span>
-                  </div>
+                  <div
+                    className="donatItem-bg"
+                    style={BackgroundTier[item.tier]}
+                  />
+                  <div className="donatItem-img"></div>
+                  <span className="donatItem-name">
+                    Элемент одежды “Майка LGBT”
+                  </span>
+                </div>
               );
             })}
           </div>
@@ -50,8 +51,8 @@ export const DonateWarehouse = observer(() => {
               )}
           </div>
 
-          {(warehouseActiveItem >= 0 &&
-            warehouseActiveItem < prizeWarehouse.length) && (
+          {warehouseActiveItem >= 0 &&
+            warehouseActiveItem < prizeWarehouse.length && (
               <div className="warehouse-about">
                 <span className="warehouse-about__name">
                   {prizeWarehouse[warehouseActiveItem].name}
@@ -66,10 +67,10 @@ export const DonateWarehouse = observer(() => {
                   </span>
                 </div>
                 <div className="warehouse-about__buttons">
-                  <div className="take_prize" onClick={() => prizeMove('take')}>
+                  <div className="take_prize" onClick={() => prizeMove("take")}>
                     Забарть приз
                   </div>
-                  <div className="sell_prize" onClick={() => prizeMove('sell')}>
+                  <div className="sell_prize" onClick={() => prizeMove("sell")}>
                     Продать приз
                   </div>
                 </div>
