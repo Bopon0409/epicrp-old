@@ -1,5 +1,3 @@
-export type TEquipmentSlot = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
-export type TInventoryId = 0 | 1 | 2 | 3 | 4 | 5 | 6
 // 0 - инвентарь
 // 1 - обмен мой
 // 2 - обмен чужой
@@ -7,6 +5,13 @@ export type TInventoryId = 0 | 1 | 2 | 3 | 4 | 5 | 6
 // 4 - багажник
 // 5 - шкаф
 // 6 - админ
+
+export type TInventoryId = 0 | 1 | 2 | 3 | 4 | 5 | 6
+export type TData = [IItem[], IItem[], IItem[], IItem[], IItem[], IItem[], IItem[]]
+export type TModalActiveBtn = 'use' | 'separate' | 'remove'
+export type TModalUseBtn = 'use' | 'equip' | 'take-off'
+export type TEquipmentSlot = 201 | 202 | 203 | 204 | 205 | 206 | 207 | 208 |
+  209 | 210 | 211 | 212
 export type TInventoryPage =
   'equipment'
   | 'swap'
@@ -15,15 +20,17 @@ export type TInventoryPage =
   | 'closet'
   | 'admin'
 
-export interface IItemPosition {
-  idInventory: TInventoryId
+export interface TPosition {
   idSlot: number
+  idInventory: TInventoryId
 }
 
 export interface TModal {
   x: number
   y: number
-  itemPosition: IItem
+  activeBtn: TModalActiveBtn | null
+  separateRange: number
+  position: TPosition
 }
 
 export interface IItem {
@@ -33,6 +40,8 @@ export interface IItem {
   quantity: number
   weight: number
   equipmentSlot: TEquipmentSlot | null
+  fastSlot: boolean
+  bagType: 1 | 2 | 3 | null
   usable: boolean
   name: string
   description: string
@@ -57,11 +66,11 @@ export interface ITrade {
 export interface IState {
   page: TInventoryPage | null
 
-  data: [IItem[], IItem[], IItem[], IItem[], IItem[], IItem[], IItem[]]
+  data: TData
   trunk: ITrunk
   trade: ITrade
 
-  dndItem: IItemPosition | null
+  dndItem: TPosition | null
   adminSearch: string
   modal: TModal | null
   indicators: [number, number, number]
