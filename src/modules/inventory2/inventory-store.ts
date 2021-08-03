@@ -97,36 +97,47 @@ class InventoryStore {
     }) || null
   }
 
+  //===============================   CHECKS   =================================
+
+  canEquip = (item: IItem, { idInventory }: TPosition): boolean => {
+    return (item.equipmentSlot || item.fastSlot) && idInventory === 0
+  }
+
+  isEquipped = (item: IItem): boolean => {
+    return item.idSlot <= 101 && item.idSlot >= 212
+  }
+
+  canUse = (item: IItem, { idInventory }: TPosition): boolean => {
+    return item.usable && idInventory === 0
+  }
+
+  canSeparate = (item: IItem, { idInventory }: TPosition): boolean => {
+    return item.quantity > 1 && idInventory < 4
+  }
+
+  canRemove = (item: IItem, { idInventory }: TPosition) => {
+    return idInventory < 4
+  }
+
   //================================   MODAL   =================================
 
   modalOpen = (x: number, y: number, position: TPosition) => {
-    this.state.modal = { x, y, activeBtn: null, separateRange: 0, position }
+    const item = this.getItem(position)
+    if (item) this.state.modal = {
+      x, y, activeBtn: null, separateRange: 0, position, item
+    }
   }
 
   modalClose = () => this.state.modal = null
 
-  getUseButton = (position: TPosition): TModalUseBtn | undefined => {
-    const item = this.getItem(position)
-    if (item && position.idInventory === 0) {
-      if (this.isItemEquipped(item, position.idInventory)) return 'take-off'
-      if (item.fastSlot || item.equipmentSlot) return 'equip'
-      if (item.usable) return 'use'
-    }
-  }
+  get modalUseBtn (): TModalUseBtn | null {
+    if (!this.state.modal) return null
+    const { item, position } = this.state.modal
 
-  isSeparateButton = (position: TPosition): boolean => {
-    const { idInventory } = position
-    const item = this.getItem(position)
-    if (item) {
-      const check1 = idInventory !== 1 && idInventory !== 2 && idInventory !== 6
-      const check2 = item.quantity > 0
-      return check1 && check2
-    } else return false
-  }
-
-  isRemoveButton = (position: TPosition): boolean => {
-    const { idInventory } = position
-    return idInventory !== 1 && idInventory !== 2 && idInventory !== 6
+    if (this.isEquipped(item)) return 'take-off'
+    else if (this.canEquip(item, position)) return 'equip'
+    else if (this.canUse(item, position)) return 'use'
+    else return null
   }
 
   modalSetActiveBtn = (btn: TModalActiveBtn) => {
@@ -134,7 +145,7 @@ class InventoryStore {
     this.state.modal.activeBtn = this.state.modal.activeBtn !== btn ? btn : null
   }
 
-  modalSetSeparateRange = (range: number) => {
+  modalSetRange = (range: number) => {
     if (this.state.modal) this.state.modal.separateRange = range
   }
 

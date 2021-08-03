@@ -1,9 +1,9 @@
 // 0 - инвентарь
-// 1 - обмен мой
-// 2 - обмен чужой
-// 3 - склад
-// 4 - багажник
-// 5 - шкаф
+// 1 - склад
+// 2 - багажник
+// 3 - шкаф
+// 4 - обмен мой
+// 5 - обмен чужой
 // 6 - админ
 
 export type TInventoryId = 0 | 1 | 2 | 3 | 4 | 5 | 6
@@ -31,6 +31,7 @@ export interface TModal {
   activeBtn: TModalActiveBtn | null
   separateRange: number
   position: TPosition
+  item: IItem
 }
 
 export interface IItem {
