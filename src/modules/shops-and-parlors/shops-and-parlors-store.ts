@@ -1,12 +1,12 @@
 import { makeAutoObservable } from 'mobx'
-import { IMoney }             from '../payment/models'
-import { IState, IData }      from './models'
+import { IMoney } from '../payment/models'
+import { IState, IData } from './models'
 
 type TMethod = 'card' | 'cash';
 type TCardId = string | null;
 
 class TattooParlorStore {
-  constructor () {
+  constructor() {
     makeAutoObservable(this, {}, { deep: true })
   }
 
@@ -76,10 +76,10 @@ class TattooParlorStore {
   payAction = (method: TMethod, cardId: TCardId) => {
     window.frontTrigger(
       'clothes-shop.buy', {
-        cardId,
-        method
-        // item: this.state.actives
-      }
+      cardId,
+      method
+      // item: this.state.actives
+    }
     )
   }
 }

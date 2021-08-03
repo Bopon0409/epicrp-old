@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import '../faq-components.scss';
+import './faq-components.scss';
 const LETTERS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 
 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
@@ -10,7 +10,7 @@ const List = observer(( props: { textArray: string[] } ) => {
         props.textArray ? props.textArray.map((variant, id) => {
           const str = `${LETTERS[id]}. ${variant}`
           return(
-            <div className='faq-list_variant'>
+            <div className='faq-list_variant' key={id}>
               {str}
             </div>
           )

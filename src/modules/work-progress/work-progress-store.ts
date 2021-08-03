@@ -1,8 +1,8 @@
 import { makeAutoObservable } from 'mobx'
-import { IState, IProgress }  from './models'
+import { IState, IProgress } from './models'
 
 class ProgressStore {
-  constructor () {
+  constructor() {
     makeAutoObservable(this, {}, { deep: true })
   }
 

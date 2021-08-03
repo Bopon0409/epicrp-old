@@ -1,14 +1,14 @@
-import { makeAutoObservable }      from 'mobx'
+import { makeAutoObservable } from 'mobx'
 import { IContent, IData, IState } from './models'
 import {
   busContent,
   taxiContent,
   carrierContent,
   emptyContent
-}                                  from './content'
+} from './content'
 
 class WorkStore {
-  constructor () {
+  constructor() {
     makeAutoObservable(this, {}, { deep: true })
   }
 
@@ -43,7 +43,7 @@ class WorkStore {
     if (data.car !== undefined) this.state.car = data.car
   }
 
-  get content (): IContent {
+  get content(): IContent {
     switch (this.state.type) {
       case 1:
         return taxiContent

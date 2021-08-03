@@ -1,58 +1,68 @@
 import { observer } from "mobx-react-lite";
-import cn from 'classnames';
+import cn from "classnames";
 import { store } from "../business-stats-store";
 import { PConst } from "../constants";
 
-
 export const ProductsItemsEdit = observer(() => {
-    const { saveProductData } = store;
-    const { products } = store.state;
+  const { saveProductData } = store;
+  const { products } = store.state;
 
-    const items = products.type === 0 ? products.irlItems : products.items;
+  const items = products.type === 0 ? products.irlItems : products.items;
 
-    const inputHandler = (event: any) => {
-        const { value } = event.target;
-        if (value.length <= 5) 
-        store.setProductPrice(products.type, products.activeBlock, +value);
-      }
+  const inputHandler = (event: any) => {
+    const { value } = event.target;
+    if (value.length <= 5)
+      store.setProductPrice(products.type, products.activeBlock, +value);
+  };
 
-    return(
-        <div className="products__item_edit">
-        <div className="block-name">{PConst.RightBlock.blockName}</div>
-        {products.activeBlock === -1 && (
-          <div className="state--passive">{PConst.RightBlock.passiveState}</div>
-        )}
-        {products.activeBlock >= 0 && (
+  return (
+    <div className="products__item_edit">
+      <div className="block-name">{PConst.RightBlock.blockName}</div>
+      {products.activeBlock === -1 && (
+        <div className="state--passive">{PConst.RightBlock.passiveState}</div>
+      )}
+      {products.activeBlock >= 0 && (
         <div className="state--active">
           <div className="name">{items[products.activeBlock].name}</div>
           <div className="price">Цена</div>
-          <div className='inputBlock'>
-            <input type="number" 
-            placeholder='Введите новую цену на товар...'  
-            onChange={inputHandler}
-            value={products.type === 0 ? 
-              products.irlItems[products.activeBlock].price :
-              products.items[products.activeBlock].price
-            }
+          <div className="inputBlock">
+            <input
+              type="number"
+              placeholder="Введите новую цену на товар..."
+              onChange={inputHandler}
+              value={
+                products.type === 0
+                  ? products.irlItems[products.activeBlock].price
+                  : products.items[products.activeBlock].price
+              }
             />
           </div>
-          <div className='state-text'>Доступ к покупке</div>
-          <div className='buttons'>
-            <div 
-            className={cn('active-btn', 
-            {'active': items[products.activeBlock].status})}
-            onClick={() => store.setProductStatus(products.activeBlock, true)}
-            >Доступен для покупки</div>
-            <div className={cn('passive-btn', 
-            {'active': !items[products.activeBlock].status})}
-            onClick={() => store.setProductStatus(products.activeBlock, false)}
-            >Не доступен для покупки</div>
+          <div className="state-text">Доступ к покупке</div>
+          <div className="buttons">
+            <div
+              className={cn("active-btn", {
+                active: items[products.activeBlock].status,
+              })}
+              onClick={() => store.setProductStatus(products.activeBlock, true)}
+            >
+              Доступен для покупки
+            </div>
+            <div
+              className={cn("passive-btn", {
+                active: !items[products.activeBlock].status,
+              })}
+              onClick={() =>
+                store.setProductStatus(products.activeBlock, false)
+              }
+            >
+              Не доступен для покупки
+            </div>
           </div>
-          <div className='save-changes'
-          onClick={ () => saveProductData() }
-          >Сохранить</div>
+          <div className="save-changes" onClick={() => saveProductData()}>
+            Сохранить
+          </div>
         </div>
-        )}
-      </div>
-    )
-})
+      )}
+    </div>
+  );
+});

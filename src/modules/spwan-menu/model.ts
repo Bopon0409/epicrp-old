@@ -1,4 +1,4 @@
-export interface IState{
+export interface IState {
     active: boolean,
     activeBlock: number | null,
     points: boolean[],

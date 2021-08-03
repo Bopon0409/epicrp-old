@@ -115,6 +115,7 @@ justify-content: center;
   & > div:first-child{
    margin-bottom: 31px;
    font-weight: 600;
+   font-weight: bold;
    font-size: 22px;
    line-height: 30px;
   }
@@ -134,6 +135,7 @@ justify-content: center;
    }
 
    &:hover{
+     background-color: #F2C94C;
      color: black;
      transition: all .1s ease-out;
    }

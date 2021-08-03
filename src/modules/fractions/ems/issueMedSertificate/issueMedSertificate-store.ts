@@ -1,8 +1,8 @@
 import { makeAutoObservable } from 'mobx'
-import { IState, SendData }   from './models'
+import { IState, SendData } from './models'
 
 class EMSIssueMedicalSertificate {
-  constructor () {
+  constructor() {
     makeAutoObservable(this, {}, { deep: true })
   }
 

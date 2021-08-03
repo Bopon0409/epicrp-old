@@ -52,8 +52,8 @@ export const PlayerMenu = observer(() => {
       em.removeHandler("player-menu.report.close", adminCloseReport);
       em.removeHandler("player-menu.report.connected", reportAdminConnected);
       em.removeHandler("player-menu.donat", setDonat);
-      em.removeHandler("player-menu.case-content", setCaseContent);
-      em.removeHandler("player-menu.winner-index", setWinnerIndex);
+      em.removeHandler("player-menu.donat.case-content", setCaseContent);
+      em.removeHandler("player-menu.donat.winner-index", setWinnerIndex);
       em.removeHandler("player-menu.donat.check-money", setWinnerIndex);
       document.removeEventListener("keyup", keyUpHandler);
     };

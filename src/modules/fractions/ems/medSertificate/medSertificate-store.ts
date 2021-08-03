@@ -19,7 +19,7 @@ class EMSMedicalSertificate {
     setActive = (state: boolean) => this.state.active = state;
     setData = (data: IData) => this.state.data = data;
 
-//============================   Front Trigger   =============================
+    //============================   Front Trigger   =============================
 }
 
 const store = new EMSMedicalSertificate();

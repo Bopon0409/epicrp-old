@@ -1,4 +1,3 @@
-import React           from 'react'
 import { observer }    from 'mobx-react-lite'
 import { store }       from '../player-menu-store'
 import {
@@ -6,6 +5,7 @@ import {
   CircularProgressbarWithChildren
 }                      from 'react-circular-progressbar'
 import { priceFormat } from '../../../services/services'
+import CopySVG from '../img/copy.svg';
 
 const ReferralText = `ИГРОК ПОЛУЧИВШИЙ ВАШ РЕФЕРАЛЬНЫЙ КОД
 ДОЛЖЕН УКАЗАТЬ ЕГО ПРИ РЕГИСТРАЦИИ СВОЕГО АККАУНТА
@@ -116,11 +116,11 @@ export const Stats = observer(() => {
               </div>
               <div className='line'>
                 <span>Банковская карта #1</span>
-                <span>${priceFormat(!cards[0] ? 0 : cards[0])}</span>
+                <span>${cards.length >= 1 ? priceFormat(cards[0]) : 0}</span>
               </div>
               <div className='line'>
                 <span>Банковская карта #2</span>
-                <span>${priceFormat(!cards[1] ? 0 : cards[1])}</span>
+                <span>${cards.length >= 2 ? priceFormat(cards[1]) : 0}</span>
               </div>
               <div className='line'>
                 <span>Страховка</span>
@@ -138,7 +138,9 @@ export const Stats = observer(() => {
           <div className='referral_code'>
             <div className='referral_code_content'>{referralCode}</div>
             <div className="referral_code_copy"
-            onClick={() => navigator.clipboard.writeText(referralCode)}>Копировать</div>  
+            onClick={() => navigator.clipboard.writeText(referralCode)}>
+              <img src={CopySVG} alt="" />  
+            </div>  
           </div>
         </div>
       </div>
