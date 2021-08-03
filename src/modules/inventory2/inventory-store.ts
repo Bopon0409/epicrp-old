@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 import {
-  IItem, IState, TInventoryId, TPosition,
-  TModalActiveBtn, TInventoryPage, TModalUseBtn
+  IItem, IState, TInventoryId, TPosition, TModalActiveBtn,
+  TInventoryPage, TModalUseBtn, IPageProps, TIndicators, THotKeys
 }                             from './model'
 
 class InventoryStore {
@@ -16,27 +16,30 @@ class InventoryStore {
 
     modal: null,
     dndItem: null,
+    adminSearchInput: '',
     adminSearch: '',
     indicators: [0, 0, 0],
+    hotKeys: ['1', '2', '3', '4'],
+    maxWeight: 10,
 
-    trunk: {
-      name: '',
-      size: 0,
-      maxWeight: 0
-    },
+    trunk: { name: '', size: 0, maxWeight: 0 },
+    warehouse: { size: 0, maxWeight: 0 },
 
     trade: {
-      name: '',
-      money1: 0,
-      money2: 0,
-      maxMoney: 0,
-      btnReady1: false,
-      btnReady2: false,
-      btnFinish: false
+      name: '', money1: 0, money2: 0, maxMoney: 0,
+      btnReady1: false, btnReady2: false, btnFinish: false
     }
   }
 
   setPage = (page: TInventoryPage) => this.state.page = page
+
+  setTrunkData = (trunk: IPageProps) => this.state.trunk = trunk
+
+  setIndicators = (data: TIndicators) => this.state.indicators = data
+
+  setHotKeys = (hotKeys: THotKeys) => this.state.hotKeys = hotKeys
+
+  setMaxWeight = (weight: number) => this.state.maxWeight = weight
 
   //===========================   CLIENT TRIGGERS   ============================
 
@@ -76,11 +79,9 @@ class InventoryStore {
 
   //===============================   GETTERS   ================================
 
-  isItemEquipped = (item: IItem, idInventory: TInventoryId): boolean => {
-    const { idSlot, equipmentSlot, fastSlot } = item
-    const isEquip = equipmentSlot && idSlot >= 201 && idSlot <= 212
-    const isFastSlot = fastSlot && idSlot >= 101 && idSlot <= 104
-    return (isEquip || isFastSlot) && idInventory === 0
+  get bagType (): 1 | 2 | 3 | null {
+    return this.state.data[0].find((item) => item.idSlot === 212)?.bagType
+      || null
   }
 
   getWeight (idInventory: TInventoryId): number {
@@ -88,6 +89,18 @@ class InventoryStore {
       const weight = item.quantity * item.weight
       return sum + (!this.isItemEquipped(item, idInventory) ? weight : 0)
     }, 0)
+  }
+
+  get maxWeight () {
+    const { bagType, state: { maxWeight } } = this
+    return bagType ? [5, 7, 10][bagType - 1] : maxWeight
+  }
+
+  isItemEquipped = (item: IItem, idInventory: TInventoryId): boolean => {
+    const { idSlot, equipmentSlot, fastSlot } = item
+    const isEquip = equipmentSlot && idSlot >= 201 && idSlot <= 212
+    const isFastSlot = fastSlot && idSlot >= 101 && idSlot <= 104
+    return (isEquip || isFastSlot) && idInventory === 0
   }
 
   getItem = (position: TPosition): IItem | null => {
@@ -103,8 +116,8 @@ class InventoryStore {
     return (item.equipmentSlot || item.fastSlot) && idInventory === 0
   }
 
-  isEquipped = (item: IItem): boolean => {
-    return item.idSlot <= 101 && item.idSlot >= 212
+  isEquipped = (item: IItem, { idInventory }: TPosition): boolean => {
+    return item.idSlot <= 101 && item.idSlot >= 212 && idInventory === 0
   }
 
   canUse = (item: IItem, { idInventory }: TPosition): boolean => {
@@ -116,7 +129,7 @@ class InventoryStore {
   }
 
   canRemove = (item: IItem, { idInventory }: TPosition) => {
-    return idInventory < 4
+    return idInventory === 0
   }
 
   //================================   MODAL   =================================
@@ -134,7 +147,7 @@ class InventoryStore {
     if (!this.state.modal) return null
     const { item, position } = this.state.modal
 
-    if (this.isEquipped(item)) return 'take-off'
+    if (this.isEquipped(item, position)) return 'take-off'
     else if (this.canEquip(item, position)) return 'equip'
     else if (this.canUse(item, position)) return 'use'
     else return null
@@ -146,7 +159,9 @@ class InventoryStore {
   }
 
   modalSetRange = (range: number) => {
-    if (this.state.modal) this.state.modal.separateRange = range
+    if (this.state.modal && this.state.modal.item.quantity >= range) {
+      this.state.modal.separateRange = range
+    }
   }
 
   //=============================   ITEM ACTIONS   =============================
@@ -167,18 +182,43 @@ class InventoryStore {
     window.frontTrigger(`inventory.move`, positionFrom, positionTo)
   }
 
-  //=============================   ITEM ACTIONS   =============================
+  //================================   ADMIN   =================================
 
-  setAdminSearch = (event: any) => {
-    this.state.adminSearch = event.target.value.toLowerCase()
+  setAdminSearchValue = (event: any) => {
+    const { value } = event.target
+    if (value < 30) this.state.adminSearchInput = value.toLowerCase()
+  }
+
+  setAdminSearch = (isSearch: boolean) => {
+    isSearch ? this.state.adminSearch = this.state.adminSearchInput : ''
   }
 
   adminSearchData = (): IItem[] => {
     const { adminSearch } = this.state
-    return this.state.data[6].filter((item) => {
+    return adminSearch.length ? this.state.data[6].filter((item) => {
       return item.name.toLowerCase().includes(adminSearch)
-    })
+    }) : this.state.data[6]
   }
+
+  //================================   TRADE   =================================
+
+  setButtonReady1 = (value: boolean) => this.state.trade.btnReady1 = value
+  setButtonReady2 = (value: boolean) => this.state.trade.btnReady2 = value
+
+  setTradeMoney1 = (event: any) => {
+    const value = Number(event.target.value)
+    if (!isNaN(value) && value <= this.state.trade.maxMoney)
+      this.state.trade.money1 = value
+  }
+
+  setTradeMoney2 = (value: number) => this.state.trade.money2 = value
+
+  setButtonFinish = (value: boolean) => {
+    const { btnReady1, btnReady2 } = this.state.trade
+    if (btnReady1 && btnReady2 && value) this.state.trade.btnFinish = true
+    else if (!value) this.state.trade.btnFinish = false
+  }
+
 }
 
 const store = new InventoryStore()

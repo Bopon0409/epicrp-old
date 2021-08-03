@@ -99,7 +99,7 @@ class ElectricianStore {
     return result
   }
 
-  //=================================   Item   =================================
+  //=================================   Icon   =================================
 
   getItem = (position: TPosition, data: IItem[]): IItem | null => {
     const [x, y] = position

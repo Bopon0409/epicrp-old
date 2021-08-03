@@ -1,0 +1,51 @@
+[
+  {
+    "id": "7",
+    "type": "dialog",
+    "title": "title",
+    "text": "text",
+    "time": 500
+  },
+  {
+    "id": "1",
+    "type": "success",
+    "title": "Успешное действие",
+    "text": "Вы успешно починили электрощит и получили зарплату $350",
+    "time": 5
+  },
+  {
+    "id": "2",
+    "type": "error",
+    "title": "Неудачное действие",
+    "text": "Вы неудачно починили электрощит и вас уебало током",
+    "time": 5
+  },
+  {
+    "id": "3",
+    "type": "help",
+    "title": "title",
+    "text": "text",
+    "time": 5
+  },
+  {
+    "id": "4",
+    "type": "report",
+    "title": "title",
+    "text": "text",
+    "time": 5
+  },
+  {
+    "id": "5",
+    "type": "system",
+    "title": "title",
+    "text": "text",
+    "time": 5
+  },
+  {
+    "id": "6",
+    "type": "msg",
+    "title": "title",
+    "text": "text",
+    "time": 5
+  }
+]

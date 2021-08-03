@@ -40,10 +40,9 @@ import './fractions/ems/issue-med-sertificate/issue-med-sertificate.test'
 import './fractions/ems/med-sertificate/med-sertificate.test'
 import './fractions/government/government-passport-camera/government-passport-camera.test'
 import './phone/phone.test'
+import './alerts/alerts.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.hud.setActive(true)
-  window.test.hud.setAllData()
-  window.test.hud.testAlerts()
+  window.test.alerts.test()
 }

@@ -40,6 +40,7 @@ import { Dialogs }                    from '../dialogs/dialogs'
 import { Fractions }                  from '../fractions/Fractions'
 import { Phone }                      from '../phone/phone'
 import 'react-input-range/lib/css/index.css'
+import { Alerts }                     from '../alerts/alerts'
 
 export default function App () {
   const devModules = (
@@ -90,6 +91,7 @@ export default function App () {
       <DownloadConfirmationScreen />
       <Dialogs />
       <Phone />
+      <Alerts />
     </>
   )
 }

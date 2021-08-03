@@ -6,9 +6,11 @@
 // 5 - обмен чужой
 // 6 - админ
 
+export type TIndicators = [number, number, number]
+export type THotKeys = [string, string, string, string]
 export type TInventoryId = 0 | 1 | 2 | 3 | 4 | 5 | 6
 export type TData = [IItem[], IItem[], IItem[], IItem[], IItem[], IItem[], IItem[]]
-export type TModalActiveBtn = 'use' | 'separate' | 'remove'
+export type TModalActiveBtn = 'use' | 'separate' | 'remove' | 'get'
 export type TModalUseBtn = 'use' | 'equip' | 'take-off'
 export type TEquipmentSlot = 201 | 202 | 203 | 204 | 205 | 206 | 207 | 208 |
   209 | 210 | 211 | 212
@@ -48,8 +50,8 @@ export interface IItem {
   description: string
 }
 
-export interface ITrunk {
-  name: string
+export interface IPageProps {
+  name?: string
   size: number
   maxWeight: number
 }
@@ -66,13 +68,18 @@ export interface ITrade {
 
 export interface IState {
   page: TInventoryPage | null
-
   data: TData
-  trunk: ITrunk
+
+  trunk: IPageProps
+  warehouse: IPageProps
   trade: ITrade
 
-  dndItem: TPosition | null
+  adminSearchInput: string
   adminSearch: string
+
   modal: TModal | null
-  indicators: [number, number, number]
+  indicators: TIndicators
+  maxWeight: number
+  hotKeys: THotKeys
+  dndItem: TPosition | null
 }
