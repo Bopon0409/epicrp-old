@@ -1,5 +1,6 @@
 import { makeAutoObservable }         from 'mobx'
 import { IAlert, IAlertData, IState } from './model'
+import { v4 as uuid4 }                from 'uuid'
 
 class AlertsStore {
   constructor () {
@@ -11,6 +12,8 @@ class AlertsStore {
     alerts: [],
     alertsQueue: []
   }
+
+  setAfkStatus = (status: boolean) => this.state.afkStatus = status
 
   push = (alertData: IAlertData) => {
     if (this.state.alerts.length < 2) {
@@ -32,7 +35,7 @@ class AlertsStore {
 
   getAlert = (alertData: IAlertData): IAlert => {
     const alert = {
-      ...alertData,
+      ...alertData, id: uuid4(),
       timer: setInterval(() => {
         if (this.state.afkStatus) return
         else this.decAlertTime(alert.id)

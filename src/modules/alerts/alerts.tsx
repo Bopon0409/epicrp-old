@@ -11,11 +11,16 @@ export const Alerts = observer(() => {
 
   useEffect(() => {
     const { EventManager: em } = window
-    em.addHandler('alert.push', store.push)
-    document.addEventListener('keydown', store.keyPressHandler)
+    const { push, setAfkStatus, keyPressHandler } = store
+
+    em.addHandler('alert.push', push)
+    em.addHandler('alert.afk', setAfkStatus)
+    document.addEventListener('keydown', keyPressHandler)
+
     return () => {
-      em.removeHandler('alert.push', store.push)
-      document.removeEventListener('keydown', store.keyPressHandler)
+      em.removeHandler('alert.push', push)
+      em.removeHandler('alert.afk', setAfkStatus)
+      document.removeEventListener('keydown', keyPressHandler)
     }
   }, [])
 
