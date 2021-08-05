@@ -45,6 +45,8 @@ import './alerts/alerts.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.createPers.setData()
-  window.test.createPers.setActive(true)
+  window.test.stateAgency.setData()
+  window.test.stateAgency.setShow(true)
+  // window.test.createPers.setData()
+  // window.test.createPers.setActive(true)
 }

@@ -100,7 +100,7 @@
           color: rgba(255, 255, 255, 0.5);
         }
 
-        & > div:nth-child(n) {
+        & > div {
           height: 100%;
           display: flex;
           justify-content: center;
@@ -168,8 +168,7 @@
       &_bg {
         position: absolute;
         inset: 0;
-        background: url("./img/bg.png");
-        background-repeat: no-repeat;
+        background: url('./img/bg.png') no-repeat;
         background-size: 100% 100%;
         z-index: -2;
       }
@@ -209,28 +208,32 @@
           &:hover {
             transition: all 0.28s ease-in;
             transform: scale(1.252);
-            box-shadow: 0px 0px 100px 7px #ffffff;
+            box-shadow: 0 0 100px 7px #ffffff;
             cursor: pointer;
           }
         }
 
         & > div:nth-child(1) {
-          background: url("./img/house_n.png");
+          background: url('./img/house_n.png');
         }
+
         & > div:nth-child(2) {
-          background: url("./img/house_b.png");
+          background: url('./img/house_b.png');
         }
+
         & > div:nth-child(3) {
-          background: url("./img/house_c.png");
+          background: url('./img/house_c.png');
         }
+
         & > div:nth-child(4) {
-          background: url("./img/house_s.png");
+          background: url('./img/house_s.png');
         }
 
         & > div:nth-child(n) {
           margin-right: 126px;
           border-radius: 10px;
         }
+
         & > div:last-child {
           margin-right: 0;
         }
@@ -248,9 +251,11 @@
         line-height: 24px;
       }
     }
+
     ////////////////////////////////////////////////////////////////////////////
     /////////////////////////////// HOUSE PAGE /////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
+
     .state-agency-house {
       margin-top: 101px;
       height: 671px;
@@ -306,7 +311,7 @@
               transition: all 0.15s ease-out;
 
               &:first-child {
-                margin-top: 0px;
+                margin-top: 0;
                 margin-bottom: 24px;
               }
               &:nth-child(n) {
@@ -319,7 +324,7 @@
                 height: 70px;
                 color: rgba(255, 255, 255, 1);
                 background: linear-gradient(90.01deg, #e6961e 0%, #f2c94c 100%);
-                box-shadow: 0px 0px 25px #ecc02c;
+                box-shadow: 0 0 25px #ecc02c;
                 transition: all 0.15s ease-in;
                 cursor: pointer;
               }
@@ -334,7 +339,7 @@
                 #e6961e 0%,
                 #f2c94c 100%
               ) !important;
-              box-shadow: 0px 0px 25px #ecc02c !important;
+              box-shadow: 0 0 25px #ecc02c !important;
               transition: all 0.15s ease-in;
               font-size: 22px;
             }
@@ -421,7 +426,7 @@
                   .field-strip {
                     height: 100%;
                     background: #ecc02c;
-                    box-shadow: 0px 0px 15px #ecc02c;
+                    box-shadow: 0 0 15px #ecc02c;
                     border-radius: 2px;
                   }
                 }
@@ -468,7 +473,6 @@
 
             & > span:last-child {
               font-weight: 500;
-              font-size: 30px;
               color: #ecc02c;
               font-size: 50px;
             }
@@ -487,7 +491,7 @@
             transition: all 0.24s ease-out;
 
             &:hover {
-              box-shadow: 0px 0px 50px #ecc02c;
+              box-shadow: 0 0 50px #ecc02c;
               transition: all 0.24s ease-in;
               cursor: pointer;
             }
@@ -529,7 +533,7 @@
           .button {
             display: flex;
             margin-right: 62px;
-            font-family: Nunito;
+            font-family: Nunito, sans-serif;
             font-size: 14px;
             line-height: 20px;
             color: rgba(255, 255, 255, 0.93);
@@ -596,7 +600,7 @@
 @media (min-width: 2560px) {
   .state-agency{
     .wrapper{
-      zoom: 1.4
+      zoom: 1.3
     }
   }
 }

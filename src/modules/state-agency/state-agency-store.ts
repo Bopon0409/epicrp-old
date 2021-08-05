@@ -34,6 +34,7 @@ class StateAgency {
   }
   // загрузить данные в интерфейс 'Агенство недвижимости'
   setData = (data: IData) => this.state.data = data;
+
   // сделать новый дом активным
   setNewActiveHouse = (type: 'next' | 'prevent') => {
     if (type === 'next' && this.state.activeHouse < this.state.houses.length - 1) {

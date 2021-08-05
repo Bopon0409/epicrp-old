@@ -6,6 +6,14 @@ import { priceFormat } from "../../../services/services";
 export const House = observer(() => {
   const { activeHouse, marginTop, houses } = StateAgencyStore.state;
   const { setNewActiveHouse, triggerHouseMoves } = StateAgencyStore;
+
+  const StateAgencyButtons = [
+    ["BACKSPACE", "ВЕРНУТЬСЯ НАЗАД"],
+    ["Q", "ПРЕДЫДУЮЩИЙ ДОМ"],
+    ["E", "СЛЕДУЮЩИЙ ДОМ"],
+    ["ENTER", "ПРИОБРЕСТИ ДОМ"],
+  ];
+
   const HouseMouseClick = (id: number) => {
     const Different = activeHouse - id;
     if (Different === 1) setNewActiveHouse("prevent");
@@ -137,13 +145,6 @@ export const House = observer(() => {
   );
 });
 
-const StateAgencyButtons = [
-  ["BACKSPACE", "ВЕРНУТЬСЯ НАЗАД"],
-  ["Q", "ПРЕДЫДУЮЩИЙ ДОМ"],
-  ["E", "СЛЕДУЮЩИЙ ДОМ"],
-  ["ENTER", "ПРИОБРЕСТИ ДОМ"],
-];
-
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////// STICKS //////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -151,12 +152,12 @@ const StateAgencyButtons = [
 const ReturnEmptySticks = () => {
   return (
     <>
-      <div className="empty-stick"></div>
-      <div className="empty-stick"></div>
-      <div className="empty-stick"></div>
-      <div className="empty-stick"></div>
-      <div className="empty-stick"></div>
-      <div className="empty-stick"></div>
+      <div className='empty-stick'/>
+      <div className='empty-stick'/>
+      <div className='empty-stick'/>
+      <div className='empty-stick'/>
+      <div className='empty-stick'/>
+      <div className='empty-stick'/>
     </>
   );
 };
@@ -165,8 +166,8 @@ const _StripsAmount = 6;
 const _StripsLength = _StripLength * _StripsAmount;
 
 const ReturnFullSticks = (now: number, max: number) => {
-  const procents = now / max;
-  let stripLength = _StripsLength * procents;
+  const percents = now / max;
+  let stripLength = _StripsLength * percents;
   const StripLengthStyle = [
     { width: "0px", borderRadius: "2px" },
     { width: "0px", borderRadius: "2px" },

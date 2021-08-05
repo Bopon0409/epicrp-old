@@ -17,7 +17,7 @@ export interface IData {
   houseClasses: IHouseClasses[]
 }
 
-export interface IHouseClasses{
+export interface IHouseClasses {
   name: string,
   url: string,
   hint: string
