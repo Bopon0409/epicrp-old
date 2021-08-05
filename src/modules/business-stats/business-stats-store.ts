@@ -50,30 +50,38 @@ class BusinessStatsStore {
 
     // STATS
     setStats = (stats: IStats) => this.state.stats = stats;
+
     setActiveBlock = (num: number) => this.state.activeBlock = num;
+
     setActiveTypeGraphics = (num: number) => {
         this.state.activeTypeGraphics = num;
     }
+
     setBusinessStatus = (status: boolean) => {
         if (this.state.stats) this.state.stats.businessStatus = status;
     }
+
     setStatsOperationType = (type: number) => {
         this.state.statsOperationType = type;
     }
+
     changePlayerMoney = (money: number) => {
         if (this.state.stats) {
             this.state.stats.playerMoney = money;
         }
     }
+
     changeBusinessMoney = (money: number) => {
         if (this.state.stats) {
             this.state.stats.businessBalance = money;
         }
     }
+
     // WAREHOUSE
     setWarehouseOrderAmount = (amount: number) => {
         this.state.orderAmount = amount;
     } // кол-во товара на заказ
+
     setWarehouseResultPrice = () => {
         let sum = 0;
         this.state.oredersId.map((order) => {
