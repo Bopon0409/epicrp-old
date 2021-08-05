@@ -1,4 +1,4 @@
-import React                          from 'react'
+import React, { useEffect }           from 'react'
 import Inventory                      from '../inventory'
 import Background                     from '../bg'
 import Auth                           from '../auth'
@@ -44,6 +44,11 @@ import 'react-input-range/lib/css/index.css'
 import { Alerts }                     from '../alerts/alerts'
 
 export default function App () {
+
+  useEffect(() => {
+    window.alt.emit('ready')
+  }, [])
+
   const devModules = (
     <>
       <TestModal />
