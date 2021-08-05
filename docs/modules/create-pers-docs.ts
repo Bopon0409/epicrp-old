@@ -9,13 +9,11 @@ type TLeather = 1 | 2 | 3 | 4 | 5 | 6
 export interface CreatePersDocs {
   // Окончание создания персонажа
   'character.created': []
+  'character.validation': {
+    name: string, surname: string, sex: 'male' | 'female', age: number
+  },
   // Изменение параметров персонажа
   'character.update': [
-    [valueName: 'name', value: string],
-    [valueName: 'surname ', value: string],
-    [valueName: 'sex ', value: 'male' | 'female'],
-    [valueName: 'age', value: number],
-
     // Родители (иконки родителей в public/images/create-pers/parents)
     [valueName: 'mother', value: TMother],
     [valueName: 'father', value: TFather],

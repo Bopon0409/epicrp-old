@@ -1,6 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 import mainStore              from './create-pers-store'
 import { randomInt }          from '../../../services/services'
+import { hairsId }            from './data'
 
 const initState = {
   eyebrows: { value: 0, valueName: 'eyebrows', title: 'Брови' },
@@ -35,14 +36,23 @@ class HairStore {
   random = () => {
     const isMale = mainStore.state.step1.sex === 'male'
     const colors = mainStore.state.serverData.colorHair
+    const hairs = isMale ? hairsId[0] : hairsId[1]
+    const randomHair = hairs[randomInt(0, hairs.length - 1)]
+
     const color1 = colors[randomInt(0, colors.length - 1)].color
     const color2 = colors[randomInt(0, colors.length - 1)].color
     const color3 = colors[randomInt(0, colors.length - 1)].color
-    this.onValueChange(color1, 'colorEyebrows')
-    if (isMale) this.onValueChange(color2, 'colorBeard')
-    this.onValueChange(color3, 'colorHairstyle')
+
     this.onValueChange(randomInt(0, 33), 'eyebrows')
-    if (isMale) this.onValueChange(randomInt(0, 28), 'beard')
+    this.onValueChange(color1, 'colorEyebrows')
+
+    this.onValueChange(randomHair, 'hairstyle')
+    this.onValueChange(color3, 'colorHairstyle')
+
+    if (isMale) {
+      this.onValueChange(color2, 'colorBeard')
+      this.onValueChange(randomInt(0, 28), 'beard')
+    }
   }
 
   onValueChange = (value, valueName) => {

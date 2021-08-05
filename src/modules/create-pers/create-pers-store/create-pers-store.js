@@ -35,18 +35,16 @@ class CreatePersStore {
   }
 
   random = () => {
-    leatherStore.random()
+    // leatherStore.random()
     eyesStore.random()
     faceStore.random()
     hairStore.random()
+    clothesStore.random()
 
-    const motherNum = randomInt(0, mothers.length - 1)
-    const fatherNum = randomInt(0, fathers.length - 1)
-
-    this.setMotherName(motherNames[motherNum])
-    this.setFatherName(fatherNames[fatherNum])
-    this.setActiveMother(motherNum)
-    this.setActiveFather(fatherNum)
+    const motherId = randomInt(0, mothers.length - 1)
+    const fatherId = randomInt(0, fathers.length - 1)
+    this.motherChangeHandler(mothers[motherId], motherId)
+    this.fatherChangeHandler(fathers[fatherId], fatherId)
 
     this.sliderChangeHandler(randomInt(0, 100) / 100, 1)
     this.sliderChangeHandler(randomInt(0, 100) / 100, 2)
@@ -123,12 +121,15 @@ class CreatePersStore {
     if (Number(age) < 14 || Number(age) > 100)
       return this.setAgeErr('Возраст не может быть больше 100 и меньше 14')
 
-    window.frontTrigger('character.update', 'name', name)
-    window.frontTrigger('character.update', 'surname', surname)
-    window.frontTrigger('character.update', 'sex', sex)
-    window.frontTrigger('character.update', 'age', age)
+    window.frontTrigger('character.validation', { name, surname, sex, age })
+  }
 
-    this.setStep(2)
+  validationResult = (result) => {
+    if (result) this.setStep(2)
+    else {
+      this.setName('')
+      this.setSurname('')
+    }
   }
 
   // ================================   STEP2   ================================

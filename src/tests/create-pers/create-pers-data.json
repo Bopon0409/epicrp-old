@@ -25,11 +25,11 @@
     {
       "id": "1",
       "colors": [
-        { "color": "#ffffe0" },
-        { "color": "#DC143C" },
-        { "color": "#008000" },
+        { "color": "#ffffff" },
         { "color": "#0000CD" },
-        { "color": "#ffffff" }
+        { "color": "#008000" },
+        { "color": "#DC143C" },
+        { "color": "#ffffe0" }
       ]
     },
     {

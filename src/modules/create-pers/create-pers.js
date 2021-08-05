@@ -13,12 +13,14 @@ export default observer(() => {
 
   useEffect(() => {
     const { EventManager: em } = window
-    const { setActive, setData } = store
+    const { setActive, setData, validationResult } = store
     em.addHandler('character.active', setActive)
     em.addHandler('character.data', setData)
+    em.addHandler('character.validation', validationResult)
     return () => {
       em.removeHandler('character.active', setActive)
       em.removeHandler('character.data', setData)
+      em.removeHandler('character.validation', validationResult)
     }
   }, [])
 
