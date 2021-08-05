@@ -3,9 +3,7 @@ type TFrontTrigger = (triggerName: string, ...args: any) => void
 
 interface IAlt {
   emit (eventName: string, ...args: any[]): void;
-
   off (eventName: string, listener: (...args: any[]) => void): void;
-
   on (eventName: string, listener: (...args: any[]) => void): void;
 }
 

@@ -10,7 +10,10 @@
 </body>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    if ('alt' in window) window.alt = alt
+    if ('alt' in window) {
+      window.alt = alt
+      alt.emit('ready')
+    }
   })
 </script>
 </html>

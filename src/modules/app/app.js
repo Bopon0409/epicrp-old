@@ -1,4 +1,4 @@
-import React, { useEffect }           from 'react'
+import React                          from 'react'
 import Inventory                      from '../inventory'
 import Background                     from '../bg'
 import Auth                           from '../auth'
@@ -40,16 +40,12 @@ import { Dialogs }                    from '../dialogs/dialogs'
 import { Fractions }                  from '../fractions/Fractions'
 import { Phone }                      from '../phone/phone'
 import { StateAgency }                from '../state-agency/state-agency'
-import 'react-input-range/lib/css/index.css'
 import { Alerts }                     from '../alerts/alerts'
+import 'react-input-range/lib/css/index.css'
 
 export default function App () {
-
-  useEffect(() => {
-    window.alt.emit('ready')
-  }, [])
-
-  const devModules = (
+  const isDevMode = process.env.NODE_ENV === 'development'
+  const devModules = isDevMode && (
     <>
       <TestModal />
       <Background />
