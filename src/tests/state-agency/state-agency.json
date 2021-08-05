@@ -1,0 +1,197 @@
+{
+  "name": "Sergey Selistrovskiy2",
+  "houses": [
+    {
+      "number": 22,
+      "rooms": 6,
+      "garageSpaces": 3,
+      "seats": 3,
+      "position": "Los Santos",
+      "tax": 55,
+      "price": 5555,
+      "houseType": "B"
+    },
+    {
+      "number": 222,
+      "rooms": 4,
+      "garageSpaces": 3,
+      "seats": 3,
+      "position": "Los Santos",
+      "tax": 55,
+      "price": 5235,
+      "houseType": "B"
+    },
+    {
+      "number": 25,
+      "rooms": 5,
+      "garageSpaces": 8,
+      "seats": 3,
+      "position": "Los Santos",
+      "tax": 55,
+      "price": 5535,
+      "houseType": "B"
+    },
+    {
+      "number": 122,
+      "rooms": 3,
+      "garageSpaces": 5,
+      "seats": 3,
+      "position": "Los Santos",
+      "tax": 55,
+      "price": 5556,
+      "houseType": "B"
+    },
+    {
+      "number": 22,
+      "rooms": 2,
+      "garageSpaces": 5,
+      "seats": 3,
+      "position": "Los Santos",
+      "tax": 55,
+      "price": 5235,
+      "houseType": "B"
+    },
+    {
+      "number": 25,
+      "rooms": 10,
+      "garageSpaces": 10,
+      "seats": 10,
+      "position": "Los Santos",
+      "tax": 55,
+      "price": 5535,
+      "houseType": "B"
+    },
+    {
+      "number": 122,
+      "rooms": 4,
+      "garageSpaces": 3,
+      "seats": 3,
+      "position": "Los Santos",
+      "tax": 55,
+      "price": 5556,
+      "houseType": "B"
+    },
+    {
+      "number": 22,
+      "rooms": 4,
+      "garageSpaces": 3,
+      "seats": 3,
+      "position": "Los Santos",
+      "tax": 55,
+      "price": 5235,
+      "houseType": "B"
+    },
+    {
+      "number": 25,
+      "rooms": 4,
+      "garageSpaces": 3,
+      "seats": 3,
+      "position": "Los Santos",
+      "tax": 55,
+      "price": 5535,
+      "houseType": "B"
+    },
+    {
+      "number": 122,
+      "rooms": 4,
+      "garageSpaces": 3,
+      "seats": 3,
+      "position": "Los Santos",
+      "tax": 55,
+      "price": 5556,
+      "houseType": "B"
+    },
+    {
+      "number": 22,
+      "rooms": 4,
+      "garageSpaces": 3,
+      "seats": 3,
+      "position": "Los Santos",
+      "tax": 55,
+      "price": 5235,
+      "houseType": "B"
+    },
+    {
+      "number": 25,
+      "rooms": 4,
+      "garageSpaces": 3,
+      "seats": 3,
+      "position": "Los Santos",
+      "tax": 55,
+      "price": 5535,
+      "houseType": "B"
+    },
+    {
+      "number": 122,
+      "rooms": 4,
+      "garageSpaces": 3,
+      "seats": 3,
+      "position": "Los Santos",
+      "tax": 55,
+      "price": 5556,
+      "houseType": "B"
+    },
+    {
+      "number": 18,
+      "rooms": 4,
+      "garageSpaces": 3,
+      "seats": 3,
+      "position": "Los Santos",
+      "tax": 55,
+      "price": 5655,
+      "houseType": "B"
+    },
+    {
+      "number": 23,
+      "rooms": 4,
+      "garageSpaces": 3,
+      "seats": 3,
+      "position": "Los Santos",
+      "tax": 55,
+      "price": 5555,
+      "houseType": "C"
+    },
+    {
+      "number": 24,
+      "rooms": 4,
+      "garageSpaces": 3,
+      "seats": 3,
+      "position": "Los Santos",
+      "tax": 55,
+      "price": 5555,
+      "houseType": "N"
+    },
+    {
+      "number": 28,
+      "rooms": 4,
+      "garageSpaces": 3,
+      "seats": 3,
+      "position": "Los Santos",
+      "tax": 55,
+      "price": 5555,
+      "houseType": "B"
+    }
+  ],
+  "houseClasses": [
+    {
+      "name": "N",
+      "url": "house_n.png",
+      "hint": "Недвижимость класса N - самый низший класс недвижимости. Основным отличием данного класса, является редкое присутствие гаражных мест. Для данного класа недвижимости характерна парковка транспорта рядом с домом."
+    },
+    {
+      "name": "B",
+      "url": "house_b.png",
+      "hint": "Недвижимость класса B"
+    },
+    {
+      "name": "C",
+      "url": "house_c.png",
+      "hint": "Недвижимость класса C"
+    },
+    {
+      "name": "S",
+      "url": "house_s.png",
+      "hint": "Недвижимость класса S"
+    }
+  ]
+}

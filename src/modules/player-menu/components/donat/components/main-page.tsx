@@ -11,9 +11,9 @@ export const MainPage = observer(() => {
   const {
     setPage,
     setActiveStoreProduct,
-    checkPlayerDonatMoney,
     convertDonatToMoney,
     coinCourse,
+    setConfirmWindowData
   } = donatStore;
 
   // покупка продукта, если это кейс, то перебросит на 1-ую страницу
@@ -22,7 +22,8 @@ export const MainPage = observer(() => {
     if (donatProducts[itemId].content) {
       setPage(1);
     } else {
-      checkPlayerDonatMoney(itemId);
+      const ITEM = donatProducts[itemId];
+      setConfirmWindowData(ITEM.name, ITEM.price.toString(), "buy");
     }
   };
   // попытка ковертации денег

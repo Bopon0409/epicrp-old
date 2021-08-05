@@ -3,7 +3,9 @@ import {
   IState,
   IDonatProduct,
   IOperation,
-  IDonatItem
+  IDonatItem,
+  IConfirmWindow,
+  TMoves
 } from './models';
 
 class DonatStore {
@@ -25,6 +27,19 @@ class DonatStore {
   };
   caseContent: IDonatItem[] = []; // содержимое кейса, который крутим
   transactionResult: boolean = false; // прошла ли транзакция
+  confirmWindow:IConfirmWindow = {
+    show: false,
+    text: [
+      'Вы действительно хотите приобрести',
+      'Автомобиль BMW m5 E60',
+      'Стоимость покупки составит',
+      '$450.000'
+    ],
+    buttons: [
+      ['Отмена', 'cancel'], []
+      // ['Приобрести', 'buy']
+    ]
+  }; // окно подтверждения
 
   prize: IDonatItem = {
     name: '', // название приза
@@ -146,6 +161,43 @@ class DonatStore {
     this.addPrizeInWarehouse(this.prize);
     this.warehouseActiveItem = this.state.prizeWarehouse.length - 1;
   }
+  
+  
+  setConfirmWindowData = (str1: string, str3: string, move: TMoves) => {
+    this.confirmWindow.text[1] = str1;
+    this.confirmWindow.text[3] = "$"+str3;
+    if(move === 'sell'){
+      this.confirmWindow.text[0] = "Вы действительно хотите продать";
+      this.confirmWindow.text[2] = "После продажи вы получите";
+      this.confirmWindow.buttons[1][0] = "Продать";
+      this.confirmWindow.buttons[1][1] = "sell";
+    } else if(move === 'buy'){
+      this.confirmWindow.text[0] = "Вы действительно хотите купить";
+      this.confirmWindow.text[2] = "Стоимость покупки составит";
+      this.confirmWindow.buttons[1][0] = "Купить";
+      this.confirmWindow.buttons[1][1] = "buy";
+    } else if(move === 'convert'){
+      this.confirmWindow.text[0] = "Вы действительно хотите конвертировать";
+      this.confirmWindow.text[2] = "После конвертации вы получите";
+      this.confirmWindow.buttons[1][0] = "Конвертировать";
+      this.confirmWindow.buttons[1][1] = "convert";
+    }
+    this.confirmWindow.show = true;
+  }
+
+  makeConfirmMove = () => {
+    const MOVE = this.confirmWindow.buttons[1][1];
+    if(MOVE === 'sell'){
+      if(this.page === 2) this.setPage(0);
+      this.prizeMove('sell');
+    }
+    if(MOVE === 'buy'){
+      this.checkPlayerDonatMoney(this.activeStoreProduct)
+    }
+    this.hideConfirmWindow();
+  }
+
+  hideConfirmWindow = () => this.confirmWindow.show = false;
 }
 
 const donatStore = new DonatStore();
