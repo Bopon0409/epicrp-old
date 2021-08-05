@@ -1,4 +1,10 @@
-import { IItem } from '../../src/modules/business-stats/model';
+export interface IItem {
+  name: string
+  id: number
+  amount: number
+  price: number
+  status: boolean
+}
 
 export interface BusinessStats {
   'business-stats.advance-change_status': [status: boolean], // открыть/закрыть бизнес

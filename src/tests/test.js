@@ -40,6 +40,7 @@ import './fractions/ems/issue-med-sertificate/issue-med-sertificate.test'
 import './fractions/ems/med-sertificate/med-sertificate.test'
 import './fractions/government/government-passport-camera/government-passport-camera.test'
 import './phone/phone.test'
+import './state-agency/state-agency.test'
 import './alerts/alerts.test'
 
 export default function curTest () {
