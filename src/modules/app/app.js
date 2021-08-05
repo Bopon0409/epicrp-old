@@ -39,6 +39,7 @@ import { DownloadConfirmationScreen } from '../jobs/truckers/download-confirmati
 import { Dialogs }                    from '../dialogs/dialogs'
 import { Fractions }                  from '../fractions/Fractions'
 import { Phone }                      from '../phone/phone'
+import { StateAgency }                from '../state-agency/state-agency'
 import 'react-input-range/lib/css/index.css'
 import { Alerts }                     from '../alerts/alerts'
 
@@ -91,6 +92,7 @@ export default function App () {
       <DownloadConfirmationScreen />
       <Dialogs />
       <Phone />
+      <StateAgency />
       <Alerts />
     </>
   )

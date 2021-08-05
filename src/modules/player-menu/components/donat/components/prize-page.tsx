@@ -3,15 +3,15 @@ import { donatStore } from "../donat-store";
 import EpicLogoSVG from "../../../img/EpicLogo.svg";
 
 export const PrizePage = observer(() => {
-  const { prizeMove, setPage, prize } = donatStore;
-  const { coins } = donatStore.state;
+  const { setPage, prize, warehouseActiveItem, setConfirmWindowData } = donatStore;
+  const { coins, prizeWarehouse } = donatStore.state;
 
   const OpenAgain = () => {
     setPage(1);
   };
   const OpenMainMenu = () => {
-    prizeMove("sell");
-    setPage(0);
+    const ITEM = prizeWarehouse[warehouseActiveItem];
+    setConfirmWindowData(ITEM.name, ITEM.sellPrice.toString(), 'sell')
   };
 
   return (

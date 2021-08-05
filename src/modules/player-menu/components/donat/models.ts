@@ -1,4 +1,5 @@
 export type TColors = "silver" | "gold" | "platinum" | "red" | "blue";
+export type TMoves = "sell" | "buy" | "convert"
 
 export interface IState {
   playerName: string,
@@ -27,4 +28,10 @@ export interface IDonatProduct {
   price: number,
   content: null | IDonatItem[],
   color: TColors
+}
+
+export interface IConfirmWindow{
+  show: boolean
+  text: string[],
+  buttons: [string[], string[]]
 }

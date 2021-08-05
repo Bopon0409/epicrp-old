@@ -6,10 +6,18 @@ import cn from "classnames";
 
 export const DonateWarehouse = observer(() => {
   const { prizeWarehouse } = donatStore.state;
-  const { setWarehouseActiveItem, warehouseActiveItem, prizeMove, setPage } =
-    donatStore;
+  const {
+    setWarehouseActiveItem,
+    warehouseActiveItem,
+    prizeMove,
+    setPage,
+    setConfirmWindowData,
+  } = donatStore;
 
-  console.log(prizeWarehouse);
+  const sellItem = () => {
+    const ITEM = prizeWarehouse[warehouseActiveItem];
+    setConfirmWindowData(ITEM.name, ITEM.sellPrice.toString(), "sell");
+  };
   return (
     <div className="donat-warehouse-wrapper">
       <div className="player-menu_btn-back" onClick={() => setPage(0)}>
@@ -70,7 +78,7 @@ export const DonateWarehouse = observer(() => {
                   <div className="take_prize" onClick={() => prizeMove("take")}>
                     Забарть приз
                   </div>
-                  <div className="sell_prize" onClick={() => prizeMove("sell")}>
+                  <div className="sell_prize" onClick={() => sellItem()}>
                     Продать приз
                   </div>
                 </div>

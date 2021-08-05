@@ -1,16 +1,16 @@
-@import "./components/scss/main-page";
-@import "./components/scss/warehouse-page";
-@import "./components/scss/lucky-case-page";
-@import "./components/scss/prize-page";
+@import './components/scss/main-page';
+@import './components/scss/warehouse-page';
+@import './components/scss/lucky-case-page';
+@import './components/scss/prize-page';
 
-.player-menu_btn-back{
+.player-menu_btn-back {
   position: absolute;
   right: 98px;
   top: -76px;
   width: 117px;
   height: 24px;
   border-radius: 5px;
-  border: 0.5px solid #FFFFFF;
+  border: 0.5px solid #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,8 +20,112 @@
   transition: all .12s ease-out;
   color: white;
 
-  &:hover{
+  &:hover {
     opacity: 1;
     transition: all .12s ease-in;
+  }
+}
+
+.donat-move_confirm {
+  position: absolute;
+  top: -130px;
+  left: 0;
+  z-index: 12;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(65, 65, 65, 0.25);
+  backdrop-filter: blur(15px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > div:last-child {
+    height: 333px;
+    width: 585px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .move_confirm-info_block {
+    height: 229px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    color: #ffffff;
+
+    & > span:nth-child(1) {
+      margin-top: 17px;
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 35px;
+    }
+
+    & > span:nth-child(2) {
+      margin-top: 7px;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 33px;
+      color: #f2c94c;
+    }
+
+    & > span:nth-child(3) {
+      margin-top: 17px;
+      font-weight: normal;
+      font-size: 22px;
+      line-height: 30px;
+    }
+
+    & > span:nth-child(4) {
+      margin-top: 17px;
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 30px;
+      color: #f2c94c;
+    }
+  }
+
+  .move_confirm-buttons {
+    height: 57px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    & > div:nth-child(n) {
+      height: 57px;
+      width: 244px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 30px;
+      color: white;
+      transition: all .16s ease-out;
+
+      &:hover {
+        transition: all .16s ease-in;
+      }
+    }
+
+    & > div:first-child {
+      background-color: #b42b2b;
+
+      &:hover {
+        box-shadow: 0 0 15px #b42b2b;
+      }
+    }
+
+    & > div:last-child {
+      background-color: #2bb466;
+
+      &:hover {
+        box-shadow: 0 0 15px #2bb466;
+      }
+    }
   }
 }
