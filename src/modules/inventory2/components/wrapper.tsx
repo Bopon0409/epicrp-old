@@ -1,8 +1,12 @@
 import React        from 'react'
 import { observer } from 'mobx-react-lite'
 
-export const Wrapper = observer(() => {
+export interface WrapperProps {
+  children: React.ReactNode
+}
+
+export const Wrapper = observer((props: WrapperProps) => {
   return (
-    <div></div>
+    <div className='wrapper'>{props.children}</div>
   )
 })

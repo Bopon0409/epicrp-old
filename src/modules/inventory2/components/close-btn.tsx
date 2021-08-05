@@ -3,6 +3,8 @@ import { observer } from 'mobx-react-lite'
 
 export const CloseBtn = observer(() => {
   return (
-    <div></div>
+    <div className='close-btn'>
+
+    </div>
   )
 })

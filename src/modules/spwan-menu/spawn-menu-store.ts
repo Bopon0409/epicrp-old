@@ -9,11 +9,11 @@ class SpawnMenuStore {
   state: IState = {
     active: false,
     activeBlock: null,
-    points: [],
+    points: [false, false, false, false],
     isCrime: false
   }
 
-  //============================   InsuranceClient Trigger   ============================
+  //=======================   InsuranceClient Trigger   ========================
 
   setActive = (active: boolean) => this.state.active = active;
   setActiveBlock = (num: number | null) => this.state.activeBlock = num;

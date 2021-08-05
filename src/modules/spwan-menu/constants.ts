@@ -1,5 +1,5 @@
 export const About: string = `При выборе спавна в личном 
-доме, вы потеряеете оружие, которое находится в руках.`;
+доме, вы потеряете оружие, которое находится в руках.`
 
 export const SPAWN_POINT_NAMES: string[] = [
   'МЕСТО ВЫХОДА',
@@ -15,4 +15,4 @@ export const SPAWN_POINT_BLOCK_TEXT: string[] = [
   'ВЫ НЕ СОСТОИТЕ ВО ФРАКЦИИ'
 ]
 
-export const BlockBackground: string = 'point_block-background';
+export const BlockBackground: string = 'point_block-background'

@@ -102,19 +102,24 @@ class BusinessStatsStore {
     // PRODUCTS
     setProductsItems = (products: IItem[]) =>
         this.state.products.items = products;
+
     setProductsIrlItems = (products: IItem[]) =>
         this.state.products.irlItems = products;
+
     setProductsActiveBlock = (num: number) => // смена блока по нажатию
         this.state.products.activeBlock = num;
+
     setProductStatus = (id: number, status: boolean) => {
         this.state.products.type === 0 ?
             this.state.products.items[id].status = status :
             this.state.products.irlItems[id].status = status
     }
+
     setProductPrice = (type: number, id: number, price: number) => {
         if (type === 0) this.state.products.irlItems[id].price = price;
         if (type === 1) this.state.products.items[id].price = price;
     }
+
     setProductsType = (type: number) => {
         this.state.products.type = type;
         this.state.products.activeBlock = -1;

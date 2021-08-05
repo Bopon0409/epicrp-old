@@ -33,15 +33,16 @@ class HairStore {
   clear = () => this.state = initState
 
   random = () => {
+    const isMale = mainStore.state.step1.sex === 'male'
     const colors = mainStore.state.serverData.colorHair
     const color1 = colors[randomInt(0, colors.length - 1)].color
     const color2 = colors[randomInt(0, colors.length - 1)].color
     const color3 = colors[randomInt(0, colors.length - 1)].color
     this.onValueChange(color1, 'colorEyebrows')
-    this.onValueChange(color2, 'colorBeard')
+    if (isMale) this.onValueChange(color2, 'colorBeard')
     this.onValueChange(color3, 'colorHairstyle')
     this.onValueChange(randomInt(0, 33), 'eyebrows')
-    this.onValueChange(randomInt(0, 28), 'beard')
+    if (isMale) this.onValueChange(randomInt(0, 28), 'beard')
   }
 
   onValueChange = (value, valueName) => {

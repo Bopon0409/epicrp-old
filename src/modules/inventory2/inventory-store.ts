@@ -202,6 +202,8 @@ class InventoryStore {
 
   //================================   TRADE   =================================
 
+  setTradeMaxMoney = (money: number) => this.state.trade.maxMoney = money
+
   setButtonReady1 = (value: boolean) => this.state.trade.btnReady1 = value
   setButtonReady2 = (value: boolean) => this.state.trade.btnReady2 = value
 
