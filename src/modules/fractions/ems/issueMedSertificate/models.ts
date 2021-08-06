@@ -1,9 +1,9 @@
 export interface IState {
-    active: boolean,
-    activeBlock: number
+  active: boolean
+  activeBlock: number
 }
 
-export interface SendData{
-    doctorResult: string,
-    type: number
+export interface SendData {
+  doctorResult: string
+  type: number
 }

@@ -1,14 +1,14 @@
 export interface IState {
-    active: boolean,
-    data: IData
+  active: boolean
+  data: IData
 }
 
 export interface IData {
-    name: string
+  name: string
 }
 
 export interface SendData {
-    name: string
-    playerComment: string
-    doctorComment: string
+  name: string
+  playerComment: string
+  doctorComment: string
 }

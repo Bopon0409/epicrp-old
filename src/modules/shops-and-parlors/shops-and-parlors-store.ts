@@ -2,11 +2,11 @@ import { makeAutoObservable } from 'mobx'
 import { IMoney } from '../payment/models'
 import { IState, IData } from './models'
 
-type TMethod = 'card' | 'cash';
-type TCardId = string | null;
+type TMethod = 'card' | 'cash'
+type TCardId = string | null
 
 class TattooParlorStore {
-  constructor() {
+  constructor () {
     makeAutoObservable(this, {}, { deep: true })
   }
 
@@ -29,17 +29,16 @@ class TattooParlorStore {
     }
   }
   // отбразить/скрыть интерфейс
-  setShow = (status: boolean) => this.state.show = status
+  setShow = (status: boolean) => (this.state.show = status)
   // задать данные для денег
-  setMoney = (money: IMoney) => this.state.money = money
+  setMoney = (money: IMoney) => (this.state.money = money)
   // задать основные данные для магазина/салона
   setData = (data: IData) => {
-    if (data.businessId !==
-      undefined) this.state.data.businessId = data.businessId
-    if (data.businessType !==
-      undefined) this.state.data.businessType = data.businessType
-    if (data.itemsList !==
-      undefined) this.state.data.itemsList = data.itemsList
+    if (data.businessId !== undefined)
+      this.state.data.businessId = data.businessId
+    if (data.businessType !== undefined)
+      this.state.data.businessType = data.businessType
+    if (data.itemsList !== undefined) this.state.data.itemsList = data.itemsList
     this.clearActives()
   }
   // выделение секции
@@ -74,13 +73,11 @@ class TattooParlorStore {
   }
   // оплата
   payAction = (method: TMethod, cardId: TCardId) => {
-    window.frontTrigger(
-      'clothes-shop.buy', {
+    window.frontTrigger('clothes-shop.buy', {
       cardId,
       method
       // item: this.state.actives
-    }
-    )
+    })
   }
 }
 

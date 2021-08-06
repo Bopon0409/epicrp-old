@@ -1,11 +1,21 @@
 import { makeAutoObservable } from 'mobx'
-import { scrollList }         from '../../services/services'
+import { scrollList } from '../../services/services'
 import {
-  IControlItem, IReportConnected, IReportMsg, IReportState, ISettingItem,
-  ISettingsData, ISettingsState, IState, IStats, IStatsData, IQuests,
-  IQuestData, IFAQ
-}                             from './model'
-import keyCodes               from '../../services/keyCodes.json'
+  IControlItem,
+  IReportConnected,
+  IReportMsg,
+  IReportState,
+  ISettingItem,
+  ISettingsData,
+  ISettingsState,
+  IState,
+  IStats,
+  IStatsData,
+  IQuests,
+  IQuestData,
+  IFAQ
+} from './model'
+import keyCodes from '../../services/keyCodes.json'
 
 class PlayerMenuStore {
   constructor () {
@@ -29,7 +39,11 @@ class PlayerMenuStore {
     online: ['', ''],
     bank: { cash: 0, cards: [0, 0], insurance: 0, credit: 0 },
     fraction: {
-      fractionName: '', rankName: '', salary: 0, lastRise: '', reprimands: 0
+      fractionName: '',
+      rankName: '',
+      salary: 0,
+      lastRise: '',
+      reprimands: 0
     },
     properties: [],
     referralCode: '',
@@ -65,9 +79,9 @@ class PlayerMenuStore {
     activeBlock: 0
   }
 
-  setActive = (active: boolean) => this.state.active = active
+  setActive = (active: boolean) => (this.state.active = active)
 
-  setMenuEl = (el: number) => this.state.currentMenuEl = el
+  setMenuEl = (el: number) => (this.state.currentMenuEl = el)
 
   keyUpHandler = (event: any) => {
     const { active, menuHandlerBlocked, currentMenuEl } = this.state
@@ -131,7 +145,7 @@ class PlayerMenuStore {
     if (keyCode === 17 && location === 2) keyCode = 163
 
     const { control, keyWaiting } = this.settingsState
-    const item = control.find((item) => item.name === keyWaiting)
+    const item = control.find(item => item.name === keyWaiting)
 
     if (item && this.setKeyCheck(keyCode)) {
       item.keyCode = keyCode
@@ -174,7 +188,7 @@ class PlayerMenuStore {
 
   //===============================   Reports   ================================
 
-  setReportBlock = (block: boolean) => this.reportState.sendMsgBlocked = block
+  setReportBlock = (block: boolean) => (this.reportState.sendMsgBlocked = block)
 
   get time (): string {
     return new Date().toLocaleTimeString().slice(0, -3)
@@ -188,11 +202,16 @@ class PlayerMenuStore {
     if (value.length <= 600) this.reportState.reportInput = value
   }
 
-  setReportRatings = (rating: number) => this.reportState.reportRatings = rating
+  setReportRatings = (rating: number) =>
+    (this.reportState.reportRatings = rating)
 
   // Игрок начинает диалог
   reportInit = (type: 'report' | 'question') => {
-    const { reportState: { reportInput: msg }, stats: { name }, time } = this
+    const {
+      reportState: { reportInput: msg },
+      stats: { name },
+      time
+    } = this
     const reportMsg: IReportMsg = { type: 'player_msg', name, msg, time }
     const reportConnected: IReportConnected = { type: 'player_connected', name }
     this.reportState.reportData.push(reportConnected, reportMsg)
@@ -204,15 +223,23 @@ class PlayerMenuStore {
 
   // Игрок отправляет сообщение
   reportMsgSend = () => {
-    const { reportState: { reportInput: msg }, stats: { name }, time } = this
+    const {
+      reportState: { reportInput: msg },
+      stats: { name },
+      time
+    } = this
     const reportMsg: IReportMsg = { type: 'player_msg', name, msg, time }
 
     if (!/^(|[a-zA-Zа-яА-Я0-9][a-zA-Zа-яА-Я0-9\s]*)$/.test(msg)) return
     if (this.reportState.sendMsgBlocked) {
       this.reportState.reportInput = ''
-      return window.trigger('hud.notify', JSON.stringify({
-        type: 'error', text: 'Отправка сообщений доступна раз в 15 секунд'
-      }))
+      return window.trigger(
+        'hud.notify',
+        JSON.stringify({
+          type: 'error',
+          text: 'Отправка сообщений доступна раз в 15 секунд'
+        })
+      )
     }
     if (!msg.length) return
 
@@ -235,7 +262,10 @@ class PlayerMenuStore {
 
   // Админ прислал сообщение
   adminMsgSend = (msg: string) => {
-    const { reportState: { reportAdminName: name }, time } = this
+    const {
+      reportState: { reportAdminName: name },
+      time
+    } = this
     if (name) {
       this.setReportBlock(false)
       const reportMsg: IReportMsg = { type: 'admin_msg', name, msg, time }
@@ -264,7 +294,7 @@ class PlayerMenuStore {
     if (event.keyCode === 13 && status === 'process') this.reportMsgSend()
   }
 
-//=================================   QUESTS   =================================
+  //=================================   QUESTS   =================================
   // назначить
   setQuests = (data: IQuestData) => {
     this.quests.data = data
@@ -272,7 +302,7 @@ class PlayerMenuStore {
   }
 
   // выделить квест (по нажатию на него)
-  setActiveQuest = (id: number) => this.quests.activeQuest = id
+  setActiveQuest = (id: number) => (this.quests.activeQuest = id)
 
   // сделать квест активным
   setActivePlayerQuest = (id: number) => {
@@ -280,7 +310,7 @@ class PlayerMenuStore {
     window.frontTrigger('player-menu.player-active-quest', id)
   }
 
-//=================================   FAQ   ====================================
+  //=================================   FAQ   ====================================
   // выделить вопрос в FAQ (по нажатию на него)
   setActiveFAQ = (id: number) => {
     this.faq.activeBlock = id

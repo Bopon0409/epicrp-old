@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx'
-import { IPassport, IInfo }   from './models'
+import { IPassport, IInfo } from './models'
 
 class PassportStore {
   constructor () {
@@ -22,8 +22,8 @@ class PassportStore {
     }
   }
 
-  setActive = (state: boolean) => this.state.active = state
-  setData = (data: IInfo) => this.state.passportInfo = data
+  setActive = (state: boolean) => (this.state.active = state)
+  setData = (data: IInfo) => (this.state.passportInfo = data)
 }
 
 const store = new PassportStore()

@@ -1,4 +1,4 @@
-import { makeAutoObservable }         from 'mobx'
+import { makeAutoObservable } from 'mobx'
 import { IState, IMedCard, IHistory } from './models'
 
 class MedCardStore {
@@ -21,7 +21,7 @@ class MedCardStore {
     page: 0
   }
 
-  setActive = (state: boolean) => this.state.active = state
+  setActive = (state: boolean) => (this.state.active = state)
   setData = (data: IMedCard) => {
     this.state.medCard = data
     const EmptyArrEl: IHistory = {

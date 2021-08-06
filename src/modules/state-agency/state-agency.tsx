@@ -10,8 +10,13 @@ import StateAgencyLogo from "./img/logo.svg";
 export const StateAgency = observer(() => {
   const { name } = StateAgencyStore.state.data;
   const { show, page, activeHouse, houses } = StateAgencyStore.state;
-  const { setPage, setNewActiveHouse, setActiveHouse, triggerHouseMoves, setMarginTop } =
-    StateAgencyStore;
+  const {
+    setPage,
+    setNewActiveHouse,
+    setActiveHouse,
+    triggerHouseMoves,
+    setMarginTop,
+  } = StateAgencyStore;
 
   const keyClick = (e: React.KeyboardEvent<HTMLDivElement>) => {
     switch (e.keyCode) {
@@ -26,9 +31,9 @@ export const StateAgency = observer(() => {
         return;
       }
       case 13: {
-        if(page === "house") 
-          triggerHouseMoves(+houses[activeHouse].number, 'buy');
-          return;
+        if (page === "house")
+          triggerHouseMoves(+houses[activeHouse].number, "buy");
+        return;
       }
       default:
         return;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { observer } from "mobx-react-lite";
 import { StateAgencyStore } from "../state-agency-store";
 
@@ -15,10 +15,9 @@ export const Main = observer(() => {
     setPage("house");
   };
 
-  return (houseClasses.length > 0) ? (
-    
+  return houseClasses.length > 0 ? (
     <div className="state-agency-main">
-      <div className='state-agency-main_bg' />
+      <div className="state-agency-main_bg" />
       <div className="house_type-text">{HouseTypeText}</div>
       <div className="house_type-blocks">
         {houseClasses.map((type, id) => {

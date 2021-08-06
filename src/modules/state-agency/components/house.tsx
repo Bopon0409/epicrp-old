@@ -152,12 +152,12 @@ export const House = observer(() => {
 const ReturnEmptySticks = () => {
   return (
     <>
-      <div className='empty-stick'/>
-      <div className='empty-stick'/>
-      <div className='empty-stick'/>
-      <div className='empty-stick'/>
-      <div className='empty-stick'/>
-      <div className='empty-stick'/>
+      <div className="empty-stick" />
+      <div className="empty-stick" />
+      <div className="empty-stick" />
+      <div className="empty-stick" />
+      <div className="empty-stick" />
+      <div className="empty-stick" />
     </>
   );
 };

@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx'
 import { IState, SendData } from './models'
 
 class EMSIssueMedicalSertificate {
-  constructor() {
+  constructor () {
     makeAutoObservable(this, {}, { deep: true })
   }
 
@@ -10,8 +10,8 @@ class EMSIssueMedicalSertificate {
     active: false,
     activeBlock: 0
   }
-  setActive = (state: boolean) => this.state.active = state
-  setActiveBlock = (id: number) => this.state.activeBlock = id
+  setActive = (state: boolean) => (this.state.active = state)
+  setActiveBlock = (id: number) => (this.state.activeBlock = id)
   // setData = (data: IData) => this.state.data = data;
 
   //============================   Front Trigger   =============================

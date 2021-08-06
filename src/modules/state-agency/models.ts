@@ -1,5 +1,5 @@
-export type PageName = 'main' | 'house';
-export type HouseType = string | null;
+export type PageName = 'main' | 'house'
+export type HouseType = string | null
 
 export interface IState {
   show: boolean
@@ -12,14 +12,14 @@ export interface IState {
 }
 
 export interface IData {
-  name: string,
-  houses: IHouseInformation[],
+  name: string
+  houses: IHouseInformation[]
   houseClasses: IHouseClasses[]
 }
 
 export interface IHouseClasses {
-  name: string,
-  url: string,
+  name: string
+  url: string
   hint: string
 }
 
