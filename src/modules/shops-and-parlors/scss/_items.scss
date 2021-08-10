@@ -63,6 +63,7 @@
           opacity: 0.8;
           transition: all 0.1s ease-in;
         }
+        cursor: pointer;
         transition: all 0.1s ease-in;
       }
     }
@@ -124,6 +125,7 @@
       &:hover {
         opacity: 1;
         transition: all 0.1s ease-in;
+        cursor: pointer;
       }
     }
 

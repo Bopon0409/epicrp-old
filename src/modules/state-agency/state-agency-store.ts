@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx'
 import { IState, IData, PageName, HouseType } from './models'
 
 class StateAgency {
-  constructor() {
+  constructor () {
     makeAutoObservable(this, {}, { deep: true })
   }
 
@@ -20,44 +20,61 @@ class StateAgency {
     }
   }
 
-
   // показать/скрыть
-  setShow = (state: boolean) => this.state.show = state;
+  setShow = (state: boolean) => (this.state.show = state)
   // изменить страницу (происходит по нажатию на выбранный класс домов)
-  setPage = (name: PageName) => this.state.page = name;
+  setPage = (name: PageName) => (this.state.page = name)
   // фильтрация домов по категории
   setHouseType = (type: HouseType) => {
-    this.state.houseType = type;
+    this.state.houseType = type
     this.state.houses = this.state.data.houses.filter(
-      (house) => house.houseType === this.state.houseType
-    );
+      house => house.houseType === this.state.houseType
+    )
+    if(this.state.houses.length > 0)
+    this.triggerChangeHouse(+this.state.houses[0].number);
   }
   // загрузить данные в интерфейс 'Агенство недвижимости'
-  setData = (data: IData) => this.state.data = data;
+  setData = (data: IData) => (this.state.data = data)
 
   // сделать новый дом активным
   setNewActiveHouse = (type: 'next' | 'prevent') => {
-    if (type === 'next' && this.state.activeHouse < this.state.houses.length - 1) {
-      if (this.state.activeHouse > 0 && this.state.activeHouse < this.state.houses.length - 2) this.state.marginTop -= 147;
-      this.state.activeHouse++;
+    if (
+      type === 'next' &&
+      this.state.activeHouse < this.state.houses.length - 1
+    ) {
+      if (
+        this.state.activeHouse > 0 &&
+        this.state.activeHouse < this.state.houses.length - 2
+      )
+        this.state.marginTop -= 147
+      this.state.activeHouse++
+    } else if (type === 'prevent' && this.state.activeHouse > 0) {
+      this.state.activeHouse--
+      if (
+        this.state.activeHouse > 0 &&
+        this.state.activeHouse < this.state.houses.length - 2
+      )
+        this.state.marginTop += 147
     }
-    else if (type === 'prevent' && this.state.activeHouse > 0) {
-      this.state.activeHouse--;
-      if (this.state.activeHouse > 0 && this.state.activeHouse < this.state.houses.length - 2)
-        this.state.marginTop += 147;
-    }
+
+    // this.triggerChangeHouse(this.state.houses[p]);
   }
   // изменить прокрутку блока
   setMarginTop = (top: number) => {
-    this.state.marginTop = top;
+    this.state.marginTop = top
   }
   // изменить активный дом
   setActiveHouse = (id: number) => {
-    this.state.activeHouse = id;
+    this.state.activeHouse = id
   }
-//============================   Front Trigger   =============================
-  triggerHouseMoves = (houseId: number, move: "watch" | "buy") => {
-    window.frontTrigger(`state-agency.house-move`, { houseId, move});
+  //============================   Front Trigger   =============================
+  // купить/смотреть дом
+  triggerHouseMoves = (houseId: number, move: 'watch' | 'buy') => {
+    window.frontTrigger(`state-agency.house-move`, { houseId, move })
+  }
+  // изменить дом
+  triggerChangeHouse = (houseId: number) => {
+    window.frontTrigger(`state-agency.house-change`, { houseId })
   }
 }
 

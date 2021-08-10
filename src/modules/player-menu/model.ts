@@ -6,7 +6,10 @@ export interface IState {
 
 //=================================   Stats   ==================================
 
-export type TPlayerStatus = 'Медиа - Партнёр' | 'Лидер' | 'Администратор'
+export type TPlayerStatus =
+  | 'Медиа - Партнёр'
+  | 'Лидер'
+  | 'Администратор'
   | 'Игрок'
 
 export interface IProperty {
@@ -25,20 +28,20 @@ export interface IStats {
   warnsCount: number
   online: [string, string]
   bank: {
-    cash: number,
-    cards: number[],
-    insurance: number,
+    cash: number
+    cards: number[]
+    insurance: number
     credit: number
-  },
+  }
   fraction: {
-    fractionName: string,
-    rankName: string,
-    salary: number,
-    lastRise: string,
+    fractionName: string
+    rankName: string
+    salary: number
+    lastRise: string
     reprimands: number
-  },
-  properties: IProperty[],
-  referralCode: string,
+  }
+  properties: IProperty[]
+  referralCode: string
   invites: [number, number]
   reportRatings: number
 }
@@ -53,20 +56,20 @@ export interface IStatsData {
   warnsCount?: number
   online?: [string, string]
   bank?: {
-    cash: number,
-    cards: [],
-    insurance: number,
+    cash: number
+    cards: []
+    insurance: number
     credit: number
-  },
+  }
   fraction?: {
-    fractionName: string,
-    rankName: string,
-    salary: number,
-    lastRise: string,
+    fractionName: string
+    rankName: string
+    salary: number
+    lastRise: string
     reprimands: number
-  },
-  properties?: IProperty[],
-  referralCode?: string,
+  }
+  properties?: IProperty[]
+  referralCode?: string
   invites?: [number, number]
   reportRatings?: number
 }
@@ -130,12 +133,12 @@ export interface ISettingsData {
 }
 
 //===============================   QUESTS   ===================================
-export interface IQuestData{
-  playerActiveQuest: number,
+export interface IQuestData {
+  playerActiveQuest: number
   quests: IQuestsData[]
 }
 
-export interface IQuestsData{
+export interface IQuestsData {
   name: string
   target: string
   reward: string
@@ -144,7 +147,7 @@ export interface IQuestsData{
   questStarted: string
 }
 
-export interface IQuests{
+export interface IQuests {
   activeQuest: number
   data: IQuestData
 }

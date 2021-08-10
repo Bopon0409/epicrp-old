@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx'
 import { IState, IData } from './models'
 
 class TattooParlorStore {
-  constructor() {
+  constructor () {
     makeAutoObservable(this, {}, { deep: true })
   }
 
@@ -16,9 +16,9 @@ class TattooParlorStore {
     }
   }
 
-  setShow = (status: boolean) => this.state.show = status
+  setShow = (status: boolean) => (this.state.show = status)
 
-  setData = (data: IData) => this.state.data = data
+  setData = (data: IData) => (this.state.data = data)
 
   setActiveTextId = (move: 'next' | 'past' | number) => {
     if (move === 'next') {

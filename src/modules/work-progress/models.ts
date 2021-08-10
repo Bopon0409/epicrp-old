@@ -1,10 +1,10 @@
 export interface IState {
-  active: boolean,
+  active: boolean
   progressInfo: IProgress
 }
 
 export interface IProgress {
-  name: string,
+  name: string
   about: string
   min: number
   max: number

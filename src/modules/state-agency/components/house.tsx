@@ -2,10 +2,12 @@ import { observer } from "mobx-react-lite";
 import { StateAgencyStore } from "../state-agency-store";
 import cn from "classnames";
 import { priceFormat } from "../../../services/services";
+import { useCallback } from "react";
 
 export const House = observer(() => {
   const { activeHouse, marginTop, houses } = StateAgencyStore.state;
-  const { setNewActiveHouse, triggerHouseMoves } = StateAgencyStore;
+  const { setNewActiveHouse, triggerHouseMoves, triggerChangeHouse } =
+    StateAgencyStore;
 
   const StateAgencyButtons = [
     ["BACKSPACE", "ВЕРНУТЬСЯ НАЗАД"],
@@ -14,19 +16,25 @@ export const House = observer(() => {
     ["ENTER", "ПРИОБРЕСТИ ДОМ"],
   ];
 
-  const HouseMouseClick = (id: number) => {
+  const HouseMouseClick = useCallback((id: number) => {
     const Different = activeHouse - id;
     if (Different === 1) setNewActiveHouse("prevent");
     if (Different === 2) {
       setNewActiveHouse("prevent");
       setNewActiveHouse("prevent");
     }
-    if (Different === -1) setNewActiveHouse("next");
-    if (Different === -2) {
-      setNewActiveHouse("next");
-      setNewActiveHouse("next");
+    if(Different < 0){
+      if (Different === -1) setNewActiveHouse("next");
+      if (Different === -2) {
+        setNewActiveHouse("next");
+        setNewActiveHouse("next");
+      }
     }
-  };
+    triggerChangeHouse(+houses[id].number);
+  }, [setNewActiveHouse, activeHouse, triggerChangeHouse]);
+
+
+
   return houses.length > 0 ? (
     <div className="state-agency-house">
       <div className="house-info_and_scroll">
@@ -152,12 +160,12 @@ export const House = observer(() => {
 const ReturnEmptySticks = () => {
   return (
     <>
-      <div className='empty-stick'/>
-      <div className='empty-stick'/>
-      <div className='empty-stick'/>
-      <div className='empty-stick'/>
-      <div className='empty-stick'/>
-      <div className='empty-stick'/>
+      <div className="empty-stick" />
+      <div className="empty-stick" />
+      <div className="empty-stick" />
+      <div className="empty-stick" />
+      <div className="empty-stick" />
+      <div className="empty-stick" />
     </>
   );
 };

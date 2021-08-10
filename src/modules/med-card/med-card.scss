@@ -1,6 +1,6 @@
-@import "./scss/history.scss";
+@import './scss/history.scss';
 
-.med-card{
+.med-card {
   .wrapper {
     position: absolute;
     height: 100vh;
@@ -18,7 +18,7 @@
       font-family: Nunito, sans-serif;
       font-style: normal;
       color: black;
-      background: url("./img/bg.png");
+      background: url('./img/bg.png');
       display: flex;
 
       .left-block {
@@ -110,7 +110,7 @@
             justify-content: center;
             align-items: center;
             transform: rotate(180deg);
-            background: url("./img/arrow.png");
+            background: url('./img/arrow.png');
           }
 
           .two-arrow {
@@ -120,7 +120,7 @@
             justify-content: center;
             align-items: center;
             transform: rotate(180deg);
-            background: url("./img/two-arrow.png");
+            background: url('./img/two-arrow.png');
           }
         }
       }
@@ -139,7 +139,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: url("./img/arrow.png");
+            background: url('./img/arrow.png');
           }
 
           .two-arrow {
@@ -148,7 +148,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: url("./img/two-arrow.png");
+            background: url('./img/two-arrow.png');
           }
         }
       }

@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { observer } from "mobx-react-lite";
 import { StateAgencyStore } from "../state-agency-store";
 
 const HouseTypeText = "ВЫБЕРИТЕ ИНТЕРЕСУЮЩИЙ КЛАСС НЕДВИЖИМОСТИ";
 
 export const Main = observer(() => {
-  const { setHouseType, setPage } = StateAgencyStore;
+  const { setHouseType, setPage, triggerChangeHouse } = StateAgencyStore;
+  const { houses } = StateAgencyStore.state;
   const { houseClasses } = StateAgencyStore.state.data;
   const [hoverCategory, setHoverCategory] = useState(0);
 
@@ -15,10 +16,9 @@ export const Main = observer(() => {
     setPage("house");
   };
 
-  return (houseClasses.length > 0) ? (
-    
+  return houseClasses.length > 0 ? (
     <div className="state-agency-main">
-      <div className='state-agency-main_bg' />
+      <div className="state-agency-main_bg" />
       <div className="house_type-text">{HouseTypeText}</div>
       <div className="house_type-blocks">
         {houseClasses.map((type, id) => {

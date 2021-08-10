@@ -13,7 +13,7 @@ export const MainPage = observer(() => {
     setActiveStoreProduct,
     convertDonatToMoney,
     coinCourse,
-    setConfirmWindowData
+    setConfirmWindowData,
   } = donatStore;
 
   // покупка продукта, если это кейс, то перебросит на 1-ую страницу

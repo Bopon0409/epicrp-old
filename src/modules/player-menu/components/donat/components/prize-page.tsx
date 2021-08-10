@@ -3,7 +3,8 @@ import { donatStore } from "../donat-store";
 import EpicLogoSVG from "../../../img/EpicLogo.svg";
 
 export const PrizePage = observer(() => {
-  const { setPage, prize, warehouseActiveItem, setConfirmWindowData } = donatStore;
+  const { setPage, prize, warehouseActiveItem, setConfirmWindowData } =
+    donatStore;
   const { coins, prizeWarehouse } = donatStore.state;
 
   const OpenAgain = () => {
@@ -11,7 +12,7 @@ export const PrizePage = observer(() => {
   };
   const OpenMainMenu = () => {
     const ITEM = prizeWarehouse[warehouseActiveItem];
-    setConfirmWindowData(ITEM.name, ITEM.sellPrice.toString(), 'sell')
+    setConfirmWindowData(ITEM.name, ITEM.sellPrice.toString(), "sell");
   };
 
   return (

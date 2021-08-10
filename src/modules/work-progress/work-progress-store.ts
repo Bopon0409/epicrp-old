@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx'
 import { IState, IProgress } from './models'
 
 class ProgressStore {
-  constructor() {
+  constructor () {
     makeAutoObservable(this, {}, { deep: true })
   }
 
@@ -17,8 +17,8 @@ class ProgressStore {
     }
   }
 
-  setActive = (state: boolean) => this.state.active = state
-  setData = (data: IProgress) => this.state.progressInfo = data
+  setActive = (state: boolean) => (this.state.active = state)
+  setData = (data: IProgress) => (this.state.progressInfo = data)
 }
 
 const store = new ProgressStore()

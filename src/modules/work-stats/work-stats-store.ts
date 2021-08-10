@@ -18,9 +18,9 @@ class WorkStatsStore {
     show: false
   }
 
-  setActive = (state: boolean) => this.state.active = state
-  setData = (data: IWorkStats) => this.state.workStats = data
-  changeShow = () => this.state.show = !this.state.show
+  setActive = (state: boolean) => (this.state.active = state)
+  setData = (data: IWorkStats) => (this.state.workStats = data)
+  changeShow = () => (this.state.show = !this.state.show)
 }
 
 const store = new WorkStatsStore()

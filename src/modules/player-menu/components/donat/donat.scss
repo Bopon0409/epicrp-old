@@ -16,13 +16,13 @@
   align-items: center;
   font-size: 12px;
   line-height: 16px;
-  opacity: .3;
-  transition: all .12s ease-out;
+  opacity: 0.3;
+  transition: all 0.12s ease-out;
   color: white;
 
   &:hover {
     opacity: 1;
-    transition: all .12s ease-in;
+    transition: all 0.12s ease-in;
   }
 }
 
@@ -105,10 +105,10 @@
       font-size: 22px;
       line-height: 30px;
       color: white;
-      transition: all .16s ease-out;
+      transition: all 0.16s ease-out;
 
       &:hover {
-        transition: all .16s ease-in;
+        transition: all 0.16s ease-in;
       }
     }
 

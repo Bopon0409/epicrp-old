@@ -48,6 +48,7 @@
       &:hover {
         background-color: rgba(160, 160, 160, 0.35);
         transition: all 0.1s ease-in;
+        cursor: pointer;
 
         & > span:first-child {
           opacity: 1;

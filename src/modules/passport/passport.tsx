@@ -4,8 +4,8 @@ import { store } from "./passport-store";
 import "./passport.scss";
 
 export const Passport = observer(() => {
-  const { uuid, name, nationality, married, gender,
-  id, date } = store.state.passportInfo;
+  const { uuid, name, nationality, married, gender, id, date } =
+    store.state.passportInfo;
   useEffect(() => {
     // @ts-ignore
     const { EventManager: em } = window;
@@ -24,22 +24,30 @@ export const Passport = observer(() => {
     return gender ? "Мужской" : "Женский";
   };
   const ChooseMarried = () => {
-      if(gender){
-          switch(married){
-              case 0: return "Холост";
-              case 1: return "Женат";
-              case 2: return "Замужем"; 
-              default: return;
-          }
-      } else {
-          switch(married){
-            case 0: return "Холост";
-            case 1: return "Жената";
-            case 2: return "Замужем";
-            default: return;
-          }
+    if (gender) {
+      switch (married) {
+        case 0:
+          return "Холост";
+        case 1:
+          return "Женат";
+        case 2:
+          return "Замужем";
+        default:
+          return;
       }
-  }
+    } else {
+      switch (married) {
+        case 0:
+          return "Холост";
+        case 1:
+          return "Жената";
+        case 2:
+          return "Замужем";
+        default:
+          return;
+      }
+    }
+  };
   return store.state.active ? (
     <div className="window">
       <div className="passport">
@@ -48,7 +56,7 @@ export const Passport = observer(() => {
         <div className="passport-info-block">
           <div className="left">
             <div className="avatar">
-              <div className="avatar-img" ></div>
+              <div className="avatar-img"></div>
               <div className="avatar-uuid">{uuid}</div>
               <div className="avatar-usa">
                 <span>USA</span>
@@ -80,23 +88,23 @@ export const Passport = observer(() => {
             </div>
           </div>
           <div className="right">
-            <div className='seal'>
-                <div className='seal-img'></div>
+            <div className="seal">
+              <div className="seal-img"></div>
             </div>
-            <div className='get-date'>
-                <div className='water-symbol'></div>
-                <div className='date'>
-                    <div>Дата получения</div>
-                    <div>{date}</div>
-                </div>
+            <div className="get-date">
+              <div className="water-symbol"></div>
+              <div className="date">
+                <div>Дата получения</div>
+                <div>{date}</div>
+              </div>
             </div>
           </div>
         </div>
-        <div className='passport-id-block'>
-            <div className='id-text'>ID - ИДЕНТИФИКТОР</div>
-            <div className='id'>{id}</div>
+        <div className="passport-id-block">
+          <div className="id-text">ID - ИДЕНТИФИКТОР</div>
+          <div className="id">{id}</div>
         </div>
-        <div className='gov-ls-text'>GOVERNMENT OF LOS SANTOS</div>
+        <div className="gov-ls-text">GOVERNMENT OF LOS SANTOS</div>
       </div>
     </div>
   ) : null;

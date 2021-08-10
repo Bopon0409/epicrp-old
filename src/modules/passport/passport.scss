@@ -60,7 +60,7 @@
             z-index: 10;
             height: 196px;
             width: 184px;
-            background: rgba(220, 20, 60, .1);
+            background: rgba(220, 20, 60, 0.1);
           }
 
           &-uuid {
@@ -145,7 +145,6 @@
               display: flex;
               flex-direction: column;
               justify-content: space-between;
-
             }
           }
         }
@@ -168,7 +167,7 @@
             width: 250px;
             transform: rotate(-15deg);
             border: 2px solid rgba(0, 20, 134, 0.25);
-            background: rgba(220, 20, 60, .1);
+            background: rgba(220, 20, 60, 0.1);
           }
         }
 
@@ -183,7 +182,7 @@
             height: 116px;
             width: 109px;
             border-radius: 10px;
-            background: rgba(220, 20, 60, .1);
+            background: rgba(220, 20, 60, 0.1);
           }
 
           .date {
@@ -297,4 +296,3 @@
     zoom: 0.44;
   }
 }
-    
