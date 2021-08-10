@@ -18,12 +18,14 @@ class InventoryStore {
     dndItem: null,
     adminSearchInput: '',
     adminSearch: '',
-    indicators: [0, 0, 0],
+    indicators: [0, 0, 0, 0],
     hotKeys: ['1', '2', '3', '4'],
     maxWeight: 10,
+    bag: { slots: 0, weight: 0 },
 
     trunk: { name: '', size: 0, maxWeight: 0 },
     warehouse: { size: 0, maxWeight: 0 },
+    closet: { size: 0, maxWeight: 0 },
 
     trade: {
       name: '', money1: 0, money2: 0, maxMoney: 0,
@@ -33,7 +35,11 @@ class InventoryStore {
 
   setPage = (page: TInventoryPage) => this.state.page = page
 
-  setTrunkData = (trunk: IPageProps) => this.state.trunk = trunk
+  setTrunk = (data: IPageProps) => this.state.trunk = data
+
+  setWarehouse = (data: IPageProps) => this.state.warehouse = data
+
+  setCloset = (data: IPageProps) => this.state.closet = data
 
   setIndicators = (data: TIndicators) => this.state.indicators = data
 
@@ -62,6 +68,10 @@ class InventoryStore {
       .filter((item) => item.idSlot !== idSlot)
   }
 
+  removeItems = (itemPositions: TPosition[]) => {
+    itemPositions.forEach((position) => this.removeItem(position))
+  }
+
   moveItem = (positionFrom: TPosition, positionTo: TPosition) => {
     const item = this.getItem(positionFrom)
     const itemCopy = JSON.parse(JSON.stringify(item))
@@ -69,20 +79,11 @@ class InventoryStore {
     this.addItem(itemCopy, positionTo.idInventory)
   }
 
-  clearData = (inventoryId: TInventoryId) => {
-    this.state.data[inventoryId] = []
-  }
+  clearData = (inventoryId: TInventoryId) => this.state.data[inventoryId] = []
 
-  clearAllData = () => {
-    this.state.data = [[], [], [], [], [], [], []]
-  }
+  clearAllData = () => this.state.data = [[], [], [], [], [], [], []]
 
   //===============================   GETTERS   ================================
-
-  get bagType (): 1 | 2 | 3 | null {
-    return this.state.data[0].find((item) => item.idSlot === 212)?.bagType
-      || null
-  }
 
   getWeight (idInventory: TInventoryId): number {
     return this.state.data[idInventory].reduce((sum, item) => {
@@ -92,14 +93,13 @@ class InventoryStore {
   }
 
   get maxWeight () {
-    const { bagType, state: { maxWeight } } = this
-    return bagType ? [5, 7, 10][bagType - 1] : maxWeight
+    return this.state.maxWeight + this.state.bag.weight
   }
 
   isItemEquipped = (item: IItem, idInventory: TInventoryId): boolean => {
-    const { idSlot, equipmentSlot, fastSlot } = item
-    const isEquip = equipmentSlot && idSlot >= 201 && idSlot <= 212
-    const isFastSlot = fastSlot && idSlot >= 101 && idSlot <= 104
+    const { idSlot } = item
+    const isEquip = idSlot >= 201 && idSlot <= 212
+    const isFastSlot = idSlot >= 101 && idSlot <= 104
     return (isEquip || isFastSlot) && idInventory === 0
   }
 
@@ -110,10 +110,16 @@ class InventoryStore {
     }) || null
   }
 
+  isItemDrag = (position: TPosition): boolean => {
+    const { dndItem } = store.state
+    const { idSlot, idInventory } = position
+    return dndItem?.idSlot === idSlot && dndItem.idInventory === idInventory
+  }
+
   //===============================   CHECKS   =================================
 
   canEquip = (item: IItem, { idInventory }: TPosition): boolean => {
-    return (item.equipmentSlot || item.fastSlot) && idInventory === 0
+    return (item.equipment === 1 || item.equipment === 2) && idInventory === 0
   }
 
   isEquipped = (item: IItem, { idInventory }: TPosition): boolean => {
@@ -190,7 +196,7 @@ class InventoryStore {
   }
 
   setAdminSearch = (isSearch: boolean) => {
-    isSearch ? this.state.adminSearch = this.state.adminSearchInput : ''
+    this.state.adminSearch = isSearch ? this.state.adminSearchInput : ''
   }
 
   adminSearchData = (): IItem[] => {

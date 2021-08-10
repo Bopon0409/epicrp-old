@@ -1,5 +1,4 @@
 import React                          from 'react'
-import Inventory                      from '../inventory'
 import Background                     from '../bg'
 import Auth                           from '../auth'
 import Hud                            from '../hud'
@@ -42,6 +41,7 @@ import { Phone }                      from '../phone/phone'
 import { StateAgency }                from '../state-agency/state-agency'
 import { Alerts }                     from '../alerts/alerts'
 import 'react-input-range/lib/css/index.css'
+import { Inventory2 }                 from '../inventory2/inventory'
 
 export default function App () {
   const isDevMode = process.env.NODE_ENV === 'development'
@@ -56,7 +56,7 @@ export default function App () {
     <>
       {devModules}
       <Bank />
-      <Inventory />
+      {/*<Inventory />*/}
       <Auth />
       <Hud />
       <Chat />
@@ -95,6 +95,7 @@ export default function App () {
       <Phone />
       <StateAgency />
       <Alerts />
+      <Inventory2 />
     </>
   )
 }

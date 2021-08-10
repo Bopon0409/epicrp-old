@@ -8,6 +8,7 @@ export default observer(() => {
   for (let i = 201; i <= 212; i++) {
     items.push({ id: i, item: store.getItem(i) })
   }
+
   return (
     <div className='equipment'>
       <div className='title'>Экипировка</div>

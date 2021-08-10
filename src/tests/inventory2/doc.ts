@@ -7,7 +7,7 @@
 // 6 - админ
 
 export type TBag = { slots: number, weight: number }
-export type TIndicators = [number, number, number, number]
+export type TIndicators = [number, number, number]
 export type THotKeys = [string, string, string, string]
 export type TInventoryId = 0 | 1 | 2 | 3 | 4 | 5 | 6
 export type TData = [IItem[], IItem[], IItem[], IItem[], IItem[], IItem[], IItem[]]
@@ -17,7 +17,7 @@ export type TEquipmentSlot = 201 | 202 | 203 | 204 | 205 | 206 | 207 | 208 |
   209 | 210 | 211 | 212
 export type TInventoryPage =
   'equipment'
-  | 'trade'
+  | 'swap'
   | 'trunk'
   | 'warehouse'
   | 'closet'
@@ -63,24 +63,4 @@ export interface ITrade {
   btnReady1: boolean
   btnReady2: boolean
   btnFinish: boolean
-}
-
-export interface IState {
-  page: TInventoryPage | null
-  data: TData
-
-  trunk: IPageProps
-  warehouse: IPageProps
-  closet: IPageProps
-  trade: ITrade
-  bag: TBag
-
-  adminSearchInput: string
-  adminSearch: string
-
-  modal: TModal | null
-  indicators: TIndicators
-  maxWeight: number
-  hotKeys: THotKeys
-  dndItem: TPosition | null
 }
