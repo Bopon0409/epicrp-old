@@ -42,6 +42,7 @@ import { StateAgency }                from '../state-agency/state-agency'
 import { Alerts }                     from '../alerts/alerts'
 import 'react-input-range/lib/css/index.css'
 import { Inventory2 }                 from '../inventory2/inventory'
+import { PoliceTablet }               from '../police-tablet/police-tablet'
 
 export default function App () {
   const isDevMode = process.env.NODE_ENV === 'development'
@@ -96,6 +97,7 @@ export default function App () {
       <StateAgency />
       <Alerts />
       <Inventory2 />
+      <PoliceTablet />
     </>
   )
 }

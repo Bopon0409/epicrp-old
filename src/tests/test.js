@@ -43,9 +43,9 @@ import './phone/phone.test'
 import './state-agency/state-agency.test'
 import './alerts/alerts.test'
 import './inventory2/inventory.test'
+import './police-tablet/police-tablet.test'
 
 export default function curTest () {
   window.test.bg.setActive(true)
-  window.test.inventory2.setPage('equipment')
-  window.test.inventory2.setIndicators('[100, 100, 100, 100]')
+  window.test.policeTablet.active(true)
 }

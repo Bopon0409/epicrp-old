@@ -53,9 +53,9 @@ export const Inventory2 = observer(() => {
     }
   })
 
-  return (
+  return store.state.page ? (
     <div className='inventory'>
       <Indicators />
     </div>
-  )
+  ) : null
 })
