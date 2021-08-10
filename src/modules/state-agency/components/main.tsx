@@ -5,7 +5,8 @@ import { StateAgencyStore } from "../state-agency-store";
 const HouseTypeText = "ВЫБЕРИТЕ ИНТЕРЕСУЮЩИЙ КЛАСС НЕДВИЖИМОСТИ";
 
 export const Main = observer(() => {
-  const { setHouseType, setPage } = StateAgencyStore;
+  const { setHouseType, setPage, triggerChangeHouse } = StateAgencyStore;
+  const { houses } = StateAgencyStore.state;
   const { houseClasses } = StateAgencyStore.state.data;
   const [hoverCategory, setHoverCategory] = useState(0);
 

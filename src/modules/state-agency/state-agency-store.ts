@@ -30,6 +30,8 @@ class StateAgency {
     this.state.houses = this.state.data.houses.filter(
       house => house.houseType === this.state.houseType
     )
+    if(this.state.houses.length > 0)
+    this.triggerChangeHouse(+this.state.houses[0].number);
   }
   // загрузить данные в интерфейс 'Агенство недвижимости'
   setData = (data: IData) => (this.state.data = data)
@@ -54,6 +56,8 @@ class StateAgency {
       )
         this.state.marginTop += 147
     }
+
+    // this.triggerChangeHouse(this.state.houses[p]);
   }
   // изменить прокрутку блока
   setMarginTop = (top: number) => {
@@ -64,8 +68,13 @@ class StateAgency {
     this.state.activeHouse = id
   }
   //============================   Front Trigger   =============================
+  // купить/смотреть дом
   triggerHouseMoves = (houseId: number, move: 'watch' | 'buy') => {
     window.frontTrigger(`state-agency.house-move`, { houseId, move })
+  }
+  // изменить дом
+  triggerChangeHouse = (houseId: number) => {
+    window.frontTrigger(`state-agency.house-change`, { houseId })
   }
 }
 

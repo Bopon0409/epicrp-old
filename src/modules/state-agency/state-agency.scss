@@ -631,10 +631,25 @@
 }
 
 @media (max-width: 1280px) {
+  .state-agency {
+    .wrapper {
+      zoom: 0.6;
+    }
+  }
 }
 
 @media (max-width: 1024px) {
+  .state-agency {
+    .wrapper {
+      zoom: 0.53;
+    }
+  }
 }
 
 @media (max-width: 800px) {
+  .state-agency {
+    .wrapper {
+      zoom: 0.4;
+    }
+  }
 }
