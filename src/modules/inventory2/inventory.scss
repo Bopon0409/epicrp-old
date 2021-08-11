@@ -2,6 +2,7 @@
 @import './scss/indicators';
 @import './scss/slot-list';
 @import './scss/weight';
+@import './scss/main';
 
 .inventory {
   position: absolute;
@@ -9,4 +10,6 @@
   width: 100%;
   height: 100%;
   background: rgba(4, 4, 4, 0.9);
+  font-family: Nunito, sans-serif;
+  display: flex;
 }

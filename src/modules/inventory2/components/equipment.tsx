@@ -5,7 +5,7 @@ import { Slot }     from './slot'
 export const Equipment = observer(() => {
   return (
     <div className='equipment'>
-      <div className='inventory-title'>Сумка</div>
+      <div className='inventory-title'>Экипировка</div>
       <div className='equipment__container'>
         <Slot position={{ idSlot: 201, idInventory: 0 }} type={'common'} />
         <Slot position={{ idSlot: 207, idInventory: 0 }} type={'common'} />

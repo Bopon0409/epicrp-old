@@ -1,5 +1,18 @@
 .inventory {
   .slot-list {
-    
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+
+    .slot {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.05);
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    &--bag {
+      grid-template-columns: 50% 50%;
+    }
   }
 }

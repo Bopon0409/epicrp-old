@@ -10,6 +10,7 @@
     display: flex;
     justify-content: space-between;
     color: white;
+    font-family: Serif, serif;
 
     &__container {
       display: flex;
@@ -30,7 +31,7 @@
 
     &__progress-bar {
       width: 60px;
-      height: 60px;
+      height: 54px;
     }
   }
 }

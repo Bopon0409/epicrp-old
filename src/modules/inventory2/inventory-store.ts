@@ -1,8 +1,8 @@
 import { makeAutoObservable } from 'mobx'
 import {
   IItem, IState, TInventoryId, TPosition, TModalActiveBtn,
-  TInventoryPage, TModalUseBtn, IPageProps, TIndicators, THotKeys
-}                             from './model'
+  TInventoryPage, TModalUseBtn, IPageProps, TIndicators, THotKeys, TBag
+} from './model'
 
 class InventoryStore {
   constructor () {
@@ -21,7 +21,7 @@ class InventoryStore {
     indicators: [0, 0, 0, 0],
     hotKeys: ['1', '2', '3', '4'],
     maxWeight: 10,
-    bag: { slots: 0, weight: 0 },
+    bag: null,
 
     trunk: { name: '', size: 0, maxWeight: 0 },
     warehouse: { size: 0, maxWeight: 0 },
@@ -46,6 +46,8 @@ class InventoryStore {
   setHotKeys = (hotKeys: THotKeys) => this.state.hotKeys = hotKeys
 
   setMaxWeight = (weight: number) => this.state.maxWeight = weight
+
+  setBag = (bag: TBag | null) => this.state.bag = bag
 
   //===========================   CLIENT TRIGGERS   ============================
 
@@ -93,7 +95,8 @@ class InventoryStore {
   }
 
   get maxWeight () {
-    return this.state.maxWeight + this.state.bag.weight
+    const { maxWeight, bag } = this.state
+    return bag ? bag.weight + maxWeight : maxWeight
   }
 
   isItemEquipped = (item: IItem, idInventory: TInventoryId): boolean => {

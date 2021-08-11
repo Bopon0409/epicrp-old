@@ -73,7 +73,7 @@ export interface IState {
   warehouse: IPageProps
   closet: IPageProps
   trade: ITrade
-  bag: TBag
+  bag: TBag | null
 
   adminSearchInput: string
   adminSearch: string

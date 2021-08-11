@@ -1,0 +1,20 @@
+.inventory {
+  .main {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 1160px;
+    height: 700px;
+
+    .inventory-title {
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 20px;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 90px;
+    }
+  }
+}

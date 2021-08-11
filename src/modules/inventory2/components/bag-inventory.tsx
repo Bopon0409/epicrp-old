@@ -4,12 +4,13 @@ import { SlotList } from './slot-list'
 import { store }    from '../inventory-store'
 
 export const BagInventory = observer(() => {
-  const bagSlots = store.state.bag.slots
-  return (
+  const { bag } = store.state
+  return bag ? (
     <div className='bag-inventory'>
       <div className='inventory-title'>Сумка</div>
-      <SlotList fromSlot={26} toSlot={26 + bagSlots} idInventory={0} />
+      <SlotList fromSlot={26} toSlot={25 + bag.slots} idInventory={0}
+        bag={true} />
       <img src='' alt='' className='inventory-icon' />
     </div>
-  )
+  ) : null
 })

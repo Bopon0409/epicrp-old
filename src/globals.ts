@@ -13,7 +13,9 @@ window.trigger = (eventName: string, ...args: any) => {
   const handlers = EventManager.events[eventName]
   if (!args) handlers.forEach((handler: any) => handler())
   else handlers.forEach((handler: any) => {
-    handler(...args.map((arg: any) => JSON.parse(arg)))
+    handler(...args.map((arg: any) => {
+      return typeof arg === 'string' ? JSON.parse(arg) : arg
+    }))
   })
 }
 

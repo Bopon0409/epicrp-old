@@ -3,6 +3,8 @@ import { observer }         from 'mobx-react-lite'
 import { store }            from './inventory-store'
 import { Indicators }       from './components/indicators'
 import './inventory.scss'
+import { CloseBtn }         from './components/close-btn'
+import { Main }             from './components/main'
 
 export const Inventory2 = observer(() => {
 
@@ -11,7 +13,7 @@ export const Inventory2 = observer(() => {
     const {
       addItem, addItems, setItem, removeItem, moveItem, clearData, clearAllData,
       setPage, setTrunk, setIndicators, setHotKeys, setMaxWeight, removeItems,
-      setButtonReady2, setTradeMoney2, setTradeMaxMoney, setWarehouse
+      setButtonReady2, setTradeMoney2, setTradeMaxMoney, setWarehouse, setBag
     } = store
 
     em.addHandler('inventory.item.add', addItem)
@@ -21,6 +23,7 @@ export const Inventory2 = observer(() => {
     em.addHandler('inventory.item.remove', removeItem)
     em.addHandler('inventory.item.remove-many', removeItems)
     em.addHandler('inventory.page', setPage)
+    em.addHandler('inventory.bag', setBag)
     em.addHandler('inventory.trunk', setTrunk)
     em.addHandler('inventory.warehouse', setWarehouse)
     em.addHandler('inventory.indicators', setIndicators)
@@ -40,6 +43,7 @@ export const Inventory2 = observer(() => {
       em.removeHandler('inventory.item.remove', removeItem)
       em.removeHandler('inventory.item.remove-many', removeItems)
       em.removeHandler('inventory.page', setPage)
+      em.removeHandler('inventory.bag', setBag)
       em.removeHandler('inventory.trunk', setTrunk)
       em.removeHandler('inventory.warehouse', setWarehouse)
       em.removeHandler('inventory.indicators', setIndicators)
@@ -56,6 +60,8 @@ export const Inventory2 = observer(() => {
   return store.state.page ? (
     <div className='inventory'>
       <Indicators />
+      <CloseBtn />
+      <Main />
     </div>
   ) : null
 })

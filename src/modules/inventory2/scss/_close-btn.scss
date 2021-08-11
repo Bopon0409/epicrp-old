@@ -1,5 +1,31 @@
 .inventory {
   .close-btn {
+    position: absolute;
+    z-index: 5;
+    top: 85px;
+    right: 85px;
+    display: flex;
+    justify-content: space-between;
+    width: 154px;
+    height: 40px;
+    align-items: center;
 
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+
+    &__label {
+      width: 64px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+
+      .text {
+        margin: auto;
+      }
+    }
   }
 }
