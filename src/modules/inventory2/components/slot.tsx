@@ -9,15 +9,21 @@ import cn               from 'classnames'
 
 export interface ISlotProps {
   position: TPosition
-  type: 'common' | 'equipment'
+  type: 'common' | 'equipment' | 'fast'
 }
 
 export const Slot = observer((props: ISlotProps) => {
   const { position, type } = props
-  const classes = cn('slot', type === 'equipment' && 'slot--equipment')
   const id = JSON.stringify(position)
   const { setNodeRef } = useDroppable({ id })
   const item = store.getItem(position)
+
+  const equipmentId = position.idSlot - 200
+  const imgPath = `./images/equipment/equipment-slot-${equipmentId}.png`
+  const classes = cn('slot',
+    type === 'equipment' && 'slot--equipment',
+    type === 'fast' && 'slot--fast'
+  )
 
   return (
     <div className={classes} ref={setNodeRef} key={id}>{
@@ -26,8 +32,7 @@ export const Slot = observer((props: ISlotProps) => {
           <Item item={item} idInventory={position.idInventory} />
         </Draggable>
       ) : type === 'equipment' && (
-        <img src={`./images/equipment/id${position.idSlot}.png`} alt=''
-          className='slot__equipment-empty' />
+        <img src={imgPath} alt='' className='slot__equipment-empty' />
       )
     }</div>
   )

@@ -1,0 +1,40 @@
+.inventory {
+  .slot {
+    div[role="button"] {
+      width: 100%;
+      height: 100%;
+    }
+
+    .item {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      position: relative;
+
+      font-weight: 600;
+      font-size: 10px;
+      line-height: 12px;
+      color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+
+      &__img {
+        margin: auto;
+      }
+
+      &__quantity, &__weight {
+        position: absolute;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1px 5px;
+      }
+
+      &__quantity {
+        left: 0;
+      }
+
+      &__weight {
+        right: 0;
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx'
 import {
   IItem, IState, TInventoryId, TPosition, TModalActiveBtn,
   TInventoryPage, TModalUseBtn, IPageProps, TIndicators, THotKeys, TBag
-} from './model'
+}                             from './model'
 
 class InventoryStore {
   constructor () {
@@ -230,6 +230,15 @@ class InventoryStore {
     else if (!value) this.state.trade.btnFinish = false
   }
 
+  //=================================   DND   ==================================
+
+  dragStart = (props: any) => {
+    this.state.dndItem = JSON.parse(props.active.id)
+  }
+
+  dragEnd = () => {
+    this.state.dndItem = null
+  }
 }
 
 const store = new InventoryStore()

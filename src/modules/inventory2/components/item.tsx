@@ -11,12 +11,13 @@ export interface IItemProps {
 export const Item = observer((props: IItemProps) => {
   const { item: { idImg, weight, quantity, idSlot }, idInventory } = props
   const isDrag = store.isItemDrag({ idSlot, idInventory })
+  const weightView = `${(weight * quantity).toFixed(1)} кг`
 
-  return isDrag ? (
+  return !isDrag ? (
     <div className='item'>
       <img src={`./images/items/id${idImg}.png`} alt='' className='item__img' />
       <div className='item__quantity'>{quantity}</div>
-      <div className='item__weight'>{weight * quantity} кг</div>
+      <div className='item__weight'>{weightView}</div>
     </div>
   ) : null
 })

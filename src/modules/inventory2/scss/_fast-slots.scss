@@ -1,0 +1,33 @@
+.inventory {
+  .fast-slots {
+    margin-top: 32px;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    &__container {
+      display: flex;
+      justify-content: space-between;
+
+      .slot {
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 255, 255, 0.05);
+        margin-right: 10px;
+      }
+    }
+
+    &__title {
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 20px;
+      text-align: center;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}

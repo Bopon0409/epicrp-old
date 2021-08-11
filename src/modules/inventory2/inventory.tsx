@@ -5,6 +5,8 @@ import { Indicators }       from './components/indicators'
 import './inventory.scss'
 import { CloseBtn }         from './components/close-btn'
 import { Main }             from './components/main'
+import { DndContext }       from '@dnd-kit/core'
+import { Overlay }          from './components/overlay'
 
 export const Inventory2 = observer(() => {
 
@@ -57,11 +59,16 @@ export const Inventory2 = observer(() => {
     }
   })
 
+  const { dragStart, dragEnd } = store
+
   return store.state.page ? (
-    <div className='inventory'>
-      <Indicators />
-      <CloseBtn />
-      <Main />
-    </div>
+    <DndContext onDragStart={dragStart} onDragEnd={dragEnd}>
+      <Overlay />
+      <div className='inventory'>
+        <Indicators />
+        <CloseBtn />
+        <Main />
+      </div>
+    </DndContext>
   ) : null
 })

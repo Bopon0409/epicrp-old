@@ -1,7 +1,8 @@
+import inventory0 from './player-inventory-data.json'
 import {
   IItem, IPageProps, TInventoryPage, THotKeys,
   TIndicators, TInventoryId, TPosition, TBag
-} from './doc'
+}                 from './doc'
 
 // Изменение страницы инвентаря
 const setPage = (page: TInventoryPage | null) => {
@@ -88,8 +89,11 @@ const setBag = (bag: TBag | null) => {
   window.trigger('inventory.bag', bag)
 }
 
+// @ts-ignore
+const loadInventory = (id: number) => addManyItems(inventory0, 0)
+
 window.test.inventory2 = {
   setPage, addItem, addManyItems, setItem, removeItem, moveItem, setTrunk,
   setIndicators, setHotKeys, setMaxWeight, clear, clearAll, setBag,
-  setTradeReady2, setTradeMoney2, setTradeMaxMoney, removeItems
+  setTradeReady2, setTradeMoney2, setTradeMaxMoney, removeItems, loadInventory
 }
