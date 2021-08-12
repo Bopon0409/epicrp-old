@@ -5,9 +5,7 @@ import { DragOverlay } from '@dnd-kit/core'
 
 export const Overlay = observer(() => {
   const { dndItem } = store.state
-  const idImg = dndItem ? store.getItem(dndItem)?.idImg : ''
-  console.log(idImg)
-  const imgPath = `./images/items/id${idImg}.png`
+  const imgPath = `./images/items/id${dndItem?.idImg}.png`
 
   return (
     <DragOverlay dropAnimation={null} className='inventory-overlay'

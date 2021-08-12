@@ -2,14 +2,14 @@ import React, { useEffect } from 'react'
 import { observer }         from 'mobx-react-lite'
 import { store }            from './inventory-store'
 import { Indicators }       from './components/indicators'
-import './inventory.scss'
 import { CloseBtn }         from './components/close-btn'
 import { Main }             from './components/main'
 import { DndContext }       from '@dnd-kit/core'
 import { Overlay }          from './components/overlay'
+import { Modal }            from './components/modal'
+import './inventory.scss'
 
 export const Inventory2 = observer(() => {
-
   useEffect(() => {
     const { EventManager: em } = window
     const {
@@ -59,15 +59,16 @@ export const Inventory2 = observer(() => {
     }
   })
 
-  const { dragStart, dragEnd } = store
+  const { dragMove, dragEnd } = store
 
   return store.state.page ? (
-    <DndContext onDragStart={dragStart} onDragEnd={dragEnd}>
+    <DndContext onDragMove={dragMove} onDragEnd={dragEnd}>
       <Overlay />
       <div className='inventory'>
         <Indicators />
         <CloseBtn />
         <Main />
+        <Modal />
       </div>
     </DndContext>
   ) : null

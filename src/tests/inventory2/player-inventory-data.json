@@ -5,7 +5,7 @@
     "idSlot": 1,
     "quantity": 3,
     "weight": 0.2,
-    "equipment": 0,
+    "equipment": false,
     "usable": true,
     "name": "Яблочко",
     "description": "Описание яблочка - самый важный элемент в инвентаре. Без его описания можно было бы считать работу несостоявшейся"
@@ -14,9 +14,9 @@
     "id": "01",
     "idImg": 1,
     "idSlot": 25,
-    "quantity": 3,
+    "quantity": 1,
     "weight": 0.2,
-    "equipment": 2,
+    "equipment": false,
     "usable": true,
     "name": "Пистолет",
     "description": "Описание пистолета - самый важный элемент в инвентаре. Без его описания можно было бы считать работу несостоявшейся"
@@ -25,9 +25,9 @@
     "id": "02",
     "idImg": 2,
     "idSlot": 101,
-    "quantity": 3,
+    "quantity": 1,
     "weight": 0.2,
-    "equipment": 0,
+    "equipment": false,
     "usable": true,
     "name": "Пулемет",
     "description": "Описание пулемета - самый важный элемент в инвентаре. Без его описания можно было бы считать работу несостоявшейся"

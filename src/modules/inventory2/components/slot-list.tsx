@@ -17,7 +17,10 @@ export const SlotList = observer((props: ISlotListProps) => {
 
   const list = []
   for (let i = fromSlot; i <= toSlot; i++) {
-    list.push(<Slot position={{ idSlot: i, idInventory }} type={'common'} />)
+    const key = JSON.stringify({ idSlot: i, idInventory })
+    list.push(
+      <Slot position={{ idSlot: i, idInventory }} type={'common'} key={key} />
+    )
   }
 
   return (

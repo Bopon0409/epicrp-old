@@ -1,10 +1,15 @@
-import React        from 'react'
-import { observer } from 'mobx-react-lite'
-import { Slot }     from './slot'
+import React            from 'react'
+import { observer }     from 'mobx-react-lite'
+import { Slot }         from './slot'
+import { useDroppable } from '@dnd-kit/core'
 
 export const Equipment = observer(() => {
+  const { setNodeRef } = useDroppable({
+    id: JSON.stringify({ idSlot: 200, idInventory: 0 })
+  })
+  
   return (
-    <div className='equipment'>
+    <div className='equipment' ref={setNodeRef}>
       <div className='inventory-title'>Экипировка</div>
       <div className='equipment__block'>
         <div className='equipment__container'>

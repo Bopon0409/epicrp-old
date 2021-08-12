@@ -3,6 +3,7 @@ import {
   IItem, IState, TInventoryId, TPosition, TModalActiveBtn,
   TInventoryPage, TModalUseBtn, IPageProps, TIndicators, THotKeys, TBag
 }                             from './model'
+import React                  from 'react'
 
 class InventoryStore {
   constructor () {
@@ -75,8 +76,8 @@ class InventoryStore {
   }
 
   moveItem = (positionFrom: TPosition, positionTo: TPosition) => {
-    const item = this.getItem(positionFrom)
-    const itemCopy = JSON.parse(JSON.stringify(item))
+    const itemCopy = JSON.parse(JSON.stringify(this.getItem(positionFrom)))
+    itemCopy.idSlot = positionTo.idSlot
     this.removeItem(positionFrom)
     this.addItem(itemCopy, positionTo.idInventory)
   }
@@ -114,19 +115,20 @@ class InventoryStore {
   }
 
   isItemDrag = (position: TPosition): boolean => {
-    const { dndItem } = store.state
-    const { idSlot, idInventory } = position
-    return dndItem?.idSlot === idSlot && dndItem.idInventory === idInventory
+    if (store.state.dndItem) {
+      const { idSlot, idInventory } = store.state.dndItem.position
+      return position.idSlot === idSlot && position.idInventory === idInventory
+    } else return false
   }
 
   //===============================   CHECKS   =================================
 
   canEquip = (item: IItem, { idInventory }: TPosition): boolean => {
-    return (item.equipment === 1 || item.equipment === 2) && idInventory === 0
+    return item.equipment && idInventory === 0
   }
 
   isEquipped = (item: IItem, { idInventory }: TPosition): boolean => {
-    return item.idSlot <= 101 && item.idSlot >= 212 && idInventory === 0
+    return item.idSlot >= 201 && item.idSlot <= 212 && idInventory === 0
   }
 
   canUse = (item: IItem, { idInventory }: TPosition): boolean => {
@@ -134,7 +136,7 @@ class InventoryStore {
   }
 
   canSeparate = (item: IItem, { idInventory }: TPosition): boolean => {
-    return item.quantity > 1 && idInventory < 4
+    return item.quantity > 1 && idInventory === 0
   }
 
   canRemove = (item: IItem, { idInventory }: TPosition) => {
@@ -143,10 +145,26 @@ class InventoryStore {
 
   //================================   MODAL   =================================
 
-  modalOpen = (x: number, y: number, position: TPosition) => {
+  clickAroundModal = (event: React.MouseEvent) => {
+    if (this.state.modal) {
+      console.log(event)
+    }
+  }
+
+  clickItem = (event: React.MouseEvent, position: TPosition) => {
+    setTimeout(() => {
+      if (!store.state.dndItem) this.modalOpen(position, event)
+    }, 300)
+  }
+
+  modalOpen = (position: TPosition, { clientX, clientY }: React.MouseEvent) => {
     const item = this.getItem(position)
-    if (item) this.state.modal = {
-      x, y, activeBtn: null, separateRange: 0, position, item
+
+    if (item) {
+      const x = window.innerWidth - clientX > 360 ? clientX : clientX - 460
+      const y = window.innerHeight - clientY > 380 ? clientY : clientY - 235
+
+      this.state.modal = { x, y, activeBtn: null, range: 0, position, item }
     }
   }
 
@@ -156,10 +174,19 @@ class InventoryStore {
     if (!this.state.modal) return null
     const { item, position } = this.state.modal
 
-    if (this.isEquipped(item, position)) return 'take-off'
-    else if (this.canEquip(item, position)) return 'equip'
-    else if (this.canUse(item, position)) return 'use'
+    if (this.isEquipped(item, position)) return 'Снять'
+    else if (this.canEquip(item, position)) return 'Надеть'
+    else if (this.canUse(item, position)) return 'Использовать'
     else return null
+  }
+
+  get separateActive (): boolean {
+    const { modal } = this.state
+    if (modal) {
+      const { activeBtn, item: { quantity } } = modal
+      return activeBtn === 'separate' ||
+        (activeBtn === 'remove' && quantity > 1)
+    } else return false
   }
 
   modalSetActiveBtn = (btn: TModalActiveBtn) => {
@@ -167,28 +194,48 @@ class InventoryStore {
     this.state.modal.activeBtn = this.state.modal.activeBtn !== btn ? btn : null
   }
 
-  modalSetRange = (range: number) => {
-    if (this.state.modal && this.state.modal.item.quantity >= range) {
-      this.state.modal.separateRange = range
+  modalSetRange = (range: number | string) => {
+    const { modal } = this.state
+    range = Number(range)
+    if (modal && !isNaN(range) && modal.item.quantity >= range)
+      modal.range = range
+  }
+
+  modalSubmit = () => {
+    const { modal } = this.state
+    if (modal) {
+      const range = modal.item.quantity === 1 ? 1 : modal.range
+      switch (modal.activeBtn) {
+        case 'use':
+          this.itemUseReq(modal.position)
+          break
+        case 'separate':
+          this.itemSeparateReq(modal.position, range)
+          break
+        case 'remove':
+          this.itemRemoveReq(modal.position, range)
+          break
+      }
     }
+    this.modalClose()
   }
 
   //=============================   ITEM ACTIONS   =============================
 
-  itemUseReq = (position: TPosition, useAction: 'use' | 'equip') => {
-    window.frontTrigger(`inventory.${useAction}`, position)
+  itemUseReq = (position: TPosition) => {
+    window.frontTrigger('inventory.use', position)
   }
 
   itemSeparateReq = (position: TPosition, value: number) => {
-    window.frontTrigger(`inventory.separate`, position, value)
+    window.frontTrigger('inventory.separate', position, value)
   }
 
   itemRemoveReq = (position: TPosition, value?: number) => {
-    window.frontTrigger(`inventory.remove`, position, value)
+    window.frontTrigger('inventory.remove', position, value)
   }
 
   itemMoveReq = (positionFrom: TPosition, positionTo: TPosition) => {
-    window.frontTrigger(`inventory.move`, positionFrom, positionTo)
+    window.frontTrigger('inventory.move', positionFrom, positionTo)
   }
 
   //================================   ADMIN   =================================
@@ -232,12 +279,22 @@ class InventoryStore {
 
   //=================================   DND   ==================================
 
-  dragStart = (props: any) => {
-    this.state.dndItem = JSON.parse(props.active.id)
+  dragMove = (props: any) => {
+    if (store.state.dndItem) return
+    const position = JSON.parse(props.active.id)
+    const item = this.getItem(position)
+    if (item) this.state.dndItem = { position, idImg: item.idImg }
   }
 
-  dragEnd = () => {
+  dragEnd = (props: any) => {
     this.state.dndItem = null
+    if (!props.over) return
+
+    const from = JSON.parse(props.active.id)
+    const to = JSON.parse(props.over.id)
+    if (props.active.id === props.over.id) return
+
+    this.itemMoveReq(from, to)
   }
 }
 

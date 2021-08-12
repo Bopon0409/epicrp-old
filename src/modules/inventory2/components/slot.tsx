@@ -16,6 +16,7 @@ export const Slot = observer((props: ISlotProps) => {
   const { position, type } = props
   const id = JSON.stringify(position)
   const { setNodeRef } = useDroppable({ id })
+  const ref = type === 'common' ? setNodeRef : null
   const item = store.getItem(position)
 
   const equipmentId = position.idSlot - 200
@@ -24,9 +25,10 @@ export const Slot = observer((props: ISlotProps) => {
     type === 'equipment' && 'slot--equipment',
     type === 'fast' && 'slot--fast'
   )
+  const selector = `slot${JSON.stringify(position)}`
 
   return (
-    <div className={classes} ref={setNodeRef} key={id}>{
+    <div className={classes} ref={ref} id={selector}>{
       item ? (
         <Draggable id={id}>
           <Item item={item} idInventory={position.idInventory} />

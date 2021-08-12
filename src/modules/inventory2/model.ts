@@ -1,27 +1,33 @@
-// 0 - инвентарь
-// 1 - склад
-// 2 - багажник
-// 3 - шкаф
-// 4 - обмен мой
-// 5 - обмен чужой
-// 6 - админ
+export type TDndItem = { position: TPosition, idImg: string }
 
 export type TBag = { slots: number, weight: number }
+
 export type TIndicators = [number, number, number, number]
+
 export type THotKeys = [string, string, string, string]
+
 export type TInventoryId = 0 | 1 | 2 | 3 | 4 | 5 | 6
+
+// Inventory ID
+// 0 - Экипировка (equipment)
+// 1 - Склад (warehouse)
+// 2 - Багажник (trunk)
+// 3 - Шкаф (closet)
+// 4 - Обмен мой (trade in)
+// 5 - Обмен чужой (trade out)
+// 6 - Админ инвентарь (admin)
+
 export type TData = [IItem[], IItem[], IItem[], IItem[], IItem[], IItem[], IItem[]]
-export type TModalActiveBtn = 'use' | 'separate' | 'remove' | 'get'
-export type TModalUseBtn = 'use' | 'equip' | 'take-off'
-export type TEquipmentSlot = 201 | 202 | 203 | 204 | 205 | 206 | 207 | 208 |
-  209 | 210 | 211 | 212
-export type TInventoryPage =
-  'equipment'
-  | 'trade'
-  | 'trunk'
-  | 'warehouse'
-  | 'closet'
-  | 'admin'
+
+export type TModalActiveBtn = 'use' | 'separate' | 'remove'
+
+export type TModalUseBtn = 'Использовать' | 'Надеть' | 'Снять'
+
+export type TEquipmentSlot = 201 | 202 | 203 | 204 |
+  205 | 206 | 207 | 208 | 209 | 210 | 211 | 212
+
+export type TInventoryPage = 'equipment' | 'trade' |
+  'trunk' | 'warehouse' | 'closet' | 'admin'
 
 export interface TPosition {
   idSlot: number
@@ -32,7 +38,7 @@ export interface TModal {
   x: number
   y: number
   activeBtn: TModalActiveBtn | null
-  separateRange: number
+  range: number
   position: TPosition
   item: IItem
 }
@@ -43,7 +49,7 @@ export interface IItem {
   idSlot: number
   quantity: number
   weight: number
-  equipment: 0 | 1 | 2
+  equipment: boolean
   usable: boolean
   name: string
   description: string
@@ -82,5 +88,5 @@ export interface IState {
   indicators: TIndicators
   maxWeight: number
   hotKeys: THotKeys
-  dndItem: TPosition | null
+  dndItem: TDndItem | null
 }

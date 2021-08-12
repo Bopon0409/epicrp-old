@@ -9,12 +9,15 @@ export interface IItemProps {
 }
 
 export const Item = observer((props: IItemProps) => {
-  const { item: { idImg, weight, quantity, idSlot }, idInventory } = props
+  const { item, idInventory } = props
+  const { idImg, weight, quantity, idSlot } = item
   const isDrag = store.isItemDrag({ idSlot, idInventory })
   const weightView = `${(weight * quantity).toFixed(1)} кг`
+  const clickHandler = (event: React.MouseEvent) =>
+    store.clickItem(event, { idSlot, idInventory })
 
   return !isDrag ? (
-    <div className='item'>
+    <div className='item' onPointerDown={clickHandler}>
       <img src={`./images/items/id${idImg}.png`} alt='' className='item__img' />
       <div className='item__quantity'>{quantity}</div>
       <div className='item__weight'>{weightView}</div>
