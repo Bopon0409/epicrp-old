@@ -29,7 +29,7 @@ export type TEquipmentSlot = 201 | 202 | 203 | 204 |
 export type TInventoryPage = 'equipment' | 'trade' |
   'trunk' | 'warehouse' | 'closet' | 'admin'
 
-export interface TPosition {
+export type TPosition = {
   idSlot: number
   idInventory: TInventoryId
 }

@@ -145,14 +145,9 @@ class InventoryStore {
 
   //================================   MODAL   =================================
 
-  clickAroundModal = (event: React.MouseEvent) => {
-    if (this.state.modal) {
-      console.log(event)
-    }
-  }
-
   clickItem = (event: React.MouseEvent, position: TPosition) => {
-    setTimeout(() => {
+    if (event.altKey) this.itemUseReq(position)
+    else setTimeout(() => {
       if (!store.state.dndItem) this.modalOpen(position, event)
     }, 300)
   }
@@ -284,10 +279,12 @@ class InventoryStore {
     const position = JSON.parse(props.active.id)
     const item = this.getItem(position)
     if (item) this.state.dndItem = { position, idImg: item.idImg }
+    if (this.state.modal) this.modalClose()
   }
 
   dragEnd = (props: any) => {
     this.state.dndItem = null
+    if (this.state.modal) this.modalClose()
     if (!props.over) return
 
     const from = JSON.parse(props.active.id)
