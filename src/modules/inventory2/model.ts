@@ -27,7 +27,7 @@ export type TEquipmentSlot = 201 | 202 | 203 | 204 |
   205 | 206 | 207 | 208 | 209 | 210 | 211 | 212
 
 export type TInventoryPage = 'equipment' | 'trade' |
-  'trunk' | 'warehouse' | 'closet' | 'admin'
+  'trunk' | 'warehouse' | 'closet' | 'admin' | null
 
 export type TPosition = {
   idSlot: number
@@ -72,7 +72,7 @@ export interface ITrade {
 }
 
 export interface IState {
-  page: TInventoryPage | null
+  page: TInventoryPage
   data: TData
 
   trunk: IPageProps
