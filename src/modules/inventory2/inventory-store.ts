@@ -34,7 +34,11 @@ class InventoryStore {
     }
   }
 
-  setPage = (page: TInventoryPage) => this.state.page = page
+  setPage = (page: TInventoryPage) => {
+    console.log('SetPage: ' + page)
+    this.state.page = page
+    console.log('Result: ' + this.state.page === page)
+  }
 
   setTrunk = (data: IPageProps) => this.state.trunk = data
 
