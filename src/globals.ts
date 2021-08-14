@@ -14,7 +14,11 @@ window.trigger = (eventName: string, ...args: any) => {
   if (!args) handlers.forEach((handler: any) => handler())
   else handlers.forEach((handler: any) => {
     handler(...args.map((arg: any) => {
-      return typeof arg === 'string' ? JSON.parse(arg) : arg
+      try {
+        return typeof arg === 'string' ? JSON.parse(arg) : arg
+      } catch (e) {
+        return arg
+      }
     }))
   })
 }
@@ -33,7 +37,6 @@ window.EventManager = {
     if (eventName in this.events) this.events[eventName].push(handler)
     else this.events[eventName] = [handler]
     if (window.alt) window.alt.on(eventName, handler)
-
   },
   removeHandler (eventName: string, handler: (...args: any[]) => void) {
     if (eventName in this.events) {

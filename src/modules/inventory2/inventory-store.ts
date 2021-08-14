@@ -37,7 +37,9 @@ class InventoryStore {
   setPage = (page: TInventoryPage) => {
     console.log('SetPage: ' + page)
     this.state.page = page
-    console.log('Result: ' + this.state.page === page)
+    setTimeout(() => console.log(`Result: ${this.state.page === page}`),
+      50
+    )
   }
 
   setTrunk = (data: IPageProps) => this.state.trunk = data
