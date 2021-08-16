@@ -10,17 +10,17 @@ import { AdminInventory }     from './admin-inventory'
 
 export const CurrentBlock = observer(() => {
   switch (store.state.page) {
-    case 'equipment':
+    case 1:
       return <Equipment />
-    case 'trade':
+    case 2:
       return <TradeInventory />
-    case 'trunk':
+    case 3:
       return <TrunkInventory />
-    case 'warehouse':
+    case 4:
       return <WarehouseInventory />
-    case 'closet':
+    case 5:
       return <ClosetInventory />
-    case 'admin':
+    case 6:
       return <AdminInventory />
     default:
       return null

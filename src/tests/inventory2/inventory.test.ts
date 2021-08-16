@@ -90,7 +90,7 @@ const setBag = (bag: TBag | null) => {
 }
 
 // @ts-ignore
-const loadInventory = (id: number) => addManyItems(inventory0, 0)
+const loadInventory = (id: number) => addManyItems(inventory0, id)
 
 window.test.inventory2 = {
   setPage, addItem, addManyItems, setItem, removeItem, moveItem, setTrunk,
