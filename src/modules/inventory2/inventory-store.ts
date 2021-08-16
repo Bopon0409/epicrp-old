@@ -34,10 +34,10 @@ class InventoryStore {
     }
   }
 
-  setPage = (page: TInventoryPage) => {
-    console.log('SetPage: ' + page)
-    this.state.page = page
-    setTimeout(() => console.log(`Result: ${this.state.page === page}`),
+  setPage = (data: { page: TInventoryPage }) => {
+    console.log('SetPage: ' + data.page)
+    this.state.page = data.page
+    setTimeout(() => console.log(`Result: ${this.state.page === data.page}`),
       50
     )
   }
