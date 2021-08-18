@@ -11,7 +11,7 @@ class InventoryStore {
   }
 
   state: IState = {
-    page: null,
+    page: false,
 
     data: [[], [], [], [], [], [], []],
 
@@ -38,9 +38,7 @@ class InventoryStore {
     console.log(JSON.stringify(data))
     console.log('SetPage: ' + data.page)
     this.state.page = data.page
-    setTimeout(() => console.log(`Result: ${this.state.page === data.page}`),
-      50
-    )
+    console.log(`Result: ${this.state.page === data.page}`)
   }
 
   setTrunk = (data: IPageProps) => this.state.trunk = data

@@ -22,7 +22,7 @@ export type TData = [IItem[], IItem[], IItem[], IItem[], IItem[], IItem[], IItem
 export type TEquipmentSlot = 201 | 202 | 203 | 204 |
   205 | 206 | 207 | 208 | 209 | 210 | 211 | 212
 
-export type TInventoryPage = 1 | 2 | 3 | 4 | 5 | 6 | null
+export type TInventoryPage = 1 | 2 | 3 | 4 | 5 | 6 | false
 
 export interface TPosition {
   idSlot: number

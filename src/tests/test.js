@@ -50,5 +50,5 @@ export default function curTest () {
   window.test.inventory2.setIndicators([30, 100, 100, 100])
   window.test.inventory2.setBag({ weight: 10, slots: 10 })
   window.test.inventory2.loadInventory(0)
-  window.test.inventory2.setPage(1)
+  window.test.inventory2.setPage({ page: 1 })
 }

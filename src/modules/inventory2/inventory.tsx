@@ -18,6 +18,8 @@ export const Inventory2 = observer(() => {
       setButtonReady2, setTradeMoney2, setTradeMaxMoney, setWarehouse, setBag
     } = store
 
+    console.log('add handlers')
+
     em.addHandler('inventory.item.add', addItem)
     em.addHandler('inventory.item.add-many', addItems)
     em.addHandler('inventory.item.set', setItem)
@@ -38,6 +40,8 @@ export const Inventory2 = observer(() => {
     em.addHandler('inventory.trade.max-money', setTradeMaxMoney)
 
     return () => {
+      console.log('remove handlers')
+
       em.removeHandler('inventory.item.add', addItem)
       em.removeHandler('inventory.item.add-many', addItems)
       em.removeHandler('inventory.item.set', setItem)
@@ -57,7 +61,7 @@ export const Inventory2 = observer(() => {
       em.removeHandler('inventory.trade.money2', setTradeMoney2)
       em.removeHandler('inventory.trade.max-money', setTradeMaxMoney)
     }
-  })
+  }, [])
 
   const { dragMove, dragEnd } = store
 
